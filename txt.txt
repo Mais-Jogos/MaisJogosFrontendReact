@@ -1,0 +1,40 @@
+//MENU
+// eslint-disable-next-line no-unused-vars
+import React from 'react'
+import './style.css'
+import { connect } from 'react-redux'; 
+import { changeTheme } from '../../redux/actions';oi
+
+const Menu = ({dispatch, theme}) => {
+  function handleClick(){
+    dispatch(changeTheme())
+  }
+  return (
+    <div id='full-menu'>
+        <a href="/">
+          <h1>Logo</h1>
+        </a>
+        <div id="menu">
+            <a href="#">Categoria</a>
+            <a href="#">Jogos</a>
+            <a href="/carrinho">Carrinho</a>
+            <a href="#">Moedas</a>
+            <a onClick={handleClick}>Configurações {theme}</a>
+        </div>
+    </div>
+  )
+}
+const mapStateToProps = (state) =>({
+  theme: state.theme,
+})
+const mapDispatchToProps = {
+  changeTheme,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Menu);
+
+//actions
+
+//REDUCER
+
+//STORE

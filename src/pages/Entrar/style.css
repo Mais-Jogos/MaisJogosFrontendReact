@@ -1,0 +1,154 @@
+.signin__title{
+    color: var(--color-primary);
+    font-family: var(--font-pixel);
+    margin: 50px auto;
+    text-align: center;
+    animation: SelectPlayer 2s infinite;
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 10px;
+}
+.signin__title h2{
+    margin: 0px;
+}
+.signin__images{
+    margin: 0 auto;
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+}
+.signin__images .signin__gamer, .signin__dev{
+    width: 300px;
+    height: 300px;
+    background-color: var(--grey-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    border: 5px solid var(--purple);
+    outline: 2px solid var(--black);
+    cursor: pointer;
+}
+.signin__gamer p, .signin__dev p{
+    position: absolute;
+    font-family: var(--font-pixel);
+    color: var(--color-primary);
+/*     text-shadow: 0px 0px 10px var(--white); */
+    font-size: 1.7rem;
+    transition: 0.5s all;
+}
+.signin__gamer img, .signin__dev img{
+    width: 280px;
+    height: 280px;
+    object-fit: cover;
+    filter: saturate(0);
+    transition: 0.5s all;
+    opacity: 0.1;
+}
+.signin__gamer:hover img, .signin__dev:hover img{
+    opacity: 1;
+    filter: saturate(1);
+}
+.signin__gamer:hover p, .signin__dev:hover p{
+    opacity: 0;
+}
+.page__cad{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    padding: 30px;
+    padding-top: 0px;
+}
+.page__cad__user{
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+}
+.page__cad__user button{
+    font-family: var(--font-normal);
+    text-align: center;
+    color: var(--white);
+    background-color: var(--purple);
+    box-shadow: 2px 2px 0px #932eff inset,
+    -2px -2px 0px #44008d inset;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+.signin__img{
+    width: 300px;
+    height: 300px;
+    background-color: var(--grey-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    border: 5px solid var(--purple);
+    outline: 2px solid var(--black);
+    cursor: pointer;
+}
+.signin__img img{
+    width: 280px;
+    height: 280px;
+    object-fit: cover;
+    transition: 0.5s all;
+}
+.form__signin{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.form__signin input{
+    border: 1px solid var(--purple);
+    color: var(--grey-dark);
+    padding: 10px 15px;
+    border-radius: 10px;
+    background-color: transparent;
+}
+.form__signin h2{
+    font-family: var(--font-pixel);
+    text-align: center;
+    color: var(--color-primary);
+}
+.form__signin p{
+    font-family: var(--font-normal);
+    text-align: center;
+    color: var(--grey-dark);
+    font-size: 0.9rem;
+}
+.form__signin p a{
+    font-family: var(--font-normal);
+    text-align: center;
+    color: var(--purple);
+    transition: 0.7s all;
+    cursor: pointer;
+}
+.form__signin p a:hover{
+    text-decoration: underline;
+}
+.form__signin button{
+    font-family: var(--font-normal);
+    text-align: center;
+    color: var(--white);
+    background-color: var(--purple);
+    box-shadow: 2px 2px 0px #932eff inset,
+    -2px -2px 0px #44008d inset;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+@keyframes SelectPlayer{
+    from{
+        opacity: 0.2;
+    }
+    to{
+        opacity: 1;
+    }
+}

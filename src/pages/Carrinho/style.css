@@ -1,0 +1,37 @@
+#cart{
+    padding: 40px 30px;
+}
+#cart > h2{
+    font-family: var(--font-pixel);
+    color: var(--color-primary);
+    margin-bottom: 20px;
+}
+.cart__games{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    width: 80%;
+}
+.cart__total{
+    margin-top: 20px;
+}
+.cart__border__price{
+    border:2px solid #000;
+    border-radius:5px;
+    background-color: var(--purple);
+    padding:7px;
+    box-shadow: 2px 2px 0px 0px #8c21ffe3 inset;
+}
+.cart__price{
+    background-color: #010001;
+    border:2px solid #000;
+    border-radius:5px;
+    padding:7px;
+}
+.cart__price h2{
+    font-family: var(--font-pixel);
+    text-align: left;
+    color:var(--grey);
+    margin:0px auto; 
+    padding: 0px 20px;
+}
