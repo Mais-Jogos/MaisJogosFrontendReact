@@ -27,7 +27,8 @@ a .price h2{
     height: 150px;
     object-fit: cover;
 }
-.card > h2{
+.card > a > h2{
+    color: none;
     color:var(--color-primary);
     font-family: var(--font-pixel);
     width: 220px;
@@ -37,6 +38,8 @@ a .price h2{
     overflow-x: hidden;
     text-overflow: ellipsis;
     direction: ltr;
+    cursor: pointer;
+    text-decoration: none;
 }
 .card .card__genres{
     display: flex;
@@ -81,4 +84,5 @@ a .price h2{
     color: var(--white);
     border-radius: 50%;
     padding: 10px;
+    cursor: pointer;
 }

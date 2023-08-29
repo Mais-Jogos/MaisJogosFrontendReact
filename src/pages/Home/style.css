@@ -86,8 +86,8 @@
 #games{
     background-color: var(--background);
     padding: 40px 30px;
-    margin-top: 140px;
-    width: 95.4%;
+    margin-top: 120px;
+    width: fit-content;
     position: absolute;
     left: 0;
     display: flex;

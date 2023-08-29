@@ -38,7 +38,7 @@ const Game = ({dispatch}) => {
                   <span key={genres?.id}>{genres?.name}</span>
                 )}
               </div>
-              <button onClick={() => handleClickAdd(games[1])}>
+              <button onClick={() => handleClickAdd(games[id])}>
                 Adicionar ao carrinho
               </button>
             </div>
