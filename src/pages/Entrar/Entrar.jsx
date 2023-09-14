@@ -3,10 +3,6 @@ import React, { useState } from 'react'
 import './style.css'
 import Menu from '../../components/Menu/Menu'
 import Acessibilidade from '../../components/Acessibilidade/Acessibilidade'
-import LoginGamer from './Gamer/LoginGamer'
-import LoginDev from './Dev/LoginDev'
-import CadastroGamer from './Gamer/CadastroGamer'
-import CadastroDev from './Dev/CadastroDev'
 
 
 const Entrar = () => {
@@ -42,18 +38,10 @@ const Entrar = () => {
         </div>
         <div className="form__signin">
           <h2>{login ? 'Faça Login' : 'Cadastre-se'}</h2>
-          {login && userType === "Gamer" &&
-            <LoginGamer/>
-          }
-          {login && userType === "Dev" &&
-            <LoginDev/>
-          }
-          {!login && userType === "Gamer" &&
-            <CadastroGamer/>
-          }
-          {!login && userType === "Dev" &&
-            <CadastroDev/>
-          }
+          {!login && <input type="text" placeholder='Nome'/>}
+          {!login && <input type="number" placeholder='Idade'/>}
+          <input type="email" placeholder='E-mail'/>
+          <input type="password" placeholder='Senha'/>
           <button>{login ? 'Entrar' : 'Cadastrar'}</button>
           {login ? <p>Não possui conta? <a onClick={()=>setLogin(false)}>Cadastre-se</a></p>:
           <p>Já possui uma conta? <a onClick={()=>setLogin(true)}>Faça login</a></p>}

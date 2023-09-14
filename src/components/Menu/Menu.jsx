@@ -19,34 +19,40 @@ const Menu = ({changeTheme, theme, cart}) => {
   return (
     <div id='full-menu'>
         <Link to="/">
-          <img src="../public/imgs/logoTextoPositiva.png" alt="" className='logo'/>
+          <img src="../public/imgs/logo/logoTextoPositiva.png" alt="" className='logo'/>
         </Link>
         <div id="menu">
-            <Link className='menu__search'>
-              <input type="text" placeholder='Buscar jogo'/>
-              <i className="fa-solid fa-magnifying-glass"></i>
+            <Link className='menu__search' /* style={{
+              backgroundColor: window.location.pathname==='/'?'#ffffff25':null,
+            }} */>
+              <input type="text" placeholder='Buscar jogo' /* style={{
+                color:window.location.pathname==='/'?'#fff': null
+              }} *//>
+              <i className="fa-solid fa-magnifying-glass" /* style={{
+                color:window.location.pathname==='/'?'#fff': null
+              }} */></i>
             </Link>
-            <Link to="#">Categoria</Link>
+            <Link to="#"/*  style={{color:window.location.pathname==='/'?'#fff': null}} */>Categoria</Link>
             <Link to="/jogos"
-           >+Joguinhos</Link>
-            <Link to="/entrar">Entrar</Link>
-            <Link to="/carrinho">
+           /*  style={{color:window.location.pathname==='/'?'#fff': null}} */>Ganhe moedas</Link>
+            <Link to="/entrar"/*  style={{color:window.location.pathname==='/'?'#fff': null}} */>Entrar</Link>
+            <Link to="/carrinho"/*  style={{color:window.location.pathname==='/'?'#fff': null}} */>
               {cart.cart.length} 
               <i className="fa-solid fa-cart-shopping"
-             ></i>
+             /*  style={{color:window.location.pathname==='/'?'#fff': null}} */></i>
             </Link>
-            <Link to="#">
+            <Link to="#"/*  style={{color:window.location.pathname==='/'?'#fff': null}} */>
             0 
               <i className="fa-brands fa-bitcoin"
-             ></i>
+             /*  style={{color:window.location.pathname==='/'?'#fff': null}} */></i>
             </Link>
-            <Link onClick={changeTheme}>
+            <Link onClick={changeTheme}/*  style={{color:window.location.pathname==='/'?'#fff': null}} */>
               {theme === 'dark' ? 
               <i className="fa-solid fa-moon"
-             ></i>
+             /*  style={{color:window.location.pathname==='/'?'#fff': null}} */></i>
               :
               <i className="fa-solid fa-sun"
-             ></i>}
+             /*  style={{color:window.location.pathname==='/'?'#fff': null}} */></i>}
             </Link>
         </div>
     </div>

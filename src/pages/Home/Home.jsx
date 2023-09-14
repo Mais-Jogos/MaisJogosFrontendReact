@@ -73,8 +73,10 @@ const Home = () => {
                   } else {
                     return game.genres.some(genre => genre.name === category);
                   }
-              })).map((game, index)=>(
-                <Card games={games} game={index} key={game?.id}/>
+                })).map((game, index)=>(
+                <Link to={`/jogos/${index}`} key={game?.id}>
+                  <Card games={games} game={index}/>
+                </Link>
               ))}
             </div>
           </div>

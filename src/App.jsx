@@ -8,7 +8,6 @@ import Carrinho from "./pages/Carrinho/Carrinho"
 import Jogos from "./pages/Jogos/Jogos";
 import Game from "./pages/Game/Game";
 import Entrar from "./pages/Entrar/Entrar";
-import ListadeDesejos from "./pages/ListadeDesejos/ListadeDesejos";
 
 function App({theme}) {
   return (
@@ -20,7 +19,6 @@ function App({theme}) {
           <Route exact path='/jogos' element={<Jogos/>}/>
           <Route path='/jogos/:id' element={<Game/>}/>
           <Route path='/entrar' element={<Entrar/>}/>
-          <Route path='/lista-de-desejos' element={<ListadeDesejos/>}/>
         </Routes>
       </BrowserRouter>
     </div>
