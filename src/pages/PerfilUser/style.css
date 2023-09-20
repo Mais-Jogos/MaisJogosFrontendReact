@@ -1,0 +1,152 @@
+.perfilUser__main{
+    width: 100%;
+    /* height: calc(100vh - 200px); */
+    height: 100%;
+    background-color: var(--color-primary);
+    color: var(--color-secondary);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    gap: 100px;
+}
+
+
+
+.perfilUser__titlePage{
+    width: 100%;
+}
+.perfilUser__titlePage h1{
+    font-family: var(--font-pixel);
+    font-size: 3rem;
+    color: var(--color-secondary);
+    padding-left: 25%;
+}
+
+
+
+.perfilUser__userData{
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    flex-wrap: wrap;
+    gap: 50px;
+}
+
+
+
+.perfilUser__userData__avatar__image{
+    width: 267px;
+    height: 267px;
+    border-radius: 50%;
+    background-color: var(--color-primary);
+    border: 3px solid var(--purple);
+    background: center / contain no-repeat url("../../../public/imgs/animais/3.png") var(--color-primary);
+}
+.perfilUser__userData__avatar__capCoins{
+    width: 130px;
+    height: 30px;
+    padding: 5px;
+    border-radius: 10px;
+    border: 2px solid var(--purple);
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--color-secondary);
+    margin: 20px auto;
+}
+.perfilUser__userData__avatar__capCoins > img{
+    width: 30px;
+    height: 30px;
+}
+.perfilUser__userData__avatar__capCoins > span{
+    font-family: var(--font-pixel);
+    font-size: 1.4rem;
+    margin-left: 5px;
+}
+
+
+
+.perfilUser__userData__inputs{
+    width: 700px;
+    height: 360px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    flex-wrap: wrap;
+    gap: 50px;
+    border-radius: 20px;
+    border: 3px solid var(--purple);
+}
+.perfilUser__userData__input{
+    font-size: 1.2rem;
+}
+.perfilUser__userData__input label{
+    display: block;
+    font-family: var(--font-pixel);
+    margin-bottom: 10px;
+}
+.perfilUser__userData__input input{
+    width: 250px;
+    display: block;
+    border-radius: 5px;
+    border: 1px solid var(--purple);
+    background-color: var(--color-primary);
+    color: var(--color-secondary);
+    padding: 13px 5px;
+    font-size: 1rem;
+}
+
+
+
+.perfilUser__actions{
+    max-width: 950px;
+    min-width: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 80px;
+    margin-bottom: 100px;
+}
+.perfilUser__action {
+    width: 250px;
+    height: 200px;
+    text-align: center;
+    border: 2px solid var(--purple);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* cursor: pointer; */
+    transition: 1s;
+    color: var(--color-secondary);
+}
+.perfilUser__action:hover{
+    background-color: var(--purple);
+    border: 2px solid var(--color-secondary);
+}
+
+.perfilUser__action img{
+    width: 80px;
+    height: 80px;
+    display: block;
+    margin: 0 auto;
+}
+.perfilUser__actions .perfilUser__action:first-child img, .perfilUser__action:nth-child(2) img {
+    width: 130px;
+    height: 130px;
+}
+.perfilUser__actions .perfilUser__action:nth-child(3) img {
+    width: 75px;
+    height: 75px;
+}
+.perfilUser__action p{
+    display: block;
+    font-size: 1.3rem;
+    font-family: var(--font-pixel);
+}
