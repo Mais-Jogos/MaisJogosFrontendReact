@@ -1,8 +1,8 @@
 
-a .price h2{
+.card a .price h2{
     text-decoration: none;
 }
-.border__card{
+.card .border__card{
     border:2px solid var(--black);
     border-radius:5px;
     background-color: var(--grey-dark);
@@ -11,7 +11,7 @@ a .price h2{
     0px 0px 12px rgb(255 255 255 / 26%);
     transition: 0.5s all;
 }
-.border__card:hover{
+.card .border__card:hover{
     transform: scale(1.2);
 }
 .card{
@@ -27,7 +27,7 @@ a .price h2{
     height: 150px;
     object-fit: cover;
 }
-.card > h2{
+.card a > h2{
     color:var(--color-primary);
     font-family: var(--font-pixel);
     width: 220px;
@@ -54,14 +54,14 @@ a .price h2{
     padding: 2px 5px;
     border-radius: 2px;
 }
-.border__price{
+.card .border__price{
     border:2px solid var(--black);
     border-radius:5px;
     background-color: var(--purple);
     padding:7px;
     box-shadow: 2px 2px 0px 0px #8c21ffe3 inset;
 }
-.price{
+.card .price{
     background-color: var(--black);
     border:2px solid var(--black);
     border-radius:5px;
@@ -70,15 +70,16 @@ a .price h2{
     align-items: center;
     justify-content: space-around;
 }
-.price h2{
+.card .price h2{
     font-family: var(--font-pixel);
     text-align: center;
     color:var(--grey);
     margin:0px; 
 }
-.price i{
+.card .price i{
     background-color: #ffffff3d;
     color: var(--white);
     border-radius: 50%;
     padding: 10px;
+    cursor: pointer;
 }

@@ -12,7 +12,7 @@ const Home = () => {
   const [image, setImage] = useState(1);
   const [games, setGames] = useState([]); 
   const [game, setGame] = useState(0)
-  const [numberGames, setNumberGames] = useState(9)
+  const [numberGames, setNumberGames] = useState(6)
   const [category, setCategory] = useState('Todos');
   function changeImage(){
     if(image === 3){
@@ -77,12 +77,10 @@ const Home = () => {
                     return game.genres.some(genre => genre.name === category);
                   }
                 })).slice(0,numberGames).map((game, index)=>(
-                <Link to={`/jogos/${index}`} key={game?.id}>
-                  <Card games={games} game={index}/>
-                </Link>
+                <Card games={games} game={index}/>
               ))}
             </div>
-            <p onClick={() => setNumberGames(numberGames === 9 ? games.length : 9)}>{numberGames === 9 ?  'Ver mais': 'Ver menos'}</p>
+            <p onClick={() => setNumberGames(numberGames === 6 ? games.length : 6)}>{numberGames === 6 ?  'Ver mais': 'Ver menos'}</p>
           </div>
           <div id="publish__games">
             <h2>Publique seus jogos</h2>

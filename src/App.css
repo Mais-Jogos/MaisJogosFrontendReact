@@ -1,18 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Silkscreen&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
 :root {
     --background: #fff;
     --color-primary: #0e0e0e;
     --color-secondary: #f5f5f5;
     --purple: #7900fb;
     --font-pixel: 'Silkscreen', cursive;
-    --font-normal: 'Segoe UI', sans-serif;
+    --font-normal: 'Poppins', sans-serif;
     --light-background: #d3d3d3;
     --light-hover-background: #adadad;
     --transparent-background:#0000001c;
     --white: #fff;
     --black: #000;
     --grey: #737373;
+    --dark: #0e0e0e;
+    --dark2--change:rgb(228, 228, 228);
     --grey-dark: #b4b4b4;
+    --pink: #FF527B;
     margin: 0;
     box-sizing: border-box;
 }
@@ -27,8 +32,11 @@
     --transparent-background:#ffffff25;
     --white: #fff;
     --black: #000;
+    --dark: #0e0e0e;
     --grey: #737373;
     --grey-dark: #262626;
+    --dark2--change:rgb(19, 19, 19);
+    --pink: #FF527B;
 }
 [data-theme='contrast'] {
     --background: #000000;
@@ -44,7 +52,10 @@
     --grey: #eeff00;
     --grey-dark: #000000;
     --white: #eeff00;
+    --dark: #000;
+    --dark2:#000000;
     --black: #000;
+    --pink: #eeff00;
 }
 body{
     margin: 0;

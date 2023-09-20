@@ -3,9 +3,9 @@
 import React, { useEffect, useState } from 'react'
 import Menu from '../../components/Menu/Menu'
 import { connect } from 'react-redux'
-import Card from '../../components/Card/Card';
 import './style.css'
 import Acessibilidade from '../../components/Acessibilidade/Acessibilidade';
+import CardCart from '../../components/CardCart/CardCart';
 
 const Carrinho = ({cart}) => {
   const [total, setTotal] = useState(0)
@@ -18,10 +18,10 @@ const Carrinho = ({cart}) => {
         <Menu/>
         <Acessibilidade/>
         <div id="cart">
-          <h2>Carrinho</h2>
+          <h2>Seu Carrinho</h2>
           <div className="cart__games">
             {cart?.cart.map((game, index) =>(
-              <Card games={cart.cart} game={index} key={game?.id}/>
+              <CardCart games={cart.cart} game={index} key={game?.id}/>
             ))}
           </div>
           <div className="cart__total">

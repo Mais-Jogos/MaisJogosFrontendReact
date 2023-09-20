@@ -3,29 +3,106 @@
     padding: 20px;
     gap: 20px;
     align-items: center;
+    flex-direction: column;
 }
-.game__page img{
-    clip-path: polygon(0.00% 0.00%,100% 0%,75% 100%,0% 100%);;
-    width: 60%;
+.game__page{
+    width: 95%;
     object-fit: contain;
+    margin: 0 auto;
+}
+.game__page__image{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:5px;
+    width: 100%;
+}
+.game__page__image i{
+    color: var(--color-primary);
+    cursor:pointer;
+    font-size: 2rem;
+    text-shadow: 0px 0px 10px var(--color-secondary);
+}
+.game__page__image p{
+    position: absolute;
+}
+.game__page__image p:first-child{
+    left: 5%;
+}
+.game__page__image p:last-child{
+    right: 5%;
+}
+.game__page__image img{
+    width: 98%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+.game__page__images{
+    display: flex;
+    gap: 10px;
+    justify-content: flex-start;
+    width: 98%;
+}
+.game__page__images img{
+    width: fit-content;
+    border-radius: 5px;
+    height: 40px;
+    cursor: pointer;
+}
+.gameinfo__game__page{
+    display: flex;
+    gap: 5%;
+    margin: 20px 10%;
+    width: 100%;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: row;
 }
 .game__page .text__game__page{
-    width: 35%;
+    width: 60%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 10px;
 }
-.game__page .text__game__page h2{
+.game__page .title__game__page h2{
     color: var(--color-primary);
     font-family: var(--font-pixel);
     margin: 0;
 }
-.game__page .text__game__page p{
+.title__game__page{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+.title__game__page .classif__game__page{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.title__game__page .rating__game__page{
+    font-family: var(--font-pixel);
     color: var(--color-primary);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 5px 10px;
+    border: 2px solid var(--color-primary);
+    border-radius: 15px;
     margin: 0;
-
+}
+.title__game__page .classification__game__page{
+    font-family: var(--font-pixel);
+    color:green;
+    padding: 5px 20px;
+    border: 2px solid green;
+    border-radius: 15px;
+    margin: 0;
+}
+.game__page .text__game__page .description__game__page{
+    color: var(--color-primary);
+    margin: 0;
+    font-family: var(--font-normal);
 }
 .game__page .text__game__page .game__page__genres{
     display: flex;
@@ -35,19 +112,170 @@
 }
 .game__page .text__game__page span{
     color: var(--color-primary);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: var(--font-normal);
     background-color: var(--transparent-background);
     border-radius: 5px;
     padding: 3px 7px;
     font-size: 0.9rem;
 }
-.game__page .text__game__page button{
-    background-color: var(--purple);
+.info__game__page{
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+    width: 30%;
+}
+.addcart__game__page{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid var(--grey);
+}
+.addcart__game__page h2{
     color: var(--color-primary);
+    font-family: var(--font-normal);
+    font-weight: 900;
+    font-size: 2rem;
+    margin: 40px 0px;
+}
+.addcart__game__page button{
+    background-color: var(--purple);
+    color: var(--white);
     cursor: pointer;
     font-family: var(--font-pixel);
     padding: 10px 15px;
     border: none;
     border-radius: 5px;
     box-shadow: 2px 2px 0px 0px #8c21ffe3 inset;
+    font-size: 1.1rem;
+}
+.favorite__game__page{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.favorite__game__page img{
+    height: 30px;
+}
+.favorite__game__page p{
+    color: var(--pink);
+    cursor: pointer;
+    font-family: var(--font-pixel);
+    font-size: 0.9rem;
+}
+.about__game__page{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid var(--grey);
+    font-family: var(--font-normal);
+    color: var(--color-primary);
+}
+.about__game__page p{
+    margin: 0;
+    display: flex;
+    gap: 5px;
+}
+.about__game__page h3{
+    margin: 10px 0px;
+    color: var(--color-primary);
+    font-family: var(--font-pixel);
+}
+.system__game__page{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid var(--grey);
+    font-family: var(--font-normal);
+    color: var(--color-primary);
+}
+.title__system{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+.title__system h3{
+    margin: 10px 0px;
+    color: var(--color-primary);
+    font-family: var(--font-pixel);
+}
+.title__system .platforms{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.title__system .platforms i{
+    color: var(--purple);
+    border: 1px solid var(--purple);
+    padding: 2px 5px;
+    border-radius: 5px;
+}
+.comments__game__page{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+}
+.comments__game__page h2{
+    margin: 10px 0px;
+    color: var(--color-primary);
+    font-family: var(--font-pixel);
+}
+.comment__game__page{
+    padding: 20px;
+    border-radius: 10px;
+    background-color: var(--dark2--change);
+    width: auto;
+}
+.comment__game__page .text__comment{
+    color: var(--color-primary);
+    font-family: var(--font-normal);
+    margin: 10px 0px;
+    font-size: 0.9rem;
+    text-align: justify;
+}
+.usercomment__game__page{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+}
+.usercomment__game__page .avatar__user{
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--purple);
+    background-color: var(--black);
+    border-radius: 50%;
+}
+.usercomment__game__page .info__user{
+    display: flex;
+    flex-direction: column;
+}
+.usercomment__game__page .username{
+    display: flex;
+    align-items: center;
+    gap:5px;
+    color: var(--color-primary);
+    font-family: var(--font-normal);
+    margin: 0;
+}
+.usercomment__game__page .username .usernick{
+    color: var(--grey);    
+    margin: 0;
+}
+.usercomment__game__page .time__comment{
+    color: var(--color-primary);
+    font-family: var(--font-normal);
+    margin: 0;
+    font-size: 0.8rem;
 }
