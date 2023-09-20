@@ -1,0 +1,13 @@
+.footer__main{
+    width: 100%;
+    height: 75px;
+    background-color: #252525;
+    color: var(--color-secondary);
+    text-align: center;
+    line-height: 75px;
+    font-family: var(--font-pixel);
+}
+
+.footer__main p{
+    margin: 0;
+}
