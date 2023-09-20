@@ -2,8 +2,9 @@
     cursor:pointer;
     position: fixed;
     right: 0;
-    top: 30%;
+    top: 55%;
     z-index: 999;
+    margin-right: 10px;
 }
 .settings a:-webkit-any-link {
     color: none;
@@ -14,7 +15,8 @@
     padding: 10px;
     color: var(--light-hover-background);
     background-color: var(--light-background);
-    border-radius: 5px 0px 0px 5px;
+    border-radius: 5px;
+    font-size: 20px;
 }
 .settings ul{
     display: flex;
