@@ -41,7 +41,7 @@
     border-radius: 50%;
     background-color: var(--dark2);
     border: 3px solid var(--purple);
-    background: center / contain no-repeat url("../../../public/imgs/animais/3.png") var(--color-primary);
+    background: center / contain no-repeat url("../../../public/imgs/animais/3.png") var(--color-secondary);
 
     position: relative;
 }
@@ -93,6 +93,13 @@
     font-size: 1.2rem;
     position: relative;
 }
+.perfilUser__userData__input:nth-child(5){
+    background-color: var(--purple);
+    color:var(--color-secondary);
+    border-radius: 10px;
+    border: 0px;
+    transition: .5s;
+}
 .perfilUser__userData__input label{
     display: block;
     font-family: var(--font-pixel);
@@ -107,6 +114,14 @@
     color: var(--color-primary);
     padding: 13px 5px;
     font-size: 1rem;
+}
+.perfilUser__userData__input:nth-child(5) input{
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.perfilUser__userData__input:nth-child(5):hover{
+    background-color: #7b00ffe0;
 }
 .perfilUser__userData__input__editImg{
     position: absolute;
