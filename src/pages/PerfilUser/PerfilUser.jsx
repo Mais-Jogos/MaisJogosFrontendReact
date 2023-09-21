@@ -32,7 +32,7 @@ export default props => {
 
 
     return (
-        <div>
+        <div id='container-page'>
             <Menu />
             <Acessibilidade />
             <main className="perfilUser__main">

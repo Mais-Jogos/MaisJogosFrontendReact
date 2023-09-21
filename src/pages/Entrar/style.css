@@ -13,7 +13,7 @@
     margin: 0px;
 }
 .signin__images{
-    margin: 0 auto;
+    margin: 0 auto 50px auto;
     display: flex;
     gap: 30px;
     justify-content: center;

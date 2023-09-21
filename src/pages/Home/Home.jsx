@@ -6,11 +6,14 @@ import Axios from 'axios'
 import './style.css'
 import { Link } from 'react-router-dom'
 import Acessibilidade from '../../components/Acessibilidade/Acessibilidade'
+import Vlibras from '../../components/Vlibras/Vlibras'
+import Footer from '../../components/Footer/Footer'
 
 const Home = () => {
   const [image, setImage] = useState(1);
   const [games, setGames] = useState([]); 
   const [game, setGame] = useState(0)
+  const [numberGames, setNumberGames] = useState(6)
   const [category, setCategory] = useState('Todos');
   function changeImage(){
     if(image === 3){
@@ -37,6 +40,7 @@ const Home = () => {
   return (
     <div id='container-page' className='home'>
       <Menu/>
+      <Vlibras/>
       <Acessibilidade/>
       <div id="container">
         <div className="section__categories">
@@ -64,7 +68,7 @@ const Home = () => {
               <i className="fa-solid fa-chevron-right"></i>
             </p>
           </div>
-          <div id="games">
+          <div id="games__home">
             <h2>Novidades</h2>
             <div className="section__games">
               {games?.filter((game => {
@@ -73,15 +77,45 @@ const Home = () => {
                   } else {
                     return game.genres.some(genre => genre.name === category);
                   }
-                })).map((game, index)=>(
-                <Link to={`/jogos/${index}`} key={game?.id}>
-                  <Card games={games} game={index}/>
-                </Link>
+                })).slice(0,numberGames).map((game, index)=>(
+                <Card games={games} game={index}/>
               ))}
+            </div>
+            <p onClick={() => setNumberGames(numberGames === 6 ? games.length : 6)}>{numberGames === 6 ?  'Ver mais': 'Ver menos'}</p>
+          </div>
+          <div id="publish__games">
+            <h2>Publique seus jogos</h2>
+            <div className="border__card__publish">
+              <div className="card__publish">
+                <div className="text__publish">
+                  <h2>Publique já!</h2>
+                  <p>Cadastres seus jogos na nossa plataforma:</p>
+                  <button>Publicar</button>
+                </div>
+                <div className="image__publish">
+                  <img src="imgs/animais/3.png" alt="" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="newsletter__games">
+            <div className="border__card__newsletter">
+              <div className="card__newsletter">
+                <div className="image__newsletter">
+                  <img src="imgs/animais/2.png" alt="" />
+                </div>
+                <div className="text__newsletter">
+                  <h2>Fique por dentro os lançamentos!</h2>
+                  <label htmlFor='newsletter'>Digite seu melhor e mail: </label>
+                  <input type="text" id='newsletter'/>
+                  <button>Assinar</button>
+                </div>
+              </div>
             </div>
           </div>
         </div>      
       </div>
+      <Footer/>
     </div>
   )
 }

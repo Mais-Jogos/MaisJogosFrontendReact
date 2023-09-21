@@ -4,6 +4,7 @@ import Menu from '../../components/Menu/Menu';
 import Card from '../../components/Card/Card';
 import Axios from 'axios';
 import './style.css'
+import Footer from '../../components/Footer/Footer';
 
 const ListadeDesejos = () => {
     const [games, setGames] = useState([]); 
@@ -26,6 +27,7 @@ const ListadeDesejos = () => {
                 ))}
             </div>
         </div>
+        <Footer/>
     </div>
   )
 }

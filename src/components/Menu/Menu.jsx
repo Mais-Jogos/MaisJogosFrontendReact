@@ -22,37 +22,27 @@ const Menu = ({changeTheme, theme, cart}) => {
           <img src="../public/imgs/logo/logoTextoPositiva.png" alt="" className='logo'/>
         </Link>
         <div id="menu">
-            <Link className='menu__search' /* style={{
-              backgroundColor: window.location.pathname==='/'?'#ffffff25':null,
-            }} */>
-              <input type="text" placeholder='Buscar jogo' /* style={{
-                color:window.location.pathname==='/'?'#fff': null
-              }} *//>
-              <i className="fa-solid fa-magnifying-glass" /* style={{
-                color:window.location.pathname==='/'?'#fff': null
-              }} */></i>
+            <Link to="#">Acessibilidade</Link>
+            <Link to="#">Sobre</Link>
+            <Link to="#">Suporte</Link>
+            <Link className='menu__search' >
+              <input type="text" placeholder='Buscar jogo'/>
+              <i className="fa-solid fa-magnifying-glass"></i>
             </Link>
-            <Link to="#"/*  style={{color:window.location.pathname==='/'?'#fff': null}} */>Categoria</Link>
-            <Link to="/jogos"
-           /*  style={{color:window.location.pathname==='/'?'#fff': null}} */>Ganhe moedas</Link>
-            <Link to="/entrar"/*  style={{color:window.location.pathname==='/'?'#fff': null}} */>Entrar</Link>
-            <Link to="/carrinho"/*  style={{color:window.location.pathname==='/'?'#fff': null}} */>
+            <Link to="/entrar">Entrar</Link>
+            <Link to="/carrinho">
               {cart.cart.length} 
-              <i className="fa-solid fa-cart-shopping"
-             /*  style={{color:window.location.pathname==='/'?'#fff': null}} */></i>
+              <i className="fa-solid fa-cart-shopping"></i>
             </Link>
-            <Link to="#"/*  style={{color:window.location.pathname==='/'?'#fff': null}} */>
-            0 
-              <i className="fa-brands fa-bitcoin"
-             /*  style={{color:window.location.pathname==='/'?'#fff': null}} */></i>
+            <Link to="#">
+              0 
+              <i className="fa-brands fa-bitcoin"></i>
             </Link>
-            <Link onClick={changeTheme}/*  style={{color:window.location.pathname==='/'?'#fff': null}} */>
+            <Link onClick={changeTheme}>
               {theme === 'dark' ? 
-              <i className="fa-solid fa-moon"
-             /*  style={{color:window.location.pathname==='/'?'#fff': null}} */></i>
+              <i className="fa-solid fa-moon"></i>
               :
-              <i className="fa-solid fa-sun"
-             /*  style={{color:window.location.pathname==='/'?'#fff': null}} */></i>}
+              <i className="fa-solid fa-sun"></i>}
             </Link>
         </div>
     </div>

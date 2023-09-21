@@ -1,5 +1,4 @@
 .home{
-    background-color: var(--background);
 /*     background-image: url(../../../public/imgs/backgroundCyberpunk.png);
  */    background-repeat: no-repeat;
     background-size: cover;
@@ -14,7 +13,7 @@
     margin-top: 30px;
     gap:40px;
     padding: 0px 25px;
-
+    background-color: var(--background);
 }
 .section__categories{
     background-color: var(--light-background);
@@ -47,19 +46,22 @@
     flex-direction: row;
     justify-content: center;
     margin-bottom: 20px;
+    margin-top: 20px;
 }
 .section__title h1{
     font-family: var(--font-pixel);
     color: var(--white);
     width: 400px;
-    font-size: 2.5rem;
+    font-size: 1.5rem;
     text-shadow:
         0 0 10px #fff,
-        0 0 20px rgb(68, 0, 255),
-        0 0 30px rgb(68, 0, 255),
-        0 0 40px rgb(68, 0, 255),
-        0 0 50px rgb(68, 0, 255);
+        0 0 15px rgb(68, 0, 255),
+        0 0 25px rgb(68, 0, 255),
+        0 0 35px rgb(68, 0, 255),
+        0 0 45px rgb(68, 0, 255);
         margin: 0;
+    text-align: center;
+    margin: 0;
 }
 .section__title img{
     translate: -70px;
@@ -83,31 +85,116 @@
     object-fit: cover;
     border-radius: 5px;
 }
-#games{
-    background-color: var(--background);
+#games__home{
     padding: 40px 30px;
-    margin-top: 140px;
+    margin-top: 40px;
     width: 95.4%;
-    position: absolute;
+    position: relative;
     left: 0;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
 }
-#games > h2{
+#games__home > h2{
     font-family: var(--font-pixel);
     color: var(--color-primary);
     margin: 0;
     margin-bottom: 20px;
     text-align: center;
-    width: 80%;
+    width: 100%;
+}
+#games__home > p{
+    font-family: var(--font-pixel);
+    color: var(--color-primary);
+    margin: 0;
+    margin: 15px;
+    text-align: right;
+    width: 100%;
+    cursor: pointer;
 }
 .section__games{
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
+    width: 100%;
+    justify-content: center;
+}
+
+#publish__games, #newsletter__games{
+    padding: 40px 30px;
+}
+
+#publish__games > h2{
+    font-family: var(--font-pixel);
+    color: var(--color-primary);
+    margin: 0;
+    margin-bottom: 20px;
+    text-align: center;
+    width: 100%;
+}
+
+.border__card__publish, .border__card__newsletter{
+    border:2px solid var(--black);
+    border-radius:5px;
+    background-color: var(--grey-dark);
+    padding:7px;
+    box-shadow: 2px 2px 0px 0px rgba(56, 56, 56, 0.75) inset,
+    0px 0px 12px rgb(255 255 255 / 26%);
+    transition: 0.5s all;
+}
+
+.card__publish, .card__newsletter{
+    background-color: var(--color-secondary);
+    border:2px solid var(--black);
+    border-radius:5px;
+    padding:20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: stretch;
+}
+.card__publish{
+    background-image: url(imgs/publish_image.png);
+    background-size: cover;
+}
+
+.text__newsletter{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+    color: var(--color-primary);    
+    font-family: var(--font-pixel);
+}
+.text__publish{
+    color: var(--white);
+    font-family: var(--font-pixel);
+}
+
+.text__publish button, .text__newsletter button{
+    font-family: var(--font-pixel);
+    text-align: center;
+    color: var(--white);
+    background-color: var(--purple);
+    box-shadow: 2px 2px 0px #932eff inset,
+    -2px -2px 0px #44008d inset;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 40px;
+    cursor: pointer;
+}
+.text__newsletter input{
+    border: 1px solid var(--purple);
+    color: var(--grey-dark);
+    padding: 10px 15px;
+    border-radius: 10px;
+    background-color: transparent;
     width: 80%;
 }
+.image__publish img, .image__newsletter img{
+    height: 180px;
+}
+
+/*animação*/
 @keyframes Avatar{
     0%{
         transform: rotate(0deg);

@@ -11,7 +11,7 @@ const Acessibilidade = ({theme, offContrastTheme, contrastTheme}) => {
     const [hoverSettings, setHoverSettings] = useState(false)
   return (
     <Link className='settings' onClick={()=>setHoverSettings(!hoverSettings)} title='Configurações'>
-    <i className="fa-solid fa-gear"></i>
+    <i className="fa-solid fa-universal-access"></i>
     {hoverSettings && 
     <ul>
       <li onClick={fonte()} id='aumentar'>Aumentar fonte</li>
