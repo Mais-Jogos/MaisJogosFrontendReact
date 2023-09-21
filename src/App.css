@@ -63,9 +63,6 @@ body{
     box-sizing: border-box;
     background-color: var(--background);
 }
-#container-page{
-    padding: 50px 0px;
-}
 a:-webkit-any-link {
     color: none;
     cursor: pointer;

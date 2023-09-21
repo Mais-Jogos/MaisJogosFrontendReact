@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import './style.css'
 import Menu from '../../components/Menu/Menu'
 import Acessibilidade from '../../components/Acessibilidade/Acessibilidade'
+import Footer from '../../components/Footer/Footer'
 
 
 const Entrar = () => {
@@ -47,6 +48,7 @@ const Entrar = () => {
           <p>Já possui uma conta? <a onClick={()=>setLogin(true)}>Faça login</a></p>}
         </div>
       </div>}
+      <Footer/>
     </div>
   )
 }

@@ -6,6 +6,7 @@ import Menu from '../../components/Menu/Menu'
 import Acessibilidade from '../../components/Acessibilidade/Acessibilidade'
 import Jokenpo from '../../games/Jokenpo/Jokenpo'
 import Quiz from '../../games/Quiz/Quiz'
+import Footer from '../../components/Footer/Footer'
 
 const Jogos = () => {
   const [jogo, setJogo] = useState('')
@@ -65,6 +66,7 @@ const Jogos = () => {
       <Jokenpo/> : jogo === 'JogodaVelha' ?
       <JogodaVelha />:
       <Quiz/>}
+      <Footer/>
     </div>
   )
 }

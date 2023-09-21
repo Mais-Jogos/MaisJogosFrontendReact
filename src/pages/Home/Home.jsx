@@ -7,6 +7,7 @@ import './style.css'
 import { Link } from 'react-router-dom'
 import Acessibilidade from '../../components/Acessibilidade/Acessibilidade'
 import Vlibras from '../../components/Vlibras/Vlibras'
+import Footer from '../../components/Footer/Footer'
 
 const Home = () => {
   const [image, setImage] = useState(1);
@@ -114,6 +115,7 @@ const Home = () => {
           </div>
         </div>      
       </div>
+      <Footer/>
     </div>
   )
 }

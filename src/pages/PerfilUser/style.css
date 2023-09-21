@@ -2,8 +2,7 @@
     width: 100%;
     /* height: calc(100vh - 200px); */
     height: 100%;
-    background-color: var(--color-primary);
-    color: var(--color-secondary);
+    color: var(--color-primary);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -20,7 +19,7 @@
 .perfilUser__titlePage h1{
     font-family: var(--font-pixel);
     font-size: 3rem;
-    color: var(--color-secondary);
+    color: var(--color-primary);
     padding-left: 25%;
 }
 
@@ -40,7 +39,7 @@
     width: 267px;
     height: 267px;
     border-radius: 50%;
-    background-color: var(--color-primary);
+    background-color: var(--dark2);
     border: 3px solid var(--purple);
     background: center / contain no-repeat url("../../../public/imgs/animais/3.png") var(--color-primary);
 }
@@ -54,7 +53,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    color: var(--color-secondary);
+    color: var(--color-primary);
     margin: 20px auto;
 }
 .perfilUser__userData__avatar__capCoins > img{
@@ -93,9 +92,9 @@
     width: 250px;
     display: block;
     border-radius: 5px;
+    background-color: var(--dark2);
     border: 1px solid var(--purple);
-    background-color: var(--color-primary);
-    color: var(--color-secondary);
+    color: var(--color-primary);
     padding: 13px 5px;
     font-size: 1rem;
 }
@@ -124,7 +123,7 @@
     justify-content: center;
     /* cursor: pointer; */
     transition: 1s;
-    color: var(--color-secondary);
+    color: var(--color-primary);
 }
 .perfilUser__action:hover{
     background-color: var(--purple);

@@ -6,6 +6,7 @@ import { connect } from 'react-redux'
 import './style.css'
 import Acessibilidade from '../../components/Acessibilidade/Acessibilidade';
 import CardCart from '../../components/CardCart/CardCart';
+import Footer from '../../components/Footer/Footer';
 
 const Carrinho = ({cart}) => {
   const [total, setTotal] = useState(0)
@@ -32,6 +33,7 @@ const Carrinho = ({cart}) => {
           </div>
           </div>
         </div>
+        <Footer/>
     </div>
   )
 }

@@ -8,6 +8,7 @@ import { selectGame } from '../../redux/actions'
 import { connect } from 'react-redux'
 import './style.css';
 import Acessibilidade from '../../components/Acessibilidade/Acessibilidade';
+import Footer from '../../components/Footer/Footer';
 
 const Game = ({dispatch}) => {
     const [games, setGames] = useState([]); 
@@ -145,6 +146,7 @@ const Game = ({dispatch}) => {
             </div>
           </div>
         </div>
+        <Footer/>
     </div>
   )
 }
