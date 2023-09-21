@@ -27,6 +27,7 @@
 
 
 .perfilUser__userData{
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center; 
@@ -43,6 +44,13 @@
     background-color: var(--color-primary);
     border: 3px solid var(--purple);
     background: center / contain no-repeat url("../../../public/imgs/animais/3.png") var(--color-primary);
+
+    position: relative;
+}
+.perfilUser__userData__avatar__image__editImg{
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
 }
 .perfilUser__userData__avatar__capCoins{
     width: 130px;
@@ -70,7 +78,8 @@
 
 
 .perfilUser__userData__inputs{
-    width: 700px;
+    max-width: 700px;
+    min-width: 300px;
     height: 360px;
     display: flex;
     justify-content: center;
@@ -80,9 +89,11 @@
     gap: 50px;
     border-radius: 20px;
     border: 3px solid var(--purple);
+
 }
 .perfilUser__userData__input{
     font-size: 1.2rem;
+    position: relative;
 }
 .perfilUser__userData__input label{
     display: block;
@@ -98,6 +109,11 @@
     color: var(--color-secondary);
     padding: 13px 5px;
     font-size: 1rem;
+}
+.perfilUser__userData__input__editImg{
+    position: absolute;
+    bottom: 10px;
+    right: 9px;
 }
 
 
@@ -130,7 +146,6 @@
     background-color: var(--purple);
     border: 2px solid var(--color-secondary);
 }
-
 .perfilUser__action img{
     width: 80px;
     height: 80px;
@@ -144,9 +159,31 @@
 .perfilUser__actions .perfilUser__action:nth-child(3) img {
     width: 75px;
     height: 75px;
+    margin: 28px 0px;
 }
 .perfilUser__action p{
     display: block;
     font-size: 1.3rem;
     font-family: var(--font-pixel);
+}
+
+
+
+@media screen and (max-width:1045px) {
+    .perfilUser__titlePage h1{
+        font-size: 3rem;
+        padding-left: 50px;
+    }
+}
+@media screen and (max-width:750px) {
+    .perfilUser__titlePage h1{
+        font-size: 2rem;
+        padding-left: 20px;
+    }
+
+    .perfilUser__userData__inputs{
+        height: 100%;
+        padding: 20px;
+        margin: 50px;
+    }
 }

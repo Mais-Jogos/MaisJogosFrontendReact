@@ -8,7 +8,7 @@ const Footer = () =>{
 
     return(
         <div className="footer__main">
-            <p>Copyright <i class="fa-regular fa-copyright"></i> {year} Cross-Plataform Dev.</p>
+            <p>Copyright <i className="fa-regular fa-copyright"></i> {year} Cross-Plataform Dev.</p>
         </div>
     )
 }
