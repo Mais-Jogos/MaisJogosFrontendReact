@@ -14,7 +14,7 @@ export default function cartReducer(state = initialState, action) {
       case DELETE_GAME: 
       return { 
         ...state, 
-        cart: state.cart.filter(game => game === action.payload),
+        cart: state.cart.filter(game => game !== action.payload),
         };
     default: 
       return state; 

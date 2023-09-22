@@ -53,3 +53,26 @@
 h1{
     color: var(--purple);
 }
+#openMenu{
+    display: none;
+}
+#label__openMenu{
+    display: none;
+}
+#label__openMenu i{
+    color: var(--color-primary);
+    cursor: pointer;
+}
+@media screen and (max-width:1015px){
+    #label__openMenu{
+        display: block;
+    }
+    #menu{
+        display: none;
+    }
+    #openMenu:checked ~ #menu{
+        display: flex;
+        gap: 20px;
+        align-items: center;
+    }
+}

@@ -38,7 +38,10 @@ const CardCart = ({games, game, dispatch}) => {
                 </div>
                 <div className="price">
                     <h2>R${games[game]?.rating}</h2>
+                </div>
+                <div className="actions">
                     <i className="fa-solid fa-trash" onClick={() => handleClickAdd(game)}></i>
+                    <input type="checkbox" name="cart" id={games[game]?.name} />
                 </div>
             </div>
         </div>

@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom';
 
 // eslint-disable-next-line react-refresh/only-export-components
 const Menu = ({changeTheme, theme, cart}) => {
+  const [openMenu, setOpenMenu] = useState(false);
   const defaultDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
   const dispatch = useDispatch();
 
@@ -45,6 +46,10 @@ const Menu = ({changeTheme, theme, cart}) => {
               <i className="fa-solid fa-sun"></i>}
             </Link>
         </div>
+        <label htmlFor="openMenu" id='label__openMenu'>
+          <i className="fa-solid fa-bars"></i>
+        </label>
+        <input type="checkbox" name="openMenu" id="openMenu" />
     </div>
   )
 }

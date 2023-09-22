@@ -1,10 +1,20 @@
 #cart{
     padding: 40px 30px;
+    margin: 0px 25% 20px 25%;
 }
-#cart > h2{
+.title__cart{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap:10px;
+}
+#cart .title__cart > h2{
     font-family: var(--font-pixel);
     color: var(--color-primary);
     margin-bottom: 20px;
+}
+.title__cart img{
+    height: 30px;
 }
 .cart__games{
     display: flex;
@@ -13,7 +23,10 @@
     width: 80%;
 }
 .cart__total{
-    margin-top: 20px;
+    margin: 20px 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
 }
 .cart__border__price{
     border:2px solid #000;
@@ -23,8 +36,7 @@
     box-shadow: 2px 2px 0px 0px #8c21ffe3 inset;
 }
 .cart__price{
-    background-color: #010001;
-    border:2px solid #000;
+    border:2px solid var(--purple);
     border-radius:5px;
     padding:7px;
 }
@@ -34,4 +46,20 @@
     color:var(--grey);
     margin:0px auto; 
     padding: 0px 20px;
+}
+.finalizar__pedido, .continuar__comprando{
+    font-family: var(--font-pixel);
+    text-align: center;
+    color: var(--white);
+    background-color: var(--purple);
+    box-shadow: 2px 2px 0px #932eff inset,
+    -2px -2px 0px #44008d inset;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 40px;
+    cursor: pointer;
+}
+.continuar__comprando{
+    float: right;
+    margin-bottom: 20px;
 }
