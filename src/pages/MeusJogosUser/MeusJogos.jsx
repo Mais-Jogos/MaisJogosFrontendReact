@@ -4,8 +4,10 @@ import Menu from '../../components/Menu/Menu'
 import Acessibilidade from '../../components/Acessibilidade/Acessibilidade'
 import Footer from "../../components/Footer/Footer";
 import { Link } from "react-router-dom";
+import CardMeusJogos from "./CardMeusJogos";
 
-export default props => {
+export default _ => {
+    
     return (
         <div id='container-page'>
             <Menu />
@@ -13,47 +15,29 @@ export default props => {
             <main className="meusjogos__main">
                 <section className="meusjogos__title">
                     <div className="meusjogos__title__name">
-
+                        <img src="../../../public/imgs/icons/psButtons_icon.png" alt="icone de controle de botões" className="meusjogos__title--center"/>
+                        <h1 className="meusjogos__title--center">Meus +jogos</h1>
                     </div>
                     <div className="meusjogos__title__filter">
-
+                        <img src="../../../public/imgs/icons/filter_icon.png" alt="icone de filtro"  className="meusjogos__title--center"/>
+                        <p className="meusjogos__title--center">Relevância</p>
                     </div>
                 </section>
 
                 <section className="meusjogos__menu">
-                    <div></div>
-                    <div></div>
-                    <div></div>
+                    <div className="meusjogos__menu__titles">
+                        <div className="meusjogos__menu__title meusjogos__menu__title--selected">
+                            <p>Jogos recém comprados</p>
+                        </div>
+                        <div className="meusjogos__menu__title">
+                            <p>Todos os jogos</p>
+                        </div>
+                        <div className="meusjogos__menu__bottomBackground"></div>
+                    </div>
                 </section>
 
                 <section className="meusjogos__jogos">
-                    <div className="meusjogos__jogos__card">
-                        <div className="meusjogos__jogos__card__info">
-                            <div className="meusjogos__jogos__card__info__title">
-                                <p>Celeste</p>
-                            </div>
-                            <div className="meusjogos__jogos__card__info__image">
-                                <img src="../../../public/imgs/jogos/meusjogos_01.png" alt="imagem do jogo comprado" />
-                            </div>
-                        </div>
-
-                        <div className="meusjogos__jogos__card__actions">
-                            <div className="meusjogos__jogos__card__actions__dateInfo">
-                                <p>Data de compra</p>
-                                <p>1 de Jan de 2023</p>
-                            </div>
-                            <div className="meusjogos__jogos__card__actions__action">
-                                 <Link>
-                                     <img src="../../../public/imgs/icons/download_icon.png" alt="icone de download" />
-                                     <p>Download</p>
-                                 </Link>
-                                 <Link>
-                                     <img src="../../../public/imgs/icons/review_icon.png" alt="icone de livro para fazer um review do jogo" />
-                                     <p>Cadastro review</p>
-                                 </Link>
-                            </div>
-                        </div>
-                    </div>
+                    <CardMeusJogos title="Celeste" diaCompra="19 de Out 2023" scrImage="../../../public/imgs/jogos/meusjogos_01.png" />
                 </section>
             </main>
             <Footer />

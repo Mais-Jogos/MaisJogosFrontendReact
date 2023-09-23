@@ -1,3 +1,75 @@
+.meusjogos__main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+
+
+.meusjogos__title{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-evenly;
+    gap: 100px;
+    color: var(--color-primary);
+    font-family: var(--font-pixel); 
+}
+.meusjogos__title--center{
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+}
+.meusjogos__title__name img{
+    margin: 30px;
+}
+.meusjogos__title__name h1{
+    color: var(--color-primary);
+}
+
+
+
+.meusjogos__menu{
+    width: 99.67%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction:column;
+}
+.meusjogos__menu__titles{
+    width: 1127px;
+    height: 100px;
+    color: var(--color-primary);
+    font-family: var(--font-pixel);
+}
+.meusjogos__menu__title{
+    width: 300px;
+    display: inline-block;
+    border: 4px solid #6302cb;
+    padding: 6px;
+    text-align: center;
+    transition: .9s;
+}
+.meusjogos__menu__title--selected{
+    border: 10px solid var(--purple);
+    padding: 0px;
+}
+.meusjogos__menu__title:not(.meusjogos__menu__title--selected):hover{
+    background-color: var(--purple);
+    color: var(--color-primary);
+    cursor: pointer;
+}
+.meusjogos__menu__bottomBackground{
+    width: 89%;
+    height: 10px;
+    background-color: var(--purple);
+}
+
+
 
 .meusjogos__jogos{
     width: 100%;
@@ -39,6 +111,7 @@
 .meusjogos__jogos__card__info__image, .meusjogos__jogos__card__info__image img{
     width: 100%;
     height: 100%;
+    border-radius: 5px;
 }
 .meusjogos__jogos__card__actions{
     width: 50%;
@@ -66,11 +139,23 @@
 
 
 @media screen and (max-width:1160px) {
-    .meusjogos__jogos__card{
+    .meusjogos__jogos__card, .meusjogos__menu__titles{
         width: 900px;
     }
 }
 @media screen and (max-width:910px) {
+    .meusjogos__title{
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: flex-end;
+    }
+    .meusjogos__title__name{
+        display: inline-grid;
+    }
+    .meusjogos__menu__titles{
+        width: 400px;
+        height: 100%;
+    }
     .meusjogos__jogos__card{
         width: 400px;
         height: 100%;
@@ -89,6 +174,24 @@
     }
 }
 @media screen and (max-width:450px) {
+    .meusjogos__menu{
+        width: 70%;
+    }
+    .meusjogos__menu__titles{
+        width: 300px;
+        font-size: .8rem;
+    }
+    .meusjogos__menu__title{
+        padding: 1px;
+        width: 280px;
+        border: 2px solid var(--purple);
+    }
+    .meusjogos__menu__bottomBackground{
+        width: 100%;
+    }
+    .meusjogos__menu__title--selected{
+        border: 2px solid var(--purple);
+    }
     .meusjogos__jogos__card{
         max-width: 300px;
     }
