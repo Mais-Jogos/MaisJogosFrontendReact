@@ -94,7 +94,7 @@ export default props => {
 
                 <section className="perfilUser__actions">
                     <Link className="perfilUser__action" to="/">
-                        <img src="../../../public/imgs/icons/mais_icon.png" alt="icone de Mais que redireciona para a página descrita" />
+                        <imgT src="../../../public/imgs/icons/mais_icon.png" alt="icone de Mais que redireciona para a página descrita" />
                         <p>Meus jogos</p>
                     </Link>
                     <Link className="perfilUser__action" to="/">

@@ -9,6 +9,7 @@ import Jogos from "./pages/Jogos/Jogos";
 import Game from "./pages/Game/Game";
 import Entrar from "./pages/Entrar/Entrar";
 import PerfilUser from "./pages/PerfilUser/PerfilUser"
+import MeusJogosUser from "./pages/MeusJogosUser/MeusJogos"
 
 function App({theme}) {
   return (
@@ -21,6 +22,7 @@ function App({theme}) {
           <Route path='/jogos/:id' element={<Game/>}/>
           <Route path='/entrar' element={<Entrar/>}/>
           <Route path='/perfil-user' element={<PerfilUser/>}/>
+          <Route path='/meus-jogos' element={<MeusJogosUser/>}/>
         </Routes>
       </BrowserRouter>
     </div>
