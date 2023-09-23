@@ -1,12 +1,17 @@
 import "./style.css";
-import React from "react";
+import React, { useState } from "react";
 import Menu from '../../components/Menu/Menu'
 import Acessibilidade from '../../components/Acessibilidade/Acessibilidade'
 import Footer from "../../components/Footer/Footer";
 import { Link } from "react-router-dom";
-import CardMeusJogos from "./CardMeusJogos";
+import RecemComprados from "./RecemComprados";
+import TodosComprados from "./todosComprados";
 
 export default _ => {
+
+    // False = Jogos recém comprados
+    // True = Todos os jogos
+    const [menuOption, setMenuOption] = useState(false);
     
     return (
         <div id='container-page'>
@@ -26,10 +31,10 @@ export default _ => {
 
                 <section className="meusjogos__menu">
                     <div className="meusjogos__menu__titles">
-                        <div className="meusjogos__menu__title meusjogos__menu__title--selected">
+                        <div className={menuOption ? "meusjogos__menu__title" : "meusjogos__menu__title meusjogos__menu__title--selected"} onClick={ _ => setMenuOption(false)}>
                             <p>Jogos recém comprados</p>
                         </div>
-                        <div className="meusjogos__menu__title">
+                        <div className={!menuOption ? "meusjogos__menu__title" : "meusjogos__menu__title meusjogos__menu__title--selected"} onClick={ _ => setMenuOption(true)}>
                             <p>Todos os jogos</p>
                         </div>
                         <div className="meusjogos__menu__bottomBackground"></div>
@@ -37,7 +42,7 @@ export default _ => {
                 </section>
 
                 <section className="meusjogos__jogos">
-                    <CardMeusJogos title="Celeste" diaCompra="19 de Out 2023" scrImage="../../../public/imgs/jogos/meusjogos_01.png" />
+                    {menuOption ? <TodosComprados /> : <RecemComprados/>}
                 </section>
             </main>
             <Footer />
