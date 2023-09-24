@@ -8,30 +8,6 @@
 
 
 
-.meusjogos__title{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-evenly;
-    gap: 100px;
-    color: var(--color-primary);
-    font-family: var(--font-pixel); 
-}
-.meusjogos__title--center{
-    display: inline-block;
-    text-align: center;
-    vertical-align: middle;
-}
-.meusjogos__title__name img{
-    margin: 30px;
-}
-.meusjogos__title__name h1{
-    color: var(--color-primary);
-}
-
-
-
 .meusjogos__menu{
     width: 99.67%;
     height: 100%;
@@ -144,12 +120,12 @@
     }
 }
 @media screen and (max-width:910px) {
-    .meusjogos__title{
+    .headerWithFilter__title{
         flex-wrap: wrap;
         justify-content: center;
         align-items: flex-end;
     }
-    .meusjogos__title__name{
+    .headerWithFilter__title__name{
         display: inline-grid;
     }
     .meusjogos__menu__titles{

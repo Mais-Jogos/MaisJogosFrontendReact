@@ -94,7 +94,7 @@ export default props => {
 
                 <section className="perfilUser__actions">
                     <Link className="perfilUser__action" to="/">
-                        <imgT src="../../../public/imgs/icons/mais_icon.png" alt="icone de Mais que redireciona para a página descrita" />
+                        <img src="../../../public/imgs/icons/mais_icon.png" alt="icone de Mais que redireciona para a página descrita" />
                         <p>Meus jogos</p>
                     </Link>
                     <Link className="perfilUser__action" to="/">
@@ -102,15 +102,15 @@ export default props => {
                         <p>Lista de desejos</p>
                     </Link>
                     <Link className="perfilUser__action" to="/">
-                        <img src="../../../public/imgs/icons/review_icon.png" alt="icone de Livro que redireciona para a página descrita" />
+                        <img src="../../../public/imgs/icons/review_icon.svg" alt="icone de Livro que redireciona para a página descrita" />
                         <p>Review de jogos</p>
                     </Link>
                     <Link className="perfilUser__action" to="/">
-                        <img src="../../../public/imgs/icons/capivara_icon.png" alt="icone da Capivara que redireciona para a página descrita" />
+                        <img src="../../../public/imgs/icons/capivara_icon.svg" alt="icone da Capivara que redireciona para a página descrita" />
                         <p>Avatares comprados</p>
                     </Link>
                     <Link className="perfilUser__action" to="/">
-                        <img src="../../../public/imgs/icons/eventos_icon.png" alt="icone de Eventos que redireciona para a página descrita" />
+                        <img src="../../../public/imgs/icons/eventos_icon.svg" alt="icone de Eventos que redireciona para a página descrita" />
                         <p>Eventos</p>
                     </Link>
                 </section>

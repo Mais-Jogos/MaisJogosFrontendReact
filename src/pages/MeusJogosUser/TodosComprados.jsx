@@ -22,11 +22,11 @@ export default props => {
                     </div>
                     <div className="meusjogos__jogos__card__actions__action">
                         <Link>
-                            <img src="../../../public/imgs/icons/download_icon.png" alt="icone de download" />
+                            <img src="../../../public/imgs/icons/download_icon.svg" alt="icone de download" />
                             <p>Download</p>
                         </Link>
                         <Link>
-                            <img src="../../../public/imgs/icons/review_icon.png" alt="icone de livro para fazer um review do jogo" />
+                            <img src="../../../public/imgs/icons/review_icon.svg" alt="icone de livro para fazer um review do jogo" />
                             <p>Cadastro review</p>
                         </Link>
                     </div>
@@ -50,11 +50,11 @@ export default props => {
                     </div>
                     <div className="meusjogos__jogos__card__actions__action">
                         <Link>
-                            <img src="../../../public/imgs/icons/download_icon.png" alt="icone de download" />
+                            <img src="../../../public/imgs/icons/download_icon.svg" alt="icone de download" />
                             <p>Download</p>
                         </Link>
                         <Link>
-                            <img src="../../../public/imgs/icons/review_icon.png" alt="icone de livro para fazer um review do jogo" />
+                            <img src="../../../public/imgs/icons/review_icon.svg" alt="icone de livro para fazer um review do jogo" />
                             <p>Cadastro review</p>
                         </Link>
                     </div>
@@ -78,11 +78,11 @@ export default props => {
                     </div>
                     <div className="meusjogos__jogos__card__actions__action">
                         <Link>
-                            <img src="../../../public/imgs/icons/download_icon.png" alt="icone de download" />
+                            <img src="../../../public/imgs/icons/download_icon.svg" alt="icone de download" />
                             <p>Download</p>
                         </Link>
                         <Link>
-                            <img src="../../../public/imgs/icons/review_icon.png" alt="icone de livro para fazer um review do jogo" />
+                            <img src="../../../public/imgs/icons/review_icon.svg" alt="icone de livro para fazer um review do jogo" />
                             <p>Cadastro review</p>
                         </Link>
                     </div>
@@ -106,11 +106,11 @@ export default props => {
                     </div>
                     <div className="meusjogos__jogos__card__actions__action">
                         <Link>
-                            <img src="../../../public/imgs/icons/download_icon.png" alt="icone de download" />
+                            <img src="../../../public/imgs/icons/download_icon.svg" alt="icone de download" />
                             <p>Download</p>
                         </Link>
                         <Link>
-                            <img src="../../../public/imgs/icons/review_icon.png" alt="icone de livro para fazer um review do jogo" />
+                            <img src="../../../public/imgs/icons/review_icon.svg" alt="icone de livro para fazer um review do jogo" />
                             <p>Cadastro review</p>
                         </Link>
                     </div>

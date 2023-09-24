@@ -6,9 +6,9 @@ import Footer from "../../components/Footer/Footer";
 import { Link } from "react-router-dom";
 import RecemComprados from "./RecemComprados";
 import TodosComprados from "./todosComprados";
+import HeaderWithFilter from "../../components/HeaderWithFiilter/HeaderWithFilter";
 
 export default _ => {
-
     // False = Jogos recém comprados
     // True = Todos os jogos
     const [menuOption, setMenuOption] = useState(false);
@@ -18,16 +18,7 @@ export default _ => {
             <Menu />
             <Acessibilidade />
             <main className="meusjogos__main">
-                <section className="meusjogos__title">
-                    <div className="meusjogos__title__name">
-                        <img src="../../../public/imgs/icons/psButtons_icon.png" alt="icone de controle de botões" className="meusjogos__title--center"/>
-                        <h1 className="meusjogos__title--center">Meus +jogos</h1>
-                    </div>
-                    <div className="meusjogos__title__filter">
-                        <img src="../../../public/imgs/icons/filter_icon.png" alt="icone de filtro"  className="meusjogos__title--center"/>
-                        <p className="meusjogos__title--center">Relevância</p>
-                    </div>
-                </section>
+                <HeaderWithFilter name="Meus +jogos" imgIcon="../../../public/imgs/icons/psButtons_icon.png"/>
 
                 <section className="meusjogos__menu">
                     <div className="meusjogos__menu__titles">
