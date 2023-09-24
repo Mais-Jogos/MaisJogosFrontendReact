@@ -120,14 +120,6 @@
     }
 }
 @media screen and (max-width:910px) {
-    .headerWithFilter__title{
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: flex-end;
-    }
-    .headerWithFilter__title__name{
-        display: inline-grid;
-    }
     .meusjogos__menu__titles{
         width: 400px;
         height: 100%;

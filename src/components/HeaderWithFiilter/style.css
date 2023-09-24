@@ -1,4 +1,4 @@
-.headerWithFilter__title{
+.headerWithFilter__title {
     width: 100%;
     height: 100%;
     display: flex;
@@ -6,18 +6,35 @@
     justify-content: space-evenly;
     gap: 100px;
     color: var(--color-primary);
-    font-family: var(--font-pixel); 
+    font-family: var(--font-pixel);
 }
-.headerWithFilter--center{
+.headerWithFilter--center {
     display: inline-block;
     text-align: center;
     vertical-align: middle;
 }
-.headerWithFilter__title__name img{
+.headerWithFilter__title__name img {
     width: 150px;
     height: 150px;
     margin: 30px;
 }
-.headerWithFilter__title__name h1{
+.headerWithFilter__title__name h1 {
     color: var(--color-primary);
+}
+
+
+
+@media screen and (max-width:910px) {
+    .headerWithFilter__title {
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: flex-end;
+    }
+
+    .headerWithFilter__title__name {
+        display: inline-grid;
+        align-items: center;
+        justify-items: center;
+        justify-content: center;
+    }
 }

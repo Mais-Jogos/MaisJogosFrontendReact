@@ -1,5 +1,129 @@
-.listaDeDesejos__main{
+.listaDeDesejos__main {
     width: 100%;
     height: 100%;
-    background: center / 80vw 100% no-repeat url("../../../public/imgs/icons/heartBg_icon.png") var(--color-secondary);
+    background: center / contain no-repeat url("../../../public/imgs/icons/heartBg_icon.png") var(--color-secondary);
+}
+
+
+
+.listaDeDesejos__cards__contain {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 50px;
+    margin: 50px 0px;
+}
+
+
+
+.listaDeDesejos__card {
+    width: 800px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 4px solid var(--purple);
+    border-radius: 72px;
+    background-color: var(--color-secondary);
+}
+.listaDeDesejos__card__image {
+    width: 57%;
+    height: 100%;
+    margin: 50px 20px;
+}
+.listaDeDesejos__card__image img {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+.listaDeDesejos__card__info {
+    width: 43%;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: space-around;
+    color: var(--color-primary);
+    font-family: var(--font-pixel);
+}
+.listaDeDesejos__card__info__title {
+    width: 100%;
+    text-align: center;
+}
+.listaDeDesejos__card__info__title h2 {
+    font-size: 1.9rem;
+    margin-bottom: 50px;
+}
+.listaDeDesejos__card__info__title p {
+    font-size: 2rem;
+    margin: 0px;
+}
+.listaDeDesejos__card__info__actions {
+    display: flex;
+    align-content: center;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+}
+.listaDeDesejos__card__info__actions div {
+    display: inline-block;
+    cursor: pointer;
+}
+.listaDeDesejos__card__info__actions>div>p {
+    display: inline-block;
+    vertical-align: 22px;
+    margin: 0;
+}
+.listaDeDesejos__card__info__actions>div>img {
+    margin: 10px;
+    cursor: pointer;
+}
+.listaDeDesejos__card__info__actions>img {
+    cursor: pointer;
+}
+
+
+
+.listaDeDesejos__trash {
+    cursor: pointer;
+}
+.listaDeDesejos__trash img {
+    transition: .7s;
+}
+.listaDeDesejos__trash img:hover {
+    filter: hue-rotate(5deg);
+}
+
+
+
+@media screen and (max-width:830px) {
+    .listaDeDesejos__card {
+        width: 700px;
+    }
+    .listaDeDesejos__card__info__title h2 {
+        font-size: 1.5rem;
+    }
+    .listaDeDesejos__card__info__title p {
+        font-size: 1.6rem;
+    }
+}
+@media screen and (max-width:720px) {
+    .listaDeDesejos__card {
+        width: 500px;
+        flex-wrap: wrap;
+    }
+    .listaDeDesejos__card__image{
+        width: 100%;
+    }
+    .listaDeDesejos__card__info{
+        width: 100%;
+    }
+}
+@media screen and (max-width:545px) {
+    .listaDeDesejos__card {
+        width: 350px;
+    }
 }
