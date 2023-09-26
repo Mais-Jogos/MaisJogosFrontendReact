@@ -35,7 +35,7 @@ const Home = () => {
     if(filter[filterName] !== 'Todos'){
       if(filter[filterName].some(filter => filter === filterName)){
       const updtFilter = filter[filterName].filter((valueFilter) => valueFilter !== value)
-      setFilter({...filter, [filterName]: updtFilter})
+      setFilter({...filter, [filterName]: updtFilter});
       }else{
         setFilter({...filter, [filterName]: [...filter[filterName], value]})
       }
