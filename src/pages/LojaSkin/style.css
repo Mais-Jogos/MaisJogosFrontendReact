@@ -1,0 +1,52 @@
+.lojaskin__imgEdit{
+    width: 30px;
+    height:auto;
+}
+
+.lojaskin__imgBG > img{
+    width: 170px;
+    height:170px;
+}
+
+.lojaskin__border{
+    width:200px;
+    height:300px;
+    background-color: #252525;
+    padding: 8px;
+    border: 6px solid #000000;
+}
+
+.lojaskin__cardBG{
+    width: 90%;
+    height: 93%;
+    background-color: var(--background);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+
+}
+
+.lojaskin__cardFooter, .lojaskin__letraPixel{
+    color: var(--color-primary);
+    font-family: var(--font-pixel);        
+}
+
+.lojaskin__imgBG{
+    background-color: #252525;
+    border-radius: 8px;
+}
+
+.lojaskin__cardFooter{
+    display: flex;
+    width:100%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.lojaskin__cardFooter img:last-child {
+    background-color: antiquewhite;
+    border-radius: 50%;
+}
