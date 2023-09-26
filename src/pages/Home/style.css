@@ -25,16 +25,22 @@
     padding: 20px;
     border-radius: 5px;
 }
-.section__categories p{
+.section__categories .home__categorias{
+    
+}
+.section__categories .home__categorias label{
     text-transform: capitalize;
     margin: 0;
     cursor: pointer;
     padding: 5px 10px;
 }
+.section__categories .home__categorias input{
+    accent-color: var(--purple);
+}
 .section__categories h2{
     margin: 5px;
 }
-.section__categories p:hover{
+.section__categories .home__categorias label:hover{
     background-color: var(--light-hover-background);
 }
 .container__home__right{

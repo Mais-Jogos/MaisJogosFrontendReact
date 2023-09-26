@@ -2,7 +2,7 @@
 .card a .price h2{
     text-decoration: none;
 }
-.card .border__card{
+.border__card{
     border:2px solid var(--black);
     border-radius:5px;
     background-color: var(--grey-dark);
@@ -11,7 +11,7 @@
     0px 0px 12px rgb(255 255 255 / 26%);
     transition: 0.5s all;
 }
-.card .border__card:hover{
+.border__card:hover{
     transform: scale(1.2);
 }
 .card{

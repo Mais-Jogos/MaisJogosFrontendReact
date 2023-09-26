@@ -22,6 +22,10 @@ const Menu = ({changeTheme, theme, cart}) => {
         <Link to="/">
           <img src="../public/imgs/logo/logoTextoPositiva.png" alt="" className='logo'/>
         </Link>
+        <label htmlFor="openMenu" id='label__openMenu'>
+          <i className="fa-solid fa-bars"></i>
+        </label>
+        <input type="checkbox" name="openMenu" id="openMenu" />
         <div id="menu">
             <Link to="#">Acessibilidade</Link>
             <Link to="#">Sobre</Link>
@@ -46,10 +50,6 @@ const Menu = ({changeTheme, theme, cart}) => {
               <i className="fa-solid fa-sun"></i>}
             </Link>
         </div>
-        <label htmlFor="openMenu" id='label__openMenu'>
-          <i className="fa-solid fa-bars"></i>
-        </label>
-        <input type="checkbox" name="openMenu" id="openMenu" />
     </div>
   )
 }

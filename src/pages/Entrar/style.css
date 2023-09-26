@@ -13,7 +13,7 @@
     margin: 0px;
 }
 .signin__images{
-    margin: 0 auto 50px auto;
+    margin: 0 auto 22vh auto;
     display: flex;
     gap: 30px;
     justify-content: center;
@@ -61,6 +61,7 @@
     gap: 40px;
     padding: 30px;
     padding-top: 0px;
+    margin-bottom: 12vh;
 }
 .page__cad__user{
     display: flex;
@@ -104,7 +105,7 @@
     flex-direction: column;
     gap: 15px;
 }
-.form__signin input{
+.form__signin input, textarea{
     border: 1px solid var(--purple);
     color: var(--color-primary);
     padding: 10px 15px;

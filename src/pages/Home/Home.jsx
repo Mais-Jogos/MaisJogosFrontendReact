@@ -14,14 +14,11 @@ const Home = () => {
   const [games, setGames] = useState([]); 
   const [game, setGame] = useState(0)
   const [numberGames, setNumberGames] = useState(6)
-  const [category, setCategory] = useState('Todos');
-  function changeImage(){
-    if(image === 3){
-      setImage(1)
-    }else{
-      setImage(image + 1)
-    }
-  }
+  const [filter, setFilter] = useState({
+    category: 'Todos',
+    platform: 'Todos'
+  })
+
   useEffect(()=>{
     const apiKey = 'bb8e5d1e0b2e44d9ac172e791e20ff23'
     Axios.get(`https://api.rawg.io/api/games?key=${apiKey}`)
@@ -29,14 +26,23 @@ const Home = () => {
       setGames(response.data.results);
     }).catch((error) => { console.log(error); }); 
   }, [])
-  useEffect(() => {  
-    var intervalImage = setInterval(changeImage, 2 * 1000);
-    return () => {
-      clearInterval(intervalImage);
-    };
-  }, [changeImage]);  
-  const generos = [].concat(...games.map((game) => game.genres))
+  console.log("filter", filter);
 
+  const generos = [].concat(...games.map((game) => game.genres))
+  const plataformas = [].concat(...games.map((game) => game.parent_platforms))
+  const plataformas2 = [].concat(...plataformas.map((game) => game.platform))
+  const changeFilter = (filterName, value) =>{
+    if(filter[filterName] !== 'Todos'){
+      if(filter[filterName].some(filter => filter === filterName)){
+      const updtFilter = filter[filterName].filter((valueFilter) => valueFilter !== value)
+      setFilter({...filter, [filterName]: updtFilter})
+      }else{
+        setFilter({...filter, [filterName]: [...filter[filterName], value]})
+      }
+    }else{
+      setFilter({...filter, [filterName]: [value]})
+    }
+  }
   return (
     <div id='container-page' className='home'>
       <Menu/>
@@ -44,11 +50,26 @@ const Home = () => {
       <Acessibilidade/>
       <div id="container">
         <div className="section__categories">
+            {/* <div className='home__categorias'>
+              <input type="checkbox" name="Categorias" id={'Todos'} />
+              <label htmlFor={'Todos'} onClick={() => setCategory('Todos')}>Todos</label>
+            </div> */}
             <h2>Categorias</h2>
-            <p onClick={() => setCategory('Todos')}>Todos</p>
             {
               [...new Set(generos?.map((game) => game.name))].map(category => (
-                <p key={category} onClick={() => setCategory(category)}>{category}</p>
+                <div className='home__categorias'>
+                  <input type="checkbox" name="Categorias" id={category} />
+                  <label key={category} htmlFor={category} onClick={() => changeFilter('category', category)}>{category}</label>
+                </div>
+              ))
+            }
+            <h2>Plataformas</h2>
+            {              
+              [...new Set(plataformas2?.map((game) => game.name))].map(platform => (
+                <div className='home__categorias'>
+                  <input type="checkbox" name="Plataformas" id={platform} />
+                  <label key={platform} htmlFor={platform} onClick={() => changeFilter('platform', platform)}>{platform}</label>
+                </div>
               ))
             }
         </div>
@@ -71,13 +92,11 @@ const Home = () => {
           <div id="games__home">
             <h2>Novidades</h2>
             <div className="section__games">
-              {games?.filter((game => {
-                  if (category === 'Todos') {
-                    return true;
-                  } else {
-                    return game.genres.some(genre => genre.name === category);
-                  }
-                })).slice(0,numberGames).map((game, index)=>(
+              {games?.filter((
+                  game =>
+                    (filter.platform === 'Todos' || game.parent_platforms.some(genre => genre.platform.name === filter.platform)) &&
+                    (filter.category === 'Todos' || game.genres.some(genre => genre.name === filter.category))
+                )).slice(0,numberGames).map((game, index)=>(
                 <Card games={games} game={index}/>
               ))}
             </div>
