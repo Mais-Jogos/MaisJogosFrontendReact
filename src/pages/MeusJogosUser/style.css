@@ -108,6 +108,9 @@
     align-items: center;
     text-align: center;
 }
+.meusjogos__jogos__card__actions__action img{
+    filter: var(--filter-image)
+}
 .meusjogos__jogos__card__actions__action a > p{
     color: var(--color-primary);
 }
