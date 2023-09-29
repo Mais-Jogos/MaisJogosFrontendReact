@@ -68,7 +68,7 @@ const Home = () => {
       }else{
         categoriasSelecionadas = jogo;
       }
-      if(filter.category !== "Todos"){
+      if(filter.rating !== "Todos"){
         notasSelecionadas = jogo.rating >= filter.rating;
       }else{
         notasSelecionadas = jogo;
@@ -149,7 +149,7 @@ const Home = () => {
                 }else{
                   categoriasSelecionadas = jogo;
                 }
-                if(filter.category !== 0){
+                if(filter.rating !== 0){
                   notasSelecionadas = jogo.rating >= filter.rating;
                 }else{
                   notasSelecionadas = jogo;
