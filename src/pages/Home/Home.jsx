@@ -16,7 +16,8 @@ const Home = () => {
   const [numberGames, setNumberGames] = useState(6)
   const [filter, setFilter] = useState({
     category: 'Todos',
-    platform: 'Todos'
+    platform: 'Todos',
+    rating: 0,
   })
 
   useEffect(()=>{
@@ -32,20 +33,23 @@ const Home = () => {
   const plataformas = [].concat(...games.map((game) => game.parent_platforms))
   const plataformas2 = [].concat(...plataformas.map((game) => game.platform))
   const changeFilter = (e, filterName, value) =>{
-
-    if(filter[filterName] !== 'Todos'){
-      if(!e.target.checked){
-        const updtFilter = filter[filterName].filter((valueFilter) => valueFilter !== value)
-        if(!updtFilter){
-          setFilter({...filter, [filterName]: updtFilter});
+    if(filterName !== 'rating'){
+      if(filter[filterName] !== 'Todos'){
+        if(!e.target.checked){
+          const updtFilter = filter[filterName].filter((valueFilter) => valueFilter !== value)
+          if(!updtFilter){
+            setFilter({...filter, [filterName]: updtFilter});
+          }else{
+            setFilter({...filter, [filterName]: "Todos"});
+          }
         }else{
-          setFilter({...filter, [filterName]: "Todos"});
+          setFilter({...filter, [filterName]: [...filter[filterName], value]})
         }
       }else{
-        setFilter({...filter, [filterName]: [...filter[filterName], value]})
+        setFilter({...filter, [filterName]: [value]})
       }
     }else{
-      setFilter({...filter, [filterName]: [value]})
+      setFilter({...filter, [filterName]: value})
     }
   }
 
@@ -53,6 +57,7 @@ const Home = () => {
     const jogosFiltrados = games?.filter(jogo => {
       var plataformasSelecionadas;
       var categoriasSelecionadas;
+      var notasSelecionadas;
       if(filter.platform !== "Todos"){
         plataformasSelecionadas = jogo.platforms.some(platforma => filter.platform.includes(platforma.platform.name));
       }else{
@@ -63,7 +68,12 @@ const Home = () => {
       }else{
         categoriasSelecionadas = jogo;
       }
-      return plataformasSelecionadas && categoriasSelecionadas;
+      if(filter.category !== "Todos"){
+        notasSelecionadas = jogo.rating >= filter.rating;
+      }else{
+        notasSelecionadas = jogo;
+      }
+      return plataformasSelecionadas && categoriasSelecionadas && notasSelecionadas;
 
     })
     console.log(jogosFiltrados);
@@ -97,6 +107,14 @@ const Home = () => {
                 </div>
               ))
             }
+            <h2>Classificação</h2>
+            <div className='home__ratings'>
+            {              
+              [1,2,3,4,5].map(rating => (
+                <i className="fa-regular fa-star" onClick={(e) => changeFilter(e, 'rating', rating)}></i>
+              ))
+            }
+            </div>
         </div>
         <div className="container__home__right">
           <div className="section__title">
@@ -120,6 +138,7 @@ const Home = () => {
               {games?.filter(jogo => {
                 var plataformasSelecionadas;
                 var categoriasSelecionadas;
+                var notasSelecionadas;
                 if(filter.platform !== "Todos"){
                   plataformasSelecionadas = jogo.platforms.some(platforma => filter.platform.includes(platforma.platform.name));
                 }else{
@@ -130,8 +149,12 @@ const Home = () => {
                 }else{
                   categoriasSelecionadas = jogo;
                 }
-                return plataformasSelecionadas && categoriasSelecionadas;
-
+                if(filter.category !== 0){
+                  notasSelecionadas = jogo.rating >= filter.rating;
+                }else{
+                  notasSelecionadas = jogo;
+                }
+                return plataformasSelecionadas && categoriasSelecionadas && notasSelecionadas;
               }).slice(0,numberGames).map((game, index)=>(
                 <Card games={games} game={index}/>
               ))}
