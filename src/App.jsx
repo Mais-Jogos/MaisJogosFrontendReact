@@ -13,6 +13,7 @@ import MeusJogosUser from "./pages/MeusJogosUser/MeusJogos"
 import ListaDeDesejos from "./pages/ListadeDesejos/ListadeDesejos"
 import LojaSkin from "./pages/LojaSkin/LojaSkin";
 import Avatares from "./pages/Avatares/Avatares";
+import Categorias from "./pages/Categorias/Categorias";
 
 function App({theme}) {
   return (
@@ -29,6 +30,7 @@ function App({theme}) {
           <Route path='/lista-desejos' element={<ListaDeDesejos/>}/>
           <Route path='/loja-skin' element={<LojaSkin/>}/>
           <Route path='/avatares' element={<Avatares/>}/>
+          <Route path='/categorias' element={<Categorias/>}/>
         </Routes>
       </BrowserRouter>
     </div>

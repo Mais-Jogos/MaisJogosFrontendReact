@@ -16,7 +16,8 @@ const Home = () => {
   const [numberGames, setNumberGames] = useState(6)
   const [filter, setFilter] = useState({
     category: 'Todos',
-    platform: 'Todos'
+    platform: 'Todos',
+    rating: 0,
   })
 
   useEffect(()=>{
@@ -31,18 +32,52 @@ const Home = () => {
   const generos = [].concat(...games.map((game) => game.genres))
   const plataformas = [].concat(...games.map((game) => game.parent_platforms))
   const plataformas2 = [].concat(...plataformas.map((game) => game.platform))
-  const changeFilter = (filterName, value) =>{
-    if(filter[filterName] !== 'Todos'){
-      if(filter[filterName].some(filter => filter === filterName)){
-      const updtFilter = filter[filterName].filter((valueFilter) => valueFilter !== value)
-      setFilter({...filter, [filterName]: updtFilter});
+  const changeFilter = (e, filterName, value) =>{
+    if(filterName !== 'rating'){
+      if(filter[filterName] !== 'Todos'){
+        if(!e.target.checked){
+          const updtFilter = filter[filterName].filter((valueFilter) => valueFilter !== value)
+          if(!updtFilter){
+            setFilter({...filter, [filterName]: updtFilter});
+          }else{
+            setFilter({...filter, [filterName]: "Todos"});
+          }
+        }else{
+          setFilter({...filter, [filterName]: [...filter[filterName], value]})
+        }
       }else{
-        setFilter({...filter, [filterName]: [...filter[filterName], value]})
+        setFilter({...filter, [filterName]: [value]})
       }
     }else{
-      setFilter({...filter, [filterName]: [value]})
+      setFilter({...filter, [filterName]: value})
     }
   }
+
+  useEffect(()=>{
+    const jogosFiltrados = games?.filter(jogo => {
+      var plataformasSelecionadas;
+      var categoriasSelecionadas;
+      var notasSelecionadas;
+      if(filter.platform !== "Todos"){
+        plataformasSelecionadas = jogo.platforms.some(platforma => filter.platform.includes(platforma.platform.name));
+      }else{
+        plataformasSelecionadas = jogo;
+      }
+      if(filter.category !== "Todos"){
+        categoriasSelecionadas = jogo.genres.some(categoria => filter.category.includes(categoria.name));
+      }else{
+        categoriasSelecionadas = jogo;
+      }
+      if(filter.rating !== "Todos"){
+        notasSelecionadas = jogo.rating >= filter.rating;
+      }else{
+        notasSelecionadas = jogo;
+      }
+      return plataformasSelecionadas && categoriasSelecionadas && notasSelecionadas;
+
+    })
+    console.log(jogosFiltrados);
+  },[filter])
   return (
     <div id='container-page' className='home'>
       <Menu/>
@@ -58,8 +93,8 @@ const Home = () => {
             {
               [...new Set(generos?.map((game) => game.name))].map(category => (
                 <div className='home__categorias'>
-                  <input type="checkbox" name="Categorias" id={category} />
-                  <label key={category} htmlFor={category} onClick={() => changeFilter('category', category)}>{category}</label>
+                  <input type="checkbox" name="Categorias" id={category} onClick={(e) => changeFilter(e, 'category', category)}/>
+                  <label key={category} htmlFor={category} >{category}</label>
                 </div>
               ))
             }
@@ -67,16 +102,28 @@ const Home = () => {
             {              
               [...new Set(plataformas2?.map((game) => game.name))].map(platform => (
                 <div className='home__categorias'>
-                  <input type="checkbox" name="Plataformas" id={platform} />
-                  <label key={platform} htmlFor={platform} onClick={() => changeFilter('platform', platform)}>{platform}</label>
+                  <input type="checkbox" name="Plataformas" id={platform} onClick={(e) => changeFilter(e, 'platform', platform)}/>
+                  <label key={platform} htmlFor={platform} >{platform}</label>
                 </div>
               ))
             }
+            <h2>Classificação</h2>
+            <div className='home__ratings'>
+            {
+              [1,2,3,4,5].map(rating => (
+                <div key={rating}>
+                  {[...Array(rating)].map((_, index) => (
+                    <i key={index} className={`fa-${rating <= filter.rating ? 'solid':'regular'} fa-star`} onClick={(e) => changeFilter(e, 'rating', rating)}></i>
+                  ))}
+                </div>
+              ))
+            }
+            </div>
         </div>
         <div className="container__home__right">
           <div className="section__title">
             <h1>
-              Loja nacional de jogos indie
+              Loja nacional de jogos indieLinod
             </h1>
 {/*             <img src={`../../public/imgs/animais/${image}.png`} alt="" />
  */}          </div>
@@ -92,11 +139,27 @@ const Home = () => {
           <div id="games__home">
             <h2>Novidades</h2>
             <div className="section__games">
-              {games?.filter((
-                  game =>
-                    (filter.platform === 'Todos' || game.parent_platforms.some(genre => genre.platform.name === filter.platform)) &&
-                    (filter.category === 'Todos' || game.genres.some(genre => genre.name === filter.category))
-                )).slice(0,numberGames).map((game, index)=>(
+              {games?.filter(jogo => {
+                var plataformasSelecionadas;
+                var categoriasSelecionadas;
+                var notasSelecionadas;
+                if(filter.platform !== "Todos"){
+                  plataformasSelecionadas = jogo.platforms.some(platforma => filter.platform.includes(platforma.platform.name));
+                }else{
+                  plataformasSelecionadas = jogo;
+                }
+                if(filter.category !== "Todos"){
+                  categoriasSelecionadas = jogo.genres.some(categoria => filter.category.includes(categoria.name));
+                }else{
+                  categoriasSelecionadas = jogo;
+                }
+                if(filter.rating !== 0){
+                  notasSelecionadas = jogo.rating >= filter.rating;
+                }else{
+                  notasSelecionadas = jogo;
+                }
+                return plataformasSelecionadas && categoriasSelecionadas && notasSelecionadas;
+              }).slice(0,numberGames).map((game, index)=>(
                 <Card games={games} game={index}/>
               ))}
             </div>

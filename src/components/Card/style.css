@@ -19,6 +19,7 @@
     border:2px solid var(--black);
     border-radius:5px;
     padding:7px;
+    height: 95%;
 }
 .card__image img{
     border:2px solid var(--black);
