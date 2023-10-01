@@ -21,19 +21,19 @@ export default _ => {
                 
                 <CardLojaSkin nome={'Silveira'} preco={'500'} img={'../../public/imgs/animais/1.png'}/>
 
-                <CardLojaSkin nome={'Silveira'} preco={'500'} img={'../../public/imgs/animais/1.png'}/>
+                <CardLojaSkin nome={'Sr Rocha'} preco={'500'} img={'../../public/imgs/animais/2.png'}/>
+
+                <CardLojaSkin nome={'Julia'} preco={'500'} img={'../../public/imgs/animais/3.png'}/>
+
+                <CardLojaSkin nome={'Julia'} preco={'500'} img={'../../public/imgs/animais/3.png'}/>
 
                 <CardLojaSkin nome={'Silveira'} preco={'500'} img={'../../public/imgs/animais/1.png'}/>
 
-                <CardLojaSkin nome={'Silveira'} preco={'500'} img={'../../public/imgs/animais/1.png'}/>
+                <CardLojaSkin nome={'Sr Rocha'} preco={'500'} img={'../../public/imgs/animais/2.png'}/>
 
-                <CardLojaSkin nome={'Silveira'} preco={'500'} img={'../../public/imgs/animais/1.png'}/>
+                <CardLojaSkin nome={'Julia'} preco={'500'} img={'../../public/imgs/animais/3.png'}/>
 
-                <CardLojaSkin nome={'Silveira'} preco={'500'} img={'../../public/imgs/animais/1.png'}/>
-
-                <CardLojaSkin nome={'Silveira'} preco={'500'} img={'../../public/imgs/animais/1.png'}/>
-
-                <CardLojaSkin nome={'Silveira'} preco={'500'} img={'../../public/imgs/animais/1.png'}/>
+                <CardLojaSkin nome={'Sr Rocha'} preco={'500'} img={'../../public/imgs/animais/2.png'}/>
 
                 <CardLojaSkin nome={'Silveira'} preco={'500'} img={'../../public/imgs/animais/1.png'}/>
 
