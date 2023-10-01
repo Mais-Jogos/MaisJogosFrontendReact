@@ -14,7 +14,6 @@ import ListaDeDesejos from "./pages/ListadeDesejos/ListadeDesejos"
 import LojaSkin from "./pages/LojaSkin/LojaSkin";
 import Avatares from "./pages/Avatares/Avatares";
 
-
 function App({theme}) {
   return (
     <div data-theme={theme} id="app">
