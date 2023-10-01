@@ -109,9 +109,13 @@ const Home = () => {
             }
             <h2>Classificação</h2>
             <div className='home__ratings'>
-            {              
+            {
               [1,2,3,4,5].map(rating => (
-                <i className="fa-regular fa-star" onClick={(e) => changeFilter(e, 'rating', rating)}></i>
+                <div key={rating}>
+                  {[...Array(rating)].map((_, index) => (
+                    <i key={index} className={`fa-${rating <= filter.rating ? 'solid':'regular'} fa-star`} onClick={(e) => changeFilter(e, 'rating', rating)}></i>
+                  ))}
+                </div>
               ))
             }
             </div>
