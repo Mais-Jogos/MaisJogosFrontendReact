@@ -1,0 +1,97 @@
+.cadastroJogo__main {
+    width: 100%;
+    height: 100%;
+}
+
+
+.cadastroJogo__title{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+.cadastroJogo__title h1 {
+    font-family: var(--font-pixel);
+    color: var(--color-primary);
+}
+.cadastroJogo__title__setas {
+    position: relative;
+    width: 25px;
+    height: 25px;
+    margin: 5px;
+}
+.cadastroJogo__title__setas div {
+    position: absolute;
+    top: 2px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+.cadastroJogo__title__seta {
+    height: 0px;
+    width: 0px;
+    border: 8px solid;
+    border-color:var(--color-primary) var(--color-primary) transparent transparent;
+}
+.cadastroJogo__title__seta.direita {
+    transform: rotate(45deg);
+}
+.cadastroJogo__title__seta.esquerda{
+    transform: rotate(225deg);
+}
+
+
+
+.cadastroJogo__menu{
+    width: 45%;
+    height: 100%;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    gap: 100px;
+    border-bottom: 1.5px solid var(--purple);
+    margin: 0 auto;
+}
+.cadastroJogo__menu__block{
+    width: 150px;
+    height: 100%;
+    font-family: var(--font-pixel);
+}
+.cadastroJogo__menu__block__circle{
+    display: block;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--color-primary);
+    text-align: center;
+    border: 3px solid var(--color-secondary);
+    margin: 0 auto;
+}
+.cadastroJogo__menu__block__circle p{
+    color: var(--color-secondary);
+    font-size: 1.8rem;
+    margin: 5px auto;
+    line-height: 35px;
+}
+.cadastroJogo__menu__block__circle.cadastroJogo__menu__block__circle--select{
+    background-color: var(--purple);
+    border: 5px solid var(--color-primary);
+}
+.cadastroJogo__menu__block__circle.cadastroJogo__menu__block__circle--select p{
+    color: var(--color-primary);
+    line-height: initial;
+}
+.cadastroJogo__menu__block__text{
+    width: fit-content;
+    margin: 0 auto;
+    color: var(--color-primary);
+    font-size: 1.3rem;
+}
+.cadastroJogo__menu__block__text.cadastroJogo__menu__block__text--select p{
+    font-weight: bold;
+}
