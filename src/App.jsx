@@ -15,7 +15,6 @@ import LojaSkin from "./pages/LojaSkin/LojaSkin";
 import Avatares from "./pages/Avatares/Avatares";
 import Categorias from "./pages/Categorias/Categorias";
 
-
 function App({theme}) {
   return (
     <div data-theme={theme} id="app">

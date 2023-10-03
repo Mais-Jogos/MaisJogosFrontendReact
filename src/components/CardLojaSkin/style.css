@@ -1,0 +1,73 @@
+.lojaskin__border{
+    width:200px;
+    height:280px;
+    background-color: #252525;
+    padding: 8px;
+    border: 6px solid #000000;
+}
+
+.lojaskin__cardBG{
+    width: 90%;
+    height: 93%;
+    background-color: var(--background);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+}
+
+.lojaskin__imgBG{
+    width: 170px;
+    margin-top: 17px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    
+}
+
+#lojaskin__parrot{
+    width: 140px;
+    height: auto;
+}
+
+.lojaskin__cardFooter, .lojaskin__letraPixel{
+    color: var(--color-primary);
+    font-family: var(--font-pixel); 
+    text-align: left;
+    width:100%;
+    margin-top: -9px;          
+}
+
+.lojaskin__cardFooter{
+    display: flex;
+    width:90%;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    border: 4px solid #7900fb;
+    background-color: rgb(0, 0, 0);
+    border-radius: 8px;
+    margin-bottom: 13px;
+}
+
+.lojaskin__cardFooter svg:last-child {
+    width: 15px;
+    height: 15px;
+}
+
+.lojaskin__imgEdit{
+    width: 30px;
+    height:auto;
+}
+
+.lojaskin__imgEdit{
+    padding: 5px;
+}
+
+.lojaskin__SVG{
+    background-color: rgb(51, 46, 46);
+    border-radius: 50%;
+}
