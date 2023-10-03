@@ -3,12 +3,13 @@ import Menu from '../../components/Menu/Menu'
 import Card from '../../components/Card/Card'
 import Axios from 'axios'
 import './style.css'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import Acessibilidade from '../../components/Acessibilidade/Acessibilidade'
 import Vlibras from '../../components/Vlibras/Vlibras'
 import Footer from '../../components/Footer/Footer'
 
 const Categorias = () => {
+    const { category } = useParams();
     const [games, setGames] = useState([]); 
     const [game, setGame] = useState(0)
     const [filter, setFilter] = useState({
@@ -23,6 +24,9 @@ const Categorias = () => {
       .then((response) =>{
         setGames(response.data.results);
       }).catch((error) => { console.log(error); }); 
+
+      const filterCategories = category.split('=');
+      setFilter({...filter, [filterCategories[0]]:  [...filter[filterCategories[0]], filterCategories[1]]});
     }, [])
     console.log("filter", filter);
   
@@ -90,7 +94,7 @@ const Categorias = () => {
           {
             [...new Set(generos?.map((game) => game.name))].map(category => (
               <div className='home__categorias'>
-                <input type="checkbox" name="Categorias" id={category} onClick={(e) => changeFilter(e, 'category', category)}/>
+                <input type="checkbox" name="Categorias" id={category} defaultChecked={filter.category !== 'Todos' && filter.category.some((filterCategory) => filterCategory === category)} onClick={(e) => changeFilter(e, 'category', category)}/>
                 <label key={category} htmlFor={category} >{category}</label>
               </div>
             ))
@@ -99,7 +103,7 @@ const Categorias = () => {
           {              
             [...new Set(plataformas2?.map((game) => game.name))].map(platform => (
               <div className='home__categorias'>
-                <input type="checkbox" name="Plataformas" id={platform} onClick={(e) => changeFilter(e, 'platform', platform)}/>
+                <input type="checkbox" name="Plataformas" id={platform} defaultChecked={filter.platform !== 'Todos' && filter?.platform?.some((filterPlatform) => filterPlatform === platform)} onClick={(e) => changeFilter(e, 'platform', platform)}/>
                 <label key={platform} htmlFor={platform} >{platform}</label>
               </div>
             ))

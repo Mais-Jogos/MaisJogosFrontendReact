@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState} from 'react'
 import Axios from 'axios'
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import Menu from '../../components/Menu/Menu';
 import { selectGame } from '../../redux/actions'
 import { connect } from 'react-redux'
@@ -106,8 +106,10 @@ const Game = ({dispatch}) => {
                   <h3>Sobre o jogo</h3>
                   <p>DESENVOLVEDOR: {games[id]?.name}</p>
                   <p>GÊNERO: {games[id]?.genres.map((genres, index) => 
+                  <Link to={`/categorias/category=${genres?.name}`} key={genres?.id}>
                     <p key={genres?.id}>{genres?.name}{index === games[id]?.genres.length-1 ? ' ':','}</p>
-                    )}</p>
+                  </Link>
+                  )}</p>
                   <p>DATA DE LANÇAMENTO: {new Date(games[id]?.released).toLocaleDateString()}</p>
                 </div>
                 <div className="system__game__page">
@@ -115,7 +117,9 @@ const Game = ({dispatch}) => {
                     <h3>Requisitos do sistema</h3>
                     <div className="platforms">
                       {games[id]?.parent_platforms.map(plataform =>(
-                        <i className={choosePlataform(plataform.platform?.name)}></i>
+                        <Link to={`/categorias/platform=${plataform.platform?.name}`} key={plataform.platform?.id}>
+                          <i className={choosePlataform(plataform.platform?.name)}></i>
+                        </Link>
                       ))}
                     </div>
                   </div>
