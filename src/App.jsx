@@ -5,8 +5,8 @@ import { connect } from 'react-redux';
 import './App.css'
 import Home from "./pages/Home/Home"
 import Carrinho from "./pages/Carrinho/Carrinho"
-import Jogos from "./pages/Jogos/Jogos";
-import Game from "./pages/Game/Game";
+import Joguinhos from "./pages/Joguinhos/Joguinhos";
+import Jogo from "./pages/Jogo/Jogo";
 import Entrar from "./pages/Entrar/Entrar";
 import PerfilUser from "./pages/PerfilUser/PerfilUser"
 import MeusJogosUser from "./pages/MeusJogosUser/MeusJogos"
@@ -14,6 +14,7 @@ import ListaDeDesejos from "./pages/ListadeDesejos/ListadeDesejos"
 import LojaSkin from "./pages/LojaSkin/LojaSkin";
 import Avatares from "./pages/Avatares/Avatares";
 import Categorias from "./pages/Categorias/Categorias";
+import NotFound from "./pages/NotFound/NotFound";
 
 function App({theme}) {
   return (
@@ -22,8 +23,8 @@ function App({theme}) {
         <Routes>
           <Route exact path='/' element={<Home/>}/>
           <Route path='/carrinho' element={<Carrinho/>}/>
-          <Route exact path='/jogos' element={<Jogos/>}/>
-          <Route path='/jogos/:id' element={<Game/>}/>
+          <Route exact path='/Joguinhos' element={<Joguinhos/>}/>
+          <Route path='/jogos/:id' element={<Jogo/>}/>
           <Route path='/entrar' element={<Entrar/>}/>
           <Route path='/perfil-user' element={<PerfilUser/>}/>
           <Route path='/meus-jogos' element={<MeusJogosUser/>}/>
@@ -31,6 +32,7 @@ function App({theme}) {
           <Route path='/loja-skin' element={<LojaSkin/>}/>
           <Route path='/avatares' element={<Avatares/>}/>
           <Route path='/categorias/:category' element={<Categorias/>}/>
+          <Route path='*' element={<NotFound/>}/>
         </Routes>
       </BrowserRouter>
     </div>

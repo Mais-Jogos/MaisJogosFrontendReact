@@ -27,7 +27,6 @@ const Home = () => {
       setGames(response.data.results);
     }).catch((error) => { console.log(error); }); 
   }, [])
-  console.log("filter", filter);
 
   const generos = [].concat(...games.map((game) => game.genres))
   const plataformas = [].concat(...games.map((game) => game.parent_platforms))
@@ -76,7 +75,6 @@ const Home = () => {
       return plataformasSelecionadas && categoriasSelecionadas && notasSelecionadas;
 
     })
-    console.log(jogosFiltrados);
   },[filter])
   return (
     <div id='container-page' className='home'>
@@ -123,16 +121,16 @@ const Home = () => {
         <div className="container__home__right">
           <div className="section__title">
             <h1>
-              Loja nacional de jogos indieLinod
+              Loja nacional de jogos indie
             </h1>
 {/*             <img src={`../../public/imgs/animais/${image}.png`} alt="" />
  */}          </div>
           <div className="section__banner">
-            <p onClick={()=>setGame(game-1)}>
+            <p onClick={()=>setGame(game === 0 ? games.length-1 : game-1)}>
               <i className="fa-solid fa-chevron-left"></i>
             </p>
             <img src={games[game]?.background_image} alt="" />
-            <p onClick={()=>setGame(game+1)}>
+            <p onClick={()=>setGame(game === games.length-1 ? 0 : game+1)}>
               <i className="fa-solid fa-chevron-right"></i>
             </p>
           </div>
@@ -187,7 +185,7 @@ const Home = () => {
                   <img src="imgs/animais/2.png" alt="" />
                 </div>
                 <div className="text__newsletter">
-                  <h2>Fique por dentro os lançamentos!</h2>
+                  <h2>Fique por dentro dos lançamentos!</h2>
                   <label htmlFor='newsletter'>Digite seu melhor e mail: </label>
                   <input type="text" id='newsletter'/>
                   <button>Assinar</button>

@@ -10,7 +10,7 @@ import './style.css';
 import Acessibilidade from '../../components/Acessibilidade/Acessibilidade';
 import Footer from '../../components/Footer/Footer';
 
-const Game = ({dispatch}) => {
+const Jogo = ({dispatch}) => {
     const [games, setGames] = useState([]); 
     const [image, setImage] = useState(0);
     const {id} = useParams();
@@ -157,4 +157,4 @@ const Game = ({dispatch}) => {
 const mapStateToProps = (state) => ({
   cart: state.cart,
 });
-export default connect(mapStateToProps)(Game)
+export default connect(mapStateToProps)(Jogo)

@@ -8,7 +8,7 @@ import Jokenpo from '../../games/Jokenpo/Jokenpo'
 import Quiz from '../../games/Quiz/Quiz'
 import Footer from '../../components/Footer/Footer'
 
-const Jogos = () => {
+const Joguinhos = () => {
   const [jogo, setJogo] = useState('')
   return (
     <div id='container-page'>
@@ -71,4 +71,4 @@ const Jogos = () => {
   )
 }
 
-export default Jogos
+export default Joguinhos

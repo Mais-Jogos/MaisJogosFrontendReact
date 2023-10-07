@@ -4,6 +4,7 @@ import Footer from "../../components/Footer/Footer";
 import Acessibilidade from "../../components/Acessibilidade/Acessibilidade";
 import Menu from "../../components/Menu/Menu";
 import CardAvatar from "../../components/CardAvatar/cardAvatar";
+import Vlibras from "../../components/Vlibras/Vlibras"
 
 export default _ => {
 
@@ -11,6 +12,7 @@ export default _ => {
         <div id='container-page'>
             <Menu />
             <Acessibilidade />
+            <Vlibras/>
 
             <main className="avatares__main">
                 <div className="avatares__letraPixel">
