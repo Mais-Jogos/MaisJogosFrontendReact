@@ -5,6 +5,7 @@ import Acessibilidade from '../../components/Acessibilidade/Acessibilidade'
 import Footer from "../../components/Footer/Footer";
 import { Link } from 'react-router-dom';
 import { useState } from "react";
+import Vlibras from '../../components/Vlibras/Vlibras'
 
 
 function reducerUserData(state, action) {
@@ -37,6 +38,7 @@ export default props => {
     return (
         <div id='container-page'>
             <Menu />
+            <Vlibras/>
             <Acessibilidade />
             <main className="perfilUser__main">
 

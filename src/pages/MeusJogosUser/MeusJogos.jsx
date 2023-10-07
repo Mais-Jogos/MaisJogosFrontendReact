@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import RecemComprados from "./RecemComprados";
 import TodosComprados from "./todosComprados";
 import HeaderWithFilter from "../../components/HeaderWithFiilter/HeaderWithFilter";
+import Vlibras from '../../components/Vlibras/Vlibras'
 
 export default _ => {
     // False = Jogos recém comprados
@@ -16,6 +17,7 @@ export default _ => {
     return (
         <div id='container-page'>
             <Menu />
+            <Vlibras/>
             <Acessibilidade />
             <main className="meusjogos__main">
                 <HeaderWithFilter name="Meus +jogos" imgIcon="../../../public/imgs/icons/psButtons_icon.png"/>

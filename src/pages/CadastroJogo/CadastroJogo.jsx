@@ -2,12 +2,14 @@ import "./style.css";
 import Menu from '../../components/Menu/Menu'
 import Acessibilidade from '../../components/Acessibilidade/Acessibilidade'
 import Footer from "../../components/Footer/Footer";
+import Vlibras from '../../components/Vlibras/Vlibras'
 
 
 export default props => {
     return (
         <div id='container-page'>
             <Menu />
+            <Vlibras/>
             <Acessibilidade />
 
             <main className="cadastroJogo__main">
@@ -53,10 +55,42 @@ export default props => {
                     </div>
                 </section>
                 <section className="cadastroJogo__content">
+                    <div>
+                        <div className="cadastroJogo__content__body">
+                            <label htmlFor="cadastroJogo__content__title" className="cadastroJogo__content__label">Título</label>
+                            <input type="text" id="cadastroJogo__content__title"></input>
+                        </div>
 
+                        <div className="cadastroJogo__content__body">
+                            <label htmlFor="cadastroJogo__content__textarea" className="cadastroJogo__content__label">Descrição</label>
+                            <textarea id="cadastroJogo__content__textarea"></textarea>
+                        </div>
+
+                        <div className="cadastroJogo__content__body">
+                            <label className="cadastroJogo__content__label">Gêneros</label>
+                            <div className="cadastroJogo__content__Bodybuttons">
+                                <button className="cadastroJogo__content__buttons cadastroJogo__content__buttons--select">Ação</button>
+                                <button className="cadastroJogo__content__buttons">Arcade</button>
+                                <button className="cadastroJogo__content__buttons">Aventura</button>
+                                <button className="cadastroJogo__content__buttons">Casual</button>
+                                <button className="cadastroJogo__content__buttons">Corrida</button>
+                                <button className="cadastroJogo__content__buttons">Esporte</button>
+                                <button className="cadastroJogo__content__buttons">Estratégia</button>
+                                <button className="cadastroJogo__content__buttons">Luta</button>
+                                <button className="cadastroJogo__content__buttons">Puzzle</button>
+                                <button className="cadastroJogo__content__buttons">RPG</button>
+                                <button className="cadastroJogo__content__buttons">Shooter</button>
+                                <button className="cadastroJogo__content__buttons">Terror</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section className="cadastroJogo__step">
+                    <button className="cadastroJogo__step__button cadastroJogo__step__buttonBack">Voltar</button>
+                    <button className="cadastroJogo__step__button cadastroJogo__step__buttonNext">Proxímo</button>
                 </section>
             </main>
-
             <Footer />
         </div>
     )

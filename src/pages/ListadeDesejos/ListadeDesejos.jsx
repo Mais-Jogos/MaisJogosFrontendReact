@@ -4,12 +4,14 @@ import Acessibilidade from '../../components/Acessibilidade/Acessibilidade';
 import Menu from '../../components/Menu/Menu';
 import Footer from '../../components/Footer/Footer';
 import HeaderWithFilter from '../../components/HeaderWithFiilter/HeaderWithFilter';
+import Vlibras from '../../components/Vlibras/Vlibras'
 
 const ListadeDesejos = () => {
 
   return (
     <div id='container-page'>
       <Menu />
+      <Vlibras/>
       <Acessibilidade />
       <main className='listaDeDesejos__main'>
         <HeaderWithFilter name="Lista de Desejos" imgIcon="../../../public\imgs\icons\heart_icon.png" />

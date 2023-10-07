@@ -7,6 +7,7 @@
     gap: 100px;
     color: var(--color-primary);
     font-family: var(--font-pixel);
+    font-size: 1rem;
 }
 .headerWithFilter--center {
     display: inline-block;
@@ -14,14 +15,17 @@
     vertical-align: middle;
 }
 .headerWithFilter__title__name img {
-    width: 150px;
-    height: 150px;
+    width: 90px;
+    height: 90px;
     margin: 30px;
 }
 .headerWithFilter__title__name h1 {
+    font-size: 1.2rem;
     color: var(--color-primary);
 }
-
+.headerWithFilter__title div:last-child > p{
+    font-size: .9rem;
+}
 
 
 @media screen and (max-width:910px) {
