@@ -31,7 +31,7 @@ function App({theme}) {
           <Route path='/lista-desejos' element={<ListaDeDesejos/>}/>
           <Route path='/loja-skin' element={<LojaSkin/>}/>
           <Route path='/avatares' element={<Avatares/>}/>
-          <Route path='/categorias' element={<Categorias/>}/>
+          <Route path='/categorias/:category' element={<Categorias/>}/>
           <Route path='/review' element={<Review/>}/>
         
         </Routes>
