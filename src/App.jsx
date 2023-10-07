@@ -14,6 +14,7 @@ import ListaDeDesejos from "./pages/ListadeDesejos/ListadeDesejos"
 import LojaSkin from "./pages/LojaSkin/LojaSkin";
 import Avatares from "./pages/Avatares/Avatares";
 import Categorias from "./pages/Categorias/Categorias";
+import Review from "./pages/Review/Review";
 
 function App({theme}) {
   return (
@@ -31,6 +32,8 @@ function App({theme}) {
           <Route path='/loja-skin' element={<LojaSkin/>}/>
           <Route path='/avatares' element={<Avatares/>}/>
           <Route path='/categorias' element={<Categorias/>}/>
+          <Route path='/review' element={<Review/>}/>
+        
         </Routes>
       </BrowserRouter>
     </div>
