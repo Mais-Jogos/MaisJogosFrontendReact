@@ -187,7 +187,7 @@ const Home = () => {
                   <img src="imgs/animais/2.png" alt="" />
                 </div>
                 <div className="text__newsletter">
-                  <h2>Fique por dentro os lançamentos!</h2>
+                  <h2>Fique por dentro dos lançamentos!</h2>
                   <label htmlFor='newsletter'>Digite seu melhor e mail: </label>
                   <input type="text" id='newsletter'/>
                   <button>Assinar</button>
