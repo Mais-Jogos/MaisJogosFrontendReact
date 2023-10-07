@@ -24,7 +24,9 @@ const Card = ({games, game, dispatch}) => {
       </Link>
       <div className="card__genres">
         {games[game]?.genres.map((genres) => 
-        <p key={genres?.id}>{genres?.name}</p>
+        <Link to={`/categorias/category=${genres?.name}`} key={genres?.id}>
+          <p key={genres?.id}>{genres?.name}</p>
+        </Link>
         )}
       </div>
       <div className="border__price">

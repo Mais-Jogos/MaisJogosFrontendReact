@@ -14,7 +14,11 @@ import ListaDeDesejos from "./pages/ListadeDesejos/ListadeDesejos"
 import LojaSkin from "./pages/LojaSkin/LojaSkin";
 import Avatares from "./pages/Avatares/Avatares";
 import Categorias from "./pages/Categorias/Categorias";
+<<<<<<< HEAD
 import Review from "./pages/Review/Review";
+=======
+import CadastroJogo from "./pages/CadastroJogo/CadastroJogo";
+>>>>>>> e093cadc4f28def65702738639c03e6f522fba72
 
 function App({theme}) {
   return (
@@ -31,9 +35,14 @@ function App({theme}) {
           <Route path='/lista-desejos' element={<ListaDeDesejos/>}/>
           <Route path='/loja-skin' element={<LojaSkin/>}/>
           <Route path='/avatares' element={<Avatares/>}/>
+<<<<<<< HEAD
           <Route path='/categorias' element={<Categorias/>}/>
           <Route path='/review' element={<Review/>}/>
         
+=======
+          <Route path='/categorias/:category' element={<Categorias/>}/>
+          <Route path='/cadastro-jogo' element={<CadastroJogo/>}/>
+>>>>>>> e093cadc4f28def65702738639c03e6f522fba72
         </Routes>
       </BrowserRouter>
     </div>
