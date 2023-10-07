@@ -15,6 +15,7 @@ import LojaSkin from "./pages/LojaSkin/LojaSkin";
 import Avatares from "./pages/Avatares/Avatares";
 import Categorias from "./pages/Categorias/Categorias";
 import NotFound from "./pages/NotFound/NotFound";
+import Review from "./pages/Review/Review";
 
 function App({theme}) {
   return (
@@ -33,6 +34,7 @@ function App({theme}) {
           <Route path='/avatares' element={<Avatares/>}/>
           <Route path='/categorias/:category' element={<Categorias/>}/>
           <Route path='*' element={<NotFound/>}/>
+          <Route path='/review' element={<Review/>}/>
         </Routes>
       </BrowserRouter>
     </div>
