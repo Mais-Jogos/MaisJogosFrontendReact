@@ -47,7 +47,7 @@
     --color-secondary: #000000;
     --text-light: #eeff00;
     --purple: #000000;
-    --light-hover-background: #444444;
+    --light-hover-background: #000000;
     --light-background: #000000;
     --transparent-background:#000000;
     --white: #eeff00;
@@ -57,6 +57,7 @@
     --white: #eeff00;
     --dark: #000;
     --dark2:#000000;
+    --dark2--change:#000000;
     --black: #000;
     --pink: #eeff00;
     --filter-image: invert(0%);

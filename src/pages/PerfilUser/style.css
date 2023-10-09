@@ -162,6 +162,9 @@
     display: block;
     margin: 0 auto;
 }
+.perfilUser__actions .perfilUser__action:nth-child(3) img, .perfilUser__action:nth-child(4) img, .perfilUser__action:nth-child(5) img{
+    filter:var(--filter-image);
+}
 .perfilUser__actions .perfilUser__action:first-child img, .perfilUser__action:nth-child(2) img {
     width: 130px;
     height: 130px;
