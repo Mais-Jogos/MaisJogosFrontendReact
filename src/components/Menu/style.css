@@ -45,6 +45,9 @@
 #menu .menu__search{
     background-color: var(--transparent-background);
     border-radius: 20px;
+    gap: 5px;
+    display: flex;
+    align-items: center;
 }
 #menu .menu__search i{
     color: var(--light-hover-background);

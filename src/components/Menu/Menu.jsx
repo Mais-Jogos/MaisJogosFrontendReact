@@ -7,10 +7,13 @@ import { changeTheme } from '../../redux/actions';
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import ModalSearch from '../ModalSearch/ModalSearch';
 
 // eslint-disable-next-line react-refresh/only-export-components
 const Menu = ({changeTheme, theme, cart}) => {
   const [openMenu, setOpenMenu] = useState(false);
+  const [search, setSearch] = useState('');
+  const [modalSearch, setModalSearch] = useState(false);
   const defaultDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
   const dispatch = useDispatch();
 
@@ -31,8 +34,19 @@ const Menu = ({changeTheme, theme, cart}) => {
             <Link to="#">Sobre</Link>
             <Link to="#">Suporte</Link>
             <Link className='menu__search' >
-              <input type="text" placeholder='Buscar jogo'/>
+              <input 
+                type="text" 
+                placeholder='Buscar jogo' 
+                onChange={(e) => setSearch(e.target.value)}
+                onClick={() => setModalSearch(!modalSearch)}
+              />
+              {modalSearch && search !== '' && 
+              <i 
+              className="fa-solid fa-circle-xmark" 
+              onClick={() => setModalSearch(false)}
+              ></i>}
               <i className="fa-solid fa-magnifying-glass"></i>
+              {modalSearch && search !== '' && <ModalSearch search={search}/>}
             </Link>
             <Link to="/entrar">Entrar</Link>
             <Link to="/carrinho">
