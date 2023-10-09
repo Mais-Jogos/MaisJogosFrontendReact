@@ -1,0 +1,42 @@
+.reviewComp__title {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-evenly;
+    gap: 100px;
+    color: var(--color-primary);
+    font-family: var(--font-pixel);
+    font-size: 1rem;
+}
+
+.reviewComp__title__name img {
+    width: 50px;
+    height: 50px;
+    margin: 30px;
+}
+
+.reviewComp--center {
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.reviewComp__title div:last-child > p{
+    font-size: .9rem;
+}
+
+@media screen and (max-width:910px) {
+    .reviewComp__title {
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: flex-end;
+    }
+
+    .reviewComp__title__name {
+        display: inline-grid;
+        align-items: center;
+        justify-items: center;
+        justify-content: center;
+    }
+}
