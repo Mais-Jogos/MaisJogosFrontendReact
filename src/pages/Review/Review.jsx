@@ -5,12 +5,14 @@ import Acessibilidade from "../../components/Acessibilidade/Acessibilidade";
 import Menu from "../../components/Menu/Menu";
 import ReviewComp from "../../components/ReviewComp/ReviewComp";
 import ReviewCompINF from "../../components/ReviewComp/ReviewCompINF";
+import Vlibras from '../../components/Vlibras/Vlibras';
 
 export default _ => {
 
     return (
         <div id='container-page'>
             <Menu />
+            <Vlibras/>
             <Acessibilidade />
 
             <main className="review__main">

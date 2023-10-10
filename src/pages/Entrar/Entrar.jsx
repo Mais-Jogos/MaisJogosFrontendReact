@@ -9,6 +9,9 @@ import LoginGamer from './Gamer/LoginGamer'
 import CadastroDev from './Dev/CadastroDev'
 import LoginDev from './Dev/LoginDev'
 import Axios from 'axios'
+import Vlibras from '../../components/Vlibras/Vlibras';
+
+
 
 const Entrar = () => {
   const [userType, setUserType] = useState('')
@@ -66,6 +69,7 @@ const Entrar = () => {
   return (
     <div id='container-page'>
       <Menu/>
+      <Vlibras/>
       <Acessibilidade/>
       <div className="signin__title">
         <i className="fa-solid fa-caret-left"></i>

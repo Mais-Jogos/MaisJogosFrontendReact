@@ -13,8 +13,6 @@ export default props => {
                 <p className="reviewComp--center">Relevância</p>
             </div>
             
-            
-            
 
         </section>
 
