@@ -50,7 +50,7 @@
 
 
 .cadastroJogo__menu{
-    width: 45%;
+    width: 50%;
     height: 100%;
     display: flex;
     align-content: center;
@@ -133,6 +133,7 @@ label.cadastroJogo__content__label + input,label.cadastroJogo__content__label + 
     border-radius: 5px;
     background-color: var(--color-secondary);
     padding: 15px;
+    color: var(--color-primary);
 } 
 label.cadastroJogo__content__label + input{
     width: 100%;
@@ -321,7 +322,7 @@ button.cadastroJogo__content__buttons--select{
     max-width: 990px;
     height: 100%;
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
 }
@@ -350,6 +351,8 @@ button.cadastroJogo__content__buttons--select{
     justify-content: flex-start;
 }
 
+
+
 .cadastroJogo__step{
     width: 100%;
     height: 100%;
@@ -377,4 +380,176 @@ button.cadastroJogo__content__buttons--select{
 .cadastroJogo__step__buttonBack{
     color: var(--color-secondary);
     background-color: var(--color-primary);
+}
+
+
+
+@media screen and (max-width:999px) {
+    .cadastroJogo__content__uploadContent__fileUpload{
+        max-width: 100%;
+    }
+    .cadastroJogo__content__uploadContent__fileUpload > div> div{
+        padding: 10px;
+    }
+}
+@media screen and (max-width:950px) {
+    .cadastroJogo__menu{
+        width: 80%;
+    }
+    .cadastroJogo__content__label{
+        font-size: .9rem;
+    }
+    label.cadastroJogo__content__label + input, label.cadastroJogo__content__label + textarea{
+        padding: 9px;
+    }
+    label.cadastroJogo__content__label + textarea{
+        width: 500px;
+        max-width: 500px;
+        min-height: 200px;
+        max-height: 500px;
+    }
+    .cadastroJogo__content__requirements__selected{
+        margin: 10px;
+    }
+    .cadastroJogo__content__requirements__selected:last-child::before{
+        top: -0px;
+        left: -12px;
+    }
+    .cadastroJogo__content__uploadContent__fileUpload > div> div > input[type="file"]{
+        font-size: .7rem;
+    }
+}
+
+@media screen and (max-width:750px) {
+    .cadastroJogo__content__requirements{
+        width: 50%;
+        margin: 0 auto;
+    }
+    .cadastroJogo__content__requirements__selected:last-child::before{
+        width: 0px;
+        position: initial;
+    }
+    .cadastroJogo__content__requirements__selected{
+        margin: 0px;
+    }
+    .cadastroJogo__content__plataforms__checkboxs{
+        display: block;
+    }
+    .cadastroJogo__content__plataforms__checkboxs + div{
+        margin: 0px;
+    }
+    .cadastroJogo__content__plataforms{
+        width: max-content;
+        margin: 30px auto;
+    }
+    .cadastroJogo__content__uploadContent__fileUpload label{
+        font-size: .7rem;
+    }
+    .cadastroJogo__content__uploadContent h3{
+        font-size: 1rem;
+    }
+    .cadastroJogo__content__step2{
+        width: 100%;
+    }
+}
+@media screen and (max-width:700px) {
+    .cadastroJogo__content__plataforms h2, .cadastroJogo__content__requirements h2{
+        font-size: 1.2rem;
+    }
+    .cadastroJogo__content__requirements__selected .cadastroJogo__content__requirements__inputs label, .cadastroJogo__content__requirements__selected .cadastroJogo__content__requirements__inputs--select label, .cadastroJogo__content__requirements__selected .cadastroJogo__content__requirements__inputs--select label {
+        font-size: .9rem;
+    }
+    .cadastroJogo__content__plataforms div > label{
+        font-size: 1rem;
+    }
+    .cadastroJogo__menu__block__text{
+        font-size: .7rem;
+    }
+    .cadastroJogo__menu__block__circle p{
+        font-size: 1.4rem;
+        line-height: 19px;
+    }
+    .cadastroJogo__menu__block__circle{
+        width: 30px;
+        height: 30px;
+    }
+    .cadastroJogo__menu__block__circle.cadastroJogo__menu__block__circle--select p{
+        line-height: 15px;
+    }
+    .cadastroJogo__content__body{
+        width: 370px;
+    }
+    label.cadastroJogo__content__label + input, label.cadastroJogo__content__label + textarea{
+        width: 300px;
+    }
+    label.cadastroJogo__content__label + textarea#cadastroJogo__content__textarea{
+        width: 300px;
+        min-width: 300px;
+        max-width: 300px;
+        min-height: 200px;
+        max-height: 300px;
+    }
+    button.cadastroJogo__content__buttons{
+        font-size: .8rem;
+        width: 100px;
+    }
+}
+@media screen and (max-width:600px) {
+    .cadastroJogo__content__requirements__inputs{
+        text-align: center;
+    }    
+
+    .cadastroJogo__content__requirements__inputs--inputStyle{
+        width: 70%;
+    }
+    .cadastroJogo__content__requirements__selected .cadastroJogo__content__requirements__inputs--select div:last-child, .cadastroJogo__content__requirements__selected .cadastroJogo__content__requirements__inputs--select div:last-child{
+        width: 100%;
+        display: block;
+        text-align: center;
+    }
+    .cadastroJogo__content__requirements__selected .cadastroJogo__content__requirements__inputs--select div:first-child, .cadastroJogo__content__requirements__selected .cadastroJogo__content__requirements__inputs--select div:first-child{
+        width: 100%;
+        display: block;
+        text-align: center;
+    }
+    .cadastroJogo__step__button{
+        font-size: .8rem;
+        width: 80px;
+    }
+}
+@media screen and (max-width:500px){
+    .cadastroJogo__content__requirements, .cadastroJogo__content__body, .cadastroJogo__content__step3 {
+        width: 80%;
+    }
+}
+@media screen and (max-width:400px){
+    .cadastroJogo__content__requirements{
+        width: 100%;
+        text-align: center;
+    }
+    .cadastroJogo__content__requirements__selected,.cadastroJogo__content__requirements, .cadastroJogo__content__body {
+        width: 100%;
+    }
+    .cadastroJogo__content__Bodybuttons{
+        flex-direction: column;
+    }
+    label.cadastroJogo__content__label + textarea#cadastroJogo__content__textarea{
+        width: 100%;
+        resize: none;
+    }
+    .cadastroJogo__menu{
+        gap:10px;
+    }
+    .cadastroJogo__menu__block{
+        width: 100%;
+    }
+    .cadastroJogo__title h1{
+        font-size: 1rem;
+    }
+    .cadastroJogo__content__uploadContent__fileUpload label{
+        display: block;
+    }
+    .cadastroJogo__content__uploadContent__fileUpload > div> div{
+        margin: 10px 0px;
+    }
 }
