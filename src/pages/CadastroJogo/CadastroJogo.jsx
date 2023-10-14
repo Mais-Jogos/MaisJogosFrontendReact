@@ -23,8 +23,37 @@ function reducerCheckboxRequirements(state, action) {
     }
 }
 
+function setData(state, setState) {
+    if(state == 3){
+        console.log("Cadastra jogo!");
+    }else{
+        setState(e => e + 1)
+    }
+}
+
+function secondStepFormStyle(state, type) {
+    if(type == "div"){
+        if(state == 1){
+            return "cadastroJogo__menu__block__circle"
+        }else if(state == 2){
+            return "cadastroJogo__menu__block__circle cadastroJogo__menu__block__circle--select"
+        }else{
+            return "cadastroJogo__menu__block__circle cadastroJogo__menu__block__text--selected"
+        }
+    }else if(type == "p"){
+        if(state == 1){
+            return "cadastroJogo__menu__block__text"
+        }else if(state == 2){
+            return "cadastroJogo__menu__block__text cadastroJogo__menu__block__text--select"
+        }else{
+            return "cadastroJogo__menu__block__text cadastroJogo__menu__block__text--selected"
+        }
+    }
+}
 
 export default props => {
+    const [stepForm, setSteapForm] = useState(1)
+
     const [checkboxRequirements, dispatch] = useReducer(reducerCheckboxRequirements, {
         windows: false,
         macOs: false,
@@ -55,35 +84,35 @@ export default props => {
 
                 <section className="cadastroJogo__menu">
                     <div className="cadastroJogo__menu__block">
-                        <div className="cadastroJogo__menu__block__circle cadastroJogo__menu__block__circle--select">
+                        <div className={stepForm == 1 ? "cadastroJogo__menu__block__circle cadastroJogo__menu__block__circle--select" : "cadastroJogo__menu__block__circle cadastroJogo__menu__block__text--selected"}>
                             <p>1</p>
                         </div>
-                        <div className="cadastroJogo__menu__block__text cadastroJogo__menu__block__text--select">
+                        <div className={stepForm == 1 ? "cadastroJogo__menu__block__text cadastroJogo__menu__block__text--select" : "cadastroJogo__menu__block__text cadastroJogo__menu__block__text--selected"}>
                             <p>Dados</p>
                         </div>
                     </div>
 
                     <div className="cadastroJogo__menu__block">
-                        <div className="cadastroJogo__menu__block__circle">
+                        <div className={stepForm != 0 ? secondStepFormStyle(stepForm, "div") : ""}>
                             <p>2</p>
                         </div>
-                        <div className="cadastroJogo__menu__block__text">
+                        <div className={stepForm != 0 ? secondStepFormStyle(stepForm, "p") : ""}>
                             <p>Requisitos</p>
                         </div>
                     </div>
 
                     <div className="cadastroJogo__menu__block">
-                        <div className="cadastroJogo__menu__block__circle">
+                        <div className={stepForm == 3 ? "cadastroJogo__menu__block__circle cadastroJogo__menu__block__circle--select" : "cadastroJogo__menu__block__circle"}>
                             <p>3</p>
                         </div>
-                        <div className="cadastroJogo__menu__block__text">
+                        <div className={stepForm == 3 ? "cadastroJogo__menu__block__text cadastroJogo__menu__block__text--select" : "cadastroJogo__menu__block__text"}>
                             <p>Uploads</p>
                         </div>
                     </div>
                 </section>
                 <section className="cadastroJogo__content">
                     {/* Etapa 1 */}
-                    <div className="cadastroJogo__content__descriptionGame">
+                    {stepForm == 1 ? (<div className="cadastroJogo__content__descriptionGame">
                         <div className="cadastroJogo__content__body">
                             <label htmlFor="cadastroJogo__content__title" className="cadastroJogo__content__label">Título</label>
                             <input type="text" id="cadastroJogo__content__title"></input>
@@ -111,10 +140,10 @@ export default props => {
                                 <button className="cadastroJogo__content__buttons">Terror</button>
                             </div>
                         </div>
-                    </div>
+                    </div>) : ""}
 
                     {/* Etapa 2 */}
-                    <div className="cadastroJogo__content__step2">
+                    {stepForm == 2 ? (<div className="cadastroJogo__content__step2">
                         <div className="cadastroJogo__content__plataforms">
                             <h2>Plataformas</h2>
                             <div className="cadastroJogo__content__plataforms__checkboxs">
@@ -531,10 +560,10 @@ export default props => {
                             })
                         } */}
 
-                    </div>
+                    </div>) : ""}
 
                     {/* Etapa 3 */}
-                    <div className="cadastroJogo__content__step3">
+                    {stepForm == 3 ? (<div className="cadastroJogo__content__step3">
                         <div className="cadastroJogo__content__uploads">
                             <h2>Uploads</h2>
                             <div className="cadastroJogo__content__uploadContent">
@@ -595,12 +624,15 @@ export default props => {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div>) : ""}
                 </section>
 
                 <section className="cadastroJogo__step">
-                    <button className="cadastroJogo__step__button cadastroJogo__step__buttonBack">Voltar</button>
-                    <button className="cadastroJogo__step__button cadastroJogo__step__buttonNext">Proxímo</button>
+                    {stepForm != 1 ?  (<button className="cadastroJogo__step__button cadastroJogo__step__buttonBack" onClick={_=>setSteapForm(e => e - 1)}>Voltar</button>) : ""}
+                    
+                    <button className="cadastroJogo__step__button cadastroJogo__step__buttonNext" style={stepForm == 1 ? { gridColumn: "2 / 3"}: {}}
+                    onClick={_=> setData(stepForm, setSteapForm)}
+                    >{stepForm != 3 ? "Proxímo" : "Cadastrar"}</button>
                 </section>
             </main>
             <Footer />
