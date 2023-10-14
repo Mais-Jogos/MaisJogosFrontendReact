@@ -37,7 +37,7 @@ const LoginAdmin = () => {
                 </div>
             </div>
             <div className="form__signin__admin">
-                <h2>Bem vindo de volta!</h2>
+                <h2>Bem vindo de volta</h2>
                 <input type="email" placeholder='E-mail' onChange={(e)=> setData({...data, email:e.target.value})}/>
                 <input type="password" placeholder='Senha' onChange={(e)=> setData({...data, password:e.target.value})}/>
                 <button onClick={cadastrar}>Entrar</button>
