@@ -17,6 +17,7 @@ import Categorias from "./pages/Categorias/Categorias";
 import NotFound from "./pages/NotFound/NotFound";
 import Review from "./pages/Review/Review";
 import CadastroJogo from "./pages/CadastroJogo/CadastroJogo";
+import LoginAdmin from "./pages/LoginAdmin/LoginAdmin";
 
 function App({theme}) {
   return (
@@ -37,6 +38,7 @@ function App({theme}) {
           <Route path='*' element={<NotFound/>}/>
           <Route path='/review' element={<Review/>}/>
           <Route path='/cadastro-jogo' element={<CadastroJogo/>}/>
+          <Route path='/login-admin' element={<LoginAdmin/>}/>
         </Routes>
       </BrowserRouter>
     </div>
