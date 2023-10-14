@@ -7,6 +7,7 @@ import './style.css'
 import Acessibilidade from '../../components/Acessibilidade/Acessibilidade';
 import CardCart from '../../components/CardCart/CardCart';
 import Footer from '../../components/Footer/Footer';
+import Vlibras from '../../components/Vlibras/Vlibras';
 
 const Carrinho = ({cart}) => {
   const [total, setTotal] = useState(0)
@@ -17,6 +18,7 @@ const Carrinho = ({cart}) => {
   return (
     <div id='container-page'>
         <Menu/>
+        <Vlibras/>
         <Acessibilidade/>
         <div id="cart">
           <div className="title__cart">

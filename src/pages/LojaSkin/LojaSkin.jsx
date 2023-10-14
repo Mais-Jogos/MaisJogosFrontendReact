@@ -4,12 +4,14 @@ import Footer from "../../components/Footer/Footer";
 import Acessibilidade from "../../components/Acessibilidade/Acessibilidade";
 import Menu from "../../components/Menu/Menu";
 import CardLojaSkin from "../../components/CardLojaSkin/CardLojaskin";
+import Vlibras from '../../components/Vlibras/Vlibras';
 
 export default _ => {
 
     return (
         <div id='container-page'>
             <Menu />
+            <Vlibras/>
             <Acessibilidade />
 
             <main className="lojaskin__main">

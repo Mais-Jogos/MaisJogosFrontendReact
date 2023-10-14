@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import RecemComprados from "./RecemComprados";
 import TodosComprados from "./todosComprados";
 import HeaderWithFilter from "../../components/HeaderWithFiilter/HeaderWithFilter";
-import Vlibras from '../../components/Vlibras/Vlibras'
+import Vlibras from '../../components/Vlibras/Vlibras';
 
 export default _ => {
     // False = Jogos recém comprados

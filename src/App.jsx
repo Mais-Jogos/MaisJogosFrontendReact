@@ -16,6 +16,7 @@ import Avatares from "./pages/Avatares/Avatares";
 import Categorias from "./pages/Categorias/Categorias";
 import NotFound from "./pages/NotFound/NotFound";
 import Review from "./pages/Review/Review";
+import CadastroJogo from "./pages/CadastroJogo/CadastroJogo";
 
 function App({theme}) {
   return (
@@ -35,6 +36,7 @@ function App({theme}) {
           <Route path='/categorias/:category' element={<Categorias/>}/>
           <Route path='*' element={<NotFound/>}/>
           <Route path='/review' element={<Review/>}/>
+          <Route path='/cadastro-jogo' element={<CadastroJogo/>}/>
         </Routes>
       </BrowserRouter>
     </div>

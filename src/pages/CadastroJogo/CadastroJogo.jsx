@@ -9,7 +9,7 @@ export default props => {
     return (
         <div id='container-page'>
             <Menu />
-            <Vlibras/>
+            <Vlibras />
             <Acessibilidade />
 
             <main className="cadastroJogo__main">
@@ -55,7 +55,8 @@ export default props => {
                     </div>
                 </section>
                 <section className="cadastroJogo__content">
-                    <div>
+                    {/* Etapa 1 */}
+                    <div className="cadastroJogo__content__descriptionGame">
                         <div className="cadastroJogo__content__body">
                             <label htmlFor="cadastroJogo__content__title" className="cadastroJogo__content__label">Título</label>
                             <input type="text" id="cadastroJogo__content__title"></input>
@@ -81,6 +82,252 @@ export default props => {
                                 <button className="cadastroJogo__content__buttons">RPG</button>
                                 <button className="cadastroJogo__content__buttons">Shooter</button>
                                 <button className="cadastroJogo__content__buttons">Terror</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Etapa 2 */}
+                    <div className="cadastroJogo__content__step2">
+                        <div className="cadastroJogo__content__plataforms">
+                            <h2>Plataformas</h2>
+                            <div className="cadastroJogo__content__plataforms__checkboxs">
+                                <label htmlFor="windows">
+                                    <input type="checkbox" id="windows" name="windows" checked />
+                                    Windows
+                                </label>
+                            </div>
+                            <div className="cadastroJogo__content__plataforms__checkboxs">
+                                <label htmlFor="macOs">
+                                    <input type="checkbox" id="macOs" name="macOs" />
+                                    MacOs
+                                </label>
+                            </div>
+                            <div className="cadastroJogo__content__plataforms__checkboxs">
+                                <label htmlFor="linux">
+                                    <input type="checkbox" id="linux" name="linux" />
+                                    Linux
+                                </label>
+                            </div>
+                            <div className="cadastroJogo__content__plataforms__checkboxs">
+                                <label htmlFor="android">
+                                    <input type="checkbox" id="android" name="android" />
+                                    Android
+                                </label>
+                            </div>
+                            <div className="cadastroJogo__content__plataforms__checkboxs">
+                                <label htmlFor="ios">
+                                    <input type="checkbox" id="ios" name="ios" />
+                                    IOS
+                                </label>
+                            </div>
+                        </div>
+
+                        <div className="cadastroJogo__content__requirements">
+                            <h2>Requisitos Windows</h2>
+                            <div className="cadastroJogo__content__requirements__selected">
+                                <h3>Mínimo</h3>
+                                <div className="cadastroJogo__content__requirements__inputs">
+                                    <label htmlFor="so">SO</label>
+                                    <input type="text" id="so" className="cadastroJogo__content__requirements__inputs--inputStyle"></input>
+                                </div>
+                                <div className="cadastroJogo__content__requirements__inputs">
+                                    <label htmlFor="processador">Processador</label>
+                                    <input type="text" id="processador" className="cadastroJogo__content__requirements__inputs--inputStyle"></input>
+                                </div>
+                                <div className="cadastroJogo__content__requirements__inputs">
+                                    <label htmlFor="placaVideo">Placa de vídeo</label>
+                                    <input type="text" id="placaVideo" className="cadastroJogo__content__requirements__inputs--inputStyle"></input>
+                                </div>
+                                <div className="cadastroJogo__content__requirements__inputs--select">
+                                    <div><label htmlFor="memoria">Memória</label></div>
+                                    <div>
+                                        <input type="number" id="memoria" min={1}></input>
+                                        <select name="memoriaQTD" id="memoriaQTD">
+                                            <option value="mb">MB</option>
+                                            <option value="gm">GB</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div className="cadastroJogo__content__requirements__inputs--select">
+                                    <div><label htmlFor="armazenamento">Armazenamento</label></div>
+                                    <div>
+                                        <input type="number" id="armazenamento" value={1}  min={1}></input>
+                                        <select name="armazenamentoQTD" id="armazenamentoQTD">
+                                            <option value="mb">MB</option>
+                                            <option value="gm" selected>GB</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div className="cadastroJogo__content__requirements__selected">
+                                <h3>Recomendado</h3>
+                                <div className="cadastroJogo__content__requirements__inputs">
+                                    <label htmlFor="so">SO</label>
+                                    <input type="text" id="so" className="cadastroJogo__content__requirements__inputs--inputStyle"></input>
+                                </div>
+                                <div className="cadastroJogo__content__requirements__inputs">
+                                    <label htmlFor="processador">Processador</label>
+                                    <input type="text" id="processador" className="cadastroJogo__content__requirements__inputs--inputStyle"></input>
+                                </div>
+                                <div className="cadastroJogo__content__requirements__inputs">
+                                    <label htmlFor="placaVideo">Placa de vídeo</label>
+                                    <input type="text" id="placaVideo" className="cadastroJogo__content__requirements__inputs--inputStyle"></input>
+                                </div>
+                                <div className="cadastroJogo__content__requirements__inputs--select">
+                                    <div><label htmlFor="memoria">Memória</label></div>
+                                    <div>
+                                        <input type="number" id="memoria" min={1}></input>
+                                        <select name="memoriaQTD" id="memoriaQTD">
+                                            <option value="mb">MB</option>
+                                            <option value="gm">GB</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div className="cadastroJogo__content__requirements__inputs--select">
+                                    <div><label htmlFor="armazenamento">Armazenamento</label></div>
+                                    <div>
+                                        <input type="number" id="armazenamento" value={1}  min={1}></input>
+                                        <select name="armazenamentoQTD" id="armazenamentoQTD">
+                                            <option value="mb">MB</option>
+                                            <option value="gm" selected>GB</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="cadastroJogo__content__requirements">
+                            <h2>Requisitos Android</h2>
+                            <div className="cadastroJogo__content__requirements__selected">
+                                <h3>Mínimo</h3>
+                                <div className="cadastroJogo__content__requirements__inputs">
+                                    <label htmlFor="so">SO</label>
+                                    <input type="text" id="so" className="cadastroJogo__content__requirements__inputs--inputStyle"></input>
+                                </div>
+                                <div className="cadastroJogo__content__requirements__inputs">
+                                    <label htmlFor="processador">Processador</label>
+                                    <input type="text" id="processador" className="cadastroJogo__content__requirements__inputs--inputStyle"></input>
+                                </div>
+           
+                                <div className="cadastroJogo__content__requirements__inputs--select">
+                                    <div><label htmlFor="memoria">Memória</label></div>
+                                    <div>
+                                        <input type="number" id="memoria" min={1}></input>
+                                        <select name="memoriaQTD" id="memoriaQTD">
+                                            <option value="mb">MB</option>
+                                            <option value="gm">GB</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div className="cadastroJogo__content__requirements__inputs--select">
+                                    <div><label htmlFor="armazenamento">Armazenamento</label></div>
+                                    <div>
+                                        <input type="number" id="armazenamento" value={1}  min={1}></input>
+                                        <select name="armazenamentoQTD" id="armazenamentoQTD">
+                                            <option value="mb">MB</option>
+                                            <option value="gm" selected>GB</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div className="cadastroJogo__content__requirements__selected">
+                                <h3>Recomendado</h3>
+                                <div className="cadastroJogo__content__requirements__inputs">
+                                    <label htmlFor="so">SO</label>
+                                    <input type="text" id="so" className="cadastroJogo__content__requirements__inputs--inputStyle"></input>
+                                </div>
+                                <div className="cadastroJogo__content__requirements__inputs">
+                                    <label htmlFor="processador">Processador</label>
+                                    <input type="text" id="processador" className="cadastroJogo__content__requirements__inputs--inputStyle"></input>
+                                </div>
+                          
+                                <div className="cadastroJogo__content__requirements__inputs--select">
+                                    <div><label htmlFor="memoria">Memória</label></div>
+                                    <div>
+                                        <input type="number" id="memoria" min={1}></input>
+                                        <select name="memoriaQTD" id="memoriaQTD">
+                                            <option value="mb">MB</option>
+                                            <option value="gm">GB</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div className="cadastroJogo__content__requirements__inputs--select">
+                                    <div><label htmlFor="armazenamento">Armazenamento</label></div>
+                                    <div>
+                                        <input type="number" id="armazenamento" value={1}  min={1}></input>
+                                        <select name="armazenamentoQTD" id="armazenamentoQTD">
+                                            <option value="mb">MB</option>
+                                            <option value="gm" selected>GB</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    {/* Etapa 3 */}
+                    <div className="cadastroJogo__content__step3">
+                        <div className="cadastroJogo__content__uploads">
+                            <h2>Uploads</h2>
+                            <div className="cadastroJogo__content__uploadContent">
+                                <h3>Jogo</h3>
+
+                                <div className="cadastroJogo__content__uploadContent__fileUpload">
+                                    <div>
+                                        <label htmlFor="windows">Windows</label>
+                                        <div>
+                                            <input type="file" accept=".zip" id="windows"></input>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <label htmlFor="android">Android</label>
+                                        <div>
+                                            <input type="file" accept=".zip" id="android"></input>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="cadastroJogo__content__uploadContent">
+                                <h3>Mídia</h3>
+
+                                <div className="cadastroJogo__content__uploadContent__fileUpload">
+                                    <div>
+                                        <label htmlFor="fotos">Fotos</label>
+                                        <div>
+                                            <input type="file" accept=".png,.jpeg,.jpg" id="fotos" multiple></input>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <label htmlFor="videos">Vídeos</label>
+                                        <div>
+                                            <input type="file" accept=".mp4,.mov,.mkv" id="videos" multiple></input>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="cadastroJogo__content__uploadContent">
+                                <h3>Classificação indicativa</h3>
+                                <div className="cadastroJogo__content__uploadContent__fileUpload cadastroJogo__content__uploadContent--flexRight">
+                                    <div>
+                                        <label htmlFor="doc">Documento</label>
+                                        <div>
+                                            <input type="file" accept=".png,.jpeg,.jpg,.pdf" id="doc"></input>
+                                        </div>
+                                    </div>
+                                    <select name="classificacao" id="classificacao">
+                                        <option value="Livre" selected>Livre</option>
+                                        <option value="menores_10">10</option>
+                                        <option value="menores_12">12</option>
+                                        <option value="menores_14">14</option>
+                                        <option value="menores_16">16</option>
+                                        <option value="menores_18">18</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -7,12 +7,14 @@ import Acessibilidade from '../../components/Acessibilidade/Acessibilidade'
 import Jokenpo from '../../games/Jokenpo/Jokenpo'
 import Quiz from '../../games/Quiz/Quiz'
 import Footer from '../../components/Footer/Footer'
+import Vlibras from '../../components/Vlibras/Vlibras';
 
 const Joguinhos = () => {
   const [jogo, setJogo] = useState('')
   return (
     <div id='container-page'>
       <Menu/>
+      <Vlibras/>
       <Acessibilidade/>
       {jogo !== '' ? 
       <div className="back__menu">

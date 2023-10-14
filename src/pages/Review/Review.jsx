@@ -4,57 +4,27 @@ import Footer from "../../components/Footer/Footer";
 import Acessibilidade from "../../components/Acessibilidade/Acessibilidade";
 import Menu from "../../components/Menu/Menu";
 import ReviewComp from "../../components/ReviewComp/ReviewComp";
+import ReviewCompINF from "../../components/ReviewComp/ReviewCompINF";
+import Vlibras from '../../components/Vlibras/Vlibras';
 
 export default _ => {
 
     return (
         <div id='container-page'>
             <Menu />
+            <Vlibras/>
             <Acessibilidade />
 
             <main className="review__main">
-            <ReviewComp name="Review de jogos" imgIcon="../../public\imgs\icons\review_icon.svg"/>
+            <ReviewComp name="Review de jogos"/>
                 
-                <section className="avatares__grid">
+                <section className="review__Section">
                     
-                <div className="review__border">
-                    <div className="review__gameIMG">
-                        <img src="../../public\imgs\jogos\meusjogos_01.png"/>
-                    </div>
-                    <div>
-                        <p className="review__gameName">Celeste <span className="review_Avalicao">4,9/9 <i class="fa-solid fa-star"></i></span></p>
-                        <p><u>Minha descrição</u></p>
-                        <p><u>Data de postagem 29/04/23</u></p>
-                        <p className="review__corpoDescricao">Não esperava nada do game e fui surpreendida muito positivamente. A Mecânica é revigorante e saber que algo assim foi feito por brasileiros me dá muito orgulho. O jogo final cumpre o que promete!</p>
-                        <p className="review__Button"><button>Editar <img src="../../public\imgs\icons\edit_icon.png"/></button></p>
-                    </div>
-            </div>
+                <ReviewCompINF minhaIMG="../../public\imgs\jogos\meusjogos_01.png" nome="Celeste" descricao="Minha descrição" data="Data de postagem 29/04/23" corpo="Não esperava nada do game e fui surpreendida muito positivamente. A Mecânica é revigorante e saber que algo assim foi feito por brasileiros me dá muito orgulho. O jogo final cumpre o que promete!"/>
 
-            <div className="review__border">
-                    <div className="review__gameIMG">
-                        <img src="../../public\imgs\jogos\meusjogos_01.png"/>
-                    </div>
-                    <div>
-                        <p className="review__gameName">Celeste <span className="review_Avalicao">4,9/9 <i class="fa-solid fa-star"></i></span></p>
-                        <p><u>Minha descrição</u></p>
-                        <p><u>Data de postagem 29/04/23</u></p>
-                        <p className="review__corpoDescricao">Não esperava nada do game e fui surpreendida muito positivamente. A Mecânica é revigorante e saber que algo assim foi feito por brasileiros me dá muito orgulho. O jogo final cumpre o que promete!</p>
-                        <p className="review__Button"><button>Editar <img src="../../public\imgs\icons\edit_icon.png"/></button></p>
-                    </div>
-            </div>
+                <ReviewCompINF minhaIMG="../../public\imgs\jogos\meusjogos_02.png" nome="Lenda do Heroi" descricao="Minha descrição" data="Data de postagem 29/04/23" corpo="Não esperava nada do game e fui surpreendida muito positivamente. A Mecânica é revigorante e saber que algo assim foi feito por brasileiros me dá muito orgulho. O jogo final cumpre o que promete!" />
 
-            <div className="review__border">
-                    <div className="review__gameIMG">
-                        <img src="../../public\imgs\jogos\meusjogos_01.png"/>
-                    </div>
-                    <div>
-                        <p className="review__gameName">Celeste <span className="review_Avalicao">4,9/9 <i class="fa-solid fa-star"></i></span></p>
-                        <p><u>Minha descrição</u></p>
-                        <p><u>Data de postagem 29/04/23</u></p>
-                        <p className="review__corpoDescricao">Não esperava nada do game e fui surpreendida muito positivamente. A Mecânica é revigorante e saber que algo assim foi feito por brasileiros me dá muito orgulho. O jogo final cumpre o que promete!</p>
-                        <p className="review__Button"><button>Editar <img src="../../public\imgs\icons\edit_icon.png"/></button></p>
-                    </div>
-            </div>  
+                <ReviewCompINF minhaIMG="../../public\imgs\jogos\meusjogos_03.png" nome="Guns n' Runs" descricao="Minha descrição" data="Data de postagem 29/04/23" corpo="Não esperava nada do game e fui surpreendida muito positivamente. A Mecânica é revigorante e saber que algo assim foi feito por brasileiros me dá muito orgulho. O jogo final cumpre o que promete!" />
 
                 </section>
 
