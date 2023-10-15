@@ -8,7 +8,8 @@ import Carrinho from "./pages/Carrinho/Carrinho"
 import Joguinhos from "./pages/Joguinhos/Joguinhos";
 import Jogo from "./pages/Jogo/Jogo";
 import Entrar from "./pages/Entrar/Entrar";
-import PerfilUser from "./pages/PerfilUser/PerfilUser"
+import PerfilUser from "./pages/PerfilUser/PerfilUser";
+import PerFilDev from "./pages/PerfilDev/PerfilDev";
 import MeusJogosUser from "./pages/MeusJogosUser/MeusJogos"
 import ListaDeDesejos from "./pages/ListadeDesejos/ListadeDesejos"
 import LojaSkin from "./pages/LojaSkin/LojaSkin";
@@ -30,6 +31,7 @@ function App({theme}) {
           <Route path='/jogos/:id' element={<Jogo/>}/>
           <Route path='/entrar' element={<Entrar/>}/>
           <Route path='/perfil-user' element={<PerfilUser/>}/>
+          <Route path='/perfil-dev' element={<PerFilDev/>}/>
           <Route path='/meus-jogos' element={<MeusJogosUser/>}/>
           <Route path='/lista-desejos' element={<ListaDeDesejos/>}/>
           <Route path='/loja-skin' element={<LojaSkin/>}/>
