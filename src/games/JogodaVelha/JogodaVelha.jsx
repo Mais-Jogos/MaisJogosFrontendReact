@@ -46,7 +46,7 @@ function getWinner(values){
     }
     return null;
 }
-const JogodaVelha = () => {
+const JogodaVelha = ({coins, setCoins}) => {
     const [values, setValues] = useState(getInitialState);
     const [player, setPlayer] = useState(1);
     const [winner, setWinner] = useState(null);
@@ -94,6 +94,9 @@ const JogodaVelha = () => {
         const newWinner = getWinner(newValues)
         if(newWinner){
             setWinner(newWinner < 0 ? 1 : -1);
+            if(winner < 0){
+                setCoins(coins + 1)
+            }
         }
     }
     function resetGame(){
@@ -121,7 +124,7 @@ const JogodaVelha = () => {
                     })}
                 </div>
                 <div className="Game__menu__jv">
-                    <p>0 <i className="fa-brands fa-bitcoin"></i></p>
+                    <p>{coins} <i className="fa-brands fa-bitcoin"></i></p>
                     {(winner || itsATie) && <>
                         {winner ? 
                             <p>{winner > 0? 'Você perdeu!' : 'Você ganhou!'}</p> : 

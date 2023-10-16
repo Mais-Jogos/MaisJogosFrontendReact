@@ -3,7 +3,7 @@ import React, { useEffect, useState} from 'react'
 import Axios from 'axios'
 import './style.css'
 
-const Quiz = () => {
+const Quiz = ({coins, setCoins}) => {
     const [allQuestions, setAllQuestions] = useState([])
     const [index, setIndex] = useState(0)
     const [answers, setAnswers] = useState([]);
@@ -38,6 +38,7 @@ const Quiz = () => {
         let correctAnswer = allQuestions[index-1]?.correct_answer;
         if (answer === correctAnswer) {
             setUserAnswer(['right','Você acertou!']);
+            setCoins(coins + 1)
         }else{
             setUserAnswer(['wrong','Você errou!']);
         }
@@ -47,7 +48,10 @@ const Quiz = () => {
   return (
     <div className='page__quiz'>
         <div className="title__quiz">
-           <h2>Quiz sobre Jogos</h2> 
+           <div className="Game__menu__qz">
+                <h2>Quiz sobre Jogos</h2> 
+                <p>{coins} <i className="fa-brands fa-bitcoin"></i></p>
+           </div>
         </div> 
         <div className='questions' key={index}>
             {index !== 0 ? <h3>{allQuestions[index]?.question}</h3> : null}

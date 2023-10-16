@@ -8,11 +8,6 @@
     gap: 10px;
     margin-bottom: 20px;
 }
-.title__quiz h2{
-    font-family: var(--font-pixel);
-    color: var(--grey-dark);
-    margin: 5px;
-}
 .questions{
     color: var(--color-primary);
     width: 100%;
@@ -69,4 +64,21 @@
     background-color: transparent;
     width: 100%;
     cursor: pointer;
+}
+.Game__menu__qz {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+.Game__menu__qz p{
+    margin: 0;
+    color: var(--white);
+    font-family: var(--font-pixel);
+}
+.title__quiz .Game__menu__qz h2{
+    font-family: var(--font-pixel);
+    color: var(--grey-dark);
+    margin: 5px;
 }

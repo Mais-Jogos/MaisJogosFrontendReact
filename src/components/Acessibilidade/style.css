@@ -37,3 +37,10 @@
 .settings ul li:hover{
     background-color: var(--light-hover-background);
 }
+.acess-language{
+    display: flex;
+    gap: 5px;
+}
+.acess-language img{
+    width: 24px;
+}

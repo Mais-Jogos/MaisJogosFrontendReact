@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom'
 import Acessibilidade from '../../components/Acessibilidade/Acessibilidade'
 import Vlibras from '../../components/Vlibras/Vlibras'
 import Footer from '../../components/Footer/Footer'
+import { translate } from '../../translate/translate'
 
 const Home = () => {
   const [image, setImage] = useState(1);
@@ -87,7 +88,7 @@ const Home = () => {
               <input type="checkbox" name="Categorias" id={'Todos'} />
               <label htmlFor={'Todos'} onClick={() => setCategory('Todos')}>Todos</label>
             </div> */}
-            <h2>Categorias</h2>
+            <h2>{translate("Categorias")}</h2>
             {
               [...new Set(generos?.map((game) => game.name))].map(category => (
                 <div className='home__categorias'>
@@ -96,7 +97,7 @@ const Home = () => {
                 </div>
               ))
             }
-            <h2>Plataformas</h2>
+            <h2>{translate("Plataformas")}</h2>
             {              
               [...new Set(plataformas2?.map((game) => game.name))].map(platform => (
                 <div className='home__categorias'>
@@ -105,7 +106,7 @@ const Home = () => {
                 </div>
               ))
             }
-            <h2>Classificação</h2>
+            <h2>{translate('Classificação')}</h2>
             <div className='home__ratings'>
             {
               [1,2,3,4,5].map(rating => (
@@ -121,7 +122,7 @@ const Home = () => {
         <div className="container__home__right">
           <div className="section__title">
             <h1>
-              Loja nacional de jogos indie
+              {translate('Loja nacional de jogos indie')}
             </h1>
 {/*             <img src={`../../public/imgs/animais/${image}.png`} alt="" />
  */}          </div>
@@ -135,7 +136,7 @@ const Home = () => {
             </p>
           </div>
           <div id="games__home">
-            <h2>Novidades</h2>
+            <h2>{translate("Novidades")}</h2>
             <div className="section__games">
               {games?.filter(jogo => {
                 var plataformasSelecionadas;
@@ -164,7 +165,7 @@ const Home = () => {
             <p onClick={() => setNumberGames(numberGames === 6 ? games.length : 6)}>{numberGames === 6 ?  'Ver mais': 'Ver menos'}</p>
           </div>
           <div id="publish__games">
-            <h2>Publique seus jogos</h2>
+            <h2>{translate('Publique seus jogos')}</h2>
             <div className="border__card__publish">
               <div className="card__publish">
                 <div className="text__publish">

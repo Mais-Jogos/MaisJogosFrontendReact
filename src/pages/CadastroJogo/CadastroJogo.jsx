@@ -5,6 +5,7 @@ import Footer from "../../components/Footer/Footer";
 import Vlibras from '../../components/Vlibras/Vlibras'
 import { useState } from "react";
 import React, { useReducer } from "react";
+import { translate } from "../../translate/translate";
 
 function reducerCheckboxRequirements(state, action) {
     switch (action.type) {
@@ -75,7 +76,7 @@ export default props => {
                         <div class="cadastroJogo__title__seta esquerda"></div>
                     </div>
 
-                    <h1>Cadastre seu jogo</h1>
+                    <h1>{translate("Cadastre seu jogo")}</h1>
 
                     <div class="cadastroJogo__title__setas">
                         <div class="cadastroJogo__title__seta direita"></div>

@@ -8,9 +8,17 @@ import Jokenpo from '../../games/Jokenpo/Jokenpo'
 import Quiz from '../../games/Quiz/Quiz'
 import Footer from '../../components/Footer/Footer'
 import Vlibras from '../../components/Vlibras/Vlibras';
+import { addCoins } from '../../redux/actions'
+import { connect } from 'react-redux'
 
-const Joguinhos = () => {
+const Joguinhos = ({dispatch}) => {
   const [jogo, setJogo] = useState('')
+  const [coins, setCoins] = useState(0)
+  function saveGame(){
+    dispatch(addCoins(coins))
+    setJogo('');
+    setCoins(0);
+  }
   return (
     <div id='container-page'>
       <Menu/>
@@ -18,7 +26,7 @@ const Joguinhos = () => {
       <Acessibilidade/>
       {jogo !== '' ? 
       <div className="back__menu">
-        <button onClick={()=> setJogo('')}>
+        <button onClick={saveGame}>
           Salvar e sair
         </button>
       </div>:null}
@@ -65,12 +73,16 @@ const Joguinhos = () => {
         </div>
       </div> : 
       jogo === 'Jokenpo' ? 
-      <Jokenpo/> : jogo === 'JogodaVelha' ?
-      <JogodaVelha />:
-      <Quiz/>}
+      <Jokenpo coins={coins} setCoins={setCoins}/> : jogo === 'JogodaVelha' ?
+      <JogodaVelha coins={coins} setCoins={setCoins}/>:
+      <Quiz coins={coins} setCoins={setCoins}/>}
       <Footer/>
     </div>
   )
 }
 
-export default Joguinhos
+const mapStateToProps = (state) => ({
+  coins: state.coins,
+});
+
+export default connect(mapStateToProps)(Joguinhos);

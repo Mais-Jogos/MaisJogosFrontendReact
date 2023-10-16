@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 import './style.css'
 
-const Jokenpo = () => {
+const Jokenpo = ({coins, setCoins}) => {
     const [playerValue, setPlayerValue] = useState(0)
     const [computerValue, setComputerValue] = useState(0)
     const [result, setResult] = useState('')
@@ -18,6 +18,7 @@ const Jokenpo = () => {
             setResult('Deu empate!');
         }else if(player === 0 && computer === 2 || player === 1 && computer === 0 || player === 2 && computer === 1){
             setResult('Você ganhou!');
+            setCoins(coins + 1)
         }else{
             setResult('Você perdeu!');
         }
@@ -44,7 +45,7 @@ const Jokenpo = () => {
                     </div>
                 </div>
                 <div className="Game__menu__jk">
-                    <p>0 <i className="fa-brands fa-bitcoin"></i></p>
+                    <p>{coins} <i className="fa-brands fa-bitcoin"></i></p>
                     <p>{result}</p>
                     <button>
                         <i className="fa-solid fa-arrow-rotate-left"></i>
@@ -55,4 +56,4 @@ const Jokenpo = () => {
     )
 }
 
-export default Jokenpo
+export default Jokenpo;

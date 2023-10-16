@@ -1,5 +1,3 @@
-/* eslint-disable no-undef */
-// eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react'
 import './style.css'
 import { connect } from 'react-redux'; 
@@ -9,8 +7,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import ModalSearch from '../ModalSearch/ModalSearch';
 
-// eslint-disable-next-line react-refresh/only-export-components
-const Menu = ({changeTheme, theme, cart}) => {
+const Menu = ({changeTheme, theme, cart, coins}) => {
   const [openMenu, setOpenMenu] = useState(false);
   const [search, setSearch] = useState('');
   const [modalSearch, setModalSearch] = useState(false);
@@ -54,7 +51,7 @@ const Menu = ({changeTheme, theme, cart}) => {
               <i className="fa-solid fa-cart-shopping"></i>
             </Link>
             <Link to="#">
-              0 
+              {coins.coins}
               <i className="fa-brands fa-bitcoin"></i>
             </Link>
             <Link onClick={changeTheme}>
@@ -76,6 +73,7 @@ const mapStateToProps = state => {
   return {
     theme: state.theme.theme,
     cart: state.cart,
+    coins: state.coins,
   };
 };
 
