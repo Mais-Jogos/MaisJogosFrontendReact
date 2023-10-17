@@ -18,6 +18,8 @@
     --dark2--change:rgb(228, 228, 228);
     --grey-dark: #b4b4b4;
     --pink: #FF527B;
+    --green: rgb(76, 190, 30);
+    --red: #db1a2a;
     --filter-image: invert(100%);
     margin: 0;
     box-sizing: border-box;
