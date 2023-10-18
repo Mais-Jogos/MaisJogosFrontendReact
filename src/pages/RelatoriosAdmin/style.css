@@ -1,0 +1,218 @@
+#relatorios-admin{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-height: 85vh;
+    margin-top: 30px;
+    gap:20px;
+    padding: 0px 25px;
+    background-color: var(--background);
+}
+#relatorios-admin h1{
+    color:var(--color-primary);
+    font-family: var(--font-pixel);
+    margin: 0;
+}
+.container__relatorios-admin{
+    display: grid;
+    justify-content: start;
+    justify-items: stretch;
+    align-items: end;
+    grid-template-columns: 2fr 2fr;
+    gap:30px;
+    margin-bottom: 30px;
+}
+.relatorios-admin__grafico-Vendas{
+    font-family: var(--font-normal);
+}
+.relatorios-admin__grafico-Vendas p{
+    color:var(--color-primary);
+    font-family: var(--font-pixel);
+}
+.relatorios-admin__grafico-Vendas select{
+    color:var(--color-primary);
+    background-color: transparent;
+    padding: 5px 25px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+.relatorios-admin__grafico-Vendas option{
+    color:var(--black);
+    background-color: transparent;
+    padding: 5px 25px;
+    border-radius: 5px;
+}
+.relatorios-admin__grafico-Vendas .recharts-wrapper{
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid var(--grey);
+    width: calc(100% - 40px) !important;
+    background-color: var(--light-background);
+}
+.recharts-tootip-curve{
+    background-color: red;
+}
+.relatorios-admin__grafico-Vendas .recharts-wrapper svg{
+    margin-left: -20px;
+}
+
+.relatorios-admin__geral{
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid var(--grey);
+    height: 200px;
+    background-color: var(--light-background);
+}
+.relatorios-admin__geral p{
+    color: var(--color-primary);
+    font-family: var(--font-pixel);
+    font-size: 1.7rem;
+    display: flex;
+    justify-content: space-between;
+}
+.relatorios-admin__geral b{
+    font-family: var(--font-normal);
+}
+
+.relatorios-admin__quantidade-jogos{
+    display: grid;
+    gap: 30px;
+    height: 100%;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+    'jv jc'
+    'vj vj';
+    align-items: start;
+}
+.relatorios-admin__quantidade-jogos .quant-jogos{
+    color: var(--color-primary);
+    font-family: var(--font-pixel);
+    text-align: center;
+}
+.relatorios-admin__quantidade-jogos .quant-jogos > P{
+    padding: 0px 15%;
+}
+.relatorios-admin__quantidade-jogos .quant-jogos:first-child{
+    grid-area: jv;
+}
+.relatorios-admin__quantidade-jogos .quant-jogos:last-child{
+    grid-area: jc;
+}
+
+.relatorios-admin__quantidade-jogos .quant-jogos div{
+    padding: 20px;
+    font-size: 5rem;
+    border-radius: 10px;
+    border: 1px solid var(--grey);
+    background-color: var(--light-background);
+}
+
+.relatorios-admin__mais-vendidos{
+    color: var(--color-primary);
+}
+.relatorios-admin__mais-vendidos > p{
+    font-family: var(--font-pixel);
+}
+.relatorios-admin__mais-vendidos .tabela__mais-vendidos{
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid var(--grey);
+    font-family: var(--font-normal);
+    background-color: var(--light-background);
+}
+.relatorios-admin__mais-vendidos .header__mais-vendidos, .mais-vendidos{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.relatorios-admin__mais-vendidos .header__mais-vendidos p:first-child{
+    width: 20%;
+}
+.relatorios-admin__mais-vendidos .header__mais-vendidos p, .mais-vendidos p{
+    width: 100%;
+    text-align: center;
+}
+.relatorios-admin__mais-vendidos .mais-vendidos .quant__mais-vendidos b{
+    width: 30px;
+    height: 30px; 
+    display: flex;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 50%;
+    border: 1px solid var(--purple);
+    color: var(--purple);
+    background-color: var(--color-primary);
+}
+.relatorios-admin__mais-vendidos .mais-vendidos p:first-child{
+    color: var(--green);
+    width: 20%;
+}
+
+.relatorios-admin__melhores-devs{
+    color: var(--color-primary);
+}
+.relatorios-admin__melhores-devs > p{
+    font-family: var(--font-pixel);
+}
+.relatorios-admin__melhores-devs .tabela__melhores-devs{
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid var(--grey);
+    font-family: var(--font-normal);
+    background-color: var(--light-background);
+}
+.relatorios-admin__melhores-devs .header__melhores-devs, .melhores-devs{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.relatorios-admin__melhores-devs .header__melhores-devs p:first-child{
+    width: 20%;
+}
+.relatorios-admin__melhores-devs .header__melhores-devs p, .melhores-devs p{
+    width: 100%;
+    text-align: center;
+}
+.relatorios-admin__melhores-devs .melhores-devs .quant__melhores-devs b{
+    width: 30px;
+    height: 30px; 
+    display: flex;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 50%;
+    border: 1px solid var(--purple);
+    color: var(--purple);
+    background-color: var(--color-primary);
+}
+.relatorios-admin__melhores-devs .melhores-devs p:first-child{
+    color: var(--green);
+    width: 20%;
+}
+
+.relatorios-admin__vendas{
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid var(--grey);
+    background-color: var(--light-background);
+    display: flex;
+    flex-direction: column;
+    color: var(--color-primary);
+    font-family: var(--font-pixel);
+    grid-area: vj;
+}
+.relatorios-admin__vendas hr{
+    width: 100%;
+}
+.relatorios-admin__vendas p{
+    display: flex;
+    justify-content: space-between;
+}
+.relatorios-admin__vendas span{
+    display: flex;
+    justify-content: flex-end;
+    font-size: 0.6rem;
+}
