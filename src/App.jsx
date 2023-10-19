@@ -21,6 +21,9 @@ import CadastroJogo from "./pages/CadastroJogo/CadastroJogo";
 import LoginAdmin from "./pages/LoginAdmin/LoginAdmin";
 import RelatoriosDev from "./pages/RelatoriosDev/RelatoriosDev";
 import RelatoriosAdmin from "./pages/RelatoriosAdmin/RelatoriosAdmin";
+import Accessibility from "./pages/Accessibility/Accessibility";
+import Sobre from "./pages/Sobre/Sobre";
+import PerfilPubDev from "./pages/PerfilPubDev/PerfilPubDev";
 
 function App({theme}) {
   return (
@@ -45,6 +48,9 @@ function App({theme}) {
           <Route path='/login-admin' element={<LoginAdmin/>}/>
           <Route path='/relatorios-dev' element={<RelatoriosDev/>}/>
           <Route path='/relatorios-admin' element={<RelatoriosAdmin/>}/>
+          <Route path='/accessibility' element={<Accessibility/>}/>
+          <Route path='/sobre' element={<Sobre/>}/>
+          <Route path='/perfil-pub-dev' element={<PerfilPubDev/>}/>
         </Routes>
       </BrowserRouter>
     </div>
