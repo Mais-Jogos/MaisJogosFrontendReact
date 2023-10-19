@@ -162,16 +162,16 @@ const Home = () => {
                 <Card games={games} game={index}/>
               ))}
             </div>
-            <p onClick={() => setNumberGames(numberGames === 6 ? games.length : 6)}>{numberGames === 6 ?  'Ver mais': 'Ver menos'}</p>
+            <p onClick={() => setNumberGames(numberGames === 6 ? games.length : 6)}>{numberGames === 6 ?  translate('Ver mais') : translate('Ver menos')}</p>
           </div>
           <div id="publish__games">
             <h2>{translate('Publique seus jogos')}</h2>
             <div className="border__card__publish">
               <div className="card__publish">
                 <div className="text__publish">
-                  <h2>Publique já!</h2>
-                  <p>Cadastres seus jogos na nossa plataforma:</p>
-                  <button>Publicar</button>
+                  <h2>{translate("Publique já")}!</h2>
+                  <p>{translate('Cadastre seus jogos na nossa plataforma')}:</p>
+                  <button>{translate("Publicar")}</button>
                 </div>
                 <div className="image__publish">
                   <img src="imgs/animais/3.png" alt="" />
@@ -186,10 +186,10 @@ const Home = () => {
                   <img src="imgs/animais/2.png" alt="" />
                 </div>
                 <div className="text__newsletter">
-                  <h2>Fique por dentro dos lançamentos!</h2>
-                  <label htmlFor='newsletter'>Digite seu melhor e mail: </label>
+                  <h2>{translate("Fique por dentro dos lançamentos")}!</h2>
+                  <label htmlFor='newsletter'>{translate("Digite seu melhor e mail")}: </label>
                   <input type="text" id='newsletter'/>
-                  <button>Assinar</button>
+                  <button>{translate("Assinar")}</button>
                 </div>
               </div>
             </div>

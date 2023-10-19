@@ -53,6 +53,58 @@ export function translate(value){
             "pt": "Gráfico comparativo de vendas",
             "en":"Sales comparison chart"
         },
+        "Acessibilidade":{
+            "pt": "Acessibilidade",
+            "en":"Accessibility"
+        },
+        "Sobre":{
+            "pt": "Sobre",
+            "en":"About"
+        },
+        "Suporte":{
+            "pt": "Suporte",
+            "en":"Support"
+        },
+        "Entrar":{
+            "pt": "Entrar",
+            "en":"Sign in"
+        },
+        "Buscar jogo":{
+            "pt": "Buscar jogo",
+            "en":"Search game"
+        },
+        "Cadastre seus jogos na nossa plataforma":{
+            "pt": "Cadastre seus jogos na nossa plataforma",
+            "en":"Register your games on our platform"
+        },
+        "Publicar":{
+            "pt": "Publicar",
+            "en":"Publish"
+        },
+        "Publique já":{
+            "pt": "Publique já",
+            "en":"Publish now"
+        },
+        "Fique por dentro dos lançamentos":{
+            "pt": "Fique por dentro dos lançamentos",
+            "en":"Stay up to date with releases"
+        },
+        "Digite seu melhor e mail":{
+            "pt": "Digite seu melhor e mail",
+            "en":"Enter your best email"
+        },
+        "Assinar":{
+            "pt": "Assinar",
+            "en":"To sign"
+        },
+        "Ver mais":{
+            "pt": "Ver mais",
+            "en":"View more"
+        },
+        "Ver menos":{
+            "pt": "Ver menos",
+            "en":"View less"
+        },
     }
     return vocabulary[value][language] ? vocabulary[value][language] : value;
 }

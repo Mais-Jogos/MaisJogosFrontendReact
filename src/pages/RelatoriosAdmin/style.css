@@ -19,11 +19,15 @@
     justify-items: stretch;
     align-items: end;
     grid-template-columns: 2fr 2fr;
+    grid-template-areas: 'grafico vendas'
+    'mais-vendidos geral'
+    'devs devs';
     gap:30px;
     margin-bottom: 30px;
 }
 .relatorios-admin__grafico-Vendas{
     font-family: var(--font-normal);
+    grid-area: grafico;
 }
 .relatorios-admin__grafico-Vendas p{
     color:var(--color-primary);
@@ -62,6 +66,7 @@
     border: 1px solid var(--grey);
     height: 200px;
     background-color: var(--light-background);
+    grid-area: vendas;
 }
 .relatorios-admin__geral p{
     color: var(--color-primary);
@@ -83,6 +88,7 @@
     'jv jc'
     'vj vj';
     align-items: start;
+    grid-area: geral;
 }
 .relatorios-admin__quantidade-jogos .quant-jogos{
     color: var(--color-primary);
@@ -109,6 +115,7 @@
 
 .relatorios-admin__mais-vendidos{
     color: var(--color-primary);
+    grid-area: mais-vendidos;
 }
 .relatorios-admin__mais-vendidos > p{
     font-family: var(--font-pixel);
@@ -152,6 +159,9 @@
 
 .relatorios-admin__melhores-devs{
     color: var(--color-primary);
+    grid-area: devs;
+    display: flex;
+    flex-direction: column;
 }
 .relatorios-admin__melhores-devs > p{
     font-family: var(--font-pixel);

@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import ModalSearch from '../ModalSearch/ModalSearch';
+import { translate } from '../../translate/translate';
 
 const Menu = ({changeTheme, theme, cart, coins}) => {
   const [openMenu, setOpenMenu] = useState(false);
@@ -27,13 +28,13 @@ const Menu = ({changeTheme, theme, cart, coins}) => {
         </label>
         <input type="checkbox" name="openMenu" id="openMenu" />
         <div id="menu">
-            <Link to="#">Acessibilidade</Link>
-            <Link to="#">Sobre</Link>
-            <Link to="#">Suporte</Link>
+            <Link to="#">{translate("Acessibilidade")}</Link>
+            <Link to="#">{translate("Sobre")}</Link>
+            <Link to="#">{translate("Suporte")}</Link>
             <Link className='menu__search' >
               <input 
                 type="text" 
-                placeholder='Buscar jogo' 
+                placeholder={translate('Buscar jogo')} 
                 onChange={(e) => setSearch(e.target.value)}
                 onClick={() => setModalSearch(!modalSearch)}
               />
@@ -45,7 +46,7 @@ const Menu = ({changeTheme, theme, cart, coins}) => {
               <i className="fa-solid fa-magnifying-glass"></i>
               {modalSearch && search !== '' && <ModalSearch search={search}/>}
             </Link>
-            <Link to="/entrar">Entrar</Link>
+            <Link to="/entrar">{translate("Entrar")}</Link>
             <Link to="/carrinho">
               {cart.cart.length} 
               <i className="fa-solid fa-cart-shopping"></i>

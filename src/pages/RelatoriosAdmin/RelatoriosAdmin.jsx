@@ -191,7 +191,6 @@ const RelatoriosAdmin = () => {
                   <div>{[...new Set(jogos)].length}</div>
                 </div>
               </div>
-            </div>
             <div className="relatorios-admin__melhores-devs">
                 <p>Jogos mais vendidos</p>
                 <div className="tabela__melhores-devs">
@@ -215,7 +214,8 @@ const RelatoriosAdmin = () => {
                     ))}
                   </div>
                 </div>
-              </div>
+            </div>
+            </div>
         </div>
         <Footer/>
     </div>
