@@ -30,9 +30,9 @@ const Menu = ({changeTheme, theme, cart, coins}) => {
         </label>
         <input type="checkbox" name="openMenu" id="openMenu" />
         <div id="menu">
-            <Link to="#">{translate("Acessibilidade")}</Link>
-            <Link to="#">{translate("Sobre")}</Link>
-            <Link to="#">{translate("Suporte")}</Link>
+            <Link to="/acessibilidade">{translate("Acessibilidade")}</Link>
+            <Link to="/sobre">{translate("Sobre")}</Link>
+            <Link to="/suporte">{translate("Suporte")}</Link>
             {user && <Link to="/joguinhos">{translate("Joguinhos")}</Link>}
             <Link className='menu__search' >
               <input 

@@ -48,7 +48,7 @@ function App({theme}) {
           <Route path='/login-admin' element={<LoginAdmin/>}/>
           <Route path='/relatorios-dev' element={<RelatoriosDev/>}/>
           <Route path='/relatorios-admin' element={<RelatoriosAdmin/>}/>
-          <Route path='/accessibility' element={<Accessibility/>}/>
+          <Route path='/acessibilidade' element={<Accessibility/>}/>
           <Route path='/sobre' element={<Sobre/>}/>
           <Route path='/perfil-pub-dev' element={<PerfilPubDev/>}/>
         </Routes>
