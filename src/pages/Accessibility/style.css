@@ -1,0 +1,52 @@
+.accessibility__main{
+    color: var(--color-primary);
+}
+
+.acessibility_Titulo{
+    font-family: var(--font-pixel);
+    color: var(--color-primary);
+}
+
+.accessibility__grid{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    gap: 35px;
+    margin-bottom: 35px;
+}
+
+.accessibility_Header{
+    font-family: var(--font-pixel);
+    color: var(--color-primary);
+    text-align: center;
+    margin-top: 16px;
+}
+
+.acessibility_threeBlocks{
+    display: flex;
+    width:100%;
+    gap: 35px;
+}
+
+.acessibility__recursos{
+    display: flex;
+    width: 1000px;
+    align-items: left;
+    justify-content: center;
+    border-radius: 8px;
+    margin-bottom: 13px;
+    flex-direction: column;
+}
+
+.acessibility__border{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    border: 4px solid var(--purple);
+    border-radius: 8px;
+    flex-direction: column;
+}
