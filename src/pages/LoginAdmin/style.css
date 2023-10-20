@@ -20,6 +20,7 @@
     padding: 30px;
     padding-top: 0px;
     margin-bottom: 12vh;
+    flex-wrap: wrap-reverse;
 }
 .page__cad__aside__admin{
     display: flex;
@@ -112,4 +113,20 @@
     to{
         opacity: 1;
     }
+}
+
+/** Responsividade **/
+@media screen and (max-width:750px) {
+    .signin__img__admin{
+        width: 230px;
+        height: 230px;
+    }
+    .signin__img__admin img{
+        width: 200px;
+        height: 200px;
+    }
+    .page__cad__admin{
+        align-items: center;
+    }
+
 }

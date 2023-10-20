@@ -1,4 +1,6 @@
-
+.border__card__cart{
+    width: 100%;
+}
 .card__cart a .price h2{
     text-decoration: none;
 }
@@ -10,7 +12,7 @@
     display: flex;
     gap: 20px;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
 }
 .card__cart__image{
     display: flex;
@@ -25,6 +27,7 @@
     display: flex;
     flex-direction: column;
     padding: 10px;
+    width: 100%;
 }
 .card__cart a > h2{
     color:var(--color-primary);
@@ -83,4 +86,19 @@
     height: 25px;
     width: 25px;
     accent-color: var(--purple);
+}
+
+/** Responsividade **/
+@media screen and (max-width:850px) {
+    .card__cart{
+        flex-direction: column;
+        padding: 7px 15px;
+    }
+    .card__cart__image {
+        width: 100%;
+    }
+    .card__cart__image img{
+        width: 100%;
+        height: 200px;
+    }
 }

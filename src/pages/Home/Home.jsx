@@ -84,10 +84,6 @@ const Home = () => {
       <Acessibilidade/>
       <div id="container">
         <div className="section__categories">
-            {/* <div className='home__categorias'>
-              <input type="checkbox" name="Categorias" id={'Todos'} />
-              <label htmlFor={'Todos'} onClick={() => setCategory('Todos')}>Todos</label>
-            </div> */}
             <h2>{translate("Categorias")}</h2>
             {
               [...new Set(generos?.map((game) => game.name))].map(category => (
@@ -124,8 +120,7 @@ const Home = () => {
             <h1>
               {translate('Loja nacional de jogos indie')}
             </h1>
-{/*             <img src={`../../public/imgs/animais/${image}.png`} alt="" />
- */}          </div>
+          </div>
           <div className="section__banner">
             <p onClick={()=>setGame(game === 0 ? games.length-1 : game-1)}>
               <i className="fa-solid fa-chevron-left"></i>

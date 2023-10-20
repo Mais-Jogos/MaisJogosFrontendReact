@@ -43,7 +43,7 @@ export default _ => {
 
             </main>
 
-            <Footer className="footer__main" />
+            <Footer />
         </div>
     );
 

@@ -1,10 +1,9 @@
 import "./style.css"
-import React, { useReducer } from "react";
+import React, { useReducer, useRef, useState } from "react";
 import Menu from '../../components/Menu/Menu'
 import Acessibilidade from '../../components/Acessibilidade/Acessibilidade'
 import Footer from "../../components/Footer/Footer";
 import { Link } from 'react-router-dom';
-import { useState } from "react";
 import Vlibras from '../../components/Vlibras/Vlibras'
 
 
@@ -34,6 +33,61 @@ export default props => {
 
     const [editButton, setEditButton] = useState(false);
 
+    const [bounds, setBounds] = useState(null);
+
+  function rotateToMouse(e) {
+    const mouseX = e.clientX;
+    const mouseY = e.clientY;
+    const leftX = mouseX - bounds.x;
+    const topY = mouseY - bounds.y;
+    const center = {
+      x: leftX - bounds.width / 2,
+      y: topY - bounds.height / 2
+    }
+    const distance = Math.sqrt(center.x**2 + center.y**2);
+  
+    const cardStyle = {
+      transform: `
+        scale3d(1.07, 1.07, 1.07)
+        rotate3d(
+          ${center.y / 100},
+          ${-center.x / 100},
+          0,
+          ${Math.log(distance)* 2}deg
+        )`
+    };
+  
+    const glowStyle = {
+      backgroundImage: `
+        radial-gradient(
+          circle at
+          ${center.x * 2 + bounds.width/2}px
+          ${center.y * 2 + bounds.height/2}px,
+          #ffffff55,
+          #0000000f
+        )`
+    };
+  
+    setCardStyles(cardStyle);
+    setGlowStyles(glowStyle);
+  }
+
+  const handleMouseEnter = () => {
+    const newBounds = $cardRef.current.getBoundingClientRect();
+    setBounds(newBounds);
+    document.addEventListener('mousemove', rotateToMouse);
+  }
+
+  const handleMouseLeave = () => {
+    document.removeEventListener('mousemove', rotateToMouse);
+    setCardStyles({});
+    setGlowStyles({});
+  }
+
+  const [cardStyles, setCardStyles] = useState({});
+  const [glowStyles, setGlowStyles] = useState({});
+  const $cardRef = React.createRef();
+
 
     return (
         <div id='container-page'>
@@ -47,7 +101,7 @@ export default props => {
                 </section>
 
                 <section className="perfilUser__userData">
-                    <div className="perfilUser__userData__avatar">
+                    <div className="perfilUser__userData__avatar" ref={$cardRef} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} style={glowStyles}>
                         <div className="perfilUser__userData__avatar__image">
                             {editButton ? <img src="../../../public/imgs/icons/edit_icon.png" alt="icons da moeda da loja" className="perfilUser__userData__avatar__image__editImg" /> : false}
                         </div>

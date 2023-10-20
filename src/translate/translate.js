@@ -105,6 +105,10 @@ export function translate(value){
             "pt": "Ver menos",
             "en":"View less"
         },
+        "Joguinhos":{
+            "pt": "Joguinhos",
+            "en":"Minigames"
+        },
     }
     return vocabulary[value][language] ? vocabulary[value][language] : value;
 }

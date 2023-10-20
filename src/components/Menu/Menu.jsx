@@ -14,6 +14,8 @@ const Menu = ({changeTheme, theme, cart, coins}) => {
   const [modalSearch, setModalSearch] = useState(false);
   const defaultDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
   const dispatch = useDispatch();
+  const user = true;
+  const admin = true;
 
   if ((defaultDark && theme === 'light') || (!defaultDark && theme === 'dark')) {
     dispatch(changeTheme());
@@ -31,6 +33,7 @@ const Menu = ({changeTheme, theme, cart, coins}) => {
             <Link to="#">{translate("Acessibilidade")}</Link>
             <Link to="#">{translate("Sobre")}</Link>
             <Link to="#">{translate("Suporte")}</Link>
+            {user && <Link to="/joguinhos">{translate("Joguinhos")}</Link>}
             <Link className='menu__search' >
               <input 
                 type="text" 
@@ -49,17 +52,20 @@ const Menu = ({changeTheme, theme, cart, coins}) => {
             <Link to="/entrar">{translate("Entrar")}</Link>
             <Link to="/carrinho">
               {cart.cart.length} 
-              <i className="fa-solid fa-cart-shopping"></i>
+              <img src={'imgs/icons/cart.png'} />
             </Link>
             <Link to="#">
               {coins.coins}
-              <i className="fa-brands fa-bitcoin"></i>
+              <img src={'imgs/icons/Kapicoin_icon.png'} />
             </Link>
             <Link onClick={changeTheme}>
               {theme === 'dark' ? 
               <i className="fa-solid fa-moon"></i>
               :
               <i className="fa-solid fa-sun"></i>}
+            </Link>
+            <Link to="/perfil-user">
+              <img src={'imgs/animais/3-face.png'} className='perfil-menu'/>
             </Link>
         </div>
     </div>

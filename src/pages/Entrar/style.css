@@ -18,6 +18,8 @@
     gap: 30px;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
+    padding: 20px;
 }
 .signin__images .signin__gamer, .signin__dev{
     width: 300px;
@@ -56,12 +58,13 @@
 }
 .page__cad{
     display: flex;
-    align-items: flex-start;
+    align-items: stretch;
     justify-content: center;
     gap: 40px;
     padding: 30px;
     padding-top: 0px;
     margin-bottom: 12vh;
+    flex-wrap: wrap-reverse;
 }
 .page__cad__user{
     display: flex;
@@ -154,4 +157,31 @@
     to{
         opacity: 1;
     }
+}
+
+/** Responsividade **/
+@media screen and (max-width:750px) {
+    .signin__images .signin__gamer, .signin__dev{
+        width: 250px;
+        height: 250px;
+    }
+    .signin__dev p{
+        font-size: 1.5rem;
+    }
+    .signin__gamer img, .signin__dev img{
+        width: 230px;
+        height: 230px;
+    }
+    .signin__img{
+        width: 230px;
+        height: 230px;
+    }
+    .signin__img img{
+        width: 200px;
+        height: 200px;
+    }
+    .page__cad{
+        align-items: center;
+    }
+
 }

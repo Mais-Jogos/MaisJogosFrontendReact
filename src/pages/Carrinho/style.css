@@ -1,6 +1,6 @@
 #cart{
     padding: 40px 30px;
-    margin: 0px 25% 20px 25%;
+    margin: 0px 10% 20px 10%;
 }
 .title__cart{
     display: flex;
@@ -20,13 +20,14 @@
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-    width: 80%;
+    width: 100%;
 }
 .cart__total{
     margin: 20px 0px;
     display: flex;
     justify-content: space-between;
     align-items: stretch;
+    gap: 15px;
 }
 .cart__border__price{
     border:2px solid #000;
@@ -62,4 +63,14 @@
 .continuar__comprando{
     float: right;
     margin-bottom: 20px;
+}
+
+/** Responsividade **/
+@media screen and (max-width:650px) {
+    .finalizar__pedido{
+        padding: 10px;
+    }
+    #cart{
+        margin: 0px 5% 20px 5%;
+    }
 }

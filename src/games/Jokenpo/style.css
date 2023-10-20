@@ -77,3 +77,18 @@
     font-size: 5rem;
     color: var(--white);
   }
+
+/** Responsividade **/
+@media screen and (max-width:450px) {
+  .Game__jk{
+    height: 350px;
+    width: 250px;
+  }
+}
+/** Responsividade **/
+@media screen and (max-width:350px) {
+  .Game__jk{
+    height: 300px;
+    width: 200px;
+  }
+}
