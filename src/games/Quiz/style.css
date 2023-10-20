@@ -1,12 +1,13 @@
 .page__quiz{
     margin: 0 auto;
-    width: 400px;
+    width: fit-content;
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
     gap: 10px;
     margin-bottom: 20px;
+    padding: 0px 50px;
 }
 .questions{
     color: var(--color-primary);

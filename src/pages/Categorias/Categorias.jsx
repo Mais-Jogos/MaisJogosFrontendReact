@@ -80,20 +80,20 @@ const Categorias = () => {
       console.log(jogosFiltrados);
     },[filter])
   return (
-    <div id='container-page' className='home'>
+    <div id='container-page' className='categorias'>
     <Menu/>
     <Vlibras/>
     <Acessibilidade/>
     <div id="container">
-      <div className="section__categories">
-          {/* <div className='home__categorias'>
+      <div className="section__categories-categorias">
+          {/* <div className='categorias__categorias'>
             <input type="checkbox" name="Categorias" id={'Todos'} />
             <label htmlFor={'Todos'} onClick={() => setCategory('Todos')}>Todos</label>
           </div> */}
           <h2>Categorias</h2>
           {
             [...new Set(generos?.map((game) => game.name))].map(category => (
-              <div className='home__categorias'>
+              <div className='categorias__categorias'>
                 <input type="checkbox" name="Categorias" id={category} defaultChecked={filter.category !== 'Todos' && filter.category.some((filterCategory) => filterCategory === category)} onClick={(e) => changeFilter(e, 'category', category)}/>
                 <label key={category} htmlFor={category} >{category}</label>
               </div>
@@ -102,14 +102,14 @@ const Categorias = () => {
           <h2>Plataformas</h2>
           {              
             [...new Set(plataformas2?.map((game) => game.name))].map(platform => (
-              <div className='home__categorias'>
+              <div className='categorias__categorias'>
                 <input type="checkbox" name="Plataformas" id={platform} defaultChecked={filter.platform !== 'Todos' && filter?.platform?.some((filterPlatform) => filterPlatform === platform)} onClick={(e) => changeFilter(e, 'platform', platform)}/>
                 <label key={platform} htmlFor={platform} >{platform}</label>
               </div>
             ))
           }
           <h2>Classificação</h2>
-          <div className='home__ratings'>
+          <div className='categorias__ratings'>
           {
             [1,2,3,4,5].map(rating => (
               <div key={rating}>
@@ -121,13 +121,16 @@ const Categorias = () => {
           }
           </div>
       </div>
-      <div className="container__home__right">
+      <div className="container__categorias__right">
         <div className="section__title">
           <h1>
             Categorias
           </h1>
+          <div className="filter__categorias">
+                      
+          </div>
         </div>
-        <div id="games__home">
+        <div id="games__categorias">
           <div className="section__games">
             {games?.filter(jogo => {
               var plataformasSelecionadas;
