@@ -29,7 +29,7 @@ const Menu = ({changeTheme, theme, cart, coins}) => {
         <div id="menu">
             <Link to="#">Acessibilidade</Link>
             <Link to="#">Sobre</Link>
-            <Link to="#">Suporte</Link>
+            <Link to="/faq">Suporte</Link>
             <Link className='menu__search' >
               <input 
                 type="text" 
