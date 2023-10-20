@@ -100,7 +100,7 @@
 }
 
 .relatorios-dev__quantidade-jogos .quant-jogos div{
-    padding: 20px;
+    padding: 45px 20px;
     font-size: 5rem;
     border-radius: 10px;
     border: 1px solid var(--grey);

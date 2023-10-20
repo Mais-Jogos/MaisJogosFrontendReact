@@ -107,9 +107,16 @@ const RelatoriosAdmin = () => {
   const jogosVendidos = data.reduce((total, venda) => total + venda.Vendas.length, 0)
   const jogos = [].concat(...data.map((venda) => venda.Vendas.map((v)=> v.Jogo)))
   const devs = [].concat(...data.map((venda) => venda.Vendas.map((v)=> v.Dev)))
-  const assinantesGeral = 10
   const clientes = 120
 
+  const dados = [].concat(data.map(({Vendas}) => {return Vendas[0]}))
+  const melhoresDevs = [...new Set(jogos)].map(jogo => {
+    const jogoIgual = dados.filter(v => v.Jogo === jogo)
+    const newJogo = jogoIgual[0];
+    console.log("New jogo", newJogo);
+    return {Dev:newJogo?.Dev, Jogo: newJogo?.Jogo, Valor: newJogo?.Valor * jogoIgual?.length, Vendidos:jogoIgual?.length} ;
+  })
+  
   return (
     <div id='container-page' className='home'>
         <Menu/>
@@ -140,7 +147,7 @@ const RelatoriosAdmin = () => {
                       <XAxis dataKey={filterGraf === "Geral" ? "Month" : "Dia"} />
                       <YAxis />
                       <Tooltip labelFormatter={(value, entry) => filterGraf === "Geral" ? `${value}` : `Dia ${value}`} 
-                      formatter={(value, name, props) => filterGraf === "Geral" ? `R$ ${value.toFixed(2)}` : [`R$ ${value.toFixed(2)}`, `${props.payload.Jogo}`]} />
+                      formatter={(value, props) => filterGraf === "Geral" ? `R$ ${value.toFixed(2)}` : [`R$ ${value.toFixed(2)}`, `${props.payload.Jogo}`]} />
                       {/* <Legend /> */}
                       <Line type="monotone" dataKey={filterGraf === "Geral" ? "Vendas" : "Valor"} stroke="var(--purple)" activeDot={{ r: 8 }} />
                   </LineChart>
@@ -165,8 +172,6 @@ const RelatoriosAdmin = () => {
                       <div className="mais-vendidos">
                         <p>&#129041;</p>
                         <p className="quant__mais-vendidos"><b>{jogos.filter(mapJogo => mapJogo === jogo).length}</b></p>
-                        <p>{jogo}</p>
-                        <p>{jogo}</p>
                         <p>{jogo}</p>
                       </div>
                     ))}
@@ -202,14 +207,17 @@ const RelatoriosAdmin = () => {
                     <p>Valor total de vendas</p>
                   </div>
                   <div className="body__melhores-devs">
-                    {[...new Set(jogos)].sort(function(a , b)
-                    {return jogos.filter(mapJogo => mapJogo === a).length > jogos.filter(mapJogo => mapJogo === b).length ? -1 
-                      : jogos.filter(mapJogo => mapJogo === a).length < jogos.filter(mapJogo => mapJogo === b).length ? 1 : 0})
+                    {melhoresDevs.sort(function(a , b)
+                    {return a.Valor > b.Valor ? -1 
+                      : a.Valor < b.Valor ? 1 : 0})
+                    .filter(jogo => jogo.Jogo !== undefined)
                     .map(jogo => (
                       <div className="melhores-devs">
                         <p>&#129041;</p>
-                        <p className="quant__melhores-devs"><b>{jogos.filter(mapJogo => mapJogo === jogo).length}</b></p>
-                        <p>{jogo}</p>
+                        <p className="quant__melhores-devs"><b>{jogo.Vendidos}</b></p>
+                        <p>{jogo.Jogo}</p>
+                        <p>{jogo.Dev}</p>
+                        <p>R${jogo.Valor}</p>
                       </div>
                     ))}
                   </div>
