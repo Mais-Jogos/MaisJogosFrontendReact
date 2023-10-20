@@ -9,12 +9,19 @@ import Acessibilidade from '../../components/Acessibilidade/Acessibilidade'
 import Vlibras from '../../components/Vlibras/Vlibras'
 import Footer from '../../components/Footer/Footer'
 import { translate } from '../../translate/translate'
+import { AnimatePresence, motion } from 'framer-motion'
 
 const Home = () => {
   const [image, setImage] = useState(1);
   const [games, setGames] = useState([]); 
   const [game, setGame] = useState(0)
   const [numberGames, setNumberGames] = useState(6)
+  const [direction, setDirection] = useState('left');
+  const [openFilter, setOpenFilter] = useState({
+    category: false,
+    platform: false,
+    rating: false,
+  })
   const [filter, setFilter] = useState({
     category: 'Todos',
     platform: 'Todos',
@@ -28,6 +35,26 @@ const Home = () => {
       setGames(response.data.results);
     }).catch((error) => { console.log(error); }); 
   }, [])
+  const slideVariants = {
+    enter: {
+      x: direction === 'left' ? -1000 : 1000,
+      opacity:1,
+      transition: { duration: 0.2 },
+      zIndex: 1,
+    },
+    visible: {
+      x: 0,
+      opacity:1,
+      transition: { duration: 1},
+      zIndex: 1,
+    },
+    exit: {
+      x: direction === 'left' ? 1000 : -1000,
+      opacity:0,
+      transition: { duration: 0.2 },
+      zIndex: 0,
+    },
+  };
 
   const generos = [].concat(...games.map((game) => game.genres))
   const plataformas = [].concat(...games.map((game) => game.parent_platforms))
@@ -37,7 +64,8 @@ const Home = () => {
       if(filter[filterName] !== 'Todos'){
         if(!e.target.checked){
           const updtFilter = filter[filterName].filter((valueFilter) => valueFilter !== value)
-          if(!updtFilter){
+          console.log(updtFilter);
+          if(updtFilter.length > 0){
             setFilter({...filter, [filterName]: updtFilter});
           }else{
             setFilter({...filter, [filterName]: "Todos"});
@@ -51,6 +79,7 @@ const Home = () => {
     }else{
       setFilter({...filter, [filterName]: value})
     }
+    console.log(filter);
   }
 
   useEffect(()=>{
@@ -122,16 +151,137 @@ const Home = () => {
             </h1>
           </div>
           <div className="section__banner">
-            <p onClick={()=>setGame(game === 0 ? games.length-1 : game-1)}>
+            <p onClick={()=>{setGame(game === 0 ? games.length-1 : game-1); setDirection('right')}}>
               <i className="fa-solid fa-chevron-left"></i>
             </p>
-            <img src={games[game]?.background_image} alt="" />
-            <p onClick={()=>setGame(game === games.length-1 ? 0 : game+1)}>
+            <AnimatePresence>
+              <motion.img src={games[game]?.background_image} 
+              alt="" 
+              key={game}
+              variants={slideVariants}
+              transition={{
+                x: { type: "spring", stiffness: 300, damping: 25 },
+                opacity: { duration: 1 }
+              }}
+              initial={"enter"}
+              animate="visible"
+              exit="exit"/>
+            </AnimatePresence>
+            <p onClick={()=>{setGame(game === games.length-1 ? 0 : game+1); setDirection('left')}}>
               <i className="fa-solid fa-chevron-right"></i>
             </p>
           </div>
           <div id="games__home">
             <h2>{translate("Novidades")}</h2>
+            <div className="home__filter">
+              <div className="home__filter-categorias">
+                <p>{translate("Categorias")}:</p>
+                <div className="home__select-categorias" onClick={() => setOpenFilter({...openFilter, category:!openFilter.category})}>
+                  {filter.category !== 'Todos' ? 
+                  <p>
+                    {filter.category.map((category, i) => {return i-1 === filter.category.length || filter.category.length === 1 ? 
+                    category : category + ", "})}
+                    <i class="fa-solid fa-sort-down"></i>
+                  </p> : 
+                  <p>
+                    {filter.category}<i class="fa-solid fa-sort-down"></i>
+                  </p>}
+                </div>
+                <AnimatePresence>
+                  {openFilter.category && 
+                    <motion.div 
+                      className="home__options-categorias"
+                      animate={{ opacity: [0, 1], scale: [0.5, 1.2, 1] }}
+                      exit={{ opacity: [1, 0], scale: [1, 1.2, 0.5] }}
+                      transition={{ duration: 0.5 }}
+                      >
+                      {
+                        [...new Set(generos?.map((game) => game.name))].map(category => (
+                          <div className='home__categorias'>
+                            <input type="checkbox" name="Categorias" id={category} onClick={(e) => changeFilter(e, 'category', category)}/>
+                            <label key={category} htmlFor={category} >{category}</label>
+                          </div>
+                        ))
+                      }
+                    </motion.div>
+                  }
+                </AnimatePresence>
+              </div>
+              <div className="home__filter-plataforma">
+                <p>{translate("Plataformas")}:</p>
+                <div className="home__select-plataforma" onClick={() => setOpenFilter({...openFilter, platform:!openFilter.platform})}>
+                  {filter.platform !== 'Todos' ? 
+                  <p>
+                    {filter.platform.map((platform, i) => {return i-1 === filter.platform.length || filter.platform.length === 1 ? 
+                    platform : platform + ", "})}
+                    <i class="fa-solid fa-sort-down"></i>
+                  </p> : 
+                  <p>
+                    {filter.platform}<i class="fa-solid fa-sort-down"></i>
+                  </p>}
+                </div>
+                <AnimatePresence>
+                  {openFilter.platform && 
+                    <motion.div 
+                      className="home__options-plataforma"
+                      animate={{ opacity: [0, 1], scale: [0.5, 1.2, 1] }}
+                      exit={{ opacity: [1, 0], scale: [1, 1.2, 0.5] }}
+                      transition={{ duration: 0.5 }}
+                      >
+                      {              
+                        [...new Set(plataformas2?.map((game) => game.name))].map(platform => (
+                          <div className='home__categorias'>
+                            <input type="checkbox" name="Plataformas" id={platform} onClick={(e) => changeFilter(e, 'platform', platform)}/>
+                            <label key={platform} htmlFor={platform} >{platform}</label>
+                          </div>
+                        ))
+                      }
+                    </motion.div>
+                  }
+                </AnimatePresence>
+              </div>
+              <div className="home__filter-classificacao">
+                <p>{translate("Classificação")}:</p>
+                <div className="home__select-classificacao" onClick={() => setOpenFilter({...openFilter, rating:!openFilter.rating})}>
+                  {filter.rating !== 'Todos' ? 
+                  <p>
+                    <div>
+                      {filter.rating === 0 ?
+                      [1,2,3,4,5].map(rating => (
+                        <i className={`fa-regular fa-star`}></i>
+                      ))
+                      :[...Array(filter.rating)].map((_, index) => (
+                        <i key={index} className={`fa-solid fa-star`} onClick={(e) => changeFilter(e, 'rating', rating)}></i>
+                      ))}
+                    </div>
+                    <i class="fa-solid fa-sort-down"></i>
+                  </p> : 
+                  <p>
+                    {filter.rating}<i class="fa-solid fa-sort-down"></i>
+                  </p>}
+                </div>
+                <AnimatePresence>
+                  {openFilter.rating && 
+                    <motion.div 
+                      className="home__options-classificacao"
+                      animate={{ opacity: [0, 1], scale: [0.5, 1.2, 1] }}
+                      exit={{ opacity: [1, 0], scale: [1, 1.2, 0.5] }}
+                      transition={{ duration: 0.5 }}
+                      >
+                      {
+                        [1,2,3,4,5].map(rating => (
+                          <div key={rating}>
+                            {[...Array(rating)].map((_, index) => (
+                              <i key={index} className={`fa-${rating <= filter.rating ? 'solid':'regular'} fa-star`} onClick={(e) => changeFilter(e, 'rating', rating)}></i>
+                            ))}
+                          </div>
+                        ))
+                      }
+                    </motion.div>
+                  }
+                </AnimatePresence>
+              </div>
+            </div>
             <div className="section__games">
               {games?.filter(jogo => {
                 var plataformasSelecionadas;

@@ -99,7 +99,78 @@
         width: 100%;
         justify-content: center;
     }
+
+    .categorias__filter{
+        display: none;
+        gap: 20px;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+    .categorias__filter-categorias, 
+    .categorias__filter-classificacao, 
+    .categorias__filter-plataforma{
+        display: flex;
+        flex-direction: column;
+    }
+    .categorias__filter-categorias .categorias__select-categorias, 
+    .categorias__filter-classificacao .categorias__select-classificacao, 
+    .categorias__filter-plataforma .categorias__select-plataforma{
+        cursor: pointer;
+    }
+    .categorias__filter-categorias .categorias__select-categorias p, 
+    .categorias__filter-classificacao .categorias__select-classificacao p, 
+    .categorias__filter-plataforma .categorias__select-plataforma p{
+        border: 1px solid var(--grey);
+        width: 200px;
+        border-radius: 5px;
+        color: var(--color-primary);
+        font-family: var(--font-normal);
+        padding: 5px 10px;
+        height: 20px;
+        display: flex;
+        overflow: hidden;
+        justify-content: space-between;
+        margin: 0;
+    }
     
+    .categorias__options-categorias, 
+    .categorias__options-classificacao, 
+    .categorias__options-plataforma{
+        background-color: var(--light-background);
+        color: var(--color-primary);
+        width: 200px;
+        height: 150px;
+        display: flex;
+        flex-direction: column;
+        font-family: var(--font-normal);
+        padding: 20px;
+        border-radius: 5px;
+        overflow-y: auto;
+        position: absolute;
+        top: 40%;
+    }
+    .categorias__options-categorias .categorias__categorias label, 
+    .categorias__options-classificacao .categorias__classificacao label, 
+    .categorias__options-plataforma .categorias__plataforma label{
+        text-transform: capitalize;
+        margin: 0;
+        cursor: pointer;
+        padding: 5px 10px;
+    }
+    .categorias__options-categorias .categorias__categorias input, 
+    .categorias__options-classificacao .categorias__classificacao input, 
+    .categorias__options-plataforma .categorias__plataforma input{
+        accent-color: var(--purple);
+    }
+    .categorias__filter-categorias > p, 
+    .categorias__filter-classificacao > p, 
+    .categorias__filter-plataforma > p{
+        color: var(--color-primary);
+        font-family: var(--font-normal);
+        margin: 5px;
+    }
     /*animação*/
     @keyframes Avatar{
         0%{
@@ -152,6 +223,9 @@
     }
     .container__categorias__right{
         width: 100%;
+    }
+    .categorias__filter{
+        display: flex;
     }
 }
     
