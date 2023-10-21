@@ -50,7 +50,7 @@ const Acessibilidade = ({ theme, offContrastTheme, contrastTheme }) => {
             Diminuir fonte
           </li>
 
-          <li>Acessibilidade</li>
+          <Link to={'/acessibilidade'}><li>Acessibilidade</li></Link>
           <li onClick={theme === 'contrast' ? offContrastTheme : contrastTheme}>{theme === 'contrast' ? 'Desativar' : 'Ativar'} contraste</li>
           <li className='acess-language'>
             Idioma 

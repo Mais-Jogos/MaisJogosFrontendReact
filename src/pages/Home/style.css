@@ -25,9 +25,6 @@
     padding: 20px;
     border-radius: 5px;
 }
-.section__categories .home__categorias{
-    
-}
 .section__categories .home__categorias label{
     text-transform: capitalize;
     margin: 0;
@@ -79,6 +76,7 @@
     justify-content: center;
     align-items: center;
     gap:5px;
+    overflow: hidden;
 }
 .section__banner i{
     color: var(--color-primary);
@@ -200,6 +198,79 @@
     height: 180px;
 }
 
+.home__filter{
+    display: none;
+    gap: 20px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.home__filter-categorias, 
+.home__filter-classificacao, 
+.home__filter-plataforma{
+    display: flex;
+    flex-direction: column;
+}
+.home__filter-categorias .home__select-categorias, 
+.home__filter-classificacao .home__select-classificacao, 
+.home__filter-plataforma .home__select-plataforma{
+    cursor: pointer;
+}
+.home__filter-categorias .home__select-categorias p, 
+.home__filter-classificacao .home__select-classificacao p, 
+.home__filter-plataforma .home__select-plataforma p{
+    border: 1px solid var(--grey);
+    width: 200px;
+    border-radius: 5px;
+    color: var(--color-primary);
+    font-family: var(--font-normal);
+    padding: 5px 10px;
+    height: 20px;
+    display: flex;
+    overflow: hidden;
+    justify-content: space-between;
+    margin: 0;
+}
+
+.home__options-categorias, 
+.home__options-classificacao, 
+.home__options-plataforma{
+    background-color: var(--light-background);
+    color: var(--color-primary);
+    width: 200px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    font-family: var(--font-normal);
+    padding: 20px;
+    border-radius: 5px;
+    overflow-y: auto;
+    position: absolute;
+    top: 160px;
+}
+.home__options-categorias .home__categorias label, 
+.home__options-classificacao .home__classificacao label, 
+.home__options-plataforma .home__plataforma label{
+    text-transform: capitalize;
+    margin: 0;
+    cursor: pointer;
+    padding: 5px 10px;
+}
+.home__options-categorias .home__categorias input, 
+.home__options-classificacao .home__classificacao input, 
+.home__options-plataforma .home__plataforma input{
+    accent-color: var(--purple);
+}
+.home__filter-categorias > p, 
+.home__filter-classificacao > p, 
+.home__filter-plataforma > p{
+    color: var(--color-primary);
+    font-family: var(--font-normal);
+    margin: 5px;
+}
+
+
 /*animação*/
 @keyframes Avatar{
     0%{
@@ -243,5 +314,18 @@
     100%{
         transform: rotate(5deg);
         opacity: 0;
+    }
+}
+
+/** Responsividade **/
+@media screen and (max-width:1100px) {
+    .section__categories{
+        display: none;
+    }
+    .container__home__right{
+        width: 100%;
+    }
+    .home__filter{
+        display: flex;
     }
 }

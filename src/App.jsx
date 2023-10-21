@@ -20,6 +20,10 @@ import Review from "./pages/Review/Review";
 import CadastroJogo from "./pages/CadastroJogo/CadastroJogo";
 import LoginAdmin from "./pages/LoginAdmin/LoginAdmin";
 import RelatoriosDev from "./pages/RelatoriosDev/RelatoriosDev";
+
+
+
+
 import FAQ from "./pages/FAQ/faq";
 
 

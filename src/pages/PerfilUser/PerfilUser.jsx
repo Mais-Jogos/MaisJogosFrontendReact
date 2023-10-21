@@ -1,11 +1,13 @@
 import "./style.css"
-import React, { useReducer } from "react";
+import React, { useReducer, useRef, useState } from "react";
 import Menu from '../../components/Menu/Menu'
 import Acessibilidade from '../../components/Acessibilidade/Acessibilidade'
 import Footer from "../../components/Footer/Footer";
 import { Link } from 'react-router-dom';
-import { useState } from "react";
 import Vlibras from '../../components/Vlibras/Vlibras'
+import { motion } from "framer-motion";
+import CardLojaSkin from "../../components/CardLojaSkin/CardLojaskin";
+
 
 
 function reducerUserData(state, action) {
@@ -33,7 +35,83 @@ export default props => {
     });
 
     const [editButton, setEditButton] = useState(false);
+    
 
+    /*   
+    const [cardVariants, setCardVariants] = useState({
+       hover: {
+         scale: 1.07,
+         rotateX: 0,
+         rotateY: 0,
+         rotateZ: 0,
+         transition: { type: "spring", stiffness: 120, damping: 10 }
+       }
+     });
+      const rotateToMouse = (e) => {
+        const mouseX = e.clientX;
+        const mouseY = e.clientY;
+        const bounds = e.target.getBoundingClientRect();
+        const leftX = mouseX - bounds.x;
+        const topY = mouseY - bounds.y;
+        const center = {
+          x: leftX - bounds.width / 2,
+          y: topY - bounds.height / 2
+        };
+        const distance = Math.sqrt(center.x**2 + center.y**2);
+    
+        setCardVariants({
+          hover: {
+            scale: 1.07,
+            rotateX: center.y / 100,
+            rotateY: center.x / 100,
+            rotateZ: Math.log(distance)* 2,
+            transition: { type: "spring", stiffness: 120, damping: 10 }
+          }
+        });
+    
+        setGlowStyles({
+          backgroundImage: `
+            radial-gradient(
+              circle at
+              ${center.x * 2 + bounds.width/2}px
+              ${center.y * 2 + bounds.height/2}px,
+              #ffffff55,
+              #0000000f
+            )`
+        });
+      } */
+      const [glowStyles, setGlowStyles] = useState({
+        backgroundImage: 'none'
+    });
+      const [rotation, setRotation] = useState({ x: 0, y: 0 });
+
+      const handleMouseMove = (e) => {
+        const mouseX = e.clientX;
+        const mouseY = e.clientY;
+        const centerX = window.innerWidth / 2;
+        const centerY = window.innerHeight / 2;
+      
+        const deltaX = mouseX - centerX;
+        const deltaY = mouseY - centerY;
+      
+        const rotateX = deltaY / centerY * 30;
+        const rotateY = deltaX / centerX * -30;
+    
+        setRotation({ x: rotateX, y: rotateY });
+        setGlowStyles({
+            backgroundImage: `
+              radial-gradient(
+                circle at
+                ${mouseX / 2 + deltaX}px
+                ${mouseY / 2 + deltaY}px,
+                #ffffff55,
+                #0000000f
+              )`
+            ,
+            transform:'scale3d(1.07, 1.07, 1.07)',
+            transform:'scale(1.2)',
+        });
+      }
 
     return (
         <div id='container-page'>
@@ -47,7 +125,44 @@ export default props => {
                 </section>
 
                 <section className="perfilUser__userData">
-                    <div className="perfilUser__userData__avatar">
+                    <motion.div
+                        whileHover="hover"
+                        className="perfilUser__userData__avatar"
+                        style={{
+                            x: rotation.y,
+                            y: rotation.x,
+                            rotateX: rotation.x,
+                            rotateY: rotation.y,
+                          }}
+                          onMouseMove={handleMouseMove}
+                          onMouseLeave={() => {setGlowStyles({backgroundImage: 'none'}); setRotation({ x: 0, y: 0 })}}
+                          >
+                    <div className="lojaskin__border" style={glowStyles}>
+                        <div className="lojaskin__cardBG" >
+                            <div className="lojaskin__imgBG">
+                                <img id="lojaskin__parrot" src={'public/imgs/animais/3.png'} />
+                            </div>
+                            <div className="lojaskin__cardFooter">
+                                <img className="lojaskin__imgEdit" src="public/imgs/icons/Kapicoin_icon.png" />
+                                <p> 3000 </p>
+                            </div>
+                        </div>
+                    </div>
+                    </motion.div>
+                    {/* <motion.div
+                        whileHover="hover"
+                        className="perfilUser__userData__avatar"
+                        style={{
+                            ...glowStyles,
+                            x: rotation.y,
+                            y: rotation.x,
+                            rotateX: rotation.x,
+                            rotateY: rotation.y,
+                          }}
+                          onMouseMove={handleMouseMove}
+                          onMouseLeave={() => {setGlowStyles({backgroundImage: 'none'}); setRotation({ x: 0, y: 0 })}}
+                          >
+                            
                         <div className="perfilUser__userData__avatar__image">
                             {editButton ? <img src="../../../public/imgs/icons/edit_icon.png" alt="icons da moeda da loja" className="perfilUser__userData__avatar__image__editImg" /> : false}
                         </div>
@@ -56,7 +171,7 @@ export default props => {
                             <img src="../../../public/imgs/icons/Kapicoin_icon.png" alt="icons da moeda da loja" />
                             <span>30.000</span>
                         </div>
-                    </div>
+                    </motion.div> */}
 
                     <div className="perfilUser__userData__inputs">
                         <div className="perfilUser__userData__input">

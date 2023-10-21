@@ -200,3 +200,9 @@
         margin: 50px;
     }
 }
+
+@media (prefers-reduced-motion) {
+    .perfilUser__userData__avatar {
+      transform: none !important;
+    }
+}

@@ -33,7 +33,71 @@
 .avatares__imgBG{
     background-color: var(--grey-dark);
     border-radius: 8px;
-    border:2px solid var(--black);
+    background-position: 0px 0px;
+    background-size: 100%;
+    /* -webkit-animation: bg-scrolling-reverse 5s infinite;
+    -moz-animation: bg-scrolling-reverse 5s infinite;
+    -o-animation: bg-scrolling-reverse 5s infinite;
+    animation: bg-scrolling-reverse 5s infinite;
+    -webkit-animation-timing-function: ease-in-out;
+    -moz-animation-timing-function: ease-in-out;
+    -o-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out; */
+}
+.avatares__imgBG:hover{
+    animation: zoomAnimation 10s infinite alternate;
+}
+
+@keyframes zoomAnimation {
+    0% {
+      background-size: 100%;
+    }
+    50% {
+      background-size: 150%;
+    }
+    100% {
+      background-size: 100%;
+    }
+}
+@-webkit-keyframes bg-scrolling-reverse {
+    100% {
+      background-position: 1px 1px;
+    }
+}
+@-moz-keyframes bg-scrolling-reverse {
+    100% {
+      background-position: 1px 1px;
+    }
+}
+@-o-keyframes bg-scrolling-reverse {
+    100% {
+      background-position: 1px 1px;
+    }
+}
+@keyframes bg-scrolling-reverse {
+    100% {
+      background-position: 1px 1px;
+    }
+}
+@-webkit-keyframes bg-scrolling {
+    0% {
+      background-position: 1px 1px;
+    }
+}
+@-moz-keyframes bg-scrolling {
+    0% {
+      background-position: 0px 0px;
+    }
+}
+@-o-keyframes bg-scrolling {
+    0% {
+      background-position: 0px 0px;
+    }
+}
+@keyframes bg-scrolling {
+    0% {
+      background-position: 0px 0px;
+    }
 }
 
 #avatares__parrot{
@@ -84,3 +148,6 @@
     width:100%;
     margin-top: -9px;
 }
+
+
+  
