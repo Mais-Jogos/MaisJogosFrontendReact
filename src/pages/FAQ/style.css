@@ -22,7 +22,7 @@
 
 h1{
   font-family: var(--font-pixel);
-  color: #fff;
+  color: var(--color-primary);
   margin: 3%;
   display: flex;
   align-items: center;
@@ -47,7 +47,7 @@ h1{
 }
 
 a{
-  color: #fff;
+  color: var(--color-primary);
   font-family: var(--font-pixel);
   display: flex;
   align-items: center;
@@ -73,7 +73,7 @@ a{
 
 .seta{
   font-family: var(--font-pixel);
-  color: #fff;
+  color: var(--color-primary);
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -92,15 +92,17 @@ a{
   flex-direction: column;
   border-radius: 5px;
   margin: 2%;
+  font-family: var(--font-normal);
 }
 
 .texto-expansivel a{
   border: 2px solid var(--purple);
+  padding-left: 2%;
 }
 
 .texto-expansivel p{
   padding-left: 2%;
   padding-right: 2%;
-  color: #fff;
+  color: var(--color-primary);
   text-align: justify;
 }
