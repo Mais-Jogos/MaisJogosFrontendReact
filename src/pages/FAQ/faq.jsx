@@ -96,7 +96,7 @@ export default function FAQ() {
         <div className="center">
           <div className="infos">
             <div className="seta" onClick={toggleTextoPlat}>
-              Plataforma
+              Plataforma 
             </div>
             {mostrarTextoPlat && (
               <div className="center">
