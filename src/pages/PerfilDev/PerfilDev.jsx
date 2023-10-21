@@ -6,7 +6,7 @@ import Footer from "../../components/Footer/Footer";
 import { Link } from 'react-router-dom';
 import { useState } from "react";
 import Vlibras from '../../components/Vlibras/Vlibras'
-
+import TextToSpeech from "../../components/Acessibilidade/TextToSpeech";
 
 function reducerUserData(state, action) {
     switch (action.type) {
@@ -43,6 +43,7 @@ export default props => {
             <Menu />
             <Vlibras/>
             <Acessibilidade />
+            <TextToSpeech />
             <main className="perfilDev__main">
 
                 <section className="perfilDev__titlePage">
@@ -87,7 +88,7 @@ export default props => {
                         <div className="perfilDev__userData__descr">
                             <div className="perfilDev__userData__input">
                                 <label htmlFor="descricao">Descrição</label>
-                                <textarea id="descricao" value={userData.descricao} onChange={e => dispatch({ type: 'change_descricao', descricao: e.target.value })}></textarea>
+                                <textarea id="descricao" value={userData.descricao} onChange={e => dispatch({ type: 'change_descricao', descricao: e.target.value })} aria-label="Descrição"></textarea>
                                 {editButton ? <img src="../../../public/imgs/icons/edit_icon.png" alt="icons da moeda da loja" className="perfilDev__userData__input__editImg" /> : false}
                             </div>
                             

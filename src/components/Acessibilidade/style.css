@@ -1,46 +1,114 @@
-.settings{
-    cursor:pointer;
+.settings {
+    cursor: pointer;
     position: fixed;
     right: 0;
     top: 55%;
     z-index: 999;
     margin-right: 10px;
 }
+
 .settings a:-webkit-any-link {
     color: none;
     cursor: pointer;
     text-decoration: none;
 }
-.settings > i{
+
+.settings>i {
     padding: 10px;
     color: var(--grey);
     background-color: var(--light-hover-background);
     border-radius: 5px;
     font-size: 20px;
 }
-.settings ul{
+
+.settings ul {
     display: flex;
     flex-direction: column;
     position: absolute;
     right: 0px;
     list-style: none;
     background-color: var(--light-background);
-    margin:0;
-    margin-top:5px;
+    margin: 0;
+    margin-top: 5px;
     padding: 0;
 }
-.settings ul li{
+
+.settings ul li {
     font-family: var(--font-normal);
     padding: 10px;
     color: var(--white);
 }
-.settings ul li:hover{
+
+.settings ul li:hover {
     background-color: var(--light-hover-background);
 }
-.acess-language{
+
+.acess-language {
     display: flex;
     gap: 5px;
 }
-.acess-language img{
+
+.acess-language img {
     width: 24px;
+}
+
+
+
+/* ---------------- TEXT TO SPEECH ---------------- */
+
+.textToSpeech__container {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    position: fixed;
+    right: 0;
+    top: 62%;
+    z-index: 999;
+    margin-right: 10px;
+    transition: all 0.3s ease-out;
+}
+
+.textToSpeech__container>img {
+    color: var(--grey);
+    background-color: var(--color-primary);
+    border-radius: 5px;
+    font-size: 20px;
+    padding: 8px;
+    position: relative;
+    filter: var(--filter-image);
+}
+
+.textToSpeech__container>.textToSpeech__hover {
+    display: block;
+    width: max-content;
+    height: 100%;
+    background-color: var(--color-primary);
+    position: absolute;
+    padding: 0px 10px;
+    border-radius: 5px;
+    top: 0;
+    bottom: 0;
+    left: -122px;
+    text-align: center;
+    align-items: center;
+    transition: all 0.3s ease-out;
+    transform: translate(100px); 
+    visibility: hidden;
+    opacity: 0;
+}
+
+.textToSpeech__container:hover .textToSpeech__hover {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0px);
+    transition: all 0.3s ease-out;
+}
+
+.textToSpeech__container>.textToSpeech__hover p {
+    margin: 0;
+    line-height: 40px;
+    font-weight: bold;
+    font-size: 14px;
+    font-family: var(--font-normal);
+    color: var(--color-secondary);
 }
