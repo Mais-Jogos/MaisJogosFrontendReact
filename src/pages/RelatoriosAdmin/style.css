@@ -24,12 +24,14 @@
     'devs devs';
     gap:30px;
     margin-bottom: 30px;
+    width: 100%;
 }
 .relatorios-admin__grafico-Vendas{
     font-family: var(--font-normal);
     grid-area: grafico;
+    width: 100%;
 }
-.relatorios-admin__grafico-Vendas p{
+.relatorios-admin__grafico-Vendas > p{
     color:var(--color-primary);
     font-family: var(--font-pixel);
 }
@@ -52,10 +54,9 @@
     border: 1px solid var(--grey);
     width: calc(100% - 40px) !important;
     background-color: var(--light-background);
+    display: flex;
 }
-.recharts-tootip-curve{
-    background-color: red;
-}
+
 .relatorios-admin__grafico-Vendas .recharts-wrapper svg{
     margin-left: -20px;
 }
@@ -67,6 +68,7 @@
     height: 200px;
     background-color: var(--light-background);
     grid-area: vendas;
+    width: calc(100% - 40px);
 }
 .relatorios-admin__geral p{
     color: var(--color-primary);
@@ -88,7 +90,8 @@
     'jv jc'
     'vj vj';
     align-items: start;
-    grid-area: geral;
+    grid-area: geral;   
+    width: 100%;
 }
 .relatorios-admin__quantidade-jogos .quant-jogos{
     color: var(--color-primary);
@@ -213,6 +216,7 @@
     color: var(--color-primary);
     font-family: var(--font-pixel);
     grid-area: vj;
+    width: 100%;
 }
 .relatorios-admin__vendas hr{
     width: 100%;
@@ -225,4 +229,24 @@
     display: flex;
     justify-content: flex-end;
     font-size: 0.6rem;
+}
+
+/** Responsividade **/
+@media screen and (max-width:1100px){
+    .container__relatorios-admin{
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
+@media screen and (max-width:600px){
+    .relatorios-admin__quantidade-jogos{
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .body__melhores-devs .melhores-devs{
+        flex-direction: column;
+        border-bottom: 1px solid var(--grey);
+    }
 }

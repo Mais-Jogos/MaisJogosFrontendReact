@@ -20,7 +20,9 @@ import Review from "./pages/Review/Review";
 import CadastroJogo from "./pages/CadastroJogo/CadastroJogo";
 import LoginAdmin from "./pages/LoginAdmin/LoginAdmin";
 import RelatoriosDev from "./pages/RelatoriosDev/RelatoriosDev";
+import RelatoriosAdmin from "./pages/RelatoriosAdmin/RelatoriosAdmin";
 import FAQ from "./pages/FAQ/faq";
+import Accessibility from "./pages/Accessibility/Accessibility";
 
 
 function App({theme}) {
@@ -45,6 +47,8 @@ function App({theme}) {
           <Route path='/cadastro-jogo' element={<CadastroJogo/>}/>
           <Route path='/login-admin' element={<LoginAdmin/>}/>
           <Route path='/relatorios-dev' element={<RelatoriosDev/>}/>
+          <Route path='/relatorios-admin' element={<RelatoriosAdmin/>}/>
+          <Route path='/acessibilidade' element={<Accessibility/>}/>
           <Route path='/faq' element={<FAQ/>}/>
         </Routes>
       </BrowserRouter>

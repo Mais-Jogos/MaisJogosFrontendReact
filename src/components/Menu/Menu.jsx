@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useReducer } from 'react'
 import './style.css'
 import { connect } from 'react-redux'; 
 import { changeTheme } from '../../redux/actions';
@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 import ModalSearch from '../ModalSearch/ModalSearch';
 import { translate } from '../../translate/translate';
 
-const Menu = ({changeTheme, theme, cart, coins}) => {
+const Menu = ({changeTheme, theme, cart, coins, colorCard }) => {
   const [openMenu, setOpenMenu] = useState(false);
   const [search, setSearch] = useState('');
   const [modalSearch, setModalSearch] = useState(false);
@@ -65,7 +65,7 @@ const Menu = ({changeTheme, theme, cart, coins}) => {
               <i className="fa-solid fa-sun"></i>}
             </Link>
             <Link to="/perfil-user">
-              <img src={'imgs/animais/3-face.png'} className='perfil-menu'/>
+              <img src={'imgs/animais/3-face.png'} className='perfil-menu' style={{backgroundColor:colorCard.colorCard}}/>
             </Link>
         </div>
     </div>
@@ -75,12 +75,14 @@ Menu.propTypes = {
   theme: PropTypes.string.isRequired,
   cart: PropTypes.string.isRequired,
   changeTheme: PropTypes.func.isRequired,
+  colorCard:PropTypes.func.isRequired,
 };
 const mapStateToProps = state => {
   return {
     theme: state.theme.theme,
     cart: state.cart,
     coins: state.coins,
+    colorCard: state.colorCard
   };
 };
 

@@ -45,9 +45,9 @@
     position: relative;
 }
 .perfilUser__userData__avatar__image__editImg{
-    position: absolute;
+    /* position: absolute;
     bottom: 0px;
-    right: 0px;
+    right: 0px; */
 }
 .perfilUser__userData__avatar__capCoins{
     width: 130px;
@@ -180,7 +180,102 @@
     font-family: var(--font-pixel);
 }
 
+/** Card **/
+.perfilUser-card__border{
+    width:250px;
+    height:320px;
+    border:2px solid var(--black);
+    border-radius:5px;
+    background-color: var(--grey-dark);
+    padding:7px;
+    box-shadow: 2px 2px 0px 0px rgba(56, 56, 56, 0.75) inset,
+    0px 0px 12px rgb(255 255 255 / 26%);
+    transition: 0.5s all;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.perfilUser-card__border:hover{
+    transform: scale(1.2);
+}
 
+.perfilUser-card__cardBG{
+    width: 90%;
+    height: 93%;
+    background-color: var(--background);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 8px;
+}
+
+.perfilUser-card__imgBG{
+    width: 95%;
+    margin-top: 15px;
+    padding: 20px 0px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url(public/imgs/cardBG/bgCard.png);
+    background-size: cover;
+}
+
+#perfilUser-card__parrot{
+    width: 140px;
+    height: auto;
+}
+.perfilUser-card__cardFooter{
+    color: var(--white);
+}
+.perfilUser-card__cardFooter input{
+    width: 30px;
+    height: 30px;
+}
+.perfilUser-card__letraPixel{
+    color: var(--color-primary);
+
+}
+.perfilUser-card__cardFooter, .perfilUser-card__letraPixel{
+    font-family: var(--font-pixel); 
+    text-align: left;
+    width:100%;
+    margin-top: -9px;          
+}
+
+.perfilUser-card__cardFooter{
+    display: flex;
+    width:90%;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    border: 4px solid var(--purple);
+    background-color: var(--black);
+    border-radius: 8px;
+    margin-bottom: 13px;
+}
+
+.perfilUser-card__cardFooter svg:last-child {
+    width: 15px;
+    height: 15px;
+}
+
+.perfilUser-card__imgEdit{
+    width: 30px;
+    height:auto;
+}
+
+.perfilUser-card__imgEdit{
+    padding: 5px;
+}
+
+.perfilUser-card__SVG{
+    background-color: var(--grey-dark);
+    border-radius: 50%;
+}
 
 @media screen and (max-width:1045px) {
     .perfilUser__titlePage h1{

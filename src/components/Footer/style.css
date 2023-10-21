@@ -1,6 +1,5 @@
 .footer__main{
-    width: calc(100vw-20px);
-    height: 100%;
+    height: fit-content;
     background-color: var(--light-background);
     color: var(--color-primary);
     text-align: center;

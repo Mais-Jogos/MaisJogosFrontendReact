@@ -113,7 +113,6 @@ const RelatoriosAdmin = () => {
   const melhoresDevs = [...new Set(jogos)].map(jogo => {
     const jogoIgual = dados.filter(v => v.Jogo === jogo)
     const newJogo = jogoIgual[0];
-    console.log("New jogo", newJogo);
     return {Dev:newJogo?.Dev, Jogo: newJogo?.Jogo, Valor: newJogo?.Valor * jogoIgual?.length, Vendidos:jogoIgual?.length} ;
   })
   
@@ -147,14 +146,14 @@ const RelatoriosAdmin = () => {
                       <XAxis dataKey={filterGraf === "Geral" ? "Month" : "Dia"} />
                       <YAxis />
                       <Tooltip labelFormatter={(value, entry) => filterGraf === "Geral" ? `${value}` : `Dia ${value}`} 
-                      formatter={(value, props) => filterGraf === "Geral" ? `R$ ${value.toFixed(2)}` : [`R$ ${value.toFixed(2)}`, `${props.payload.Jogo}`]} />
+                      formatter={(value, props) => value.toFixed(2)} />
                       {/* <Legend /> */}
                       <Line type="monotone" dataKey={filterGraf === "Geral" ? "Vendas" : "Valor"} stroke="var(--purple)" activeDot={{ r: 8 }} />
                   </LineChart>
               </div>
               <div className="relatorios-admin__geral">
-                <p>Valor Total de vendas <b>R${valorTotal}</b></p>
-                <p>Valor Total de lucros<b>R${valorTotal - (valorTotal*0.9)}</b></p>
+                <p>Valor Total de vendas <b>R${valorTotal.toFixed(2)}</b></p>
+                <p>Valor Total de lucros<b>R${(valorTotal - (valorTotal*0.9)).toFixed(2)}</b></p>
               </div>
               <div className="relatorios-admin__mais-vendidos">
                 <p>Jogos mais vendidos</p>
@@ -217,7 +216,7 @@ const RelatoriosAdmin = () => {
                         <p className="quant__melhores-devs"><b>{jogo.Vendidos}</b></p>
                         <p>{jogo.Jogo}</p>
                         <p>{jogo.Dev}</p>
-                        <p>R${jogo.Valor}</p>
+                        <p>R${jogo.Valor.toFixed(2)}</p>
                       </div>
                     ))}
                   </div>

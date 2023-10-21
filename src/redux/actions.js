@@ -5,7 +5,14 @@ export const SELECT_GAME = 'SELECT_GAME';
 export const DELETE_GAME = 'DELETE_GAME';
 export const ADD_COINS = 'ADD_COINS';
 export const CHANGE_LANGUAGE = 'CHANGE_LANGUAGE';
+export const CHANGE_COLORCARD = 'CHANGE_COLORCARD';
  
+export function changeColorCard(color) { 
+  return { 
+    type: CHANGE_COLORCARD,
+    payload: color
+  };
+}
 export function addCoins(coins) { 
   return { 
     type: ADD_COINS,

@@ -139,14 +139,14 @@ const RelatoriosDev = () => {
                       <XAxis dataKey={filterGraf === "Geral" ? "Month" : "Dia"} />
                       <YAxis />
                       <Tooltip labelFormatter={(value, entry) => filterGraf === "Geral" ? `${value}` : `Dia ${value}`} 
-                      formatter={(value, name, props) => filterGraf === "Geral" ? `R$ ${value.toFixed(2)}` : [`R$ ${value.toFixed(2)}`, `${props.payload.Jogo}`]} />
+                      formatter={(value, name, props) => filterGraf === "Geral" ? `R$ ${value.toFixed(2)}` : [`R$ ${value.toFixed(2)}`, `${props?.payload?.Jogo}`]} />
                       {/* <Legend /> */}
                       <Line type="monotone" dataKey={filterGraf === "Geral" ? "Vendas" : "Valor"} stroke="var(--purple)" activeDot={{ r: 8 }} />
                   </LineChart>
               </div>
               <div className="relatorios-dev__geral">
                 <p>Quantidade de assinantes geral <b>{assinantesGeral}</b></p>
-                <p>Valor Total <b>R${valorTotal}</b></p>
+                <p>Valor Total <b>R${valorTotal.toFixed(2)}</b></p>
               </div>
               <div className="relatorios-dev__quantidade-jogos">
                 <div className="quant-jogos">
@@ -158,10 +158,10 @@ const RelatoriosDev = () => {
                   <div>{[...new Set(mapJogos)].length}</div>
                 </div>
                 <div className="relatorios-dev__vendas">
-                  <p>SubTotal Vendas <b>R${valorTotal}</b></p>
-                  <span>Desconto de -R${valorTotal*0.1}</span>
+                  <p>SubTotal Vendas <b>R${valorTotal.toFixed(2)}</b></p>
+                  <span>Desconto de -R${(valorTotal*0.1).toFixed(2)}</span>
                   <hr />
-                  <p>Valor Total de Lucros<b>R${valorTotal - (valorTotal*0.1)}</b></p>
+                  <p>Valor Total de Lucros<b>R${(valorTotal - (valorTotal*0.1)).toFixed(2)}</b></p>
                 </div>
               </div>
               <div className="relatorios-dev__mais-vendidos">
