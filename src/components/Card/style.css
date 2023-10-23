@@ -38,6 +38,7 @@
     overflow-x: hidden;
     text-overflow: ellipsis;
     direction: ltr;
+    text-align: start;
 }
 .card .card__genres{
     display: flex;

@@ -1,0 +1,90 @@
+.gerenciamento-admin{
+    display: flex;
+    padding: 20px;
+    gap: 30px;
+}
+.gerenciamento-admin aside{
+    background-color: var(--light-background);
+    color: var(--color-primary);
+    width: 15%;
+    display: flex;
+    flex-direction: column;
+    font-family: var(--font-normal);
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+.gerenciamento-admin aside ul{
+    list-style: none;
+    text-align: center;
+    padding: 0;
+}
+.gerenciamento-admin aside ul li{
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: 0.5s all;
+}
+.gerenciamento-admin aside ul li:hover{
+    background-color: var(--light-hover-background);
+}
+.gerenciamento-admin section{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.admin__jogo{
+    width: 45%;
+    padding: 10px;
+    color: var(--color-primary);
+    font-family: var(--font-normal);
+    border-radius: 10px;
+    border:1px solid var(--grey);
+}
+.admin__jogo h2{
+    margin: 0;
+}
+.admin__jogo .admin__jogo-genres{
+    display: flex;
+    gap: 10px;
+}
+.admin__jogo .admin__jogo-genres p{
+    padding: 5px;
+    border-radius: 5px;
+    border:1px solid var(--grey);
+    font-size: 0.7rem;
+}
+.admin__jogo-title{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.admin__jogo-title h2{
+    max-width: 70%;
+}
+.admin__jogo h3{
+    color: var(--grey);
+    font-size: 1.4rem;
+    margin: 5px 0px;
+}
+.admin__jogo-title .admin__jogo-btns{
+    display: flex;
+    gap: 5px;
+}
+.admin__jogo-title button{
+    font-family: var(--font-normal);
+    text-align: center;
+    color: var(--white);
+    background-color: var(--purple);
+    box-shadow: 2px 2px 0px #932eff inset,
+    -2px -2px 0px #44008d inset;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 15px;
+    cursor: pointer;
+}
+.admin__jogo-title .admin__jogo-edit{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}

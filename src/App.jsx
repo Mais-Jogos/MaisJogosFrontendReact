@@ -23,6 +23,7 @@ import RelatoriosDev from "./pages/RelatoriosDev/RelatoriosDev";
 import RelatoriosAdmin from "./pages/RelatoriosAdmin/RelatoriosAdmin";
 import FAQ from "./pages/FAQ/faq";
 import Accessibility from "./pages/Accessibility/Accessibility";
+import GerenciamentoAdmin from "./pages/GerenciamentoAdmin.jsx/GerenciamentoAdmin"; 
 
 
 function App({theme}) {
@@ -50,6 +51,7 @@ function App({theme}) {
           <Route path='/relatorios-admin' element={<RelatoriosAdmin/>}/>
           <Route path='/acessibilidade' element={<Accessibility/>}/>
           <Route path='/faq' element={<FAQ/>}/>
+          <Route path='/gerenciamento-admin' element={<GerenciamentoAdmin/>}/>
         </Routes>
       </BrowserRouter>
     </div>
