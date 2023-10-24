@@ -1,0 +1,199 @@
+.gerenciamento-admin{
+    display: flex;
+    padding: 20px;
+    gap: 30px;
+}
+.gerenciamento-admin aside{
+    background-color: var(--light-background);
+    color: var(--color-primary);
+    width: 15%;
+    display: flex;
+    flex-direction: column;
+    font-family: var(--font-normal);
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+.gerenciamento-admin aside ul{
+    list-style: none;
+    text-align: center;
+    padding: 0;
+}
+.gerenciamento-admin aside ul li{
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: 0.5s all;
+}
+.gerenciamento-admin aside ul li:hover{
+    background-color: var(--light-hover-background);
+}
+.gerenciamento-admin section{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.gerenciamento-admin section h1{
+    margin: 20px 0px 0px 0px;
+}
+.admin__jogo{
+    width: 45%;
+    padding: 10px;
+    color: var(--color-primary);
+    font-family: var(--font-normal);
+    border-radius: 10px;
+    border:1px solid var(--grey);
+}
+.admin__jogo h2{
+    margin: 0;
+}
+.admin__jogo-detalhes{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.admin__jogo-detalhes .admin__jogo-platforms{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.admin__jogo .admin__jogo-genres{
+    display: flex;
+    gap: 10px;
+}
+.admin__jogo .admin__jogo-genres p{
+    padding: 5px;
+    border-radius: 5px;
+    border:1px solid var(--grey);
+    font-size: 0.7rem;
+}
+.admin__jogo-title{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.admin__jogo-title h2{
+    max-width: 70%;
+}
+.admin__jogo h3{
+    color: var(--grey);
+    font-size: 1.4rem;
+    margin: 5px 0px;
+}
+.admin__jogo-title .admin__jogo-btns{
+    display: flex;
+    gap: 5px;
+}
+.admin__jogo-title button{
+    font-family: var(--font-normal);
+    text-align: center;
+    color: var(--white);
+    background-color: var(--purple);
+    box-shadow: 2px 2px 0px #932eff inset,
+    -2px -2px 0px #44008d inset;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 15px;
+    cursor: pointer;
+}
+.admin__jogo-title .admin__jogo-edit{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.jogos-admin__filter{
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+}
+.jogos-admin__filter-categorias, 
+.jogos-admin__filter-classificacao, 
+.jogos-admin__filter-plataforma{
+    display: flex;
+    flex-direction: column;
+}
+.jogos-admin__filter-categorias .jogos-admin__select-categorias, 
+.jogos-admin__filter-classificacao .jogos-admin__select-classificacao, 
+.jogos-admin__filter-plataforma .jogos-admin__select-plataforma{
+    cursor: pointer;
+}
+.jogos-admin__filter-categorias .jogos-admin__select-categorias p, 
+.jogos-admin__filter-classificacao .jogos-admin__select-classificacao p, 
+.jogos-admin__filter-plataforma .jogos-admin__select-plataforma p{
+    border: 1px solid var(--grey);
+    width: 200px;
+    border-radius: 5px;
+    color: var(--color-primary);
+    font-family: var(--font-normal);
+    padding: 5px 10px;
+    height: 20px;
+    display: flex;
+    overflow: hidden;
+    justify-content: space-between;
+    margin: 0;
+}
+
+.jogos-admin__options-categorias, 
+.jogos-admin__options-classificacao, 
+.jogos-admin__options-plataforma{
+    background-color: var(--light-background);
+    color: var(--color-primary);
+    width: 200px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    font-family: var(--font-normal);
+    padding: 20px;
+    border-radius: 5px;
+    overflow-y: auto;
+    position: absolute;
+    top: 270px;
+}
+.jogos-admin__options-categorias .jogos-admin__categorias label, 
+.jogos-admin__options-classificacao .jogos-admin__classificacao label, 
+.jogos-admin__options-plataforma .jogos-admin__plataforma label{
+    text-transform: capitalize;
+    margin: 0;
+    cursor: pointer;
+    padding: 5px 10px;
+}
+.jogos-admin__options-categorias .jogos-admin__categorias input, 
+.jogos-admin__options-classificacao .jogos-admin__classificacao input, 
+.jogos-admin__options-plataforma .jogos-admin__plataforma input{
+    accent-color: var(--purple);
+}
+.jogos-admin__filter-categorias > p, 
+.jogos-admin__filter-classificacao > p, 
+.jogos-admin__filter-plataforma > p,
+.jogos-admin__buscar > p{
+    color: var(--color-primary);
+    font-family: var(--font-normal);
+    margin: 5px;
+}
+
+.jogos-admin__buscar .jogos-admin__input-search input{
+    content: "f002";
+    outline: 0;
+    border: none;
+    background-color: transparent;
+    color: var(--color-primary);
+    padding: 10px;
+}
+.jogos-admin__buscar .jogos-admin__input-search{
+    background-color: var(--transparent-background);
+    border-radius: 20px;
+    gap: 5px;
+    display: flex;
+    align-items: center;
+}
+.jogos-admin__buscar .jogos-admin__input-search i{
+    color: var(--light-hover-background);
+    translate: -15px;
+}
+.jogos-admin__buscar .jogos-admin__input-search i:not(.fa-magnifying-glass){
+    cursor: pointer;
+}

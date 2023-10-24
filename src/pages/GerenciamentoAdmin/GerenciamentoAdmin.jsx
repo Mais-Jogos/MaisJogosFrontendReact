@@ -25,6 +25,7 @@ const GerenciamentoAdmin = () => {
                 </ul>
             </aside>
             <section>
+                <h1>Gerenciamento do Admin</h1>
                 {
                     page === "jogos" ? <PageJogos/> :
                     page === "devs" ? <PageDevs/> :

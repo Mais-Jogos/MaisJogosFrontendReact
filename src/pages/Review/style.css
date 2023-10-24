@@ -45,6 +45,9 @@
 
 .review__TextEdit .review__corpoDescricao{
     margin-top: 13px;
+    font-family: var(--font-normal);
+    max-height: 100px;
+    overflow-y: auto;
 }
 
 .review__gameIMG{
@@ -63,7 +66,6 @@
 .review__TextEdit .review__Button{
     text-align: right;
     margin-right: 10px;
-    margin-top: 30px;
 }
 
 .review__TextEdit .review__Button > Button{

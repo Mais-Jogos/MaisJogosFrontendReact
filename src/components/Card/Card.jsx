@@ -6,24 +6,24 @@ import { selectGame } from '../../redux/actions'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
-const Card = ({games, game, dispatch}) => {
+const Card = ({game, dispatch}) => {
   const handleClickAdd = (game) => {
-    dispatch(selectGame(games[game]));
+    dispatch(selectGame(game));
   };
 
   return (
     <div className="border__card">
     <div className="card">
-      <Link to={`/jogos/${game}`} key={game?.id}>
+      <Link to={`/jogos/${game.name.toLowerCase().replace(/ /g,"-")}`} key={game?.id}>
         <div className="card__image">
-          <img src={games[game]?.background_image} alt={games[game]?.name} />
+          <img src={game?.background_image} alt={game?.name} />
         </div>
       </Link>
       <Link to={`/jogos/${game}`} key={game?.id}>
-        <h2>{games[game]?.name}</h2>
+        <h2>{game?.name}</h2>
       </Link>
       <div className="card__genres">
-        {games[game]?.genres.map((genres) => 
+        {game?.genres.map((genres) => 
         <Link to={`/categorias/category=${genres?.name}`} key={genres?.id}>
           <p key={genres?.id}>{genres?.name}</p>
         </Link>
@@ -31,7 +31,7 @@ const Card = ({games, game, dispatch}) => {
       </div>
       <div className="border__price">
         <div className="price">
-          <h2>R${games[game]?.rating}</h2>
+          <h2>R${game?.rating}</h2>
           <i className="fa-solid fa-cart-shopping" onClick={() => handleClickAdd(game)}></i>
         </div>
       </div>

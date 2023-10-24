@@ -4,8 +4,6 @@
     background: center / contain no-repeat url("../../../public/imgs/icons/heartBg_icon.png") var(--color-secondary);
 }
 
-
-
 .listaDeDesejos__cards__contain {
     width: 100%;
     height: 100%;
@@ -26,7 +24,7 @@
     justify-content: center;
     align-items: center;
     border: 4px solid var(--purple);
-    border-radius: 72px;
+    border-radius: 50px;
     background-color: var(--color-secondary);
 }
 .listaDeDesejos__card__image {
@@ -56,6 +54,7 @@
 .listaDeDesejos__card__info__title h2 {
     font-size: 1.2rem;
     margin-bottom: 50px;
+    text-align: left;
 }
 .listaDeDesejos__card__info__title p {
     font-size: 1.5rem;
