@@ -78,13 +78,13 @@ a{
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  border: 2px solid var(--purple);
   cursor: pointer;
-  padding-left: 2%;
   background: var(--purple);
   width: 50%;
   height: 30px;
   align-items: center;
+  border-radius: 2px;
+  padding-left: 2px;
 }  
 
 .texto-expansivel{
@@ -110,3 +110,24 @@ a{
 }
 
 
+@media screen and (max-width:550px) {
+  .caixa{
+      flex-direction: column;
+      padding: 7px 15px;
+      align-items: center;
+  }
+  h1{
+    font-size: 1rem;
+  }
+  a{
+    font-size: 0.8rem;
+  }
+}
+
+@media screen and (max-width:660px) {
+  .seta{
+    font-size: 0.8rem;
+    width: 100%;
+  }
+
+}
