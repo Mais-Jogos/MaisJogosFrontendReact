@@ -47,10 +47,10 @@
     color: #ddd;
     font-family: var(--font-pixel);
   }
-  .Game__board__jv button:nth-child(1),button:nth-child(2),button:nth-child(3){
+  .Game__board__jv button:nth-child(1),.Game__board__jv button:nth-child(2),.Game__board__jv button:nth-child(3){
     border-top: none;
   }
-  .Game__board__jv button:nth-child(1),button:nth-child(4),button:nth-child(7){
+  .Game__board__jv button:nth-child(1),.Game__board__jv button:nth-child(4),.Game__board__jv button:nth-child(7){
     border-left: none;
   }
   .Game__board__jv button:nth-child(3n){

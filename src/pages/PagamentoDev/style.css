@@ -1,0 +1,315 @@
+.pagamentoDev__main{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+}
+
+
+
+.pagamentoDev__title{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin: 50px 0px;
+}
+.pagamentoDev__title img{
+    position: absolute;
+    left: 8%;
+    filter: var(--filter-image);
+}
+
+
+
+.pagamentoDev__descripiton{
+    text-align: center;
+    width: 50%;
+    height: 100%;
+    border: 2px solid var(--purple);
+    border-radius: 20px;
+}
+.pagamentoDev__descripiton p{
+    color: var(--color-primary);
+    font-size: 1rem;
+    font-family: var(--font-normal);
+}
+
+
+
+.pagamentoDev__pixContainer{
+    width: 60%;
+    height: 100%;
+    border: 2px solid var(--purple);
+    border-radius: 20px;
+}
+.pagamentoDev__pixContainer__header{
+    border: 2px solid var(--purple);
+    border-radius: 17px 17px 0px 0px;
+}
+.pagamentoDev__pixContainer__header__mainImage{
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 50px;
+    margin: 15px;
+}
+.pagamentoDev__pixContainer__header__mainImage h2{
+    color: var(--color-primary);
+    font-family: var(--font-pixel);
+    display: inline-block;
+    margin: 0px 20px;
+}
+.pagamentoDev__pixContainer__header__mainImage img{
+    width: 80px;
+    height: 80px;
+    filter: var(--filter-image);
+}
+.pagamentoDev__pixContainer__content{
+    border: 2px solid var(--purple);
+    border-radius: 0px 0px 15px 15px;
+    text-align: center;
+}
+.pagamentoDev__pixContainer__content h2{
+    font-family: var(--font-normal);
+    color: var(--color-primary);
+}
+.pagamentoDev__pixContainer__content__methods{
+    width: 80%;
+    height: 100%;
+    border: 2px solid var(--purple);
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 5px;
+    align-items: center;
+    align-content: center;
+}
+.pagamentoDev__pixContainer__content__methods__container{
+    border-right: 1px solid var(--purple);
+    padding: 5px;
+    padding-right: 15px;
+}
+.pagamentoDev__pixContainer__content__methods__container:last-child{
+    border: 0px;
+}
+.pagamentoDev__pixContainer__content__register{
+    width: 80%;
+    height: 200px;
+    border: 2px solid var(--purple);
+    margin: 0 auto;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: left;
+}
+.pagamentoDev__pixContainer__content__register label{
+    font-family: var(--font-normal);
+    font-size: .9rem;
+    color: var(--color-primary);
+    margin-right: 30px;
+    display: inline-block;
+    width: 60px;
+}
+#container-page > main > section.pagamentoDev__pixContainer > div.pagamentoDev__pixContainer__content > div.pagamentoDev__pixContainer__content__register > div:nth-child(2) > label{
+    vertical-align: bottom;
+}
+.pagamentoDev__pixContainer__content__register input{
+    background-color: #0e0e0e;
+    border: 0px;
+    border: 1.5px solid var(--purple);
+    width: 300px;
+    border-radius: 5px;
+    padding: 8px;
+    color: #f5f5f5;
+    font-size: .9rem;
+}
+.pagamentoDev__pixContainer__content__methods .pagamentoDev__pixContainer__content__methods__container button{
+    width: 100px;
+    font-family: var(--font-normal);
+    font-size: .85rem;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #0e0e0e;
+    color: #f5f5f5;
+    border: 1px solid var(--purple);
+    cursor: pointer;
+}
+.pagamentoDev__pixContainer__content__methods .pagamentoDev__pixContainer__content__methods__container button.pagamentoDev__pixContainer__content__methods__container--select{
+    border: 0px;
+    color: #f5f5f5;
+    background-color: var(--purple);
+}
+.pagamentoDev__pixContainer__selectTypeOfPix{
+    width: 70%;
+    height: 100%;
+    border-top: 1px solid var(--purple);
+    margin: 10px auto;
+    padding: 3px;
+    padding-top: 10px;
+    text-align: center;
+}
+.pagamentoDev__pixContainer__selectTypeOfPix__button{
+    width: 200px;
+    font-size: 1.18rem;
+    border: 1px solid var(--purple);
+    background-color: #0e0e0e;
+    padding: 5px;
+    color: #f5f5f5;
+    cursor: pointer;
+    border-radius: 5px;
+    font-family: var(--font-normal);
+}
+.pagamentoDev__pixContainer__selectTypeOfPix__button--select{
+    background-color: var(--purple);
+    border: 0;
+}
+.pagamentoDev__pixContainer__selectTypeOfPix__button + button{
+    margin-left: 20px;
+}
+.pagamentoDev__pixContainer__content__methods__buttons{
+    width: 78%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 100px;
+    padding: 20px;
+    border-top: 2px solid var(--purple);
+    margin: 25px auto;
+}
+.pagamentoDev__pixContainer__content__methods__buttons button{
+    width: 150px;
+    border: 0px;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    color: #f5f5f5;
+    padding: 5px;
+    margin: 0px 50px;
+    cursor: pointer;
+}
+.pagamentoDev__pixContainer__content__methods__buttons button:first-child{
+    background-color:var(--purple);
+}
+.pagamentoDev__pixContainer__content__methods__buttons button:last-child{
+    background-color: #009355BF;
+}
+
+
+
+.pagamentoDev__warningMessage{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px 0px 50px;
+
+}
+.pagamentoDev__warningMessage img{
+    width: 50px;
+    height: 50px;
+    filter: var(--filter-image);
+}
+.pagamentoDev__warningMessage div{
+    border: 2px solid var(--purple);
+    width: 500px;
+    margin-left: 20px;
+    text-align: center;
+}
+.pagamentoDev__warningMessage div p{
+    color: var(--color-primary);
+    font-family: var(--font-normal);
+}
+.pagamentoDev__warningMessage div p:first-child{
+    font-weight: bold;
+}
+
+
+
+@media screen and (max-width:1220px){
+    .pagamentoDev__pixContainer__content__methods, .pagamentoDev__pixContainer__content__register{
+        width: 90%;
+    }
+}
+@media screen and (max-width:1084px){
+    .pagamentoDev__pixContainer__content__methods__container, .pagamentoDev__pixContainer__content__methods__container:last-child{
+        border-right: 1px solid var(--purple);
+        padding: 5px;
+        padding-right: 15px;
+    }
+}
+@media screen and (max-width:1025px){
+    .pagamentoDev__pixContainer__selectTypeOfPix__button + button{
+        margin-left: 5px;
+    }
+    .pagamentoDev__pixContainer__selectTypeOfPix__button + button{
+        margin-top: 10px;
+    }
+}
+@media screen and (max-width:985px){
+    .pagamentoDev__pixContainer__selectTypeOfPix__button + button{
+        margin-left: 0px;
+    }
+    .pagamentoDev__pixContainer__content h2{
+        font-size: 1rem;
+    }
+}
+@media screen and (max-width:800px){
+    .pagamentoDev__pixContainer__content__methods__container:last-child{
+        border-right: 0px;
+        border-bottom: 0px;
+        padding: 5px;
+        padding-right: 0px;
+        padding-bottom: 10px;
+    }
+    .pagamentoDev__pixContainer__content__methods__container{
+        border-right: 0px;
+        border-bottom: 1px solid var(--purple);
+        padding: 5px;
+        padding-right: 0px;
+        padding-bottom: 10px;
+    }
+    #container-page > main > section.pagamentoDev__pixContainer > div.pagamentoDev__pixContainer__content > div.pagamentoDev__pixContainer__content__register > div{
+        text-align: center;
+    }
+}
+@media screen and (max-width:720px){
+    .pagamentoDev__pixContainer__content__methods__container:last-child{
+        border-right: 0px;
+        border-bottom: 1px solid var(--purple);
+        padding: 5px;
+        padding-right: 0px;
+        padding-bottom: 10px;
+    }
+    .pagamentoDev__pixContainer__content__register input{
+        width: 150px;
+    }
+    .pagamentoDev__pixContainer__content__methods__buttons{
+        flex-wrap: wrap;
+        gap: 30px;
+    }
+}
+@media screen and (max-width:500px){
+    .pagamentoDev__pixContainer__selectTypeOfPix__button{
+        width: 101px;
+        font-size: .8rem;
+    }
+    .pagamentoDev__pixContainer__content__methods .pagamentoDev__pixContainer__content__methods__container button{
+        width: 70px;
+        font-size: .7rem;
+    }
+}

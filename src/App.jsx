@@ -24,7 +24,7 @@ import RelatoriosAdmin from "./pages/RelatoriosAdmin/RelatoriosAdmin";
 import FAQ from "./pages/FAQ/faq";
 import Accessibility from "./pages/Accessibility/Accessibility";
 import GerenciamentoAdmin from "./pages/GerenciamentoAdmin.jsx/GerenciamentoAdmin"; 
-
+import PagamentoDev from "./pages/PagamentoDev/PagamentoDev";
 
 function App({theme}) {
   return (
@@ -51,6 +51,7 @@ function App({theme}) {
           <Route path='/relatorios-admin' element={<RelatoriosAdmin/>}/>
           <Route path='/acessibilidade' element={<Accessibility/>}/>
           <Route path='/faq' element={<FAQ/>}/>
+          <Route path='/pagamento-dev' element={<PagamentoDev/>}/>
           <Route path='/gerenciamento-admin' element={<GerenciamentoAdmin/>}/>
         </Routes>
       </BrowserRouter>

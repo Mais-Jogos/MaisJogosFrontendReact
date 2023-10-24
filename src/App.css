@@ -42,6 +42,7 @@
     --dark2--change:rgb(19, 19, 19);
     --pink: #FF527B;
     --filter-image: invert(0%);
+    --filter-image-contrast: invert(1);
 }
 [data-theme='contrast'] {
     --background: #000000;
