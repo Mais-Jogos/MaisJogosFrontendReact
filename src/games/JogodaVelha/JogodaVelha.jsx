@@ -78,6 +78,7 @@ const JogodaVelha = ({coins, setCoins}) => {
             const newWinner = getWinner(newValues);
             if (newWinner) {
                 setWinner(newWinner < 0 ? 1 : -1);
+                setCoins(newWinner > 0 ? coins + 1 : coins)
             }
         }
         
@@ -94,9 +95,7 @@ const JogodaVelha = ({coins, setCoins}) => {
         const newWinner = getWinner(newValues)
         if(newWinner){
             setWinner(newWinner < 0 ? 1 : -1);
-            if(winner < 0){
-                setCoins(coins + 1)
-            }
+            setCoins(newWinner > 0 ? coins + 1 : coins)
         }
     }
     function resetGame(){

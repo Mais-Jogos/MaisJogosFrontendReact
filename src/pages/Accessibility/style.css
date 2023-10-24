@@ -1,5 +1,6 @@
 .accessibility__main{
     color: var(--color-primary);
+    font-family: var(--font-normal);
 }
 
 .acessibility_Titulo{
@@ -49,4 +50,9 @@
     border: 4px solid var(--purple);
     border-radius: 8px;
     flex-direction: column;
+}
+@media screen and (max-width:900px){
+    .acessibility_threeBlocks{
+        flex-wrap: wrap;
+    }
 }

@@ -3,6 +3,8 @@ export const CONTRAST_THEME = 'CONTRAST_THEME';
 export const OFF_CONTRAST_THEME = 'OFF_CONTRAST_THEME';
 export const SELECT_GAME = 'SELECT_GAME';
 export const DELETE_GAME = 'DELETE_GAME';
+export const FAVORITE_GAME = 'FAVORITE_GAME';
+export const DELETEFAVORITE_GAME = 'DELETEFAVORITE_GAME';
 export const ADD_COINS = 'ADD_COINS';
 export const CHANGE_LANGUAGE = 'CHANGE_LANGUAGE';
 export const CHANGE_COLORCARD = 'CHANGE_COLORCARD';
@@ -49,6 +51,18 @@ export function selectGame(game) {
 export function deleteGame(game) {
   return { 
     type: DELETE_GAME,
+    payload: game
+  };
+}
+export function favoriteGame(game) { 
+  return { 
+    type: FAVORITE_GAME,
+    payload: game
+  };
+}
+export function deletefavoriteGame(game) {
+  return { 
+    type: DELETEFAVORITE_GAME,
     payload: game
   };
 }

@@ -23,7 +23,7 @@ import RelatoriosDev from "./pages/RelatoriosDev/RelatoriosDev";
 import RelatoriosAdmin from "./pages/RelatoriosAdmin/RelatoriosAdmin";
 import FAQ from "./pages/FAQ/faq";
 import Accessibility from "./pages/Accessibility/Accessibility";
-import GerenciamentoAdmin from "./pages/GerenciamentoAdmin.jsx/GerenciamentoAdmin"; 
+import GerenciamentoAdmin from "./pages/GerenciamentoAdmin/GerenciamentoAdmin"; 
 import PagamentoDev from "./pages/PagamentoDev/PagamentoDev";
 
 function App({theme}) {
@@ -34,7 +34,7 @@ function App({theme}) {
           <Route exact path='/' element={<Home/>}/>
           <Route path='/carrinho' element={<Carrinho/>}/>
           <Route exact path='/Joguinhos' element={<Joguinhos/>}/>
-          <Route path='/jogos/:id' element={<Jogo/>}/>
+          <Route path='/jogos/:name' element={<Jogo/>}/>
           <Route path='/entrar' element={<Entrar/>}/>
           <Route path='/perfil-user' element={<PerfilUser/>}/>
           <Route path='/perfil-dev' element={<PerFilDev/>}/>

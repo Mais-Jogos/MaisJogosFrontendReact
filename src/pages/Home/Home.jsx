@@ -82,30 +82,6 @@ const Home = () => {
     console.log(filter);
   }
 
-  useEffect(()=>{
-    const jogosFiltrados = games?.filter(jogo => {
-      var plataformasSelecionadas;
-      var categoriasSelecionadas;
-      var notasSelecionadas;
-      if(filter.platform !== "Todos"){
-        plataformasSelecionadas = jogo.platforms.some(platforma => filter.platform.includes(platforma.platform.name));
-      }else{
-        plataformasSelecionadas = jogo;
-      }
-      if(filter.category !== "Todos"){
-        categoriasSelecionadas = jogo.genres.some(categoria => filter.category.includes(categoria.name));
-      }else{
-        categoriasSelecionadas = jogo;
-      }
-      if(filter.rating !== "Todos"){
-        notasSelecionadas = jogo.rating >= filter.rating;
-      }else{
-        notasSelecionadas = jogo;
-      }
-      return plataformasSelecionadas && categoriasSelecionadas && notasSelecionadas;
-
-    })
-  },[filter])
   return (
     <div id='container-page' className='home'>
       <Menu/>
@@ -304,7 +280,7 @@ const Home = () => {
                 }
                 return plataformasSelecionadas && categoriasSelecionadas && notasSelecionadas;
               }).slice(0,numberGames).map((game, index)=>(
-                <Card games={games} game={index}/>
+                <Card game={game} />
               ))}
             </div>
             <p onClick={() => setNumberGames(numberGames === 6 ? games.length : 6)}>{numberGames === 6 ?  translate('Ver mais') : translate('Ver menos')}</p>

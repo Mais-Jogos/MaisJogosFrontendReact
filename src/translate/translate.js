@@ -73,6 +73,10 @@ export function translate(value){
             "pt": "Buscar jogo",
             "en":"Search game"
         },
+        "Buscar":{
+            "pt": "Buscar",
+            "en":"Search"
+        },
         "Cadastre seus jogos na nossa plataforma":{
             "pt": "Cadastre seus jogos na nossa plataforma",
             "en":"Register your games on our platform"
