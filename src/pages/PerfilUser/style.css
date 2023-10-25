@@ -84,7 +84,7 @@
     flex-wrap: wrap;
     gap: 50px;
     border-radius: 20px;
-    border: 3px solid var(--purple);
+    border: 3px solid var(--purple-y);
 }
 .perfilUser__userData__input{
     font-size: 1.2rem;
@@ -107,7 +107,7 @@
     display: block;
     border-radius: 5px;
     background-color: var(--dark2);
-    border: 1px solid var(--purple);
+    border: 1px solid var(--purple-y);
     color: var(--color-primary);
     padding: 13px 5px;
     font-size: 1rem;
@@ -142,7 +142,7 @@
     width: 250px;
     height: 200px;
     text-align: center;
-    border: 2px solid var(--purple);
+    border: 2px solid var(--purple-y);
     border-radius: 20px;
     display: flex;
     flex-direction: column;

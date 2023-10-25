@@ -93,7 +93,7 @@ const Entrar = () => {
             {userType === 'Gamer' ? <img src="../public/imgs/girlGamer.png" alt="Gamer" />:
             <img src="../public/imgs/animais/1.png" alt="Desenvolvedor" />}
           </div>
-          <button onClick={()=> {setUserType(''); setData({})}}>Trocar jogador</button>
+          <button onClick={()=> {setUserType(''); setData({}); setMsg('')}}>Trocar jogador</button>
         </div>
         <div className="form__signin">
           <h2>{login ? 'Faça Login' : 'Cadastre-se'}</h2>
@@ -103,8 +103,8 @@ const Entrar = () => {
           {!login && userType === 'Dev' && <CadastroDev data={data} setData={setData}/>}
           {login && userType === 'Dev' && <LoginDev data={data} setData={setData}/>}
           <button onClick={cadastrar}>{login ? 'Entrar' : 'Cadastrar'}</button>
-          {login ? <p>Não possui conta? <a onClick={()=> {setLogin(false); setData({})}}>Cadastre-se</a></p>:
-          <p>Já possui uma conta? <a onClick={()=> {setLogin(true); setData({})}}>Faça login</a></p>}
+          {login ? <p>Não possui conta? <a onClick={()=> {setLogin(false); setData({}); setMsg('')}}>Cadastre-se</a></p>:
+          <p>Já possui uma conta? <a onClick={()=> {setLogin(true); setData({}); setMsg('')}}>Faça login</a></p>}
         </div>
       </div>}
       <Footer/>

@@ -6,6 +6,7 @@
     --color-primary: #0e0e0e;
     --color-secondary: #f5f5f5;
     --purple: #7900fb;
+    --purple-y: #7900fb;
     --font-pixel: 'Silkscreen', cursive;
     --font-normal: 'Poppins', sans-serif;
     --light-background: #d3d3d3;
@@ -30,6 +31,7 @@
     --color-secondary: #0e0e0e;
     --color-primary: #f5f5f5;
     --purple: #7900fb;
+    --purple-y: #7900fb;
     --light-hover-background: #444444;
     --light-background: #252525;
     --transparent-background:#ffffff25;
@@ -50,6 +52,7 @@
     --color-secondary: #000000;
     --text-light: #eeff00;
     --purple: #000000;
+    --purple-y: #eeff00;
     --light-hover-background: #000000;
     --light-background: #000000;
     --transparent-background:#000000;

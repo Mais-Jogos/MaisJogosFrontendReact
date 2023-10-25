@@ -20,8 +20,8 @@ const Categorias = () => {
     rating: false,
   })
   const [filter, setFilter] = useState({
-    category: 'Todos',
-    platform: 'Todos',
+    category: "Todos",
+    platform: "Todos",
     rating: 0,
   })
 
@@ -33,7 +33,7 @@ const Categorias = () => {
       }).catch((error) => { console.log(error); });
 
     const filterCategories = category.split('=');
-    setFilter({ ...filter, [filterCategories[0]]: [...filter[filterCategories[0]], filterCategories[1]] });
+    setFilter({ ...filter, [filterCategories[0]]: [filterCategories[1]] });
   }, [])
   console.log("filter", filter);
 
@@ -84,7 +84,7 @@ const Categorias = () => {
       return plataformasSelecionadas && categoriasSelecionadas && notasSelecionadas;
 
     })
-    console.log(jogosFiltrados);
+    console.log("Jogos",jogosFiltrados);
   }, [filter])
   return (
     <div id='container-page' className='categorias'>
@@ -266,7 +266,7 @@ const Categorias = () => {
                 }
                 return plataformasSelecionadas && categoriasSelecionadas && notasSelecionadas;
               }).map((game, index) => (
-                <Card games={games} game={index} />
+                <Card game={game}/>
               ))}
             </div>
           </div>

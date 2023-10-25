@@ -29,7 +29,7 @@ const Carrinho = ({cart}) => {
             {cart?.cart.map((game, index) =>(
               <CardCart games={cart.cart} game={index} key={game?.id}/>
             ))}
-            {cart?.cart.length === 0 && <p style={{height:'150px'}}>a</p>}
+            {cart?.cart.length === 0 && <p style={{height:'150px'}}></p>}
           </div>
           <div className="cart__total">
             <div className="cart__price">

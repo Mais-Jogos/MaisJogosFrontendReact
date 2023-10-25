@@ -1,8 +1,16 @@
 import "./style.css";
-import React from "react";
+import React, {useEffect, useState} from "react";
 import { Link } from "react-router-dom";
 
 export default props => {
+    const [games, setGames] = useState([]); 
+    useEffect(()=>{
+      const apiKey = 'bb8e5d1e0b2e44d9ac172e791e20ff23'
+      Axios.get(`https://api.rawg.io/api/games?key=${apiKey}`)
+      .then((response) =>{
+        setGames(response.data.results);
+      }).catch((error) => { console.log(error); }); 
+    }, [])
     return (
         <div className="meusjogos__jogos__card">
             <div className="meusjogos__jogos__card__info">

@@ -2,6 +2,7 @@
 #avatares_capivaraICON{
     width: 35px;
     height: auto;
+    filter: var(--filter-image)
 }
 
 .avatares__letraPixel .titulo{

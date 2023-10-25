@@ -148,7 +148,7 @@ const RelatoriosAdmin = () => {
                       <Tooltip labelFormatter={(value, entry) => filterGraf === "Geral" ? `${value}` : `Dia ${value}`} 
                       formatter={(value, props) => value.toFixed(2)} />
                       {/* <Legend /> */}
-                      <Line type="monotone" dataKey={filterGraf === "Geral" ? "Vendas" : "Valor"} stroke="var(--purple)" activeDot={{ r: 8 }} />
+                      <Line type="monotone" dataKey={filterGraf === "Geral" ? "Vendas" : "Valor"} stroke="var(--purple-y)" activeDot={{ r: 8 }} />
                   </LineChart>
               </div>
               <div className="relatorios-admin__geral">
