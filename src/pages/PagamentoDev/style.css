@@ -302,6 +302,33 @@
         flex-wrap: wrap;
         gap: 30px;
     }
+    .pagamentoDev__warningMessage{
+        flex-wrap: wrap;
+    }
+    .pagamentoDev__warningMessage div {
+        margin: 0px;
+        margin-top: 5px;
+        width: 90%;
+        font-size: .7rem;
+        margin-left: 10px;
+    }
+    .pagamentoDev__warningMessage img,.pagamentoDev__title img{
+        width: 30px;
+        height: 30px;
+    }
+    .pagamentoDev__title{
+        font-size: .9rem;
+    }
+    .pagamentoDev__pixContainer, .pagamentoDev__descripiton{
+        width: 80%;
+    }
+    .pagamentoDev__descripiton p{
+        font-size: .8rem;
+    }
+    .pagamentoDev__pixContainer__content__methods__buttons button{
+        font-size: .9rem;
+        width: 100px;
+    }
 }
 @media screen and (max-width:500px){
     .pagamentoDev__pixContainer__selectTypeOfPix__button{
@@ -311,5 +338,14 @@
     .pagamentoDev__pixContainer__content__methods .pagamentoDev__pixContainer__content__methods__container button{
         width: 70px;
         font-size: .7rem;
+    }
+    .pagamentoDev__title{
+        font-size: .7rem;
+    }
+    .pagamentoDev__pixContainer, .pagamentoDev__descripiton{
+        width: 90%;
+    }
+    .pagamentoDev__title img {
+        left: 2%;
     }
 }
