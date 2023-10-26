@@ -26,6 +26,7 @@ import Accessibility from "./pages/Accessibility/Accessibility";
 import GerenciamentoAdmin from "./pages/GerenciamentoAdmin/GerenciamentoAdmin"; 
 import PagamentoDev from "./pages/PagamentoDev/PagamentoDev";
 import Sobre from "./pages/Sobre/Sobre"
+import CadastroReview from "./pages/CadastroReview/CadastroReview";
 
 function App({theme}) {
   return (
@@ -54,6 +55,7 @@ function App({theme}) {
           <Route path='/faq' element={<FAQ/>}/>
           <Route path='/pagamento-dev' element={<PagamentoDev/>}/>
           <Route path='/gerenciamento-admin' element={<GerenciamentoAdmin/>}/>
+          <Route path='/cadastro-review' element={<CadastroReview/>}/>
           <Route path='/sobre' element={<Sobre/>}/>
         </Routes>
       </BrowserRouter>
