@@ -6,6 +6,7 @@
     align-items: center;
     justify-content: center;
     gap: 50px;
+    position: relative;
 }
 
 
@@ -137,7 +138,7 @@
     color: #f5f5f5;
     font-size: .9rem;
 }
-.pagamentoDev__pixContainer__content__methods .pagamentoDev__pixContainer__content__methods__container button{
+.pagamentoDev__pixContainer__content__methods .pagamentoDev__pixContainer__content__methods__container button, .pagamentoDev__pixContainer__content__methods__buttonPixSalvo{
     width: 100px;
     font-family: var(--font-normal);
     font-size: .85rem;
@@ -148,7 +149,11 @@
     border: 1px solid var(--purple);
     cursor: pointer;
 }
-.pagamentoDev__pixContainer__content__methods .pagamentoDev__pixContainer__content__methods__container button.pagamentoDev__pixContainer__content__methods__container--select{
+.pagamentoDev__pixContainer__content__methods__buttonPixSalvo{
+    width: 130px;
+    display: block;
+}
+.pagamentoDev__pixContainer__content__methods .pagamentoDev__pixContainer__content__methods__container button.pagamentoDev__pixContainer__content__methods__container--select, .pagamentoDev__pixContainer__content__methods__buttonPixSalvo:hover{
     border: 0px;
     color: #f5f5f5;
     background-color: var(--purple);
@@ -238,6 +243,51 @@
     font-weight: bold;
 }
 
+
+.pagamentoDev__modalConfirm{
+    display: none;
+    width: 50%;
+    height: 300px;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+    background-color: #f5f5f5;
+    text-align: center;
+    border-radius: 20px;
+}
+.pagamentoDev__modalConfirm > div:first-child{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.pagamentoDev__modalConfirm div div{
+    width: 100%;
+    text-align: center;
+}
+.pagamentoDev__modalConfirm div div p{
+    width: 80%;
+    text-align: center;
+    font-family: var(--font-normal);
+    margin: 0 auto;
+}
+.pagamentoDev__modalConfirm div button{
+    background-color: var(--purple);
+    border: 0px;
+    padding: 20px;
+    color: #f5f5f5;
+    font-weight: bold;
+    border-radius: 20px;
+    cursor: pointer;
+}
+.pagamentoDev__modalConfirm div button:hover{
+    background-color: #7900fbee;
+}
 
 
 @media screen and (max-width:1220px){
