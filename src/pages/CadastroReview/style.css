@@ -1,0 +1,10 @@
+.cadastro-review{
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+.cadastro-review .cadastro-review__title__name{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
