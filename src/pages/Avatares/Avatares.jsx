@@ -31,7 +31,7 @@ export default _ => {
 
                     <CardAvatar color={"orange"} nome={'Silveira'} img={'../../public/imgs/animais/1.png'} rotulo={translate('Equipar')} />
 
-                    <CardAvatar color={"cyan"} nome={'Julia'} img={'../../public/imgs/animais/3.png'} rotulo={translate('Equipar')}/>
+                    <CardAvatar color={"cyan"} nome={'Julia'} img={'../../public/imgs/animais/4.png'} rotulo={translate('Equipar')}/>
 
                     <CardAvatar color={"fuchsia"} nome={'Sr Rocha'} img={'../../public/imgs/animais/2.png'} rotulo={translate('Equipar')}/>
 
