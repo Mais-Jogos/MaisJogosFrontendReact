@@ -1,5 +1,6 @@
 .sobre__main{
     color: var(--color-primary);
+    font-family: var(--font-normal);
 }
 
 .sobre_Titulo{
@@ -50,6 +51,11 @@
 
 .sobre__blocks{
     display: flex;
+    flex-direction: column;
     width:800px;
     gap: 35px;
+}
+
+.encapsulando{
+    display:flex;
 }

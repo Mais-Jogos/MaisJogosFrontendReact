@@ -4,8 +4,35 @@ import Footer from "../../components/Footer/Footer";
 import Acessibilidade from "../../components/Acessibilidade/Acessibilidade";
 import Menu from "../../components/Menu/Menu";
 import Vlibras from '../../components/Vlibras/Vlibras';
+import { AnimatePresence, motion } from 'framer-motion'
 
 export default _ => {
+
+    const [game, setGame] = useState(0);
+    const [direction, setDirection] = useState('left');
+
+    const photos = ['../../public/imgs/animais/2.png', '../../public/imgs/animais/1.png', '../../public/imgs/animais/3.png']
+    const slideVariants = {
+        enter: {
+          x: direction === 'left' ? -1000 : 1000,
+          opacity:1,
+          transition: { duration: 0.2 },
+          zIndex: 1,
+        },
+        visible: {
+          x: 0,
+          opacity:1,
+          transition: { duration: 1},
+          zIndex: 1,
+        },
+        exit: {
+          x: direction === 'left' ? 1000 : -1000,
+          opacity:0,
+          transition: { duration: 0.2 },
+          zIndex: 0,
+        },
+      };
+    
   
     return (
         <div id='container-page'>
@@ -15,11 +42,29 @@ export default _ => {
 
             <main className="sobre__main">
                 <header>
-                    <h1 className="sobre_Titulo">Sobre +Jogos</h1>
+                <h1 className="sobre_Titulo">Sobre +Jogos</h1>
                     
-                    <div className="section__banner">
-                        
-                    </div>
+            <div className="section__banner">
+            <p onClick={()=>{setGame(game === 0 ? photos.length-1 : game-1); setDirection('right')}}>
+              <i className="fa-solid fa-chevron-left"></i>
+            </p>
+            <AnimatePresence>
+              <motion.img src={photos[game]} 
+              alt="" 
+              key={game}
+              variants={slideVariants}
+              transition={{
+                x: { type: "spring", stiffness: 300, damping: 25 },
+                opacity: { duration: 1 }
+              }}
+              initial={"enter"}
+              animate="visible"
+              exit="exit"/>
+            </AnimatePresence>
+            <p onClick={()=>{setGame(game === photos.length-1 ? 0 : game+1); setDirection('left')}}>
+              <i className="fa-solid fa-chevron-right"></i>
+            </p>
+          </div>
                     
                 </header>
 
@@ -38,7 +83,7 @@ export default _ => {
                 <div className="sobre__blocks">
                     
                     <h1 className="sobre_Titulo">Serviços</h1>
-                
+                    <div className='encapsulando'>
                     <div className="sobre__border">
                         <h1 className="sobre_Titulo">Missão</h1> 
                         <p>Capacitar todos os jogadores, promover visibilidade aos desenvolvedores e criar uma comunidade inclusiva em jogos acessíveis e personalizados.</p> 
@@ -50,6 +95,7 @@ export default _ => {
                     <div className="sobre__border">
                         <h1 className="sobre_Titulo">Valor</h1> 
                         <p>Promovemos inclusão, inovação, comunidade, colaboração, ética e paixão pelos jogos como pilares essenciais de nossa abordagem na indústria de jogos.</p> 
+                    </div>
                     </div>
                 </div>
 
