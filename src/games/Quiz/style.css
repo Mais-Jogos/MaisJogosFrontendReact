@@ -72,6 +72,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px;
+    gap: 10px;
 }
 .Game__menu__qz p{
     margin: 0;
@@ -80,6 +81,7 @@
 }
 .title__quiz .Game__menu__qz h2{
     font-family: var(--font-pixel);
-    color: var(--grey-dark);
+    font-size: 1.2rem;
+    color: var(--grey);
     margin: 5px;
 }

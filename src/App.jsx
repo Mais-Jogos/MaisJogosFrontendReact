@@ -25,6 +25,7 @@ import FAQ from "./pages/FAQ/faq";
 import Accessibility from "./pages/Accessibility/Accessibility";
 import GerenciamentoAdmin from "./pages/GerenciamentoAdmin/GerenciamentoAdmin"; 
 import PagamentoDev from "./pages/PagamentoDev/PagamentoDev";
+import Sobre from "./pages/Sobre/Sobre"
 
 function App({theme}) {
   return (
@@ -53,6 +54,7 @@ function App({theme}) {
           <Route path='/faq' element={<FAQ/>}/>
           <Route path='/pagamento-dev' element={<PagamentoDev/>}/>
           <Route path='/gerenciamento-admin' element={<GerenciamentoAdmin/>}/>
+          <Route path='/sobre' element={<Sobre/>}/>
         </Routes>
       </BrowserRouter>
     </div>

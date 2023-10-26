@@ -4,7 +4,7 @@ import Menu from '../../components/Menu/Menu'
 import Card from '../../components/Card/Card'
 import Axios from 'axios'
 import './style.css'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Acessibilidade from '../../components/Acessibilidade/Acessibilidade'
 import Vlibras from '../../components/Vlibras/Vlibras'
 import Footer from '../../components/Footer/Footer'
@@ -12,6 +12,7 @@ import { translate } from '../../translate/translate'
 import { AnimatePresence, motion } from 'framer-motion'
 
 const Home = () => {
+  const navigate = useNavigate()
   const [image, setImage] = useState(1);
   const [games, setGames] = useState([]); 
   const [game, setGame] = useState(0)
@@ -280,7 +281,7 @@ const Home = () => {
                 }
                 return plataformasSelecionadas && categoriasSelecionadas && notasSelecionadas;
               }).slice(0,numberGames).map((game, index)=>(
-                <Card game={game} />
+                <Card game={game}/>
               ))}
             </div>
             <p onClick={() => setNumberGames(numberGames === 6 ? games.length : 6)}>{numberGames === 6 ?  translate('Ver mais') : translate('Ver menos')}</p>
@@ -292,7 +293,7 @@ const Home = () => {
                 <div className="text__publish">
                   <h2>{translate("Publique já")}!</h2>
                   <p>{translate('Cadastre seus jogos na nossa plataforma')}:</p>
-                  <button>{translate("Publicar")}</button>
+                  <button onClick={() => navigate("/entrar")}>{translate("Publicar")}</button>
                 </div>
                 <div className="image__publish">
                   <img src="imgs/animais/3.png" alt="" />

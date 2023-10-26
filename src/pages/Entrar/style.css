@@ -29,7 +29,7 @@
     align-items: center;
     justify-content: center;
     border-radius: 5px;
-    border: 5px solid var(--purple);
+    border: 5px solid var(--purple-y);
     outline: 2px solid var(--black);
     cursor: pointer;
 }
@@ -124,16 +124,19 @@
 .form__signin p{
     font-family: var(--font-normal);
     text-align: center;
-    color: var(--grey-dark);
+    color: var(--grey);
     font-size: 0.9rem;
     margin: 0;
 }
 .form__signin p a{
     font-family: var(--font-normal);
     text-align: center;
-    color: var(--purple);
+    color: var(--purple-y);
     transition: 0.7s all;
     cursor: pointer;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
 }
 .form__signin p a:hover{
     text-decoration: underline;
