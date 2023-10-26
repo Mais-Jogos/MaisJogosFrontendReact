@@ -1,0 +1,25 @@
+.accessibility__main{
+    color: var(--color-primary);
+    font-family: var(--font-normal); 
+}
+
+.pubProfile_Titulo{
+    font-family: var(--font-pixel);
+    color: var(--color-primary);
+    text-align: center;
+}
+
+.perfilDev__userData__avatar__image{
+    width: 267px;
+    height: 267px;
+    border-radius: 50%;
+    background-color: var(--dark2);
+    border: 3px solid var(--purple-y);
+    background: center / contain no-repeat url("../../../public/imgs/animais/2.png") var(--color-secondary);
+    position: relative;
+}
+.perfilDev__userData__avatar__image__editImg{
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+}

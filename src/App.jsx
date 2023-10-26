@@ -27,6 +27,7 @@ import GerenciamentoAdmin from "./pages/GerenciamentoAdmin/GerenciamentoAdmin";
 import PagamentoDev from "./pages/PagamentoDev/PagamentoDev";
 import Sobre from "./pages/Sobre/Sobre"
 import CadastroReview from "./pages/CadastroReview/CadastroReview";
+import PubDev from "./pages/PubDev/PubDev";
 
 function App({theme}) {
   return (
@@ -57,6 +58,7 @@ function App({theme}) {
           <Route path='/gerenciamento-admin' element={<GerenciamentoAdmin/>}/>
           <Route path='/cadastro-review' element={<CadastroReview/>}/>
           <Route path='/sobre' element={<Sobre/>}/>
+          <Route path='/pub-dev' element={<PubDev/>}/>
         </Routes>
       </BrowserRouter>
     </div>
