@@ -30,7 +30,7 @@ export default function FAQ() {
       <Vlibras />
       <Acessibilidade />
       <div className="container-tittle">
-        <img src="../../../public/imgs/icons/iconefaq.svg" alt="FAQIMAGEM" id="img-faq" />
+        <img src="/imgs/icons/iconefaq.svg" alt="FAQIMAGEM" id="img-faq" />
         <h1>FAQ +JOGOS</h1>
       </div>
       <div className="caixa">

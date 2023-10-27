@@ -60,7 +60,7 @@
     align-items: center;
 }
 #menu .menu__search i{
-    color: var(--light-hover-background);
+    color: var(--grey);
     translate: -15px;
 }
 h1{
@@ -76,7 +76,7 @@ h1{
     color: var(--color-primary);
     cursor: pointer;
 }
-@media screen and (max-width:1015px){
+@media screen and (max-width:1260px){
     #label__openMenu{
         display: block;
         z-index: 999;
@@ -97,5 +97,6 @@ h1{
         left: 0;
         padding-top: 70px;
         border-bottom: 1px solid var(--grey);
+        z-index: 998;
     }
 }

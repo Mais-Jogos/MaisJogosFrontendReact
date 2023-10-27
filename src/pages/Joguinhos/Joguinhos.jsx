@@ -38,7 +38,7 @@ const Joguinhos = ({dispatch}) => {
         <div className="border__card__game" onClick={()=> setJogo('JogodaVelha')}>
           <div className="card__game">
             <div className="card__image__game">
-              <img src={'../../public/imgs/jogos/jogoDaVelha.jpeg'} alt={'JogodaVelha'} />
+              <img src={'/imgs/jogos/jogoDaVelha.jpeg'} alt={'JogodaVelha'} />
             </div>
             <div className="border__title__game">
               <div className="title__game">
@@ -50,7 +50,7 @@ const Joguinhos = ({dispatch}) => {
         <div className="border__card__game" onClick={()=> setJogo('Jokenpo')}>
           <div className="card__game">
             <div className="card__image__game">
-              <img src={'../../public/imgs/jogos/jokenpo.jpeg'} alt={'Jokenpo'} />
+              <img src={'/imgs/jogos/jokenpo.jpeg'} alt={'Jokenpo'} />
             </div>
             <div className="border__title__game">
               <div className="title__game">
@@ -62,7 +62,7 @@ const Joguinhos = ({dispatch}) => {
         <div className="border__card__game" onClick={()=> setJogo('Quiz')}>
           <div className="card__game">
             <div className="card__image__game">
-              <img src={'../../public/imgs/jogos/quiz.jpeg'} alt={'Quiz'} />
+              <img src={'/imgs/jogos/quiz.jpeg'} alt={'Quiz'} />
             </div>
             <div className="border__title__game">
               <div className="title__game">

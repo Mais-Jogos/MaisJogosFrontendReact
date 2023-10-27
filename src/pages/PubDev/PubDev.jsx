@@ -19,6 +19,8 @@ export default _ => {
           setGames(response.data.results);
         }).catch((error) => { console.log(error); }); 
       }, [])
+      console.log(games?.slice(numberGames,numberGames+3))
+      const slideGames = games?.slice(numberGames,numberGames+3)
 
     return (
         <div id='container-page'>
@@ -58,10 +60,16 @@ export default _ => {
                 </div>
 
                 <div className="section__pubDev">
-              {games?.slice(0,numberGames).map((game, index)=>(
-                <Card game={game}/>
-              ))}
-            </div>
+                  <p onClick={()=>{setNumberGames(numberGames === 0 ? games.length-1 : numberGames-1); setDirection('right')}}>
+                    <i className="fa-solid fa-chevron-left"></i>
+                  </p>
+                    {games?.slice(numberGames,numberGames+3).map((game, index)=>(
+                      <Card game={game}/>
+                    ))}
+                  <p onClick={()=>{setNumberGames(numberGames === games.length-1 ? 0 : numberGames+1); setDirection('left')}}>
+                    <i className="fa-solid fa-chevron-right"></i>
+                  </p>
+                </div>
 
                 </section>
 

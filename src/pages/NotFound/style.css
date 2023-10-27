@@ -39,6 +39,8 @@
     border-radius: 10px;
     padding: 10px 40px;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
 }
 /* .text404 .botão:hover{
     border: #00a1ff solid 1px;

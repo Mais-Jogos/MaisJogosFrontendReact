@@ -40,7 +40,7 @@
     border-radius: 50%;
     background-color: var(--dark2);
     border: 3px solid var(--purple);
-    background: center / contain no-repeat url("../../../public/imgs/animais/3.png") var(--color-secondary);
+    background: center / contain no-repeat url("/imgs/animais/3.png") var(--color-secondary);
     position: relative;
 }
 .perfilUser__userData__avatar__image__editImg{
@@ -221,7 +221,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url(public/imgs/cardBG/bgCard.png);
+    background-image: url(/imgs/cardbg/bgCard.png);
     background-size: cover;
 }
 

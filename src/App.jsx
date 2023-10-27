@@ -59,7 +59,7 @@ function App({theme}) {
           <Route path='/gerenciamento-admin' element={<GerenciamentoAdmin/>}/>
           <Route path='/cadastro-review/:name' element={<CadastroReview/>}/>
           <Route path='/sobre' element={<Sobre/>}/>
-          <Route path='/pub-dev' element={<PubDev/>}/>
+          <Route path='/dev' element={<PubDev/>}/>
         </Routes>
       </BrowserRouter>
       <Alert />

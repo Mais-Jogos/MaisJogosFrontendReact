@@ -22,7 +22,7 @@ const Carrinho = ({cart}) => {
         <Acessibilidade/>
         <div id="cart">
           <div className="title__cart">
-            <img src="imgs/icons/cart.png" alt="" />
+            <img src="/imgs/icons/cart.png" alt="" />
             <h2>Seu Carrinho</h2>
           </div>
           <div className="cart__games">

@@ -23,7 +23,7 @@ export default props => {
                             <Link to={`/cadastro-review/${props?.nome.toLowerCase().replace(/ /g,"-")}`}className="review__Button">
                                     <button>
                                         <label>Editar</label> 
-                                        <img src="../../public\imgs\icons\edit_icon.png"/>
+                                        <img src="\imgs\icons\edit_icon.png"/>
                                     </button>
                             </Link>
                         </div>

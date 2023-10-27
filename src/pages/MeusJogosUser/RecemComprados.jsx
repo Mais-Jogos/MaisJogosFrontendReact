@@ -33,11 +33,11 @@ export default props => {
                     </div>
                     <div className="meusjogos__jogos__card__actions__action">
                         <Link>
-                            <img src="../../../public/imgs/icons/download_icon.svg" alt="icone de download" />
+                            <img src="/imgs/icons/download_icon.svg" alt="icone de download" />
                             <p>Download</p>
                         </Link>
                         <Link to={`/cadastro-review/${jogo?.name?.toLowerCase().replace(/ /g,"-")}`}>
-                            <img src="../../../public/imgs/icons/review_icon.svg" alt="icone de livro para fazer um review do jogo" />
+                            <img src="/imgs/icons/review_icon.svg" alt="icone de livro para fazer um review do jogo" />
                             <p>Cadastro review</p>
                         </Link>
                     </div>

@@ -23,7 +23,7 @@ const Menu = ({changeTheme, theme, cart, coins, colorCard }) => {
   return (
     <div id='full-menu'>
         <Link to="/">
-          <img src="../public/imgs/logo/logoTextoPositiva.png" alt="" className='logo'/>
+          <img src={'/imgs/LogoTextoPositiva.png'} alt="" className='logo'/>
         </Link>
         <label htmlFor="openMenu" id='label__openMenu'>
           <i className="fa-solid fa-bars"></i>

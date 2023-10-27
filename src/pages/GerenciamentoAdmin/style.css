@@ -164,7 +164,7 @@
 .jogos-admin__options-categorias .jogos-admin__categorias input, 
 .jogos-admin__options-classificacao .jogos-admin__classificacao input, 
 .jogos-admin__options-plataforma .jogos-admin__plataforma input{
-    accent-color: var(--purple);
+    accent-color: var(--purple-y);
 }
 .jogos-admin__filter-categorias > p, 
 .jogos-admin__filter-classificacao > p, 
@@ -180,7 +180,7 @@
     outline: 0;
     border: none;
     background-color: transparent;
-    color: var(--color-primary);
+    color: var(--grey);
     padding: 10px;
 }
 .jogos-admin__buscar .jogos-admin__input-search{
@@ -191,7 +191,7 @@
     align-items: center;
 }
 .jogos-admin__buscar .jogos-admin__input-search i{
-    color: var(--light-hover-background);
+    color: var(--grey);
     translate: -15px;
 }
 .jogos-admin__buscar .jogos-admin__input-search i:not(.fa-magnifying-glass){

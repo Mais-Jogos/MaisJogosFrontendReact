@@ -33,7 +33,7 @@ const LoginAdmin = () => {
         <div className='page__cad__admin'>
             <div className="page__cad__aside__admin">
                 <div className="signin__img__admin">
-                    <img src="../public/imgs/animais/2.png" alt="Desenvolvedor" />
+                    <img src="/imgs/animais/2.png" alt="Desenvolvedor" />
                 </div>
             </div>
             <div className="form__signin__admin">

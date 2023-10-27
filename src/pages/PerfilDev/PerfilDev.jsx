@@ -53,7 +53,7 @@ export default props => {
                 <section className="perfilDev__userData">
                     <div className="perfilDev__userData__avatar">
                         <div className="perfilDev__userData__avatar__image">
-                            {editButton ? <img src="../../../public/imgs/icons/edit_icon.png" alt="Ícone de edição dos inputs" className="perfilDev__userData__avatar__image__editImg" /> : false}
+                            {editButton ? <img src="/imgs/icons/edit_icon.png" alt="Ícone de edição dos inputs" className="perfilDev__userData__avatar__image__editImg" /> : false}
                         </div>
                     </div>
 
@@ -63,7 +63,7 @@ export default props => {
                             <label htmlFor="username">Username</label>
                             <input type="text" id="username" value={userData.username} onChange={e => dispatch({ type: 'change_username', username: e.target.value })} aria-label="Digite o username"></input>
 
-                            {editButton ? <img src="../../../public/imgs/icons/edit_icon.png" alt="Ícone de edição dos inputs" className="perfilDev__userData__input__editImg" /> : false}
+                            {editButton ? <img src="/imgs/icons/edit_icon.png" alt="Ícone de edição dos inputs" className="perfilDev__userData__input__editImg" /> : false}
                         </div>
 
                         <div className="perfilDev__userData__input">
@@ -75,14 +75,14 @@ export default props => {
                             <label htmlFor="email">Email</label>
                             <input type="email" id="email" value={userData.email} onChange={e => dispatch({ type: 'change_email', email: e.target.value })} aria-label="Digite seu email"></input>
 
-                            {editButton ? <img src="../../../public/imgs/icons/edit_icon.png" alt="Ícone de edição dos inputs" className="perfilDev__userData__input__editImg" /> : false}
+                            {editButton ? <img src="/imgs/icons/edit_icon.png" alt="Ícone de edição dos inputs" className="perfilDev__userData__input__editImg" /> : false}
                         </div>
 
                         <div className="perfilDev__userData__input">
                             <label htmlFor="senha">Senha</label>
                             <input type="password" id="senha" value={userData.senha} onChange={e => dispatch({ type: 'change_senha', senha: e.target.value })} aria-label="Digite sua senha"></input>
 
-                            {editButton ? <img src="../../../public/imgs/icons/edit_icon.png" alt="Ícone de edição dos inputs" className="perfilDev__userData__input__editImg" /> : false}
+                            {editButton ? <img src="/imgs/icons/edit_icon.png" alt="Ícone de edição dos inputs" className="perfilDev__userData__input__editImg" /> : false}
                         </div>
 
                         <div className="perfilDev__userData__descr">
@@ -90,7 +90,7 @@ export default props => {
                                 <label htmlFor="descricao">Descrição</label>
                                 <textarea id="descricao" value={userData.descricao} onChange={e => dispatch({ type: 'change_descricao', descricao: e.target.value })} aria-label="Digite sua descrição"></textarea>
 
-                                {editButton ? <img src="../../../public/imgs/icons/edit_icon.png" alt="Ícone de edição dos inputs" className="perfilDev__userData__input__editImg" /> : false}
+                                {editButton ? <img src="/imgs/icons/edit_icon.png" alt="Ícone de edição dos inputs" className="perfilDev__userData__input__editImg" /> : false}
                             </div>
                             
                             <div className="perfilDev__userData__input">
@@ -105,19 +105,19 @@ export default props => {
 
                 <section className="perfilDev__actions">
                     <Link className="perfilDev__action" to="/">
-                        <img src="../../../public/imgs/icons/mais_icon.png" alt="Ícone de Mais que redireciona para a página de Meus jogos do desesenvolvedor" />
+                        <img src="/imgs/icons/mais_icon.png" alt="Ícone de Mais que redireciona para a página de Meus jogos do desesenvolvedor" />
                         <p>Meus jogos</p>
                     </Link>
                     <Link className="perfilDev__action" to="/">
-                        <img src="../../../public/imgs/icons/eventos_icon.svg" alt="Ícone de Eventos que redireciona para a página de eventos" />
+                        <img src="/imgs/icons/eventos_icon.svg" alt="Ícone de Eventos que redireciona para a página de eventos" />
                         <p>Eventos</p>
                     </Link>
                     <Link className="perfilDev__action" to="/relatorios-dev">
-                        <img src="../../../public/imgs/icons/dashboard__icon.png" alt="Ícone de um gráfico que redireciona para a página de relatórios do desenvolvedor" />
+                        <img src="/imgs/icons/dashboard__icon.png" alt="Ícone de um gráfico que redireciona para a página de relatórios do desenvolvedor" />
                         <p>Dashboard</p>
                     </Link>
                     <Link className="perfilDev__action" to="/cadastro-jogo">
-                        <img src="../../../public/imgs/icons/controler__icon.png" alt="Ícone de um controle que redireciona para a página cadastramento de jogo" />
+                        <img src="/imgs/icons/controler__icon.png" alt="Ícone de um controle que redireciona para a página cadastramento de jogo" />
                         <p>Cadastrar Jogo</p>
                     </Link>
                 </section>

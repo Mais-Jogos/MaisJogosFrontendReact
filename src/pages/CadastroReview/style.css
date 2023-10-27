@@ -93,7 +93,7 @@
 .cadastro-review__form .cadastro-review__btns .cadastro-review__btns-excluir, .cadastro-review__btns-voltar{
     font-family: var(--font-pixel);
     text-align: center;
-    color: var(--purple-y);
+    color: var(--purple);
     background-color: var(--white);
     box-shadow: 2px 2px 0px #d8d8d8 inset,
     -2px -2px 0px #686868 inset;

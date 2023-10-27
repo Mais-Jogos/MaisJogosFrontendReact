@@ -31,7 +31,7 @@
         padding: 5px 10px;
     }
     .section__categories-categorias .categorias__categorias input{
-        accent-color: var(--purple);
+        accent-color: var(--purple-y);
     }
     .section__categories-categorias h2{
         margin: 5px;
@@ -162,7 +162,7 @@
     .categorias__options-categorias .categorias__categorias input, 
     .categorias__options-classificacao .categorias__classificacao input, 
     .categorias__options-plataforma .categorias__plataforma input{
-        accent-color: var(--purple);
+        accent-color: var(--purple-y);
     }
     .categorias__filter-categorias > p, 
     .categorias__filter-classificacao > p, 

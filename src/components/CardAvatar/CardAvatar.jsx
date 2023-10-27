@@ -11,7 +11,7 @@ const CardAvatar = ({nome, rotulo, img, color}) => {
         >
         <div className="avatares__cardBG">
             <div className="avatares__imgBG" style={{
-                backgroundImage:`url(public/imgs/cardbg/bgCard.png)` ,
+                backgroundImage:`url(/imgs/cardbg/bgCard.png)` ,
                 backgroundColor: color,
                 backgroundSize:"100%",
                 boxShadow: hover && `inset 0px 0px 20px ${color}, 0px 0px 10px ${color}`,

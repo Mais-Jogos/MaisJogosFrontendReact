@@ -40,7 +40,7 @@
     border-radius: 50%;
     background-color: var(--dark2);
     border: 3px solid var(--purple-y);
-    background: center / contain no-repeat url("../../../public/imgs/animais/2.png") var(--color-secondary);
+    background: center / contain no-repeat url("/imgs/animais/2.png") var(--color-secondary);
     position: relative;
 }
 .perfilDev__userData__avatar__image__editImg{

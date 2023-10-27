@@ -37,7 +37,7 @@
 .settings ul li {
     font-family: var(--font-normal);
     padding: 10px;
-    color: var(--white);
+    color: var(--color-primary);
 }
 
 .settings ul li:hover {
@@ -71,7 +71,7 @@
 
 .textToSpeech__container>img {
     color: var(--grey);
-    background-color: var(--color-primary);
+    background-color: var(--white);
     border-radius: 5px;
     font-size: 20px;
     padding: 8px;

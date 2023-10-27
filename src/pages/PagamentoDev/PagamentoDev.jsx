@@ -66,7 +66,7 @@ export default props => {
             <Acessibilidade />
             <main className="pagamentoDev__main">
                 <section className="pagamentoDev__title">
-                    <img src="../../public\imgs\icons\goBack__icon.svg" alt="ícone de voltar para a página anterior"></img>
+                    <img src="\imgs\icons\goBack__icon.svg" alt="ícone de voltar para a página anterior"></img>
 
                     <h1>Requerimento de pagamento</h1>
                 </section>
@@ -78,7 +78,7 @@ export default props => {
                 <section className="pagamentoDev__pixContainer">
                     <div className="pagamentoDev__pixContainer__header">
                         <div className="pagamentoDev__pixContainer__header__mainImage">
-                            <img src="../../public\imgs\icons\pix__icon.svg" alt="ícone de pix"></img>
+                            <img src="\imgs\icons\pix__icon.svg" alt="ícone de pix"></img>
                             <h2>Pix</h2>
                         </div>
 
@@ -170,7 +170,7 @@ export default props => {
                 </section>
 
                 <section className="pagamentoDev__warningMessage">
-                    <img src="../../public\imgs\icons\warning__icon.svg" alt="ícone de aviso" />
+                    <img src="\imgs\icons\warning__icon.svg" alt="ícone de aviso" />
 
                     <div>
                         <p>Informativo</p>

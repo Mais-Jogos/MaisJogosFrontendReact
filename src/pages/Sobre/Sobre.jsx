@@ -11,7 +11,7 @@ export default _ => {
     const [game, setGame] = useState(0);
     const [direction, setDirection] = useState('left');
 
-    const photos = ['../../public/imgs/animais/2.png', '../../public/imgs/animais/1.png', '../../public/imgs/animais/3.png']
+    const photos = ['/imgs/animais/2.png', '/imgs/animais/1.png', '/imgs/animais/3.png']
     const slideVariants = {
         enter: {
           x: direction === 'left' ? -1000 : 1000,
@@ -84,18 +84,18 @@ export default _ => {
                     
                     <h1 className="sobre_Titulo">Serviços</h1>
                     <div className='encapsulando'>
-                    <div className="sobre__border">
-                        <h1 className="sobre_Titulo">Missão</h1> 
-                        <p>Capacitar todos os jogadores, promover visibilidade aos desenvolvedores e criar uma comunidade inclusiva em jogos acessíveis e personalizados.</p> 
-                    </div>
-                    <div className="sobre__border">
-                        <h1 className="sobre_Titulo">Visão</h1> 
-                        <p>Tornar-se a líder global em acessibilidade e personalização de jogos, impulsionando a inclusão e reconhecimento dos desenvolvedores, com visão de um futuro inclusivo e inovador na indústria de jogos.</p> 
-                    </div>
-                    <div className="sobre__border">
-                        <h1 className="sobre_Titulo">Valor</h1> 
-                        <p>Promovemos inclusão, inovação, comunidade, colaboração, ética e paixão pelos jogos como pilares essenciais de nossa abordagem na indústria de jogos.</p> 
-                    </div>
+                      <div className="sobre__border">
+                          <h1 className="sobre_Titulo">Missão</h1> 
+                          <p>Capacitar todos os jogadores, promover visibilidade aos desenvolvedores e criar uma comunidade inclusiva em jogos acessíveis e personalizados.</p> 
+                      </div>
+                      <div className="sobre__border">
+                          <h1 className="sobre_Titulo">Visão</h1> 
+                          <p>Tornar-se a líder global em acessibilidade e personalização de jogos, impulsionando a inclusão e reconhecimento dos desenvolvedores, com visão de um futuro inclusivo e inovador na indústria de jogos.</p> 
+                      </div>
+                      <div className="sobre__border">
+                          <h1 className="sobre_Titulo">Valor</h1> 
+                          <p>Promovemos inclusão, inovação, comunidade, colaboração, ética e paixão pelos jogos como pilares essenciais de nossa abordagem na indústria de jogos.</p> 
+                      </div>
                     </div>
                 </div>
 

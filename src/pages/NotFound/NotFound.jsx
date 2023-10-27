@@ -16,7 +16,7 @@ const NotFound = () => {
                 <Link to="/" className="botão">Ir para Home</Link>
             </div>
             <div className="fundoimg">
-                <img src="./imgs/animais/1.png" alt="" />
+                <img src="/imgs/animais/1.png" alt="" />
             </div>
         </main>
         <Vlibras />

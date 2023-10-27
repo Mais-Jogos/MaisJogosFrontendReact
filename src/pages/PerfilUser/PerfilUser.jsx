@@ -99,10 +99,10 @@ const PerfilUser = (props) => {
                         <div className="perfilUser-card__border" style={glowStyles}>
                             <div className="perfilUser-card__cardBG" >
                                 <div className="perfilUser-card__imgBG" style={{ backgroundColor: userData.colorCard }}>
-                                    <img id="perfilUser-card__parrot" src={'public/imgs/animais/3.png'} />
+                                    <img id="perfilUser-card__parrot" src={'/imgs/animais/3.png'} />
                                 </div>
                                 <div className="perfilUser-card__cardFooter">
-                                    <img className="perfilUser-card__imgEdit" src="public/imgs/icons/Kapicoin_icon.png" />
+                                    <img className="perfilUser-card__imgEdit" src="/imgs/icons/Kapicoin_icon.png" />
                                     <p> 3000 </p>
                                     <input
                                         type="color"
@@ -112,7 +112,7 @@ const PerfilUser = (props) => {
                                             dispatch({ type: 'change_colorCard', colorCard: e.target.value });
                                             newDispatch({ type: 'CHANGE_COLORCARD', colorCard: e.target.value });
                                         }} />
-                                    {editButton ? <img src="../../../public/imgs/icons/edit_icon.png" alt="icons da moeda da loja" className="perfilUser__userData__avatar__image__editImg" /> : false}                                </div>
+                                    {editButton ? <img src="/imgs/icons/edit_icon.png" alt="icons da moeda da loja" className="perfilUser__userData__avatar__image__editImg" /> : false}                                </div>
                             </div>
                         </div>
                     </motion.div>
@@ -131,11 +131,11 @@ const PerfilUser = (props) => {
                           >
                             
                         <div className="perfilUser__userData__avatar__image">
-                            {editButton ? <img src="../../../public/imgs/icons/edit_icon.png" alt="icons da moeda da loja" className="perfilUser__userData__avatar__image__editImg" /> : false}
+                            {editButton ? <img src="/imgs/icons/edit_icon.png" alt="icons da moeda da loja" className="perfilUser__userData__avatar__image__editImg" /> : false}
                         </div>
 
                         <div className="perfilUser__userData__avatar__capCoins">
-                            <img src="../../../public/imgs/icons/Kapicoin_icon.png" alt="icons da moeda da loja" />
+                            <img src="/imgs/icons/Kapicoin_icon.png" alt="icons da moeda da loja" />
                             <span>30.000</span>
                         </div>
                     </motion.div> */}
@@ -145,7 +145,7 @@ const PerfilUser = (props) => {
                             <label htmlFor="username">Username</label>
                             <input type="text" id="username" value={userData.username} onChange={e => dispatch({ type: 'change_username', username: e.target.value })}></input>
 
-                            {editButton ? <img src="../../../public/imgs/icons/edit_icon.png" alt="icons da moeda da loja" className="perfilUser__userData__input__editImg" /> : false}
+                            {editButton ? <img src="/imgs/icons/edit_icon.png" alt="icons da moeda da loja" className="perfilUser__userData__input__editImg" /> : false}
                         </div>
 
                         <div className="perfilUser__userData__input">
@@ -157,14 +157,14 @@ const PerfilUser = (props) => {
                             <label htmlFor="email">Email</label>
                             <input type="email" id="email" value={userData.email} onChange={e => dispatch({ type: 'change_email', email: e.target.value })}></input>
 
-                            {editButton ? <img src="../../../public/imgs/icons/edit_icon.png" alt="icons da moeda da loja" className="perfilUser__userData__input__editImg" /> : false}
+                            {editButton ? <img src="/imgs/icons/edit_icon.png" alt="icons da moeda da loja" className="perfilUser__userData__input__editImg" /> : false}
                         </div>
 
                         <div className="perfilUser__userData__input">
                             <label htmlFor="senha">Senha</label>
                             <input type="password" id="senha" value={userData.senha} onChange={e => dispatch({ type: 'change_senha', senha: e.target.value })}></input>
 
-                            {editButton ? <img src="../../../public/imgs/icons/edit_icon.png" alt="icons da moeda da loja" className="perfilUser__userData__input__editImg" /> : false}
+                            {editButton ? <img src="/imgs/icons/edit_icon.png" alt="icons da moeda da loja" className="perfilUser__userData__input__editImg" /> : false}
                         </div>
 
                         <div className="perfilUser__userData__input">
@@ -178,23 +178,23 @@ const PerfilUser = (props) => {
 
                 <section className="perfilUser__actions">
                     <Link className="perfilUser__action" to="/meus-jogos">
-                        <img src="../../../public/imgs/icons/mais_icon.png" alt="icone de Mais que redireciona para a página descrita" />
+                        <img src="/imgs/icons/mais_icon.png" alt="icone de Mais que redireciona para a página descrita" />
                         <p>Meus jogos</p>
                     </Link>
                     <Link className="perfilUser__action" to="/lista-desejos">
-                        <img src="../../../public/imgs/icons/heart_icon.png" alt="icone de Coração que redireciona para a página descrita" />
+                        <img src="/imgs/icons/heart_icon.png" alt="icone de Coração que redireciona para a página descrita" />
                         <p>Lista de desejos</p>
                     </Link>
                     <Link className="perfilUser__action" to="/review">
-                        <img src="../../../public/imgs/icons/review_icon.svg" alt="icone de Livro que redireciona para a página descrita" />
+                        <img src="/imgs/icons/review_icon.svg" alt="icone de Livro que redireciona para a página descrita" />
                         <p>Review de jogos</p>
                     </Link>
                     <Link className="perfilUser__action" to="/avatares">
-                        <img src="../../../public/imgs/icons/capivara_icon.svg" alt="icone da Capivara que redireciona para a página descrita" />
+                        <img src="/imgs/icons/capivara_icon.svg" alt="icone da Capivara que redireciona para a página descrita" />
                         <p>Avatares comprados</p>
                     </Link>
                     <Link className="perfilUser__action" to="/">
-                        <img src="../../../public/imgs/icons/eventos_icon.svg" alt="icone de Eventos que redireciona para a página descrita" />
+                        <img src="/imgs/icons/eventos_icon.svg" alt="icone de Eventos que redireciona para a página descrita" />
                         <p>Eventos</p>
                     </Link>
                 </section>

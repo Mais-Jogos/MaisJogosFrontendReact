@@ -5,7 +5,7 @@ import Acessibilidade from '../../components/Acessibilidade/Acessibilidade'
 import Footer from "../../components/Footer/Footer";
 import { Link } from "react-router-dom";
 import RecemComprados from "./RecemComprados";
-import TodosComprados from "./todosComprados";
+import TodosComprados from "./TodosComprados";
 import HeaderWithFilter from "../../components/HeaderWithFiilter/HeaderWithFilter";
 import Vlibras from '../../components/Vlibras/Vlibras';
 
@@ -20,7 +20,7 @@ export default _ => {
             <Vlibras/>
             <Acessibilidade />
             <main className="meusjogos__main">
-                <HeaderWithFilter name="Meus +jogos" imgIcon="../../../public/imgs/icons/psButtons_icon.png"/>
+                <HeaderWithFilter name="Meus +jogos" imgIcon="/imgs/icons/psbuttons_icon.png"/>
 
                 <section className="meusjogos__menu">
                     <div className="meusjogos__menu__titles">

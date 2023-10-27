@@ -54,8 +54,8 @@ const Acessibilidade = ({ theme, offContrastTheme, contrastTheme }) => {
           <li onClick={theme === 'contrast' ? offContrastTheme : contrastTheme}>{theme === 'contrast' ? 'Desativar' : 'Ativar'} contraste</li>
           <li className='acess-language'>
             Idioma 
-            <img src="imgs/icons/pt.png" title={"pt-br"} onClick={(e) => changeLang("pt")}/> 
-            <img src="imgs/icons/en.png" title={"eng"} onClick={(e) => changeLang("en")}/>
+            <img src="/imgs/icons/pt.png" title={"pt-br"} onClick={(e) => changeLang("pt")}/> 
+            <img src="/imgs/icons/en.png" title={"eng"} onClick={(e) => changeLang("en")}/>
           </li>
         </ul>
       }

@@ -1,7 +1,7 @@
 .listaDeDesejos__main {
     width: 100%;
     height: 100%;
-    background: center / contain no-repeat url("../../../public/imgs/icons/heartBg_icon.png") var(--color-secondary);
+    background: center / contain no-repeat url("/imgs/icons/heartBg_icon.png") var(--color-secondary);
 }
 
 .listaDeDesejos__cards__contain {
@@ -34,7 +34,8 @@
 }
 .listaDeDesejos__card__image img {
     width: 100%;
-    height: 100%;
+    height: 230px;
+    object-fit: cover;
     border-radius: 10px;
 }
 .listaDeDesejos__card__info {
@@ -83,6 +84,13 @@
     margin: 10px;
     cursor: pointer;
 }
+.listaDeDesejos__card__info__actions>i {
+    background-color: #ffffff3d;
+    color: var(--white);
+    border-radius: 50%;
+    padding: 10px;
+    cursor: pointer;
+}
 .listaDeDesejos__card__info__actions>img {
     width: 40px;
     height: 40px;
@@ -94,12 +102,12 @@
 .listaDeDesejos__trash {
     cursor: pointer;
 }
-.listaDeDesejos__trash img {
-    width: 40px;
-    height: 40px;
+.listaDeDesejos__trash i {
+    font-size: 3rem;
+    color: var(--purple-y);
     transition: .7s;
 }
-.listaDeDesejos__trash img:hover {
+.listaDeDesejos__trash i:hover {
     filter: hue-rotate(5deg);
 }
 

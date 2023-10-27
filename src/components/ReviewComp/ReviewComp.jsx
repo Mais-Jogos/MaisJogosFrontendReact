@@ -9,7 +9,7 @@ export default props => {
                 <h1 className="reviewComp--center">{props.name || "Título"}</h1>
             </div>
             <div>
-                <img src="../../../public/imgs/icons/filter_icon.png" alt="icone de filtro" className="reviewComp--center" />
+                <img src="/imgs/icons/filter_icon.png" alt="icone de filtro" className="reviewComp--center" />
                 <p className="reviewComp--center">Relevância</p>
             </div>
             

@@ -296,7 +296,7 @@ const Home = () => {
                   <button onClick={() => navigate("/entrar")}>{translate("Publicar")}</button>
                 </div>
                 <div className="image__publish">
-                  <img src="imgs/animais/3.png" alt="" />
+                  <img src="/imgs/animais/3.png" alt="" />
                 </div>
               </div>
             </div>
@@ -305,7 +305,7 @@ const Home = () => {
             <div className="border__card__newsletter">
               <div className="card__newsletter">
                 <div className="image__newsletter">
-                  <img src="imgs/animais/2.png" alt="" />
+                  <img src="/imgs/animais/2.png" alt="" />
                 </div>
                 <div className="text__newsletter">
                   <h2>{translate("Fique por dentro dos lançamentos")}!</h2>

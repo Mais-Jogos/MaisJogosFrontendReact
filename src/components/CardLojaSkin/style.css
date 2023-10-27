@@ -84,7 +84,10 @@
     padding: 5px;
 }
 
-.lojaskin__SVG{
-    background-color: var(--grey-dark);
+.lojaskin__SVG i{
+    background-color: #ffffff3d;
+    color: var(--white);
     border-radius: 50%;
+    padding: 7px;
+    cursor: pointer;
 }

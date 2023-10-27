@@ -10,6 +10,7 @@ import { connect } from 'react-redux'
 import './style.css';
 import Acessibilidade from '../../components/Acessibilidade/Acessibilidade';
 import Footer from '../../components/Footer/Footer';
+import Vlibras from '../../components/Vlibras/Vlibras';
 
 const Jogo = ({dispatch}) => {
     const [game, setGame] = useState(); 
@@ -42,6 +43,7 @@ const Jogo = ({dispatch}) => {
     <div id='container-page'>
         <Menu/>
         <Acessibilidade/>
+        <Vlibras/>
         <div>
           <div className="game__page">
             <div className="game__page__image">

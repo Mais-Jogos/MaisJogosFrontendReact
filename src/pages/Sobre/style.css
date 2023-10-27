@@ -36,6 +36,7 @@
     border-radius: 8px;
     margin-bottom: 13px;
     flex-direction: column;
+    padding: 15px;
 }
 
 .sobre__grid{
@@ -58,4 +59,5 @@
 
 .encapsulando{
     display:flex;
+    gap: 20px;
 }

@@ -1,5 +1,5 @@
 .home{
-/*     background-image: url(../../../public/imgs/backgroundCyberpunk.png);
+/*     background-image: url(/imgs/backgroundCyberpunk.png);
  */    background-repeat: no-repeat;
     background-size: cover;
     height: 100vh;
@@ -32,7 +32,7 @@
     padding: 5px 10px;
 }
 .section__categories .home__categorias input{
-    accent-color: var(--purple);
+    accent-color: var(--purple-y);
 }
 .section__categories h2{
     margin: 5px;
@@ -157,7 +157,7 @@
     align-items: stretch;
 }
 .card__publish{
-    background-image: url(imgs/publish_image.png);
+    background-image: url(/imgs/publish_image.png);
     background-size: cover;
 }
 
@@ -187,8 +187,8 @@
     cursor: pointer;
 }
 .text__newsletter input{
-    border: 1px solid var(--purple);
-    color: var(--grey-dark);
+    border: 1px solid var(--purple-y);
+    color: var(--color-primary);
     padding: 10px 15px;
     border-radius: 10px;
     background-color: transparent;
@@ -260,7 +260,7 @@
 .home__options-categorias .home__categorias input, 
 .home__options-classificacao .home__classificacao input, 
 .home__options-plataforma .home__plataforma input{
-    accent-color: var(--purple);
+    accent-color: var(--purple-y);
 }
 .home__filter-categorias > p, 
 .home__filter-classificacao > p, 

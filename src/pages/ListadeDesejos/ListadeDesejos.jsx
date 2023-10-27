@@ -25,7 +25,7 @@ const ListadeDesejos = ({listadesejos, dispatch}) => {
       <Vlibras/>
       <Acessibilidade />
       <main className='listaDeDesejos__main'>
-        <HeaderWithFilter name="Lista de Desejos" imgIcon="../../../public\imgs\icons\heart_icon.png" />
+        <HeaderWithFilter name="Lista de Desejos" imgIcon="\imgs\icons\heart_icon.png" />
 
         <section className='listaDeDesejos__cards'>
           {listadesejos?.listadesejos?.map((jogo) => (<div className='listaDeDesejos__cards__contain'>
@@ -42,15 +42,15 @@ const ListadeDesejos = ({listadesejos, dispatch}) => {
 
                 <div className='listaDeDesejos__card__info__actions'>
                   <div onClick={()=> navigate(`/jogos/${jogo?.name.toLowerCase().replace(/ /g, "-")}`)}>
-                    <img src="../../../public/imgs/icons/detalhes__icon.svg" alt="ícone de olho representando mais detalhes do jogo" />
+                    <img src="/imgs/icons/detalhes__icon.svg" alt="ícone de olho representando mais detalhes do jogo" />
                     <p>Detalhes</p>
                   </div>
-                  <img src="../../../public/imgs/icons/cart__icon.svg" alt="ícone de carrinho" onClick={() => addGameCart(jogo)}/>
+                  <i class="fa-solid fa-cart-shopping" alt="ícone de carrinho" onClick={() => addGameCart(jogo)}></i>
                 </div>
               </div>
             </div>
             <div className='listaDeDesejos__trash'>
-              <img src="../../../public/imgs/icons/trash_icon.svg" alt="ícone de carrinho" onClick={() => deleteGame(jogo)}/>
+            <i class="fa-regular fa-trash-can" alt="ícone de carrinho" onClick={() => deleteGame(jogo)}></i>
             </div>
           </div>))}
         </section>
