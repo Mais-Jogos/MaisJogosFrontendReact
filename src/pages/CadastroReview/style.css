@@ -8,3 +8,101 @@
     align-items: center;
     justify-content: center;
 }
+.cadastro-review__form{
+    color: var(--color-primary);
+    font-family: var(--font-normal);
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid var(--purple-y);
+    align-items: center;
+    justify-content: center;
+    max-width: 50vw;
+    margin: 20px auto;
+}
+.cadastro-review__form img{
+    width: 100%;
+    margin: 0px auto;
+    border-radius: 5px;
+}
+.cadastro-review__form h2{
+    margin: 15px auto;
+}
+.cadastro-review__form textarea{
+    width: calc(100% - 30px);
+    resize: none;
+}
+.cadastro-review__form label{
+    width: 100%;
+    text-align: left;
+    margin: 10px 0px;
+}
+.cadastro-review__form .cadastro-review__avaliacao{
+    width: calc(100% - 30px);
+    border-radius: 5px;
+    border: 1px solid var(--color-primary);
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-family: var(--font-normal);
+}
+.cadastro-review__form .cadastro-review__avaliacao div{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
+}
+.cadastro-review__form .cadastro-review__avaliacao div i{
+    cursor: pointer;
+}
+.cadastro-review__form .cadastro-review__avaliacao div p{
+    margin: 0px;
+}
+.cadastro-review__form .cadastro-review__btns{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 20px;
+}
+.cadastro-review__form .cadastro-review__btns .cadastro-review__btns-actions{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+}
+.cadastro-review__form .cadastro-review__btns .cadastro-review__btns-salvar{
+    font-family: var(--font-pixel);
+    text-align: center;
+    color: var(--white);
+    background-color: var(--purple);
+    box-shadow: 2px 2px 0px #932eff inset,
+    -2px -2px 0px #44008d inset;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 20px 0px 0px 0px;
+}
+.cadastro-review__form .cadastro-review__btns .cadastro-review__btns-excluir, .cadastro-review__btns-voltar{
+    font-family: var(--font-pixel);
+    text-align: center;
+    color: var(--purple-y);
+    background-color: var(--white);
+    box-shadow: 2px 2px 0px #d8d8d8 inset,
+    -2px -2px 0px #686868 inset;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 20px 0px 0px 0px;
+}

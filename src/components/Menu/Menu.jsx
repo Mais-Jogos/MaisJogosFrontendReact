@@ -52,11 +52,11 @@ const Menu = ({changeTheme, theme, cart, coins, colorCard }) => {
             <Link to="/entrar">{translate("Entrar")}</Link>
             <Link to="/carrinho">
               {cart.cart.length} 
-              <img src={'imgs/icons/cart.png'} />
+              <img src={'/imgs/icons/cart.png'} />
             </Link>
             <Link to="#">
               {coins.coins}
-              <img src={'imgs/icons/Kapicoin_icon.png'} />
+              <img src={'/imgs/icons/Kapicoin_icon.png'} />
             </Link>
             <Link onClick={changeTheme}>
               {theme === 'dark' ? 
@@ -65,7 +65,7 @@ const Menu = ({changeTheme, theme, cart, coins, colorCard }) => {
               <i className="fa-solid fa-sun"></i>}
             </Link>
             <Link to="/perfil-user">
-              <img src={'imgs/animais/3-face.png'} className='perfil-menu' style={{backgroundColor:colorCard.colorCard}}/>
+              <img src={'/imgs/animais/3-face.png'} className='perfil-menu' style={{backgroundColor:colorCard.colorCard}}/>
             </Link>
         </div>
     </div>

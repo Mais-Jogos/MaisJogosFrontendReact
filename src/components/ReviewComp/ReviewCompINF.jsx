@@ -1,5 +1,6 @@
 import "./style.css";
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default props => {
     return (
@@ -19,7 +20,12 @@ export default props => {
                         
                         <div className="review__partInferior">
                             <p className="review__corpoDescricao">{props.corpo}</p>
-                            <p className="review__Button"><button><label>Editar</label> <img src="../../public\imgs\icons\edit_icon.png"/></button></p>
+                            <Link to={`/cadastro-review/${props?.nome.toLowerCase().replace(/ /g,"-")}`}className="review__Button">
+                                    <button>
+                                        <label>Editar</label> 
+                                        <img src="../../public\imgs\icons\edit_icon.png"/>
+                                    </button>
+                            </Link>
                         </div>
                     </div>
             </div>

@@ -36,7 +36,7 @@ export default props => {
                                 <img src="../../../public/imgs/icons/download_icon.svg" alt="icone de download" />
                                 <p>Download</p>
                             </Link>
-                            <Link to={`/jogos/${jogo?.name?.toLowerCase().replace(/ /g,"-")}`}>
+                            <Link to={`/cadastro-review/${jogo?.name?.toLowerCase().replace(/ /g,"-")}`}>
                                 <img src="../../../public/imgs/icons/review_icon.svg" alt="icone de livro para fazer um review do jogo" />
                                 <p>Cadastro review</p>
                             </Link>

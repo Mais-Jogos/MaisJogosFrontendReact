@@ -2,16 +2,18 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react'
 import './style.css'
-import { selectGame } from '../../redux/actions'
+import { selectGame, showAlert } from '../../redux/actions'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 const Card = ({game, dispatch}) => {
   const handleClickAdd = (game) => {
     dispatch(selectGame(game));
+    dispatch(showAlert(`Você adicionou um jogo ao carrinho`))
   };
 
   return (
+  <>
     <div className="border__card">
     <div className="card">
       <Link to={`/jogos/${game?.name?.toLowerCase().replace(/ /g,"-")}`} key={game?.id}>
@@ -37,6 +39,7 @@ const Card = ({game, dispatch}) => {
       </div>
     </div>
   </div>
+  </>
   )
 }
 const mapStateToProps = (state) => ({

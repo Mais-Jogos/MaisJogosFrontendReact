@@ -5,6 +5,7 @@ import coinsReducer from './coinsReducer';
 import translateReducer from './translateReducer';
 import userReducer from './userReducer';
 import listadesejosReducer from './listadesejosReducer';
+import alertReducer from './alertReducer';
 
 const rootReducer = combineReducers({
   theme: themeReducer,
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
   language: translateReducer,
   colorCard: userReducer,
   listadesejos: listadesejosReducer,
+  alertMessage: alertReducer,
 });
 
 export default rootReducer;

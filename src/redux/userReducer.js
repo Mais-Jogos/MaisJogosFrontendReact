@@ -2,6 +2,7 @@ import { CHANGE_COLORCARD } from './actions';
  
 const initialState = { 
   colorCard: '#000',
+  message:null,
 }; 
  
 export default function userReducer(state = initialState, action) { 

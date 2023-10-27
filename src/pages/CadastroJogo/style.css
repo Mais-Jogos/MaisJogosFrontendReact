@@ -401,6 +401,8 @@ button.cadastroJogo__content__buttons--select{
 .cadastroJogo__step__buttonNext{
     color: var(--color-primary);
     background-color: var(--purple);
+    box-shadow: 2px 2px 0px #932eff inset,
+    -2px -2px 0px #44008d inset;
 }
 .cadastroJogo__step__buttonNext:hover{
     background-color: #7900fbcd;
@@ -408,6 +410,8 @@ button.cadastroJogo__content__buttons--select{
 .cadastroJogo__step__buttonBack{
     color: var(--color-secondary);
     background-color: var(--color-primary);
+    box-shadow: 2px 2px 0px #d8d8d8 inset,
+    -2px -2px 0px #686868 inset;
 }
 
 

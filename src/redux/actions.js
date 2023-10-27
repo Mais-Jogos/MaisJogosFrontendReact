@@ -8,23 +8,37 @@ export const DELETEFAVORITE_GAME = 'DELETEFAVORITE_GAME';
 export const ADD_COINS = 'ADD_COINS';
 export const CHANGE_LANGUAGE = 'CHANGE_LANGUAGE';
 export const CHANGE_COLORCARD = 'CHANGE_COLORCARD';
+export const SHOW_ALERT = 'SHOW_ALERT';
+export const HIDE_ALERT = 'HIDE_ALERT';
  
 export function changeColorCard(color) { 
   return { 
     type: CHANGE_COLORCARD,
-    payload: color
+    payload: color,
   };
 }
-export function addCoins(coins) { 
-  return { 
+export function addCoins(coins) {
+  return{ 
     type: ADD_COINS,
-    payload: coins
-  };
+    payload: coins,
+    message:`Você ganhou ${coins} kapicoins`,
+  }
 }
 export function changeLanguage(language) { 
   return { 
     type: CHANGE_LANGUAGE,
     payload: language
+  };
+}
+export function showAlert(message) { 
+  return { 
+    type: SHOW_ALERT,
+    payload: message,
+  };
+}
+export function hideAlert() { 
+  return { 
+    type: HIDE_ALERT,
   };
 }
 export function changeTheme() { 
@@ -42,27 +56,31 @@ export function offContrastTheme() {
     type: OFF_CONTRAST_THEME,
   };
 }
-export function selectGame(game) { 
-  return { 
+export function selectGame(game) {
+  return{ 
     type: SELECT_GAME,
-    payload: game
-  };
+    payload: game,
+    message:"Você adicionou um jogo do carrinho",
+  }
 }
 export function deleteGame(game) {
   return { 
     type: DELETE_GAME,
-    payload: game
+    payload: game,
+    message:"Você removeu um jogo do carrinho"
   };
 }
 export function favoriteGame(game) { 
   return { 
     type: FAVORITE_GAME,
-    payload: game
-  };
+    payload: game,
+    message:"Você adicionou um jogo a lista de desejos",
+  }
 }
 export function deletefavoriteGame(game) {
-  return { 
+  return{ 
     type: DELETEFAVORITE_GAME,
-    payload: game
-  };
+    payload: game,
+    message:"Você removeu um jogo a lista de desejos",
+  }
 }

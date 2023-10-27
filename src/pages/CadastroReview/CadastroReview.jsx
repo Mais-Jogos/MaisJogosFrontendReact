@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import Acessibilidade from '../../components/Acessibilidade/Acessibilidade'
 import Menu from '../../components/Menu/Menu'
 import "./style.css"
@@ -8,10 +8,11 @@ import Axios from 'axios'
 const CadastroReview = () => {
   const [game, setGame] = useState(); 
   const [review, setReview] = useState({
-    rating:0,
+    rating:5,
     descripition:"",
   })
   const {name} = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {  
     const apiKey = 'bb8e5d1e0b2e44d9ac172e791e20ff23'
@@ -26,14 +27,36 @@ const CadastroReview = () => {
       <Acessibilidade/>
       <div className="cadastro-review">
         <div className="cadastro-review__title__name">
-          <img src="src\components\ReviewComp\review_icon.svg" alt="icone de controle de botões" />
-          <h1>Cadastro Review</h1>
+          <img src="\src\components\ReviewComp\review_icon.svg" alt="icone de controle de botões" />
+          <h1>Cadastrar Review</h1>
         </div>
         <div className="cadastro-review__form">
           <img src={game?.background_image} alt="" />
-          {Array(5).map((num, index)=>(
-            <i key={index} className={`fa-${rating <= filter.rating ? 'solid':'regular'} fa-star`} onClick={(e) => changeFilter(e, 'rating', rating)}></i>
-          ))}
+          <h2>{game?.name}</h2>
+          <div className="cadastro-review__avaliacao">
+            Avaliação
+            <div>
+            {[1,2,3,4,5].map((num, index)=>(
+              <i class={`fa-${num <= review?.rating ? 'solid':'regular'} fa-star`} key={index} onClick={() => setReview({...review, rating: num})}></i>
+            ))}
+            <p>{review?.rating}/5</p>
+            </div>
+          </div>
+          <label htmlFor="review">Review:</label>
+          <textarea name="review" id="review" cols="30" rows="10"></textarea>
+          <div className="cadastro-review__btns">
+            <button className='cadastro-review__btns-voltar' onClick={()=> navigate("/meus-jogos")}>
+              <i class="fa-solid fa-arrow-rotate-left" ></i>Voltar
+            </button>
+            <div className="cadastro-review__btns-actions">
+              <button className='cadastro-review__btns-excluir'>
+                <i class="fa-regular fa-trash-can"></i>Excluir
+              </button>
+              <button className='cadastro-review__btns-salvar'>
+                <i class="fa-regular fa-floppy-disk"></i>Salvar
+              </button>
+            </div>
+          </div>
         </div>
       </div>
         

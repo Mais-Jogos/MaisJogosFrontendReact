@@ -1,7 +1,8 @@
 import { CHANGE_LANGUAGE } from './actions'
 
 const initialState = {
-    language: 'pt'
+    language: 'pt',
+    message:null,
 }
 
 export default function translateReducer(state = initialState, action){

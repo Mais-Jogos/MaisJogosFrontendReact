@@ -111,6 +111,8 @@
     color: var(--color-primary);
     padding: 13px 5px;
     font-size: 1rem;
+    box-shadow: 2px 2px 0px #932eff inset,
+    -2px -2px 0px #44008d inset;
 }
 .perfilUser__userData__input:nth-child(5) input{
     border-radius: 10px;

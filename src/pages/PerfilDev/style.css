@@ -89,6 +89,8 @@ div.perfilDev__userData__descr > .perfilDev__userData__input:nth-child(2){
     color: var(--color-primary);
     padding: 13px 5px;
     font-size: 1rem;
+    box-shadow: 2px 2px 0px #932eff inset,
+    -2px -2px 0px #44008d inset;
 }
 div.perfilDev__userData__descr >.perfilDev__userData__input:nth-child(2) input{
     border-radius: 10px;

@@ -3,6 +3,7 @@ import { CHANGE_THEME, CONTRAST_THEME, OFF_CONTRAST_THEME } from './actions';
 const initialState = { 
     theme:'dark',
     beforeContrast: null,
+    message:null,
 }; 
  
 export default function themeReducer(state = initialState, action) { 

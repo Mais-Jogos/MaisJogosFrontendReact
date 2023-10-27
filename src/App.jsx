@@ -28,6 +28,7 @@ import PagamentoDev from "./pages/PagamentoDev/PagamentoDev";
 import Sobre from "./pages/Sobre/Sobre"
 import CadastroReview from "./pages/CadastroReview/CadastroReview";
 import PubDev from "./pages/PubDev/PubDev";
+import Alert from "./components/Alert/Alert";
 
 function App({theme}) {
   return (
@@ -56,11 +57,12 @@ function App({theme}) {
           <Route path='/faq' element={<FAQ/>}/>
           <Route path='/pagamento-dev' element={<PagamentoDev/>}/>
           <Route path='/gerenciamento-admin' element={<GerenciamentoAdmin/>}/>
-          <Route path='/cadastro-review' element={<CadastroReview/>}/>
+          <Route path='/cadastro-review/:name' element={<CadastroReview/>}/>
           <Route path='/sobre' element={<Sobre/>}/>
           <Route path='/pub-dev' element={<PubDev/>}/>
         </Routes>
       </BrowserRouter>
+      <Alert />
     </div>
   )
 }

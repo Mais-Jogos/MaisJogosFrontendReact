@@ -21,6 +21,7 @@
     "react-router-dom": "^6.15.0",
     "recharts": "^2.9.0",
     "redux": "^4.2.1",
+    "redux-thunk": "^2.4.2",
     "use-local-storage": "^3.0.0"
   },
   "devDependencies": {

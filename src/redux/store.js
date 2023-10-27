@@ -1,9 +1,4 @@
 import { createStore } from 'redux';
-import themeReducer from './themeReducer';
-import cartReducer from './cartReducer'
-import coinsReducer from './coinsReducer';
-import translateReducer from './translateReducer';
-import userReducer from './userReducer';
-import listadesejosReducer from './listadesejosReducer';
+import rootReducer from './rootReducer';
 
-export const store = createStore(themeReducer, cartReducer, coinsReducer, translateReducer, userReducer, listadesejosReducer);
+export const store = createStore(rootReducer);

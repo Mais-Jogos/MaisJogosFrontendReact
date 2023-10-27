@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import './style.css'
 import Footer from "../../components/Footer/Footer";
 import Acessibilidade from "../../components/Acessibilidade/Acessibilidade";
@@ -6,9 +6,17 @@ import Menu from "../../components/Menu/Menu";
 import ReviewComp from "../../components/ReviewComp/ReviewComp";
 import ReviewCompINF from "../../components/ReviewComp/ReviewCompINF";
 import Vlibras from '../../components/Vlibras/Vlibras';
+import Axios from 'axios'
 
 export default _ => {
-
+    const [games, setGames] = useState([]); 
+    useEffect(()=>{
+      const apiKey = 'bb8e5d1e0b2e44d9ac172e791e20ff23'
+      Axios.get(`https://api.rawg.io/api/games?key=${apiKey}`)
+      .then((response) =>{
+        setGames(response.data.results);
+      }).catch((error) => { console.log(error); }); 
+    }, [])
     return (
         <div id='container-page'>
             <Menu />
@@ -19,13 +27,11 @@ export default _ => {
             <ReviewComp name="Review de jogos"/>
                 
                 <section className="review__Section">
-                    
-                <ReviewCompINF minhaIMG="../../public\imgs\jogos\meusjogos_01.png" nome="Celeste" descricao="Minha descrição" data="Data de postagem 29/04/23" corpo="Não esperava nada do game e fui surpreendida muito positivamente. A Mecânica é revigorante e saber que algo assim foi feito por brasileiros me dá muito orgulho. O jogo final cumpre o que promete!"/>
-
-                <ReviewCompINF minhaIMG="../../public\imgs\jogos\meusjogos_02.png" nome="Lenda do Heroi" descricao="Minha descrição" data="Data de postagem 29/04/23" corpo="Não esperava nada do game e fui surpreendida muito positivamente. A Mecânica é revigorante e saber que algo assim foi feito por brasileiros me dá muito orgulho. O jogo final cumpre o que promete!" />
-
-                <ReviewCompINF minhaIMG="../../public\imgs\jogos\meusjogos_03.png" nome="Guns n' Runs" descricao="Minha descrição" data="Data de postagem 29/04/23" corpo="Não esperava nada do game e fui surpreendida muito positivamente. A Mecânica é revigorante e saber que algo assim foi feito por brasileiros me dá muito orgulho. O jogo final cumpre o que promete!" />
-
+                {
+                    games?.slice(0,3).map((jogo) =>(
+                    <ReviewCompINF minhaIMG={jogo?.background_image} nome={jogo?.name} descricao="Minha descrição" data="Data de postagem 29/04/23" corpo="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam deserunt maiores voluptatum placeat veritatis maxime, optio vero corporis sit est consequuntur temporibus ipsum perferendis accusamus delectus illo quasi dignissimos. Odio."/>
+                    ))
+                }
                 </section>
 
             </main>

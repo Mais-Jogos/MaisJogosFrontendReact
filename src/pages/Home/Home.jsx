@@ -174,7 +174,7 @@ const Home = () => {
                       >
                       {
                         [...new Set(generos?.map((game) => game.name))].map(category => (
-                          <div className='home__categorias'>
+                          <div className='home__categorias' key={category}>
                             <input type="checkbox" name="Categorias" id={category} onClick={(e) => changeFilter(e, 'category', category)}/>
                             <label key={category} htmlFor={category} >{category}</label>
                           </div>
@@ -207,7 +207,7 @@ const Home = () => {
                       >
                       {              
                         [...new Set(plataformas2?.map((game) => game.name))].map(platform => (
-                          <div className='home__categorias'>
+                          <div className='home__categorias' key={platform}>
                             <input type="checkbox" name="Plataformas" id={platform} onClick={(e) => changeFilter(e, 'platform', platform)}/>
                             <label key={platform} htmlFor={platform} >{platform}</label>
                           </div>
@@ -225,7 +225,7 @@ const Home = () => {
                     <div>
                       {filter.rating === 0 ?
                       [1,2,3,4,5].map(rating => (
-                        <i className={`fa-regular fa-star`}></i>
+                        <i className={`fa-regular fa-star`} key={rating}></i>
                       ))
                       :[...Array(filter.rating)].map((_, index) => (
                         <i key={index} className={`fa-solid fa-star`} onClick={(e) => changeFilter(e, 'rating', rating)}></i>
@@ -281,7 +281,7 @@ const Home = () => {
                 }
                 return plataformasSelecionadas && categoriasSelecionadas && notasSelecionadas;
               }).slice(0,numberGames).map((game, index)=>(
-                <Card game={game}/>
+                <Card game={game} key={index}/>
               ))}
             </div>
             <p onClick={() => setNumberGames(numberGames === 6 ? games.length : 6)}>{numberGames === 6 ?  translate('Ver mais') : translate('Ver menos')}</p>
