@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 import ModalSearch from '../ModalSearch/ModalSearch';
 import { translate } from '../../translate/translate';
 
-const Menu = ({changeTheme, theme, cart, coins, colorCard }) => {
+const Menu = ({changeTheme, theme, cart, coins, userRedux }) => {
   const [openMenu, setOpenMenu] = useState(false);
   const [search, setSearch] = useState('');
   const [modalSearch, setModalSearch] = useState(false);
@@ -54,7 +54,7 @@ const Menu = ({changeTheme, theme, cart, coins, colorCard }) => {
               {cart.cart.length} 
               <img src={'/imgs/icons/cart.png'} />
             </Link>
-            <Link to="#">
+            <Link to="/loja-skin">
               {coins.coins}
               <img src={'/imgs/icons/Kapicoin_icon.png'} />
             </Link>
@@ -65,7 +65,7 @@ const Menu = ({changeTheme, theme, cart, coins, colorCard }) => {
               <i className="fa-solid fa-sun"></i>}
             </Link>
             <Link to="/perfil-user">
-              <img src={'/imgs/animais/3-face.png'} className='perfil-menu' style={{backgroundColor:colorCard.colorCard}}/>
+              <img src={`/imgs/animais/${userRedux.avatar.id}-face.png`} className='perfil-menu' style={{backgroundColor:userRedux.colorCard}}/>
             </Link>
         </div>
     </div>
@@ -75,14 +75,14 @@ Menu.propTypes = {
   theme: PropTypes.string.isRequired,
   cart: PropTypes.string.isRequired,
   changeTheme: PropTypes.func.isRequired,
-  colorCard:PropTypes.func.isRequired,
+  userRedux:PropTypes.func.isRequired,
 };
 const mapStateToProps = state => {
   return {
     theme: state.theme.theme,
     cart: state.cart,
     coins: state.coins,
-    colorCard: state.colorCard
+    userRedux: state.userRedux
   };
 };
 

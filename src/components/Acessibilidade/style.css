@@ -15,7 +15,7 @@
 
 .settings>i {
     padding: 10px;
-    color: var(--grey);
+    color: var(--color-primary);
     background-color: var(--light-hover-background);
     border-radius: 5px;
     font-size: 20px;

@@ -10,9 +10,9 @@
     font-size: 1rem;
 }
 
-.reviewComp__title__name img {
-    width: 50px;
-    height: 50px;
+.reviewComp__title__name > i {
+    font-size: 4rem;
+    color: var(--purple-y);
     margin: 30px;
 }
 
@@ -20,6 +20,11 @@
     display: inline-block;
     text-align: center;
     vertical-align: middle;
+}
+i.reviewComp--center-filter {
+    font-size: 2rem;
+    color: var(--purple-y);
+    margin-right: 5px;
 }
 
 .reviewComp__title div:last-child > p{

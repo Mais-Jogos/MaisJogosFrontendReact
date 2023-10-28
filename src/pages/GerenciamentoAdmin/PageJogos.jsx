@@ -234,7 +234,7 @@ const PageJogos = () => {
                   <i class="fa-solid fa-pen"></i>
                   Editar
                 </button>
-                <button className="admin__jogo-view" onClick={() => navigate(`/jogos/${index}`)}>
+                <button className="admin__jogo-view" onClick={() => navigate(`/jogos/${game?.name?.toLowerCase().replace(/ /g,"-")}`)}>
                   <i class="fa-solid fa-eye"></i>
                 </button>
               </div>

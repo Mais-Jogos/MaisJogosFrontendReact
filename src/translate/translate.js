@@ -13,6 +13,10 @@ export function translate(value){
             "pt": "Equipar",
             "en":"Equip"
         },
+        "Equipado":{
+            "pt": "Equipado",
+            "en":"equipped"
+        },
         "Avatares de Evento":{
             "pt": "Avatares de Evento",
             "en":"Event Avatars"
@@ -112,6 +116,10 @@ export function translate(value){
         "Joguinhos":{
             "pt": "Joguinhos",
             "en":"Minigames"
+        },
+        "Loja de Skin":{
+            "pt": "Loja de Skin",
+            "en":"Skin Store"
         },
     }
     return vocabulary[value][language] ? vocabulary[value][language] : value;

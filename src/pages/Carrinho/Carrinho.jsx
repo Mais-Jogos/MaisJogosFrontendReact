@@ -33,7 +33,7 @@ const Carrinho = ({cart}) => {
           </div>
           <div className="cart__total">
             <div className="cart__price">
-              <h2>SubTotal <b>R${total}</b></h2>
+              <h2>SubTotal <b>R${total.toFixed(2)}</b></h2>
             </div>
             <button className="finalizar__pedido">
               Finalizar pedido

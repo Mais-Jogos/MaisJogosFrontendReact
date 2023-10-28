@@ -101,8 +101,8 @@
 }
 
 #avatares__parrot{
-    width: 140px;
-    height: auto;
+    width: auto;
+    height: 150px;
 }
 
 .avatares__cardFooter{
@@ -147,6 +147,50 @@
     text-align: left;
     width:100%;
     margin-top: -9px;
+}
+.avatares__cardFooter, .equipado{
+  color: var(--purple-y);
+}
+
+.lojaskin__cardFooter, .lojaskin__letraPixel{
+  font-family: var(--font-pixel); 
+  text-align: left;
+  width:100%;
+  margin-top: -9px;          
+}
+
+.lojaskin__cardFooter{
+  display: flex;
+  width:90%;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  border: 4px solid var(--purple);
+  background-color: var(--black);
+  border-radius: 8px;
+  margin-bottom: 13px;
+}
+
+.lojaskin__cardFooter svg:last-child {
+  width: 15px;
+  height: 15px;
+}
+
+.lojaskin__imgEdit{
+  width: 30px;
+  height:auto;
+}
+
+.lojaskin__imgEdit{
+  padding: 5px;
+}
+
+.lojaskin__SVG i{
+  background-color: #ffffff3d;
+  color: var(--white);
+  border-radius: 50%;
+  padding: 7px;
+  cursor: pointer;
 }
 
 

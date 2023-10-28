@@ -6,9 +6,56 @@ import Menu from "../../components/Menu/Menu";
 import CardAvatar from "../../components/CardAvatar/CardAvatar";
 import Vlibras from "../../components/Vlibras/Vlibras";
 import { translate } from "../../translate/translate";
+import { connect } from "react-redux";
+import { useDispatch } from "react-redux";
+import { addAvatar } from "../../redux/actions";
 
-export default _ => {
-
+const Avatares = ({userRedux}) => {
+    const dispatch = useDispatch()
+    const handleClickAdd = (avatar) =>{
+        dispatch(addAvatar(avatar));
+        console.log(avatar);
+        console.log(userRedux);
+        return null;
+    }   
+    
+    const avatares = [
+        {
+            nome: "Silveira",
+            img:"/imgs/animais/1.png",
+            color:"orange",
+            coins:10,
+            id:1,
+        },
+        {
+            nome: "Julia",
+            img:"/imgs/animais/3.png",
+            color:"cyan",
+            coins:5,
+            id:2,
+        },
+        {
+            nome: "Sr. Rocha",
+            img:"/imgs/animais/2.png",
+            color:"fuchsia",
+            coins:20,
+            id:3,
+        },
+        {
+            nome: "Veronica",
+            img:"/imgs/animais/4.png",
+            color:"blue",
+            coins:50,
+            id:4,
+        },
+        {
+            nome: "Rochinha",
+            img:"/imgs/animais/5.png",
+            color:"red",
+            coins:500,
+            id:5,
+        },
+    ]
     return (
         <div id='container-page'>
             <Menu />
@@ -22,28 +69,21 @@ export default _ => {
 
                 <section className="avatares__grid">
                     
-                    
-                    <CardAvatar color={"orange"} nome={'Silveira'} img={'/imgs/animais/1.png'} rotulo={translate('Equipar')}/>
-
-                    <CardAvatar color={"cyan"} nome={'Julia'} img={'/imgs/animais/3.png'} rotulo={translate('Equipar')}/>
-
-                    <CardAvatar color={"fuchsia"} nome={'Sr Rocha'} img={'/imgs/animais/2.png'} rotulo={translate('Equipar')}/>
-
-                    <CardAvatar color={"orange"} nome={'Silveira'} img={'/imgs/animais/1.png'} rotulo={translate('Equipar')} />
-
-                    <CardAvatar color={"cyan"} nome={'Julia'} img={'/imgs/animais/4.png'} rotulo={translate('Equipar')}/>
-
-                    <CardAvatar color={"fuchsia"} nome={'Sr Rocha'} img={'/imgs/animais/2.png'} rotulo={translate('Equipar')}/>
+                    {
+                        userRedux.avatares?.map((avatar) =>(
+                            <CardAvatar avatar={avatar} handleClickAdd={handleClickAdd}/>
+                        ))
+                    }
 
                     <div className="avatares__letraPixel">
-                        <h1 className="titulo"> <img id="avatares_capivaraICON" src="\imgs\icons\capivara_icon.svg"/>{translate('Avatares de Evento')}</h1>
+                        <h1 className="titulo"> <img id="avatares_capivaraICON" src="\imgs\icons\capivara_icon.svg"/>{translate('Loja de Skin')}</h1>
                     </div>
 
-                    <CardAvatar color={"orange"} nome={'Silveira'} img={'/imgs/animais/1.png'} rotulo={translate('Equipar')} />
-
-                    <CardAvatar color={"cyan"} nome={'Julia'} img={'/imgs/animais/3.png'} rotulo={translate('Equipar')} />
-
-                    <CardAvatar color={"fuchsia"} nome={'Sr Rocha'} img={'/imgs/animais/2.png'} rotulo={translate('Equipar')} />
+                    {
+                        avatares?.map((avatar) =>(
+                            <CardAvatar avatar={avatar} handleClickAdd={handleClickAdd}/>
+                        ))
+                    }
 
                 </section>
 
@@ -54,3 +94,8 @@ export default _ => {
     );
 
 }
+const mapStateToProps = (state) => ({
+    userRedux: state.userRedux,
+});
+  
+export default connect(mapStateToProps)(Avatares);

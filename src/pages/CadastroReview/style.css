@@ -8,6 +8,10 @@
     align-items: center;
     justify-content: center;
 }
+.cadastro-review .cadastro-review__title__name i{
+    font-size: 4rem;
+    color: var(--purple-y);
+}
 .cadastro-review__form{
     color: var(--color-primary);
     font-family: var(--font-normal);

@@ -9,7 +9,6 @@ import { Link } from 'react-router-dom'
 const Card = ({game, dispatch}) => {
   const handleClickAdd = (game) => {
     dispatch(selectGame(game));
-    dispatch(showAlert(`Você adicionou um jogo ao carrinho`))
   };
 
   return (
@@ -33,7 +32,7 @@ const Card = ({game, dispatch}) => {
       </div>
       <div className="border__price">
         <div className="price">
-          <h2>R${game?.rating}</h2>
+          <h2>R${game?.rating.toFixed(2)}</h2>
           <i className="fa-solid fa-cart-shopping" onClick={() => handleClickAdd(game)}></i>
         </div>
       </div>

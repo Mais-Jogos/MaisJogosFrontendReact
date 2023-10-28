@@ -10,7 +10,7 @@ export default props => {
                 <h1 className="headerWithFilter--center">{props.name || "Título"}</h1>
             </div>
             <div>
-                <img src="/imgs/icons/filter_icon.png" alt="icone de filtro" className="headerWithFilter--center" />
+                <i class="fa-solid fa-filter headerWithFilter--center" alt="icone de filtro"></i>
                 <p className="headerWithFilter--center">Relevância</p>
             </div>
         </section>

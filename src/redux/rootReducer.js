@@ -12,7 +12,7 @@ const rootReducer = combineReducers({
   cart: cartReducer,
   coins: coinsReducer,
   language: translateReducer,
-  colorCard: userReducer,
+  userRedux: userReducer,
   listadesejos: listadesejosReducer,
   alertMessage: alertReducer,
 });

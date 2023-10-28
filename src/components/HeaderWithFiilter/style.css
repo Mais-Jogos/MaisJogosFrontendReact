@@ -15,6 +15,11 @@
     text-align: center;
     vertical-align: middle;
 }
+i.headerWithFilter--center {
+    font-size: 2rem;
+    color: var(--purple-y);
+    margin-right: 5px;
+}
 .headerWithFilter__title__name img {
     width: 90px;
     height: 90px;

@@ -5,11 +5,11 @@ export default props => {
     return (
         <section className="reviewComp__title">
             <div className="reviewComp__title__name">
-                <img src="src\components\ReviewComp\review_icon.svg" alt="icone de controle de botões" className="reviewComp--center" />
+                <i className="fa-solid fa-book-bookmark reviewComp--center"></i>
                 <h1 className="reviewComp--center">{props.name || "Título"}</h1>
             </div>
             <div>
-                <img src="/imgs/icons/filter_icon.png" alt="icone de filtro" className="reviewComp--center" />
+                <i class="fa-solid fa-filter reviewComp--center-filter" alt="icone de filtro"></i>
                 <p className="reviewComp--center">Relevância</p>
             </div>
             

@@ -109,7 +109,7 @@
     gap: 15px;
 }
 .form__signin input, textarea{
-    border: 1px solid var(--purple);
+    border: 1px solid var(--purple-y);
     color: var(--color-primary);
     padding: 10px 15px;
     border-radius: 10px;

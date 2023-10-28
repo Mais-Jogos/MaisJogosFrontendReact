@@ -6,8 +6,11 @@ export const DELETE_GAME = 'DELETE_GAME';
 export const FAVORITE_GAME = 'FAVORITE_GAME';
 export const DELETEFAVORITE_GAME = 'DELETEFAVORITE_GAME';
 export const ADD_COINS = 'ADD_COINS';
+export const BUYWITH_COINS = 'BUYWITH_COINS';
 export const CHANGE_LANGUAGE = 'CHANGE_LANGUAGE';
 export const CHANGE_COLORCARD = 'CHANGE_COLORCARD';
+export const CHANGE_AVATAR = 'CHANGE_AVATAR';
+export const ADD_AVATAR = 'ADD_AVATAR';
 export const SHOW_ALERT = 'SHOW_ALERT';
 export const HIDE_ALERT = 'HIDE_ALERT';
  
@@ -17,11 +20,31 @@ export function changeColorCard(color) {
     payload: color,
   };
 }
+export function changeAvatar(avatar) {
+  return {
+    type: CHANGE_AVATAR,
+    payload: avatar
+  }
+}
+export function addAvatar(avatar) {
+  return {
+    type: ADD_AVATAR,
+    payload: avatar,
+    message:`Você comprou ${avatar?.nome}`
+  }
+}
 export function addCoins(coins) {
   return{ 
     type: ADD_COINS,
     payload: coins,
     message:`Você ganhou ${coins} kapicoins`,
+  }
+}
+export function buyWithCoins(coins) {
+  return{ 
+    type: BUYWITH_COINS,
+    payload: coins,
+    message:`Você gastou ${coins} kapicoins`,
   }
 }
 export function changeLanguage(language) { 

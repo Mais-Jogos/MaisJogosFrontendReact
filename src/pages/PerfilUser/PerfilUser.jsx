@@ -28,14 +28,14 @@ export function reducerUserData(state, action) {
 
 
 const PerfilUser = (props) => {
-    const {colorCard} = props;
+    const {userRedux, coins} = props;
     const newDispatch = useDispatch();
     const [userData, dispatch] = useReducer(reducerUserData, {
         username: "",
         dataNascimento: "",
         email: "",
         senha: "",
-        colorCard: colorCard.colorCard
+        colorCard: userRedux.colorCard
     });
 
     const [editButton, setEditButton] = useState(false);
@@ -99,11 +99,11 @@ const PerfilUser = (props) => {
                         <div className="perfilUser-card__border" style={glowStyles}>
                             <div className="perfilUser-card__cardBG" >
                                 <div className="perfilUser-card__imgBG" style={{ backgroundColor: userData.colorCard }}>
-                                    <img id="perfilUser-card__parrot" src={'/imgs/animais/3.png'} />
+                                    <img id="perfilUser-card__parrot" src={userRedux.avatar.img} />
                                 </div>
                                 <div className="perfilUser-card__cardFooter">
                                     <img className="perfilUser-card__imgEdit" src="/imgs/icons/Kapicoin_icon.png" />
-                                    <p> 3000 </p>
+                                    <p> {coins.coins} </p>
                                     <input
                                         type="color"
                                         id="colorCard"
@@ -205,7 +205,8 @@ const PerfilUser = (props) => {
 }
 const mapStateToProps = state => {
     return {
-      colorCard: state.colorCard
+        userRedux: state.userRedux,
+        coins: state.coins,
     };
   };
   

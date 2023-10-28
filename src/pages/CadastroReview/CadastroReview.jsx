@@ -4,6 +4,7 @@ import Acessibilidade from '../../components/Acessibilidade/Acessibilidade'
 import Menu from '../../components/Menu/Menu'
 import "./style.css"
 import Axios from 'axios'
+import Vlibras from '../../components/Vlibras/Vlibras'
 
 const CadastroReview = () => {
   const [game, setGame] = useState(); 
@@ -24,10 +25,11 @@ const CadastroReview = () => {
   return (
     <div id='container-page'>
       <Menu/>
+      <Vlibras/>
       <Acessibilidade/>
       <div className="cadastro-review">
         <div className="cadastro-review__title__name">
-          <img src="\src\components\ReviewComp\review_icon.svg" alt="icone de controle de botões" />
+          <i className="fa-solid fa-book-bookmark "></i>
           <h1>Cadastrar Review</h1>
         </div>
         <div className="cadastro-review__form">

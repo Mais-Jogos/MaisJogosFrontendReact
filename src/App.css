@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
 :root {
-    --background: #fff;
+    --background: #f5f5f5;
     --color-primary: #0e0e0e;
     --color-secondary: #f5f5f5;
     --purple: #7900fb;
@@ -12,7 +12,7 @@
     --light-background: #d3d3d3;
     --light-hover-background: #adadad;
     --transparent-background:#0000001c;
-    --white: #fff;
+    --white: #f5f5f5;
     --black: #000;
     --grey: #737373;
     --dark: #0e0e0e;
@@ -35,7 +35,7 @@
     --light-hover-background: #444444;
     --light-background: #252525;
     --transparent-background:#ffffff25;
-    --white: #fff;
+    --white: #f5f5f5;
     --black: #000;
     --dark-grey:#252525;
     --dark: #0e0e0e;

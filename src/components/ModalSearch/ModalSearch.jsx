@@ -21,7 +21,7 @@ const ModalSearch = (props) => {
         <ul>
             <h3>Jogos</h3>
             {games?.map((game, index) => game?.name.toLowerCase().includes(search.toLowerCase()) && (
-            <Link key={index} to={`/jogos/${index}`}>{game?.name}</Link>
+            <Link key={index} to={`/jogos/${game?.name?.toLowerCase().replace(/ /g,"-")}`}>{game?.name}</Link>
             ))}
         </ul>
         <ul>
