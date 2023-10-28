@@ -5,7 +5,7 @@ import Acessibilidade from '../../components/Acessibilidade/Acessibilidade'
 import Footer from "../../components/Footer/Footer";
 import Vlibras from '../../components/Vlibras/Vlibras'
 import { useState } from "react";
-import InputsPagamentoDev from "./InputsPagamentoDev";
+import InputsPagamentoDevPixSalvo from "./InputsPagamentoDevPixSalvo";
 import { Link } from "react-router-dom";
 
 function reducerTypeOfPix(state, action) {
@@ -32,19 +32,6 @@ function reducerTypeOfPix(state, action) {
 }
 
 
-function setSendDataButtonsBack(state, setState) {
-    if (state == 0) {
-        setState(0)
-    } else {
-        setState(e => e - 1)
-    }
-}
-
-function setSendDataButtonsGo(state, setState) {
-    console.log(state);
-    setState(e => e + 1)
-}
-
 export default props => {
 
     const [typeOfPix, dispatch] = useReducer(reducerTypeOfPix, {
@@ -57,6 +44,7 @@ export default props => {
     const [enviar, setEnviar] = useState(0);
     const [nomePix, setNomePix] = useState("");
     const [selectTypePix, setselectTypePix] = useState(true);
+    const [savedPix, setSavedPix] = useState(0);
 
 
     return (
@@ -66,7 +54,7 @@ export default props => {
             <Acessibilidade />
             <main className="pagamentoDev__main">
                 <section className="pagamentoDev__title">
-                    <img src="\imgs\icons\goBack__icon.svg" alt="ícone de voltar para a página anterior"></img>
+                    <Link to="/perfil-dev"><img src="\imgs\icons\goBack__icon.svg" alt="ícone de voltar para a página anterior"></img></Link> 
 
                     <h1>Requerimento de pagamento</h1>
                 </section>
@@ -82,10 +70,10 @@ export default props => {
                             <h2>Pix</h2>
                         </div>
 
-                        <div className="pagamentoDev__pixContainer__selectTypeOfPix">
+                        {enviar == 0 ? (<div className="pagamentoDev__pixContainer__selectTypeOfPix">
                             <button className={selectTypePix ? "pagamentoDev__pixContainer__selectTypeOfPix__button pagamentoDev__pixContainer__selectTypeOfPix__button--select" : "pagamentoDev__pixContainer__selectTypeOfPix__button"} onClick={e => { setselectTypePix(true) }}>Novo Pix</button>
                             <button className={!selectTypePix ? "pagamentoDev__pixContainer__selectTypeOfPix__button pagamentoDev__pixContainer__selectTypeOfPix__button--select" : "pagamentoDev__pixContainer__selectTypeOfPix__button"} onClick={e => { setselectTypePix(false) }}>Pix salvo</button>
-                        </div>
+                        </div>) : ""}
                     </div>
 
                     <div className="pagamentoDev__pixContainer__content">
@@ -108,7 +96,7 @@ export default props => {
                                 </div>
                             </div>) : ""}
 
-                            {/* <div className="pagamentoDev__pixContainer__content__register">
+                            <div className="pagamentoDev__pixContainer__content__register">
                                 <div>
                                     {typeOfPix.cpf.status ? (
                                         <>
@@ -144,9 +132,7 @@ export default props => {
                                     <label htmlFor="nome">Nome completo</label>
                                     <input type="text" name="nome" id="nome" value={nomePix} onChange={e => { setNomePix(e.target.value) }} />
                                 </div>
-                            </div> */}
-
-                            <InputsPagamentoDev typeOfPix={typeOfPix} nomePix={nomePix} setNomePix={setNomePix} dispatch={dispatch} />
+                            </div>
 
                         </>)
 
@@ -155,16 +141,24 @@ export default props => {
                             (<>
                                 <h2>Selecione o pix</h2>
 
-                                <div className="pagamentoDev__pixContainer__content__methods">
-                                    <button className="pagamentoDev__pixContainer__content__methods__buttonPixSalvo">Ana Maria</button>
-                                    <button className="pagamentoDev__pixContainer__content__methods__buttonPixSalvo">Jorge Raimundo</button>
-                                    <button className="pagamentoDev__pixContainer__content__methods__buttonPixSalvo">Wesley Araujo</button>
+                                <div className={ enviar == 1 ? "": "pagamentoDev__pixContainer__content__methods"}>
+                                    {enviar == 0 ? (<button className={savedPix == 1 ? "pagamentoDev__pixContainer__content__methods__buttonPixSalvo--select" : "pagamentoDev__pixContainer__content__methods__buttonPixSalvo"} onClick={_ => setSavedPix(1)}>Ana Maria</button>) : ""}
+
+                                   {savedPix == 1 && enviar == 1 ? ( <InputsPagamentoDevPixSalvo typeOfPix="cpf" cpf="321.456.781-10" nomePix="Ana Maria" />) : ""}
+
+                                    {enviar == 0 ? (<button className={savedPix == 2 ? "pagamentoDev__pixContainer__content__methods__buttonPixSalvo--select" : "pagamentoDev__pixContainer__content__methods__buttonPixSalvo"} onClick={_ => setSavedPix(2)}>Jorge Raimundo</button>) : ""}
+
+                                    {savedPix == 2 && enviar == 1 ? ( <InputsPagamentoDevPixSalvo typeOfPix="telefone" telefone="11982122112" nomePix="Jorge Raimundo" />) : ""}
+
+                                    {enviar == 0 ? (<button className={savedPix == 3 ? "pagamentoDev__pixContainer__content__methods__buttonPixSalvo--select" : "pagamentoDev__pixContainer__content__methods__buttonPixSalvo"} onClick={_ => setSavedPix(3)}>Wesley Araujo</button>) : ""}
+
+                                    {savedPix == 3 && enviar == 1 ? ( <InputsPagamentoDevPixSalvo typeOfPix="email" email="araujo@gmail.com" nomePix="Wesley Araujo" />) : ""}
                                 </div>
                             </>)}
 
                         <div className="pagamentoDev__pixContainer__content__methods__buttons">
-                            <button onClick={_ => {enviar == 0 ? "" : setEnviar(e => e - 1 )}}>Cancelar</button>
-                            <button onClick={_ => setEnviar(e => e + 1)}>{ enviar == 0 ? "Confirmar" : "Enviar"}</button>
+                            <button onClick={_ => { enviar == 0 ? "" : setEnviar(e => e - 1) }}>Cancelar</button>
+                            <button onClick={_ => setEnviar(e => e + 1)}>{enviar == 0 ? "Confirmar" : "Enviar"}</button>
                         </div>
                     </div>
                 </section>
@@ -178,7 +172,7 @@ export default props => {
                     </div>
                 </section>
 
-                <div className="pagamentoDev__modalBackground"  style={enviar == 2 ? { display: "flex"} : {display: "none"}}>
+                <div className="pagamentoDev__modalBackground" style={enviar == 2 ? { display: "flex" } : { display: "none" }}>
                     <div className="pagamentoDev__modalConfirm">
                         <div className="pagamentoDev__modalConfirm__container">
                             <div>

@@ -160,6 +160,20 @@
     box-shadow: 2px 2px 0px #932eff inset,
     -2px -2px 0px #44008d inset;
 }
+.pagamentoDev__pixContainer__content__methods__buttonPixSalvo--select{
+    width: 130px;
+    display: block;
+    font-family: var(--font-normal);
+    font-size: .85rem;
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+    border: 0px;
+    color: var(--white);
+    background-color: var(--purple);
+    box-shadow: 2px 2px 0px #932eff inset,
+    -2px -2px 0px #44008d inset;
+}
 .pagamentoDev__pixContainer__selectTypeOfPix{
     width: 70%;
     height: 100%;
