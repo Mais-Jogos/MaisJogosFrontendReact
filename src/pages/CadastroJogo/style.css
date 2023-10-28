@@ -74,19 +74,20 @@
     text-align: center;
     border: 3px solid var(--color-secondary);
     margin: 0 auto;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
 }
 .cadastroJogo__menu__block__circle p{
-    color: var(--color-secondary);
     font-size: 1.8rem;
     margin: 5px auto;
     line-height: 35px;
+    color: var(--color-secondary);
 }
 .cadastroJogo__menu__block__circle.cadastroJogo__menu__block__circle--select{
     background-color: var(--purple);
     border: 5px solid var(--color-primary);
 }
 .cadastroJogo__menu__block__circle.cadastroJogo__menu__block__circle--select p{
-    color: var(--color-primary);
+    color: #f5f5f5;
     line-height: initial;
     -webkit-animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
     animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
@@ -106,7 +107,7 @@
 }
 .cadastroJogo__menu__block__circle.cadastroJogo__menu__block__text--selected p{
     font-weight: initial;
-    color: var(--color-primary);
+    color: #f5f5f5;
 }
 
   
@@ -184,7 +185,7 @@ button.cadastroJogo__content__buttons:hover,
 button.cadastroJogo__content__buttons--select{
     background-color: var(--purple);
     border: 2px solid var(--color-primary);
-    color: var(--color-primary);
+    color: #f5f5f5;
 }
 .cadastroJogo__content__step2{
     width: 790px;
@@ -324,6 +325,7 @@ button.cadastroJogo__content__buttons--select{
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     -webkit-animation: scale-in-center 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
     animation: scale-in-center 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
@@ -371,7 +373,51 @@ button.cadastroJogo__content__buttons--select{
 .cadastroJogo__content__uploadContent--flexRight{
     justify-content: flex-start;
 }
-
+#cadastroJogo__content__title, #cadastroJogo__content__textarea{
+    font-family: var(--font-normal);
+}
+.cadastroJogo__content__uploadContent__fileUpload--changeText::-webkit-file-upload-button {
+    visibility: hidden;
+    display: none;
+}
+.cadastroJogo__content__uploadContent__fileUpload--changeText::before {
+    content: 'Escolha o arquivo';
+    padding: 10px;
+    font-family: var(--font-normal);
+    font-size: 1rem;
+    background-color: #EEEEEE;
+    color: #141414;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+.cadastroJogo__termos{
+    width:  55%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    color: var(--color-primary);
+    font-family: var(--font-normal);
+    font-size: 1rem;
+    margin-top: 100px;
+}
+.cadastroJogo__termos div > input{
+    cursor: pointer;
+    width: 16px;
+    height: 16px;
+    padding: 5px;
+}
+.cadastroJogo__termos div > label{
+    vertical-align: 2px;
+}
+.cadastroJogo--errorMessage{
+    font-family: var(--font-pixel);
+    color: var(--red);
+    font-weight: bold;
+    -webkit-animation: shake-horizontal 0.8s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+    animation: shake-horizontal 0.8s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+}
 
 
 .cadastroJogo__step{
@@ -399,7 +445,7 @@ button.cadastroJogo__content__buttons--select{
     margin: 50px 0px;
 }
 .cadastroJogo__step__buttonNext{
-    color: var(--color-primary);
+    color: #f5f5f5;
     background-color: var(--purple);
     box-shadow: 2px 2px 0px #932eff inset,
     -2px -2px 0px #44008d inset;
@@ -469,7 +515,63 @@ button.cadastroJogo__content__buttons--select{
       opacity: 1;
     }
 }
-
+@-webkit-keyframes shake-horizontal {
+    0%,
+    100% {
+      -webkit-transform: translateX(0);
+              transform: translateX(0);
+    }
+    10%,
+    30%,
+    50%,
+    70% {
+      -webkit-transform: translateX(-10px);
+              transform: translateX(-10px);
+    }
+    20%,
+    40%,
+    60% {
+      -webkit-transform: translateX(10px);
+              transform: translateX(10px);
+    }
+    80% {
+      -webkit-transform: translateX(8px);
+              transform: translateX(8px);
+    }
+    90% {
+      -webkit-transform: translateX(-8px);
+              transform: translateX(-8px);
+    }
+  }
+  @keyframes shake-horizontal {
+    0%,
+    100% {
+      -webkit-transform: translateX(0);
+              transform: translateX(0);
+    }
+    10%,
+    30%,
+    50%,
+    70% {
+      -webkit-transform: translateX(-10px);
+              transform: translateX(-10px);
+    }
+    20%,
+    40%,
+    60% {
+      -webkit-transform: translateX(10px);
+              transform: translateX(10px);
+    }
+    80% {
+      -webkit-transform: translateX(8px);
+              transform: translateX(8px);
+    }
+    90% {
+      -webkit-transform: translateX(-8px);
+              transform: translateX(-8px);
+    }
+  }
+  
 @media screen and (max-width:999px) {
     .cadastroJogo__content__uploadContent__fileUpload{
         max-width: 100%;

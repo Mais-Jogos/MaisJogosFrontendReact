@@ -6,6 +6,7 @@ import Vlibras from '../../components/Vlibras/Vlibras'
 import { useState } from "react";
 import React, { useReducer } from "react";
 import { translate } from "../../translate/translate";
+import { useEffect } from "react";
 
 function reducerCheckboxRequirements(state, action) {
     switch (action.type) {
@@ -24,35 +25,65 @@ function reducerCheckboxRequirements(state, action) {
     }
 }
 
+
+function reducerCheckErrorMessage(state, action) {
+    switch (action.type) {
+        case "titulo":
+            return { ...state, titulo: action.titulo }
+        case "descricao":
+            return { ...state, descricao: action.descricao }
+        case "generos":
+            return { ...state, generos: action.generos }
+        default:
+            return state;
+    }
+}
+
+
+
 function setData(state, setState) {
-    if(state == 3){
+    if (state == 3) {
         console.log("Cadastra jogo!");
-    }else{
+    } else {
         setState(e => e + 1)
     }
 }
 
 function secondStepFormStyle(state, type) {
-    if(type == "div"){
-        if(state == 1){
+    if (type == "div") {
+        if (state == 1) {
             return "cadastroJogo__menu__block__circle"
-        }else if(state == 2){
+        } else if (state == 2) {
             return "cadastroJogo__menu__block__circle cadastroJogo__menu__block__circle--select"
-        }else{
+        } else {
             return "cadastroJogo__menu__block__circle cadastroJogo__menu__block__text--selected"
         }
-    }else if(type == "p"){
-        if(state == 1){
+    } else if (type == "p") {
+        if (state == 1) {
             return "cadastroJogo__menu__block__text"
-        }else if(state == 2){
+        } else if (state == 2) {
             return "cadastroJogo__menu__block__text cadastroJogo__menu__block__text--select"
-        }else{
+        } else {
             return "cadastroJogo__menu__block__text cadastroJogo__menu__block__text--selected"
         }
     }
 }
 
+function setGenerosInState(state, setState, value) {
+    const index = state.indexOf(value)
+
+    if (index != -1) {
+        setState([
+            ...state.slice(0, index),
+            ...state.slice(index + 1, state.length)
+        ]);
+    } else {
+        setState([...state, value])
+    }
+}
+
 export default props => {
+
     const [stepForm, setSteapForm] = useState(1)
 
     const [checkboxRequirements, dispatch] = useReducer(reducerCheckboxRequirements, {
@@ -62,6 +93,34 @@ export default props => {
         android: false,
         ios: false
     });
+
+    const [errorMessage, dispatchError] = useReducer(reducerCheckErrorMessage, {
+        titulo: false,
+        descricao: false,
+        generos: false,
+    });
+
+
+    // Dados do jogo
+    const [titulo, setTitulo] = useState("")
+    const [descricao, setDescricao] = useState("")
+    const [genero, setGenero] = useState([])
+
+    function checkInputs(step) {
+        let retorno;
+        if(step == 1){
+            if(titulo == ""){
+                dispatchError({ type: 'titulo', titulo: true })
+                retorno = true;
+            }
+            if(retorno){
+                return true
+            }else{
+                return false
+            }
+        }
+    }
+
 
     return (
         <div id='container-page'>
@@ -116,29 +175,79 @@ export default props => {
                     {stepForm == 1 ? (<div className="cadastroJogo__content__descriptionGame">
                         <div className="cadastroJogo__content__body">
                             <label htmlFor="cadastroJogo__content__title" className="cadastroJogo__content__label">Título</label>
-                            <input type="text" id="cadastroJogo__content__title"></input>
+                            <input type="text" id="cadastroJogo__content__title" value={titulo} onChange={e => {dispatchError({ type: 'titulo', titulo: false });setTitulo(e.target.value)}}></input>
+                            {errorMessage.titulo ? (<p className="cadastroJogo--errorMessage">Digite o título</p>) : ""}
                         </div>
 
                         <div className="cadastroJogo__content__body">
                             <label htmlFor="cadastroJogo__content__textarea" className="cadastroJogo__content__label">Descrição</label>
-                            <textarea id="cadastroJogo__content__textarea"></textarea>
+                            <textarea id="cadastroJogo__content__textarea" value={descricao} onChange={e => setDescricao(e.target.value)}></textarea>
+                           {errorMessage.descricao ? ( <p className="cadastroJogo--errorMessage">Digite a descrição</p>) : ""}
                         </div>
 
                         <div className="cadastroJogo__content__body">
                             <label className="cadastroJogo__content__label">Gêneros</label>
                             <div className="cadastroJogo__content__Bodybuttons">
-                                <button className="cadastroJogo__content__buttons cadastroJogo__content__buttons--select">Ação</button>
-                                <button className="cadastroJogo__content__buttons">Arcade</button>
-                                <button className="cadastroJogo__content__buttons">Aventura</button>
-                                <button className="cadastroJogo__content__buttons">Casual</button>
-                                <button className="cadastroJogo__content__buttons">Corrida</button>
-                                <button className="cadastroJogo__content__buttons">Esporte</button>
-                                <button className="cadastroJogo__content__buttons">Estratégia</button>
-                                <button className="cadastroJogo__content__buttons">Luta</button>
-                                <button className="cadastroJogo__content__buttons">Puzzle</button>
-                                <button className="cadastroJogo__content__buttons">RPG</button>
-                                <button className="cadastroJogo__content__buttons">Shooter</button>
-                                <button className="cadastroJogo__content__buttons">Terror</button>
+                                <button
+                                    className={genero.indexOf("Ação") != -1 ? "cadastroJogo__content__buttons cadastroJogo__content__buttons--select" : "cadastroJogo__content__buttons"}
+                                    onClick={e => { setGenerosInState(genero, setGenero, e.target.innerText) }}>
+                                    Ação
+                                </button>
+                                <button className={genero.indexOf("Arcade") != -1 ? "cadastroJogo__content__buttons cadastroJogo__content__buttons--select" : "cadastroJogo__content__buttons"}
+                                    onClick={e => { setGenerosInState(genero, setGenero, e.target.innerText) }}>
+                                    Arcade
+                                </button>
+                                <button
+                                    className={genero.indexOf("Aventura") != -1 ? "cadastroJogo__content__buttons cadastroJogo__content__buttons--select" : "cadastroJogo__content__buttons"}
+                                    onClick={e => { setGenerosInState(genero, setGenero, e.target.innerText) }}>
+                                    Aventura
+                                </button>
+                                <button
+                                    className={genero.indexOf("Casual") != -1 ? "cadastroJogo__content__buttons cadastroJogo__content__buttons--select" : "cadastroJogo__content__buttons"}
+                                    onClick={e => { setGenerosInState(genero, setGenero, e.target.innerText) }}>
+                                    Casual
+                                </button>
+                                <button
+                                    className={genero.indexOf("Corrida") != -1 ? "cadastroJogo__content__buttons cadastroJogo__content__buttons--select" : "cadastroJogo__content__buttons"}
+                                    onClick={e => { setGenerosInState(genero, setGenero, e.target.innerText) }}>
+                                    Corrida
+                                </button>
+                                <button
+                                    className={genero.indexOf("Esporte") != -1 ? "cadastroJogo__content__buttons cadastroJogo__content__buttons--select" : "cadastroJogo__content__buttons"}
+                                    onClick={e => { setGenerosInState(genero, setGenero, e.target.innerText) }}>
+                                    Esporte
+                                </button>
+                                <button
+                                    className={genero.indexOf("Estratégia") != -1 ? "cadastroJogo__content__buttons cadastroJogo__content__buttons--select" : "cadastroJogo__content__buttons"}
+                                    onClick={e => { setGenerosInState(genero, setGenero, e.target.innerText) }}>
+                                    Estratégia
+                                </button>
+                                <button
+                                    className={genero.indexOf("Luta") != -1 ? "cadastroJogo__content__buttons cadastroJogo__content__buttons--select" : "cadastroJogo__content__buttons"}
+                                    onClick={e => { setGenerosInState(genero, setGenero, e.target.innerText) }}>
+                                    Luta
+                                </button>
+                                <button
+                                    className={genero.indexOf("Puzzle") != -1 ? "cadastroJogo__content__buttons cadastroJogo__content__buttons--select" : "cadastroJogo__content__buttons"}
+                                    onClick={e => { setGenerosInState(genero, setGenero, e.target.innerText) }}>
+                                    Puzzle
+                                </button>
+                                <button
+                                    className={genero.indexOf("RPG") != -1 ? "cadastroJogo__content__buttons cadastroJogo__content__buttons--select" : "cadastroJogo__content__buttons"}
+                                    onClick={e => { setGenerosInState(genero, setGenero, e.target.innerText) }}>
+                                    RPG
+                                </button>
+                                <button
+                                    className={genero.indexOf("Shooter") != -1 ? "cadastroJogo__content__buttons cadastroJogo__content__buttons--select" : "cadastroJogo__content__buttons"}
+                                    onClick={e => { setGenerosInState(genero, setGenero, e.target.innerText) }}>
+                                    Shooter
+                                </button>
+                                <button
+                                    className={genero.indexOf("Terror") != -1 ? "cadastroJogo__content__buttons cadastroJogo__content__buttons--select" : "cadastroJogo__content__buttons"}
+                                    onClick={e => { setGenerosInState(genero, setGenero, e.target.innerText) }}>
+                                    Terror
+                                </button>
+                                {errorMessage.generos ? (<p className="cadastroJogo--errorMessage">Selecione no mímino um gênero</p>) : ""}
                             </div>
                         </div>
                     </div>) : ""}
@@ -163,7 +272,7 @@ export default props => {
                             </div>
                             <div className="cadastroJogo__content__plataforms__checkboxs">
                                 <label htmlFor="linux">
-                                    <input type="checkbox" id="linux" name="linux" checked={checkboxRequirements.linux} 
+                                    <input type="checkbox" id="linux" name="linux" checked={checkboxRequirements.linux}
                                         onChange={e => { dispatch({ type: 'linux', linux: !checkboxRequirements.linux }) }}
                                     />
                                     Linux
@@ -171,7 +280,7 @@ export default props => {
                             </div>
                             <div className="cadastroJogo__content__plataforms__checkboxs">
                                 <label htmlFor="android">
-                                    <input type="checkbox" id="android" name="android" checked={checkboxRequirements.android} 
+                                    <input type="checkbox" id="android" name="android" checked={checkboxRequirements.android}
                                         onChange={e => { dispatch({ type: 'android', android: !checkboxRequirements.android }) }}
                                     />
                                     Android
@@ -179,7 +288,7 @@ export default props => {
                             </div>
                             <div className="cadastroJogo__content__plataforms__checkboxs">
                                 <label htmlFor="ios">
-                                    <input type="checkbox" id="ios" name="ios" checked={checkboxRequirements.ios} 
+                                    <input type="checkbox" id="ios" name="ios" checked={checkboxRequirements.ios}
                                         onChange={e => { dispatch({ type: 'ios', ios: !checkboxRequirements.ios }) }}
                                     />
                                     IOS
@@ -259,7 +368,7 @@ export default props => {
                                     </div>
                                 </div>
                             </div>
-                        </div> 
+                        </div>
                         ) : ""}
 
                         {checkboxRequirements.macOs ? (<div className="cadastroJogo__content__requirements">
@@ -335,7 +444,7 @@ export default props => {
                                     </div>
                                 </div>
                             </div>
-                        </div> 
+                        </div>
                         ) : ""}
 
                         {checkboxRequirements.linux ? (<div className="cadastroJogo__content__requirements">
@@ -411,7 +520,7 @@ export default props => {
                                     </div>
                                 </div>
                             </div>
-                        </div> 
+                        </div>
                         ) : ""}
 
                         {checkboxRequirements.android ? (<div className="cadastroJogo__content__requirements">
@@ -478,7 +587,7 @@ export default props => {
                                     </div>
                                 </div>
                             </div>
-                        </div>): ""}
+                        </div>) : ""}
 
                         {checkboxRequirements.ios ? (<div className="cadastroJogo__content__requirements">
                             <h2>Requisitos IOS</h2>
@@ -547,7 +656,7 @@ export default props => {
                                     </div>
                                 </div>
                             </div>
-                        </div>): ""}
+                        </div>) : ""}
 
                         {/* {
                             Object.keys(checkboxRequirements).filter((key) => {
@@ -570,14 +679,14 @@ export default props => {
                                     <div>
                                         <label htmlFor="windows">Windows</label>
                                         <div>
-                                            <input type="file" accept=".zip" id="windows"></input>
+                                            <input type="file" accept=".zip" id="windows" className="cadastroJogo__content__uploadContent__fileUpload--changeText"></input>
                                         </div>
                                     </div>
 
                                     <div>
                                         <label htmlFor="android">Android</label>
                                         <div>
-                                            <input type="file" accept=".zip" id="android"></input>
+                                            <input type="file" accept=".zip" id="android" className="cadastroJogo__content__uploadContent__fileUpload--changeText"></input>
                                         </div>
                                     </div>
                                 </div>
@@ -589,14 +698,14 @@ export default props => {
                                     <div>
                                         <label htmlFor="fotos">Fotos</label>
                                         <div>
-                                            <input type="file" accept=".png,.jpeg,.jpg" id="fotos" multiple></input>
+                                            <input type="file" accept=".png,.jpeg,.jpg" id="fotos" multiple className="cadastroJogo__content__uploadContent__fileUpload--changeText"></input>
                                         </div>
                                     </div>
 
                                     <div>
                                         <label htmlFor="videos">Vídeos</label>
                                         <div>
-                                            <input type="file" accept=".mp4,.mov,.mkv" id="videos" multiple></input>
+                                            <input type="file" accept=".mp4,.mov,.mkv" id="videos" multiple className="cadastroJogo__content__uploadContent__fileUpload--changeText"></input>
                                         </div>
                                     </div>
                                 </div>
@@ -607,7 +716,8 @@ export default props => {
                                     <div>
                                         <label htmlFor="doc">Documento</label>
                                         <div>
-                                            <input type="file" accept=".png,.jpeg,.jpg,.pdf" id="doc"></input>
+                                            <input type="file" accept=".png,.jpeg,.jpg,.pdf" id="doc" className="cadastroJogo__content__uploadContent__fileUpload--changeText">
+                                            </input>
                                         </div>
                                     </div>
                                     <select name="classificacao" id="classificacao">
@@ -621,14 +731,20 @@ export default props => {
                                 </div>
                             </div>
                         </div>
+                        <div className="cadastroJogo__termos">
+                            <div>
+                                <input type="checkbox" id="termos"></input>
+                                <label htmlFor="termos">Aceito os termos e condições</label>
+                            </div>
+                        </div>
                     </div>) : ""}
                 </section>
 
                 <section className="cadastroJogo__step">
-                    {stepForm != 1 ?  (<button className="cadastroJogo__step__button cadastroJogo__step__buttonBack" onClick={_=>setSteapForm(e => e - 1)}>Voltar</button>) : ""}
-                    
-                    <button className="cadastroJogo__step__button cadastroJogo__step__buttonNext" style={stepForm == 1 ? { gridColumn: "2 / 3"}: {}}
-                    onClick={_=> setData(stepForm, setSteapForm)}
+                    {stepForm != 1 ? (<button className="cadastroJogo__step__button cadastroJogo__step__buttonBack" onClick={_ => setSteapForm(e => e - 1)}>Voltar</button>) : ""}
+
+                    <button className="cadastroJogo__step__button cadastroJogo__step__buttonNext" style={stepForm == 1 ? { gridColumn: "2 / 3" } : {}}
+                        onClick={_ => { !checkInputs(stepForm) ? setData(stepForm, setSteapForm) : ""}}
                     >{stepForm != 3 ? "Proxímo" : "Cadastrar"}</button>
                 </section>
             </main>
