@@ -136,6 +136,9 @@
 .cadastroJogo__content__body{
     width: 540px;
 }
+label.cadastroJogo__content__label + input.cadastroJogo__content__body--erroMessage, label.cadastroJogo__content__label + textarea.cadastroJogo__content__body--erroMessage{
+    border: 2px solid var(--red);
+}
 .cadastroJogo__content__label{
     font-size: 1.1rem;
     font-family: var(--font-pixel);
@@ -418,7 +421,9 @@ button.cadastroJogo__content__buttons--select{
     -webkit-animation: shake-horizontal 0.8s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
     animation: shake-horizontal 0.8s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
 }
-
+.cadastroJogo--errorMessage i{
+    margin-left: 5px;
+}
 
 .cadastroJogo__step{
     width: 100%;
@@ -708,6 +713,9 @@ button.cadastroJogo__content__buttons--select{
         font-size: .8rem;
         width: 100px;
     }
+    .cadastroJogo__content__requirements{
+        text-align: center;
+    }
 }
 @media screen and (max-width:500px){
     .cadastroJogo__content__requirements, .cadastroJogo__content__body, .cadastroJogo__content__step3 {
@@ -717,7 +725,6 @@ button.cadastroJogo__content__buttons--select{
 @media screen and (max-width:400px){
     .cadastroJogo__content__requirements{
         width: 100%;
-        text-align: center;
     }
     .cadastroJogo__content__requirements__selected,.cadastroJogo__content__requirements, .cadastroJogo__content__body {
         width: 100%;
