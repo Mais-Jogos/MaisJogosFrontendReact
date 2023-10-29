@@ -9,6 +9,10 @@
     text-align: center;
 }
 
+.sobre_photo{
+    text-align: center;
+}
+
 .section__banner{
     display: flex;
     justify-content: center;
