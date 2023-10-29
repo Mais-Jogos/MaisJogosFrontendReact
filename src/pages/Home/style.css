@@ -123,6 +123,10 @@
     width: 100%;
     justify-content: center;
 }
+.home__nenhum-jogo{
+    font-family: var(--font-normal);
+    color: var(--color-primary);
+}
 
 #publish__games, #newsletter__games{
     padding: 40px 30px;

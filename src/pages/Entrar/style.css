@@ -131,7 +131,7 @@
 .form__signin p a{
     font-family: var(--font-normal);
     text-align: center;
-    color: var(--purple-y);
+    color: var(--color-primary);
     transition: 0.7s all;
     cursor: pointer;
     margin: 0 auto;

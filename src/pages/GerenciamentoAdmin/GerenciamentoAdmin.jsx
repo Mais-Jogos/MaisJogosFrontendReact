@@ -6,9 +6,11 @@ import PageDevs from './PageDevs'
 import Menu from '../../components/Menu/Menu'
 import Vlibras from '../../components/Vlibras/Vlibras'
 import Acessibilidade from '../../components/Acessibilidade/Acessibilidade'
+import { useNavigate } from 'react-router-dom'
 
 const GerenciamentoAdmin = () => {
     const [page, setPage] = useState("jogos")
+    const navigate = useNavigate();
 
   return (
     <div id='container-page'>
@@ -22,6 +24,7 @@ const GerenciamentoAdmin = () => {
                     <li onClick={() => setPage("devs")}>Devs</li>
                     <li onClick={() => setPage("users")}>Users</li>
                     <li onClick={() => setPage("pagamentos")}>Pagamentos</li>
+                    <li onClick={() => navigate("/relatorios-admin")}>Relatórios</li>
                 </ul>
             </aside>
             <section>

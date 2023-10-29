@@ -54,7 +54,7 @@ const Menu = ({changeTheme, theme, cart, coins, userRedux }) => {
               {cart.cart.length} 
               <img src={'/imgs/icons/cart.png'} />
             </Link>
-            <Link to="/loja-skin">
+            <Link to="/avatares">
               {coins.coins}
               <img src={'/imgs/icons/Kapicoin_icon.png'} />
             </Link>

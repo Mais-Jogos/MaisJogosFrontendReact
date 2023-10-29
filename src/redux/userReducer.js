@@ -34,7 +34,7 @@ export default function userReducer(state = initialState, action) {
           avatar: action.payload,
         };
       case ADD_AVATAR:
-        console.log(action, state);
+        console.log("payload",action);
         return {
           ...state,
           avatares: [...state.avatares, action.payload],

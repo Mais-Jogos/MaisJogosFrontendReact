@@ -2,7 +2,6 @@ import './style.css'
 import React from 'react'
 import Acessibilidade from '../../components/Acessibilidade/Acessibilidade';
 import Menu from '../../components/Menu/Menu';
-import Footer from '../../components/Footer/Footer';
 import HeaderWithFilter from '../../components/HeaderWithFiilter/HeaderWithFilter';
 import Vlibras from '../../components/Vlibras/Vlibras'
 import { connect } from 'react-redux'
@@ -55,7 +54,6 @@ const ListadeDesejos = ({listadesejos, dispatch}) => {
           </div>))}
         </section>
       </main>
-      <Footer />
     </div>
   )
 }

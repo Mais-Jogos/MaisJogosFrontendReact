@@ -6,7 +6,6 @@ import Menu from '../../components/Menu/Menu'
 import Acessibilidade from '../../components/Acessibilidade/Acessibilidade'
 import Jokenpo from '../../games/Jokenpo/Jokenpo'
 import Quiz from '../../games/Quiz/Quiz'
-import Footer from '../../components/Footer/Footer'
 import Vlibras from '../../components/Vlibras/Vlibras';
 import { addCoins } from '../../redux/actions'
 import { connect } from 'react-redux'
@@ -76,7 +75,6 @@ const Joguinhos = ({dispatch}) => {
       <Jokenpo coins={coins} setCoins={setCoins}/> : jogo === 'JogodaVelha' ?
       <JogodaVelha coins={coins} setCoins={setCoins}/>:
       <Quiz coins={coins} setCoins={setCoins}/>}
-      <Footer/>
     </div>
   )
 }

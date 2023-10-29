@@ -1,6 +1,5 @@
 import React from "react";
 import './style.css'
-import Footer from "../../components/Footer/Footer";
 import Acessibilidade from "../../components/Acessibilidade/Acessibilidade";
 import Menu from "../../components/Menu/Menu";
 import CardLojaSkin from "../../components/CardLojaSkin/CardLojaskin";
@@ -43,7 +42,6 @@ export default _ => {
 
             </main>
 
-            <Footer />
         </div>
     );
 

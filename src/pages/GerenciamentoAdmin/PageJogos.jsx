@@ -230,10 +230,6 @@ const PageJogos = () => {
             <div className="admin__jogo-title">
               <h2>{game?.name}</h2>
               <div className="admin__jogo-btns">
-                <button className="admin__jogo-edit">
-                  <i class="fa-solid fa-pen"></i>
-                  Editar
-                </button>
                 <button className="admin__jogo-view" onClick={() => navigate(`/jogos/${game?.name?.toLowerCase().replace(/ /g,"-")}`)}>
                   <i class="fa-solid fa-eye"></i>
                 </button>

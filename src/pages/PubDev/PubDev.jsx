@@ -2,7 +2,6 @@ import React , {useState, useEffect} from "react";
 import './style.css'
 import Card from '../../components/Card/Card'
 import Axios from 'axios'
-import Footer from "../../components/Footer/Footer";
 import Acessibilidade from "../../components/Acessibilidade/Acessibilidade";
 import Menu from "../../components/Menu/Menu";
 import Vlibras from '../../components/Vlibras/Vlibras';
@@ -75,7 +74,6 @@ export default _ => {
 
             </main>
 
-            <Footer className="footer__main" />
         </div>
     );
 

@@ -2,7 +2,6 @@ import "./style.css"
 import React, { useReducer } from "react";
 import Menu from '../../components/Menu/Menu'
 import Acessibilidade from '../../components/Acessibilidade/Acessibilidade'
-import Footer from "../../components/Footer/Footer";
 import Vlibras from '../../components/Vlibras/Vlibras'
 import { useState } from "react";
 import InputsPagamentoDevPixSalvo from "./InputsPagamentoDevPixSalvo";
@@ -183,7 +182,6 @@ export default props => {
                     </div>
                 </div>
             </main>
-            <Footer />
         </div>
     )
 }

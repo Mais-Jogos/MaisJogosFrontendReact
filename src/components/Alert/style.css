@@ -1,0 +1,26 @@
+#alert{
+    position: fixed;
+    background-color: var(--light-background);
+    z-index: 1000;
+    bottom: 20px;
+    right: 0;
+    width: 300px;
+    color: var(--color-primary);
+    font-family: var(--font-normal);
+    border-radius: 5px 0px 0px 5px;
+}
+#alert .bar{
+    height: 6px;
+    background-color: var(--purple-y);
+    border-radius: 5px 0px 0px 0px;
+    animation: progress-animation 3.5s infinite;
+}
+#alert p{
+    padding: 5px 10px;
+    margin: 0;
+}
+
+@keyframes progress-animation{
+    0% { width: 0%; } 
+    100% { width: 100%}
+}

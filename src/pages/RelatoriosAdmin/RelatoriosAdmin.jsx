@@ -3,7 +3,6 @@ import Menu from '../../components/Menu/Menu'
 import Vlibras from '../../components/Vlibras/Vlibras'
 import Acessibilidade from '../../components/Acessibilidade/Acessibilidade'
 import translate from '../../translate/translate'
-import Footer from '../../components/Footer/Footer'
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts'
 import "./style.css"
 
@@ -224,7 +223,6 @@ const RelatoriosAdmin = () => {
             </div>
             </div>
         </div>
-        <Footer/>
     </div>
   )
 }

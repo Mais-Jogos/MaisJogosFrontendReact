@@ -1,7 +1,6 @@
 import React from 'react'
 import Vlibras from '../../components/Vlibras/Vlibras'
 import Acessibilidade from '../../components/Acessibilidade/Acessibilidade'
-import Footer from '../../components/Footer/Footer'
 import { Link } from 'react-router-dom'
 import './style.css'
 
@@ -21,7 +20,6 @@ const NotFound = () => {
         </main>
         <Vlibras />
         <Acessibilidade/>   
-        {/* <Footer/> */}
     </>
   )
 }

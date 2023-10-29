@@ -2,7 +2,6 @@ import "./style.css"
 import React, { useReducer, useRef, useState } from "react";
 import Menu from '../../components/Menu/Menu'
 import Acessibilidade from '../../components/Acessibilidade/Acessibilidade'
-import Footer from "../../components/Footer/Footer";
 import { Link } from 'react-router-dom';
 import Vlibras from '../../components/Vlibras/Vlibras'
 import { motion } from "framer-motion";
@@ -199,7 +198,6 @@ const PerfilUser = (props) => {
                     </Link>
                 </section>
             </main>
-            <Footer />
         </div>
     )
 }

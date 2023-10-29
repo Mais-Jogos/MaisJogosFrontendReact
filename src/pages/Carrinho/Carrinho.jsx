@@ -6,11 +6,12 @@ import { connect } from 'react-redux'
 import './style.css'
 import Acessibilidade from '../../components/Acessibilidade/Acessibilidade';
 import CardCart from '../../components/CardCart/CardCart';
-import Footer from '../../components/Footer/Footer';
 import Vlibras from '../../components/Vlibras/Vlibras';
+import { useNavigate } from 'react-router-dom';
 
 const Carrinho = ({cart}) => {
   const [total, setTotal] = useState(0)
+  const navigate = useNavigate()
   useEffect(() =>{
     setTotal(cart?.cart.map(game => game?.rating).reduce((prev, curr) => prev + curr, 0))
     console.log(cart?.cart);
@@ -39,11 +40,10 @@ const Carrinho = ({cart}) => {
               Finalizar pedido
             </button>
           </div>
-          <button className="continuar__comprando">
+          <button className="continuar__comprando" onClick={() => navigate("/")}>
             Continuar comprando
           </button>
         </div>
-        <Footer/>
     </div>
   )
 }

@@ -6,7 +6,6 @@ import './style.css'
 import { Link, useParams } from 'react-router-dom'
 import Acessibilidade from '../../components/Acessibilidade/Acessibilidade'
 import Vlibras from '../../components/Vlibras/Vlibras'
-import Footer from '../../components/Footer/Footer'
 import { motion, AnimatePresence } from 'framer-motion'
 import translate from '../../translate/translate'
 
@@ -272,7 +271,6 @@ const Categorias = () => {
           </div>
         </div>
       </div>
-      <Footer />
     </div>
   )
 }

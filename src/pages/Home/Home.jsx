@@ -7,7 +7,6 @@ import './style.css'
 import { Link, useNavigate } from 'react-router-dom'
 import Acessibilidade from '../../components/Acessibilidade/Acessibilidade'
 import Vlibras from '../../components/Vlibras/Vlibras'
-import Footer from '../../components/Footer/Footer'
 import { translate } from '../../translate/translate'
 import { AnimatePresence, motion } from 'framer-motion'
 
@@ -18,6 +17,7 @@ const Home = () => {
   const [game, setGame] = useState(0)
   const [numberGames, setNumberGames] = useState(6)
   const [direction, setDirection] = useState('left');
+  var filteredGames;
   const [openFilter, setOpenFilter] = useState({
     category: false,
     platform: false,
@@ -35,7 +35,30 @@ const Home = () => {
     .then((response) =>{
       setGames(response.data.results);
     }).catch((error) => { console.log(error); }); 
-  }, [])
+
+    filteredGames = games?.filter(jogo => {
+      var plataformasSelecionadas;
+      var categoriasSelecionadas;
+      var notasSelecionadas;
+      if(filter.platform !== "Todos"){
+        plataformasSelecionadas = jogo.platforms.some(platforma => filter.platform.includes(platforma.platform.name));
+      }else{
+        plataformasSelecionadas = jogo;
+      }
+      if(filter.category !== "Todos"){
+        categoriasSelecionadas = jogo.genres.some(categoria => filter.category.includes(categoria.name));
+      }else{
+        categoriasSelecionadas = jogo;
+      }
+      if(filter.rating !== 0){
+        notasSelecionadas = jogo.rating >= filter.rating;
+      }else{
+        notasSelecionadas = jogo;
+      }
+      return plataformasSelecionadas && categoriasSelecionadas && notasSelecionadas;
+    })
+    console.log(filteredGames);
+  }, [filter])
   const slideVariants = {
     enter: {
       x: direction === 'left' ? -1000 : 1000,
@@ -280,10 +303,16 @@ const Home = () => {
                   notasSelecionadas = jogo;
                 }
                 return plataformasSelecionadas && categoriasSelecionadas && notasSelecionadas;
-              }).slice(0,numberGames).map((game, index)=>(
+              })
+              ?.slice(0,numberGames).map((game, index)=>(
                 <Card game={game} key={index}/>
               ))}
             </div>
+            {filteredGames?.length === 0 && 
+              <div className='home__nenhum-jogo'>
+                Nenhum jogo foi encontrado...
+              </div>
+            }
             <p onClick={() => setNumberGames(numberGames === 6 ? games.length : 6)}>{numberGames === 6 ?  translate('Ver mais') : translate('Ver menos')}</p>
           </div>
           <div id="publish__games">
@@ -318,7 +347,6 @@ const Home = () => {
           </div>
         </div>      
       </div>
-      <Footer/>
     </div>
   )
 }

@@ -3,7 +3,6 @@ import Menu from '../../components/Menu/Menu'
 import Vlibras from '../../components/Vlibras/Vlibras'
 import Acessibilidade from '../../components/Acessibilidade/Acessibilidade'
 import translate from '../../translate/translate'
-import Footer from '../../components/Footer/Footer'
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts'
 import "./style.css"
 
@@ -145,7 +144,7 @@ const RelatoriosDev = () => {
                   </LineChart>
               </div>
               <div className="relatorios-dev__geral">
-                <p>Quantidade de assinantes geral <b>{assinantesGeral}</b></p>
+                <p>Quantidade de jogos comprados <b>{jogosVendidos}</b></p>
                 <p>Valor Total <b>R${valorTotal.toFixed(2)}</b></p>
               </div>
               <div className="relatorios-dev__quantidade-jogos">
@@ -188,7 +187,6 @@ const RelatoriosDev = () => {
               </div>
             </div>
         </div>
-        <Footer/>
     </div>
   )
 }

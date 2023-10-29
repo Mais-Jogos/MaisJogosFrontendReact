@@ -9,10 +9,9 @@ import { favoriteGame } from '../../redux/actions';
 import { connect } from 'react-redux'
 import './style.css';
 import Acessibilidade from '../../components/Acessibilidade/Acessibilidade';
-import Footer from '../../components/Footer/Footer';
 import Vlibras from '../../components/Vlibras/Vlibras';
 
-const Jogo = ({dispatch}) => {
+const Jogo = ({dispatch, listadesejos, cart}) => {
     const [game, setGame] = useState(); 
     const [image, setImage] = useState(0);
     const {name} = useParams();
@@ -24,11 +23,17 @@ const Jogo = ({dispatch}) => {
         setGame(response.data.results.filter(jogo => jogo.name.toLowerCase().replace(/ /g, "-") === name)[0])
       }).catch((error) => { console.log(error); }); 
     }, []); 
+    var carrinho = cart.cart.every(c => c?.id !== game?.id)
+    var listaDeDesejos = listadesejos.listadesejos.every(l => l?.id !== game?.id)
     const handleClickAdd = (game) => {
-      dispatch(selectGame(game));
+      if(carrinho){
+        dispatch(selectGame(game));
+      }
     };
     const handleClickFavorite = (game) => {
-      dispatch(favoriteGame(game));
+      if(listaDeDesejos){
+        dispatch(favoriteGame(game));
+      }
     };
     const choosePlataform = (plataform) =>{
       if(plataform !== undefined){
@@ -100,11 +105,11 @@ const Jogo = ({dispatch}) => {
                 <div className="addcart__game__page">
                   <h2>R$0{game?.rating}</h2>
                   <button onClick={() => handleClickAdd(game)}>
-                    Add ao carrinho
+                    {!carrinho ? 'Adicionado ao carrinho' : 'Adicionar ao carrinho'}
                   </button>
                   <div className="favorite__game__page" onClick={() => handleClickFavorite(game)}>
                     <img src="/imgs/icons/heart_icon.png" alt="" />
-                    <p>Lista de desejos</p>
+                    <p>{!listaDeDesejos ? 'Adicionado a lista de desejos':'Lista de desejos'}</p>
                   </div>
                 </div>
                 <div className="about__game__page">
@@ -155,7 +160,6 @@ const Jogo = ({dispatch}) => {
             </div>
           </div>
         </div>
-        <Footer/>
     </div>
   )
 }

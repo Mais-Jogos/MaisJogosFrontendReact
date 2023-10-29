@@ -3,7 +3,6 @@ import React, { useState } from 'react'
 import './style.css'
 import Menu from '../../components/Menu/Menu'
 import Acessibilidade from '../../components/Acessibilidade/Acessibilidade'
-import Footer from '../../components/Footer/Footer'
 import CadastroGamer from './Gamer/CadastroGamer'
 import LoginGamer from './Gamer/LoginGamer'
 import CadastroDev from './Dev/CadastroDev'
@@ -107,7 +106,6 @@ const Entrar = () => {
           <p>Já possui uma conta? <a onClick={()=> {setLogin(true); setData({}); setMsg('')}}>Faça login</a></p>}
         </div>
       </div>}
-      <Footer/>
     </div>
   )
 }

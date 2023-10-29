@@ -29,6 +29,10 @@ import Sobre from "./pages/Sobre/Sobre"
 import CadastroReview from "./pages/CadastroReview/CadastroReview";
 import PubDev from "./pages/PubDev/PubDev";
 import Alert from "./components/Alert/Alert";
+import Footer from "./components/Footer/Footer";
+import { AnimatePresence } from "framer-motion";
+import Vlibras from "./components/Vlibras/Vlibras";
+import Acessibilidade from "./components/Acessibilidade/Acessibilidade";
 
 function App({theme}) {
   return (
@@ -62,7 +66,10 @@ function App({theme}) {
           <Route path='/dev' element={<PubDev/>}/>
         </Routes>
       </BrowserRouter>
-      <Alert />
+      <Footer/>
+      <AnimatePresence>
+        <Alert />
+      </AnimatePresence>
     </div>
   )
 }

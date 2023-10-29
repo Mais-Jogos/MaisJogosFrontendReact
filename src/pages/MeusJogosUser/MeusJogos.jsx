@@ -2,7 +2,6 @@ import "./style.css";
 import React, { useState } from "react";
 import Menu from '../../components/Menu/Menu'
 import Acessibilidade from '../../components/Acessibilidade/Acessibilidade'
-import Footer from "../../components/Footer/Footer";
 import { Link } from "react-router-dom";
 import RecemComprados from "./RecemComprados";
 import TodosComprados from "./TodosComprados";
@@ -38,7 +37,6 @@ export default _ => {
                     {menuOption ? <TodosComprados /> : <RecemComprados/>}
                 </section>
             </main>
-            <Footer />
         </div>
     )
 }

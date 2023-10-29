@@ -1,5 +1,4 @@
 import React, { useState} from 'react'
-import Footer from '../../components/Footer/Footer';
 import Menu from '../../components/Menu/Menu';
 import Vlibras from '../../components/Vlibras/Vlibras';
 import Acessibilidade from '../../components/Acessibilidade/Acessibilidade';
@@ -43,7 +42,6 @@ const LoginAdmin = () => {
                 <button onClick={cadastrar}>Entrar</button>
             </div>
         </div>
-        <Footer/>
     </div>
   )
 }

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import './style.css';
-import Footer from "../../components/Footer/Footer";
 import Acessibilidade from "../../components/Acessibilidade/Acessibilidade";
 import Menu from "../../components/Menu/Menu";
 import Vlibras from '../../components/Vlibras/Vlibras';
@@ -65,7 +64,6 @@ export default _ => {
 
             </main>
 
-            <Footer />
         </div>
     );
 

@@ -1,7 +1,6 @@
 import "./style.css";
 import Menu from '../../components/Menu/Menu'
 import Acessibilidade from '../../components/Acessibilidade/Acessibilidade'
-import Footer from "../../components/Footer/Footer";
 import Vlibras from '../../components/Vlibras/Vlibras'
 import { useState } from "react";
 import React, { useReducer } from "react";
@@ -748,7 +747,6 @@ export default props => {
                     >{stepForm != 3 ? "Proxímo" : "Cadastrar"}</button>
                 </section>
             </main>
-            <Footer />
         </div>
     )
 }

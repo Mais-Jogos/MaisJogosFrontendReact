@@ -1,6 +1,5 @@
 import React from "react";
 import './style.css'
-import Footer from "../../components/Footer/Footer";
 import Acessibilidade from "../../components/Acessibilidade/Acessibilidade";
 import Menu from "../../components/Menu/Menu";
 import CardAvatar from "../../components/CardAvatar/CardAvatar";
@@ -10,13 +9,9 @@ import { connect } from "react-redux";
 import { useDispatch } from "react-redux";
 import { addAvatar } from "../../redux/actions";
 
-const Avatares = ({userRedux}) => {
-    const dispatch = useDispatch()
+const Avatares = ({userRedux, addAvatar}) => {
     const handleClickAdd = (avatar) =>{
-        dispatch(addAvatar(avatar));
-        console.log(avatar);
-        console.log(userRedux);
-        return null;
+        addAvatar(avatar);
     }   
     
     const avatares = [
@@ -89,13 +84,17 @@ const Avatares = ({userRedux}) => {
 
             </main>
 
-            <Footer />
         </div>
     );
 
 }
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addAvatar: (avatar) => dispatch(addAvatar(avatar))
+    };
+};
 const mapStateToProps = (state) => ({
     userRedux: state.userRedux,
 });
   
-export default connect(mapStateToProps)(Avatares);
+export default connect(mapStateToProps, mapDispatchToProps)(Avatares);
