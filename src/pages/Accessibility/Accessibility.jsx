@@ -15,7 +15,7 @@ export default _ => {
 
             <main className="accessibility__main">
                 <header className="accessibility_Header">
-                    <img src="\imgs\bgimg\bg1.png"/>
+                    <div><img src="\imgs\bgimg\01.png"/></div>
                     <h1 className="acessibility_Titulo">Acessibilidade</h1>
                 </header>
 
