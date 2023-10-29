@@ -5,7 +5,7 @@ import Vlibras from '../../components/Vlibras/Vlibras'
 import { useState } from "react";
 import React, { useReducer } from "react";
 import { translate } from "../../translate/translate";
-import { useEffect } from "react";
+import InputsRequirements from "./InputsRequirements";
 
 function reducerCheckboxRequirements(state, action) {
     switch (action.type) {
@@ -38,6 +38,75 @@ function reducerCheckErrorMessage(state, action) {
     }
 }
 
+function reducerChangeValuesRequirements(state, action) {
+    console.log(state);
+    switch (action.type) {
+        case "minimoWindowsSO":
+            return { ...state, windows: { ...state.windows, minimos: { ...state.windows.minimos, so: action.target } } }
+        case "minimoWindowsProcessador":
+            return { ...state, windows: { ...state.windows, minimos: { ...state.windows.minimos, processador: action.target } } }
+        case "minimoWindowsPlaca":
+            return { ...state, windows: { ...state.windows, minimos: { ...state.windows.minimos, placaDeVideo: action.target } } }
+        case "minimoWindowsMemoriaQtd":
+            return { ...state, windows: { ...state.windows, minimos: { ...state.windows.minimos, memoria: [action.target, state.windows.minimos.memoria[1]] } } }
+        case "minimoWindowsMemoriaFormato":
+            return { ...state, windows: { ...state.windows, minimos: { ...state.windows.minimos, memoria: [state.windows.minimos.memoria[0], action.target] } } }
+        case "minimoWindowsArmazenamentoQtd":
+            return { ...state, windows: { ...state.windows, minimos: { ...state.windows.minimos, armazenamento: [action.target, state.windows.minimos.armazenamento[1]] } } }
+        case "minimoWindowsArmazenamentoFormato":
+            return { ...state, windows: { ...state.windows, minimos: { ...state.windows.minimos, armazenamento: [state.windows.minimos.armazenamento[0], action.target] } } }
+        case "recomendadoWindowsSO":
+            return { ...state, windows: { ...state.windows, recomendados: { ...state.windows.recomendados, so: action.target } } }
+        case "recomendadoWindowsProcessador":
+            return { ...state, windows: { ...state.windows, recomendados: { ...state.windows.recomendados, processador: action.target } } }
+        case "recomendadoWindowsPlaca":
+            return { ...state, windows: { ...state.windows, recomendados: { ...state.windows.recomendados, placaDeVideo: action.target } } }
+        case "recomendadoWindowsMemoriaQtd":
+            return { ...state, windows: { ...state.windows, recomendados: { ...state.windows.recomendados, memoria: [action.target, state.windows.recomendados.memoria[1]] } } }
+        case "recomendadoWindowsMemoriaFormato":
+            return { ...state, windows: { ...state.windows, recomendados: { ...state.windows.recomendados, memoria: [state.windows.recomendados.memoria[0], action.target] } } }
+        case "recomendadoWindowsArmazenamentoQtd":
+            return { ...state, windows: { ...state.windows, recomendados: { ...state.windows.recomendados, armazenamento: [action.target, state.windows.recomendados.armazenamento[1]] } } }
+        case "recomendadoWindowsArmazenamentoFormato":
+            return { ...state, windows: { ...state.windows, recomendados: { ...state.windows.recomendados, armazenamento: [state.windows.recomendados.armazenamento[0], action.target] } } }
+        case "minimoMacOsSO":
+            return { ...state, macOs: { ...state.macOs, minimos: { ...state.macOs.minimos, so: action.target } } }
+        case "minimoMacOsProcessador":
+            return { ...state, macOs: { ...state.macOs, minimos: { ...state.macOs.minimos, processador: action.target } } }
+        case "minimoMacOsPlaca":
+            return { ...state, macOs: { ...state.macOs, minimos: { ...state.macOs.minimos, placaDeVideo: action.target } } }
+        case "minimoMacOsMemoriaQtd":
+            return { ...state, macOs: { ...state.macOs, minimos: { ...state.macOs.minimos, memoria: [action.target, state.macOs.minimos.memoria[1]] } } }
+        case "minimoMacOsMemoriaFormato":
+            return { ...state, macOs: { ...state.macOs, minimos: { ...state.macOs.minimos, memoria: [state.macOs.minimos.memoria[0], action.target] } } }
+        case "minimoMacOsArmazenamentoQtd":
+            return { ...state, macOs: { ...state.macOs, minimos: { ...state.macOs.minimos, armazenamento: [action.target, state.macOs.minimos.armazenamento[1]] } } }
+        case "minimoMacOsArmazenamentoFormato":
+            return { ...state, macOs: { ...state.macOs, minimos: { ...state.macOs.minimos, armazenamento: [state.macOs.minimos.armazenamento[0], action.target] } } }
+        case "recomendadoMacOsSO":
+            return { ...state, macOs: { ...state.macOs, recomendados: { ...state.macOs.recomendados, so: action.target } } }
+        case "recomendadoMacOsProcessador":
+            return { ...state, macOs: { ...state.macOs, recomendados: { ...state.macOs.recomendados, processador: action.target } } }
+        case "recomendadoMacOsPlaca":
+            return { ...state, macOs: { ...state.macOs, recomendados: { ...state.macOs.recomendados, placaDeVideo: action.target } } }
+        case "recomendadoMacOsMemoriaQtd":
+            return { ...state, macOs: { ...state.macOs, recomendados: { ...state.macOs.recomendados, memoria: [action.target, state.macOs.recomendados.memoria[1]] } } }
+        case "recomendadoMacOsMemoriaFormato":
+            return { ...state, macOs: { ...state.macOs, recomendados: { ...state.macOs.recomendados, memoria: [state.macOs.recomendados.memoria[0], action.target] } } }
+        case "recomendadoMacOsArmazenamentoQtd":
+            return { ...state, macOs: { ...state.macOs, recomendados: { ...state.macOs.recomendados, armazenamento: [action.target, state.macOs.recomendados.armazenamento[1]] } } }
+        case "recomendadoMacOsArmazenamentoFormato":
+            return { ...state, macOs: { ...state.macOs, recomendados: { ...state.macOs.recomendados, armazenamento: [state.macOs.recomendados.armazenamento[0], action.target] } } }
+        case "linux":
+            return { ...state, linux: action.linux }
+        case "android":
+            return { ...state, android: action.android }
+        case "ios":
+            return { ...state, ios: action.ios }
+        default:
+            return state;
+    }
+}
 
 
 function setData(state, setState) {
@@ -104,17 +173,104 @@ export default props => {
     const [titulo, setTitulo] = useState("")
     const [descricao, setDescricao] = useState("")
     const [genero, setGenero] = useState([])
+    const [requisitos, dispatchRequisitos] = useReducer(reducerChangeValuesRequirements, {
+        windows: {
+            minimos: {
+                so: "",
+                processador: "",
+                placaDeVideo: "",
+                memoria: [1, ""],
+                armazenamento: [1, ""],
+            },
+            recomendados: {
+                so: "",
+                processador: "",
+                placaDeVideo: "",
+                memoria: [1, ""],
+                armazenamento: [1, ""],
+            }
+        },
+        macOs: {
+            minimos: {
+                so: "",
+                processador: "",
+                placaDeVideo: "",
+                memoria: [1, ""],
+                armazenamento: [1, ""],
+            },
+            recomendados: {
+                so: "",
+                processador: "",
+                placaDeVideo: "",
+                memoria: [1, ""],
+                armazenamento: [1, ""],
+            }
+        },
+        linux: {
+            minimos: {
+                so: "",
+                processador: "",
+                placaDeVideo: "",
+                memoria: [1, ""],
+                armazenamento: [1, ""],
+            },
+            recomendados: {
+                so: "",
+                processador: "",
+                placaDeVideo: "",
+                memoria: [1, ""],
+                armazenamento: [1, ""],
+            }
+        },
+        android: {
+            minimos: {
+                so: "",
+                processador: "",
+                memoria: [1, ""],
+                armazenamento: [1, ""],
+            },
+            recomendados: {
+                so: "",
+                processador: "",
+                memoria: [1, ""],
+                armazenamento: [1, ""],
+            }
+        },
+        ios: {
+            minimos: {
+                so: "",
+                processador: "",
+                memoria: [1, ""],
+                armazenamento: [1, ""],
+            },
+            recomendados: {
+                so: "",
+                processador: "",
+                memoria: [1, ""],
+                armazenamento: [1, ""],
+            }
+        },
+    });
 
     function checkInputs(step) {
         let retorno;
-        if(step == 1){
-            if(titulo == ""){
+        if (step == 1) {
+            if (titulo.trim() == "") {
                 dispatchError({ type: 'titulo', titulo: true })
                 retorno = true;
             }
-            if(retorno){
+            if (descricao.trim() == "") {
+                dispatchError({ type: 'descricao', descricao: true })
+                retorno = true;
+            }
+            if (genero.length == 0) {
+                dispatchError({ type: 'generos', generos: true })
+                retorno = true;
+            }
+
+            if (retorno) {
                 return true
-            }else{
+            } else {
                 return false
             }
         }
@@ -174,14 +330,28 @@ export default props => {
                     {stepForm == 1 ? (<div className="cadastroJogo__content__descriptionGame">
                         <div className="cadastroJogo__content__body">
                             <label htmlFor="cadastroJogo__content__title" className="cadastroJogo__content__label">Título</label>
-                            <input type="text" id="cadastroJogo__content__title" value={titulo} onChange={e => {dispatchError({ type: 'titulo', titulo: false });setTitulo(e.target.value)}}></input>
-                            {errorMessage.titulo ? (<p className="cadastroJogo--errorMessage">Digite o título</p>) : ""}
+
+                            <input
+                                type="text"
+                                id="cadastroJogo__content__title"
+                                value={titulo}
+                                onChange={e => { dispatchError({ type: 'titulo', titulo: false }); setTitulo(e.target.value) }}
+                                className={errorMessage.titulo ? "cadastroJogo__content__body--erroMessage" : ""}>
+
+                            </input>
+                            {errorMessage.titulo ? (<p className="cadastroJogo--errorMessage"><i class="fa-solid fa-xmark"></i> Digite o título</p>) : ""}
                         </div>
 
                         <div className="cadastroJogo__content__body">
                             <label htmlFor="cadastroJogo__content__textarea" className="cadastroJogo__content__label">Descrição</label>
-                            <textarea id="cadastroJogo__content__textarea" value={descricao} onChange={e => setDescricao(e.target.value)}></textarea>
-                           {errorMessage.descricao ? ( <p className="cadastroJogo--errorMessage">Digite a descrição</p>) : ""}
+                            <textarea
+                                id="cadastroJogo__content__textarea"
+                                value={descricao}
+                                onChange={e => { dispatchError({ type: 'descricao', descricao: false }); setDescricao(e.target.value) }}
+                                className={errorMessage.descricao ? "cadastroJogo__content__body--erroMessage" : ""}>
+
+                            </textarea>
+                            {errorMessage.descricao ? (<p className="cadastroJogo--errorMessage"><i class="fa-solid fa-xmark"></i> Digite a descrição</p>) : ""}
                         </div>
 
                         <div className="cadastroJogo__content__body">
@@ -189,64 +359,64 @@ export default props => {
                             <div className="cadastroJogo__content__Bodybuttons">
                                 <button
                                     className={genero.indexOf("Ação") != -1 ? "cadastroJogo__content__buttons cadastroJogo__content__buttons--select" : "cadastroJogo__content__buttons"}
-                                    onClick={e => { setGenerosInState(genero, setGenero, e.target.innerText) }}>
+                                    onClick={e => { setGenerosInState(genero, setGenero, e.target.innerText); dispatchError({ type: 'generos', generos: false }) }}>
                                     Ação
                                 </button>
                                 <button className={genero.indexOf("Arcade") != -1 ? "cadastroJogo__content__buttons cadastroJogo__content__buttons--select" : "cadastroJogo__content__buttons"}
-                                    onClick={e => { setGenerosInState(genero, setGenero, e.target.innerText) }}>
+                                    onClick={e => { setGenerosInState(genero, setGenero, e.target.innerText); dispatchError({ type: 'generos', generos: false }) }}>
                                     Arcade
                                 </button>
                                 <button
                                     className={genero.indexOf("Aventura") != -1 ? "cadastroJogo__content__buttons cadastroJogo__content__buttons--select" : "cadastroJogo__content__buttons"}
-                                    onClick={e => { setGenerosInState(genero, setGenero, e.target.innerText) }}>
+                                    onClick={e => { setGenerosInState(genero, setGenero, e.target.innerText); dispatchError({ type: 'generos', generos: false }) }}>
                                     Aventura
                                 </button>
                                 <button
                                     className={genero.indexOf("Casual") != -1 ? "cadastroJogo__content__buttons cadastroJogo__content__buttons--select" : "cadastroJogo__content__buttons"}
-                                    onClick={e => { setGenerosInState(genero, setGenero, e.target.innerText) }}>
+                                    onClick={e => { setGenerosInState(genero, setGenero, e.target.innerText); dispatchError({ type: 'generos', generos: false }) }}>
                                     Casual
                                 </button>
                                 <button
                                     className={genero.indexOf("Corrida") != -1 ? "cadastroJogo__content__buttons cadastroJogo__content__buttons--select" : "cadastroJogo__content__buttons"}
-                                    onClick={e => { setGenerosInState(genero, setGenero, e.target.innerText) }}>
+                                    onClick={e => { setGenerosInState(genero, setGenero, e.target.innerText); dispatchError({ type: 'generos', generos: false }) }}>
                                     Corrida
                                 </button>
                                 <button
                                     className={genero.indexOf("Esporte") != -1 ? "cadastroJogo__content__buttons cadastroJogo__content__buttons--select" : "cadastroJogo__content__buttons"}
-                                    onClick={e => { setGenerosInState(genero, setGenero, e.target.innerText) }}>
+                                    onClick={e => { setGenerosInState(genero, setGenero, e.target.innerText); dispatchError({ type: 'generos', generos: false }) }}>
                                     Esporte
                                 </button>
                                 <button
                                     className={genero.indexOf("Estratégia") != -1 ? "cadastroJogo__content__buttons cadastroJogo__content__buttons--select" : "cadastroJogo__content__buttons"}
-                                    onClick={e => { setGenerosInState(genero, setGenero, e.target.innerText) }}>
+                                    onClick={e => { setGenerosInState(genero, setGenero, e.target.innerText); dispatchError({ type: 'generos', generos: false }) }}>
                                     Estratégia
                                 </button>
                                 <button
                                     className={genero.indexOf("Luta") != -1 ? "cadastroJogo__content__buttons cadastroJogo__content__buttons--select" : "cadastroJogo__content__buttons"}
-                                    onClick={e => { setGenerosInState(genero, setGenero, e.target.innerText) }}>
+                                    onClick={e => { setGenerosInState(genero, setGenero, e.target.innerText); dispatchError({ type: 'generos', generos: false }) }}>
                                     Luta
                                 </button>
                                 <button
                                     className={genero.indexOf("Puzzle") != -1 ? "cadastroJogo__content__buttons cadastroJogo__content__buttons--select" : "cadastroJogo__content__buttons"}
-                                    onClick={e => { setGenerosInState(genero, setGenero, e.target.innerText) }}>
+                                    onClick={e => { setGenerosInState(genero, setGenero, e.target.innerText); dispatchError({ type: 'generos', generos: false }) }}>
                                     Puzzle
                                 </button>
                                 <button
                                     className={genero.indexOf("RPG") != -1 ? "cadastroJogo__content__buttons cadastroJogo__content__buttons--select" : "cadastroJogo__content__buttons"}
-                                    onClick={e => { setGenerosInState(genero, setGenero, e.target.innerText) }}>
+                                    onClick={e => { setGenerosInState(genero, setGenero, e.target.innerText); dispatchError({ type: 'generos', generos: false }) }}>
                                     RPG
                                 </button>
                                 <button
                                     className={genero.indexOf("Shooter") != -1 ? "cadastroJogo__content__buttons cadastroJogo__content__buttons--select" : "cadastroJogo__content__buttons"}
-                                    onClick={e => { setGenerosInState(genero, setGenero, e.target.innerText) }}>
+                                    onClick={e => { setGenerosInState(genero, setGenero, e.target.innerText); dispatchError({ type: 'generos', generos: false }) }}>
                                     Shooter
                                 </button>
                                 <button
                                     className={genero.indexOf("Terror") != -1 ? "cadastroJogo__content__buttons cadastroJogo__content__buttons--select" : "cadastroJogo__content__buttons"}
-                                    onClick={e => { setGenerosInState(genero, setGenero, e.target.innerText) }}>
+                                    onClick={e => { setGenerosInState(genero, setGenero, e.target.innerText); dispatchError({ type: 'generos', generos: false }) }}>
                                     Terror
                                 </button>
-                                {errorMessage.generos ? (<p className="cadastroJogo--errorMessage">Selecione no mímino um gênero</p>) : ""}
+                                {errorMessage.generos ? (<p className="cadastroJogo--errorMessage"><i class="fa-solid fa-xmark"></i> Selecione no mímino um gênero</p>) : ""}
                             </div>
                         </div>
                     </div>) : ""}
@@ -295,155 +465,20 @@ export default props => {
                             </div>
                         </div>
 
-                        {checkboxRequirements.windows ? (<div className="cadastroJogo__content__requirements">
-                            <h2>Requisitos Windows</h2>
-                            <div className="cadastroJogo__content__requirements__selected">
-                                <h3>Mínimo</h3>
-                                <div className="cadastroJogo__content__requirements__inputs">
-                                    <label htmlFor="so">SO</label>
-                                    <input type="text" id="so" className="cadastroJogo__content__requirements__inputs--inputStyle"></input>
-                                </div>
-                                <div className="cadastroJogo__content__requirements__inputs">
-                                    <label htmlFor="processador">Processador</label>
-                                    <input type="text" id="processador" className="cadastroJogo__content__requirements__inputs--inputStyle"></input>
-                                </div>
-                                <div className="cadastroJogo__content__requirements__inputs">
-                                    <label htmlFor="placaVideo">Placa de vídeo</label>
-                                    <input type="text" id="placaVideo" className="cadastroJogo__content__requirements__inputs--inputStyle"></input>
-                                </div>
-                                <div className="cadastroJogo__content__requirements__inputs--select">
-                                    <div><label htmlFor="memoria">Memória</label></div>
-                                    <div>
-                                        <input type="number" id="memoria" min={1}></input>
-                                        <select name="memoriaQTD" id="memoriaQTD">
-                                            <option value="mb">MB</option>
-                                            <option value="gm">GB</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div className="cadastroJogo__content__requirements__inputs--select">
-                                    <div><label htmlFor="armazenamento">Armazenamento</label></div>
-                                    <div>
-                                        <input type="number" id="armazenamento" value={1} min={1}></input>
-                                        <select name="armazenamentoQTD" id="armazenamentoQTD">
-                                            <option value="mb">MB</option>
-                                            <option value="gm" selected>GB</option>
-                                        </select>
-                                    </div>
-                                </div>
+                        {checkboxRequirements.windows ?
+                            (<div className="cadastroJogo__content__requirements">
+                                <h2>Requisitos Windows</h2>
+                                <InputsRequirements h2Title="Windows" minOrRec="Mínimo" typeMinOrRec={requisitos.windows.minimos} dispatchRequisitos={dispatchRequisitos} dispatchType="minimo" />
+                                <InputsRequirements h2Title="Windows" minOrRec="Recomendado" typeMinOrRec={requisitos.windows.recomendados} dispatchRequisitos={dispatchRequisitos} dispatchType="recomendado" />
                             </div>
-                            <div className="cadastroJogo__content__requirements__selected">
-                                <h3>Recomendado</h3>
-                                <div className="cadastroJogo__content__requirements__inputs">
-                                    <label htmlFor="so">SO</label>
-                                    <input type="text" id="so" className="cadastroJogo__content__requirements__inputs--inputStyle"></input>
-                                </div>
-                                <div className="cadastroJogo__content__requirements__inputs">
-                                    <label htmlFor="processador">Processador</label>
-                                    <input type="text" id="processador" className="cadastroJogo__content__requirements__inputs--inputStyle"></input>
-                                </div>
-                                <div className="cadastroJogo__content__requirements__inputs">
-                                    <label htmlFor="placaVideo">Placa de vídeo</label>
-                                    <input type="text" id="placaVideo" className="cadastroJogo__content__requirements__inputs--inputStyle"></input>
-                                </div>
-                                <div className="cadastroJogo__content__requirements__inputs--select">
-                                    <div><label htmlFor="memoria">Memória</label></div>
-                                    <div>
-                                        <input type="number" id="memoria" min={1}></input>
-                                        <select name="memoriaQTD" id="memoriaQTD">
-                                            <option value="mb">MB</option>
-                                            <option value="gm">GB</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div className="cadastroJogo__content__requirements__inputs--select">
-                                    <div><label htmlFor="armazenamento">Armazenamento</label></div>
-                                    <div>
-                                        <input type="number" id="armazenamento" value={1} min={1}></input>
-                                        <select name="armazenamentoQTD" id="armazenamentoQTD">
-                                            <option value="mb">MB</option>
-                                            <option value="gm" selected>GB</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        ) : ""}
+                            ) : ""}
 
-                        {checkboxRequirements.macOs ? (<div className="cadastroJogo__content__requirements">
-                            <h2>Requisitos MacOs</h2>
-                            <div className="cadastroJogo__content__requirements__selected">
-                                <h3>Mínimo</h3>
-                                <div className="cadastroJogo__content__requirements__inputs">
-                                    <label htmlFor="so">SO</label>
-                                    <input type="text" id="so" className="cadastroJogo__content__requirements__inputs--inputStyle"></input>
-                                </div>
-                                <div className="cadastroJogo__content__requirements__inputs">
-                                    <label htmlFor="processador">Processador</label>
-                                    <input type="text" id="processador" className="cadastroJogo__content__requirements__inputs--inputStyle"></input>
-                                </div>
-                                <div className="cadastroJogo__content__requirements__inputs">
-                                    <label htmlFor="placaVideo">Placa de vídeo</label>
-                                    <input type="text" id="placaVideo" className="cadastroJogo__content__requirements__inputs--inputStyle"></input>
-                                </div>
-                                <div className="cadastroJogo__content__requirements__inputs--select">
-                                    <div><label htmlFor="memoria">Memória</label></div>
-                                    <div>
-                                        <input type="number" id="memoria" min={1}></input>
-                                        <select name="memoriaQTD" id="memoriaQTD">
-                                            <option value="mb">MB</option>
-                                            <option value="gm">GB</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div className="cadastroJogo__content__requirements__inputs--select">
-                                    <div><label htmlFor="armazenamento">Armazenamento</label></div>
-                                    <div>
-                                        <input type="number" id="armazenamento" value={1} min={1}></input>
-                                        <select name="armazenamentoQTD" id="armazenamentoQTD">
-                                            <option value="mb">MB</option>
-                                            <option value="gm" selected>GB</option>
-                                        </select>
-                                    </div>
-                                </div>
+                        {checkboxRequirements.macOs ? (
+                            <div className="cadastroJogo__content__requirements">
+                                <h2>Requisitos MacOs</h2>
+                                <InputsRequirements h2Title="MacOs" minOrRec="Mínimo" typeMinOrRec={requisitos.macOs.minimos} dispatchRequisitos={dispatchRequisitos} dispatchType="minimo" />
+                                <InputsRequirements h2Title="MacOs" minOrRec="Recomendado" typeMinOrRec={requisitos.macOs.recomendados} dispatchRequisitos={dispatchRequisitos} dispatchType="recomendado" />
                             </div>
-
-                            <div className="cadastroJogo__content__requirements__selected">
-                                <h3>Recomendado</h3>
-                                <div className="cadastroJogo__content__requirements__inputs">
-                                    <label htmlFor="so">SO</label>
-                                    <input type="text" id="so" className="cadastroJogo__content__requirements__inputs--inputStyle"></input>
-                                </div>
-                                <div className="cadastroJogo__content__requirements__inputs">
-                                    <label htmlFor="processador">Processador</label>
-                                    <input type="text" id="processador" className="cadastroJogo__content__requirements__inputs--inputStyle"></input>
-                                </div>
-                                <div className="cadastroJogo__content__requirements__inputs">
-                                    <label htmlFor="placaVideo">Placa de vídeo</label>
-                                    <input type="text" id="placaVideo" className="cadastroJogo__content__requirements__inputs--inputStyle"></input>
-                                </div>
-                                <div className="cadastroJogo__content__requirements__inputs--select">
-                                    <div><label htmlFor="memoria">Memória</label></div>
-                                    <div>
-                                        <input type="number" id="memoria" min={1}></input>
-                                        <select name="memoriaQTD" id="memoriaQTD">
-                                            <option value="mb">MB</option>
-                                            <option value="gm">GB</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div className="cadastroJogo__content__requirements__inputs--select">
-                                    <div><label htmlFor="armazenamento">Armazenamento</label></div>
-                                    <div>
-                                        <input type="number" id="armazenamento" value={1} min={1}></input>
-                                        <select name="armazenamentoQTD" id="armazenamentoQTD">
-                                            <option value="mb">MB</option>
-                                            <option value="gm" selected>GB</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                         ) : ""}
 
                         {checkboxRequirements.linux ? (<div className="cadastroJogo__content__requirements">
@@ -468,7 +503,7 @@ export default props => {
                                         <input type="number" id="memoria" min={1}></input>
                                         <select name="memoriaQTD" id="memoriaQTD">
                                             <option value="mb">MB</option>
-                                            <option value="gm">GB</option>
+                                            <option value="gb">GB</option>
                                         </select>
                                     </div>
                                 </div>
@@ -478,7 +513,7 @@ export default props => {
                                         <input type="number" id="armazenamento" value={1} min={1}></input>
                                         <select name="armazenamentoQTD" id="armazenamentoQTD">
                                             <option value="mb">MB</option>
-                                            <option value="gm" selected>GB</option>
+                                            <option value="gb" selected>GB</option>
                                         </select>
                                     </div>
                                 </div>
@@ -504,7 +539,7 @@ export default props => {
                                         <input type="number" id="memoria" min={1}></input>
                                         <select name="memoriaQTD" id="memoriaQTD">
                                             <option value="mb">MB</option>
-                                            <option value="gm">GB</option>
+                                            <option value="gb">GB</option>
                                         </select>
                                     </div>
                                 </div>
@@ -514,7 +549,7 @@ export default props => {
                                         <input type="number" id="armazenamento" value={1} min={1}></input>
                                         <select name="armazenamentoQTD" id="armazenamentoQTD">
                                             <option value="mb">MB</option>
-                                            <option value="gm" selected>GB</option>
+                                            <option value="gb" selected>GB</option>
                                         </select>
                                     </div>
                                 </div>
@@ -540,7 +575,7 @@ export default props => {
                                         <input type="number" id="memoria" min={1}></input>
                                         <select name="memoriaQTD" id="memoriaQTD">
                                             <option value="mb">MB</option>
-                                            <option value="gm">GB</option>
+                                            <option value="gb">GB</option>
                                         </select>
                                     </div>
                                 </div>
@@ -550,7 +585,7 @@ export default props => {
                                         <input type="number" id="armazenamento" value={1} min={1}></input>
                                         <select name="armazenamentoQTD" id="armazenamentoQTD">
                                             <option value="mb">MB</option>
-                                            <option value="gm" selected>GB</option>
+                                            <option value="gb" selected>GB</option>
                                         </select>
                                     </div>
                                 </div>
@@ -571,7 +606,7 @@ export default props => {
                                         <input type="number" id="memoria" min={1}></input>
                                         <select name="memoriaQTD" id="memoriaQTD">
                                             <option value="mb">MB</option>
-                                            <option value="gm">GB</option>
+                                            <option value="gb">GB</option>
                                         </select>
                                     </div>
                                 </div>
@@ -581,7 +616,7 @@ export default props => {
                                         <input type="number" id="armazenamento" value={1} min={1}></input>
                                         <select name="armazenamentoQTD" id="armazenamentoQTD">
                                             <option value="mb">MB</option>
-                                            <option value="gm" selected>GB</option>
+                                            <option value="gb" selected>GB</option>
                                         </select>
                                     </div>
                                 </div>
@@ -607,7 +642,7 @@ export default props => {
                                         <input type="number" id="memoria" min={1}></input>
                                         <select name="memoriaQTD" id="memoriaQTD">
                                             <option value="mb">MB</option>
-                                            <option value="gm">GB</option>
+                                            <option value="gb">GB</option>
                                         </select>
                                     </div>
                                 </div>
@@ -617,7 +652,7 @@ export default props => {
                                         <input type="number" id="armazenamento" value={1} min={1}></input>
                                         <select name="armazenamentoQTD" id="armazenamentoQTD">
                                             <option value="mb">MB</option>
-                                            <option value="gm" selected>GB</option>
+                                            <option value="gb" selected>GB</option>
                                         </select>
                                     </div>
                                 </div>
@@ -640,7 +675,7 @@ export default props => {
                                         <input type="number" id="memoria" min={1}></input>
                                         <select name="memoriaQTD" id="memoriaQTD">
                                             <option value="mb">MB</option>
-                                            <option value="gm">GB</option>
+                                            <option value="gb">GB</option>
                                         </select>
                                     </div>
                                 </div>
@@ -650,7 +685,7 @@ export default props => {
                                         <input type="number" id="armazenamento" value={1} min={1}></input>
                                         <select name="armazenamentoQTD" id="armazenamentoQTD">
                                             <option value="mb">MB</option>
-                                            <option value="gm" selected>GB</option>
+                                            <option value="gb" selected>GB</option>
                                         </select>
                                     </div>
                                 </div>
@@ -743,7 +778,7 @@ export default props => {
                     {stepForm != 1 ? (<button className="cadastroJogo__step__button cadastroJogo__step__buttonBack" onClick={_ => setSteapForm(e => e - 1)}>Voltar</button>) : ""}
 
                     <button className="cadastroJogo__step__button cadastroJogo__step__buttonNext" style={stepForm == 1 ? { gridColumn: "2 / 3" } : {}}
-                        onClick={_ => { !checkInputs(stepForm) ? setData(stepForm, setSteapForm) : ""}}
+                        onClick={_ => { !checkInputs(stepForm) ? setData(stepForm, setSteapForm) : "" }}
                     >{stepForm != 3 ? "Proxímo" : "Cadastrar"}</button>
                 </section>
             </main>
