@@ -1,10 +1,36 @@
-import React from "react";
+import { useState } from "react";
 import './style.css'
 import Acessibilidade from "../../components/Acessibilidade/Acessibilidade";
 import Menu from "../../components/Menu/Menu";
 import Vlibras from '../../components/Vlibras/Vlibras';
 
 export default _ => {
+
+    const [mostrarDosVox, setMostrarDosVox] = useState(false);
+    const [mostrarVLibras, setMostrarVLibras] = useState(false);
+    const [mostrarVoiceOver, setMostrarVoiceOver] = useState(false);
+    const [mostrarWinNarrator, setMostrarWinNarrator] = useState(false);
+    const [mostrarTalkBack, setMostrarTalkBack] = useState(false);
+    
+    const toggleTalkBack = () => {
+        setMostrarTalkBack(!mostrarTalkBack);
+      };
+
+    const toggleWinNarrator = () => {
+        setMostrarWinNarrator(!mostrarWinNarrator);
+      };
+
+    const toggleVoiceOver = () => {
+        setMostrarVoiceOver(!mostrarVoiceOver);
+      };
+
+    const toggleDosVox = () => {
+        setMostrarDosVox(!mostrarDosVox);
+      };
+    
+    const toggleVLibras = () => {
+        setMostrarVLibras(!mostrarVLibras);
+      };
 
     return (
         <div id='container-page'>
@@ -123,32 +149,78 @@ export default _ => {
                         </p>
                 </div>
 
-                <div>
-                        <h1 className="acessibility_Titulo">Técnologias assistivas</h1>
-                        <div className="acessibility__border">
+                <div className="acessibility__tecAssistivas">
+                    <h1 className="acessibility_Titulo">Técnologias assistivas</h1>
+                       
+                    <div className="infos1" >        
+                        <div className="acessibility__border" onClick={toggleTalkBack}>
                         TalkBack para Android
                         </div>
-                        <div className="acessibility__border">
-                        Narrador para windows
-                        </div>
-                        <div className="acessibility__border">
-                        VoiceOver para iphone VoiceOver para mac
-                        </div>
-                        <div className="acessibility__border">
-                        DosVox
-                        </div>
-                </div>
-
-                <div>
-                        <h1 className="acessibility_Titulo">Intérpretes digitais</h1>
-                        <div className="acessibility__border">
-                        VLibras
-                        </div>
+                        
+                        {mostrarTalkBack && (
                         <div className="acessibility__border">
                         <p>A suite VLibras é um conjunto de ferramentas para copiar e interpretar textos do português para a Língua Brasileira de Sinais. É possível usar essas ferramentas no computador e em smartphones e tablets.</p>
                         </div>
+                        )}
+                    </div>
+
+                    <div className="infos1" >        
+                        <div className="acessibility__border" onClick={toggleWinNarrator}>
+                        Narrador para windows
+                        </div>
+                        
+                        {mostrarWinNarrator && (
+                        <div className="acessibility__border">
+                        <p>A suite VLibras é um conjunto de ferramentas para copiar e interpretar textos do português para a Língua Brasileira de Sinais. É possível usar essas ferramentas no computador e em smartphones e tablets.</p>
+                        </div>
+                        )}
+                    </div>
+                     
+
+                    <div className="infos1" >        
+                        <div className="acessibility__border" onClick={toggleVoiceOver}>
+                        VoiceOver para iphone VoiceOver para mac
+                        </div>
+                        
+                        {mostrarVoiceOver && (
+                        <div className="acessibility__border">
+                        <p>A suite VLibras é um conjunto de ferramentas para copiar e interpretar textos do português para a Língua Brasileira de Sinais. É possível usar essas ferramentas no computador e em smartphones e tablets.</p>
+                        </div>
+                        )}
+                    </div>
+
+                    <div className="infos1" >        
+                        <div className="acessibility__border" onClick={toggleDosVox}>
+                        DosVox
+                        </div>
+                        
+                        {mostrarDosVox && (
+                        <div className="acessibility__border">
+                        <p>A suite VLibras é um conjunto de ferramentas para copiar e interpretar textos do português para a Língua Brasileira de Sinais. É possível usar essas ferramentas no computador e em smartphones e tablets.</p>
+                        </div>
+                        )}
+                    </div>   
+                        
                         
                 </div>
+
+                <div className="center">
+                    <div className="infos1" >
+                        <h1 className="acessibility_Titulo">Intérpretes digitais</h1>
+                        
+                        <div className="acessibility__border" onClick={toggleVLibras}>
+                        VLibras
+                        </div>
+                        
+                        {mostrarVLibras && (
+                        <div className="acessibility__border">
+                        <p>A suite VLibras é um conjunto de ferramentas para copiar e interpretar textos do português para a Língua Brasileira de Sinais. É possível usar essas ferramentas no computador e em smartphones e tablets.</p>
+                        </div>
+                        )}
+                    </div> 
+                </div>
+
+                
 
                 </section>
 
