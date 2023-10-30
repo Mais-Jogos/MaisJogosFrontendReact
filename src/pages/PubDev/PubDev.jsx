@@ -35,14 +35,14 @@ export default _ => {
                 <section className="accessibility__grid">
                 <div>
                     <div>
-                    <div></div>
+                    <div><img src="../../public\imgs\animais\1-face.png"/></div>
                     <div><h1 className="pubProfile_Titulo">Nome dev</h1></div>
                     <div><h1 className="pubProfile_Titulo">Posição no ranking</h1></div>
                     </div>
 
                     <div>
                     <h1 className="pubProfile_Titulo">Sobre dev</h1>
-                    <div>Para ter sucesso como desenvolvedor de jogos é preciso ter muita dedicação e paixão pelo que faz. É importante estar sempre atualizado sobre as novidades do mercado e buscar inspiração em outras áreas além dos jogos. Afinal, a criatividade é um dos principais ingredientes para o sucesso nessa área.</div>
+                    <div className="pubProfile_bg">Para ter sucesso como desenvolvedor de jogos é preciso ter muita dedicação e paixão pelo que faz. É importante estar sempre atualizado sobre as novidades do mercado e buscar inspiração em outras áreas além dos jogos. Afinal, a criatividade é um dos principais ingredientes para o sucesso nessa área.</div>
                     </div>
 
                 </div>
