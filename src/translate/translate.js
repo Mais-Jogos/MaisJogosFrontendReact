@@ -31,7 +31,7 @@ export function translate(value){
         },
         "Novidades":{
             "pt": "Novidades",
-            "en":"News"
+            "en":"New releases"
         },
         "Categorias":{
             "pt": "Categorias",
@@ -99,11 +99,11 @@ export function translate(value){
         },
         "Digite seu melhor e mail":{
             "pt": "Digite seu melhor e mail",
-            "en":"Enter your best email"
+            "en":"Type your best email"
         },
         "Assinar":{
             "pt": "Assinar",
-            "en":"To sign"
+            "en":"Sign up"
         },
         "Ver mais":{
             "pt": "Ver mais",
