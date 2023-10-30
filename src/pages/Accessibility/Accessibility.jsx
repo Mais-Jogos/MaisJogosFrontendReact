@@ -204,10 +204,12 @@ export default _ => {
                         
                 </div>
 
-                <div className="center">
+                <div className="acessibility__tecAssistivas">
                     <div className="infos1" >
+                        <div>
                         <h1 className="acessibility_Titulo">Intérpretes digitais</h1>
-                        
+                        </div>
+
                         <div className="acessibility__border" onClick={toggleVLibras}>
                         VLibras
                         </div>

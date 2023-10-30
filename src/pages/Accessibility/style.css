@@ -67,12 +67,7 @@
     }
 }
 
-.center{
-    display: flex;
-    margin: 2%;
-    flex-direction: column;
-    align-items: center;
-  }
+
 
   .infos1{
     display: flex;
