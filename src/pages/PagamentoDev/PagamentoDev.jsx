@@ -6,6 +6,7 @@ import Vlibras from '../../components/Vlibras/Vlibras'
 import { useState } from "react";
 import InputsPagamentoDevPixSalvo from "./InputsPagamentoDevPixSalvo";
 import { Link } from "react-router-dom";
+import GoBack from "../../components/GoBack/GoBack";
 
 function reducerTypeOfPix(state, action) {
     switch (action.type) {
@@ -53,7 +54,7 @@ export default props => {
             <Acessibilidade />
             <main className="pagamentoDev__main">
                 <section className="pagamentoDev__title">
-                    <Link to="/perfil-dev"><img src="\imgs\icons\goBack__icon.svg" alt="ícone de voltar para a página anterior"></img></Link> 
+                    <GoBack/>
 
                     <h1>Requerimento de pagamento</h1>
                 </section>

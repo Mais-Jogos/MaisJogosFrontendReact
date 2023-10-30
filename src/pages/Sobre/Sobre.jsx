@@ -19,12 +19,12 @@ export default _ => {
                 <h1 className="sobre_Titulo">Sobre +Jogos</h1>
                     
                 <div className='sobre_photo'>
-                  <img src="../../public\imgs\grupodev\g01.png"/>
-                  <img src="../../public\imgs\grupodev\g02.png"/>
-                  <img src="../../public\imgs\grupodev\g03.png"/>
-                  <img src="../../public\imgs\grupodev\g04.png"/>
-                  <img src="../../public\imgs\grupodev\g05.png"/>
-                  <img src="../../public\imgs\grupodev\g06.png"/>
+                  <img src="\imgs\grupodev\g01.png"/>
+                  <img src="\imgs\grupodev\g02.png"/>
+                  <img src="\imgs\grupodev\g03.png"/>
+                  <img src="\imgs\grupodev\g04.png"/>
+                  <img src="\imgs\grupodev\g05.png"/>
+                  <img src="\imgs\grupodev\g06.png"/>
                 </div>
                     
                 </header>

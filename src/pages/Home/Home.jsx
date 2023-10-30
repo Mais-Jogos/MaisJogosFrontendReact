@@ -307,12 +307,12 @@ const Home = () => {
               ?.slice(0,numberGames).map((game, index)=>(
                 <Card game={game} key={index}/>
               ))}
-            </div>
-            {filteredGames?.length === 0 && 
+            {filteredGames == [] &&
               <div className='home__nenhum-jogo'>
                 Nenhum jogo foi encontrado...
               </div>
             }
+            </div>
             <p onClick={() => setNumberGames(numberGames === 6 ? games.length : 6)}>{numberGames === 6 ?  translate('Ver mais') : translate('Ver menos')}</p>
           </div>
           <div id="publish__games">

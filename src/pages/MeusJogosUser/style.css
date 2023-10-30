@@ -2,11 +2,9 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     align-content: center;
 }
-
-
 
 .meusjogos__menu{
     width: 99.67%;

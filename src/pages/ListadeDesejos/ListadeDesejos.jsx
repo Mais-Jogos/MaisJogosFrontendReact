@@ -8,6 +8,7 @@ import { connect } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
 import { deletefavoriteGame } from '../../redux/actions';
 import { selectGame } from '../../redux/actions';
+import GoBack from '../../components/GoBack/GoBack';
 
 const ListadeDesejos = ({listadesejos, dispatch}) => {
   const navigate = useNavigate()
@@ -24,6 +25,7 @@ const ListadeDesejos = ({listadesejos, dispatch}) => {
       <Vlibras/>
       <Acessibilidade />
       <main className='listaDeDesejos__main'>
+        <GoBack/>
         <HeaderWithFilter name="Lista de Desejos" imgIcon="\imgs\icons\heart_icon.png" />
 
         <section className='listaDeDesejos__cards'>

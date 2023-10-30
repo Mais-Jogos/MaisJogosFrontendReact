@@ -83,7 +83,7 @@ export function selectGame(game) {
   return{ 
     type: SELECT_GAME,
     payload: game,
-    message:"Você adicionou um jogo do carrinho",
+    message:"Você adicionou um jogo ao carrinho",
   }
 }
 export function deleteGame(game) {

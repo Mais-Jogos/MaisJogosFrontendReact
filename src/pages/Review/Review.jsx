@@ -6,6 +6,7 @@ import ReviewComp from "../../components/ReviewComp/ReviewComp";
 import ReviewCompINF from "../../components/ReviewComp/ReviewCompINF";
 import Vlibras from '../../components/Vlibras/Vlibras';
 import Axios from 'axios'
+import GoBack from "../../components/GoBack/GoBack";
 
 export default _ => {
     const [games, setGames] = useState([]); 
@@ -23,7 +24,8 @@ export default _ => {
             <Acessibilidade />
 
             <main className="review__main">
-            <ReviewComp name="Review de jogos"/>
+                <GoBack/>
+                <ReviewComp name="Review de jogos"/>
                 
                 <section className="review__Section">
                 {

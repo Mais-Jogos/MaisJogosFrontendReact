@@ -6,13 +6,10 @@ import CardAvatar from "../../components/CardAvatar/CardAvatar";
 import Vlibras from "../../components/Vlibras/Vlibras";
 import { translate } from "../../translate/translate";
 import { connect } from "react-redux";
-import { useDispatch } from "react-redux";
-import { addAvatar } from "../../redux/actions";
+import GoBack from "../../components/GoBack/GoBack";
 
-const Avatares = ({userRedux, addAvatar}) => {
-    const handleClickAdd = (avatar) =>{
-        addAvatar(avatar);
-    }   
+
+const Avatares = ({userRedux}) => {
     
     const avatares = [
         {
@@ -23,17 +20,17 @@ const Avatares = ({userRedux, addAvatar}) => {
             id:1,
         },
         {
-            nome: "Julia",
-            img:"/imgs/animais/3.png",
-            color:"cyan",
-            coins:5,
-            id:2,
-        },
-        {
             nome: "Sr. Rocha",
             img:"/imgs/animais/2.png",
             color:"fuchsia",
             coins:20,
+            id:2,
+        },
+        {
+            nome: "Julia",
+            img:"/imgs/animais/3.png",
+            color:"cyan",
+            coins:5,
             id:3,
         },
         {
@@ -58,6 +55,7 @@ const Avatares = ({userRedux, addAvatar}) => {
             <Acessibilidade />
 
             <main className="avatares__main">
+                <GoBack/>
                 <div className="avatares__letraPixel">
                     <h1 className="titulo"> <img id="avatares_capivaraICON" src="\imgs\icons\capivara_icon.svg"/>{translate("Meus Avatares")}</h1>
                 </div>
@@ -66,7 +64,7 @@ const Avatares = ({userRedux, addAvatar}) => {
                     
                     {
                         userRedux.avatares?.map((avatar) =>(
-                            <CardAvatar avatar={avatar} handleClickAdd={handleClickAdd}/>
+                            <CardAvatar avatar={avatar}/>
                         ))
                     }
 
@@ -76,7 +74,7 @@ const Avatares = ({userRedux, addAvatar}) => {
 
                     {
                         avatares?.map((avatar) =>(
-                            <CardAvatar avatar={avatar} handleClickAdd={handleClickAdd}/>
+                            <CardAvatar avatar={avatar}/>
                         ))
                     }
 
@@ -88,13 +86,8 @@ const Avatares = ({userRedux, addAvatar}) => {
     );
 
 }
-const mapDispatchToProps = (dispatch) => {
-    return {
-        addAvatar: (avatar) => dispatch(addAvatar(avatar))
-    };
-};
 const mapStateToProps = (state) => ({
     userRedux: state.userRedux,
 });
   
-export default connect(mapStateToProps, mapDispatchToProps)(Avatares);
+export default connect(mapStateToProps)(Avatares);

@@ -1,4 +1,4 @@
-import { CHANGE_COLORCARD, CHANGE_AVATAR, ADD_AVATAR } from './actions'; 
+import { CHANGE_COLORCARD, CHANGE_AVATAR, ADD_AVATAR, HIDE_ALERT } from './actions'; 
  
 const initialState = { 
   colorCard: '#000',
@@ -40,6 +40,11 @@ export default function userReducer(state = initialState, action) {
           avatares: [...state.avatares, action.payload],
           message:action.message,
         }
+      case HIDE_ALERT:
+        return {
+          ...state,
+          message: null,
+        };
       default: 
         return state; 
   }

@@ -7,6 +7,7 @@ import RecemComprados from "./RecemComprados";
 import TodosComprados from "./TodosComprados";
 import HeaderWithFilter from "../../components/HeaderWithFiilter/HeaderWithFilter";
 import Vlibras from '../../components/Vlibras/Vlibras';
+import GoBack from "../../components/GoBack/GoBack";
 
 export default _ => {
     // False = Jogos recém comprados
@@ -19,8 +20,8 @@ export default _ => {
             <Vlibras/>
             <Acessibilidade />
             <main className="meusjogos__main">
+                <GoBack/>
                 <HeaderWithFilter name="Meus +jogos" imgIcon="/imgs/icons/psbuttons_icon.png"/>
-
                 <section className="meusjogos__menu">
                     <div className="meusjogos__menu__titles">
                         <div className={menuOption ? "meusjogos__menu__title" : "meusjogos__menu__title meusjogos__menu__title--selected"} onClick={ _ => setMenuOption(false)}>

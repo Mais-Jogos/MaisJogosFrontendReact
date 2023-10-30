@@ -114,7 +114,7 @@ const Jogo = ({dispatch, listadesejos, cart}) => {
                 </div>
                 <div className="about__game__page">
                   <h3>Sobre o jogo</h3>
-                  <p>DESENVOLVEDOR: <Link to={'/perfil-dev'}>{game?.name}</Link></p>
+                  <p>DESENVOLVEDOR: <Link to={'/dev'}>{game?.name}</Link></p>
                   <p>GÊNERO: {game?.genres.map((genres, index) => 
                   <Link to={`/categorias/category=${genres?.name}`} key={genres?.id}>
                     <p key={genres?.id}>{genres?.name}{index === game?.genres.length-1 ? ' ':','}</p>

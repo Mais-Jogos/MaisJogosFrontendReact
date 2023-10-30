@@ -151,6 +151,9 @@
 .avatares__cardFooter, .equipado{
   color: var(--purple-y);
 }
+.avatares__cardFooter, .equipar{
+  color: var(--white);
+}
 
 .lojaskin__cardFooter, .lojaskin__letraPixel{
   font-family: var(--font-pixel); 

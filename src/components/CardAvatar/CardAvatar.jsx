@@ -1,12 +1,20 @@
-/* eslint-disable react/prop-types */
-// eslint-disable-next-line no-unused-vars
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { translate } from "../../translate/translate";
 import { connect } from "react-redux";
+import { addAvatar, changeAvatar, buyWithCoins } from "../../redux/actions";
 import "./style.css";
 
-const CardAvatar = ({ avatar, userRedux, coins, handleClickAdd }) => {
+const CardAvatar = ({ avatar, userRedux, coins, dispatch }) => {
     const [hover, setHover] = useState(false);
+    const handleClickAdd = (avatar) =>{
+      dispatch(addAvatar(avatar))
+      setTimeout(()=>{
+        dispatch(buyWithCoins(avatar.coins))
+      }, 4000)
+    }   
+    const handleClickChangeAvatar = (avatar) =>{
+      dispatch(changeAvatar(avatar))
+    }
 
   return (
     <div
@@ -33,8 +41,10 @@ const CardAvatar = ({ avatar, userRedux, coins, handleClickAdd }) => {
         <div className="avatares__letraPixel">
           <p>{avatar?.nome}</p>
         </div>
-        {userRedux.avatares.some(useravatar => useravatar?.id !== avatar?.id) ? (
-          <div className="lojaskin__cardFooter" >
+          <div className="lojaskin__cardFooter"
+           style={{
+            display:userRedux.avatares.every(useravatar => useravatar?.id !== avatar?.id) ? 'flex':'none'
+           }}>
             <img
               className="lojaskin__imgEdit"
               src="/imgs/icons/Kapicoin_icon.png"
@@ -44,11 +54,15 @@ const CardAvatar = ({ avatar, userRedux, coins, handleClickAdd }) => {
               <i class="fa-solid fa-cart-shopping" onClick={() => handleClickAdd(avatar)}></i>
             </div>}
           </div>
-        ) : (
-          <div className="avatares__cardFooter">
-            <p className={userRedux.avatar?.id !== avatar?.id ? "equipar" : "equipado"}> {userRedux.avatar?.id !== avatar?.id ? translate("Equipar") : translate("Equipado")} </p>
+
+          <div className="avatares__cardFooter" style={{
+            display:userRedux.avatares.some(useravatar => useravatar?.id === avatar?.id) ? 'flex':'none'
+           }}>
+            <p className={userRedux.avatar?.id !== avatar?.id ? "equipar" : "equipado"}
+            onClick={() => handleClickChangeAvatar(avatar)}> 
+              {userRedux.avatar?.id !== avatar?.id ? translate("Equipar") : translate("Equipado")} 
+            </p>
           </div>
-        )}
       </div>
     </div>
   );
