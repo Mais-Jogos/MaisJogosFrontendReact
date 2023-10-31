@@ -28,6 +28,7 @@
     justify-content: space-between;
     align-items: stretch;
     gap: 15px;
+    flex-wrap: wrap;
 }
 .cart__border__price{
     border:2px solid #000;
@@ -72,5 +73,6 @@
     }
     #cart{
         margin: 0px 5% 20px 5%;
+        padding: 20px 10px;
     }
 }

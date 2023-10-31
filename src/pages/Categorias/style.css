@@ -226,6 +226,7 @@
     }
     .categorias__filter{
         display: flex;
+        flex-wrap: wrap;
     }
 }
     

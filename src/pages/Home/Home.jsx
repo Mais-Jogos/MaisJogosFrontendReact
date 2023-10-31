@@ -309,7 +309,7 @@ const Home = () => {
               ))}
             {filteredGames == [] &&
               <div className='home__nenhum-jogo'>
-                Nenhum jogo foi encontrado...
+                {translate("Nenhum jogo foi encontrado")}...
               </div>
             }
             </div>

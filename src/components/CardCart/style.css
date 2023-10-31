@@ -39,6 +39,7 @@
     overflow-x: hidden;
     text-overflow: ellipsis;
     direction: ltr;
+    text-align: start;
 }
 .card__cart .card__cart__platforms{
     display: flex;
