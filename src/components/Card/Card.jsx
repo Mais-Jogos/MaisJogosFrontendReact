@@ -6,9 +6,12 @@ import { selectGame, showAlert } from '../../redux/actions'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
-const Card = ({game, dispatch}) => {
+const Card = ({game, dispatch, cart}) => {
+  var carrinho = cart.cart.every(c => c?.id !== game?.id)
   const handleClickAdd = (game) => {
-    dispatch(selectGame(game));
+    if(carrinho){
+      dispatch(selectGame(game));
+    }
   };
 
   return (

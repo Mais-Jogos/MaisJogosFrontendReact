@@ -264,8 +264,8 @@ const Categorias = () => {
                   notasSelecionadas = jogo;
                 }
                 return plataformasSelecionadas && categoriasSelecionadas && notasSelecionadas;
-              }).map((game, index) => (
-                <Card game={game}/>
+              }).map((game) => (
+                <Card game={game} id={game?.id}/>
               ))}
             </div>
           </div>

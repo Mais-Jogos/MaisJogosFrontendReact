@@ -37,6 +37,7 @@
 }
 .admin__jogo{
     width: 45%;
+    min-width: 300px;
     padding: 10px;
     color: var(--color-primary);
     font-family: var(--font-normal);
@@ -50,6 +51,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 .admin__jogo-detalhes .admin__jogo-platforms{
     display: flex;
@@ -109,6 +111,7 @@
     align-items: center;
     justify-content: flex-start;
     margin-bottom: 20px;
+    flex-wrap: wrap;
 }
 .jogos-admin__filter-categorias, 
 .jogos-admin__filter-classificacao, 
@@ -196,4 +199,29 @@
 }
 .jogos-admin__buscar .jogos-admin__input-search i:not(.fa-magnifying-glass){
     cursor: pointer;
+}
+
+@media screen and (max-width:950px) {
+    .gerenciamento-admin{
+        flex-direction: column;
+    }
+    .gerenciamento-admin aside ul{
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0;
+    }
+    .gerenciamento-admin aside{
+        width: auto;
+    }
+    .admin__jogo .admin__jogo-genres{
+        flex-wrap: wrap;
+        column-gap: 10px;
+    }
+
+}
+@media screen and (max-width: 350px){
+    .admin__jogo{
+        min-width: 200px;
+        width: 100%;
+    }
 }

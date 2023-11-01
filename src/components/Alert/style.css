@@ -8,6 +8,7 @@
     color: var(--color-primary);
     font-family: var(--font-normal);
     border-radius: 5px 0px 0px 5px;
+    box-shadow: 0px 2px 5px var(--light-hover-background);
 }
 #alert .bar{
     height: 6px;

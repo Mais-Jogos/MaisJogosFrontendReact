@@ -130,3 +130,14 @@
     }
 
 }
+@media screen and (max-width:350px) {
+    .signin__img__admin{
+        width: 90vw;
+        height: fit-content;
+    }
+    .signin__img__admin img{
+        width: 85vw;
+        height: fit-content;
+    }
+
+}

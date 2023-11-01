@@ -62,8 +62,8 @@ export default _ => {
                   <p onClick={()=>{setNumberGames(numberGames === 0 ? games.length-1 : numberGames-1); setDirection('right')}}>
                     <i className="fa-solid fa-chevron-left"></i>
                   </p>
-                    {games?.slice(numberGames,numberGames+3).map((game, index)=>(
-                      <Card game={game}/>
+                    {games?.slice(numberGames,numberGames+3).map((game)=>(
+                      <Card game={game} key={game?.id}/>
                     ))}
                   <p onClick={()=>{setNumberGames(numberGames === games.length-1 ? 0 : numberGames+1); setDirection('left')}}>
                     <i className="fa-solid fa-chevron-right"></i>

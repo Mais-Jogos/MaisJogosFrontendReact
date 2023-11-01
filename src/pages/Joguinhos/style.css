@@ -85,3 +85,72 @@
     color:var(--grey);
     margin:0px auto; 
 }
+
+@media screen and (max-width:400px){
+    .border__card__game{
+        border:2px solid var(--black);
+        border-radius:5px;
+        background-color: var(--grey-dark);
+        padding:7px;
+        box-shadow: 2px 2px 0px 0px rgba(56, 56, 56, 0.75) inset,
+        0px 0px 12px rgb(255 255 255 / 26%);
+        width: fit-content;
+        cursor: pointer;
+    }
+    .card__game{
+        background-color: var(--color-secondary);
+        border:2px solid var(--black);
+        border-radius:5px;
+        padding:7px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .card__image__game img{
+        border:2px solid var(--black);
+        border-radius:5px;
+        width: 150px;
+        height: 150px;
+        object-fit: contain;
+    }
+    .card__game > h2{
+        color: var(--white);
+        font-family: var(--font-pixel);
+        width: 150px;
+        margin:2px 0px;
+        height: 40px;
+        white-space: nowrap;
+        overflow-x: hidden;
+        text-overflow: ellipsis;
+        direction: ltr;
+    }
+    .card__game p{
+        color:var(--grey);
+        font-family: var(--font-pixel);
+        width: 220px;
+        margin:2px 0px 10px 0px;
+    }
+    .border__title__game{
+        border:2px solid var(--black);
+        border-radius:5px;
+        background-color: var(--purple);
+        padding:7px;
+        box-shadow: 2px 2px 0px 0px #8c21ffe3 inset;
+        width: fit-content;
+    }
+    .title__game{
+        background-color: #010001;
+        border:2px solid var(--black);
+        border-radius:5px;
+        padding:7px;
+        width: fit-content;
+    }
+    .title__game h2{
+        font-family: var(--font-pixel);
+        text-align: center;
+        color:var(--grey);
+        margin:0px auto; 
+        width: 150px;
+    }
+}
