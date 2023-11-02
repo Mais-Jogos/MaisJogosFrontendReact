@@ -9,6 +9,7 @@ import HeaderWithFilter from "../../components/HeaderWithFiilter/HeaderWithFilte
 import Vlibras from '../../components/Vlibras/Vlibras';
 import GoBack from "../../components/GoBack/GoBack";
 import { translate } from "../../translate/translate.js";
+import TextToSpeech from "../../components/Acessibilidade/TextToSpeech";
 
 export default _ => {
     // False = Jogos recém comprados
@@ -20,6 +21,8 @@ export default _ => {
             <Menu />
             <Vlibras/>
             <Acessibilidade />
+            <TextToSpeech />
+
             <main className="meusjogos__main">
                 <GoBack/>
                 <HeaderWithFilter name="Meus +jogos" imgIcon="/imgs/icons/psbuttons_icon.png"/>

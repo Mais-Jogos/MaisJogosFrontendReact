@@ -19,25 +19,25 @@ const ModalSearch = (props) => {
   return (
     <div className="modal__search">
         <ul>
-            <h3>Jogos</h3>
+            <h3 aria-tts="Buscar jogos">Jogos</h3>
             {games?.map((game, index) => game?.name.toLowerCase().includes(search.toLowerCase()) && (
-            <Link key={index} to={`/jogos/${game?.name?.toLowerCase().replace(/ /g,"-")}`}>{game?.name}</Link>
+            <Link key={index} to={`/jogos/${game?.name?.toLowerCase().replace(/ /g,"-")}`}  aria-tts={game?.name}>{game?.name}</Link>
             ))}
         </ul>
         <ul>
-            <h3>Gêneros</h3>
+            <h3 aria-tts="Buscar gêneros">Gêneros</h3>
             {generos && 
             [...new Set(generos.map((game) => game.name))]
             .map(genero =>  genero.toLowerCase().includes(search.toLowerCase()) && (
-                <Link key={genero} to={`/categorias/category=${genero}`}>{genero}</Link>
+                <Link key={genero} to={`/categorias/category=${genero}`}  aria-tts={genero}>{genero}</Link>
             ))}
         </ul>
         <ul>
-            <h3>Plataformas</h3>
+            <h3 aria-tts="Buscar plataformas">Plataformas</h3>
             {plataformas2 && 
             [...new Set(plataformas2?.map((game) => game.name))]
             .map(plataforma => plataforma.toLowerCase().includes(search.toLowerCase()) && (
-            <Link key={plataforma} to={`/categorias/category=${plataforma}`}>{plataforma}</Link>
+            <Link key={plataforma} to={`/categorias/category=${plataforma}`}  aria-tts={plataforma}>{plataforma}</Link>
             ))}
         </ul>
     </div>

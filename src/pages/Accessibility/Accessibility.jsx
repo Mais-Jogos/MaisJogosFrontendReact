@@ -4,6 +4,7 @@ import Acessibilidade from "../../components/Acessibilidade/Acessibilidade";
 import Menu from "../../components/Menu/Menu";
 import Vlibras from '../../components/Vlibras/Vlibras';
 import {translate} from "../../translate/translate";
+import TextToSpeech from "../../components/Acessibilidade/TextToSpeech";
 
 export default _ => {
 
@@ -39,6 +40,7 @@ export default _ => {
             <Menu />
             <Vlibras/>
             <Acessibilidade />
+            <TextToSpeech />
 
             <main className="accessibility__main">
                 <header className="accessibility_Header">

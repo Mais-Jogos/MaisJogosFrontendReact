@@ -7,6 +7,7 @@ import ReviewCompINF from "../../components/ReviewComp/ReviewCompINF";
 import Vlibras from '../../components/Vlibras/Vlibras';
 import Axios from 'axios'
 import GoBack from "../../components/GoBack/GoBack";
+import TextToSpeech from "../../components/Acessibilidade/TextToSpeech";
 
 export default _ => {
     const [games, setGames] = useState([]); 
@@ -22,6 +23,8 @@ export default _ => {
             <Menu />
             <Vlibras/>
             <Acessibilidade />
+            <TextToSpeech />
+
 
             <main className="review__main">
                 <GoBack/>

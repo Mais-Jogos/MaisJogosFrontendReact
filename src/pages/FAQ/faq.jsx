@@ -3,6 +3,7 @@ import "./style.css";
 import Acessibilidade from "../../components/Acessibilidade/Acessibilidade";
 import Menu from "../../components/Menu/Menu";
 import Vlibras from "../../components/Vlibras/Vlibras";
+import TextToSpeech from "../../components/Acessibilidade/TextToSpeech";
 
 export default function FAQ() {
   const [mostrarTextoJogos, setMostrarTextoJogos] = useState(false);
@@ -28,6 +29,8 @@ export default function FAQ() {
       <Menu />
       <Vlibras />
       <Acessibilidade />
+      <TextToSpeech />
+
       <div className="container-tittle">
         <img src="/imgs/icons/iconefaq.svg" alt="FAQIMAGEM" id="img-faq" />
         <h1>FAQ +JOGOS</h1>

@@ -10,6 +10,7 @@ import { deletefavoriteGame } from '../../redux/actions';
 import { selectGame } from '../../redux/actions';
 import GoBack from '../../components/GoBack/GoBack';
 import { translate } from '../../translate/translate';
+import TextToSpeech from "../../components/Acessibilidade/TextToSpeech";
 
 const ListadeDesejos = ({listadesejos, dispatch}) => {
   const navigate = useNavigate()
@@ -25,6 +26,8 @@ const ListadeDesejos = ({listadesejos, dispatch}) => {
       <Menu />
       <Vlibras/>
       <Acessibilidade />
+      <TextToSpeech />
+      
       <main className='listaDeDesejos__main'>
         <GoBack/>
         <HeaderWithFilter name={translate("Lista de desejos")} imgIcon="\imgs\icons\heart_icon.png" />

@@ -6,6 +6,7 @@ import Acessibilidade from "../../components/Acessibilidade/Acessibilidade";
 import Menu from "../../components/Menu/Menu";
 import Vlibras from '../../components/Vlibras/Vlibras';
 import { translate } from "../../translate/translate";
+import TextToSpeech from "../../components/Acessibilidade/TextToSpeech";
 
 export default _ => {
 
@@ -40,6 +41,8 @@ export default _ => {
             <Menu />
             <Vlibras/>
             <Acessibilidade />
+            <TextToSpeech />
+
 
             <main className="accessibility__main">
                 <header>
@@ -48,10 +51,23 @@ export default _ => {
 
                 <section className="accessibility__grid">
                 <div>
-                    <div>
-                    <div><img src="../../public\imgs\animais\1-face.png"/></div>
-                    <div><h1 className="pubProfile_Titulo">Nome dev</h1></div>
-                    <div><h1 className="pubProfile_Titulo">Posição no ranking</h1></div>
+                    <div className="pubProfile_topo">
+                      <div className="pubProfile_descricao1">
+                        <img src="../../public\imgs\animais\1.png"/>
+                      </div>
+                      
+                      <div className="pubProfile_descricao2">
+                        
+                        <div>
+                          <h1 className="pubProfile_Titulo2">Nome dev</h1>
+                        </div>
+                        
+                        <div className="pubProfile__block1">
+                          <div className="pubProfile__rankingCoin"> <img src="../../public\imgs\bgimg\ranking.png"/> </div> 
+                          <div> <h1 className="pubProfile_Titulo2"> Posição no ranking </h1> </div>
+                        </div>
+                        
+                      </div>
                     </div>
 
                     <div>
@@ -66,10 +82,18 @@ export default _ => {
                     <div><img src=""/></div>
                     </div>
 
-                    <div>
-                    <h1 className="pubProfile_Titulo">Artes</h1>
-                    <div><img src=""/></div>
+                    <div className="section__pubDev">
+                      <p onClick={()=>{setNumberGames(numberGames === 0 ? games.length-1 : numberGames-1); setDirection('right')}}>
+                        <i className="fa-solid fa-chevron-left"></i>
+                      </p>
+                      {games?.slice(numberGames,numberGames+3).map((game, index)=>(
+                      <Card game={game}/>
+                      ))}
+                      <p onClick={()=>{setNumberGames(numberGames === games.length-1 ? 0 : numberGames+1); setDirection('left')}}>
+                        <i className="fa-solid fa-chevron-right"></i>
+                      </p>
                     </div>
+
                 </div>
 
                 <div className="section__pubDev">

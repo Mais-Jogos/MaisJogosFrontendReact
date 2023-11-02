@@ -11,6 +11,7 @@ import './style.css';
 import Acessibilidade from '../../components/Acessibilidade/Acessibilidade';
 import Vlibras from '../../components/Vlibras/Vlibras';
 import { translate } from '../../translate/translate';
+import TextToSpeech from "../../components/Acessibilidade/TextToSpeech";
 
 const Jogo = ({dispatch, listadesejos, cart}) => {
     const [game, setGame] = useState(); 
@@ -50,6 +51,8 @@ const Jogo = ({dispatch, listadesejos, cart}) => {
         <Menu/>
         <Acessibilidade/>
         <Vlibras/>
+        <TextToSpeech />
+
         <div>
           <div className="game__page">
             <div className="game__page__image">

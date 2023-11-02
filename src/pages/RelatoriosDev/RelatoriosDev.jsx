@@ -4,6 +4,7 @@ import Vlibras from '../../components/Vlibras/Vlibras'
 import Acessibilidade from '../../components/Acessibilidade/Acessibilidade'
 import {translate} from '../../translate/translate'
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts'
+import TextToSpeech from "../../components/Acessibilidade/TextToSpeech";
 import "./style.css"
 
 const RelatoriosDev = () => {
@@ -113,6 +114,8 @@ const RelatoriosDev = () => {
         <Menu/>
         <Vlibras/>
         <Acessibilidade/>
+        <TextToSpeech />
+        
         <div id="relatorios-dev">
             <h1>
               {translate("Relatórios de Vendas")}

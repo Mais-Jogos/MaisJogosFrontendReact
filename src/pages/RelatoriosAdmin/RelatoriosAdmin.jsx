@@ -5,6 +5,7 @@ import Acessibilidade from '../../components/Acessibilidade/Acessibilidade'
 import {translate} from '../../translate/translate'
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts'
 import "./style.css"
+import TextToSpeech from "../../components/Acessibilidade/TextToSpeech";
 
 const RelatoriosAdmin = () => {
   const [filterGraf, setFilterGraf] = useState('Geral')
@@ -120,6 +121,8 @@ const RelatoriosAdmin = () => {
         <Menu/>
         <Vlibras/>
         <Acessibilidade/>
+        <TextToSpeech />
+
         <div id="relatorios-admin">
             <h1>
               {translate("Relatórios de Vendas")} 

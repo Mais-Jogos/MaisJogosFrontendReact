@@ -8,6 +8,7 @@ import InputsPagamentoDevPixSalvo from "./InputsPagamentoDevPixSalvo";
 import { Link } from "react-router-dom";
 import GoBack from "../../components/GoBack/GoBack";
 import { translate } from "../../translate/translate";
+import TextToSpeech from "../../components/Acessibilidade/TextToSpeech";
 
 function reducerTypeOfPix(state, action) {
     switch (action.type) {
@@ -53,6 +54,8 @@ export default props => {
             <Menu />
             <Vlibras />
             <Acessibilidade />
+            <TextToSpeech />
+
             <main className="pagamentoDev__main">
                 <section className="pagamentoDev__title">
                     <GoBack/>
@@ -173,9 +176,9 @@ export default props => {
                     </div>
                 </section>
 
-                <div className="pagamentoDev__modalBackground" style={enviar == 2 ? { display: "flex" } : { display: "none" }}>
-                    <div className="pagamentoDev__modalConfirm">
-                        <div className="pagamentoDev__modalConfirm__container">
+                <div className="finish__modalBackground" style={enviar == 2 ? { display: "flex" } : { display: "none" }}>
+                    <div className="finish__modalConfirm">
+                        <div className="finish__modalConfirm__container">
                             <div>
                                 <p>Seus dados foram enviados com sucesso, prazo de até 3 (três) dias úteis para o valor cair na sua conta. Após 15 dias do pagamento realizado você poderá requerir um novo pagamento</p>
                             </div>

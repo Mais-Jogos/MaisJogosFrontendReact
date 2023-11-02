@@ -4,6 +4,7 @@ import Vlibras from '../../components/Vlibras/Vlibras';
 import Acessibilidade from '../../components/Acessibilidade/Acessibilidade';
 import "./style.css";
 import { translate } from '../../translate/translate';
+import TextToSpeech from "../../components/Acessibilidade/TextToSpeech";
 
 const LoginAdmin = () => {
     const [data, setData] = useState({
@@ -25,6 +26,8 @@ const LoginAdmin = () => {
         <Menu/>
         <Vlibras/>
         <Acessibilidade/>
+        <TextToSpeech />
+
         <div className="signin__title__admin">
         <i className="fa-solid fa-caret-left"></i>
         <h2>{translate("Admin")}</h2>

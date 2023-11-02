@@ -8,6 +8,7 @@ import Acessibilidade from '../../components/Acessibilidade/Acessibilidade'
 import Vlibras from '../../components/Vlibras/Vlibras'
 import { motion, AnimatePresence } from 'framer-motion'
 import { translate } from '../../translate/translate'
+import TextToSpeech from "../../components/Acessibilidade/TextToSpeech";
 
 const Categorias = () => {
   const { category } = useParams();
@@ -90,6 +91,8 @@ const Categorias = () => {
       <Menu />
       <Vlibras />
       <Acessibilidade />
+      <TextToSpeech />
+
       <div id="container">
         <div className="section__categories-categorias">
           <h2>{translate("Categorias")}</h2>

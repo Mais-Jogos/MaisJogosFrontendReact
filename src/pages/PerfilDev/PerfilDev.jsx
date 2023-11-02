@@ -104,9 +104,13 @@ export default props => {
                 </section>
 
                 <section className="perfilDev__actions">
-                    <Link className="perfilDev__action" to="/">
+                    <Link className="perfilDev__action" to="/meus-jogos">
                         <img src="/imgs/icons/mais_icon.png" alt="Ícone de Mais que redireciona para a página de Meus jogos do desesenvolvedor" />
                         <p>{translate("Meus jogos")}</p>
+                    </Link>
+                    <Link className="perfilDev__action" to="/pagamento-dev">
+                        <img src="/imgs/icons/pix__icon.svg" alt="Ícone de Pix que redireciona para a página de Requerimento de pagamento" />
+                        <p>{translate("Requerimento de pagamento")}</p>
                     </Link>
                     <Link className="perfilDev__action" to="/relatorios-dev">
                         <img src="/imgs/icons/dashboard__icon.png" alt="Ícone de um gráfico que redireciona para a página de relatórios do desenvolvedor" />

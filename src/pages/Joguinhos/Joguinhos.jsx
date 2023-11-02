@@ -10,6 +10,7 @@ import Vlibras from '../../components/Vlibras/Vlibras';
 import { addCoins } from '../../redux/actions'
 import { connect } from 'react-redux'
 import {translate} from '../../translate/translate'
+import TextToSpeech from "../../components/Acessibilidade/TextToSpeech";
 
 const Joguinhos = ({dispatch}) => {
   const [jogo, setJogo] = useState('')

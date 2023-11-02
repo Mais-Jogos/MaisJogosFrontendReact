@@ -10,6 +10,7 @@ import LoginDev from './Dev/LoginDev'
 import Axios from 'axios'
 import Vlibras from '../../components/Vlibras/Vlibras';
 import { translate } from '../../translate/translate'
+import TextToSpeech from "../../components/Acessibilidade/TextToSpeech";
 
 
 
@@ -71,6 +72,8 @@ const Entrar = () => {
       <Menu/>
       <Vlibras/>
       <Acessibilidade/>
+      <TextToSpeech />
+
       <div className="signin__title">
         <i className="fa-solid fa-caret-left"></i>
         <h2>{translate("SELECIONAR JOGADOR")}</h2>
