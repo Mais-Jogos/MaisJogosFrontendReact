@@ -10,6 +10,7 @@ import { connect } from 'react-redux'
 import './style.css';
 import Acessibilidade from '../../components/Acessibilidade/Acessibilidade';
 import Vlibras from '../../components/Vlibras/Vlibras';
+import { translate } from '../../translate/translate';
 
 const Jogo = ({dispatch, listadesejos, cart}) => {
     const [game, setGame] = useState(); 
@@ -83,9 +84,9 @@ const Jogo = ({dispatch, listadesejos, cart}) => {
                     <span key={genres?.id}>{genres?.name}</span>
                   )}
                 </div>
-                <p className='description__game__page'>Descrição: Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus commodi quod nihil, et consequuntur aut rem unde laborum quasi nesciunt. Quaerat, dignissimos voluptate. Perferendis, ex commodi eius in blanditiis tenetur?</p>
+                <p className='description__game__page'>{translate("Descrição")}: Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus commodi quod nihil, et consequuntur aut rem unde laborum quasi nesciunt. Quaerat, dignissimos voluptate. Perferendis, ex commodi eius in blanditiis tenetur?</p>
                 <div className="comments__game__page">
-                  <h2>Avaliações</h2>
+                  <h2>{translate("Avaliações")}</h2>
                   <div className="comment__game__page">
                     <div className="usercomment__game__page">
                       <div className="avatar__user">
@@ -104,12 +105,16 @@ const Jogo = ({dispatch, listadesejos, cart}) => {
               <div className="info__game__page">
                 <div className="addcart__game__page">
                   <h2>R$0{game?.rating}</h2>
-                  <button onClick={() => handleClickAdd(game)}>
-                    {!carrinho ? 'Adicionado ao carrinho' : 'Adicionar ao carrinho'}
+                  <button onClick={() => handleClickAdd(game)} style={{display:!carrinho ? 'flex':'none'}}>
+                    {translate('Adicionado ao carrinho')}
+                  </button>
+                  <button onClick={() => handleClickAdd(game)} style={{display:carrinho ? 'flex':'none'}}>
+                    {translate('Adicionar ao carrinho')}
                   </button>
                   <div className="favorite__game__page" onClick={() => handleClickFavorite(game)}>
                     <img src="/imgs/icons/heart_icon.png" alt="" />
-                    <p>{!listaDeDesejos ? 'Adicionado a lista de desejos':'Lista de desejos'}</p>
+                    <p style={{display:!listaDeDesejos ? 'flex':'none'}}>{translate('Adicionado a lista de desejos')}</p>
+                    <p style={{display:listaDeDesejos ? 'flex':'none'}}>{translate('Adicionar a lista de desejos')}</p>
                   </div>
                 </div>
                 <div className="about__game__page">

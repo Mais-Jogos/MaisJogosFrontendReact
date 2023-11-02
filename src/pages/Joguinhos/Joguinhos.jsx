@@ -14,7 +14,9 @@ const Joguinhos = ({dispatch}) => {
   const [jogo, setJogo] = useState('')
   const [coins, setCoins] = useState(0)
   function saveGame(){
-    dispatch(addCoins(coins))
+    if(coins > 0){
+      dispatch(addCoins(coins))
+    }
     setJogo('');
     setCoins(0);
   }

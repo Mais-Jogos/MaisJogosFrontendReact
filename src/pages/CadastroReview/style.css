@@ -71,12 +71,15 @@
     justify-content: space-between;
     width: 100%;
     gap: 20px;
+    flex-wrap: wrap-reverse;
 }
 .cadastro-review__form .cadastro-review__btns .cadastro-review__btns-actions{
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 20px;
+    flex-wrap: wrap-reverse;
+    justify-content: center;
 }
 .cadastro-review__form .cadastro-review__btns .cadastro-review__btns-salvar{
     font-family: var(--font-pixel);
@@ -90,7 +93,7 @@
     padding: 10px 40px;
     cursor: pointer;
     display: flex;
-    align-items: center;
+    align-items: baseline;
     gap: 10px;
     margin: 20px 0px 0px 0px;
 }
@@ -106,7 +109,22 @@
     padding: 10px 40px;
     cursor: pointer;
     display: flex;
-    align-items: center;
+    align-items: baseline;
     gap: 10px;
     margin: 20px 0px 0px 0px;
+}
+
+/* Responsividade */
+@media screen and (max-width:600px){
+    .cadastro-review__form .cadastro-review__btns{
+        justify-content: center;
+    }
+    .cadastro-review__form{
+        max-width: 85vw;
+    }
+}
+@media screen and (max-width:400px){
+    .cadastro-review__form{
+        padding: 10px;
+    }
 }

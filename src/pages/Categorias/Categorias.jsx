@@ -7,7 +7,7 @@ import { Link, useParams } from 'react-router-dom'
 import Acessibilidade from '../../components/Acessibilidade/Acessibilidade'
 import Vlibras from '../../components/Vlibras/Vlibras'
 import { motion, AnimatePresence } from 'framer-motion'
-import translate from '../../translate/translate'
+import { translate } from '../../translate/translate'
 
 const Categorias = () => {
   const { category } = useParams();
@@ -92,7 +92,7 @@ const Categorias = () => {
       <Acessibilidade />
       <div id="container">
         <div className="section__categories-categorias">
-          <h2>Categorias</h2>
+          <h2>{translate("Categorias")}</h2>
           {
             [...new Set(generos?.map((game) => game.name))].map(category => (
               <div className='categorias__categorias'>
@@ -101,7 +101,7 @@ const Categorias = () => {
               </div>
             ))
           }
-          <h2>Plataformas</h2>
+          <h2>{translate("Plataformas")}</h2>
           {
             [...new Set(plataformas2?.map((game) => game.name))].map(platform => (
               <div className='categorias__categorias'>
@@ -110,7 +110,7 @@ const Categorias = () => {
               </div>
             ))
           }
-          <h2>Classificação</h2>
+          <h2>{translate("Classificação")}</h2>
           <div className='categorias__ratings'>
             {
               [1, 2, 3, 4, 5].map(rating => (
@@ -126,12 +126,12 @@ const Categorias = () => {
         <div className="container__categorias__right">
           <div className="section__title">
             <h1>
-              Categorias
+              {translate("Categorias")}
             </h1>
           </div>
           <div className="categorias__filter">
             <div className="categorias__filter-categorias">
-              <p>Categorias:</p>
+              <p>{translate("Categorias")}:</p>
               <div className="categorias__select-categorias" onClick={() => setOpenFilter({ ...openFilter, category: !openFilter.category })}>
                 {filter.category !== 'Todos' ?
                   <p>
@@ -166,7 +166,7 @@ const Categorias = () => {
               </AnimatePresence>
             </div>
             <div className="categorias__filter-plataforma">
-              <p>Plataformas:</p>
+              <p>{translate("Plataformas")}:</p>
               <div className="categorias__select-plataforma" onClick={() => setOpenFilter({ ...openFilter, platform: !openFilter.platform })}>
                 {filter.platform !== 'Todos' ?
                   <p>
@@ -201,7 +201,7 @@ const Categorias = () => {
               </AnimatePresence>
             </div>
             <div className="categorias__filter-classificacao">
-              <p>Classificação:</p>
+              <p>{translate("Classificação")}:</p>
               <div className="categorias__select-classificacao" onClick={() => setOpenFilter({ ...openFilter, rating: !openFilter.rating })}>
                 {filter.rating !== 'Todos' ?
                   <p>
@@ -264,8 +264,8 @@ const Categorias = () => {
                   notasSelecionadas = jogo;
                 }
                 return plataformasSelecionadas && categoriasSelecionadas && notasSelecionadas;
-              }).map((game, index) => (
-                <Card game={game}/>
+              }).map((game) => (
+                <Card game={game} id={game?.id}/>
               ))}
             </div>
           </div>

@@ -92,7 +92,7 @@
 #games__home{
     padding: 40px 30px;
     margin-top: 40px;
-    width: 95.4%;
+    width: auto;
     position: relative;
     left: 0;
     display: flex;
@@ -331,5 +331,23 @@
     }
     .home__filter{
         display: flex;
+        flex-wrap: wrap;
+    }
+}
+@media screen and (max-width:500px) {
+    .image__publish img, .image__newsletter img{
+        height: 100px;
+    }
+    #publish__games, #newsletter__games{
+        padding: 20px 10px;
+    }
+    .card__publish, .card__newsletter{
+        flex-direction: column;
+        align-items: center;
+    }
+}
+@media screen and (max-width:300px) {
+    #container{
+        padding: 0px !important;
     }
 }

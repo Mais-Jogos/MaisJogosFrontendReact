@@ -8,6 +8,7 @@ import Acessibilidade from '../../components/Acessibilidade/Acessibilidade';
 import CardCart from '../../components/CardCart/CardCart';
 import Vlibras from '../../components/Vlibras/Vlibras';
 import { useNavigate } from 'react-router-dom';
+import { translate } from '../../translate/translate';
 
 const Carrinho = ({cart}) => {
   const [total, setTotal] = useState(0)
@@ -24,7 +25,7 @@ const Carrinho = ({cart}) => {
         <div id="cart">
           <div className="title__cart">
             <img src="/imgs/icons/cart.png" alt="" />
-            <h2>Seu Carrinho</h2>
+            <h2>{translate("Seu Carrinho")}</h2>
           </div>
           <div className="cart__games">
             {cart?.cart.map((game, index) =>(
@@ -34,14 +35,14 @@ const Carrinho = ({cart}) => {
           </div>
           <div className="cart__total">
             <div className="cart__price">
-              <h2>SubTotal <b>R${total.toFixed(2)}</b></h2>
+              <h2>{translate("SubTotal")} <b>R${total.toFixed(2)}</b></h2>
             </div>
             <button className="finalizar__pedido">
-              Finalizar pedido
+              {translate("Finalizar pedido")}
             </button>
           </div>
           <button className="continuar__comprando" onClick={() => navigate("/")}>
-            Continuar comprando
+            {translate("Continuar comprando")}
           </button>
         </div>
     </div>

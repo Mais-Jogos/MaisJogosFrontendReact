@@ -9,6 +9,7 @@ import CadastroDev from './Dev/CadastroDev'
 import LoginDev from './Dev/LoginDev'
 import Axios from 'axios'
 import Vlibras from '../../components/Vlibras/Vlibras';
+import { translate } from '../../translate/translate'
 
 
 
@@ -72,40 +73,45 @@ const Entrar = () => {
       <Acessibilidade/>
       <div className="signin__title">
         <i className="fa-solid fa-caret-left"></i>
-        <h2>SELECIONAR JOGADOR</h2>
+        <h2>{translate("SELECIONAR JOGADOR")}</h2>
         <i className="fa-solid fa-caret-right"></i>
       </div>
-      {userType === '' ? 
-      <div className="signin__images">
+      <div className="signin__images" style={{display: userType === '' ? "flex" : "none"}}>
         <div className="signin__gamer" onClick={()=> setUserType('Gamer')}>
           <img src="/imgs/girlgamer.png" alt="Gamer" />
-          <p>Gamer</p>
+          <p>{translate("Gamer")}</p>
         </div>
         <div className="signin__dev" onClick={()=> setUserType('Dev')}>
           <img src="/imgs/animais/1.png" alt="Desenvolvedor" />
-          <p>Desenvolvedor</p>
+          <p>{translate("Desenvolvedor")}</p>
         </div>
-      </div> : 
-      <div className='page__cad'>
+      </div>
+      <div className='page__cad' style={{display: userType !== '' ? "flex" : "none"}}>
         <div className="page__cad__user">
           <div className="signin__img">
             {userType === 'Gamer' ? <img src="/imgs/girlgamer.png" alt="Gamer" />:
             <img src="/imgs/animais/1.png" alt="Desenvolvedor" />}
           </div>
-          <button onClick={()=> {setUserType(''); setData({}); setMsg('')}}>Trocar jogador</button>
+          <button onClick={()=> {setUserType(''); setData({}); setMsg('')}}>{translate("Trocar jogador")}</button>
         </div>
         <div className="form__signin">
-          <h2>{login ? 'Faça Login' : 'Cadastre-se'}</h2>
+          <h2 style={{display: login ? "block" : "none"}}>{translate('Faça Login')}</h2>
+          <h2 style={{display: !login ? "block" : "none"}}>{translate('Cadastre-se')}</h2>
           <p style={{color:'#fff'}}>{msg}</p>
           {!login && userType === 'Gamer' && <CadastroGamer data={data} setData={setData}/>}
           {login && userType === 'Gamer' && <LoginGamer data={data} setData={setData}/>}
           {!login && userType === 'Dev' && <CadastroDev data={data} setData={setData}/>}
           {login && userType === 'Dev' && <LoginDev data={data} setData={setData}/>}
-          <button onClick={cadastrar}>{login ? 'Entrar' : 'Cadastrar'}</button>
-          {login ? <p>Não possui conta? <a onClick={()=> {setLogin(false); setData({}); setMsg('')}}>Cadastre-se</a></p>:
-          <p>Já possui uma conta? <a onClick={()=> {setLogin(true); setData({}); setMsg('')}}>Faça login</a></p>}
+          <button onClick={cadastrar} style={{display: login ? "block" : "none"}}>{translate('Entrar')}</button>
+          <button onClick={cadastrar} style={{display: !login ? "block" : "none"}}>{translate('Cadastre-se')}</button>
+          <p style={{display: login ? "block" : "none"}}>{translate("Não possui conta")}
+            <a onClick={()=> {setLogin(false); setData({}); setMsg('')}}>{translate("Cadastre-se")}</a>
+          </p>
+          <p style={{display: !login ? "block" : "none"}}>{translate("Já possui uma conta")}
+            <a onClick={()=> {setLogin(true); setData({}); setMsg('')}}>{translate("Faça Login")}</a>
+          </p>
         </div>
-      </div>}
+      </div>
     </div>
   )
 }

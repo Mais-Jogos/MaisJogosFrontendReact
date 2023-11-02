@@ -61,18 +61,26 @@
     flex-direction: column;
 }
 
+.infos1{
+  display: flex;
+  cursor: pointer;
+  width: 100%;
+  flex-direction: column;
+  border-radius: 5px;
+}
+.infos1 div > p{
+  margin: 0;
+  padding: 10px;
+}
 @media screen and (max-width:900px){
     .acessibility_threeBlocks{
         flex-wrap: wrap;
     }
 }
+@media screen and (max-width:900px){
+    .accessibility_Header div > img{
+        width: 250px;
+    }
+}
 
 
-
-  .infos1{
-    display: flex;
-    cursor: pointer;
-    width: 100%;
-    flex-direction: column;
-    border-radius: 5px;
-  }

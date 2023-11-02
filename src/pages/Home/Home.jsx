@@ -304,12 +304,12 @@ const Home = () => {
                 }
                 return plataformasSelecionadas && categoriasSelecionadas && notasSelecionadas;
               })
-              ?.slice(0,numberGames).map((game, index)=>(
-                <Card game={game} key={index}/>
+              ?.slice(0,numberGames).map((game)=>(
+                <Card game={game} key={game?.id}/>
               ))}
             {filteredGames == [] &&
               <div className='home__nenhum-jogo'>
-                Nenhum jogo foi encontrado...
+                {translate("Nenhum jogo foi encontrado")}...
               </div>
             }
             </div>

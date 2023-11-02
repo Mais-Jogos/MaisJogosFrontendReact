@@ -59,3 +59,8 @@
     width: 100%;
     height: auto;
 }
+@media screen and (max-width:450px) {
+    .text404 .botão{
+        padding: 10px;
+    }
+}

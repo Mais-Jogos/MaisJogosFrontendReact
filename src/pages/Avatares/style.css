@@ -10,15 +10,16 @@
     font-size: 2rem;
     color: var(--color-primary);
     text-align: center;
+    padding: 10px 0;
 }
 
 .avatares__grid{
     display: flex;
     justify-content:center;
     align-items: center;
-    width:800px;
+    width:auto;
     flex-wrap: wrap;
-    margin: 0 auto;
+    margin: 0 20%;
     gap: 35px;
     margin-bottom: 35px;
 }

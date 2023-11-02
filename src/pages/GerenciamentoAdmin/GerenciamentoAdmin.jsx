@@ -7,6 +7,7 @@ import Menu from '../../components/Menu/Menu'
 import Vlibras from '../../components/Vlibras/Vlibras'
 import Acessibilidade from '../../components/Acessibilidade/Acessibilidade'
 import { useNavigate } from 'react-router-dom'
+import { translate } from '../../translate/translate'
 
 const GerenciamentoAdmin = () => {
     const [page, setPage] = useState("jogos")
@@ -20,15 +21,15 @@ const GerenciamentoAdmin = () => {
         <main className='gerenciamento-admin'>
             <aside>
                 <ul>
-                    <li onClick={() => setPage("jogos")}>Jogos</li>
-                    <li onClick={() => setPage("devs")}>Devs</li>
-                    <li onClick={() => setPage("users")}>Users</li>
-                    <li onClick={() => setPage("pagamentos")}>Pagamentos</li>
-                    <li onClick={() => navigate("/relatorios-admin")}>Relatórios</li>
+                    <li onClick={() => setPage("jogos")}>{translate("Jogos")}</li>
+                    <li onClick={() => setPage("devs")}>{translate("Devs")}</li>
+                    <li onClick={() => setPage("users")}>{translate("Users")}</li>
+                    <li onClick={() => setPage("pagamentos")}>{translate("Pagamentos")}</li>
+                    <li onClick={() => navigate("/relatorios-admin")}>{translate("Relatórios")}</li>
                 </ul>
             </aside>
             <section>
-                <h1>Gerenciamento do Admin</h1>
+                <h1>{translate("Gerenciamento do Admin")}</h1>
                 {
                     page === "jogos" ? <PageJogos/> :
                     page === "devs" ? <PageDevs/> :

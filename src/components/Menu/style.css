@@ -100,3 +100,9 @@ h1{
         z-index: 998;
     }
 }
+
+@media screen and (max-width:400px) {
+    #full-menu a > .logo{
+        height: 45px;
+    }
+}

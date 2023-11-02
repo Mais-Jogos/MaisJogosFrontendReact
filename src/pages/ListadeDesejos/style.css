@@ -119,6 +119,7 @@
     }
     .listaDeDesejos__card__info__title h2 {
         font-size: 1.5rem;
+        text-align: center;
     }
     .listaDeDesejos__card__info__title p {
         font-size: 1.6rem;
