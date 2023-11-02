@@ -28,19 +28,29 @@ export default _ => {
             <Acessibilidade />
 
             <main className="accessibility__main">
-                <header>
-                    <h1 className="pubProfile_Titulo">Perfil Público Dev</h1>
-                </header>
 
                 <section className="accessibility__grid">
                 <div>
-                    <div>
-                    <div><img src="../../public\imgs\animais\1-face.png"/></div>
-                    <div><h1 className="pubProfile_Titulo">Nome dev</h1></div>
-                    <div><h1 className="pubProfile_Titulo">Posição no ranking</h1></div>
+                    <div className="pubProfile_topo">
+                      <div className="pubProfile_descricao1">
+                        <img src="../../public\imgs\animais\1.png"/>
+                      </div>
+                      
+                      <div className="pubProfile_descricao2">
+                        
+                        <div>
+                          <h1 className="pubProfile_Titulo2">Nome dev</h1>
+                        </div>
+                        
+                        <div className="pubProfile__block1">
+                          <div className="pubProfile__rankingCoin"> <img src="../../public\imgs\bgimg\ranking.png"/> </div> 
+                          <div> <h1 className="pubProfile_Titulo2"> Posição no ranking </h1> </div>
+                        </div>
+                        
+                      </div>
                     </div>
 
-                    <div>
+                    <div> 
                     <h1 className="pubProfile_Titulo">Sobre dev</h1>
                     <div className="pubProfile_bg">Para ter sucesso como desenvolvedor de jogos é preciso ter muita dedicação e paixão pelo que faz. É importante estar sempre atualizado sobre as novidades do mercado e buscar inspiração em outras áreas além dos jogos. Afinal, a criatividade é um dos principais ingredientes para o sucesso nessa área.</div>
                     </div>
@@ -52,23 +62,21 @@ export default _ => {
                     <div><img src=""/></div>
                     </div>
 
-                    <div>
-                    <h1 className="pubProfile_Titulo">Artes</h1>
-                    <div><img src=""/></div>
+                    <div className="section__pubDev">
+                      <p onClick={()=>{setNumberGames(numberGames === 0 ? games.length-1 : numberGames-1); setDirection('right')}}>
+                        <i className="fa-solid fa-chevron-left"></i>
+                      </p>
+                      {games?.slice(numberGames,numberGames+3).map((game, index)=>(
+                      <Card game={game}/>
+                      ))}
+                      <p onClick={()=>{setNumberGames(numberGames === games.length-1 ? 0 : numberGames+1); setDirection('left')}}>
+                        <i className="fa-solid fa-chevron-right"></i>
+                      </p>
                     </div>
+
                 </div>
 
-                <div className="section__pubDev">
-                  <p onClick={()=>{setNumberGames(numberGames === 0 ? games.length-1 : numberGames-1); setDirection('right')}}>
-                    <i className="fa-solid fa-chevron-left"></i>
-                  </p>
-                    {games?.slice(numberGames,numberGames+3).map((game, index)=>(
-                      <Card game={game}/>
-                    ))}
-                  <p onClick={()=>{setNumberGames(numberGames === games.length-1 ? 0 : numberGames+1); setDirection('left')}}>
-                    <i className="fa-solid fa-chevron-right"></i>
-                  </p>
-                </div>
+                
 
                 </section>
 
