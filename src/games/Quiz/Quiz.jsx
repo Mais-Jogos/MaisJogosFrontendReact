@@ -11,11 +11,13 @@ const Quiz = ({coins, setCoins}) => {
     const [userAnswer, setUserAnswer] = useState(null)
 
     useEffect(()=>{
-        Axios.get('https://opentdb.com/api.php?amount=30&category=15&type=multiple')
+        Axios.get('/src/games/Quiz/questions.json')
         .then((response) =>{
-            setAllQuestions(response.data.results);
+            console.log(response.data);
+            setAllQuestions(response.data);
         }).catch((error) => { console.log(error); }); 
-    }, [])    
+    }, [])   
+    console.log(allQuestions); 
 
     function mixQuestions(arr) {
         const shuffledArr = arr.slice();
@@ -26,8 +28,8 @@ const Quiz = ({coins, setCoins}) => {
         return shuffledArr;
     }
     function next() {
-        const allAnswers = allQuestions[index]?.incorrect_answers;
-        allAnswers.push(allQuestions[index]?.correct_answer);
+        const allAnswers = allQuestions[index+1]?.incorrect_answers;
+        allAnswers.push(allQuestions[index+1]?.correct_answer);
         setAnswers(mixQuestions([...new Set(allAnswers)]));
         setIndex(index + 1);
         setAnswered(false)
@@ -35,7 +37,7 @@ const Quiz = ({coins, setCoins}) => {
     }
     function answerQuestion(answer){
         setAnswered(true)
-        let correctAnswer = allQuestions[index-1]?.correct_answer;
+        let correctAnswer = allQuestions[index]?.correct_answer;
         if (answer === correctAnswer) {
             setUserAnswer(['right','Você acertou!']);
             setCoins(coins + 1)

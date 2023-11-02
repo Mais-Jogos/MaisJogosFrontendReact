@@ -8,6 +8,7 @@ import TodosComprados from "./TodosComprados";
 import HeaderWithFilter from "../../components/HeaderWithFiilter/HeaderWithFilter";
 import Vlibras from '../../components/Vlibras/Vlibras';
 import GoBack from "../../components/GoBack/GoBack";
+import { translate } from "../../translate/translate.js";
 
 export default _ => {
     // False = Jogos recém comprados
@@ -25,10 +26,10 @@ export default _ => {
                 <section className="meusjogos__menu">
                     <div className="meusjogos__menu__titles">
                         <div className={menuOption ? "meusjogos__menu__title" : "meusjogos__menu__title meusjogos__menu__title--selected"} onClick={ _ => setMenuOption(false)}>
-                            <p>Jogos recém comprados</p>
+                            <p>{translate("Jogos recém comprados")}</p>
                         </div>
                         <div className={!menuOption ? "meusjogos__menu__title" : "meusjogos__menu__title meusjogos__menu__title--selected"} onClick={ _ => setMenuOption(true)}>
-                            <p>Todos os jogos</p>
+                            <p>{translate("Todos os jogos")}</p>
                         </div>
                         <div className="meusjogos__menu__bottomBackground"></div>
                     </div>

@@ -47,6 +47,10 @@
     border-radius: 10px;
     padding: 10px 15px;
     cursor: pointer;
+    transition: 0.7s all;
+}
+.questions > button:hover{
+    background-color: var(--dark-purple);
 }
 .answers{
     display: flex;

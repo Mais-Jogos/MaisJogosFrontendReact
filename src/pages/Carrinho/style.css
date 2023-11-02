@@ -60,6 +60,10 @@
     border-radius: 10px;
     padding: 10px 40px;
     cursor: pointer;
+    transition: 0.7s all;
+}
+.finalizar__pedido:hover, .continuar__comprando:hover{
+    background-color: var(--dark-purple);
 }
 .continuar__comprando{
     float: right;

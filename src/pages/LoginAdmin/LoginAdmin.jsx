@@ -3,6 +3,7 @@ import Menu from '../../components/Menu/Menu';
 import Vlibras from '../../components/Vlibras/Vlibras';
 import Acessibilidade from '../../components/Acessibilidade/Acessibilidade';
 import "./style.css";
+import { translate } from '../../translate/translate';
 
 const LoginAdmin = () => {
     const [data, setData] = useState({
@@ -26,7 +27,7 @@ const LoginAdmin = () => {
         <Acessibilidade/>
         <div className="signin__title__admin">
         <i className="fa-solid fa-caret-left"></i>
-        <h2>ADMIN</h2>
+        <h2>{translate("Admin")}</h2>
         <i className="fa-solid fa-caret-right"></i>
         </div>
         <div className='page__cad__admin'>
@@ -36,10 +37,10 @@ const LoginAdmin = () => {
                 </div>
             </div>
             <div className="form__signin__admin">
-                <h2>Bem vindo de volta</h2>
+                <h2>{translate("Bem vindo de volta")}</h2>
                 <input type="email" placeholder='E-mail' onChange={(e)=> setData({...data, email:e.target.value})}/>
                 <input type="password" placeholder='Senha' onChange={(e)=> setData({...data, password:e.target.value})}/>
-                <button onClick={cadastrar}>Entrar</button>
+                <button onClick={cadastrar}>{translate("Entrar")}</button>
             </div>
         </div>
     </div>

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Menu from '../../components/Menu/Menu'
 import Vlibras from '../../components/Vlibras/Vlibras'
 import Acessibilidade from '../../components/Acessibilidade/Acessibilidade'
-import translate from '../../translate/translate'
+import {translate} from '../../translate/translate'
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts'
 import "./style.css"
 
@@ -121,10 +121,15 @@ const RelatoriosAdmin = () => {
         <Vlibras/>
         <Acessibilidade/>
         <div id="relatorios-admin">
-            <h1>Relatórios de Vendas</h1>
+            <h1>
+              {translate("Relatórios de Vendas")} 
+              <button className='imprimir-admin' onClick={() => print()}>
+                <i class="fa-regular fa-file-pdf"></i>{translate("Imprimir")}
+              </button>
+            </h1>
             <div className="container__relatorios-admin">
               <div className="relatorios-admin__grafico-Vendas">
-                  <p>Gráfico comparativo de vendas</p>
+                  <p>{translate("Gráfico comparativo de vendas")}</p>
                   <select name="Months" id="Months" aria-selected={filterGraf} onChange={(e) => setFilterGraf(e.target.value)}>
                     <option value={"Geral"}>Geral</option>
                     {vendasGeral?.map(mes => (
@@ -151,16 +156,16 @@ const RelatoriosAdmin = () => {
                   </LineChart>
               </div>
               <div className="relatorios-admin__geral">
-                <p>Valor Total de vendas <b>R${valorTotal.toFixed(2)}</b></p>
-                <p>Valor Total de lucros<b>R${(valorTotal - (valorTotal*0.9)).toFixed(2)}</b></p>
+                <p>{translate("Valor Total de vendas")} <b>R${valorTotal.toFixed(2)}</b></p>
+                <p>{translate("Valor Total de lucros")}<b>R${(valorTotal - (valorTotal*0.9)).toFixed(2)}</b></p>
               </div>
               <div className="relatorios-admin__mais-vendidos">
-                <p>Jogos mais vendidos</p>
+                <p>{translate("Jogos mais vendidos")}</p>
                 <div className="tabela__mais-vendidos">
                   <div className="header__mais-vendidos">
-                    <p>Status</p>
-                    <p>Quantidade de jogos vendidos</p>
-                    <p>Nome do Jogo</p>
+                    <p>{translate("Status")}</p>
+                    <p>{translate("Quantidade de jogos vendidos")}</p>
+                    <p>{translate("Nome do Jogo")}</p>
                   </div>
                   <div className="body__mais-vendidos">
                     {[...new Set(jogos)].sort(function(a , b)
@@ -178,31 +183,31 @@ const RelatoriosAdmin = () => {
               </div>
               <div className="relatorios-admin__quantidade-jogos">
                 <div className="quant-jogos">
-                  <p>Quantidade de clientes cadastrados</p>
+                  <p>{translate("Quantidade de clientes cadastrados")}</p>
                   <div>{clientes}</div>
                 </div>
                 <div className="quant-jogos">
-                  <p>Quantidade de jogos vendidos</p>
+                  <p>{translate("Quantidade de jogos vendidos")}</p>
                   <div>{jogosVendidos}</div>
                 </div>
                 <div className="quant-jogos">
-                  <p>Quantidade de Devs cadastrados</p>
+                  <p>{translate("Quantidade de Devs cadastrados")}</p>
                   <div>{[...new Set(devs)].length}</div>
                 </div>
                 <div className="quant-jogos">
-                  <p>Quantidade de jogos cadastrados</p>
+                  <p>{translate("Quantidade de jogos cadastrados")}</p>
                   <div>{[...new Set(jogos)].length}</div>
                 </div>
               </div>
             <div className="relatorios-admin__melhores-devs">
-                <p>Jogos mais vendidos</p>
+                <p>{translate("Jogos mais vendidos")}</p>
                 <div className="tabela__melhores-devs">
                   <div className="header__melhores-devs">
-                    <p>Status</p>
-                    <p>Quantidade de jogos vendidos</p>
-                    <p>Nome do Jogo</p>
-                    <p>Nome do Dev</p>
-                    <p>Valor total de vendas</p>
+                    <p>{translate("Status")}</p>
+                    <p>{translate("Quantidade de jogos vendidos")}</p>
+                    <p>{translate("Nome do Jogo")}</p>
+                    <p>{translate("Nome do Dev")}</p>
+                    <p>{translate("Valor Total de vendas")}</p>
                   </div>
                   <div className="body__melhores-devs">
                     {melhoresDevs.sort(function(a , b)

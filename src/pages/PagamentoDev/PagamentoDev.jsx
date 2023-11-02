@@ -7,6 +7,7 @@ import { useState } from "react";
 import InputsPagamentoDevPixSalvo from "./InputsPagamentoDevPixSalvo";
 import { Link } from "react-router-dom";
 import GoBack from "../../components/GoBack/GoBack";
+import { translate } from "../../translate/translate";
 
 function reducerTypeOfPix(state, action) {
     switch (action.type) {
@@ -56,18 +57,18 @@ export default props => {
                 <section className="pagamentoDev__title">
                     <GoBack/>
 
-                    <h1>Requerimento de pagamento</h1>
+                    <h1>{translate("Requerimento de pagamento")}</h1>
                 </section>
 
                 <section className="pagamentoDev__descripiton">
-                    <p>Para que o pagamento seja feito da forma correta preencha suas informações nos campos a baixo com atenção, assim que solicitado, o pagamento cairá na sua conta em até 3 (três) dias úteis</p>
+                    <p>{translate("Descrição de pagamento")}</p>
                 </section>
 
                 <section className="pagamentoDev__pixContainer">
                     <div className="pagamentoDev__pixContainer__header">
                         <div className="pagamentoDev__pixContainer__header__mainImage">
                             <img src="\imgs\icons\pix__icon.svg" alt="ícone de pix"></img>
-                            <h2>Pix</h2>
+                            <h2>{translate("Pix")}</h2>
                         </div>
 
                         {enviar == 0 ? (<div className="pagamentoDev__pixContainer__selectTypeOfPix">
@@ -157,7 +158,7 @@ export default props => {
                             </>)}
 
                         <div className="pagamentoDev__pixContainer__content__methods__buttons">
-                            <button onClick={_ => { enviar == 0 ? "" : setEnviar(e => e - 1) }}>Cancelar</button>
+                            <button onClick={_ => { enviar == 0 ? "" : setEnviar(e => e - 1) }}>{translate("Cancelar")}</button>
                             <button onClick={_ => setEnviar(e => e + 1)}>{enviar == 0 ? "Confirmar" : "Enviar"}</button>
                         </div>
                     </div>
@@ -167,8 +168,8 @@ export default props => {
                     <img src="\imgs\icons\warning__icon.svg" alt="ícone de aviso" />
 
                     <div>
-                        <p>Informativo</p>
-                        <p>No caso de não conseguirmos efetuar o pagamento, você receberá um e-mail informativo</p>
+                        <p>{translate("Informativo")}</p>
+                        <p>{translate("InformativoTxt")}</p>
                     </div>
                 </section>
 

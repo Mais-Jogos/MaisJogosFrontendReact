@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { useState } from "react";
 import Vlibras from '../../components/Vlibras/Vlibras'
 import TextToSpeech from "../../components/Acessibilidade/TextToSpeech";
+import { translate } from "../../translate/translate";
 
 function reducerUserData(state, action) {
     switch (action.type) {
@@ -46,7 +47,7 @@ export default props => {
             <main className="perfilDev__main">
 
                 <section className="perfilDev__titlePage">
-                    <h1>Meu perfil</h1>
+                    <h1>{translate("Meu perfil")}</h1>
                 </section>
 
                 <section className="perfilDev__userData">
@@ -66,19 +67,19 @@ export default props => {
                         </div>
 
                         <div className="perfilDev__userData__input">
-                            <label htmlFor="nascimento">Nascimento</label>
+                            <label htmlFor="nascimento">{translate("Nascimento")}</label>
                             <input type="date" id="nascimento" value={userData.dataNascimento} onChange={e => dispatch({ type: 'change_nascimento', nascimento: e.target.value })} aria-label="Digite sua data de nascimento"></input>
                         </div>
 
                         <div className="perfilDev__userData__input">
-                            <label htmlFor="email">Email</label>
+                            <label htmlFor="email">{translate("Email")}</label>
                             <input type="email" id="email" value={userData.email} onChange={e => dispatch({ type: 'change_email', email: e.target.value })} aria-label="Digite seu email"></input>
 
                             {editButton ? <img src="/imgs/icons/edit_icon.png" alt="Ícone de edição dos inputs" className="perfilDev__userData__input__editImg" /> : false}
                         </div>
 
                         <div className="perfilDev__userData__input">
-                            <label htmlFor="senha">Senha</label>
+                            <label htmlFor="senha">{translate("Senha")}</label>
                             <input type="password" id="senha" value={userData.senha} onChange={e => dispatch({ type: 'change_senha', senha: e.target.value })} aria-label="Digite sua senha"></input>
 
                             {editButton ? <img src="/imgs/icons/edit_icon.png" alt="Ícone de edição dos inputs" className="perfilDev__userData__input__editImg" /> : false}
@@ -86,7 +87,7 @@ export default props => {
 
                         <div className="perfilDev__userData__descr">
                             <div className="perfilDev__userData__input">
-                                <label htmlFor="descricao">Descrição</label>
+                                <label htmlFor="descricao">{translate("Descrição")}</label>
                                 <textarea id="descricao" value={userData.descricao} onChange={e => dispatch({ type: 'change_descricao', descricao: e.target.value })} aria-label="Digite sua descrição"></textarea>
 
                                 {editButton ? <img src="/imgs/icons/edit_icon.png" alt="Ícone de edição dos inputs" className="perfilDev__userData__input__editImg" /> : false}
@@ -105,19 +106,15 @@ export default props => {
                 <section className="perfilDev__actions">
                     <Link className="perfilDev__action" to="/">
                         <img src="/imgs/icons/mais_icon.png" alt="Ícone de Mais que redireciona para a página de Meus jogos do desesenvolvedor" />
-                        <p>Meus jogos</p>
-                    </Link>
-                    <Link className="perfilDev__action" to="/">
-                        <img src="/imgs/icons/eventos_icon.svg" alt="Ícone de Eventos que redireciona para a página de eventos" />
-                        <p>Eventos</p>
+                        <p>{translate("Meus jogos")}</p>
                     </Link>
                     <Link className="perfilDev__action" to="/relatorios-dev">
                         <img src="/imgs/icons/dashboard__icon.png" alt="Ícone de um gráfico que redireciona para a página de relatórios do desenvolvedor" />
-                        <p>Dashboard</p>
+                        <p>{translate("Dashboard")}</p>
                     </Link>
                     <Link className="perfilDev__action" to="/cadastro-jogo">
                         <img src="/imgs/icons/controler__icon.png" alt="Ícone de um controle que redireciona para a página cadastramento de jogo" />
-                        <p>Cadastrar Jogo</p>
+                        <p>{translate("Cadastrar Jogo")}</p>
                     </Link>
                 </section>
             </main>

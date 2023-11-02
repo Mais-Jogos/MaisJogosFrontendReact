@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Menu from '../../components/Menu/Menu'
 import Vlibras from '../../components/Vlibras/Vlibras'
 import Acessibilidade from '../../components/Acessibilidade/Acessibilidade'
-import translate from '../../translate/translate'
+import {translate} from '../../translate/translate'
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts'
 import "./style.css"
 
@@ -114,10 +114,15 @@ const RelatoriosDev = () => {
         <Vlibras/>
         <Acessibilidade/>
         <div id="relatorios-dev">
-            <h1>Relatórios de Vendas</h1>
+            <h1>
+              {translate("Relatórios de Vendas")}
+              <button className='imprimir-dev' onClick={() => print()}>
+                <i class="fa-regular fa-file-pdf"></i>{translate("Imprimir")}
+              </button>
+            </h1>
             <div className="container__relatorios-dev">
               <div className="relatorios-dev__grafico-Vendas">
-                  <p>Alcance mensal de vendas</p>
+                  <p>{translate("Alcance mensal de vendas")}</p>
                   <select name="Months" id="Months" aria-selected={filterGraf} onChange={(e) => setFilterGraf(e.target.value)}>
                     <option value={"Geral"}>Geral</option>
                     {vendasGeral?.map(mes => (
@@ -144,32 +149,32 @@ const RelatoriosDev = () => {
                   </LineChart>
               </div>
               <div className="relatorios-dev__geral">
-                <p>Quantidade de jogos comprados <b>{jogosVendidos}</b></p>
-                <p>Valor Total <b>R${valorTotal.toFixed(2)}</b></p>
+                <p>{translate("Quantidade de jogos comprados")} <b>{jogosVendidos}</b></p>
+                <p>{translate("Valor Total")} <b>R${valorTotal.toFixed(2)}</b></p>
               </div>
               <div className="relatorios-dev__quantidade-jogos">
                 <div className="quant-jogos">
-                  <p>Quantidade de jogos vendidos</p>
+                  <p>{translate("Quantidade de jogos vendidos")}</p>
                   <div>{jogosVendidos}</div>
                 </div>
                 <div className="quant-jogos">
-                  <p>Quantidade de jogos cadastrados</p>
+                  <p>{translate("Quantidade de jogos cadastrados")}</p>
                   <div>{[...new Set(mapJogos)].length}</div>
                 </div>
                 <div className="relatorios-dev__vendas">
-                  <p>SubTotal Vendas <b>R${valorTotal.toFixed(2)}</b></p>
-                  <span>Desconto de -R${(valorTotal*0.1).toFixed(2)}</span>
+                  <p>{translate("SubTotal Vendas")} <b>R${valorTotal.toFixed(2)}</b></p>
+                  <span>{translate("Desconto de")} -R${(valorTotal*0.1).toFixed(2)}</span>
                   <hr />
-                  <p>Valor Total de Lucros<b>R${(valorTotal - (valorTotal*0.1)).toFixed(2)}</b></p>
+                  <p>{translate("Valor Total de lucros")}<b>R${(valorTotal - (valorTotal*0.1)).toFixed(2)}</b></p>
                 </div>
               </div>
               <div className="relatorios-dev__mais-vendidos">
-                <p>Jogos mais vendidos</p>
+                <p>{translate("Jogos mais vendidos")}</p>
                 <div className="tabela__mais-vendidos">
                   <div className="header__mais-vendidos">
-                    <p>Status</p>
-                    <p>Quantidade de jogos vendidos</p>
-                    <p>Nome do Jogo</p>
+                    <p>{translate("Status")}</p>
+                    <p>{translate("Quantidade de jogos vendidos")}</p>
+                    <p>{translate("Nome do Jogo")}</p>
                   </div>
                   <div className="body__mais-vendidos">
                     {[...new Set(mapJogos)].sort(function(a , b)

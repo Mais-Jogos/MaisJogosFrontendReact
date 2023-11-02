@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import ModalSearch from '../ModalSearch/ModalSearch';
-import { translate } from '../../translate/translate';
+import { translate } from '../../translate/translate.js';
 
 const Menu = ({changeTheme, theme, cart, coins, userRedux }) => {
   const [openMenu, setOpenMenu] = useState(false);

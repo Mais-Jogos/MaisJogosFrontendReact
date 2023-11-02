@@ -181,9 +181,3 @@
         font-size: .75rem;
     }
 }
-@media screen and (max-width:400px) {
-    .perfilUser__userData__inputs{
-        padding: 20px 10px;
-        min-width: fit-content;
-    }
-}

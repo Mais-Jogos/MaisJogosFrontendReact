@@ -4,6 +4,7 @@ import Menu from '../../components/Menu/Menu';
 import Card from '../../components/Card/Card';
 import Axios from 'axios';
 import './style.css'
+import { translate } from '../../translate/translate';
 
 const ListadeDesejos = () => {
     const [games, setGames] = useState([]); 
@@ -19,7 +20,7 @@ const ListadeDesejos = () => {
         <Menu/>
         <Acessibilidade/>
         <div id="games__desire">
-            <h2><i className="fa-solid fa-heart"></i> Lista de desejos</h2>
+            <h2><i className="fa-solid fa-heart"></i> {translate("Lista de desejos")}</h2>
             <div className="section__games__desire">
                 {games?.map((game, index)=>(
                     <Card games={games} game={index} key={game?.id}/>

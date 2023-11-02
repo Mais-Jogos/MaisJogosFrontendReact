@@ -12,6 +12,28 @@
     color:var(--color-primary);
     font-family: var(--font-pixel);
     margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 100%;
+}
+#relatorios-dev h1 button{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    border-radius: 5px;
+    background-color: var(--purple-y);
+    color: var(--color-primary);
+    padding: 5px 30px;
+    font-size: 1rem;
+    box-shadow: 2px 2px 0px #932eff inset,
+    -2px -2px 0px #44008d inset;
+    transition: 0.7s all;
+    cursor: pointer;
+}
+#relatorios-dev h1 button:hover{
+    background-color: var(--dark-purple);
 }
 .container__relatorios-dev{
     display: grid;
@@ -184,4 +206,46 @@
         flex-direction: column;
         align-items: stretch;
     }
+}
+@media screen and (max-width:650px){
+    .relatorios-dev__geral p{
+        flex-wrap: wrap;
+    }
+    .relatorios-dev__geral{
+        height: auto;
+    }
+    .relatorios-dev__quantidade-jogos{
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .body__melhores-devs .melhores-devs{
+        flex-direction: column;
+        border-bottom: 1px solid var(--grey);
+    }
+    .relatorios-dev__geral p{
+        flex-direction: column;
+    }
+    .relatorios-dev__geral{
+        height:auto
+    }
+    .relatorios-admin__mais-vendidos .header__mais-vendidos, .mais-vendidos{
+        flex-wrap: wrap;
+        justify-content: center;
+        flex-direction: column;
+        border-bottom: 1px solid var(--grey);
+    }
+    .relatorios-dev__mais-vendidos .header__mais-vendidos{
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+@media screen and (max-width:400px){
+    .recharts-tooltip-wrapper .recharts-tooltip-wrapper-left .recharts-tooltip-wrapper-bottom{
+        transform:none;
+    }
+    #relatorios-dev h1 button{
+        padding: 5px;
+    }
+
 }

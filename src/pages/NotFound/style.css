@@ -41,7 +41,12 @@
     cursor: pointer;
     display: flex;
     justify-content: center;
+    transition: 0.7s all;
 }
+.text404 .botão:hover{
+    background-color: var(--dark-purple);
+}
+
 /* .text404 .botão:hover{
     border: #00a1ff solid 1px;
     color: #00a1ff;

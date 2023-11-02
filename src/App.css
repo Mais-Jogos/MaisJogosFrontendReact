@@ -7,6 +7,7 @@
     --color-secondary: #f5f5f5;
     --purple: #7900fb;
     --purple-y: #7900fb;
+    --dark-purple:#7900fbcd;
     --font-pixel: 'Silkscreen', cursive;
     --font-normal: 'Poppins', sans-serif;
     --light-background: #d3d3d3;
@@ -32,6 +33,7 @@
     --color-primary: #f5f5f5;
     --purple: #7900fb;
     --purple-y: #7900fb;
+    --dark-purple:#7900fbcd;
     --light-hover-background: #444444;
     --light-background: #252525;
     --transparent-background:#ffffff25;
@@ -53,6 +55,7 @@
     --text-light: #eeff00;
     --purple: #000000;
     --purple-y: #eeff00;
+    --dark-purple:#000000;
     --light-hover-background: #000000;
     --light-background: #000000;
     --transparent-background:#000000;
@@ -88,4 +91,10 @@ a:-webkit-any-link {
     padding-top: 25px;
     min-height: calc(100vh - 105px);
     height: auto;
+}
+
+@media print {
+    #full-menu, .settings, .imprimir-admin{
+        display: none !important;
+    }
 }

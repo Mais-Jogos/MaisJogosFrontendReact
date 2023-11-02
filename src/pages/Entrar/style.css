@@ -85,6 +85,10 @@
     border-radius: 10px;
     padding: 10px 15px;
     cursor: pointer;
+    transition: 0.7s all;
+}
+.page__cad__user button:hover{
+    background-color: var(--dark-purple);
 }
 .signin__img{
     width: 300px;
@@ -156,6 +160,10 @@
     border-radius: 10px;
     padding: 10px 15px;
     cursor: pointer;
+    transition: 0.7s all;
+}
+.form__signin button:hover{
+    background-color: var(--dark-purple);
 }
 @keyframes SelectPlayer{
     from{

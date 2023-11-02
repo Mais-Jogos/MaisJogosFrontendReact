@@ -97,6 +97,10 @@
     border-radius: 5px;
     padding: 5px 15px;
     cursor: pointer;
+    transition: 0.7s all;
+}
+.admin__jogo-title button:hover{
+    background-color: var(--dark-purple);
 }
 .admin__jogo-title .admin__jogo-edit{
     display: flex;

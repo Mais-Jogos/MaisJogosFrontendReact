@@ -12,7 +12,30 @@
     color:var(--color-primary);
     font-family: var(--font-pixel);
     margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 100%;
 }
+#relatorios-admin h1 button{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    border-radius: 5px;
+    background-color: var(--purple-y);
+    color: var(--color-primary);
+    padding: 5px 30px;
+    font-size: 1rem;
+    box-shadow: 2px 2px 0px #932eff inset,
+    -2px -2px 0px #44008d inset;
+    transition: 0.7s all;
+    cursor: pointer;
+}
+#relatorios-admin h1 button:hover{
+    background-color: var(--dark-purple);
+}
+
 .container__relatorios-admin{
     display: grid;
     justify-content: start;
@@ -249,4 +272,23 @@
         flex-direction: column;
         border-bottom: 1px solid var(--grey);
     }
+    .relatorios-admin__geral p{
+        flex-direction: column;
+    }
+    .relatorios-admin__geral{
+        height:auto
+    }
+    .relatorios-admin__melhores-devs .header__melhores-devs, .melhores-devs{
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+@media screen and (max-width:400px){
+    .recharts-tooltip-wrapper .recharts-tooltip-wrapper-right .recharts-tooltip-wrapper-top{
+        transform:none;
+    }
+    #relatorios-admin h1 button{
+        padding: 5px;
+    }
+
 }

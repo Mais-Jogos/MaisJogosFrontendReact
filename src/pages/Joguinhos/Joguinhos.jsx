@@ -9,6 +9,7 @@ import Quiz from '../../games/Quiz/Quiz'
 import Vlibras from '../../components/Vlibras/Vlibras';
 import { addCoins } from '../../redux/actions'
 import { connect } from 'react-redux'
+import {translate} from '../../translate/translate'
 
 const Joguinhos = ({dispatch}) => {
   const [jogo, setJogo] = useState('')
@@ -25,17 +26,15 @@ const Joguinhos = ({dispatch}) => {
       <Menu/>
       <Vlibras/>
       <Acessibilidade/>
-      {jogo !== '' ? 
-      <div className="back__menu">
+      <div className="back__menu" style={{display: jogo ? 'flex' : 'none'}}>
         <button onClick={saveGame}>
-          Salvar e sair
+          {translate("Salvar e sair")}
         </button>
-      </div>:null}
-      <div className="title__page__game">
-        <h2>Jogue para ganhar moedas</h2>
       </div>
-      {jogo === '' ?
-      <div className="container__games">
+      <div className="title__page__game">
+        <h2>{translate("Jogue para ganhar moedas")}</h2>
+      </div>
+      <div className="container__games" style={{display: !jogo ? 'flex' : 'none'}}>
         <div className="border__card__game" onClick={()=> setJogo('JogodaVelha')}>
           <div className="card__game">
             <div className="card__image__game">
@@ -43,7 +42,7 @@ const Joguinhos = ({dispatch}) => {
             </div>
             <div className="border__title__game">
               <div className="title__game">
-              <h2>Jogo da Velha</h2>
+              <h2>{translate("Jogo da Velha")}</h2>
               </div>
             </div>
           </div>
@@ -55,7 +54,7 @@ const Joguinhos = ({dispatch}) => {
             </div>
             <div className="border__title__game">
               <div className="title__game">
-              <h2>Jokenpo</h2>
+              <h2>{translate("Jokenpo")}</h2>
               </div>
             </div>
           </div>
@@ -67,16 +66,16 @@ const Joguinhos = ({dispatch}) => {
             </div>
             <div className="border__title__game">
               <div className="title__game">
-              <h2>Quiz</h2>
+              <h2>{translate("Quiz de jogos")}</h2>
               </div>
             </div>
           </div>
         </div>
-      </div> : 
-      jogo === 'Jokenpo' ? 
+      </div> 
+      {jogo === 'Jokenpo' ? 
       <Jokenpo coins={coins} setCoins={setCoins}/> : jogo === 'JogodaVelha' ?
-      <JogodaVelha coins={coins} setCoins={setCoins}/>:
-      <Quiz coins={coins} setCoins={setCoins}/>}
+      <JogodaVelha coins={coins} setCoins={setCoins}/>: jogo === 'Quiz' ?
+      <Quiz coins={coins} setCoins={setCoins}/> : null}
     </div>
   )
 }

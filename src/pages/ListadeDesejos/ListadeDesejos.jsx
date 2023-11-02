@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import { deletefavoriteGame } from '../../redux/actions';
 import { selectGame } from '../../redux/actions';
 import GoBack from '../../components/GoBack/GoBack';
+import { translate } from '../../translate/translate';
 
 const ListadeDesejos = ({listadesejos, dispatch}) => {
   const navigate = useNavigate()
@@ -26,7 +27,7 @@ const ListadeDesejos = ({listadesejos, dispatch}) => {
       <Acessibilidade />
       <main className='listaDeDesejos__main'>
         <GoBack/>
-        <HeaderWithFilter name="Lista de Desejos" imgIcon="\imgs\icons\heart_icon.png" />
+        <HeaderWithFilter name={translate("Lista de desejos")} imgIcon="\imgs\icons\heart_icon.png" />
 
         <section className='listaDeDesejos__cards'>
           {listadesejos?.listadesejos?.map((jogo) => (<div className='listaDeDesejos__cards__contain'>
@@ -44,7 +45,7 @@ const ListadeDesejos = ({listadesejos, dispatch}) => {
                 <div className='listaDeDesejos__card__info__actions'>
                   <div onClick={()=> navigate(`/jogos/${jogo?.name.toLowerCase().replace(/ /g, "-")}`)}>
                     <img src="/imgs/icons/detalhes__icon.svg" alt="ícone de olho representando mais detalhes do jogo" />
-                    <p>Detalhes</p>
+                    <p>{translate("Detalhes")}</p>
                   </div>
                   <i class="fa-solid fa-cart-shopping" alt="ícone de carrinho" onClick={() => addGameCart(jogo)}></i>
                 </div>

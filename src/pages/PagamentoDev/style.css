@@ -159,7 +159,12 @@
     background-color: var(--purple);
     box-shadow: 2px 2px 0px #932eff inset,
     -2px -2px 0px #44008d inset;
+    transition: 0.7s all;
 }
+.pagamentoDev__pixContainer__content__methods .pagamentoDev__pixContainer__content__methods__container button.pagamentoDev__pixContainer__content__methods__container--select:hover, .pagamentoDev__pixContainer__content__methods__buttonPixSalvo:hover{
+    background-color: var(--dark-purple);
+}
+
 .pagamentoDev__pixContainer__content__methods__buttonPixSalvo--select{
     width: 130px;
     display: block;
@@ -173,7 +178,12 @@
     background-color: var(--purple);
     box-shadow: 2px 2px 0px #932eff inset,
     -2px -2px 0px #44008d inset;
+    transition: 0.7s all;
 }
+.pagamentoDev__pixContainer__content__methods__buttonPixSalvo--select:hover{
+    background-color: var(--dark-purple);
+}
+
 .pagamentoDev__pixContainer__selectTypeOfPix{
     width: 70%;
     height: 100%;
@@ -202,6 +212,10 @@
     border: 0;
     box-shadow: 2px 2px 0px #932eff inset,
     -2px -2px 0px #44008d inset;
+    transition: 0.7s all;
+}
+.pagamentoDev__pixContainer__selectTypeOfPix__button--select:hover{
+    background-color: var(--dark-purple);
 }
 .pagamentoDev__pixContainer__selectTypeOfPix__button + button{
     margin-left: 20px;
@@ -239,6 +253,10 @@
     background-color:var(--purple);
     box-shadow: 2px 2px 0px #932eff inset,
     -2px -2px 0px #44008d inset;
+    transition: 0.7s all;
+}
+.pagamentoDev__pixContainer__content__methods__buttons button:first-child:hover{
+    background-color: var(--dark-purple);
 }
 .pagamentoDev__pixContainer__content__methods__buttons button:last-child{
     background-color: #009355BF;
@@ -441,5 +459,9 @@
     }
     .pagamentoDev__title img {
         left: 2%;
+    }
+    .pagamentoDev__modalConfirm{
+        width: 90%;
+        height: 400px;
     }
 }

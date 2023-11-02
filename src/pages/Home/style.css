@@ -189,6 +189,10 @@
     border-radius: 10px;
     padding: 10px 40px;
     cursor: pointer;
+    transition: 0.7s all;
+}
+.text__publish button:hover, .text__newsletter button:hover{
+    background-color: var(--dark-purple);
 }
 .text__newsletter input{
     border: 1px solid var(--purple-y);

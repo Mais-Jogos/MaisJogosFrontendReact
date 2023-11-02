@@ -296,6 +296,19 @@
         margin: 50px;
     }
 }
+@media screen and (max-width:400px) {
+    .perfilUser__userData__inputs{
+        padding: 20px 10px;
+        min-width: fit-content;
+    }
+}
+
+@media screen and (max-width:1045px) {
+    .perfilUser__titlePage h1{
+        font-size: 3rem;
+        padding-left: 50px;
+    }
+}
 
 @media (prefers-reduced-motion) {
     .perfilUser__userData__avatar {

@@ -413,6 +413,246 @@ export function translate(value){
             "pt":"Adicionar a lista de desejos",
             "en":"Add to wish list"
         },
+        "Sobre o jogo":{
+            "pt":"Sobre o jogo",
+            "en":"About the game"
+        },
+        "Gênero":{
+            "pt":"Gênero",
+            "en":"Gender"
+        },
+        "Data de lançamento":{
+            "pt":"Data de lançamento",
+            "en":"Release date of"
+        },
+        "Requisitos do sistema":{
+            "pt":"Requisitos do sistema",
+            "en":"System Requirements"
+        },
+        "Mínimos":{
+            "pt":"Mínimos",
+            "en":"Minimum",
+        },
+        "Recomendados":{
+            "pt":"Recomendados",
+            "en":"Recommended"
+        },
+        "Salvar e sair":{
+            "pt":"Salvar e sair",
+            "en":"Save and exit"
+        },
+        "Jogue para ganhar moedas":{
+            "pt":"Jogue para ganhar moedas",
+            "en":"Play to earn coins"
+        },
+        "Jogo da Velha":{
+            "pt":"Jogo da Velha",
+            "en":"Hash"
+        },
+        "Jokenpo":{
+            "pt":"Jokenpo",
+            "en":"Jokenpo"
+        },
+        "Quiz de jogos":{
+            "pt":"Quiz de jogos",
+            "en":"Games Quiz"
+        },
+        "Detalhes":{
+            "pt":"Detalhes",
+            "en":"Details"
+        },
+        "Lista de desejos":{
+            "pt":"Lista de desejos",
+            "en":"Wishlist"
+        },
+        "Relevância":{
+            "pt":"Relevância",
+            "en":"Relevance"
+        },
+        "Bem vindo de volta":{
+            "pt":"Bem vindo de volta",
+            "en":"Welcome back"
+        },
+        "Admin":{
+            "pt":"Admin",
+            "en":"Admin"
+        },
+        "Jogos recém comprados":{
+            "pt":"Jogos recém comprados",
+            "en":"Newly purchased games"
+        },
+        "Todos os jogos":{
+            "pt":"Todos os jogos",
+            "en":"All the games"
+        },
+        "Requerimento de pagamento":{
+            "pt":"Requerimento de pagamento",
+            "en":"Payment request"
+        },
+        "Descrição de pagamento":{
+            "pt":"Para que o pagamento seja feito da forma correta preencha suas informações nos campos a baixo com atenção, assim que solicitado, o pagamento cairá na sua conta em até 3 (três) dias úteis",
+            "en":"For payment to be made correctly, fill in your information in the fields below carefully, as soon as requested, the payment will reach your account within 3 (three) business days"
+        },
+        "Pix":{
+            "pt":"Pix",
+            "en":"Pix"
+        },
+        "Novo Pix":{
+            "pt":"Novo Pix",
+            "en":"New Pix"
+        },
+        "Pix salvo":{
+            "pt":"Pix salvo",
+            "en":"Pix saved"
+        },
+        "Telefone":{
+            "pt":"Telefone",
+            "en":"Telephone"
+        },
+        "Email":{
+            "pt":"Email",
+            "en":"Email"
+        },
+        "Aleatório":{
+            "pt":"Aleatório",
+            "en":"Random"
+        },
+        "Cancelar":{
+            "pt":"Cancelar",
+            "en":"Cancel"
+        },
+        "Informativo":{
+            "pt":"Informativo",
+            "en":"Informative"
+        },
+        "InformativoTxt":{
+            "pt":"No caso de não conseguirmos efetuar o pagamento, você receberá um e-mail informativo",
+            "en":"If we are unable to make payment, you will receive an informative email"
+        },
+        "Meu perfil":{
+            "pt":"Meu perfil",
+            "en":"My profile"
+        },
+        "Nascimento":{
+            "pt":"Nascimento",
+            "en":"Birth"
+        },
+        "Senha":{
+            "pt":"Senha",
+            "en":"Password"
+        },
+        "Meus jogos":{
+            "pt":"Meus jogos",
+            "en":"My games"
+        },
+        "Dashboard":{
+            "pt":"Dashboard",
+            "en":"Dashboard"
+        },
+        "Cadastrar Jogo":{
+            "pt":"Cadastrar Jogo",
+            "en":"Register Game"
+        },
+        "Dashboard":{
+            "pt":"Dashboard",
+            "en":"Dashboard"
+        },
+        "Review de jogos":{
+            "pt":"Review de jogos",
+            "en":"Game review"
+        },
+        "Avatares":{
+            "pt":"Avatares",
+            "en":"Avatars"
+        },
+        "Perfil Público Dev":{
+            "pt":"Perfil Público Dev",
+            "en":"Dev Public Profile"
+        },
+        "Sobre dev":{
+            "pt":"Sobre dev",
+            "en":"About dev"
+        },
+        "Jogos desenvolvidos":{
+            "pt":"Jogos desenvolvidos",
+            "en":"Games developed"
+        },
+        "Relatórios de Vendas":{
+            "pt":"Relatórios de Vendas",
+            "en":"Sales Reports"
+        },
+        "Gráfico comparativo de vendas":{
+            "pt":"Gráfico comparativo de vendas",
+            "en":"Sales comparison chart"
+        },
+        "Valor Total de vendas":{
+            "pt":"Valor Total de vendas",
+            "en":"Total sales value"
+        },
+        "Valor Total de lucros":{
+            "pt":"Valor Total de lucros",
+            "en":"Total profit amount"
+        },
+        "Status":{
+            "pt":"Status",
+            "en":"Status"
+        },
+        "Quantidade de jogos vendidos":{
+            "pt":"Quantidade de jogos vendidos",
+            "en":"Number of games sold"
+        },
+        "Nome do Jogo":{
+            "pt":"Nome do Jogo",
+            "en":"Game Name"
+        },
+        "Nome do Dev":{
+            "pt":"Nome do Dev",
+            "en":"Dev Name"
+        },
+        "Jogos mais vendidos":{
+            "pt":"Jogos mais vendidos",
+            "en":"Best-selling games"
+        },
+        "Quantidade de clientes cadastrados":{
+            "pt":"Quantidade de clientes cadastrados",
+            "en":"Number of registered customers"
+        },
+        "Quantidade de jogos cadastrados":{
+            "pt":"Quantidade de jogos cadastrados",
+            "en":"Number of registered games"
+        },
+        "Quantidade de Devs cadastrados":{
+            "pt":"Quantidade de Devs cadastrados",
+            "en":"Number of registered Devs"
+        },
+        "Imprimir":{
+            "pt":"Imprimir",
+            "en":"Print out"
+        },
+        "Alcance mensal de vendas":{
+            "pt":"Alcance mensal de vendas",
+            "en":"Monthly sales reach"
+        },
+        "Quantidade de jogos comprados":{
+            "pt":"Quantidade de jogos comprados",
+            "en":"Number of games purchased"
+        },
+        "Valor Total":{
+            "pt":"Valor Total",
+            "en":"Amount"
+        },
+        "SubTotal Vendas":{
+            "pt":"SubTotal Vendas",
+            "en":"SubTotal Sales"
+        },
+        "Desconto de":{
+            "pt":"Desconto de",
+            "en":"Discount from"
+        },
+        "Imprimir":{
+            "pt":"Imprimir",
+            "en":"Print out"
+        },
     }
     return vocabulary[value][language] ? vocabulary[value][language] : value;
 }

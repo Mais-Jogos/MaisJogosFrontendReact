@@ -118,18 +118,18 @@ const Jogo = ({dispatch, listadesejos, cart}) => {
                   </div>
                 </div>
                 <div className="about__game__page">
-                  <h3>Sobre o jogo</h3>
-                  <p>DESENVOLVEDOR: <Link to={'/dev'}>{game?.name}</Link></p>
-                  <p>GÊNERO: {game?.genres.map((genres, index) => 
+                  <h3>{translate("Sobre o jogo")}</h3>
+                  <p>{translate("Desenvolvedor")}: <Link to={'/dev'}>{game?.name}</Link></p>
+                  <p>{translate("Gênero")}: {game?.genres.map((genres, index) => 
                   <Link to={`/categorias/category=${genres?.name}`} key={genres?.id}>
                     <p key={genres?.id}>{genres?.name}{index === game?.genres.length-1 ? ' ':','}</p>
                   </Link>
                   )}</p>
-                  <p>DATA DE LANÇAMENTO: {new Date(game?.released).toLocaleDateString()}</p>
+                  <p>{translate("Data de lançamento")}: {new Date(game?.released).toLocaleDateString()}</p>
                 </div>
                 <div className="system__game__page">
                   <div className="title__system">
-                    <h3>Requisitos do sistema</h3>
+                    <h3>{translate("Requisitos do sistema")}</h3>
                     <div className="platforms">
                       {game?.parent_platforms.map(plataform =>(
                         <Link to={`/categorias/platform=${plataform.platform?.name}`} key={plataform.platform?.id}>
@@ -138,7 +138,7 @@ const Jogo = ({dispatch, listadesejos, cart}) => {
                       ))}
                     </div>
                   </div>
-                  <p>MÍNIMOS
+                  <p><b>{translate("Mínimos")}</b><br/>
                     * SO: Windows 1 <br />
                     * Processador5 Intel Core i3 21 or AMD Phenom II 
                     X4 968 <br />
@@ -150,7 +150,7 @@ const Jogo = ({dispatch, listadesejos, cart}) => {
                     * Armazenamento5 2 GB de espaço disponível <br />
 
 
-                    RECOMENDADOS
+                    <b>{translate("Recomendados")}</b><br/>
                     * SO5 Windows 1 <br />
                     * Processador5 Intel Core i3 413 or AMD Ryzen 3 
                     12 <br />

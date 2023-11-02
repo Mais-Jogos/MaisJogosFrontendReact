@@ -96,6 +96,10 @@
     align-items: baseline;
     gap: 10px;
     margin: 20px 0px 0px 0px;
+    transition: 0.7s all;
+}
+.cadastro-review__form .cadastro-review__btns .cadastro-review__btns-salvar:hover{
+    background-color: var(--dark-purple);
 }
 .cadastro-review__form .cadastro-review__btns .cadastro-review__btns-excluir, .cadastro-review__btns-voltar{
     font-family: var(--font-pixel);
@@ -112,6 +116,10 @@
     align-items: baseline;
     gap: 10px;
     margin: 20px 0px 0px 0px;
+    transition: 0.7s all;
+}
+.cadastro-review__form .cadastro-review__btns .cadastro-review__btns-excluir:hover, .cadastro-review__btns-voltar:hover{
+    background-color: #e9e9e9;
 }
 
 /* Responsividade */

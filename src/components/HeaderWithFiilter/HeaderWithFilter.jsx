@@ -1,3 +1,4 @@
+import { translate } from "../../translate/translate.js";
 import "./style.css";
 import React from "react";
 
@@ -11,7 +12,7 @@ export default props => {
             </div>
             <div>
                 <i class="fa-solid fa-filter headerWithFilter--center" alt="icone de filtro"></i>
-                <p className="headerWithFilter--center">Relevância</p>
+                <p className="headerWithFilter--center">{translate("Relevância")}</p>
             </div>
         </section>
     )

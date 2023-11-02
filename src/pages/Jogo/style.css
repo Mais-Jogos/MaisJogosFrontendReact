@@ -149,8 +149,13 @@
     padding: 10px 15px;
     border: none;
     border-radius: 5px;
-    box-shadow: 2px 2px 0px 0px #8c21ffe3 inset;
+    box-shadow: 2px 2px 0px #932eff inset,
+    -2px -2px 0px #44008d inset;
     font-size: 1.1rem;
+    transition: 0.7s all;
+}
+.addcart__game__page button:hover{
+    background-color: var(--dark-purple);
 }
 .favorite__game__page{
     display: flex;
@@ -167,6 +172,7 @@
     font-family: var(--font-pixel);
     font-size: 0.9rem;
     text-align: center;
+    margin-right: 5px;
 }
 .about__game__page{
     display: flex;
