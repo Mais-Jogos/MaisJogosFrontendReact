@@ -12,6 +12,7 @@
 #img-faq{
   width: 50px;
   height: 40px;
+  filter: var(--filter-image);
 }
 
 .container-tittle{
@@ -128,6 +129,14 @@ a{
   .seta{
     font-size: 0.8rem;
     width: 100%;
+  }
+  .infos{
+    display: flex;
+    border: 2px solid var(--purple-y);
+    cursor: pointer;
+    width: 90%;
+    flex-direction: column;
+    border-radius: 5px;
   }
 
 }

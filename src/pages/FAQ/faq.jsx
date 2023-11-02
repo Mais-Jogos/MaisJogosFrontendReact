@@ -4,6 +4,7 @@ import Acessibilidade from "../../components/Acessibilidade/Acessibilidade";
 import Menu from "../../components/Menu/Menu";
 import Vlibras from "../../components/Vlibras/Vlibras";
 import TextToSpeech from "../../components/Acessibilidade/TextToSpeech";
+import { translate } from "../../translate/translate";
 
 export default function FAQ() {
   const [mostrarTextoJogos, setMostrarTextoJogos] = useState(false);
@@ -38,17 +39,17 @@ export default function FAQ() {
       <div className="caixa">
         <div className="borda">
           <a href="#" onClick={toggleTextoJogos}>
-            Sobre jogos
+            {translate("Sobre jogos")}
           </a>
         </div>
         <div className="borda">
           <a href="#" onClick={toggleTextoDev}>
-            Sobre Desenvolvedor
+            {translate("Sobre Desenvolvedor")}
           </a>
         </div>
         <div className="borda">
           <a href="#" onClick={toggleTextoPlat}>
-            Sobre a plataforma
+            {translate("Sobre a plataforma")}
           </a>
         </div>
       </div>
@@ -57,7 +58,7 @@ export default function FAQ() {
         <div className="center">
           <div className="infos">
             <div className="seta" onClick={toggleTextoJogos}>
-              Jogos
+              {translate("Jogos")}
             </div>
             {mostrarTextoJogos && (
               <div className="center">
@@ -78,7 +79,7 @@ export default function FAQ() {
         <div className="center">
           <div className="infos">
             <div className="seta" onClick={toggleTextoDev}>
-              Desenvovledor
+              {translate("Desenvolvedor")}
             </div>
             {mostrarTextoDev && (
               <div className="center">
@@ -98,7 +99,7 @@ export default function FAQ() {
         <div className="center">
           <div className="infos">
             <div className="seta" onClick={toggleTextoPlat}>
-              Plataforma 
+              {translate("Plataforma")} 
             </div>
             {mostrarTextoPlat && (
               <div className="center">

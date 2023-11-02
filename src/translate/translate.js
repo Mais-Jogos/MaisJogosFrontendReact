@@ -41,6 +41,10 @@ export function translate(value){
             "pt": "Plataformas",
             "en":"Platforms"
         },
+        "Plataforma":{
+            "pt": "Plataforma",
+            "en":"Platform"
+        },
         "Publique seus jogos":{
             "pt": "Publique seus jogos",
             "en":"Publish your games"
@@ -416,6 +420,42 @@ export function translate(value){
         "Sobre o jogo":{
             "pt":"Sobre o jogo",
             "en":"About the game"
+        },
+        "Sobre jogos":{
+            "pt":"Sobre jogos",
+            "en":"About games"
+        },
+        "Sobre Desenvolvedor":{
+            "pt":"Sobre Desenvolvedor",
+            "en":"About developer"
+        },
+        "Sobre a plataforma":{
+            "pt":"Sobre a plataforma",
+            "en":"About the platform"
+        },
+        "Como baixar os jogos":{
+            "pt":"Como baixar os jogos",
+            "en":"How to download the games"
+        },
+        "faqBaixarJogos":{
+            "pt":"Como baixar os jogos",
+            "en":"How to download the games"
+        },
+        "faqJogosDev":{
+            "pt":"Texto que aparecerá quando você clicar no botão de abrir. Após a compra do jogo, você será redirecionado para a área de “Meus jogos”, em seguida aparecerá o jogo com a descrição e o ícone de download, ao clicá-lo o jogo será instalado em seu dispositivo.",
+            "en":"Text that will appear when you click the open button. After purchasing the game, you will be redirected to the “My games” area, then the game will appear with the description and the download icon, when you click on it the game will be installed on your device."
+        },
+        "faqDevPlataforma":{
+            "pt":"Após abrir um jogo de sua escolha, irá aparecer um quadro escrito “Mais sobre o jogo”, nesta parte ficará informações sobre o jogo inclusive o nome do desenvolvedor! Apenas clique encima do nome e você será redirecionado automaticamente para o perfil do desenvolvedor e verá os demais jogos desenvovlidos por ele.",
+            "en":"After opening a game of your choice, a box will appear saying “More about the game”, in this part you will find information about the game including the name of the developer! Just click on the name and you will automatically be redirected to the developer's profile and see the other games developed by him."
+        },
+        "Como ver os jogos desenvolvidos do dev":{
+            "pt":"Como ver os jogos desenvolvidos do dev",
+            "en":"How to see the dev's developed games"
+        },
+        "Sou desenvolvedor de jogos, como posso usar a plataforma":{
+            "pt":"Sou desenvolvedor de jogos, como posso usar a plataforma",
+            "en":"I'm a game developer, how can I use the platform"
         },
         "Gênero":{
             "pt":"Gênero",

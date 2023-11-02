@@ -94,7 +94,7 @@ a:-webkit-any-link {
 }
 
 @media print {
-    #full-menu, .settings, .imprimir-admin{
+    #full-menu, .settings, .imprimir-admin, .active, .textToSpeech__container{
         display: none !important;
     }
 }
