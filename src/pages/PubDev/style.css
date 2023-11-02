@@ -74,15 +74,11 @@
     height: 250px;
 }
 
-.pubProfile__rankingCoin{
-    
-}
-
 .pubProfile_descricao2{
     display: flex;
     width: 800px;
     align-items: left;
-    justify-content: left;
+    justify-content: center;
     border-radius: 8px;
     margin-bottom: 13px;
     flex-direction: column;
