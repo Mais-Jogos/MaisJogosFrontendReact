@@ -20,7 +20,7 @@ export default props => {
                         
                         <div className="review__partInferior">
                             <p className="review__corpoDescricao">{props.corpo}</p>
-                            <Link to={`/cadastro-review/${props?.nome.toLowerCase().replace(/ /g,"-")}`}className="review__Button">
+                            <Link to={`/cadastro-review/${props?.nome.toLowerCase().replace(/ /g,"-")}`}className="review__Button" aria-tts={props?.nome.toLowerCase().replace(/ /g,"-")}>
                                     <button>
                                         <label>Editar</label> 
                                         <img src="\imgs\icons\edit_icon.png"/>

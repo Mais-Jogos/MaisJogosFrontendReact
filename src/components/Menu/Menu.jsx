@@ -22,7 +22,7 @@ const Menu = ({changeTheme, theme, cart, coins, userRedux }) => {
   }
   return (
     <div id='full-menu'>
-        <Link to="/">
+        <Link to="/" aria-tts="ínicio">
           <img src={'/imgs/LogoTextoPositiva.png'} alt="" className='logo'/>
         </Link>
         <label htmlFor="openMenu" id='label__openMenu'>
@@ -30,16 +30,17 @@ const Menu = ({changeTheme, theme, cart, coins, userRedux }) => {
         </label>
         <input type="checkbox" name="openMenu" id="openMenu" />
         <div id="menu">
-            <Link to="/acessibilidade">{translate("Acessibilidade")}</Link>
-            <Link to="/sobre">{translate("Sobre")}</Link>
-            <Link to="/faq">{translate("Suporte")}</Link>
-            {user && <Link to="/joguinhos">{translate("Joguinhos")}</Link>}
-            <Link className='menu__search' >
+            <Link to="/acessibilidade" aria-tts="acessibilidade">{translate("Acessibilidade")}</Link>
+            <Link to="/sobre" aria-tts="sobre">{translate("Sobre")}</Link>
+            <Link to="/faq" aria-tts="faq"> {translate("Suporte")}</Link>
+            {user && <Link to="/joguinhos" aria-tts="joguinhos">{translate("Joguinhos")}</Link>}
+            <Link className='menu__search' aria-tts="busca">
               <input 
                 type="text" 
                 placeholder={translate('Buscar jogo')} 
                 onChange={(e) => setSearch(e.target.value)}
                 onClick={() => setModalSearch(!modalSearch)}
+                aria-tts="buscar jogo"
               />
               {modalSearch && search !== '' && 
               <i 
@@ -49,22 +50,22 @@ const Menu = ({changeTheme, theme, cart, coins, userRedux }) => {
               <i className="fa-solid fa-magnifying-glass"></i>
               {modalSearch && search !== '' && <ModalSearch search={search}/>}
             </Link>
-            <Link to="/entrar">{translate("Entrar")}</Link>
-            <Link to="/carrinho">
+            <Link to="/entrar" aria-tts="entrar">{translate("Entrar")}</Link>
+            <Link to="/carrinho" aria-tts="carrinho">
               {cart.cart.length} 
               <img src={'/imgs/icons/cart.png'} />
             </Link>
-            <Link to="/avatares">
+            <Link to="/avatares" aria-tts="avatares">
               {coins.coins}
               <img src={'/imgs/icons/Kapicoin_icon.png'} />
             </Link>
-            <Link onClick={changeTheme}>
+            <Link onClick={changeTheme} aria-tts="tema">
               {theme === 'dark' ? 
               <i className="fa-solid fa-moon"></i>
               :
               <i className="fa-solid fa-sun"></i>}
             </Link>
-            <Link to="/perfil-user">
+            <Link to="/perfil-user" aria-tts="perfil">
               <img src={`/imgs/animais/${userRedux.avatar.id}-face.png`} className='perfil-menu' style={{backgroundColor:userRedux.colorCard}}/>
             </Link>
         </div>

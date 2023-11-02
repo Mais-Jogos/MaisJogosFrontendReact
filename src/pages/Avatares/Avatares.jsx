@@ -7,6 +7,7 @@ import Vlibras from "../../components/Vlibras/Vlibras";
 import { translate } from "../../translate/translate";
 import { connect } from "react-redux";
 import GoBack from "../../components/GoBack/GoBack";
+import TextToSpeech from "../../components/Acessibilidade/TextToSpeech";
 
 
 const Avatares = ({userRedux}) => {
@@ -53,6 +54,7 @@ const Avatares = ({userRedux}) => {
             <Menu />
             <Vlibras/>
             <Acessibilidade />
+            <TextToSpeech />
 
             <main className="avatares__main">
                 <GoBack/>

@@ -9,6 +9,7 @@ import Quiz from '../../games/Quiz/Quiz'
 import Vlibras from '../../components/Vlibras/Vlibras';
 import { addCoins } from '../../redux/actions'
 import { connect } from 'react-redux'
+import TextToSpeech from "../../components/Acessibilidade/TextToSpeech";
 
 const Joguinhos = ({dispatch}) => {
   const [jogo, setJogo] = useState('')
@@ -25,6 +26,8 @@ const Joguinhos = ({dispatch}) => {
       <Menu/>
       <Vlibras/>
       <Acessibilidade/>
+      <TextToSpeech />
+
       {jogo !== '' ? 
       <div className="back__menu">
         <button onClick={saveGame}>

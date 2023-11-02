@@ -7,6 +7,7 @@ import { useState } from "react";
 import InputsPagamentoDevPixSalvo from "./InputsPagamentoDevPixSalvo";
 import { Link } from "react-router-dom";
 import GoBack from "../../components/GoBack/GoBack";
+import TextToSpeech from "../../components/Acessibilidade/TextToSpeech";
 
 function reducerTypeOfPix(state, action) {
     switch (action.type) {
@@ -52,6 +53,8 @@ export default props => {
             <Menu />
             <Vlibras />
             <Acessibilidade />
+            <TextToSpeech />
+
             <main className="pagamentoDev__main">
                 <section className="pagamentoDev__title">
                     <GoBack/>

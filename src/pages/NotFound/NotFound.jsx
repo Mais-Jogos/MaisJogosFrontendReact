@@ -3,6 +3,7 @@ import Vlibras from '../../components/Vlibras/Vlibras'
 import Acessibilidade from '../../components/Acessibilidade/Acessibilidade'
 import { Link } from 'react-router-dom'
 import './style.css'
+import TextToSpeech from "../../components/Acessibilidade/TextToSpeech";
 
 const NotFound = () => {
     const page = window.location.pathname;
@@ -20,6 +21,8 @@ const NotFound = () => {
         </main>
         <Vlibras />
         <Acessibilidade/>   
+        <TextToSpeech />
+
     </>
   )
 }

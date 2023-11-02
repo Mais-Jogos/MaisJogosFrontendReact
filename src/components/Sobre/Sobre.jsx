@@ -14,7 +14,7 @@ const Card = ({games, game, dispatch}) => {
   return (
     <div className="border__card">
     <div className="card">
-      <Link to={`/jogos/${game}`} key={game?.id}>
+      <Link to={`/jogos/${game}`} key={game?.id} aria-tts={game}>
         <div className="card__image">
           <img src={games[game]?.background_image} alt={games[game]?.name} />
         </div>
@@ -24,7 +24,7 @@ const Card = ({games, game, dispatch}) => {
       </Link>
       <div className="card__genres">
         {games[game]?.genres.map((genres) => 
-        <Link to={`/categorias/category=${genres?.name}`} key={genres?.id}>
+        <Link to={`/categorias/category=${genres?.name}`} key={genres?.id} aria-tts={genres?.name}>
           <p key={genres?.id}>{genres?.name}</p>
         </Link>
         )}

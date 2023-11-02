@@ -18,17 +18,17 @@ const Card = ({game, dispatch, cart}) => {
   <>
     <div className="border__card">
     <div className="card">
-      <Link to={`/jogos/${game?.name?.toLowerCase().replace(/ /g,"-")}`} key={game?.id}>
+      <Link to={`/jogos/${game?.name?.toLowerCase().replace(/ /g,"-")}`} key={game?.id}  aria-tts={game?.name?.toLowerCase().replace(/ /g,"-")}>
         <div className="card__image">
           <img src={game?.background_image} alt={game?.name} />
         </div>
       </Link>
-      <Link to={`/jogos/${game}`} key={game?.id}>
+      <Link to={`/jogos/${game}`} key={game?.id} aria-tts={game?.name?.toLowerCase().replace(/ /g,"-")}> 
         <h2>{game?.name}</h2>
       </Link>
       <div className="card__genres">
         {game?.genres?.map((genres) => 
-        <Link to={`/categorias/category=${genres?.name}`} key={genres?.id}>
+        <Link to={`/categorias/category=${genres?.name}`} key={genres?.id} aria-tts={genres?.name}>
           <p key={genres?.id}>{genres?.name}</p>
         </Link>
         )}

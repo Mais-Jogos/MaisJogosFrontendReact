@@ -38,7 +38,7 @@ const Acessibilidade = ({ theme, offContrastTheme, contrastTheme }) => {
   }
 
   return (
-    <Link className='settings' onClick={() => setHoverSettings(!hoverSettings)} title='Configurações'>
+    <Link className='settings' onClick={() => setHoverSettings(!hoverSettings)} title='Configurações' aria-tts="ações de acessibilidade">
       <i className="fa-solid fa-universal-access"></i>
       {hoverSettings &&
         <ul>
@@ -50,7 +50,7 @@ const Acessibilidade = ({ theme, offContrastTheme, contrastTheme }) => {
             Diminuir fonte
           </li>
 
-          <Link to={'/acessibilidade'}><li>Acessibilidade</li></Link>
+          <Link to={'/acessibilidade'} aria-tts="acessibilidade"><li>Acessibilidade</li></Link>
           <li onClick={theme === 'contrast' ? offContrastTheme : contrastTheme}>{theme === 'contrast' ? 'Desativar' : 'Ativar'} contraste</li>
           <li className='acess-language'>
             Idioma 

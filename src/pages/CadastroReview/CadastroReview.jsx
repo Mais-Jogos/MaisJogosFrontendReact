@@ -6,6 +6,7 @@ import "./style.css"
 import Axios from 'axios'
 import Vlibras from '../../components/Vlibras/Vlibras'
 import { translate } from '../../translate/translate'
+import TextToSpeech from "../../components/Acessibilidade/TextToSpeech";
 
 const CadastroReview = () => {
   const [game, setGame] = useState(); 
@@ -28,6 +29,8 @@ const CadastroReview = () => {
       <Menu/>
       <Vlibras/>
       <Acessibilidade/>
+      <TextToSpeech />
+
       <div className="cadastro-review">
         <div className="cadastro-review__title__name">
           <i className="fa-solid fa-book-bookmark "></i>

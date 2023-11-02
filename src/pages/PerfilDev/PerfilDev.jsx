@@ -103,13 +103,13 @@ export default props => {
                 </section>
 
                 <section className="perfilDev__actions">
-                    <Link className="perfilDev__action" to="/">
+                    <Link className="perfilDev__action" to="/meus-jogos">
                         <img src="/imgs/icons/mais_icon.png" alt="Ícone de Mais que redireciona para a página de Meus jogos do desesenvolvedor" />
                         <p>Meus jogos</p>
                     </Link>
-                    <Link className="perfilDev__action" to="/">
-                        <img src="/imgs/icons/eventos_icon.svg" alt="Ícone de Eventos que redireciona para a página de eventos" />
-                        <p>Eventos</p>
+                    <Link className="perfilDev__action" to="/pagamento-dev">
+                        <img src="/imgs/icons/pix__icon.svg" alt="Ícone de Pix que redireciona para a página de Requerimento de pagamento" />
+                        <p>Requerimento de pagamento</p>
                     </Link>
                     <Link className="perfilDev__action" to="/relatorios-dev">
                         <img src="/imgs/icons/dashboard__icon.png" alt="Ícone de um gráfico que redireciona para a página de relatórios do desenvolvedor" />

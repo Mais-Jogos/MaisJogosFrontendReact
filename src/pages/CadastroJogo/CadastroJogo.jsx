@@ -8,6 +8,7 @@ import { translate } from "../../translate/translate";
 import InputsRequirements from "./InputsRequirements";
 import UploadJogo from "./UploadJogo";
 import { Link } from "react-router-dom";
+import TextToSpeech from "../../components/Acessibilidade/TextToSpeech";
 
 function reducerCheckboxRequirements(state, action) {
     switch (action.type) {
@@ -388,6 +389,7 @@ export default props => {
             <Menu />
             <Vlibras />
             <Acessibilidade />
+            <TextToSpeech />
 
             <main className="cadastroJogo__main">
                 <section className="cadastroJogo__title">

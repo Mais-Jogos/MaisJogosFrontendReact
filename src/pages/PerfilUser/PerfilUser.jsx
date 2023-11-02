@@ -8,6 +8,8 @@ import { motion } from "framer-motion";
 import { useDispatch } from "react-redux";
 import { connect } from "react-redux";
 import GoBack from "../../components/GoBack/GoBack";
+import TextToSpeech from "../../components/Acessibilidade/TextToSpeech";
+
 
 export function reducerUserData(state, action) {
     switch (action.type) {
@@ -77,6 +79,8 @@ const PerfilUser = (props) => {
             <Menu />
             <Vlibras />
             <Acessibilidade />
+            <TextToSpeech />
+
             <main className="perfilUser__main">
                 <section className="perfilUser__titlePage">
                     <h1>Meu perfil</h1>
