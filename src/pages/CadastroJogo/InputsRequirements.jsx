@@ -21,7 +21,7 @@ export default props => {
                         id={"so" + labelId}
                         className="cadastroJogo__content__requirements__inputs--inputStyle"
                         value={requisitos.so}
-                        onChange={e => { props.dispatchRequisitos({ type: typeMinomoOuRecomendado+typeOfSO+'SO', target: e.target.value, so: typeOfSoLower, minOrRecSo: typeMinomoOuRecomendadoWithS , atributeSO: "so", buildTextCase: [typeOfSO, typeMinomoOuRecomendado]  }) }}>
+                        onChange={e => { props.dispatchRequisitos({ type: typeMinomoOuRecomendado+typeOfSO+'SO', target: e.target.value, so: typeOfSoLower, minOrRecSo: typeMinomoOuRecomendadoWithS , atributeSO: "so", buildTextCase: [typeOfSO, typeMinomoOuRecomendado]  }); props.dispatchCheckbox({ type: 'requisitos', requisitos: false })  }}>
 
                     </input>
                 </div>
@@ -31,7 +31,7 @@ export default props => {
                         type="text"
                         id={"processador" + labelId} className="cadastroJogo__content__requirements__inputs--inputStyle"
                         value={requisitos.processador}
-                        onChange={e => { props.dispatchRequisitos({ type: typeMinomoOuRecomendado+typeOfSO+'Processador', target: e.target.value, so: typeOfSoLower, minOrRecSo: typeMinomoOuRecomendadoWithS , atributeSO: "processador", buildTextCase: [typeOfSO, typeMinomoOuRecomendado]  }) }}
+                        onChange={e => { props.dispatchRequisitos({ type: typeMinomoOuRecomendado+typeOfSO+'Processador', target: e.target.value, so: typeOfSoLower, minOrRecSo: typeMinomoOuRecomendadoWithS , atributeSO: "processador", buildTextCase: [typeOfSO, typeMinomoOuRecomendado]  }); props.dispatchCheckbox({ type: 'requisitos', requisitos: false })  }}
                     >
 
                     </input>
@@ -42,7 +42,7 @@ export default props => {
                         type="text"
                         id={"placeDeVideo" + labelId} className="cadastroJogo__content__requirements__inputs--inputStyle"
                         value={requisitos.placaDeVideo}
-                        onChange={e => { props.dispatchRequisitos({ type: typeMinomoOuRecomendado+typeOfSO+'Placa', target: e.target.value, so: typeOfSoLower, minOrRecSo: typeMinomoOuRecomendadoWithS , atributeSO: "placaDeVideo", buildTextCase: [typeOfSO, typeMinomoOuRecomendado] }) }}
+                        onChange={e => { props.dispatchRequisitos({ type: typeMinomoOuRecomendado+typeOfSO+'Placa', target: e.target.value, so: typeOfSoLower, minOrRecSo: typeMinomoOuRecomendadoWithS , atributeSO: "placaDeVideo", buildTextCase: [typeOfSO, typeMinomoOuRecomendado] }); props.dispatchCheckbox({ type: 'requisitos', requisitos: false })  }}
                     ></input>
                 </div>) : ""}
                 <div className="cadastroJogo__content__requirements__inputs--select">
@@ -51,11 +51,11 @@ export default props => {
                         <input type="number" id={"memoria" + labelId}
                             min={1}
                             value={requisitos.memoria[0]}
-                            onChange={e => { props.dispatchRequisitos({ type: typeMinomoOuRecomendado+typeOfSO+'MemoriaQtd', target: e.target.value, so: typeOfSoLower, minOrRecSo: typeMinomoOuRecomendadoWithS , atributeSO: "memoria", buildTextCase: [typeOfSO, typeMinomoOuRecomendado]  }) }}
+                            onChange={e => { props.dispatchRequisitos({ type: typeMinomoOuRecomendado+typeOfSO+'MemoriaQtd', target: e.target.value, so: typeOfSoLower, minOrRecSo: typeMinomoOuRecomendadoWithS , atributeSO: "memoria", buildTextCase: [typeOfSO, typeMinomoOuRecomendado]  }); props.dispatchCheckbox({ type: 'requisitos', requisitos: false })  }}
                         >
                         </input>
                         <select name="memoriaQTD" id="memoriaQTD"
-                            onChange={e => { props.dispatchRequisitos({ type: typeMinomoOuRecomendado+typeOfSO+'MemoriaFormato', target: e.target.value, so: typeOfSoLower, minOrRecSo: typeMinomoOuRecomendadoWithS , atributeSO: "memoria", buildTextCase: [typeOfSO, typeMinomoOuRecomendado]  }) }} value={requisitos.memoria[1]}>
+                            onChange={e => { props.dispatchRequisitos({ type: typeMinomoOuRecomendado+typeOfSO+'MemoriaFormato', target: e.target.value, so: typeOfSoLower, minOrRecSo: typeMinomoOuRecomendadoWithS , atributeSO: "memoria", buildTextCase: [typeOfSO, typeMinomoOuRecomendado]  }) ; props.dispatchCheckbox({ type: 'requisitos', requisitos: false }) }} value={requisitos.memoria[1]}>
                             <option value="mb">MB</option>
                             <option value="gb">GB</option>
                         </select>
@@ -69,11 +69,11 @@ export default props => {
                             id={"armazenamento" + labelId}
                             value={requisitos.armazenamento[0]}
                             min={1}
-                            onChange={e => { props.dispatchRequisitos({ type: typeMinomoOuRecomendado+typeOfSO+'ArmazenamentoQtd', target: e.target.value, so: typeOfSoLower, minOrRecSo: typeMinomoOuRecomendadoWithS , atributeSO: "armazenamento", buildTextCase: [typeOfSO, typeMinomoOuRecomendado]  }) }}
+                            onChange={e => { props.dispatchRequisitos({ type: typeMinomoOuRecomendado+typeOfSO+'ArmazenamentoQtd', target: e.target.value, so: typeOfSoLower, minOrRecSo: typeMinomoOuRecomendadoWithS , atributeSO: "armazenamento", buildTextCase: [typeOfSO, typeMinomoOuRecomendado]  }); props.dispatchCheckbox({ type: 'requisitos', requisitos: false })  }}
                         >
 
                         </input>
-                        <select name="armazenamentoQTD" id="armazenamentoQTD" onChange={e => { props.dispatchRequisitos({ type: typeMinomoOuRecomendado+typeOfSO+'ArmazenamentoFormato', target: e.target.value, so: typeOfSoLower, minOrRecSo: typeMinomoOuRecomendadoWithS , atributeSO: "armazenamento", buildTextCase: [typeOfSO, typeMinomoOuRecomendado]  }) }} value={requisitos.armazenamento[1]}>
+                        <select name="armazenamentoQTD" id="armazenamentoQTD" onChange={e => { props.dispatchRequisitos({ type: typeMinomoOuRecomendado+typeOfSO+'ArmazenamentoFormato', target: e.target.value, so: typeOfSoLower, minOrRecSo: typeMinomoOuRecomendadoWithS , atributeSO: "armazenamento", buildTextCase: [typeOfSO, typeMinomoOuRecomendado]  }); props.dispatchCheckbox({ type: 'requisitos', requisitos: false })  }} value={requisitos.armazenamento[1]}>
                             <option value="mb">MB</option>
                             <option value="gb">GB</option>
                         </select>

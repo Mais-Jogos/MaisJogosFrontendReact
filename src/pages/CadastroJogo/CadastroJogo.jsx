@@ -6,6 +6,8 @@ import { useState } from "react";
 import React, { useReducer } from "react";
 import { translate } from "../../translate/translate";
 import InputsRequirements from "./InputsRequirements";
+import UploadJogo from "./UploadJogo";
+import { Link } from "react-router-dom";
 
 function reducerCheckboxRequirements(state, action) {
     switch (action.type) {
@@ -33,6 +35,10 @@ function reducerCheckErrorMessage(state, action) {
             return { ...state, descricao: action.descricao }
         case "generos":
             return { ...state, generos: action.generos }
+        case "requisitos":
+            return { ...state, requisitos: action.requisitos }
+        case "upload":
+            return { ...state, upload: action.upload }
         default:
             return state;
     }
@@ -56,21 +62,17 @@ function reducerChangeValuesRequirements(state, action) {
         case `${action.buildTextCase[1]}${action.buildTextCase[0]}Placa`:
             return stateModificado
         case `${action.buildTextCase[1]}${action.buildTextCase[0]}MemoriaQtd`:
-            let stateModificadoMemoriaQtdMin = { ...state };
-            stateModificadoMemoriaQtdMin[atributeSo][typeMinOuRec]['memoria'] = [action.target, stateModificadoMemoriaQtdMin[atributeSo][typeMinOuRec][typeOfSistema][1]]
-            return stateModificadoMemoriaQtdMin
+            stateModificado[atributeSo][typeMinOuRec]['memoria'] = [action.target, stateModificado[atributeSo][typeMinOuRec][typeOfSistema][1]]
+            return stateModificado
         case `${action.buildTextCase[1]}${action.buildTextCase[0]}MemoriaFormato`:
-            let stateModificadoMemoriaFormatoMin = { ...state };
-            stateModificadoMemoriaFormatoMin[atributeSo][typeMinOuRec]['memoria'] = [stateModificadoMemoriaFormatoMin[atributeSo][typeMinOuRec][typeOfSistema][0], action.target]
-            return stateModificadoMemoriaFormatoMin
+            stateModificado[atributeSo][typeMinOuRec]['memoria'] = [stateModificado[atributeSo][typeMinOuRec][typeOfSistema][0], action.target]
+            return stateModificado
         case `${action.buildTextCase[1]}${action.buildTextCase[0]}ArmazenamentoQtd`:
-            let stateModificadoArmazenamentoQtdMin = { ...state };
-            stateModificadoArmazenamentoQtdMin[atributeSo][typeMinOuRec][typeOfSistema] = [action.target, stateModificadoArmazenamentoQtdMin[atributeSo][typeMinOuRec][typeOfSistema][1]]
-            return stateModificadoArmazenamentoQtdMin
+            stateModificado[atributeSo][typeMinOuRec][typeOfSistema] = [action.target, stateModificado[atributeSo][typeMinOuRec][typeOfSistema][1]]
+            return stateModificado
         case `${action.buildTextCase[1]}${action.buildTextCase[0]}ArmazenamentoFormato`:
-            let stateModificadoArmazenamentoFormatoMin = { ...state };
-            stateModificadoArmazenamentoFormatoMin[atributeSo][typeMinOuRec][typeOfSistema] = [stateModificadoArmazenamentoFormatoMin[atributeSo][typeMinOuRec][typeOfSistema][0], action.target]
-            return stateModificadoArmazenamentoFormatoMin
+            stateModificado[atributeSo][typeMinOuRec][typeOfSistema] = [stateModificado[atributeSo][typeMinOuRec][typeOfSistema][0], action.target]
+            return stateModificado
         case `${action.buildTextCase[1]}${action.buildTextCase[0]}SO`:
             return stateModificado
         case `${action.buildTextCase[1]}${action.buildTextCase[0]}Processador`:
@@ -78,21 +80,17 @@ function reducerChangeValuesRequirements(state, action) {
         case `${action.buildTextCase[1]}${action.buildTextCase[0]}Placa`:
             return stateModificado
         case `${action.buildTextCase[1]}${action.buildTextCase[0]}MemoriaQtd`:
-            let stateModificadoMemoriaQtdRec = { ...state };
-            stateModificadoMemoriaQtdRec[atributeSo][typeMinOuRec][typeOfSistema] = [action.target, stateModificadoMemoriaQtdRec[atributeSo][typeMinOuRec][typeOfSistema][1]]
-            return stateModificadoMemoriaQtdRec
+            stateModificado[atributeSo][typeMinOuRec][typeOfSistema] = [action.target, stateModificado[atributeSo][typeMinOuRec][typeOfSistema][1]]
+            return stateModificado
         case `${action.buildTextCase[1]}${action.buildTextCase[0]}MemoriaFormato`:
-            let stateModificadoMemoriaFormatoRec = { ...state };
-            stateModificadoMemoriaFormatoRec[atributeSo][typeMinOuRec][typeOfSistema] = [stateModificadoMemoriaFormatoRec[atributeSo][typeMinOuRec][typeOfSistema][0], action.target]
-            return stateModificadoMemoriaFormatoRec
+            stateModificado[atributeSo][typeMinOuRec][typeOfSistema] = [stateModificado[atributeSo][typeMinOuRec][typeOfSistema][0], action.target]
+            return stateModificado
         case `${action.buildTextCase[1]}${action.buildTextCase[0]}ArmazenamentoQtd`:
-            let stateModificadoArmazenamentoQtdRec = { ...state };
-            stateModificadoArmazenamentoQtdRec[atributeSo][typeMinOuRec][typeOfSistema] = [action.target, stateModificadoArmazenamentoQtdRec[atributeSo][typeMinOuRec][typeOfSistema][1]]
-            return stateModificadoArmazenamentoQtdRec
+            stateModificado[atributeSo][typeMinOuRec][typeOfSistema] = [action.target, stateModificado[atributeSo][typeMinOuRec][typeOfSistema][1]]
+            return stateModificado
         case `${action.buildTextCase[1]}${action.buildTextCase[0]}ArmazenamentoFormato`:
-            let stateModificadoArmazenamentoFormatoRec = { ...state };
-            stateModificadoArmazenamentoFormatoRec[atributeSo][typeMinOuRec][typeOfSistema] = [stateModificadoArmazenamentoQtdRec[atributeSo][typeMinOuRec][typeOfSistema][0], action.target]
-            return stateModificadoArmazenamentoFormatoRec
+            stateModificado[atributeSo][typeMinOuRec][typeOfSistema] = [stateModificado[atributeSo][typeMinOuRec][typeOfSistema][0], action.target]
+            return stateModificado
         default:
             return state;
     }
@@ -100,11 +98,7 @@ function reducerChangeValuesRequirements(state, action) {
 
 
 function setData(state, setState) {
-    if (state == 3) {
-        console.log("Cadastra jogo!");
-    } else {
-        setState(e => e + 1)
-    }
+    setState(e => e + 1)
 }
 
 function secondStepFormStyle(state, type) {
@@ -140,6 +134,18 @@ function setGenerosInState(state, setState, value) {
     }
 }
 
+
+function loopRequisitosObject(so, object) {
+    for (const MinimoRec in object[so]) {
+        for (const [ChaveValor, value] of Object.entries(object[so][MinimoRec])) {
+            if (value == "") {
+                return true
+            }
+        }
+    }
+    return false
+}
+
 export default props => {
 
     const [stepForm, setSteapForm] = useState(1)
@@ -156,6 +162,8 @@ export default props => {
         titulo: false,
         descricao: false,
         generos: false,
+        requisitos: false,
+        upload: false,
     });
 
 
@@ -241,6 +249,17 @@ export default props => {
             }
         },
     });
+    const [uploadJogoWindows, setUploadJogoWindows] = useState("")
+    const [uploadJogoMacos, setUploadJogoMacos] = useState("")
+    const [uploadJogoLinux, setUploadJogoLinux] = useState("")
+    const [uploadJogoAndroid, setUploadJogoAndroid] = useState("")
+    const [uploadJogoIos, setUploadJogoIos] = useState("")
+    const [uploadFotos, setUploadFotos] = useState("")
+    const [uploadVideos, setUploadVideos] = useState("")
+    const [uploadClassificacao, setUploadClassificacao] = useState("")
+    const [selectValueClassificacao, setUploadValueClassificacao] = useState("Livre")
+    const [aceitarTermosJogo, setAceitarTermosJogo] = useState(false)
+
 
     function checkInputs(step) {
         let retorno;
@@ -258,12 +277,109 @@ export default props => {
                 retorno = true;
             }
 
-            if (retorno) {
-                return true
-            } else {
-                return false
+        } else if (step == 2) {
+
+            // Se voltar para etapa anteror zera tudo
+            setUploadJogoWindows("")
+            setUploadJogoMacos("")
+            setUploadJogoLinux("")
+            setUploadJogoLinux("")
+            setUploadJogoAndroid("")
+            setUploadJogoIos("")
+            setUploadFotos("")
+            setUploadVideos("")
+            setUploadClassificacao("")
+
+            let retornoSO = []
+
+            if (checkboxRequirements.windows) {
+                retornoSO.push(loopRequisitosObject('windows', requisitos))
             }
+            if (checkboxRequirements.macos) {
+                retornoSO.push(loopRequisitosObject('macos', requisitos))
+            }
+            if (checkboxRequirements.linux) {
+                retornoSO.push(loopRequisitosObject('linux', requisitos))
+            }
+            if (checkboxRequirements.android) {
+                retornoSO.push(loopRequisitosObject('android', requisitos))
+            }
+            if (checkboxRequirements.ios) {
+                retornoSO.push(loopRequisitosObject('ios', requisitos))
+            }
+
+            retorno = retornoSO.length > 0 ? retornoSO.find(bool => bool == true) : false;
+
+            retorno ? dispatchError({ type: 'requisitos', requisitos: true }) : ""
+
+            if (!checkboxRequirements.windows
+                && !checkboxRequirements.macos
+                && !checkboxRequirements.linux
+                && !checkboxRequirements.android
+                && !checkboxRequirements.ios) {
+                dispatchError({ type: 'requisitos', requisitos: true });
+                retorno = true;
+            }
+        } else if (step == 3) {
+            let retornoSO = []
+
+            if (checkboxRequirements.windows) {
+                if (!(uploadJogoWindows.length > 0)) {
+                    retornoSO.push(true)
+                }
+            }
+            if (checkboxRequirements.macos) {
+                if (!(uploadJogoMacos.length > 0)) {
+                    retornoSO.push(true)
+                }
+            }
+            if (checkboxRequirements.linux) {
+                if (!(uploadJogoLinux.length > 0)) {
+                    retornoSO.push(true)
+                }
+            }
+            if (checkboxRequirements.android) {
+                if (!(uploadJogoAndroid.length > 0)) {
+                    retornoSO.push(true)
+                }
+            }
+            if (checkboxRequirements.ios) {
+                if (!(uploadJogoIos.length > 0)) {
+                    retornoSO.push(true)
+                }
+            }
+
+            if (!(uploadFotos.length > 0)) {
+                retornoSO.push(true)
+            }
+
+            if (!(uploadVideos.length > 0)) {
+                retornoSO.push(true)
+            }
+
+            if (!(uploadClassificacao.length > 0)) {
+                retornoSO.push(true)
+            }
+
+            if (selectValueClassificacao == "") {
+                retornoSO.push(true)
+            }
+
+            if (!aceitarTermosJogo) {
+                retornoSO.push(true)
+            }
+
+            retorno = retornoSO.length > 0 ? retornoSO.find(bool => bool == true) : false;
+
+            retorno ? dispatchError({ type: 'upload', upload: true }) : ""
         }
+
+        if (retorno) {
+            return true
+        }
+
+        return false
+
     }
 
 
@@ -458,41 +574,42 @@ export default props => {
                         {checkboxRequirements.windows ?
                             (<div className="cadastroJogo__content__requirements">
                                 <h2>Requisitos Windows</h2>
-                                <InputsRequirements typeOfSO="Windows" minimoOuRecomendado="Mínimo" stateSoMinimoOuRecomendado={requisitos.windows.minimos} dispatchRequisitos={dispatchRequisitos} dispatchType="minimo" isPhone={false} />
-                                <InputsRequirements typeOfSO="Windows" minimoOuRecomendado="Recomendado" stateSoMinimoOuRecomendado={requisitos.windows.recomendados} dispatchRequisitos={dispatchRequisitos} dispatchType="recomendado" isPhone={false} />
+                                <InputsRequirements typeOfSO="Windows" minimoOuRecomendado="Mínimo" stateSoMinimoOuRecomendado={requisitos.windows.minimos} dispatchRequisitos={dispatchRequisitos} dispatchType="minimo" isPhone={false} dispatchCheckbox={dispatchError} />
+                                <InputsRequirements typeOfSO="Windows" minimoOuRecomendado="Recomendado" stateSoMinimoOuRecomendado={requisitos.windows.recomendados} dispatchRequisitos={dispatchRequisitos} dispatchType="recomendado" isPhone={false} dispatchCheckbox={dispatchError} />
                             </div>
                             ) : ""}
 
                         {checkboxRequirements.macos ? (
                             <div className="cadastroJogo__content__requirements">
                                 <h2>Requisitos MacOs</h2>
-                                <InputsRequirements typeOfSO="MacOs" minimoOuRecomendado="Mínimo" stateSoMinimoOuRecomendado={requisitos.macos.minimos} dispatchRequisitos={dispatchRequisitos} dispatchType="minimo" isPhone={false} />
-                                <InputsRequirements typeOfSO="MacOs" minimoOuRecomendado="Recomendado" stateSoMinimoOuRecomendado={requisitos.macos.recomendados} dispatchRequisitos={dispatchRequisitos} dispatchType="recomendado" isPhone={false} />
+                                <InputsRequirements typeOfSO="MacOs" minimoOuRecomendado="Mínimo" stateSoMinimoOuRecomendado={requisitos.macos.minimos} dispatchRequisitos={dispatchRequisitos} dispatchType="minimo" isPhone={false} dispatchCheckbox={dispatchError} />
+                                <InputsRequirements typeOfSO="MacOs" minimoOuRecomendado="Recomendado" stateSoMinimoOuRecomendado={requisitos.macos.recomendados} dispatchRequisitos={dispatchRequisitos} dispatchType="recomendado" isPhone={false} dispatchCheckbox={dispatchError} />
                             </div>
                         ) : ""}
 
                         {checkboxRequirements.linux ? (
                             <div className="cadastroJogo__content__requirements">
                                 <h2>Requisitos Linux</h2>
-                                <InputsRequirements typeOfSO="Linux" minimoOuRecomendado="Mínimo" stateSoMinimoOuRecomendado={requisitos.linux.minimos} dispatchRequisitos={dispatchRequisitos} dispatchType="minimo" isPhone={false} />
-                                <InputsRequirements typeOfSO="Linux" minimoOuRecomendado="Recomendado" stateSoMinimoOuRecomendado={requisitos.linux.recomendados} dispatchRequisitos={dispatchRequisitos} dispatchType="recomendado" isPhone={false} />
+                                <InputsRequirements typeOfSO="Linux" minimoOuRecomendado="Mínimo" stateSoMinimoOuRecomendado={requisitos.linux.minimos} dispatchRequisitos={dispatchRequisitos} dispatchType="minimo" isPhone={false} dispatchCheckbox={dispatchError} />
+                                <InputsRequirements typeOfSO="Linux" minimoOuRecomendado="Recomendado" stateSoMinimoOuRecomendado={requisitos.linux.recomendados} dispatchRequisitos={dispatchRequisitos} dispatchType="recomendado" isPhone={false} dispatchCheckbox={dispatchError} />
                             </div>
                         ) : ""}
 
                         {checkboxRequirements.android ? (
                             <div className="cadastroJogo__content__requirements">
                                 <h2>Requisitos Android</h2>
-                                <InputsRequirements typeOfSO="Android" minimoOuRecomendado="Mínimo" stateSoMinimoOuRecomendado={requisitos.android.minimos} dispatchRequisitos={dispatchRequisitos} dispatchType="minimo" isPhone={true} />
-                                <InputsRequirements typeOfSO="Android" minimoOuRecomendado="Recomendado" stateSoMinimoOuRecomendado={requisitos.android.recomendados} dispatchRequisitos={dispatchRequisitos} dispatchType="recomendado" isPhone={true} />
+                                <InputsRequirements typeOfSO="Android" minimoOuRecomendado="Mínimo" stateSoMinimoOuRecomendado={requisitos.android.minimos} dispatchRequisitos={dispatchRequisitos} dispatchType="minimo" isPhone={true} dispatchCheckbox={dispatchError} />
+                                <InputsRequirements typeOfSO="Android" minimoOuRecomendado="Recomendado" stateSoMinimoOuRecomendado={requisitos.android.recomendados} dispatchRequisitos={dispatchRequisitos} dispatchType="recomendado" isPhone={true} dispatchCheckbox={dispatchError} />
                             </div>) : ""}
 
                         {checkboxRequirements.ios ? (
                             <div className="cadastroJogo__content__requirements">
                                 <h2>Requisitos IOS</h2>
-                                <InputsRequirements typeOfSO="Ios" minimoOuRecomendado="Mínimo" stateSoMinimoOuRecomendado={requisitos.ios.minimos} dispatchRequisitos={dispatchRequisitos} dispatchType="minimo" isPhone={true} />
-                                <InputsRequirements typeOfSO="Ios" minimoOuRecomendado="Recomendado" stateSoMinimoOuRecomendado={requisitos.ios.recomendados} dispatchRequisitos={dispatchRequisitos} dispatchType="recomendado" isPhone={true} />
+                                <InputsRequirements typeOfSO="Ios" minimoOuRecomendado="Mínimo" stateSoMinimoOuRecomendado={requisitos.ios.minimos} dispatchRequisitos={dispatchRequisitos} dispatchType="minimo" isPhone={true} dispatchCheckbox={dispatchError} />
+                                <InputsRequirements typeOfSO="Ios" minimoOuRecomendado="Recomendado" stateSoMinimoOuRecomendado={requisitos.ios.recomendados} dispatchRequisitos={dispatchRequisitos} dispatchType="recomendado" isPhone={true} dispatchCheckbox={dispatchError} />
                             </div>) : ""}
 
+                        {errorMessage.requisitos ? (<p className="cadastroJogo--errorMessage"><i class="fa-solid fa-xmark"></i> Preencha as informações</p>) : ""}
                     </div>) : ""}
 
                     {/* Etapa 3 */}
@@ -503,19 +620,25 @@ export default props => {
                                 <h3>Jogo</h3>
 
                                 <div className="cadastroJogo__content__uploadContent__fileUpload">
-                                    <div>
-                                        <label htmlFor="windows">Windows</label>
-                                        <div>
-                                            <input type="file" accept=".zip" id="windows" className="cadastroJogo__content__uploadContent__fileUpload--changeText"></input>
-                                        </div>
-                                    </div>
+                                    {checkboxRequirements.windows ? (
+                                        <UploadJogo name="Windows" setState={setUploadJogoWindows} dispatchError={dispatchError}/>
+                                    ) : ""}
 
-                                    <div>
-                                        <label htmlFor="android">Android</label>
-                                        <div>
-                                            <input type="file" accept=".zip" id="android" className="cadastroJogo__content__uploadContent__fileUpload--changeText"></input>
-                                        </div>
-                                    </div>
+                                    {checkboxRequirements.macos ? (
+                                        <UploadJogo name="MacOs" setState={setUploadJogoMacos} dispatchError={dispatchError}/>
+                                    ) : ""}
+
+                                    {checkboxRequirements.linux ? (
+                                        <UploadJogo name="Linux" setState={setUploadJogoLinux} dispatchError={dispatchError}/>
+                                    ) : ""}
+
+                                    {checkboxRequirements.android ? (
+                                        <UploadJogo name="Android" setState={setUploadJogoAndroid} dispatchError={dispatchError}/>
+                                    ) : ""}
+
+                                    {checkboxRequirements.ios ? (
+                                        <UploadJogo name="Ios" setState={setUploadJogoIos} dispatchError={dispatchError}/>
+                                    ) : ""}
                                 </div>
                             </div>
                             <div className="cadastroJogo__content__uploadContent">
@@ -525,14 +648,16 @@ export default props => {
                                     <div>
                                         <label htmlFor="fotos">Fotos</label>
                                         <div>
-                                            <input type="file" accept=".png,.jpeg,.jpg" id="fotos" multiple className="cadastroJogo__content__uploadContent__fileUpload--changeText"></input>
+                                            <input type="file" accept=".png,.jpeg,.jpg" id="fotos" multiple className="cadastroJogo__content__uploadContent__fileUpload--changeText"
+                                                onChange={e => { setUploadFotos(e.target.files); dispatchError({ type: 'upload', upload: false }) }}></input>
                                         </div>
                                     </div>
 
                                     <div>
                                         <label htmlFor="videos">Vídeos</label>
                                         <div>
-                                            <input type="file" accept=".mp4,.mov,.mkv" id="videos" multiple className="cadastroJogo__content__uploadContent__fileUpload--changeText"></input>
+                                            <input type="file" accept=".mp4,.mov,.mkv" id="videos" multiple className="cadastroJogo__content__uploadContent__fileUpload--changeText"
+                                                onChange={e => { setUploadVideos(e.target.files); dispatchError({ type: 'upload', upload: false }) }}></input>
                                         </div>
                                     </div>
                                 </div>
@@ -543,12 +668,13 @@ export default props => {
                                     <div>
                                         <label htmlFor="doc">Documento</label>
                                         <div>
-                                            <input type="file" accept=".png,.jpeg,.jpg,.pdf" id="doc" className="cadastroJogo__content__uploadContent__fileUpload--changeText">
+                                            <input type="file" accept=".png,.jpeg,.jpg,.pdf" id="doc" className="cadastroJogo__content__uploadContent__fileUpload--changeText"
+                                                onChange={e => { setUploadClassificacao(e.target.files); dispatchError({ type: 'upload', upload: false }) }}>
                                             </input>
                                         </div>
                                     </div>
-                                    <select name="classificacao" id="classificacao">
-                                        <option value="Livre" selected>Livre</option>
+                                    <select name="classificacao" id="classificacao" value={selectValueClassificacao} onChange={e => { setUploadValueClassificacao(e.target.value); dispatchError({ type: 'upload', upload: false }) }}>
+                                        <option value="Livre">Livre</option>
                                         <option value="menores_10">10</option>
                                         <option value="menores_12">12</option>
                                         <option value="menores_14">14</option>
@@ -560,11 +686,13 @@ export default props => {
                         </div>
                         <div className="cadastroJogo__termos">
                             <div>
-                                <input type="checkbox" id="termos"></input>
+                                <input type="checkbox" id="termos" defaultChecked={aceitarTermosJogo} onChange={_ => { setAceitarTermosJogo((state) => !state); dispatchError({ type: 'upload', upload: false }) }}></input>
                                 <label htmlFor="termos">Aceito os termos e condições</label>
                             </div>
                         </div>
+                        {errorMessage.upload ? (<p className="cadastroJogo--errorMessage"><i class="fa-solid fa-xmark"></i> Faça upload de todos os arquivos e aceite os termos</p>) : ""}
                     </div>) : ""}
+
                 </section>
 
                 <section className="cadastroJogo__step">
@@ -574,6 +702,19 @@ export default props => {
                         onClick={_ => { !checkInputs(stepForm) ? setData(stepForm, setSteapForm) : "" }}
                     >{stepForm != 3 ? "Proxímo" : "Cadastrar"}</button>
                 </section>
+
+                <div className="finish__modalBackground" style={stepForm > 3 ? { display: "flex" } : { display: "none" }} >
+                    <div className="finish__modalConfirm">
+                        <div className="finish__modalConfirm__container">
+                            <div>
+                                <p>
+                                Seu jogo foi cadastrado com sucesso! Agora ele pode ser visto na sua página de jogos! 
+                                </p>
+                            </div>
+                            <div><Link to="/meus-jogos">OK</Link></div>
+                        </div>
+                    </div>
+                </div>
             </main>
         </div>
     )
