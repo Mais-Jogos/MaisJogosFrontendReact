@@ -92,5 +92,9 @@
     padding: 18px;
 }
 
+.pubProfile__rankingCoin{
+    filter: var(--filter-image);
+}
+
 
 
