@@ -112,6 +112,21 @@ export default _ => {
                         </p>
 
                     </div>
+                    <div className="acessibility__recursos">
+                        <h1 className="acessibility_Titulo">{translate("Leitor de tela")}</h1>
+                        <p dangerouslySetInnerHTML={{__html: translate("leitorTelaAtalhoCI")}}>
+                        </p>
+
+                        <p dangerouslySetInnerHTML={{__html: translate("leitorTelaAtalhoF")}}>
+                        </p>
+
+                        <p dangerouslySetInnerHTML={{__html: translate("leitorTelaAtalhoO")}}>
+                        </p>
+
+                        <p dangerouslySetInnerHTML={{__html: translate("leitorTelaAtalhoS")}}>
+                        </p>
+
+                    </div>
                 </div>
                 
                 <div>

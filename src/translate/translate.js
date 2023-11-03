@@ -237,6 +237,10 @@ export function translate(value){
             "pt":"Aumentar e diminuir fonte",
             "en":"Increase and decrease font"
         },
+        "Leitor de tela":{
+            "pt":"Leitor de tela",
+            "en":"Text to speech"
+        },
         "FonteIE-GC":{
             "pt":`Internet Explorer e Google Chrome:<br/>
             “Alt” + “b” - Aumentar <br/>
@@ -275,11 +279,23 @@ export function translate(value){
             "en":`Internet Explorer and Google Chrome:<br/>
             “Alt” + “number” - Navigate by header <br/>`
         },
+        "leitorTelaAtalhoCI":{
+            "pt":`Internet Explorer e Google Chrome:<br/>
+            “Alt” + “q” - Ativa e desativa leitor de tela <br/>`,
+            "en":`Internet Explorer and Google Chrome:<br/>
+            “Alt” + “q” - Turn text to speech ON or OFF  <br/>`
+        },
         "AtalhoFirefox":{
             "pt":`Firefox: <br/>
             “Alt” + “Shift” + “número” <br/>`,
             "en":`Firefox: <br/>
             “Alt” + “Shift” + “number” <br/>`
+        },
+        "leitorTelaAtalhoF":{
+            "pt":`Firefox: <br/>
+            “Alt” + “Shift” + “q” <br/>`,
+            "en":`Firefox: <br/>
+            “Alt” + “Shift” + “q” <br/>`
         },
         "AtalhoOpera":{
             "pt":`Opera: <br/>
@@ -287,11 +303,23 @@ export function translate(value){
             "en":`Opera: <br/>
             “Shift” + “Escape” + “number” <br/>`
         },
+        "leitorTelaAtalhoO":{
+            "pt":`Opera: <br/>
+            “Shift” + “Escape” + “q” <br/>`,
+            "en":`Opera: <br/>
+            “Shift” + “Escape” + “q” <br/>`
+        },
         "AtalhoSafariOmni":{
             "pt":`Safari e OmniWeb: <br/>
             “Ctrl” + “número” <br/>`,
             "en":`Safari and OmniWeb: <br/>
             “Ctrl” + “number” <br/>`
+        },
+        "leitorTelaAtalhoS":{
+            "pt":`Safari e OmniWeb: <br/>
+            “Ctrl” + “q” <br/>`,
+            "en":`Safari and OmniWeb: <br/>
+            “Ctrl” + “q” <br/>`
         },
         "Cadastrar Review":{
             "pt":"Cadastrar Review",
