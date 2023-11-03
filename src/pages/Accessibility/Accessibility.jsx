@@ -6,34 +6,7 @@ import Vlibras from '../../components/Vlibras/Vlibras';
 import {translate} from "../../translate/translate";
 import TextToSpeech from "../../components/Acessibilidade/TextToSpeech";
 
-export default _ => {
-
-    const [mostrarDosVox, setMostrarDosVox] = useState(false);
-    const [mostrarVLibras, setMostrarVLibras] = useState(false);
-    const [mostrarVoiceOver, setMostrarVoiceOver] = useState(false);
-    const [mostrarWinNarrator, setMostrarWinNarrator] = useState(false);
-    const [mostrarTalkBack, setMostrarTalkBack] = useState(false);
-    
-    const toggleTalkBack = () => {
-        setMostrarTalkBack(!mostrarTalkBack);
-      };
-
-    const toggleWinNarrator = () => {
-        setMostrarWinNarrator(!mostrarWinNarrator);
-      };
-
-    const toggleVoiceOver = () => {
-        setMostrarVoiceOver(!mostrarVoiceOver);
-      };
-
-    const toggleDosVox = () => {
-        setMostrarDosVox(!mostrarDosVox);
-      };
-    
-    const toggleVLibras = () => {
-        setMostrarVLibras(!mostrarVLibras);
-      };
-    let parser = new DOMParser();
+export default _ => { 
 
     return (
         <div id='container-page'>
@@ -117,7 +90,7 @@ export default _ => {
                 <div>
                         <h1 className="acessibility_Titulo">{translate("Teclas de atalho por navegadores")}</h1>
                         <p>
-                        {translate("Teclas de atalho txt")}
+                        {translate("Teclas de atalho txt")} 
                         </p>
                 </div>
 
@@ -125,43 +98,66 @@ export default _ => {
                     <h1 className="acessibility_Titulo">{translate("Técnologias assistivas")}</h1>
                        
                     <div className="infos1" >        
-                        <div className="acessibility__border" onClick={toggleTalkBack}>
-                        {translate("TalkBack para Android")}
+                        <div className="acessibility__border">
+                            
+                            <div className="acessibility__borderTopo">
+                            <a href="https://support.google.com/accessibility/android/answer/6283677?hl=pt-br">
+                            <img src="../../public\imgs\logo-acessibilidade\1talkback.png"/>
+                            {translate("TalkBack para Android")}
+                            </a>
+                            </div>
+                           
+                        
+                            <div>
+                            <p>{translate("TalkBack")}</p>
+                            </div>
                         </div>
                         
-                        <div className="acessibility__border" style={{display:mostrarTalkBack ? "none" : "block" }}>
-                        <p>{translate("TalkBack")}</p>
-                        </div>
                     </div>
 
                     <div className="infos1" >        
-                        <div className="acessibility__border" onClick={toggleWinNarrator}>
-                        {translate("Narrador para windows")}
-                        </div>
-                        
-                        <div className="acessibility__border" style={{display:mostrarWinNarrator ? "none" : "block" }}>
+                    <div className="acessibility__border">
+                        <div className="acessibility__borderTopo">
+                            <a href="https://support.microsoft.com/pt-br/windows/guia-completo-do-narrador-e4397a0d-ef4f-b386-d8ae-c172f109bdb1">
+                            <img src="../../public\imgs\logo-acessibilidade\2narradorWin.png"/>
+                            {translate("Narrador para windows")}
+                            </a>
+                            </div>
+                            
+                        <div>
                         <p>{translate("WinNarrator")}</p>
                         </div>
                     </div>
+                    </div>
                      
 
-                    <div className="infos1" >        
-                        <div className="acessibility__border" onClick={toggleVoiceOver}>
-                        {translate("VoiceOver para iphone e mac")}
+                    <div className="infos1" > 
+                    <div className="acessibility__border">       
+                        <div className="acessibility__borderTopo">
+                            <a href="https://support.apple.com/pt-br/guide/iphone/iph3e2e415f/15.0/ios/15.0">
+                            <img src="../../public\imgs\logo-acessibilidade\3voiceover.png"/>
+                            {translate("VoiceOver para iphone e mac")}
+                            </a>
                         </div>
                         
-                        <div className="acessibility__border" style={{display:mostrarVoiceOver ? "none" : "block" }}>
+                        <div>
                         <p>{translate("VoiceOver")}</p>
+                        </div>
                         </div>
                     </div>
 
-                    <div className="infos1" >        
-                        <div className="acessibility__border" onClick={toggleDosVox}>
+                    <div className="infos1" > 
+                        <div className="acessibility__border">       
+                        <div className="acessibility__borderTopo">
+                        <a href="http://intervox.nce.ufrj.br/dosvox/dosvox_ubuntu/">
+                        <img src="../../public\imgs\logo-acessibilidade\4dosvox.png"/>
                         {translate("DosVox")}
+                        </a>
                         </div>
                         
-                        <div className="acessibility__border" style={{display:mostrarDosVox ? "none" : "block" }}>
+                        <div>
                         <p>{translate("DosVoxTxt")}</p>
+                        </div>
                         </div>
                     </div>   
                         
@@ -174,12 +170,17 @@ export default _ => {
                         <h1 className="acessibility_Titulo">{translate("Intérpretes digitais")}</h1>
                         </div>
 
-                        <div className="acessibility__border" onClick={toggleVLibras}>
+                        <div className="acessibility__border">
+                        <div className="acessibility__borderTopo">
+                        <a href="https://www.gov.br/governodigital/pt-br/vlibras/">
+                        <img src="../../public\imgs\logo-acessibilidade\5vlibras.png"/>
                         {translate("VLibras")}
+                        </a>
                         </div>
                         
-                        <div className="acessibility__border" style={{display:mostrarVLibras ? "none" : "block" }}>
+                        <div>
                         <p>{translate("VlibrasTxt")}</p>
+                        </div>
                         </div>
                     </div> 
                 </div>

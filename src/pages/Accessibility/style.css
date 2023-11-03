@@ -33,7 +33,7 @@
 }
 
 .acessibility__recursos{
-    display: flex;
+    display: flex; 
     width: 1000px;
     align-items: left;
     justify-content: flex-start;
@@ -59,6 +59,7 @@
     justify-content: center;
     border-radius: 8px;
     flex-direction: column;
+    gap: 40px;
 }
 
 .infos1{
@@ -83,4 +84,7 @@
     }
 }
 
-
+.acessibility__borderTopo{
+    background-color: var(--purple);
+    width:100%;
+}

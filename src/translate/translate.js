@@ -154,32 +154,32 @@ export function translate(value){
             "en":"TalkBack for Android"
         },
         "TalkBack":{
-            "pt":"A suite VLibras é um conjunto de ferramentas para copiar e interpretar textos do português para a Língua Brasileira de Sinais. É possível usar essas ferramentas no computador e em smartphones e tablets.",
-            "en":"The VLibras suite is a set of tools for copying and interpreting texts from Portuguese into Brazilian Sign Language. You can use these tools on your computer and on smartphones and tablets."
+            "pt":"O TalkBack é o leitor de tela do Google incluso em dispositivos Android. Ele permite que você controle o dispositivo sem usar os olhos. A configuração depende do fabricante do dispositivo, da versão do Android e da versão do TalkBack.",
+            "en":"TalkBack is Google's screen reader included on Android devices. It enables you to control the device without using your eyes. The setup depends on the device manufacturer, Android version, and TalkBack version."
         },
         "Narrador para windows":{
             "pt":"Narrador para windows",
             "en":"Narrator for windows"
         },
         "WinNarrator":{
-            "pt":"A suite VLibras é um conjunto de ferramentas para copiar e interpretar textos do português para a Língua Brasileira de Sinais. É possível usar essas ferramentas no computador e em smartphones e tablets.",
-            "en":"The VLibras suite is a set of tools for copying and interpreting texts from Portuguese into Brazilian Sign Language. You can use these tools on your computer and on smartphones and tablets."
+            "pt":"O Narrador é um aplicativo de leitura de tela integrado ao Windows, portanto, não é preciso baixar ou instalá-lo. ",
+            "en":"Narrator is a screen-reading app that's built into Windows 10, so there's nothing you need to download or install."
         },
         "VoiceOver para iphone e mac":{
             "pt":"VoiceOver para iphone e mac",
             "en":"VoiceOver for iPhone and Mac"
         },
         "VoiceOver":{
-            "pt":"A suite VLibras é um conjunto de ferramentas para copiar e interpretar textos do português para a Língua Brasileira de Sinais. É possível usar essas ferramentas no computador e em smartphones e tablets.",
-            "en":"The VLibras suite is a set of tools for copying and interpreting texts from Portuguese into Brazilian Sign Language. You can use these tools on your computer and on smartphones and tablets."
+            "pt":"VoiceOver é um leitor de tela desenvolvido pela Apple para seus dispositivos com iOS, como iPhones, iPads e Macs. Ele é projetado para tornar os dispositivos acessíveis a pessoas com deficiência visual, fornecendo uma interface de áudio que descreve as ações, elementos da interface do usuário e conteúdo exibido na tela.",
+            "en":"VoiceOver is a screen reader developed by Apple for its iOS devices, such as iPhones, iPads, and Macs. It is designed to make devices accessible to people with visual impairments by providing an audio interface that describes actions, elements of the user interface, and on-screen content."
         },
         "DosVox":{
             "pt":"DosVox",
             "en":"DosVox"
         },
         "DosVoxTxt":{
-            "pt":"A suite VLibras é um conjunto de ferramentas para copiar e interpretar textos do português para a Língua Brasileira de Sinais. É possível usar essas ferramentas no computador e em smartphones e tablets.",
-            "en":"The VLibras suite is a set of tools for copying and interpreting texts from Portuguese into Brazilian Sign Language. You can use these tools on your computer and on smartphones and tablets."
+            "pt":"O projeto DOSVOX é desenvolvido pela Universidade Federal do Rio de Janeiro (NCE/UFRJ) e permite que pessoas com deficiência visual utilizem um microcomputador comum (PC) para desempenhar uma série de tarefas, adquirindo assim um nível alto de independência no estudo e no trabalho.",
+            "en":"The DOSVOX project is developed by the Federal University of Rio de Janeiro (NCE/UFRJ) and allows individuals with visual impairments to use a regular personal computer (PC) to perform a variety of tasks, thus achieving a high level of independence in both education and work."
         },
         "VLibras":{
             "pt":"VLibras",
