@@ -79,14 +79,21 @@ a{
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
+  gap: 5px;
   cursor: pointer;
   background: var(--purple);
   width: 50%;
   height: 30px;
   align-items: center;
   border-radius: 2px;
-  padding-left: 2px;
-}  
+  padding-left: 5px;
+} 
+.seta .fa-sort-down{
+  height: 25px;
+} 
+.seta .fa-caret-right{
+  height: 15px;
+}
 
 .texto-expansivel{
   display: flex;

@@ -58,7 +58,7 @@ export default function FAQ() {
         <div className="center">
           <div className="infos">
             <div className="seta" onClick={toggleTextoJogos}>
-              {translate("Jogos")}
+              <i className={`fa-solid fa-${mostrarTextoJogos ? 'sort-down' : 'caret-right'}`}></i> {translate("Jogos")}
             </div>
             {mostrarTextoJogos && (
               <div className="center">
@@ -79,6 +79,7 @@ export default function FAQ() {
         <div className="center">
           <div className="infos">
             <div className="seta" onClick={toggleTextoDev}>
+              <i className={`fa-solid fa-${mostrarTextoDev ? 'sort-down' : 'caret-right'}`}></i>
               {translate("Desenvolvedor")}
             </div>
             {mostrarTextoDev && (
@@ -99,6 +100,7 @@ export default function FAQ() {
         <div className="center">
           <div className="infos">
             <div className="seta" onClick={toggleTextoPlat}>
+              <i className={`fa-solid fa-${mostrarTextoPlat ? 'sort-down' : 'caret-right'}`}></i>
               {translate("Plataforma")} 
             </div>
             {mostrarTextoPlat && (
