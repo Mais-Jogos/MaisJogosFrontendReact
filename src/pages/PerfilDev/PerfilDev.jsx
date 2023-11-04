@@ -61,26 +61,26 @@ export default props => {
                     <div className="perfilDev__userData__inputs">
                         <div className="perfilDev__userData__input">
                             <label htmlFor="username">Username</label>
-                            <input type="text" id="username" value={userData.username} onChange={e => dispatch({ type: 'change_username', username: e.target.value })} aria-label="Digite o username"></input>
+                            <input type="text" id="username" value={userData.username} onChange={e => dispatch({ type: 'change_username', username: e.target.value })} aria-tts="username"></input>
 
                             {editButton ? <img src="/imgs/icons/edit_icon.png" alt="Ícone de edição dos inputs" className="perfilDev__userData__input__editImg" /> : false}
                         </div>
 
                         <div className="perfilDev__userData__input">
                             <label htmlFor="nascimento">{translate("Nascimento")}</label>
-                            <input type="date" id="nascimento" value={userData.dataNascimento} onChange={e => dispatch({ type: 'change_nascimento', nascimento: e.target.value })} aria-label="Digite sua data de nascimento"></input>
+                            <input type="date" id="nascimento" value={userData.dataNascimento} onChange={e => dispatch({ type: 'change_nascimento', nascimento: e.target.value })} aria-tts="data de nascimento"></input>
                         </div>
 
                         <div className="perfilDev__userData__input">
                             <label htmlFor="email">{translate("Email")}</label>
-                            <input type="email" id="email" value={userData.email} onChange={e => dispatch({ type: 'change_email', email: e.target.value })} aria-label="Digite seu email"></input>
+                            <input type="email" id="email" value={userData.email} onChange={e => dispatch({ type: 'change_email', email: e.target.value })} aria-tts="email"></input>
 
                             {editButton ? <img src="/imgs/icons/edit_icon.png" alt="Ícone de edição dos inputs" className="perfilDev__userData__input__editImg" /> : false}
                         </div>
 
                         <div className="perfilDev__userData__input">
                             <label htmlFor="senha">{translate("Senha")}</label>
-                            <input type="password" id="senha" value={userData.senha} onChange={e => dispatch({ type: 'change_senha', senha: e.target.value })} aria-label="Digite sua senha"></input>
+                            <input type="password" id="senha" value={userData.senha} onChange={e => dispatch({ type: 'change_senha', senha: e.target.value })} aria-tts="senha"></input>
 
                             {editButton ? <img src="/imgs/icons/edit_icon.png" alt="Ícone de edição dos inputs" className="perfilDev__userData__input__editImg" /> : false}
                         </div>
@@ -88,7 +88,7 @@ export default props => {
                         <div className="perfilDev__userData__descr">
                             <div className="perfilDev__userData__input">
                                 <label htmlFor="descricao">{translate("Descrição")}</label>
-                                <textarea id="descricao" value={userData.descricao} onChange={e => dispatch({ type: 'change_descricao', descricao: e.target.value })} aria-label="Digite sua descrição"></textarea>
+                                <textarea id="descricao" value={userData.descricao} onChange={e => dispatch({ type: 'change_descricao', descricao: e.target.value })} aria-tts="descrição"></textarea>
 
                                 {editButton ? <img src="/imgs/icons/edit_icon.png" alt="Ícone de edição dos inputs" className="perfilDev__userData__input__editImg" /> : false}
                             </div>
@@ -96,7 +96,7 @@ export default props => {
                             <div className="perfilDev__userData__input">
                                 <input type="button" id="editar" value={editButton ? "Salvar" : "Editar"} onClick={_ => {
                                     editButton ? setEditButton(false) : setEditButton(true)
-                                }} aria-label="Botão de editar as informações">
+                                }} aria-tts="editar">
                                 </input>
                             </div>
                         </div>
@@ -104,19 +104,19 @@ export default props => {
                 </section>
 
                 <section className="perfilDev__actions">
-                    <Link className="perfilDev__action" to="/meus-jogos">
+                    <Link className="perfilDev__action" to="/meus-jogos" aria-tts="meus Jogos">
                         <img src="/imgs/icons/mais_icon.png" alt="Ícone de Mais que redireciona para a página de Meus jogos do desesenvolvedor" />
                         <p>{translate("Meus jogos")}</p>
                     </Link>
-                    <Link className="perfilDev__action" to="/pagamento-dev">
+                    <Link className="perfilDev__action" to="/pagamento-dev" aria-tts="pagamento Dev">
                         <img src="/imgs/icons/pix__icon.svg" alt="Ícone de Pix que redireciona para a página de Requerimento de pagamento" />
                         <p>{translate("Requerimento de pagamento")}</p>
                     </Link>
-                    <Link className="perfilDev__action" to="/relatorios-dev">
+                    <Link className="perfilDev__action" to="/relatorios-dev" aria-tts="relatórios dev">
                         <img src="/imgs/icons/dashboard__icon.png" alt="Ícone de um gráfico que redireciona para a página de relatórios do desenvolvedor" />
                         <p>{translate("Dashboard")}</p>
                     </Link>
-                    <Link className="perfilDev__action" to="/cadastro-jogo">
+                    <Link className="perfilDev__action" to="/cadastro-jogo" aria-tts="cadastro jogo">
                         <img src="/imgs/icons/controler__icon.png" alt="Ícone de um controle que redireciona para a página cadastramento de jogo" />
                         <p>{translate("Cadastrar Jogo")}</p>
                     </Link>

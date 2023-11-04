@@ -9,6 +9,8 @@ import InputsRequirements from "./InputsRequirements";
 import UploadJogo from "./UploadJogo";
 import { Link } from "react-router-dom";
 import TextToSpeech from "../../components/Acessibilidade/TextToSpeech";
+import { useEffect } from "react";
+import { useRef } from "react";
 
 function reducerCheckboxRequirements(state, action) {
     switch (action.type) {
@@ -178,15 +180,15 @@ export default props => {
                 so: "",
                 processador: "",
                 placaDeVideo: "",
-                memoria: [1, ""],
-                armazenamento: [1, ""],
+                memoria: [1, "mb"],
+                armazenamento: [1, "gb"],
             },
             recomendados: {
                 so: "",
                 processador: "",
                 placaDeVideo: "",
-                memoria: [1, ""],
-                armazenamento: [1, ""],
+                memoria: [1, "mb"],
+                armazenamento: [1, "gb"],
             }
         },
         macos: {
@@ -194,15 +196,15 @@ export default props => {
                 so: "",
                 processador: "",
                 placaDeVideo: "",
-                memoria: [1, ""],
-                armazenamento: [1, ""],
+                memoria: [1, "mb"],
+                armazenamento: [1, "gb"],
             },
             recomendados: {
                 so: "",
                 processador: "",
                 placaDeVideo: "",
-                memoria: [1, ""],
-                armazenamento: [1, ""],
+                memoria: [1, "mb"],
+                armazenamento: [1, "gb"],
             }
         },
         linux: {
@@ -210,43 +212,43 @@ export default props => {
                 so: "",
                 processador: "",
                 placaDeVideo: "",
-                memoria: [1, ""],
-                armazenamento: [1, ""],
+                memoria: [1, "mb"],
+                armazenamento: [1, "gb"],
             },
             recomendados: {
                 so: "",
                 processador: "",
                 placaDeVideo: "",
-                memoria: [1, ""],
-                armazenamento: [1, ""],
+                memoria: [1, "mb"],
+                armazenamento: [1, "gb"],
             }
         },
         android: {
             minimos: {
                 so: "",
                 processador: "",
-                memoria: [1, ""],
-                armazenamento: [1, ""],
+                memoria: [1, "mb"],
+                armazenamento: [1, "gb"],
             },
             recomendados: {
                 so: "",
                 processador: "",
-                memoria: [1, ""],
-                armazenamento: [1, ""],
+                memoria: [1, "mb"],
+                armazenamento: [1, "gb"],
             }
         },
         ios: {
             minimos: {
                 so: "",
                 processador: "",
-                memoria: [1, ""],
-                armazenamento: [1, ""],
+                memoria: [1, "mb"],
+                armazenamento: [1, "gb"],
             },
             recomendados: {
                 so: "",
                 processador: "",
-                memoria: [1, ""],
-                armazenamento: [1, ""],
+                memoria: [1, "mb"],
+                armazenamento: [1, "gb"],
             }
         },
     });
@@ -383,6 +385,93 @@ export default props => {
 
     }
 
+    // Precisei trazer da lógica do leitor para a tela, pq o Jquery não consegue ler os inputs que não foram carregados ainda :(
+    const initialized = useRef(false);
+    const goBackButtonTTS = useRef(false);
+
+    useEffect(_ => {
+        if (initialized.current) {
+
+            $(document).ready(function () {
+
+                $('.cadastroJogo__content__steps--inputTTS').keyup(function (e) {
+                    var code = e.keyCode || e.which;
+                    if (code == '9' && document.querySelector("#root").attributes[1].nodeValue == "true") {
+                        setTimeout(console.log('Input ' + $(':focus').attr('aria-tts')), 1000);
+                    }
+
+                    e.preventDefault();
+                    e.stopPropagation();
+                });
+
+
+                $('.cadastroJogo__content__buttons').keyup(function (e) {
+                    var code = e.keyCode || e.which;
+                    if (code == '9' && document.querySelector("#root").attributes[1].nodeValue == "true") {
+                        setTimeout(console.log("Botão de " + $(':focus').text()), 1000);
+                    }
+
+                    e.preventDefault();
+                    e.stopPropagation();
+                });
+
+                if(stepForm == 2 && !goBackButtonTTS.current){
+                    $('.cadastroJogo__step__button.cadastroJogo__step__buttonBack').keyup(function (e) {
+                        var code = e.keyCode || e.which;
+                        if (code == '9' && document.querySelector("#root").attributes[1].nodeValue == "true") {
+                            setTimeout(console.log("Botão de " + $(':focus').text()), 1000);
+                        }
+    
+                        e.preventDefault();
+                        e.stopPropagation();
+                    });
+                }
+                
+                $('.cadastroJogo__content__uploadContent__fileUpload--changeText').keyup(function (e) {
+                    var code = e.keyCode || e.which;
+                    if (code == '9' && document.querySelector("#root").attributes[1].nodeValue == "true") {
+                        setTimeout(console.log('Input ' + $(':focus').attr('aria-tts')), 1000);
+                    }
+
+                    e.preventDefault();
+                    e.stopPropagation();
+                });
+
+                $('#classificacao').keyup(function (e) {
+                    var code = e.keyCode || e.which;
+                    if (code == '9' && document.querySelector("#root").attributes[1].nodeValue == "true") {
+                        setTimeout(console.log('Input ' + $(':focus').attr('aria-tts')), 1000);
+                    }
+
+                    e.preventDefault();
+                    e.stopPropagation();
+                });
+
+                $('#termos').keyup(function (e) {
+                    var code = e.keyCode || e.which;
+                    if (code == '9' && document.querySelector("#root").attributes[1].nodeValue == "true") {
+                        setTimeout(console.log('Input ' + $(':focus').attr('aria-tts')), 1000);
+                    }
+
+                    e.preventDefault();
+                    e.stopPropagation();
+                });
+
+                if(stepForm == 4){
+                    $('.modal__meusJogosRedirect').keyup(function (e) {
+                        var code = e.keyCode || e.which;
+                        if (code == '9' && document.querySelector("#root").attributes[1].nodeValue == "true") {
+                            setTimeout(console.log('Input ' + $(':focus').attr('aria-tts')), 1000);
+                        }
+    
+                        e.preventDefault();
+                        e.stopPropagation();
+                    });
+                }
+                
+            })
+        }
+    }, [stepForm])
 
     return (
         <div id='container-page'>
@@ -444,7 +533,7 @@ export default props => {
                                 id="cadastroJogo__content__title"
                                 value={titulo}
                                 onChange={e => { dispatchError({ type: 'titulo', titulo: false }); setTitulo(e.target.value) }}
-                                className={errorMessage.titulo ? "cadastroJogo__content__body--erroMessage" : ""}>
+                                className={errorMessage.titulo ? "cadastroJogo__content__body--erroMessage cadastroJogo__content__steps--inputTTS" : "cadastroJogo__content__steps--inputTTS"} aria-tts="título" >
 
                             </input>
                             {errorMessage.titulo ? (<p className="cadastroJogo--errorMessage"><i class="fa-solid fa-xmark"></i> Digite o título</p>) : ""}
@@ -456,7 +545,7 @@ export default props => {
                                 id="cadastroJogo__content__textarea"
                                 value={descricao}
                                 onChange={e => { dispatchError({ type: 'descricao', descricao: false }); setDescricao(e.target.value) }}
-                                className={errorMessage.descricao ? "cadastroJogo__content__body--erroMessage" : ""}>
+                                className={errorMessage.descricao ? "cadastroJogo__content__body--erroMessage cadastroJogo__content__steps--inputTTS" : " cadastroJogo__content__steps--inputTTS"} aria-tts="descrição">
 
                             </textarea>
                             {errorMessage.descricao ? (<p className="cadastroJogo--errorMessage"><i class="fa-solid fa-xmark"></i> Digite a descrição</p>) : ""}
@@ -530,89 +619,90 @@ export default props => {
                     </div>) : ""}
 
                     {/* Etapa 2 */}
-                    {stepForm == 2 ? (<div className="cadastroJogo__content__step2">
-                        <div className="cadastroJogo__content__plataforms">
-                            <h2>Plataformas</h2>
-                            <div className="cadastroJogo__content__plataforms__checkboxs">
-                                <label htmlFor="windows">
-                                    <input type="checkbox" id="windows" name="windows" checked={checkboxRequirements.windows}
-                                        onChange={e => { dispatch({ type: 'windows', windows: !checkboxRequirements.windows }) }} />
-                                    Windows
-                                </label>
+                    {stepForm == 2 ? (
+                        <div className="cadastroJogo__content__step2">
+                            <div className="cadastroJogo__content__plataforms">
+                                <h2>Plataformas</h2>
+                                <div className="cadastroJogo__content__plataforms__checkboxs">
+                                    <label htmlFor="windows">
+                                        <input type="checkbox" id="windows" name="windows" checked={checkboxRequirements.windows}
+                                            onChange={e => { dispatch({ type: 'windows', windows: !checkboxRequirements.windows }) }} className="cadastroJogo__content__steps--inputTTS" aria-tts="checkbox windows"/>
+                                        Windows
+                                    </label>
+                                </div>
+                                <div className="cadastroJogo__content__plataforms__checkboxs">
+                                    <label htmlFor="macos">
+                                        <input type="checkbox" id="macos" name="macos" checked={checkboxRequirements.macos}
+                                            onChange={e => { dispatch({ type: 'macos', macos: !checkboxRequirements.macos }) }} className="cadastroJogo__content__steps--inputTTS" aria-tts="checkbox macos"/>
+                                        MacOs
+                                    </label>
+                                </div>
+                                <div className="cadastroJogo__content__plataforms__checkboxs">
+                                    <label htmlFor="linux">
+                                        <input type="checkbox" id="linux" name="linux" checked={checkboxRequirements.linux}
+                                            onChange={e => { dispatch({ type: 'linux', linux: !checkboxRequirements.linux }) }}
+                                            className="cadastroJogo__content__steps--inputTTS"  aria-tts="checkbox linux"/>
+                                        Linux
+                                    </label>
+                                </div>
+                                <div className="cadastroJogo__content__plataforms__checkboxs">
+                                    <label htmlFor="android">
+                                        <input type="checkbox" id="android" name="android" checked={checkboxRequirements.android}
+                                            onChange={e => { dispatch({ type: 'android', android: !checkboxRequirements.android }) }}
+                                            className="cadastroJogo__content__steps--inputTTS"  aria-tts="checkbox android"/>
+                                        Android
+                                    </label>
+                                </div>
+                                <div className="cadastroJogo__content__plataforms__checkboxs">
+                                    <label htmlFor="ios">
+                                        <input type="checkbox" id="ios" name="ios" checked={checkboxRequirements.ios}
+                                            onChange={e => { dispatch({ type: 'ios', ios: !checkboxRequirements.ios }) }}
+                                            className="cadastroJogo__content__steps--inputTTS"  aria-tts="checkbox ios"/>
+                                        IOS
+                                    </label>
+                                </div>
                             </div>
-                            <div className="cadastroJogo__content__plataforms__checkboxs">
-                                <label htmlFor="macos">
-                                    <input type="checkbox" id="macos" name="macos" checked={checkboxRequirements.macos}
-                                        onChange={e => { dispatch({ type: 'macos', macos: !checkboxRequirements.macos }) }} />
-                                    MacOs
-                                </label>
-                            </div>
-                            <div className="cadastroJogo__content__plataforms__checkboxs">
-                                <label htmlFor="linux">
-                                    <input type="checkbox" id="linux" name="linux" checked={checkboxRequirements.linux}
-                                        onChange={e => { dispatch({ type: 'linux', linux: !checkboxRequirements.linux }) }}
-                                    />
-                                    Linux
-                                </label>
-                            </div>
-                            <div className="cadastroJogo__content__plataforms__checkboxs">
-                                <label htmlFor="android">
-                                    <input type="checkbox" id="android" name="android" checked={checkboxRequirements.android}
-                                        onChange={e => { dispatch({ type: 'android', android: !checkboxRequirements.android }) }}
-                                    />
-                                    Android
-                                </label>
-                            </div>
-                            <div className="cadastroJogo__content__plataforms__checkboxs">
-                                <label htmlFor="ios">
-                                    <input type="checkbox" id="ios" name="ios" checked={checkboxRequirements.ios}
-                                        onChange={e => { dispatch({ type: 'ios', ios: !checkboxRequirements.ios }) }}
-                                    />
-                                    IOS
-                                </label>
-                            </div>
-                        </div>
 
-                        {checkboxRequirements.windows ?
-                            (<div className="cadastroJogo__content__requirements">
-                                <h2>Requisitos Windows</h2>
-                                <InputsRequirements typeOfSO="Windows" minimoOuRecomendado="Mínimo" stateSoMinimoOuRecomendado={requisitos.windows.minimos} dispatchRequisitos={dispatchRequisitos} dispatchType="minimo" isPhone={false} dispatchCheckbox={dispatchError} />
-                                <InputsRequirements typeOfSO="Windows" minimoOuRecomendado="Recomendado" stateSoMinimoOuRecomendado={requisitos.windows.recomendados} dispatchRequisitos={dispatchRequisitos} dispatchType="recomendado" isPhone={false} dispatchCheckbox={dispatchError} />
-                            </div>
+                            {checkboxRequirements.windows ?
+                                (<div className="cadastroJogo__content__requirements">
+                                    <h2>Requisitos Windows</h2>
+                                    <InputsRequirements typeOfSO="Windows" minimoOuRecomendado="Mínimo" stateSoMinimoOuRecomendado={requisitos.windows.minimos} dispatchRequisitos={dispatchRequisitos} dispatchType="minimo" isPhone={false} dispatchCheckbox={dispatchError} />
+                                    <InputsRequirements typeOfSO="Windows" minimoOuRecomendado="Recomendado" stateSoMinimoOuRecomendado={requisitos.windows.recomendados} dispatchRequisitos={dispatchRequisitos} dispatchType="recomendado" isPhone={false} dispatchCheckbox={dispatchError} />
+                                </div>
+                                ) : ""}
+
+                            {checkboxRequirements.macos ? (
+                                <div className="cadastroJogo__content__requirements">
+                                    <h2>Requisitos MacOs</h2>
+                                    <InputsRequirements typeOfSO="MacOs" minimoOuRecomendado="Mínimo" stateSoMinimoOuRecomendado={requisitos.macos.minimos} dispatchRequisitos={dispatchRequisitos} dispatchType="minimo" isPhone={false} dispatchCheckbox={dispatchError} />
+                                    <InputsRequirements typeOfSO="MacOs" minimoOuRecomendado="Recomendado" stateSoMinimoOuRecomendado={requisitos.macos.recomendados} dispatchRequisitos={dispatchRequisitos} dispatchType="recomendado" isPhone={false} dispatchCheckbox={dispatchError} />
+                                </div>
                             ) : ""}
 
-                        {checkboxRequirements.macos ? (
-                            <div className="cadastroJogo__content__requirements">
-                                <h2>Requisitos MacOs</h2>
-                                <InputsRequirements typeOfSO="MacOs" minimoOuRecomendado="Mínimo" stateSoMinimoOuRecomendado={requisitos.macos.minimos} dispatchRequisitos={dispatchRequisitos} dispatchType="minimo" isPhone={false} dispatchCheckbox={dispatchError} />
-                                <InputsRequirements typeOfSO="MacOs" minimoOuRecomendado="Recomendado" stateSoMinimoOuRecomendado={requisitos.macos.recomendados} dispatchRequisitos={dispatchRequisitos} dispatchType="recomendado" isPhone={false} dispatchCheckbox={dispatchError} />
-                            </div>
-                        ) : ""}
+                            {checkboxRequirements.linux ? (
+                                <div className="cadastroJogo__content__requirements">
+                                    <h2>Requisitos Linux</h2>
+                                    <InputsRequirements typeOfSO="Linux" minimoOuRecomendado="Mínimo" stateSoMinimoOuRecomendado={requisitos.linux.minimos} dispatchRequisitos={dispatchRequisitos} dispatchType="minimo" isPhone={false} dispatchCheckbox={dispatchError} />
+                                    <InputsRequirements typeOfSO="Linux" minimoOuRecomendado="Recomendado" stateSoMinimoOuRecomendado={requisitos.linux.recomendados} dispatchRequisitos={dispatchRequisitos} dispatchType="recomendado" isPhone={false} dispatchCheckbox={dispatchError} />
+                                </div>
+                            ) : ""}
 
-                        {checkboxRequirements.linux ? (
-                            <div className="cadastroJogo__content__requirements">
-                                <h2>Requisitos Linux</h2>
-                                <InputsRequirements typeOfSO="Linux" minimoOuRecomendado="Mínimo" stateSoMinimoOuRecomendado={requisitos.linux.minimos} dispatchRequisitos={dispatchRequisitos} dispatchType="minimo" isPhone={false} dispatchCheckbox={dispatchError} />
-                                <InputsRequirements typeOfSO="Linux" minimoOuRecomendado="Recomendado" stateSoMinimoOuRecomendado={requisitos.linux.recomendados} dispatchRequisitos={dispatchRequisitos} dispatchType="recomendado" isPhone={false} dispatchCheckbox={dispatchError} />
-                            </div>
-                        ) : ""}
+                            {checkboxRequirements.android ? (
+                                <div className="cadastroJogo__content__requirements">
+                                    <h2>Requisitos Android</h2>
+                                    <InputsRequirements typeOfSO="Android" minimoOuRecomendado="Mínimo" stateSoMinimoOuRecomendado={requisitos.android.minimos} dispatchRequisitos={dispatchRequisitos} dispatchType="minimo" isPhone={true} dispatchCheckbox={dispatchError} />
+                                    <InputsRequirements typeOfSO="Android" minimoOuRecomendado="Recomendado" stateSoMinimoOuRecomendado={requisitos.android.recomendados} dispatchRequisitos={dispatchRequisitos} dispatchType="recomendado" isPhone={true} dispatchCheckbox={dispatchError} />
+                                </div>) : ""}
 
-                        {checkboxRequirements.android ? (
-                            <div className="cadastroJogo__content__requirements">
-                                <h2>Requisitos Android</h2>
-                                <InputsRequirements typeOfSO="Android" minimoOuRecomendado="Mínimo" stateSoMinimoOuRecomendado={requisitos.android.minimos} dispatchRequisitos={dispatchRequisitos} dispatchType="minimo" isPhone={true} dispatchCheckbox={dispatchError} />
-                                <InputsRequirements typeOfSO="Android" minimoOuRecomendado="Recomendado" stateSoMinimoOuRecomendado={requisitos.android.recomendados} dispatchRequisitos={dispatchRequisitos} dispatchType="recomendado" isPhone={true} dispatchCheckbox={dispatchError} />
-                            </div>) : ""}
+                            {checkboxRequirements.ios ? (
+                                <div className="cadastroJogo__content__requirements">
+                                    <h2>Requisitos IOS</h2>
+                                    <InputsRequirements typeOfSO="Ios" minimoOuRecomendado="Mínimo" stateSoMinimoOuRecomendado={requisitos.ios.minimos} dispatchRequisitos={dispatchRequisitos} dispatchType="minimo" isPhone={true} dispatchCheckbox={dispatchError} />
+                                    <InputsRequirements typeOfSO="Ios" minimoOuRecomendado="Recomendado" stateSoMinimoOuRecomendado={requisitos.ios.recomendados} dispatchRequisitos={dispatchRequisitos} dispatchType="recomendado" isPhone={true} dispatchCheckbox={dispatchError} />
+                                </div>) : ""}
 
-                        {checkboxRequirements.ios ? (
-                            <div className="cadastroJogo__content__requirements">
-                                <h2>Requisitos IOS</h2>
-                                <InputsRequirements typeOfSO="Ios" minimoOuRecomendado="Mínimo" stateSoMinimoOuRecomendado={requisitos.ios.minimos} dispatchRequisitos={dispatchRequisitos} dispatchType="minimo" isPhone={true} dispatchCheckbox={dispatchError} />
-                                <InputsRequirements typeOfSO="Ios" minimoOuRecomendado="Recomendado" stateSoMinimoOuRecomendado={requisitos.ios.recomendados} dispatchRequisitos={dispatchRequisitos} dispatchType="recomendado" isPhone={true} dispatchCheckbox={dispatchError} />
-                            </div>) : ""}
-
-                        {errorMessage.requisitos ? (<p className="cadastroJogo--errorMessage"><i class="fa-solid fa-xmark"></i> Preencha as informações</p>) : ""}
-                    </div>) : ""}
+                            {errorMessage.requisitos ? (<p className="cadastroJogo--errorMessage"><i class="fa-solid fa-xmark"></i> Preencha as informações</p>) : ""}
+                        </div>) : ""}
 
                     {/* Etapa 3 */}
                     {stepForm == 3 ? (<div className="cadastroJogo__content__step3">
@@ -623,23 +713,23 @@ export default props => {
 
                                 <div className="cadastroJogo__content__uploadContent__fileUpload">
                                     {checkboxRequirements.windows ? (
-                                        <UploadJogo name="Windows" setState={setUploadJogoWindows} dispatchError={dispatchError}/>
+                                        <UploadJogo name="Windows" setState={setUploadJogoWindows} dispatchError={dispatchError} />
                                     ) : ""}
 
                                     {checkboxRequirements.macos ? (
-                                        <UploadJogo name="MacOs" setState={setUploadJogoMacos} dispatchError={dispatchError}/>
+                                        <UploadJogo name="MacOs" setState={setUploadJogoMacos} dispatchError={dispatchError} />
                                     ) : ""}
 
                                     {checkboxRequirements.linux ? (
-                                        <UploadJogo name="Linux" setState={setUploadJogoLinux} dispatchError={dispatchError}/>
+                                        <UploadJogo name="Linux" setState={setUploadJogoLinux} dispatchError={dispatchError} />
                                     ) : ""}
 
                                     {checkboxRequirements.android ? (
-                                        <UploadJogo name="Android" setState={setUploadJogoAndroid} dispatchError={dispatchError}/>
+                                        <UploadJogo name="Android" setState={setUploadJogoAndroid} dispatchError={dispatchError} />
                                     ) : ""}
 
                                     {checkboxRequirements.ios ? (
-                                        <UploadJogo name="Ios" setState={setUploadJogoIos} dispatchError={dispatchError}/>
+                                        <UploadJogo name="Ios" setState={setUploadJogoIos} dispatchError={dispatchError} />
                                     ) : ""}
                                 </div>
                             </div>
@@ -651,7 +741,7 @@ export default props => {
                                         <label htmlFor="fotos">Fotos</label>
                                         <div>
                                             <input type="file" accept=".png,.jpeg,.jpg" id="fotos" multiple className="cadastroJogo__content__uploadContent__fileUpload--changeText"
-                                                onChange={e => { setUploadFotos(e.target.files); dispatchError({ type: 'upload', upload: false }) }}></input>
+                                                onChange={e => { setUploadFotos(e.target.files); dispatchError({ type: 'upload', upload: false }) }} aria-tts="upload fotos"></input>
                                         </div>
                                     </div>
 
@@ -659,7 +749,7 @@ export default props => {
                                         <label htmlFor="videos">Vídeos</label>
                                         <div>
                                             <input type="file" accept=".mp4,.mov,.mkv" id="videos" multiple className="cadastroJogo__content__uploadContent__fileUpload--changeText"
-                                                onChange={e => { setUploadVideos(e.target.files); dispatchError({ type: 'upload', upload: false }) }}></input>
+                                                onChange={e => { setUploadVideos(e.target.files); dispatchError({ type: 'upload', upload: false }) }} aria-tts="upload vídeos"></input>
                                         </div>
                                     </div>
                                 </div>
@@ -671,11 +761,11 @@ export default props => {
                                         <label htmlFor="doc">Documento</label>
                                         <div>
                                             <input type="file" accept=".png,.jpeg,.jpg,.pdf" id="doc" className="cadastroJogo__content__uploadContent__fileUpload--changeText"
-                                                onChange={e => { setUploadClassificacao(e.target.files); dispatchError({ type: 'upload', upload: false }) }}>
+                                                onChange={e => { setUploadClassificacao(e.target.files); dispatchError({ type: 'upload', upload: false }) }} aria-tts="upload documento classificação">
                                             </input>
                                         </div>
                                     </div>
-                                    <select name="classificacao" id="classificacao" value={selectValueClassificacao} onChange={e => { setUploadValueClassificacao(e.target.value); dispatchError({ type: 'upload', upload: false }) }}>
+                                    <select name="classificacao" id="classificacao" value={selectValueClassificacao} onChange={e => { setUploadValueClassificacao(e.target.value); dispatchError({ type: 'upload', upload: false }) }} aria-tts={"classificação " + selectValueClassificacao}>
                                         <option value="Livre">Livre</option>
                                         <option value="menores_10">10</option>
                                         <option value="menores_12">12</option>
@@ -688,7 +778,12 @@ export default props => {
                         </div>
                         <div className="cadastroJogo__termos">
                             <div>
-                                <input type="checkbox" id="termos" defaultChecked={aceitarTermosJogo} onChange={_ => { setAceitarTermosJogo((state) => !state); dispatchError({ type: 'upload', upload: false }) }}></input>
+                                <input type="checkbox" 
+                                id="termos" 
+                                defaultChecked={aceitarTermosJogo} 
+                                onChange={_ => { setAceitarTermosJogo((state) => !state); dispatchError({ type: 'upload', upload: false }) }}
+                                aria-tts="checkbox termos e confições"   
+                                ></input>
                                 <label htmlFor="termos">Aceito os termos e condições</label>
                             </div>
                         </div>
@@ -699,9 +794,12 @@ export default props => {
 
                 <section className="cadastroJogo__step">
                     {stepForm != 1 ? (<button className="cadastroJogo__step__button cadastroJogo__step__buttonBack" onClick={_ => setSteapForm(e => e - 1)}>Voltar</button>) : ""}
+                    {stepForm == 3 ? goBackButtonTTS.current = true : ""}
+                    {stepForm == 1 ? goBackButtonTTS.current = false : ""}
+
 
                     <button className="cadastroJogo__step__button cadastroJogo__step__buttonNext" style={stepForm == 1 ? { gridColumn: "2 / 3" } : {}}
-                        onClick={_ => { !checkInputs(stepForm) ? setData(stepForm, setSteapForm) : "" }}
+                        onClick={_ => { !checkInputs(stepForm) ? setData(stepForm, setSteapForm) : "" ;initialized.current = true}}
                     >{stepForm != 3 ? "Proxímo" : "Cadastrar"}</button>
                 </section>
 
@@ -710,10 +808,10 @@ export default props => {
                         <div className="finish__modalConfirm__container">
                             <div>
                                 <p>
-                                Seu jogo foi cadastrado com sucesso! Agora ele pode ser visto na sua página de jogos! 
+                                    Seu jogo foi cadastrado com sucesso! Agora ele pode ser visto na sua página de jogos!
                                 </p>
                             </div>
-                            <div><Link to="/meus-jogos">OK</Link></div>
+                            <div><Link to="/meus-jogos" aria-tts="meus jogos" className="modal__meusJogosRedirect">OK</Link></div>
                         </div>
                     </div>
                 </div>

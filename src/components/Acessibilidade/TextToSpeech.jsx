@@ -5,7 +5,7 @@ export default props => {
     const initialized = useRef(false);
     let htmlRootValue = document.querySelector("#root").attributes[1].nodeValue === "false" ? false : true
     const [clickIcon, setClickIcon] = useState(htmlRootValue);
-
+    
     function switchStateIcon() {
         if (clickIcon) {
             setClickIcon(false)
@@ -17,7 +17,7 @@ export default props => {
     }
 
     useEffect(_ => {
-        console.log("Leitor");
+
         if (!initialized.current) {
             initialized.current = true
 

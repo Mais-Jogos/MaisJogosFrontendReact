@@ -10,32 +10,42 @@ import GoBack from "../../components/GoBack/GoBack";
 import TextToSpeech from "../../components/Acessibilidade/TextToSpeech";
 
 export default _ => {
-    const [games, setGames] = useState([]); 
-    useEffect(()=>{
-      const apiKey = 'bb8e5d1e0b2e44d9ac172e791e20ff23'
-      Axios.get(`https://api.rawg.io/api/games?key=${apiKey}`)
-      .then((response) =>{
-        setGames(response.data.results);
-      }).catch((error) => { console.log(error); }); 
+    const [games, setGames] = useState([]);
+
+    // Precisei desse estado pq é preciso esperar a chamada da api para o jquery conseguir indentificar os cards na tela
+    const [leitor, setLeitor] = useState(false);
+    
+    useEffect(() => {
+        const apiKey = 'bb8e5d1e0b2e44d9ac172e791e20ff23'
+        Axios.get(`https://api.rawg.io/api/games?key=${apiKey}`)
+            .then((response) => {
+                setGames(response.data.results);
+                setLeitor(true);
+
+            }).catch((error) => { console.log(error); });
     }, [])
+
+
+
     return (
         <div id='container-page'>
             <Menu />
-            <Vlibras/>
+            <Vlibras />
             <Acessibilidade />
-            <TextToSpeech />
+            {leitor ? (<TextToSpeech />) : ""}
+
 
 
             <main className="review__main">
-                <GoBack/>
-                <ReviewComp name="Review de jogos"/>
-                
+                <GoBack />
+                <ReviewComp name="Review de jogos" />
+
                 <section className="review__Section">
-                {
-                    games?.slice(0,3).map((jogo) =>(
-                    <ReviewCompINF minhaIMG={jogo?.background_image} nome={jogo?.name} descricao="Minha descrição" data="Data de postagem 29/04/23" corpo="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam deserunt maiores voluptatum placeat veritatis maxime, optio vero corporis sit est consequuntur temporibus ipsum perferendis accusamus delectus illo quasi dignissimos. Odio."/>
-                    ))
-                }
+                    {
+                        games?.slice(0, 3).map((jogo) => (
+                            <ReviewCompINF minhaIMG={jogo?.background_image} nome={jogo?.name} descricao="Minha descrição" data="Data de postagem 29/04/23" corpo="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam deserunt maiores voluptatum placeat veritatis maxime, optio vero corporis sit est consequuntur temporibus ipsum perferendis accusamus delectus illo quasi dignissimos. Odio." />
+                        ))
+                    }
                 </section>
 
             </main>

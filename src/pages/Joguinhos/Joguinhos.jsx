@@ -27,6 +27,7 @@ const Joguinhos = ({dispatch}) => {
       <Menu/>
       <Vlibras/>
       <Acessibilidade/>
+      <TextToSpeech/>
       <div className="back__menu" style={{display: jogo ? 'flex' : 'none'}}>
         <button onClick={saveGame}>
           {translate("Salvar e sair")}
