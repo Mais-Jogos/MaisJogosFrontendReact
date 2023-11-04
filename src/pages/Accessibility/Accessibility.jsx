@@ -102,7 +102,7 @@ export default _ => {
                             
                             <div className="acessibility__borderTopo">
                             <a href="https://support.google.com/accessibility/android/answer/6283677?hl=pt-br">
-                            <img src="../../public\imgs\logo-acessibilidade\1talkback.png"/>
+                            <img src="\imgs\logo-acessibilidade\1talkback.png"/>
                             {translate("TalkBack para Android")}
                             </a>
                             </div>
@@ -119,7 +119,7 @@ export default _ => {
                     <div className="acessibility__border">
                         <div className="acessibility__borderTopo">
                             <a href="https://support.microsoft.com/pt-br/windows/guia-completo-do-narrador-e4397a0d-ef4f-b386-d8ae-c172f109bdb1">
-                            <img src="../../public\imgs\logo-acessibilidade\2narradorWin.png"/>
+                            <img src="\imgs\logo-acessibilidade\2narradorWin.png"/>
                             {translate("Narrador para windows")}
                             </a>
                             </div>
@@ -135,7 +135,7 @@ export default _ => {
                     <div className="acessibility__border">       
                         <div className="acessibility__borderTopo">
                             <a href="https://support.apple.com/pt-br/guide/iphone/iph3e2e415f/15.0/ios/15.0">
-                            <img src="../../public\imgs\logo-acessibilidade\3voiceover.png"/>
+                            <img src="\imgs\logo-acessibilidade\3voiceover.png"/>
                             {translate("VoiceOver para iphone e mac")}
                             </a>
                         </div>
@@ -150,7 +150,7 @@ export default _ => {
                         <div className="acessibility__border">       
                         <div className="acessibility__borderTopo">
                         <a href="http://intervox.nce.ufrj.br/dosvox/dosvox_ubuntu/">
-                        <img src="../../public\imgs\logo-acessibilidade\4dosvox.png"/>
+                        <img src="\imgs\logo-acessibilidade\4dosvox.png"/>
                         {translate("DosVox")}
                         </a>
                         </div>
@@ -173,7 +173,7 @@ export default _ => {
                         <div className="acessibility__border">
                         <div className="acessibility__borderTopo">
                         <a href="https://www.gov.br/governodigital/pt-br/vlibras/">
-                        <img src="../../public\imgs\logo-acessibilidade\5vlibras.png"/>
+                        <img src="\imgs\logo-acessibilidade\5vlibras.png"/>
                         {translate("VLibras")}
                         </a>
                         </div>
