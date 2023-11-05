@@ -81,6 +81,7 @@
 .meusjogos__jogos__card__info__title p{
     font-size: 1.3rem;
     font-family: var(--font-pixel);
+    color: #f5f5f5;
     margin-left: 13px;
 }
 .meusjogos__jogos__card__info__image, .meusjogos__jogos__card__info__image img{

@@ -68,7 +68,7 @@ export default props => {
 
                         <div className="perfilDev__userData__input">
                             <label htmlFor="nascimento">{translate("Nascimento")}</label>
-                            <input type="date" id="nascimento" value={userData.dataNascimento} onChange={e => dispatch({ type: 'change_nascimento', nascimento: e.target.value })} aria-tts="data de nascimento"></input>
+                            <input type="date" id="nascimento" value={userData.dataNascimento} readOnly aria-tts="data de nascimento"></input>
                         </div>
 
                         <div className="perfilDev__userData__input">
