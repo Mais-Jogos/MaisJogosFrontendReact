@@ -351,6 +351,9 @@
 .finish__modalConfirm div button:hover{
     background-color: #7900fbee;
 }
+#container-page > main > section.pagamentoDev__pixContainer > div.pagamentoDev__pixContainer__content > div.pagamentoDev__pixContainer__content__register > div > div{
+    margin-top: 20px;
+}
 
 @media screen and (max-width:1220px){
     .pagamentoDev__pixContainer__content__methods, .pagamentoDev__pixContainer__content__register{

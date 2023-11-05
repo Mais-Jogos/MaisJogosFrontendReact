@@ -24,7 +24,8 @@ export default props => {
             $("#so" + labelId).keyup(function (e) {
                 var code = e.keyCode || e.which;
                 if (code == '9' && document.querySelector("#root").attributes[1].nodeValue == "true") {
-                    setTimeout(console.log('Input ' + $(':focus').attr('aria-tts')), 1000);
+                    responsiveVoice.cancel();
+                    setTimeout(responsiveVoice.speak('Input ' + $(':focus').attr('aria-tts'), "Portuguese Female"), 1000);
                 }
 
                 e.preventDefault();
@@ -33,7 +34,8 @@ export default props => {
             $("#processador" + labelId).keyup(function (e) {
                 var code = e.keyCode || e.which;
                 if (code == '9' && document.querySelector("#root").attributes[1].nodeValue == "true") {
-                    setTimeout(console.log('Input ' + $(':focus').attr('aria-tts')), 1000);
+                    responsiveVoice.cancel();
+                    setTimeout(responsiveVoice.speak('Input ' + $(':focus').attr('aria-tts'), "Portuguese Female"), 1000);
                 }
 
                 e.preventDefault();
@@ -42,7 +44,8 @@ export default props => {
             $("#placeDeVideo" + labelId).keyup(function (e) {
                 var code = e.keyCode || e.which;
                 if (code == '9' && document.querySelector("#root").attributes[1].nodeValue == "true") {
-                    setTimeout(console.log('Input ' + $(':focus').attr('aria-tts')), 1000);
+                    responsiveVoice.cancel();
+                    setTimeout(responsiveVoice.speak('Input ' + $(':focus').attr('aria-tts'), "Portuguese Female"), 1000);
                 }
 
                 e.preventDefault();
@@ -51,7 +54,8 @@ export default props => {
             $("#memoria" + labelId).keyup(function (e) {
                 var code = e.keyCode || e.which;
                 if (code == '9' && document.querySelector("#root").attributes[1].nodeValue == "true") {
-                    setTimeout(console.log('Input ' + $(':focus').attr('aria-tts')), 1000);
+                    responsiveVoice.cancel();
+                    setTimeout(responsiveVoice.speak('Input ' + $(':focus').attr('aria-tts'), "Portuguese Female"), 1000);
                 }
 
                 e.preventDefault();
@@ -60,16 +64,17 @@ export default props => {
             $("#memoriaQTD" + labelId).keyup(function (e) {
                 var code = e.keyCode || e.which;
                 if (code == '9' && document.querySelector("#root").attributes[1].nodeValue == "true") {
-                    setTimeout(console.log('Input ' + $(':focus').attr('aria-tts')), 1000);
+                    responsiveVoice.cancel();
+                    setTimeout(responsiveVoice.speak('Input ' + $(':focus').attr('aria-tts'), "Portuguese Female"), 1000);
                 }
-
                 e.preventDefault();
                 e.stopPropagation();
             });
             $("#armazenamento" + labelId).keyup(function (e) {
                 var code = e.keyCode || e.which;
                 if (code == '9' && document.querySelector("#root").attributes[1].nodeValue == "true") {
-                    setTimeout(console.log('Input ' + $(':focus').attr('aria-tts')), 1000);
+                    responsiveVoice.cancel();
+                    setTimeout(responsiveVoice.speak('Input ' + $(':focus').attr('aria-tts'), "Portuguese Female"), 1000);
                 }
 
                 e.preventDefault();
@@ -78,7 +83,8 @@ export default props => {
             $("#armazenamentoQTD" + labelId).keyup(function (e) {
                 var code = e.keyCode || e.which;
                 if (code == '9' && document.querySelector("#root").attributes[1].nodeValue == "true") {
-                    setTimeout(console.log('Input ' + $(':focus').attr('aria-tts')), 1000);
+                    responsiveVoice.cancel();
+                    setTimeout(responsiveVoice.speak('Input ' + $(':focus').attr('aria-tts'), "Portuguese Female"), 1000);
                 }
 
                 e.preventDefault();
@@ -109,7 +115,7 @@ export default props => {
                         type="text"
                         id={"processador" + labelId} className="cadastroJogo__content__requirements__inputs--inputStyle"
                         value={requisitos.processador}
-                        aria-tts={typeOfSO + " " + props.minimoOuRecomendado  + " processador"}
+                        aria-tts={typeOfSO + " " + props.minimoOuRecomendado + " processador"}
                         onChange={e => { props.dispatchRequisitos({ type: typeMinomoOuRecomendado + typeOfSO + 'Processador', target: e.target.value, so: typeOfSoLower, minOrRecSo: typeMinomoOuRecomendadoWithS, atributeSO: "processador", buildTextCase: [typeOfSO, typeMinomoOuRecomendado] }); props.dispatchCheckbox({ type: 'requisitos', requisitos: false }) }}
                     >
 
@@ -121,7 +127,7 @@ export default props => {
                         type="text"
                         id={"placeDeVideo" + labelId} className="cadastroJogo__content__requirements__inputs--inputStyle"
                         value={requisitos.placaDeVideo}
-                        aria-tts={typeOfSO + " " + props.minimoOuRecomendado +  " placa de vídeo"}
+                        aria-tts={typeOfSO + " " + props.minimoOuRecomendado + " placa de vídeo"}
                         onChange={e => { props.dispatchRequisitos({ type: typeMinomoOuRecomendado + typeOfSO + 'Placa', target: e.target.value, so: typeOfSoLower, minOrRecSo: typeMinomoOuRecomendadoWithS, atributeSO: "placaDeVideo", buildTextCase: [typeOfSO, typeMinomoOuRecomendado] }); props.dispatchCheckbox({ type: 'requisitos', requisitos: false }) }}
                     ></input>
                 </div>) : ""}
@@ -155,9 +161,9 @@ export default props => {
                         >
 
                         </input>
-                        <select name="armazenamentoQTD" id={"armazenamentoQTD" + labelId} aria-tts={typeOfSO + " " + props.minimoOuRecomendado + " " + requisitos.memoria[1]} 
-                        onChange={e => { props.dispatchRequisitos({ type: typeMinomoOuRecomendado + typeOfSO + 'ArmazenamentoFormato', target: e.target.value, so: typeOfSoLower, minOrRecSo: typeMinomoOuRecomendadoWithS, atributeSO: "armazenamento", buildTextCase: [typeOfSO, typeMinomoOuRecomendado] }); props.dispatchCheckbox({ type: 'requisitos', requisitos: false }) }} 
-                        value={requisitos.armazenamento[1]}>
+                        <select name="armazenamentoQTD" id={"armazenamentoQTD" + labelId} aria-tts={typeOfSO + " " + props.minimoOuRecomendado + " " + requisitos.memoria[1]}
+                            onChange={e => { props.dispatchRequisitos({ type: typeMinomoOuRecomendado + typeOfSO + 'ArmazenamentoFormato', target: e.target.value, so: typeOfSoLower, minOrRecSo: typeMinomoOuRecomendadoWithS, atributeSO: "armazenamento", buildTextCase: [typeOfSO, typeMinomoOuRecomendado] }); props.dispatchCheckbox({ type: 'requisitos', requisitos: false }) }}
+                            value={requisitos.armazenamento[1]}>
                             <option value="mb">MB</option>
                             <option value="gb">GB</option>
                         </select>

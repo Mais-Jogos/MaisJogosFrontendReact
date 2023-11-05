@@ -74,45 +74,46 @@ const Entrar = () => {
   const initialized = useRef(false);
   let htmlRootValue = document.querySelector("#root").attributes[1].nodeValue === "false" ? false : true
   const [clickIcon, setClickIcon] = useState(htmlRootValue);
-  
+
   function switchStateIcon() {
-      if (clickIcon) {
-          setClickIcon(false)
-          $("#root").attr("aria-tts", "false");
-      } else {
-          setClickIcon(true)
-          $("#root").attr("aria-tts", "true");
-      }
+    if (clickIcon) {
+      setClickIcon(false)
+      $("#root").attr("aria-tts", "false");
+    } else {
+      setClickIcon(true)
+      $("#root").attr("aria-tts", "true");
+    }
   }
 
   useEffect(_ => {
 
-      if (!initialized.current) {
-          initialized.current = true
+    if (!initialized.current) {
+      initialized.current = true
 
-          $(document).ready(function () {
-              $('a').keyup(function (e) {
-                  var code = e.keyCode || e.which;
-                  if (code == '9' && document.querySelector("#root").attributes[1].nodeValue == "true") {
-                      setTimeout(console.log('Link para ' + $(':focus').attr('aria-tts')), 1000);
-                  }
+      $(document).ready(function () {
+        $('a').keyup(function (e) {
+          var code = e.keyCode || e.which;
+          if (code == '9' && document.querySelector("#root").attributes[1].nodeValue == "true") {
+            responsiveVoice.cancel();
+            setTimeout(responsiveVoice.speak('Link para ' + $(':focus').attr('aria-tts'), "Portuguese Female"), 1000);
+          }
 
-                  e.preventDefault();
-                  e.stopPropagation();
-              });
+          e.preventDefault();
+          e.stopPropagation();
+        });
 
-              $('button').keyup(function (e) {
-                  var code = e.keyCode || e.which;
-                  if (code == '9' && document.querySelector("#root").attributes[1].nodeValue == "true") {
-                      setTimeout(console.log("Botão de " + $(':focus').text()), 1000);
-                  }
+        $('button').keyup(function (e) {
+          var code = e.keyCode || e.which;
+          if (code == '9' && document.querySelector("#root").attributes[1].nodeValue == "true") {
+            setTimeout(responsiveVoice.speak("Botão de " + $(':focus').text(), "Portuguese Female"), 1000);
+          }
 
-                  e.preventDefault();
-                  e.stopPropagation();
-              });
+          e.preventDefault();
+          e.stopPropagation();
+        });
 
-          })
-      }
+      })
+    }
   }, [])
 
 

@@ -16,7 +16,8 @@ export default props => {
             $(props.name + " upload").keyup(function (e) {
                 var code = e.keyCode || e.which;
                 if (code == '9' && document.querySelector("#root").attributes[1].nodeValue == "true") {
-                    setTimeout(console.log('Input ' + $(':focus').attr('aria-tts')), 1000);
+                    responsiveVoice.cancel();
+                    setTimeout(responsiveVoice.speak('Input ' + $(':focus').attr('aria-tts'), "Portuguese Female"),1000);
                 }
 
                 e.preventDefault();

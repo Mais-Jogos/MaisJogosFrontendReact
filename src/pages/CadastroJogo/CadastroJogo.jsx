@@ -397,7 +397,8 @@ export default props => {
                 $('.cadastroJogo__content__steps--inputTTS').keyup(function (e) {
                     var code = e.keyCode || e.which;
                     if (code == '9' && document.querySelector("#root").attributes[1].nodeValue == "true") {
-                        setTimeout(console.log('Input ' + $(':focus').attr('aria-tts')), 1000);
+                        responsiveVoice.cancel();
+                        setTimeout(responsiveVoice.speak('Input ' + $(':focus').attr('aria-tts'), "Portuguese Female"),1000);
                     }
 
                     e.preventDefault();
@@ -408,7 +409,7 @@ export default props => {
                 $('.cadastroJogo__content__buttons').keyup(function (e) {
                     var code = e.keyCode || e.which;
                     if (code == '9' && document.querySelector("#root").attributes[1].nodeValue == "true") {
-                        setTimeout(console.log("Botão de " + $(':focus').text()), 1000);
+                        setTimeout(responsiveVoice.speak("Botão de " + $(':focus').text(), "Portuguese Female"),1000);
                     }
 
                     e.preventDefault();
@@ -419,7 +420,7 @@ export default props => {
                     $('.cadastroJogo__step__button.cadastroJogo__step__buttonBack').keyup(function (e) {
                         var code = e.keyCode || e.which;
                         if (code == '9' && document.querySelector("#root").attributes[1].nodeValue == "true") {
-                            setTimeout(console.log("Botão de " + $(':focus').text()), 1000);
+                            setTimeout(responsiveVoice.speak("Botão de " + $(':focus').text(), "Portuguese Female"),1000);
                         }
     
                         e.preventDefault();
@@ -430,7 +431,8 @@ export default props => {
                 $('.cadastroJogo__content__uploadContent__fileUpload--changeText').keyup(function (e) {
                     var code = e.keyCode || e.which;
                     if (code == '9' && document.querySelector("#root").attributes[1].nodeValue == "true") {
-                        setTimeout(console.log('Input ' + $(':focus').attr('aria-tts')), 1000);
+                        responsiveVoice.cancel();
+                        setTimeout(responsiveVoice.speak('Input ' + $(':focus').attr('aria-tts'), "Portuguese Female"),1000);
                     }
 
                     e.preventDefault();
@@ -440,7 +442,8 @@ export default props => {
                 $('#classificacao').keyup(function (e) {
                     var code = e.keyCode || e.which;
                     if (code == '9' && document.querySelector("#root").attributes[1].nodeValue == "true") {
-                        setTimeout(console.log('Input ' + $(':focus').attr('aria-tts')), 1000);
+                        responsiveVoice.cancel();
+                        setTimeout(responsiveVoice.speak('Input ' + $(':focus').attr('aria-tts'), "Portuguese Female"),1000);
                     }
 
                     e.preventDefault();
@@ -450,7 +453,8 @@ export default props => {
                 $('#termos').keyup(function (e) {
                     var code = e.keyCode || e.which;
                     if (code == '9' && document.querySelector("#root").attributes[1].nodeValue == "true") {
-                        setTimeout(console.log('Input ' + $(':focus').attr('aria-tts')), 1000);
+                        responsiveVoice.cancel();
+                        setTimeout(responsiveVoice.speak('Input ' + $(':focus').attr('aria-tts'), "Portuguese Female"),1000);
                     }
 
                     e.preventDefault();
@@ -461,7 +465,8 @@ export default props => {
                     $('.modal__meusJogosRedirect').keyup(function (e) {
                         var code = e.keyCode || e.which;
                         if (code == '9' && document.querySelector("#root").attributes[1].nodeValue == "true") {
-                            setTimeout(console.log('Input ' + $(':focus').attr('aria-tts')), 1000);
+                            responsiveVoice.cancel();
+                            setTimeout(responsiveVoice.speak('Input ' + $(':focus').attr('aria-tts'), "Portuguese Female"),1000);
                         }
     
                         e.preventDefault();

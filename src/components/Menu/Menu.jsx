@@ -22,7 +22,7 @@ const Menu = ({changeTheme, theme, cart, coins, userRedux }) => {
   }
   return (
     <div id='full-menu'>
-        <Link to="/" aria-tts="ínicio">
+        <Link to="/" aria-tts="início">
           <img src={'/imgs/LogoTextoPositiva.png'} alt="" className='logo'/>
         </Link>
         <label htmlFor="openMenu" id='label__openMenu'>
@@ -32,7 +32,7 @@ const Menu = ({changeTheme, theme, cart, coins, userRedux }) => {
         <div id="menu">
             <Link to="/acessibilidade" aria-tts="acessibilidade">{translate("Acessibilidade")}</Link>
             <Link to="/sobre" aria-tts="sobre">{translate("Sobre")}</Link>
-            <Link to="/faq" aria-tts="faq"> {translate("Suporte")}</Link>
+            <Link to="/faq" aria-tts="suporte"> {translate("Suporte")}</Link>
             {user && <Link to="/joguinhos" aria-tts="joguinhos">{translate("Joguinhos")}</Link>}
             <Link className='menu__search' aria-tts="busca">
               <input 

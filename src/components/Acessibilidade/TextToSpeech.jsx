@@ -10,9 +10,11 @@ export default props => {
         if (clickIcon) {
             setClickIcon(false)
             $("#root").attr("aria-tts", "false");
+            responsiveVoice.speak("Leitor de tela desativado", "Portuguese Female")
         } else {
             setClickIcon(true)
             $("#root").attr("aria-tts", "true");
+            responsiveVoice.speak("Leitor de tela ativado", "Portuguese Female")
         }
     }
 
@@ -25,7 +27,8 @@ export default props => {
                 $('a').keyup(function (e) {
                     var code = e.keyCode || e.which;
                     if (code == '9' && document.querySelector("#root").attributes[1].nodeValue == "true") {
-                        setTimeout(console.log('Link para ' + $(':focus').attr('aria-tts')), 1000);
+                        responsiveVoice.cancel();
+                        setTimeout(responsiveVoice.speak('Link para ' + $(':focus').attr('aria-tts'), "Portuguese Female"),1000);
                     }
 
                     e.preventDefault();
@@ -35,7 +38,7 @@ export default props => {
                 $('button').keyup(function (e) {
                     var code = e.keyCode || e.which;
                     if (code == '9' && document.querySelector("#root").attributes[1].nodeValue == "true") {
-                        setTimeout(console.log("Botão de " + $(':focus').text()), 1000);
+                        setTimeout(responsiveVoice.speak("Botão de " + $(':focus').text(), "Portuguese Female"),1000);
                     }
 
                     e.preventDefault();
@@ -45,7 +48,8 @@ export default props => {
                 $('textarea').keyup(function (e) {
                     var code = e.keyCode || e.which;
                     if (code == '9' && document.querySelector("#root").attributes[1].nodeValue == "true") {
-                        setTimeout(console.log('Input ' + $(':focus').attr('aria-tts')), 1000);
+                        responsiveVoice.cancel();
+                        setTimeout(responsiveVoice.speak('Input ' + $(':focus').attr('aria-tts'), "Portuguese Female"),1000);
                     }
 
                     e.preventDefault();
@@ -55,7 +59,8 @@ export default props => {
                 $('input').keyup(function (e) {
                     var code = e.keyCode || e.which;
                     if (code == '9' && document.querySelector("#root").attributes[1].nodeValue == "true") {
-                        setTimeout(console.log('Input ' + $(':focus').attr('aria-tts')), 1000);
+                        responsiveVoice.cancel();
+                        setTimeout(responsiveVoice.speak('Input ' + $(':focus').attr('aria-tts'), "Portuguese Female"),1000);
                     }
 
                     e.preventDefault();

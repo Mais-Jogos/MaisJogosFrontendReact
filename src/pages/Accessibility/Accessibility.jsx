@@ -199,11 +199,7 @@ export default _ => {
                         </div>
                     </div> 
                 </div>
-
-                
-
                 </section>
-
             </main>
 
         </div>

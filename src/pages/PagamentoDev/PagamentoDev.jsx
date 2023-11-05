@@ -8,7 +8,8 @@ import InputsPagamentoDevPixSalvo from "./InputsPagamentoDevPixSalvo";
 import { Link } from "react-router-dom";
 import GoBack from "../../components/GoBack/GoBack";
 import { translate } from "../../translate/translate";
-import TextToSpeech from "../../components/Acessibilidade/TextToSpeech";
+import { useRef } from "react";
+import { useEffect } from "react";
 
 function reducerTypeOfPix(state, action) {
     switch (action.type) {
@@ -48,17 +49,268 @@ export default props => {
     const [selectTypePix, setselectTypePix] = useState(true);
     const [savedPix, setSavedPix] = useState(0);
 
+    const initialized = useRef(false);
+    const initializedP = useRef(false);
+    const initializedCPF = useRef(false);
+    let htmlRootValue = document.querySelector("#root").attributes[1].nodeValue === "false" ? false : true
+    const [clickIcon, setClickIcon] = useState(htmlRootValue);
+
+    function switchStateIcon() {
+        if (clickIcon) {
+            setClickIcon(false)
+            $("#root").attr("aria-tts", "false");
+        } else {
+            setClickIcon(true)
+            $("#root").attr("aria-tts", "true");
+        }
+    }
+
+    useEffect(_ => {
+        if (!initializedP.current) {
+            initializedP.current = true
+
+            $(document).ready(function () {
+                $('a').keyup(function (e) {
+                    var code = e.keyCode || e.which;
+                    if (code == '9' && document.querySelector("#root").attributes[1].nodeValue == "true") {
+                        responsiveVoice.cancel();
+                        setTimeout(responsiveVoice.speak('Link para ' + $(':focus').attr('aria-tts'), "Portuguese Female"),1000);
+                    }
+
+                    e.preventDefault();
+                    e.stopPropagation();
+                });
+
+                $('button').keyup(function (e) {
+                    var code = e.keyCode || e.which;
+                    if (code == '9' && document.querySelector("#root").attributes[1].nodeValue == "true") {
+                        setTimeout(responsiveVoice.speak("Botão de " + $(':focus').text(), "Portuguese Female"),1000);
+                    }
+
+                    e.preventDefault();
+                    e.stopPropagation();
+                });
+
+                $('textarea').keyup(function (e) {
+                    var code = e.keyCode || e.which;
+                    if (code == '9' && document.querySelector("#root").attributes[1].nodeValue == "true") {
+                        responsiveVoice.cancel();
+                        setTimeout(responsiveVoice.speak('Input ' + $(':focus').attr('aria-tts'), "Portuguese Female"),1000);
+                    }
+
+                    e.preventDefault();
+                    e.stopPropagation();
+                });
+
+                $('#nome').keyup(function (e) {
+                    var code = e.keyCode || e.which;
+                    if (code == '9' && document.querySelector("#root").attributes[1].nodeValue == "true") {
+                        responsiveVoice.cancel();
+                        setTimeout(responsiveVoice.speak('Input ' + $(':focus').attr('aria-tts'), "Portuguese Female"),1000);
+                    }
+
+                    e.preventDefault();
+                    e.stopPropagation();
+                });
+
+                $('.input__content__register--input').keyup(function (e) {
+                    var code = e.keyCode || e.which;
+                    if (code == '9' && document.querySelector("#root").attributes[1].nodeValue == "true") {
+                        responsiveVoice.cancel();
+                        setTimeout(responsiveVoice.speak('Input ' + $(':focus').attr('aria-tts'), "Portuguese Female"),1000);
+                    }
+
+                    e.preventDefault();
+                    e.stopPropagation();
+                });
+            })
+        }
+    }, [])
+
+    useEffect(_ => {
+        if (initialized.current) {
+            $(document).ready(function () {
+                $('.pagamentoDev__pixContainer__selectTypeOfPix__button').keyup(function (e) {
+                    var code = e.keyCode || e.which;
+                    if (code == '9' && document.querySelector("#root").attributes[1].nodeValue == "true") {
+                        setTimeout(responsiveVoice.speak("Botão de " + $(':focus').text(), "Portuguese Female"),1000);
+                    }
+
+                    e.preventDefault();
+                    e.stopPropagation();
+                });
+
+                $('.pagamentoDev__pixContainer__content__methods__container').keyup(function (e) {
+                    var code = e.keyCode || e.which;
+                    if (code == '9' && document.querySelector("#root").attributes[1].nodeValue == "true") {
+                        setTimeout(responsiveVoice.speak("Botão de " + $(':focus').text(), "Portuguese Female"),1000);
+                    }
+
+                    e.preventDefault();
+                    e.stopPropagation();
+                });
+
+                $('.pagamentoDev__pixContainer__content__methods__container--select').keyup(function (e) {
+                    var code = e.keyCode || e.which;
+                    if (code == '9' && document.querySelector("#root").attributes[1].nodeValue == "true") {
+                        setTimeout(responsiveVoice.speak("Botão de " + $(':focus').text(), "Portuguese Female"),1000);
+                    }
+
+                    e.preventDefault();
+                    e.stopPropagation();
+                });
+
+                $('.pagamentoDev__pixContainer__content__methods__buttonPixSalvo').keyup(function (e) {
+                    var code = e.keyCode || e.which;
+                    if (code == '9' && document.querySelector("#root").attributes[1].nodeValue == "true") {
+                        setTimeout(responsiveVoice.speak("Botão de " + $(':focus').text(), "Portuguese Female"),1000);
+                    }
+
+                    e.preventDefault();
+                    e.stopPropagation();
+                });
+
+                $('.pagamentoDev__pixContainer__content__methods__buttonPixSalvo--select').keyup(function (e) {
+                    var code = e.keyCode || e.which;
+                    if (code == '9' && document.querySelector("#root").attributes[1].nodeValue == "true") {
+                        setTimeout(responsiveVoice.speak("Botão de " + $(':focus').text(), "Portuguese Female"),1000);
+                    }
+
+                    e.preventDefault();
+                    e.stopPropagation();
+                });
+            })
+        }
+
+        if (enviar == 1 && !selectTypePix) {
+            $(document).ready(function () {
+                $('.input__content__register--input').keyup(function (e) {
+                    var code = e.keyCode || e.which;
+                    if (code == '9' && document.querySelector("#root").attributes[1].nodeValue == "true") {
+                        responsiveVoice.cancel();
+                        setTimeout(responsiveVoice.speak('Input ' + $(':focus').attr('aria-tts'), "Portuguese Female"),1000);
+                    }
+
+                    e.preventDefault();
+                    e.stopPropagation();
+                });
+
+                $('#nome').keyup(function (e) {
+                    var code = e.keyCode || e.which;
+                    if (code == '9' && document.querySelector("#root").attributes[1].nodeValue == "true") {
+                        responsiveVoice.cancel();
+                        setTimeout(responsiveVoice.speak('Input ' + $(':focus').attr('aria-tts'), "Portuguese Female"),1000);
+                    }
+
+                    e.preventDefault();
+                    e.stopPropagation();
+                });
+            })
+        }
+    }, [enviar])
+
+    useEffect(_ => {
+        if (initialized.current) {
+            $(document).ready(function () {
+                $('.input__content__register--input').keyup(function (e) {
+                    var code = e.keyCode || e.which;
+                    if (code == '9' && document.querySelector("#root").attributes[1].nodeValue == "true") {
+                        responsiveVoice.cancel();
+                        setTimeout(responsiveVoice.speak('Input ' + $(':focus').attr('aria-tts'), "Portuguese Female"),1000);
+                    }
+
+                    e.preventDefault();
+                    e.stopPropagation();
+                });
+
+                $('.pagamentoDev__pixContainer__content__methods__buttonPixSalvo').keyup(function (e) {
+                    var code = e.keyCode || e.which;
+                    if (code == '9' && document.querySelector("#root").attributes[1].nodeValue == "true") {
+                        setTimeout(responsiveVoice.speak("Botão de " + $(':focus').text(), "Portuguese Female"),1000);
+                    }
+
+                    e.preventDefault();
+                    e.stopPropagation();
+                });
+
+                $('.pagamentoDev__pixContainer__content__methods__container').keyup(function (e) {
+                    var code = e.keyCode || e.which;
+                    if (code == '9' && document.querySelector("#root").attributes[1].nodeValue == "true") {
+                        setTimeout(responsiveVoice.speak("Botão de " + $(':focus').text(), "Portuguese Female"),1000);
+                    }
+
+                    e.preventDefault();
+                    e.stopPropagation();
+                });
+
+                $('.pagamentoDev__pixContainer__content__methods__container--select').keyup(function (e) {
+                    var code = e.keyCode || e.which;
+                    if (code == '9' && document.querySelector("#root").attributes[1].nodeValue == "true") {
+                        setTimeout(responsiveVoice.speak("Botão de " + $(':focus').text(), "Portuguese Female"),1000);
+                    }
+
+                    e.preventDefault();
+                    e.stopPropagation();
+                });
+
+                $('.typeOfPix__nameInput').keyup(function (e) {
+                    var code = e.keyCode || e.which;
+                    if (code == '9' && document.querySelector("#root").attributes[1].nodeValue == "true") {
+                        responsiveVoice.cancel();
+                        setTimeout(responsiveVoice.speak('Input ' + $(':focus').attr('aria-tts'), "Portuguese Female"),1000);
+                    }
+
+                    e.preventDefault();
+                    e.stopPropagation();
+                });
+
+            })
+        }
+    }, [selectTypePix])
+
+    useEffect(_ => {
+        if (initializedCPF.current) {
+            $(document).ready(function () {
+                $('.input__content__register--input').keyup(function (e) {
+                    var code = e.keyCode || e.which;
+                    if (code == '9' && document.querySelector("#root").attributes[1].nodeValue == "true") {
+                        responsiveVoice.cancel();
+                        setTimeout(responsiveVoice.speak('Input ' + $(':focus').attr('aria-tts'), "Portuguese Female"),1000);
+                    }
+
+                    e.preventDefault();
+                    e.stopPropagation();
+                });
+
+                $('.typeOfPix__nameInput').keyup(function (e) {
+                    var code = e.keyCode || e.which;
+                    if (code == '9' && document.querySelector("#root").attributes[1].nodeValue == "true") {
+                        responsiveVoice.cancel();
+                        setTimeout(responsiveVoice.speak('Input ' + $(':focus').attr('aria-tts'), "Portuguese Female"),1000);
+                    }
+
+                    e.preventDefault();
+                    e.stopPropagation();
+                });
+            })
+        }
+    }, [typeOfPix.cpf.status, typeOfPix.telefone.status, typeOfPix.email.status, typeOfPix.aleatorio.status])
+
 
     return (
         <div id='container-page'>
             <Menu />
             <Vlibras />
             <Acessibilidade />
-            <TextToSpeech />
+            <div className="textToSpeech__container" onClick={_ => switchStateIcon()} accessKey="q">
+                <img src={!clickIcon ? "/imgs/icons/textToSpeech_icon-open.svg" : "/imgs/icons/textToSpeech_icon-remove.svg"}></img>
+                <div className="textToSpeech__hover"><p>Leitor de tela</p></div>
+                <div></div>
+            </div>
 
             <main className="pagamentoDev__main">
                 <section className="pagamentoDev__title">
-                    <GoBack/>
+                    <GoBack />
 
                     <h1>{translate("Requerimento de pagamento")}</h1>
                 </section>
@@ -75,8 +327,8 @@ export default props => {
                         </div>
 
                         {enviar == 0 ? (<div className="pagamentoDev__pixContainer__selectTypeOfPix">
-                            <button className={selectTypePix ? "pagamentoDev__pixContainer__selectTypeOfPix__button pagamentoDev__pixContainer__selectTypeOfPix__button--select" : "pagamentoDev__pixContainer__selectTypeOfPix__button"} onClick={e => { setselectTypePix(true) }}>Novo Pix</button>
-                            <button className={!selectTypePix ? "pagamentoDev__pixContainer__selectTypeOfPix__button pagamentoDev__pixContainer__selectTypeOfPix__button--select" : "pagamentoDev__pixContainer__selectTypeOfPix__button"} onClick={e => { setselectTypePix(false) }}>Pix salvo</button>
+                            <button className={selectTypePix ? "pagamentoDev__pixContainer__selectTypeOfPix__button pagamentoDev__pixContainer__selectTypeOfPix__button--select" : "pagamentoDev__pixContainer__selectTypeOfPix__button"} onClick={e => { setselectTypePix(true) }} aria-tts="novo pix">Novo Pix</button>
+                            <button className={!selectTypePix ? "pagamentoDev__pixContainer__selectTypeOfPix__button pagamentoDev__pixContainer__selectTypeOfPix__button--select" : "pagamentoDev__pixContainer__selectTypeOfPix__button"} onClick={e => { setselectTypePix(false) }} aria-tts="pix salvo">Pix salvo</button>
                         </div>) : ""}
                     </div>
 
@@ -87,16 +339,16 @@ export default props => {
 
                             {enviar == 0 ? (<div className="pagamentoDev__pixContainer__content__methods">
                                 <div className="pagamentoDev__pixContainer__content__methods__container">
-                                    <button className={typeOfPix.cpf.status ? "pagamentoDev__pixContainer__content__methods__container--select" : ""} onClick={e => { dispatch({ type: 'cpf', cpf: true }); }}>CPF</button>
+                                    <button className={typeOfPix.cpf.status ? "pagamentoDev__pixContainer__content__methods__container--select" : ""} onClick={e => { dispatch({ type: 'cpf', cpf: true }); }} aria-tts="pix por cpf">CPF</button>
                                 </div>
                                 <div className="pagamentoDev__pixContainer__content__methods__container">
-                                    <button className={typeOfPix.telefone.status ? "pagamentoDev__pixContainer__content__methods__container--select" : ""} onClick={e => { dispatch({ type: 'telefone', telefone: true }) }}>Telefone</button>
+                                    <button className={typeOfPix.telefone.status ? "pagamentoDev__pixContainer__content__methods__container--select" : ""} onClick={e => { dispatch({ type: 'telefone', telefone: true }) }} aria-tts="pix por telefone">Telefone</button>
                                 </div>
                                 <div className="pagamentoDev__pixContainer__content__methods__container">
-                                    <button className={typeOfPix.email.status ? "pagamentoDev__pixContainer__content__methods__container--select" : ""} onClick={e => { dispatch({ type: 'email', email: true }) }}>Email</button>
+                                    <button className={typeOfPix.email.status ? "pagamentoDev__pixContainer__content__methods__container--select" : ""} onClick={e => { dispatch({ type: 'email', email: true }) }} aria-tts="pix por email">Email</button>
                                 </div>
                                 <div className="pagamentoDev__pixContainer__content__methods__container">
-                                    <button className={typeOfPix.aleatorio.status ? "pagamentoDev__pixContainer__content__methods__container--select" : ""} onClick={e => { dispatch({ type: 'aleatorio', aleatorio: true }) }}>Aleatório</button>
+                                    <button className={typeOfPix.aleatorio.status ? "pagamentoDev__pixContainer__content__methods__container--select" : ""} onClick={e => { dispatch({ type: 'aleatorio', aleatorio: true }) }} aria-tts="pix por chave aleatória">Aleatório</button>
                                 </div>
                             </div>) : ""}
 
@@ -105,37 +357,54 @@ export default props => {
                                     {typeOfPix.cpf.status ? (
                                         <>
                                             <label htmlFor="cpf">CPF</label>
-                                            <input type="text" name="cpf" id="cpf" value={typeOfPix.cpf.value} onChange={e => {dispatch({ type: 'cpf_text', cpf: e.target.value }) }} />
+                                            <input type="text" name="cpf" id="cpf" value={typeOfPix.cpf.value} onChange={e => { dispatch({ type: 'cpf_text', cpf: e.target.value }) }} aria-tts="cpf" className="input__content__register--input" />
+                                            <br></br>
+                                            <div>
+                                                <label htmlFor="nome">Nome completo</label>
+                                                <input type="text" name="nome" id="nome" className="typeOfPix__nameInput" value={nomePix} onChange={e => { setNomePix(e.target.value) }} aria-tts="nome completo" />
+                                            </div>
                                         </>
                                     ) : ""}
 
                                     {typeOfPix.telefone.status ? (
                                         <>
                                             <label htmlFor="telefone">Telefone</label>
-                                            <input type="tel" name="telefone" id="telefone" value={typeOfPix.telefone.value} onChange={e => { dispatch({ type: 'telefone_text', telefone: e.target.value }) }} />
+                                            <input type="tel" name="telefone" id="telefone" value={typeOfPix.telefone.value} onChange={e => { dispatch({ type: 'telefone_text', telefone: e.target.value }) }} aria-tts="telefone" className="input__content__register--input" />
+
+                                            <div>
+                                                <label htmlFor="nome">Nome completo</label>
+                                                <input type="text" name="nome" id="nome" className="typeOfPix__nameInput" value={nomePix} onChange={e => { setNomePix(e.target.value) }} aria-tts="nome completo" />
+                                            </div>
                                         </>
                                     ) : ""}
 
                                     {typeOfPix.email.status ? (
                                         <>
                                             <label htmlFor="email">Email</label>
-                                            <input type="email" name="email" id="email" value={typeOfPix.email.value} onChange={e => { dispatch({ type: 'email_text', email: e.target.value }) }} />
+                                            <input type="email" name="email" id="email" value={typeOfPix.email.value} onChange={e => { dispatch({ type: 'email_text', email: e.target.value }) }} aria-tts="email" className="input__content__register--input" />
+
+                                            <div>
+                                                <label htmlFor="nome">Nome completo</label>
+                                                <input type="text" name="nome" id="nome" className="typeOfPix__nameInput" value={nomePix} onChange={e => { setNomePix(e.target.value) }} aria-tts="nome completo" />
+                                            </div>
                                         </>
                                     ) : ""}
 
                                     {typeOfPix.aleatorio.status ? (
                                         <>
                                             <label htmlFor="aleatorio">Aleatório</label>
-                                            <input type="text" name="aleatorio" id="aleatorio" value={typeOfPix.aleatorio.value} onChange={e => { dispatch({ type: 'aleatorio_text', aleatorio: e.target.value }) }} />
+                                            <input type="text" name="aleatorio" id="aleatorio" value={typeOfPix.aleatorio.value} onChange={e => { dispatch({ type: 'aleatorio_text', aleatorio: e.target.value }) }} aria-tts="aleatorio" className="input__content__register--input" />
+
+                                            <div>
+                                                <label htmlFor="nome">Nome completo</label>
+                                                <input type="text" name="nome" id="nome" className="typeOfPix__nameInput" value={nomePix} onChange={e => { setNomePix(e.target.value) }} aria-tts="nome completo" />
+                                            </div>
                                         </>
                                     ) : ""}
 
                                 </div>
 
-                                <div>
-                                    <label htmlFor="nome">Nome completo</label>
-                                    <input type="text" name="nome" id="nome" value={nomePix} onChange={e => { setNomePix(e.target.value) }} />
-                                </div>
+
                             </div>
 
                         </>)
@@ -145,24 +414,26 @@ export default props => {
                             (<>
                                 <h2>Selecione o pix</h2>
 
-                                <div className={ enviar == 1 ? "": "pagamentoDev__pixContainer__content__methods"}>
-                                    {enviar == 0 ? (<button className={savedPix == 1 ? "pagamentoDev__pixContainer__content__methods__buttonPixSalvo--select" : "pagamentoDev__pixContainer__content__methods__buttonPixSalvo"} onClick={_ => setSavedPix(1)}>Ana Maria</button>) : ""}
+                                <div className={enviar == 1 ? "" : "pagamentoDev__pixContainer__content__methods"}>
+                                    {enviar == 0 ? (<button className={savedPix == 1 ? "pagamentoDev__pixContainer__content__methods__buttonPixSalvo--select" : "pagamentoDev__pixContainer__content__methods__buttonPixSalvo"} onClick={_ => setSavedPix(1)} aria-tts="pix salvo">Ana Maria</button>) : ""}
 
-                                   {savedPix == 1 && enviar == 1 ? ( <InputsPagamentoDevPixSalvo typeOfPix="cpf" cpf="321.456.781-10" nomePix="Ana Maria" />) : ""}
+                                    {savedPix == 1 && enviar == 1 ? (<InputsPagamentoDevPixSalvo typeOfPix="cpf" cpf="321.456.781-10" nomePix="Ana Maria" />) : ""}
 
-                                    {enviar == 0 ? (<button className={savedPix == 2 ? "pagamentoDev__pixContainer__content__methods__buttonPixSalvo--select" : "pagamentoDev__pixContainer__content__methods__buttonPixSalvo"} onClick={_ => setSavedPix(2)}>Jorge Raimundo</button>) : ""}
+                                    {enviar == 0 ? (<button className={savedPix == 2 ? "pagamentoDev__pixContainer__content__methods__buttonPixSalvo--select" : "pagamentoDev__pixContainer__content__methods__buttonPixSalvo"} onClick={_ => setSavedPix(2)} aria-tts="pix salvo">Jorge Raimundo</button>) : ""}
 
-                                    {savedPix == 2 && enviar == 1 ? ( <InputsPagamentoDevPixSalvo typeOfPix="telefone" telefone="11982122112" nomePix="Jorge Raimundo" />) : ""}
+                                    {savedPix == 2 && enviar == 1 ? (<InputsPagamentoDevPixSalvo typeOfPix="telefone" telefone="11982122112" nomePix="Jorge Raimundo" />) : ""}
 
-                                    {enviar == 0 ? (<button className={savedPix == 3 ? "pagamentoDev__pixContainer__content__methods__buttonPixSalvo--select" : "pagamentoDev__pixContainer__content__methods__buttonPixSalvo"} onClick={_ => setSavedPix(3)}>Wesley Araujo</button>) : ""}
+                                    {enviar == 0 ? (<button className={savedPix == 3 ? "pagamentoDev__pixContainer__content__methods__buttonPixSalvo--select" : "pagamentoDev__pixContainer__content__methods__buttonPixSalvo"} onClick={_ => setSavedPix(3)} aria-tts="pix salvo">Wesley Araujo</button>) : ""}
 
-                                    {savedPix == 3 && enviar == 1 ? ( <InputsPagamentoDevPixSalvo typeOfPix="email" email="araujo@gmail.com" nomePix="Wesley Araujo" />) : ""}
+                                    {savedPix == 3 && enviar == 1 ? (<InputsPagamentoDevPixSalvo typeOfPix="email" email="araujo@gmail.com" nomePix="Wesley Araujo" />) : ""}
                                 </div>
                             </>)}
 
                         <div className="pagamentoDev__pixContainer__content__methods__buttons">
-                            <button onClick={_ => { enviar == 0 ? "" : setEnviar(e => e - 1) }}>{translate("Cancelar")}</button>
-                            <button onClick={_ => setEnviar(e => e + 1)}>{enviar == 0 ? "Confirmar" : "Enviar"}</button>
+                            {!selectTypePix || enviar != 0 ? initialized.current = true : ""}
+                            {!typeOfPix.cpf.status ? initializedCPF.current = true : ""}
+                            <button onClick={_ => { enviar == 0 ? "" : setEnviar(e => e - 1) }} aria-tts="cancelar">{translate("Cancelar")}</button>
+                            <button onClick={_ => setEnviar(e => e + 1)} aria-tts="enviar">{enviar == 0 ? "Confirmar" : "Enviar"}</button>
                         </div>
                     </div>
                 </section>
@@ -182,7 +453,7 @@ export default props => {
                             <div>
                                 <p>Seus dados foram enviados com sucesso, prazo de até 3 (três) dias úteis para o valor cair na sua conta. Após 15 dias do pagamento realizado você poderá requerir um novo pagamento</p>
                             </div>
-                            <div><Link to="/perfil-dev">OK</Link></div>
+                            <div><Link to="/perfil-dev" aria-tts="perfil dev">OK</Link></div>
                         </div>
                     </div>
                 </div>

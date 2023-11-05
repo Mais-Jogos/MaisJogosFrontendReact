@@ -113,3 +113,16 @@
     font-family: var(--font-normal);
     color: var(--color-secondary);
 }
+
+
+@media screen and (max-height:800px){
+    .textToSpeech__container{
+        top: 62.5%;
+    }
+}
+
+@media screen and (max-height:600px){
+    .textToSpeech__container{
+        top: 63.4%;
+    }
+}
