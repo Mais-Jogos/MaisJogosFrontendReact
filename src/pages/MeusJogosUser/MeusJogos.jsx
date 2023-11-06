@@ -1,5 +1,5 @@
 import "./style.css";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Menu from '../../components/Menu/Menu'
 import Acessibilidade from '../../components/Acessibilidade/Acessibilidade'
 import { Link } from "react-router-dom";
@@ -15,6 +15,12 @@ export default _ => {
     // False = Jogos recém comprados
     // True = Todos os jogos
     const [menuOption, setMenuOption] = useState(false);
+    const [sort, setSort] = useState("");
+
+    function changeSort(data) {
+        let finalData = data == "des" ? false : true;
+        setSort(finalData);
+    }
     
     return (
         <div id='container-page'>
@@ -25,7 +31,7 @@ export default _ => {
 
             <main className="meusjogos__main">
                 <GoBack/>
-                <HeaderWithFilter name="Meus +jogos" imgIcon="/imgs/icons/psbuttons_icon.png"/>
+                <HeaderWithFilter name="Meus +jogos" imgIcon="/imgs/icons/psbuttons_icon.png" sortData={changeSort}/>
                 <section className="meusjogos__menu">
                     <div className="meusjogos__menu__titles">
                         <div className={menuOption ? "meusjogos__menu__title" : "meusjogos__menu__title meusjogos__menu__title--selected"} onClick={ _ => setMenuOption(false)}>
@@ -39,7 +45,7 @@ export default _ => {
                 </section>
 
                 <section className="meusjogos__jogos">
-                    {menuOption ? <TodosComprados /> : <RecemComprados/>}
+                    {menuOption & (sort || !sort) ? <TodosComprados key={Math.random()} sortData={sort}/> : <RecemComprados key={Math.random()} sortData={sort}/>}
                 </section>
             </main>
         </div>

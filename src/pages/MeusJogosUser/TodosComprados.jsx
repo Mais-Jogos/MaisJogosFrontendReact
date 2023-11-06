@@ -5,7 +5,7 @@ import Axios from "axios";
 import { useRef } from "react";
 
 export default props => {
-    const [games, setGames] = useState([]);
+    const [ games, setGames] = useState([]);
     const [leitor, setLeitor] = useState(false);
 
     useEffect(() => {
@@ -14,7 +14,6 @@ export default props => {
             .then((response) => {
                 setGames(response.data.results);
                 setLeitor(true);
-
             }).catch((error) => { console.log(error); });
     }, [])
 
@@ -39,10 +38,13 @@ export default props => {
             })
         }
     }, [leitor])
+    
+    {props.sortData ? games.sort( (a,b) => a.slug[0] > b.slug[0] ? 1 : -1 ) : "" }
+    {!props.sortData ? games.sort( (a,b) => b.slug[0] > a.slug[0] ? 1 : -1 ) : "" }
 
     return (
         <>
-            {
+            {   
                 games?.slice(0, 7).map((jogo) => (
                     <div className="meusjogos__jogos__card">
                         <div className="meusjogos__jogos__card__info">

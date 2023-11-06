@@ -7,6 +7,7 @@
     color: var(--color-primary);
     font-family: var(--font-pixel);
     font-size: 1rem;
+    gap: 100px;
 }
 
 .headerWithFilter--center {
@@ -20,18 +21,21 @@ i.headerWithFilter--center {
     margin-right: 5px;
 }
 .headerWithFilter__title__name{
-    width: 50%;
+    width: 400px;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 #container-page > main > section.headerWithFilter__title > div:nth-child(2){
-    width: 50%;
+    /* width: 50%; */
     height: 135px;
     display: flex;
     justify-content: center;
+    flex-direction: column;
     align-items: center;
+    position: relative;
+    cursor: pointer;
 }
 .headerWithFilter__title__name img {
     width: 90px;
@@ -45,7 +49,21 @@ i.headerWithFilter--center {
 .headerWithFilter__title div:last-child > p{
     font-size: .9rem;
 }
-
+.headerWithFilter__modal__sort{
+    position: absolute;
+    top: 100px;
+    text-align: center;
+    background-color: #737373;
+    padding: 5px;
+}
+.headerWithFilter__modal__sort p{
+    cursor: pointer;
+    padding: 5px;
+    transition: all 1s ease-in-out;
+}
+.headerWithFilter__modal__sort p:hover{
+    background-color: #ffffff13;
+}
 
 @media screen and (max-width:910px) {
     .headerWithFilter__title {
