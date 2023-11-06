@@ -721,6 +721,18 @@ export function translate(value){
             "pt":"Imprimir",
             "en":"Print out"
         },
+        "DescricaoDevPub":{
+            "pt": "Para ter sucesso como desenvolvedor de jogos é preciso ter muita dedicação e paixão pelo que faz. É importante estar sempre atualizado sobre as novidades do mercado e buscar inspiração em outras áreas além dos jogos. Afinal, a criatividade é um dos principais ingredientes para o sucesso nessa área.",
+            "en": "To be successful as a game developer you need to have a lot of dedication and passion for what you do. It is important to always be up to date with market news and seek inspiration from areas other than games. After all, creativity is one of the main ingredients for success in this area."
+        },
+        "Sobre dev":{
+            "pt": "Sobre dev",
+            "en": "About Dev"
+        },
+        "Posição no ranking":{
+            "pt": "Posição no ranking",
+            "en": "Ranking position"
+        },
     }
     return vocabulary[value][language] ? vocabulary[value][language] : value;
 }

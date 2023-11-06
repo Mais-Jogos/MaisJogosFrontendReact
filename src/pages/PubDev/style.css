@@ -10,8 +10,8 @@
 }
 
 .pubProfile_Titulo2{
+    width: 100%;
     display: flex;
-    width: 600px;
     align-items: flex-start;
     justify-content: right;
     border-radius: 8px;
@@ -21,8 +21,8 @@
 }
 
 .perfilDev__userData__avatar__image{
-    width: 267px;
-    height: 267px;
+    width: 265px;
+    height: 265px;
     border-radius: 50%;
     background-color: var(--dark2);
     border: 3px solid var(--purple-y);
@@ -45,22 +45,22 @@
 }
 
 .pubProfile_bg{
-    background-color: #242424;
+    background-color: var(--light-background);
     padding: 10px;
     border-radius: 5px;
-    color:white;
+    color:var(--color-primary);
 }
 
 .pubProfile_topo{
     display: flex;
     justify-content: center;
     gap: 30px;
-    
+    flex-wrap: wrap;
 }
 
 .pubProfile_descricao1{
     display: flex;
-    
+    width: 40vw;
     align-items: center;
     justify-content: center;
     border-radius: 8px;
@@ -76,25 +76,47 @@
 
 .pubProfile_descricao2{
     display: flex;
-    width: 800px;
-    align-items: left;
+    width: 40vw;
+    align-items: flex-start;
     justify-content: center;
     border-radius: 8px;
     margin-bottom: 13px;
     flex-direction: column;
     padding: 15px;
-    line-height: 1%;
     font-size: larger;
 }
 
 .pubProfile__block1{
     display: flex;
     padding: 18px;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
 .pubProfile__rankingCoin{
     filter: var(--filter-image);
 }
 
-
+@media screen and (max-width:850px){
+    .pubProfile_descricao2{
+        align-items: center;
+    }
+    .pubProfile__block1{
+        justify-content: center;
+    }
+    .pubProfile_Titulo2{
+        align-items: center;
+        text-align: center;
+        padding: 0%;
+    }
+    .pubProfile_topo{
+        gap:10px;
+    }
+}
+@media screen and (max-width:400px) {
+    .section__pubDev{
+        flex-wrap: wrap;
+    }
+    
+}
 

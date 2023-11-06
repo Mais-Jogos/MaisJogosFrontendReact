@@ -69,7 +69,7 @@ export default _ => {
 
                 <div className="pubProfile__block1">
                   <div className="pubProfile__rankingCoin"> <img src="\imgs\bgimg\ranking.png" /> </div>
-                  <div> <h1 className="pubProfile_Titulo2"> Posição no ranking </h1> </div>
+                  <div> <h1 className="pubProfile_Titulo2"> {translate("Posição no ranking")} </h1> </div>
                 </div>
 
               </div>
@@ -77,7 +77,7 @@ export default _ => {
 
             <div>
               <h1 className="pubProfile_Titulo">{translate("Sobre dev")}</h1>
-              <div className="pubProfile_bg">Para ter sucesso como desenvolvedor de jogos é preciso ter muita dedicação e paixão pelo que faz. É importante estar sempre atualizado sobre as novidades do mercado e buscar inspiração em outras áreas além dos jogos. Afinal, a criatividade é um dos principais ingredientes para o sucesso nessa área.</div>
+              <div className="pubProfile_bg">{translate("DescricaoDevPub")}</div>
             </div>
 
           </div>
