@@ -58,7 +58,7 @@ export default _ => {
           <div>
             <div className="pubProfile_topo">
               <div className="pubProfile_descricao1">
-                <img src="../../public\imgs\animais\1.png" />
+                <img src="\imgs\animais\1.png" />
               </div>
 
               <div className="pubProfile_descricao2">
@@ -68,7 +68,7 @@ export default _ => {
                 </div>
 
                 <div className="pubProfile__block1">
-                  <div className="pubProfile__rankingCoin"> <img src="../../public\imgs\bgimg\ranking.png" /> </div>
+                  <div className="pubProfile__rankingCoin"> <img src="\imgs\bgimg\ranking.png" /> </div>
                   <div> <h1 className="pubProfile_Titulo2"> Posição no ranking </h1> </div>
                 </div>
 
@@ -85,18 +85,6 @@ export default _ => {
             <div>
               <h1 className="pubProfile_Titulo">{translate("Jogos desenvolvidos")}</h1>
               <div><img src="" /></div>
-            </div>
-
-            <div className="section__pubDev">
-              <p onClick={() => { setNumberGames(numberGames === 0 ? games.length - 1 : numberGames - 1); setDirection('right') }}>
-                <i className="fa-solid fa-chevron-left"></i>
-              </p>
-              {games?.slice(numberGames, numberGames + 3).map((game, index) => (
-                <Card game={game} />
-              ))}
-              <p onClick={() => { setNumberGames(numberGames === games.length - 1 ? 0 : numberGames + 1); setDirection('left') }}>
-                <i className="fa-solid fa-chevron-right"></i>
-              </p>
             </div>
 
           </div>
