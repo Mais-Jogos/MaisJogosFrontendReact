@@ -48,7 +48,7 @@ const ListadeDesejos = ({listadesejos, dispatch}) => {
                 <div className='listaDeDesejos__card__info__actions'>
                   <div onClick={()=> navigate(`/jogos/${jogo?.name.toLowerCase().replace(/ /g, "-")}`)}>
                     <img src="/imgs/icons/detalhes__icon.svg" alt="ícone de olho representando mais detalhes do jogo" />
-                    <p>{translate("Detalhes")}</p>
+                    <p>{/* {translate("Detalhes")} */}Detalhes</p>
                   </div>
                   <i class="fa-solid fa-cart-shopping" alt="ícone de carrinho" onClick={() => addGameCart(jogo)}></i>
                 </div>
