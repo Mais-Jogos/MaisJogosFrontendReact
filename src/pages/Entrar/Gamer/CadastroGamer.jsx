@@ -26,7 +26,7 @@ const CadastroGamer = ({ data, setData }) => {
                   var code = e.keyCode || e.which;
                   if (code == '9' && document.querySelector("#root").attributes[1].nodeValue == "true") {
                     responsiveVoice.cancel();
-                    setTimeout(responsiveVoice.speak('Input ' + $(':focus').attr('aria-tts'), "Portuguese Female"),1000);
+                    setTimeout(responsiveVoice.speak('Input ' + $(':focus').attr('aria-label'), "Portuguese Female"),1000);
                 }
 
                   e.preventDefault();
@@ -37,7 +37,7 @@ const CadastroGamer = ({ data, setData }) => {
                   var code = e.keyCode || e.which;
                   if (code == '9' && document.querySelector("#root").attributes[1].nodeValue == "true") {
                     responsiveVoice.cancel();
-                    setTimeout(responsiveVoice.speak('Input ' + $(':focus').attr('aria-tts'), "Portuguese Female"),1000);
+                    setTimeout(responsiveVoice.speak('Input ' + $(':focus').attr('aria-label'), "Portuguese Female"),1000);
                 }
 
                   e.preventDefault();
@@ -50,12 +50,12 @@ const CadastroGamer = ({ data, setData }) => {
 
   return (
     <>
-      <input type="text" placeholder='nome' onChange={(e) => setData({ ...data, nome: e.target.value })} aria-tts="nome" />
-      <input type="text" placeholder='sobrenome' onChange={(e) => setData({ ...data, sobrenome: e.target.value })} aria-tts="sobrenome" />
-      <input type="date" placeholder='Data de nascimento' onChange={(e) => setData({ ...data, dataNasc: e.target.value })} aria-tts="data de nascimento" />
-      <input type="email" placeholder='E-mail' onChange={(e) => setData({ ...data, email: e.target.value })} aria-tts="email" />
-      <input type="password" placeholder='Senha' onChange={(e) => setData({ ...data, password: e.target.value })} aria-tts="senha" />
-      <input type="password" placeholder='Confirmar senha' onChange={(e) => setData({ ...data, confirmarSenha: e.target.value })} aria-tts="confirmar senha" />
+      <input type="text" placeholder='nome' onChange={(e) => setData({ ...data, nome: e.target.value })} aria-label="nome" />
+      <input type="text" placeholder='sobrenome' onChange={(e) => setData({ ...data, sobrenome: e.target.value })} aria-label="sobrenome" />
+      <input type="date" placeholder='Data de nascimento' onChange={(e) => setData({ ...data, dataNasc: e.target.value })} aria-label="data de nascimento" />
+      <input type="email" placeholder='E-mail' onChange={(e) => setData({ ...data, email: e.target.value })} aria-label="email" />
+      <input type="password" placeholder='Senha' onChange={(e) => setData({ ...data, password: e.target.value })} aria-label="senha" />
+      <input type="password" placeholder='Confirmar senha' onChange={(e) => setData({ ...data, confirmarSenha: e.target.value })} aria-label="confirmar senha" />
     </>
   )
 }

@@ -119,14 +119,14 @@ const RelatoriosDev = () => {
         <div id="relatorios-dev">
             <h1>
               {translate("Relatórios de Vendas")}
-              <button className='imprimir-dev' onClick={() => print()} aria-tts="imprimir">
+              <button className='imprimir-dev' onClick={() => print()} aria-label="imprimir">
                 <i class="fa-regular fa-file-pdf"></i>{translate("Imprimir")}
               </button>
             </h1>
             <div className="container__relatorios-dev">
               <div className="relatorios-dev__grafico-Vendas">
                   <p>{translate("Alcance mensal de vendas")}</p>
-                  <select name="Months" id="Months" aria-selected={filterGraf} onChange={(e) => setFilterGraf(e.target.value)} aria-tts="meses">
+                  <select name="Months" id="Months" aria-selected={filterGraf} onChange={(e) => setFilterGraf(e.target.value)} aria-label="meses">
                     <option value={"Geral"}>Geral</option>
                     {vendasGeral?.map(mes => (
                       <option value={mes.Month}>{mes.Month}</option>

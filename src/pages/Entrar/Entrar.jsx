@@ -83,10 +83,10 @@ const Entrar = () => {
   function switchStateIcon() {
     if (clickIcon) {
       setClickIcon(false)
-      $("#root").attr("aria-tts", "false");
+      $("#root").attr("aria-label", "false");
     } else {
       setClickIcon(true)
-      $("#root").attr("aria-tts", "true");
+      $("#root").attr("aria-label", "true");
     }
   }
 
@@ -100,7 +100,7 @@ const Entrar = () => {
           var code = e.keyCode || e.which;
           if (code == '9' && document.querySelector("#root").attributes[1].nodeValue == "true") {
             responsiveVoice.cancel();
-            setTimeout(responsiveVoice.speak('Link para ' + $(':focus').attr('aria-tts'), "Portuguese Female"), 1000);
+            setTimeout(responsiveVoice.speak('Link para ' + $(':focus').attr('aria-label'), "Portuguese Female"), 1000);
           }
 
           e.preventDefault();
@@ -170,10 +170,10 @@ const Entrar = () => {
           <button onClick={cadastrar} style={{ display: login ? "block" : "none" }}>{translate('Entrar')}</button>
           <button onClick={cadastrar} style={{ display: !login ? "block" : "none" }}>{translate('Cadastre-se')}</button>
           <p style={{ display: login ? "block" : "none" }}>{translate("Não possui conta")}
-            <a onClick={() => { setLogin(false); setData({}); setMsg('') }} aria-tts="cadastrar-se">{translate("Cadastre-se")}</a>
+            <a onClick={() => { setLogin(false); setData({}); setMsg('') }} aria-label="cadastrar-se">{translate("Cadastre-se")}</a>
           </p>
           <p style={{ display: !login ? "block" : "none" }}>{translate("Já possui uma conta")}
-            <a onClick={() => { setLogin(true); setData({}); setMsg('') }} aria-tts="login">{translate("Faça Login")}</a>
+            <a onClick={() => { setLogin(true); setData({}); setMsg('') }} aria-label="login">{translate("Faça Login")}</a>
           </p>
         </div>
       </div>

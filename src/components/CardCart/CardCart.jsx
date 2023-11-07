@@ -27,7 +27,7 @@ const CardCart = ({games, game, dispatch}) => {
                 <img src={games[game]?.background_image} alt={games[game]?.name} />
             </div>
             <div className="info__card__cart">
-                <Link to={`/jogos/${game}`} key={game?.id} aria-tts={games[game]?.name}>
+                <Link to={`/jogos/${game}`} key={game?.id} aria-label={games[game]?.name}>
                     <h2>{games[game]?.name}</h2>
                 </Link>
                 <div className="card__cart__platforms">
@@ -41,7 +41,7 @@ const CardCart = ({games, game, dispatch}) => {
                 </div>
                 <div className="actions">
                     <i className="fa-solid fa-trash" onClick={() => handleClickAdd(game)}></i>
-                    <input type="checkbox" name="cart" id={games[game]?.name} aria-tts="Remover jogo"/>
+                    <input type="checkbox" name="cart" id={games[game]?.name} aria-label="Remover jogo"/>
                 </div>
             </div>
         </div>

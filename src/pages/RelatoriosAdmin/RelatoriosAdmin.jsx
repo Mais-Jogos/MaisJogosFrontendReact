@@ -126,7 +126,7 @@ const RelatoriosAdmin = () => {
         <div id="relatorios-admin">
             <h1>
               {translate("Relatórios de Vendas")} 
-              <button className='imprimir-admin' onClick={() => print()} aria-tts="imprimir">
+              <button className='imprimir-admin' onClick={() => print()} aria-label="imprimir">
                 <i class="fa-regular fa-file-pdf"></i>{translate("Imprimir")}
               </button>
             </h1>

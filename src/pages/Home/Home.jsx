@@ -125,7 +125,7 @@ const Home = () => {
           {
             [...new Set(generos?.map((game) => game.name))].map(category => (
               <div className='home__categorias'>
-                <input type="checkbox" name="Categorias" id={category} onClick={(e) => changeFilter(e, 'category', category)} aria-tts={category} />
+                <input type="checkbox" name="Categorias" id={category} onClick={(e) => changeFilter(e, 'category', category)} aria-label={category} />
                 <label key={category} htmlFor={category} >{category}</label>
               </div>
             ))
@@ -134,7 +134,7 @@ const Home = () => {
           {
             [...new Set(plataformas2?.map((game) => game.name))].map(platform => (
               <div className='home__categorias'>
-                <input type="checkbox" name="Plataformas" id={platform} onClick={(e) => changeFilter(e, 'platform', platform)} aria-tts={platform} />
+                <input type="checkbox" name="Plataformas" id={platform} onClick={(e) => changeFilter(e, 'platform', platform)} aria-label={platform} />
                 <label key={platform} htmlFor={platform} >{platform}</label>
               </div>
             ))
@@ -351,7 +351,7 @@ const Home = () => {
                 <div className="text__newsletter">
                   <h2>{translate("Fique por dentro dos lançamentos")}!</h2>
                   <label htmlFor='newsletter'>{translate("Digite seu melhor e mail")}: </label>
-                  <input type="text" id='newsletter' aria-tts="newsletter" />
+                  <input type="text" id='newsletter' aria-label="newsletter" />
                   <button>{translate("Assinar")}</button>
                 </div>
               </div>

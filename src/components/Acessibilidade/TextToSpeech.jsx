@@ -9,11 +9,11 @@ export default props => {
     function switchStateIcon() {
         if (clickIcon) {
             setClickIcon(false)
-            $("#root").attr("aria-tts", "false");
+            $("#root").attr("aria-label", "false");
             responsiveVoice.speak("Leitor de tela desativado", "Portuguese Female")
         } else {
             setClickIcon(true)
-            $("#root").attr("aria-tts", "true");
+            $("#root").attr("aria-label", "true");
             responsiveVoice.speak("Leitor de tela ativado", "Portuguese Female")
         }
     }
@@ -28,7 +28,7 @@ export default props => {
                     var code = e.keyCode || e.which;
                     if (code == '9' && document.querySelector("#root").attributes[1].nodeValue == "true") {
                         responsiveVoice.cancel();
-                        setTimeout(responsiveVoice.speak('Link para ' + $(':focus').attr('aria-tts'), "Portuguese Female"),1000);
+                        setTimeout(responsiveVoice.speak('Link para ' + $(':focus').attr('aria-label'), "Portuguese Female"),1000);
                     }
 
                     e.preventDefault();
@@ -49,7 +49,7 @@ export default props => {
                     var code = e.keyCode || e.which;
                     if (code == '9' && document.querySelector("#root").attributes[1].nodeValue == "true") {
                         responsiveVoice.cancel();
-                        setTimeout(responsiveVoice.speak('Input ' + $(':focus').attr('aria-tts'), "Portuguese Female"),1000);
+                        setTimeout(responsiveVoice.speak('Input ' + $(':focus').attr('aria-label'), "Portuguese Female"),1000);
                     }
 
                     e.preventDefault();
@@ -60,7 +60,7 @@ export default props => {
                     var code = e.keyCode || e.which;
                     if (code == '9' && document.querySelector("#root").attributes[1].nodeValue == "true") {
                         responsiveVoice.cancel();
-                        setTimeout(responsiveVoice.speak('Input ' + $(':focus').attr('aria-tts'), "Portuguese Female"),1000);
+                        setTimeout(responsiveVoice.speak('Input ' + $(':focus').attr('aria-label'), "Portuguese Female"),1000);
                     }
 
                     e.preventDefault();

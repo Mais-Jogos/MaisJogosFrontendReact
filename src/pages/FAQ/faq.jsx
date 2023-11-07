@@ -38,17 +38,17 @@ export default function FAQ() {
       </div>
       <div className="caixa">
         <div className="borda">
-          <a href="#" onClick={toggleTextoJogos} aria-tts="sobre jogos">
+          <a href="#" onClick={toggleTextoJogos} aria-label="sobre jogos">
             {translate("Sobre jogos")}
           </a>
         </div>
         <div className="borda">
-          <a href="#" onClick={toggleTextoDev} aria-tts="sobre desenvolvedor">
+          <a href="#" onClick={toggleTextoDev} aria-label="sobre desenvolvedor">
             {translate("Sobre Desenvolvedor")}
           </a>
         </div>
         <div className="borda">
-          <a href="#" onClick={toggleTextoPlat} aria-tts="sobre plataforma">
+          <a href="#" onClick={toggleTextoPlat} aria-label="sobre plataforma">
             {translate("Sobre a plataforma")}
           </a>
         </div>

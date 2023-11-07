@@ -13,7 +13,7 @@ const NotFound = () => {
             <div className="text404">
                 <h1>Oops!</h1>
                 <h2><b>{page}</b> não foi encontrada...</h2>
-                <Link to="/" className="botão"  aria-tts="ínicio" >Ir para Home</Link>
+                <Link to="/" className="botão"  aria-label="ínicio" >Ir para Home</Link>
             </div>
             <div className="fundoimg">
                 <img src="/imgs/animais/1.png" alt="" />

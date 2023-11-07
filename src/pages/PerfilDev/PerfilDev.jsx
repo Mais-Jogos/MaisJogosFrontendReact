@@ -74,26 +74,26 @@ useEffect(()=>{
                     <div className="perfilDev__userData__inputs">
                         <div className="perfilDev__userData__input">
                             <label htmlFor="username">Username</label>
-                            <input type="text" id="username" value={data.nome} onChange={e => dispatch({ type: 'change_username', username: e.target.value })} aria-tts="username"></input>
+                            <input type="text" id="username" value={data.nome} onChange={e => dispatch({ type: 'change_username', username: e.target.value })} aria-label="username"></input>
 
                             {editButton ? <img src="/imgs/icons/edit_icon.png" alt="Ícone de edição dos inputs" className="perfilDev__userData__input__editImg" /> : false}
                         </div>
 
                         <div className="perfilDev__userData__input">
                             <label htmlFor="nascimento">{translate("Nascimento")}</label>
-                            <input type="date" id="nascimento" value={data.dataNasc} readOnly aria-tts="data de nascimento"></input>
+                            <input type="date" id="nascimento" value={data.dataNasc} readOnly aria-label="data de nascimento"></input>
                         </div>
 
                         <div className="perfilDev__userData__input">
                             <label htmlFor="email">{translate("Email")}</label>
-                            <input type="email" id="email" value={data.login} onChange={e => dispatch({ type: 'change_email', email: e.target.value })} aria-tts="email"></input>
+                            <input type="email" id="email" value={data.login} onChange={e => dispatch({ type: 'change_email', email: e.target.value })} aria-label="email"></input>
 
                             {editButton ? <img src="/imgs/icons/edit_icon.png" alt="Ícone de edição dos inputs" className="perfilDev__userData__input__editImg" /> : false}
                         </div>
 
                         <div className="perfilDev__userData__input">
                             <label htmlFor="senha">{translate("Senha")}</label>
-                            <input type="password" id="senha" value={data.senha} onChange={e => dispatch({ type: 'change_senha', senha: e.target.value })} aria-tts="senha"></input>
+                            <input type="password" id="senha" value={data.senha} onChange={e => dispatch({ type: 'change_senha', senha: e.target.value })} aria-label="senha"></input>
 
                             {editButton ? <img src="/imgs/icons/edit_icon.png" alt="Ícone de edição dos inputs" className="perfilDev__userData__input__editImg" /> : false}
                         </div>
@@ -101,7 +101,7 @@ useEffect(()=>{
                         <div className="perfilDev__userData__descr">
                             <div className="perfilDev__userData__input">
                                 <label htmlFor="descricao">{translate("Descrição")}</label>
-                                <textarea id="descricao" value={data.sobre} onChange={e => dispatch({ type: 'change_descricao', descricao: e.target.value })} aria-tts="descrição"></textarea>
+                                <textarea id="descricao" value={data.sobre} onChange={e => dispatch({ type: 'change_descricao', descricao: e.target.value })} aria-label="descrição"></textarea>
 
                                 {editButton ? <img src="/imgs/icons/edit_icon.png" alt="Ícone de edição dos inputs" className="perfilDev__userData__input__editImg" /> : false}
                             </div>
@@ -109,7 +109,7 @@ useEffect(()=>{
                             <div className="perfilDev__userData__input">
                                 <input type="button" id="editar" value={editButton ? "Salvar" : "Editar"} onClick={_ => {
                                     editButton ? setEditButton(false) : setEditButton(true)
-                                }} aria-tts="editar">
+                                }} aria-label="editar">
                                 </input>
                             </div>
                         </div>
@@ -117,19 +117,19 @@ useEffect(()=>{
                 </section>
 
                 <section className="perfilDev__actions">
-                    <Link className="perfilDev__action" to="/meus-jogos" aria-tts="meus Jogos">
+                    <Link className="perfilDev__action" to="/meus-jogos" aria-label="meus Jogos">
                         <img src="/imgs/icons/mais_icon.png" alt="Ícone de Mais que redireciona para a página de Meus jogos do desesenvolvedor" />
                         <p>{translate("Meus jogos")}</p>
                     </Link>
-                    <Link className="perfilDev__action" to="/pagamento-dev" aria-tts="pagamento Dev">
+                    <Link className="perfilDev__action" to="/pagamento-dev" aria-label="pagamento Dev">
                         <img src="/imgs/icons/pix__icon.svg" alt="Ícone de Pix que redireciona para a página de Requerimento de pagamento" />
                         <p>{translate("Requerimento de pagamento")}</p>
                     </Link>
-                    <Link className="perfilDev__action" to="/relatorios-dev" aria-tts="relatórios dev">
+                    <Link className="perfilDev__action" to="/relatorios-dev" aria-label="relatórios dev">
                         <img src="/imgs/icons/dashboard__icon.png" alt="Ícone de um gráfico que redireciona para a página de relatórios do desenvolvedor" />
                         <p>{translate("Dashboard")}</p>
                     </Link>
-                    <Link className="perfilDev__action" to="/cadastro-jogo" aria-tts="cadastro jogo">
+                    <Link className="perfilDev__action" to="/cadastro-jogo" aria-label="cadastro jogo">
                         <img src="/imgs/icons/controler__icon.png" alt="Ícone de um controle que redireciona para a página cadastramento de jogo" />
                         <p>{translate("Cadastrar Jogo")}</p>
                     </Link>

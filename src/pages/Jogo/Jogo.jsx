@@ -127,9 +127,9 @@ const Jogo = ({ dispatch, listadesejos, cart }) => {
               </div>
               <div className="about__game__page">
                 <h3>{translate("Sobre o jogo")}</h3>
-                <p>{translate("Desenvolvedor")}: <Link to={'/dev'} aria-tts="desenvolvedor">{game?.name}</Link></p>
+                <p>{translate("Desenvolvedor")}: <Link to={'/dev'} aria-label="desenvolvedor">{game?.name}</Link></p>
                 <p>{translate("Gênero")}: {game?.genres.map((genres, index) =>
-                  <Link to={`/categorias/category=${genres?.name}`} key={genres?.id}  aria-tts={genres?.name}>
+                  <Link to={`/categorias/category=${genres?.name}`} key={genres?.id}  aria-label={genres?.name}>
                     <p key={genres?.id}>{genres?.name}{index === game?.genres.length - 1 ? ' ' : ','}</p>
                   </Link>
                 )}</p>
@@ -140,7 +140,7 @@ const Jogo = ({ dispatch, listadesejos, cart }) => {
                   <h3>{translate("Requisitos do sistema")}</h3>
                   <div className="platforms">
                     {game?.parent_platforms.map(plataform => (
-                      <Link to={`/categorias/platform=${plataform.platform?.name}`} key={plataform.platform?.id}  aria-tts={plataform.platform?.name}>
+                      <Link to={`/categorias/platform=${plataform.platform?.name}`} key={plataform.platform?.id}  aria-label={plataform.platform?.name}>
                         <i className={choosePlataform(plataform.platform?.name)}></i>
                       </Link>
                     ))}

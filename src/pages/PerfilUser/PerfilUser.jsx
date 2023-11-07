@@ -115,7 +115,7 @@ const PerfilUser = (props) => {
                                         onChange={e => {
                                             dispatch({ type: 'change_colorCard', colorCard: e.target.value });
                                             newDispatch({ type: 'CHANGE_COLORCARD', colorCard: e.target.value });
-                                        }} aria-tts="cor avatar"/>
+                                        }} aria-label="cor avatar"/>
                                     {editButton ? <img src="/imgs/icons/edit_icon.png" alt="icons da moeda da loja" className="perfilUser__userData__avatar__image__editImg" /> : false}                                
                                 </div>
                             </div>
@@ -128,7 +128,7 @@ const PerfilUser = (props) => {
                             <input type="text" id="username" 
                             value={userData.username} 
                             onChange={e => dispatch({ type: 'change_username', username: e.target.value })} 
-                            aria-tts="username"
+                            aria-label="username"
                             ></input>
 
                             {editButton ? <img src="/imgs/icons/edit_icon.png" alt="icons da moeda da loja" className="perfilUser__userData__input__editImg" /> : false}
@@ -137,7 +137,7 @@ const PerfilUser = (props) => {
                         <div className="perfilUser__userData__input">
                             <label htmlFor="nascimento">{translate("Nascimento")}</label>
                             <input type="date" id="nascimento" 
-                            value={userData.dataNascimento} readOnly aria-tts="data de nascimento"
+                            value={userData.dataNascimento} readOnly aria-label="data de nascimento"
                             >
                             </input>
                         </div>
@@ -147,7 +147,7 @@ const PerfilUser = (props) => {
                             <input type="email" id="email" 
                             value={userData.email} 
                             onChange={e => dispatch({ type: 'change_email', email: e.target.value })}
-                            aria-tts="email"
+                            aria-label="email"
                             ></input>
 
                             {editButton ? <img src="/imgs/icons/edit_icon.png" alt="icons da moeda da loja" className="perfilUser__userData__input__editImg" /> : false}
@@ -158,7 +158,7 @@ const PerfilUser = (props) => {
                             <input type="password" id="senha" 
                             value={userData.senha} 
                             onChange={e => dispatch({ type: 'change_senha', senha: e.target.value })}
-                            aria-tts="senha"
+                            aria-label="senha"
                             ></input>
 
                             {editButton ? <img src="/imgs/icons/edit_icon.png" alt="icons da moeda da loja" className="perfilUser__userData__input__editImg" /> : false}
@@ -168,7 +168,7 @@ const PerfilUser = (props) => {
                             <input type="button" id="editar" value={editButton ? "Salvar" : "Editar"} onClick={_ => {
                                 editButton ? setEditButton(false) : setEditButton(true)
                             }}
-                            aria-tts="editar"
+                            aria-label="editar"
                             >
                             </input>
                         </div>
@@ -176,19 +176,19 @@ const PerfilUser = (props) => {
                 </section>
 
                 <section className="perfilUser__actions">
-                    <Link className="perfilUser__action" to="/meus-jogos" aria-tts="meus jogos">
+                    <Link className="perfilUser__action" to="/meus-jogos" aria-label="meus jogos">
                         <img src="/imgs/icons/mais_icon.png" alt="icone de Mais que redireciona para a página descrita" />
                         <p>{translate("Meus jogos")}</p>
                     </Link>
-                    <Link className="perfilUser__action" to="/lista-desejos" aria-tts="lista de desejos">
+                    <Link className="perfilUser__action" to="/lista-desejos" aria-label="lista de desejos">
                         <img src="/imgs/icons/heart_icon.png" alt="icone de Coração que redireciona para a página descrita" />
                         <p>{translate("Lista de desejos")}</p>
                     </Link>
-                    <Link className="perfilUser__action" to="/review" aria-tts="review">
+                    <Link className="perfilUser__action" to="/review" aria-label="review">
                         <img src="/imgs/icons/review_iconw.svg" alt="icone de Livro que redireciona para a página descrita" />
                         <p>{translate("Review de jogos")}</p>
                     </Link>
-                    <Link className="perfilUser__action" to="/avatares" aria-tts="avatares">
+                    <Link className="perfilUser__action" to="/avatares" aria-label="avatares">
                         <img src="/imgs/icons/capivara_icon.svg" alt="icone da Capivara que redireciona para a página descrita" />
                         <p>{translate("Avatares")}</p>
                     </Link>

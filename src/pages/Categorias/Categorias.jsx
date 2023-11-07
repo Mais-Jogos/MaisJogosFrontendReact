@@ -105,7 +105,7 @@ const Categorias = () => {
           {
             [...new Set(generos?.map((game) => game.name))].map(category => (
               <div className='categorias__categorias'>
-                <input type="checkbox" name="Categorias" id={category} defaultChecked={filter.category !== 'Todos' && filter.category.some((filterCategory) => filterCategory === category)} onClick={(e) => changeFilter(e, 'category', category)}  aria-tts={category} />
+                <input type="checkbox" name="Categorias" id={category} defaultChecked={filter.category !== 'Todos' && filter.category.some((filterCategory) => filterCategory === category)} onClick={(e) => changeFilter(e, 'category', category)}  aria-label={category} />
                 <label key={category} htmlFor={category} >{category}</label>
               </div>
             ))
@@ -114,7 +114,7 @@ const Categorias = () => {
           {
             [...new Set(plataformas2?.map((game) => game.name))].map(platform => (
               <div className='categorias__categorias'>
-                <input type="checkbox" name="Plataformas" id={platform} defaultChecked={filter.platform !== 'Todos' && filter?.platform?.some((filterPlatform) => filterPlatform === platform)} onClick={(e) => changeFilter(e, 'platform', platform)} aria-tts={platform}  />
+                <input type="checkbox" name="Plataformas" id={platform} defaultChecked={filter.platform !== 'Todos' && filter?.platform?.some((filterPlatform) => filterPlatform === platform)} onClick={(e) => changeFilter(e, 'platform', platform)} aria-label={platform}  />
                 <label key={platform} htmlFor={platform} >{platform}</label>
               </div>
             ))

@@ -17,7 +17,7 @@ export default props => {
                 var code = e.keyCode || e.which;
                 if (code == '9' && document.querySelector("#root").attributes[1].nodeValue == "true") {
                     responsiveVoice.cancel();
-                    setTimeout(responsiveVoice.speak('Input ' + $(':focus').attr('aria-tts'), "Portuguese Female"),1000);
+                    setTimeout(responsiveVoice.speak('Input ' + $(':focus').attr('aria-label'), "Portuguese Female"),1000);
                 }
 
                 e.preventDefault();
@@ -32,7 +32,7 @@ export default props => {
             <label htmlFor={props.name + "upload"} className="labelUploadJogo">{props.name}</label>
             <div>
                 <input type="file" accept=".zip" id={props.name + "upload"} className="cadastroJogo__content__uploadContent__fileUpload--changeText"
-                    onChange={e => { props.setState(e.target.files); props.dispatchError({ type: 'upload', upload: false }) }} aria-tts={props.name + " upload"}></input>
+                    onChange={e => { props.setState(e.target.files); props.dispatchError({ type: 'upload', upload: false }) }} aria-label={props.name + " upload"}></input>
             </div>
         </div>
     )

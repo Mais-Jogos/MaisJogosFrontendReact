@@ -398,7 +398,7 @@ export default props => {
                     var code = e.keyCode || e.which;
                     if (code == '9' && document.querySelector("#root").attributes[1].nodeValue == "true") {
                         responsiveVoice.cancel();
-                        setTimeout(responsiveVoice.speak('Input ' + $(':focus').attr('aria-tts'), "Portuguese Female"),1000);
+                        setTimeout(responsiveVoice.speak('Input ' + $(':focus').attr('aria-label'), "Portuguese Female"),1000);
                     }
 
                     e.preventDefault();
@@ -432,7 +432,7 @@ export default props => {
                     var code = e.keyCode || e.which;
                     if (code == '9' && document.querySelector("#root").attributes[1].nodeValue == "true") {
                         responsiveVoice.cancel();
-                        setTimeout(responsiveVoice.speak('Input ' + $(':focus').attr('aria-tts'), "Portuguese Female"),1000);
+                        setTimeout(responsiveVoice.speak('Input ' + $(':focus').attr('aria-label'), "Portuguese Female"),1000);
                     }
 
                     e.preventDefault();
@@ -443,7 +443,7 @@ export default props => {
                     var code = e.keyCode || e.which;
                     if (code == '9' && document.querySelector("#root").attributes[1].nodeValue == "true") {
                         responsiveVoice.cancel();
-                        setTimeout(responsiveVoice.speak('Input ' + $(':focus').attr('aria-tts'), "Portuguese Female"),1000);
+                        setTimeout(responsiveVoice.speak('Input ' + $(':focus').attr('aria-label'), "Portuguese Female"),1000);
                     }
 
                     e.preventDefault();
@@ -454,7 +454,7 @@ export default props => {
                     var code = e.keyCode || e.which;
                     if (code == '9' && document.querySelector("#root").attributes[1].nodeValue == "true") {
                         responsiveVoice.cancel();
-                        setTimeout(responsiveVoice.speak('Input ' + $(':focus').attr('aria-tts'), "Portuguese Female"),1000);
+                        setTimeout(responsiveVoice.speak('Input ' + $(':focus').attr('aria-label'), "Portuguese Female"),1000);
                     }
 
                     e.preventDefault();
@@ -466,7 +466,7 @@ export default props => {
                         var code = e.keyCode || e.which;
                         if (code == '9' && document.querySelector("#root").attributes[1].nodeValue == "true") {
                             responsiveVoice.cancel();
-                            setTimeout(responsiveVoice.speak('Input ' + $(':focus').attr('aria-tts'), "Portuguese Female"),1000);
+                            setTimeout(responsiveVoice.speak('Input ' + $(':focus').attr('aria-label'), "Portuguese Female"),1000);
                         }
     
                         e.preventDefault();
@@ -538,7 +538,7 @@ export default props => {
                                 id="cadastroJogo__content__title"
                                 value={titulo}
                                 onChange={e => { dispatchError({ type: 'titulo', titulo: false }); setTitulo(e.target.value) }}
-                                className={errorMessage.titulo ? "cadastroJogo__content__body--erroMessage cadastroJogo__content__steps--inputTTS" : "cadastroJogo__content__steps--inputTTS"} aria-tts="título" >
+                                className={errorMessage.titulo ? "cadastroJogo__content__body--erroMessage cadastroJogo__content__steps--inputTTS" : "cadastroJogo__content__steps--inputTTS"} aria-label="título" >
 
                             </input>
                             {errorMessage.titulo ? (<p className="cadastroJogo--errorMessage"><i class="fa-solid fa-xmark"></i> Digite o título</p>) : ""}
@@ -550,7 +550,7 @@ export default props => {
                                 id="cadastroJogo__content__textarea"
                                 value={descricao}
                                 onChange={e => { dispatchError({ type: 'descricao', descricao: false }); setDescricao(e.target.value) }}
-                                className={errorMessage.descricao ? "cadastroJogo__content__body--erroMessage cadastroJogo__content__steps--inputTTS" : " cadastroJogo__content__steps--inputTTS"} aria-tts="descrição">
+                                className={errorMessage.descricao ? "cadastroJogo__content__body--erroMessage cadastroJogo__content__steps--inputTTS" : " cadastroJogo__content__steps--inputTTS"} aria-label="descrição">
 
                             </textarea>
                             {errorMessage.descricao ? (<p className="cadastroJogo--errorMessage"><i class="fa-solid fa-xmark"></i> Digite a descrição</p>) : ""}
@@ -631,14 +631,14 @@ export default props => {
                                 <div className="cadastroJogo__content__plataforms__checkboxs">
                                     <label htmlFor="windows">
                                         <input type="checkbox" id="windows" name="windows" checked={checkboxRequirements.windows}
-                                            onChange={e => { dispatch({ type: 'windows', windows: !checkboxRequirements.windows }) }} className="cadastroJogo__content__steps--inputTTS" aria-tts="checkbox windows"/>
+                                            onChange={e => { dispatch({ type: 'windows', windows: !checkboxRequirements.windows }) }} className="cadastroJogo__content__steps--inputTTS" aria-label="checkbox windows"/>
                                         Windows
                                     </label>
                                 </div>
                                 <div className="cadastroJogo__content__plataforms__checkboxs">
                                     <label htmlFor="macos">
                                         <input type="checkbox" id="macos" name="macos" checked={checkboxRequirements.macos}
-                                            onChange={e => { dispatch({ type: 'macos', macos: !checkboxRequirements.macos }) }} className="cadastroJogo__content__steps--inputTTS" aria-tts="checkbox macos"/>
+                                            onChange={e => { dispatch({ type: 'macos', macos: !checkboxRequirements.macos }) }} className="cadastroJogo__content__steps--inputTTS" aria-label="checkbox macos"/>
                                         MacOs
                                     </label>
                                 </div>
@@ -646,7 +646,7 @@ export default props => {
                                     <label htmlFor="linux">
                                         <input type="checkbox" id="linux" name="linux" checked={checkboxRequirements.linux}
                                             onChange={e => { dispatch({ type: 'linux', linux: !checkboxRequirements.linux }) }}
-                                            className="cadastroJogo__content__steps--inputTTS"  aria-tts="checkbox linux"/>
+                                            className="cadastroJogo__content__steps--inputTTS"  aria-label="checkbox linux"/>
                                         Linux
                                     </label>
                                 </div>
@@ -654,7 +654,7 @@ export default props => {
                                     <label htmlFor="android">
                                         <input type="checkbox" id="android" name="android" checked={checkboxRequirements.android}
                                             onChange={e => { dispatch({ type: 'android', android: !checkboxRequirements.android }) }}
-                                            className="cadastroJogo__content__steps--inputTTS"  aria-tts="checkbox android"/>
+                                            className="cadastroJogo__content__steps--inputTTS"  aria-label="checkbox android"/>
                                         Android
                                     </label>
                                 </div>
@@ -662,7 +662,7 @@ export default props => {
                                     <label htmlFor="ios">
                                         <input type="checkbox" id="ios" name="ios" checked={checkboxRequirements.ios}
                                             onChange={e => { dispatch({ type: 'ios', ios: !checkboxRequirements.ios }) }}
-                                            className="cadastroJogo__content__steps--inputTTS"  aria-tts="checkbox ios"/>
+                                            className="cadastroJogo__content__steps--inputTTS"  aria-label="checkbox ios"/>
                                         IOS
                                     </label>
                                 </div>
@@ -746,7 +746,7 @@ export default props => {
                                         <label htmlFor="fotos">Fotos</label>
                                         <div>
                                             <input type="file" accept=".png,.jpeg,.jpg" id="fotos" multiple className="cadastroJogo__content__uploadContent__fileUpload--changeText"
-                                                onChange={e => { setUploadFotos(e.target.files); dispatchError({ type: 'upload', upload: false }) }} aria-tts="upload fotos"></input>
+                                                onChange={e => { setUploadFotos(e.target.files); dispatchError({ type: 'upload', upload: false }) }} aria-label="upload fotos"></input>
                                         </div>
                                     </div>
 
@@ -754,7 +754,7 @@ export default props => {
                                         <label htmlFor="videos">Vídeos</label>
                                         <div>
                                             <input type="file" accept=".mp4,.mov,.mkv" id="videos" multiple className="cadastroJogo__content__uploadContent__fileUpload--changeText"
-                                                onChange={e => { setUploadVideos(e.target.files); dispatchError({ type: 'upload', upload: false }) }} aria-tts="upload vídeos"></input>
+                                                onChange={e => { setUploadVideos(e.target.files); dispatchError({ type: 'upload', upload: false }) }} aria-label="upload vídeos"></input>
                                         </div>
                                     </div>
                                 </div>
@@ -766,11 +766,11 @@ export default props => {
                                         <label htmlFor="doc">Documento</label>
                                         <div>
                                             <input type="file" accept=".png,.jpeg,.jpg,.pdf" id="doc" className="cadastroJogo__content__uploadContent__fileUpload--changeText"
-                                                onChange={e => { setUploadClassificacao(e.target.files); dispatchError({ type: 'upload', upload: false }) }} aria-tts="upload documento classificação">
+                                                onChange={e => { setUploadClassificacao(e.target.files); dispatchError({ type: 'upload', upload: false }) }} aria-label="upload documento classificação">
                                             </input>
                                         </div>
                                     </div>
-                                    <select name="classificacao" id="classificacao" value={selectValueClassificacao} onChange={e => { setUploadValueClassificacao(e.target.value); dispatchError({ type: 'upload', upload: false }) }} aria-tts={"classificação " + selectValueClassificacao}>
+                                    <select name="classificacao" id="classificacao" value={selectValueClassificacao} onChange={e => { setUploadValueClassificacao(e.target.value); dispatchError({ type: 'upload', upload: false }) }} aria-label={"classificação " + selectValueClassificacao}>
                                         <option value="Livre">Livre</option>
                                         <option value="menores_10">10</option>
                                         <option value="menores_12">12</option>
@@ -787,7 +787,7 @@ export default props => {
                                 id="termos" 
                                 defaultChecked={aceitarTermosJogo} 
                                 onChange={_ => { setAceitarTermosJogo((state) => !state); dispatchError({ type: 'upload', upload: false }) }}
-                                aria-tts="checkbox termos e confições"   
+                                aria-label="checkbox termos e confições"   
                                 ></input>
                                 <label htmlFor="termos">Aceito os termos e condições</label>
                             </div>
@@ -816,7 +816,7 @@ export default props => {
                                     Seu jogo foi cadastrado com sucesso! Agora ele pode ser visto na sua página de jogos!
                                 </p>
                             </div>
-                            <div><Link to="/meus-jogos" aria-tts="meus jogos" className="modal__meusJogosRedirect">OK</Link></div>
+                            <div><Link to="/meus-jogos" aria-label="meus jogos" className="modal__meusJogosRedirect">OK</Link></div>
                         </div>
                     </div>
                 </div>

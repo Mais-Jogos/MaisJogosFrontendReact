@@ -49,7 +49,7 @@ const CadastroReview = () => {
             </div>
           </div>
           <label htmlFor="review">{translate("Review")}:</label>
-          <textarea name="review" id="review" cols="30" rows="10" aria-tts="review"></textarea>
+          <textarea name="review" id="review" cols="30" rows="10" aria-label="review"></textarea>
           <div className="cadastro-review__btns">
             <button className='cadastro-review__btns-voltar' onClick={()=> navigate("/meus-jogos")}>
               <i class="fa-solid fa-arrow-rotate-left" ></i>{translate("Voltar")}

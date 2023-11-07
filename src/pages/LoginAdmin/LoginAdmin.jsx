@@ -44,9 +44,9 @@ const LoginAdmin = () => {
             </div>
             <div className="form__signin__admin">
                 <h2>{translate("Bem vindo de volta")}</h2>
-                <input type="email" placeholder='E-mail' onChange={(e)=> setData({...data, email:e.target.value})} aria-tts="email"/>
-                <input type="password" placeholder='Senha' onChange={(e)=> setData({...data, password:e.target.value})} aria-tts="senha"/>
-                <button onClick={cadastrar} aria-tts="entrar">{translate("Entrar")}</button>
+                <input type="email" placeholder='E-mail' onChange={(e)=> setData({...data, email:e.target.value})} aria-label="email"/>
+                <input type="password" placeholder='Senha' onChange={(e)=> setData({...data, password:e.target.value})} aria-label="senha"/>
+                <button onClick={cadastrar} aria-label="entrar">{translate("Entrar")}</button>
             </div>
         </div>
     </div>

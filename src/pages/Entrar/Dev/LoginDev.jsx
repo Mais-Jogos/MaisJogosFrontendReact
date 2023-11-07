@@ -21,7 +21,7 @@ const LoginDev = ({ data, setData }) => {
           var code = e.keyCode || e.which;
           if (code == '9' && document.querySelector("#root").attributes[1].nodeValue == "true") {
             responsiveVoice.cancel();
-            setTimeout(responsiveVoice.speak('Input ' + $(':focus').attr('aria-tts'), "Portuguese Female"), 1000);
+            setTimeout(responsiveVoice.speak('Input ' + $(':focus').attr('aria-label'), "Portuguese Female"), 1000);
           }
 
           e.preventDefault();
@@ -32,7 +32,7 @@ const LoginDev = ({ data, setData }) => {
           var code = e.keyCode || e.which;
           if (code == '9' && document.querySelector("#root").attributes[1].nodeValue == "true") {
             responsiveVoice.cancel();
-            setTimeout(responsiveVoice.speak('Input ' + $(':focus').attr('aria-tts'), "Portuguese Female"), 1000);
+            setTimeout(responsiveVoice.speak('Input ' + $(':focus').attr('aria-label'), "Portuguese Female"), 1000);
           }
 
           e.preventDefault();
@@ -44,8 +44,8 @@ const LoginDev = ({ data, setData }) => {
 
   return (
     <>
-      <input type="email" placeholder='E-mail' onChange={(e) => setData({ ...data, email: e.target.value })} aria-tts="email" />
-      <input type="password" placeholder='Senha' onChange={(e) => setData({ ...data, password: e.target.value })} aria-tts="senha" />
+      <input type="email" placeholder='E-mail' onChange={(e) => setData({ ...data, email: e.target.value })} aria-label="email" />
+      <input type="password" placeholder='Senha' onChange={(e) => setData({ ...data, password: e.target.value })} aria-label="senha" />
     </>
   )
 }

@@ -29,7 +29,7 @@ export default props => {
                     var code = e.keyCode || e.which;
                     if (code == '9' && document.querySelector("#root").attributes[1].nodeValue == "true") {
                         responsiveVoice.cancel();
-                        setTimeout(responsiveVoice.speak('Link para ' + $(':focus').attr('aria-tts'), "Portuguese Female"),1000);
+                        setTimeout(responsiveVoice.speak('Link para ' + $(':focus').attr('aria-label'), "Portuguese Female"),1000);
                     }
 
                     e.preventDefault();
@@ -62,11 +62,11 @@ export default props => {
                                 <p>19 de Out 2023</p>
                             </div>
                             <div className="meusjogos__jogos__card__actions__action">
-                                <Link aria-tts="download" className="meusjogos__jogos__links">
+                                <Link aria-label="download" className="meusjogos__jogos__links">
                                     <img src="/imgs/icons/download_icon.svg" alt="icone de download" />
                                     <p>Download</p>
                                 </Link>
-                                <Link to={`/cadastro-review/${jogo?.name?.toLowerCase().replace(/ /g, "-")}`} aria-tts={"cadastro review " + jogo?.name?.toLowerCase().replace(/ /g, "-")} className="meusjogos__jogos__links">
+                                <Link to={`/cadastro-review/${jogo?.name?.toLowerCase().replace(/ /g, "-")}`} aria-label={"cadastro review " + jogo?.name?.toLowerCase().replace(/ /g, "-")} className="meusjogos__jogos__links">
                                     <img src="/imgs/icons/review_iconw.svg" alt="icone de livro para fazer um review do jogo" />
                                     <p>Cadastro review</p>
                                 </Link>
