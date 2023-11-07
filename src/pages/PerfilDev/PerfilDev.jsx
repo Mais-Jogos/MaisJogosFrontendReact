@@ -7,6 +7,8 @@ import { useState } from "react";
 import Vlibras from '../../components/Vlibras/Vlibras'
 import TextToSpeech from "../../components/Acessibilidade/TextToSpeech";
 import { translate } from "../../translate/translate";
+import { useEffect } from "react";
+import Axios from "axios";
 
 function reducerUserData(state, action) {
     switch (action.type) {
@@ -36,8 +38,19 @@ export default props => {
     });
 
     const [editButton, setEditButton] = useState(false);
+    const id = window.localStorage.getItem("Id")
+    const [data, setData] = useState({})
+useEffect(()=>{
+    Axios.get("http://localhost:8080/auth/dev/"+id)
+    .then((response) => {
+        setData(response.data)
+        console.log(response.data);
+    })
+    .catch((error) => {
+        console.log(error)}
+    )
 
-
+},[])
     return (
         <div id='container-page'>
             <Menu />
@@ -61,26 +74,26 @@ export default props => {
                     <div className="perfilDev__userData__inputs">
                         <div className="perfilDev__userData__input">
                             <label htmlFor="username">Username</label>
-                            <input type="text" id="username" value={userData.username} onChange={e => dispatch({ type: 'change_username', username: e.target.value })} aria-tts="username"></input>
+                            <input type="text" id="username" value={data.nome} onChange={e => dispatch({ type: 'change_username', username: e.target.value })} aria-tts="username"></input>
 
                             {editButton ? <img src="/imgs/icons/edit_icon.png" alt="Ícone de edição dos inputs" className="perfilDev__userData__input__editImg" /> : false}
                         </div>
 
                         <div className="perfilDev__userData__input">
                             <label htmlFor="nascimento">{translate("Nascimento")}</label>
-                            <input type="date" id="nascimento" value={userData.dataNascimento} readOnly aria-tts="data de nascimento"></input>
+                            <input type="date" id="nascimento" value={data.dataNasc} readOnly aria-tts="data de nascimento"></input>
                         </div>
 
                         <div className="perfilDev__userData__input">
                             <label htmlFor="email">{translate("Email")}</label>
-                            <input type="email" id="email" value={userData.email} onChange={e => dispatch({ type: 'change_email', email: e.target.value })} aria-tts="email"></input>
+                            <input type="email" id="email" value={data.login} onChange={e => dispatch({ type: 'change_email', email: e.target.value })} aria-tts="email"></input>
 
                             {editButton ? <img src="/imgs/icons/edit_icon.png" alt="Ícone de edição dos inputs" className="perfilDev__userData__input__editImg" /> : false}
                         </div>
 
                         <div className="perfilDev__userData__input">
                             <label htmlFor="senha">{translate("Senha")}</label>
-                            <input type="password" id="senha" value={userData.senha} onChange={e => dispatch({ type: 'change_senha', senha: e.target.value })} aria-tts="senha"></input>
+                            <input type="password" id="senha" value={data.senha} onChange={e => dispatch({ type: 'change_senha', senha: e.target.value })} aria-tts="senha"></input>
 
                             {editButton ? <img src="/imgs/icons/edit_icon.png" alt="Ícone de edição dos inputs" className="perfilDev__userData__input__editImg" /> : false}
                         </div>
@@ -88,7 +101,7 @@ export default props => {
                         <div className="perfilDev__userData__descr">
                             <div className="perfilDev__userData__input">
                                 <label htmlFor="descricao">{translate("Descrição")}</label>
-                                <textarea id="descricao" value={userData.descricao} onChange={e => dispatch({ type: 'change_descricao', descricao: e.target.value })} aria-tts="descrição"></textarea>
+                                <textarea id="descricao" value={data.sobre} onChange={e => dispatch({ type: 'change_descricao', descricao: e.target.value })} aria-tts="descrição"></textarea>
 
                                 {editButton ? <img src="/imgs/icons/edit_icon.png" alt="Ícone de edição dos inputs" className="perfilDev__userData__input__editImg" /> : false}
                             </div>

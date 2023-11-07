@@ -12,6 +12,7 @@ import Vlibras from '../../components/Vlibras/Vlibras';
 import { translate } from '../../translate/translate'
 import TextToSpeech from "../../components/Acessibilidade/TextToSpeech";
 import { useRef } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 
 
@@ -20,6 +21,7 @@ const Entrar = () => {
   const [login, setLogin] = useState(true)
   const [data, setData] = useState({})
   const [msg, setMsg] = useState('')
+  const navigate = useNavigate()
   const cadastrar = () => {
     if (login) {
       if (data.email !== '' && data.password !== '') {
@@ -33,7 +35,7 @@ const Entrar = () => {
       }
     } else {
       if (userType === 'Gamer') {
-        if (data?.password !== '' && data?.email !== '' && data?.nome !== '' && data?.sobrenome !== '' && data?.dataNasc !== '' && data?.confirmaSenha !== '') {
+        if (data?.password !== '' && data?.email !== '' && data?.nome !== '' && data?.sobrenome !== '' && data?.dataNasc !== '' && data?.confirmarSenha !== '') {
           console.log(data);
           if (data?.password === data?.confirmaSenha) {
             Axios.post('http://localhost:8080/auth/cadastro', {
@@ -43,6 +45,7 @@ const Entrar = () => {
               .then((response) => console.log(response))
               .catch((error) => console.log(error))
             setMsg('')
+            navigate("/perfil-user")
           } else {
             setMsg('Senhas diferentes')
           }
@@ -50,19 +53,21 @@ const Entrar = () => {
           setMsg('Preencha todos os campos!')
         }
       } else {
-        if (data?.password !== '' && data?.email !== '' && data?.nomeDev !== '' && data?.dataNasc !== '' && data?.confirmaSenha !== '') {
-          if (data?.password === data?.confirmaSenha) {
-            Axios.post('', {
+        if (data?.password !== '' && data?.login !== '' && data?.nome !== '' && data?.dataNasc !== '' && data?.confirmarSenha !== '') {
+          if (data?.password === data?.confirmarSenha) {
+            Axios.post('http://localhost:8080/auth/cadastro/dev', {
               ...data,
               ROLE: userType === 'Gamer' ? 'CLIENTE' : 'DEV',
             })
               .then((response) => console.log(response))
               .catch((error) => console.log(error))
             setMsg('')
+            navigate("/perfil-dev")
           } else {
             setMsg('Senhas diferentes')
           }
         } else {
+          console.log(data);
           setMsg('Preencha todos os campos!')
         }
       }

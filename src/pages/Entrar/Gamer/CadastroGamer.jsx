@@ -10,7 +10,7 @@ const CadastroGamer = ({ data, setData }) => {
       dataNasc: '',
       password: '',
       email: '',
-      confirmaSenha: '',
+      confirmarSenha: '',
     })
   }, [])
 
@@ -55,7 +55,7 @@ const CadastroGamer = ({ data, setData }) => {
       <input type="date" placeholder='Data de nascimento' onChange={(e) => setData({ ...data, dataNasc: e.target.value })} aria-tts="data de nascimento" />
       <input type="email" placeholder='E-mail' onChange={(e) => setData({ ...data, email: e.target.value })} aria-tts="email" />
       <input type="password" placeholder='Senha' onChange={(e) => setData({ ...data, password: e.target.value })} aria-tts="senha" />
-      <input type="password" placeholder='Confirmar senha' onChange={(e) => setData({ ...data, confirmaSenha: e.target.value })} aria-tts="confirmar senha" />
+      <input type="password" placeholder='Confirmar senha' onChange={(e) => setData({ ...data, confirmarSenha: e.target.value })} aria-tts="confirmar senha" />
     </>
   )
 }

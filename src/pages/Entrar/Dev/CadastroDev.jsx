@@ -5,11 +5,11 @@ import { useEffect } from 'react'
 const CadastroDev = ({ data, setData }) => {
   useEffect(() => {
     setData({
-      nomeDev: '',
+      nome: '',
       dataNasc: '',
       password: '',
-      email: '',
-      confirmaSenha: '',
+      login: '',
+      confirmarSenha: '',
       sobre: '',
     })
   }, [])
@@ -47,11 +47,11 @@ const CadastroDev = ({ data, setData }) => {
   }, [])
   return (
     <>
-      <input type="text" placeholder='Nome do desenvolvedor/Equipe' onChange={(e) => setData({ ...data, nomeDev: e.target.value })} aria-tts="nome" />
+      <input type="text" placeholder='Nome do desenvolvedor/Equipe' onChange={(e) => setData({ ...data, nome: e.target.value })} aria-tts="nome" />
       <input type="date" placeholder='Data de nascimento' onChange={(e) => setData({ ...data, dataNasc: e.target.value })} aria-tts="data de nascimento" />
-      <input type="email" placeholder='E-mail' onChange={(e) => setData({ ...data, email: e.target.value })} aria-tts="email" />
+      <input type="email" placeholder='E-mail' onChange={(e) => setData({ ...data, login: e.target.value })} aria-tts="email" />
       <input type="password" placeholder='Senha' onChange={(e) => setData({ ...data, password: e.target.value })} aria-tts="senha" />
-      <input type="password" placeholder='Confirmar senha' onChange={(e) => setData({ ...data, confirmaSenha: e.target.value })} aria-tts="confirmar senha" />
+      <input type="password" placeholder='Confirmar senha' onChange={(e) => setData({ ...data, confirmarSenha: e.target.value })} aria-tts="confirmar senha" />
       <textarea name="" id="" cols="30" rows="10" placeholder='Sobre você' onChange={(e) => setData({ ...data, sobre: e.target.value })} aria-tts="sobre você"></textarea>
     </>
   )
