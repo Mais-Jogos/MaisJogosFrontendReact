@@ -22,7 +22,7 @@ const Menu = ({changeTheme, theme, cart, coins, userRedux }) => {
   }
   return (
     <div id='full-menu'>
-        <Link to="/" aria-tts="início">
+        <Link to="/" aria-tts="início" aria-label='início'>
           <img src={'/imgs/LogoTextoPositiva.png'} alt="" className='logo'/>
         </Link>
         <label htmlFor="openMenu" id='label__openMenu'>

@@ -73,7 +73,7 @@ export default props => {
                                 </Link>
                                 <Link to={`/cadastro-review/${jogo?.name?.toLowerCase().replace(/ /g, "-")}`} aria-tts={"cadastro review " + jogo?.name?.toLowerCase().replace(/ /g, "-")}
                                     className="meusjogos__jogos__links">
-                                    <img src="/imgs/icons/review_icon.svg" alt="icone de livro para fazer um review do jogo" />
+                                    <img src="/imgs/icons/review_iconw.svg" alt="icone de livro para fazer um review do jogo" />
                                     <p>Cadastro review</p>
                                 </Link>
                             </div>

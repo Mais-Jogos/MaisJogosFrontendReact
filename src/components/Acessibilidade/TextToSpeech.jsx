@@ -78,7 +78,7 @@ export default props => {
         // Pode ligar o leitor de tecla clicando alt + q ou clicando em cima;
         
         <div className="textToSpeech__container" onClick={_ => switchStateIcon()} accessKey="q">
-            <img src={!clickIcon ? "/imgs/icons/textToSpeech_icon-open.svg" : "/imgs/icons/textToSpeech_icon-remove.svg"}></img>
+            <img src={!clickIcon ? "/imgs/icons/textToSpeech_icon-open.svg" : "/imgs/icons/textToSpeech_icon-remove.svg"} alt="icone do leitor de tela"></img>
             <div className="textToSpeech__hover"><p>Leitor de tela</p></div>
             <div></div>
         </div>
