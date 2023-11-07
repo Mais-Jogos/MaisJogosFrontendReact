@@ -5,6 +5,7 @@ import Acessibilidade from '../../components/Acessibilidade/Acessibilidade';
 import "./style.css";
 import { translate } from '../../translate/translate';
 import TextToSpeech from "../../components/Acessibilidade/TextToSpeech";
+import { useNavigate } from 'react-router-dom';
 
 const LoginAdmin = () => {
     const [data, setData] = useState({
@@ -12,9 +13,11 @@ const LoginAdmin = () => {
         email:'',
     })
     const [msg, setMsg] = useState('')
+    const navigate = useNavigate()
     const cadastrar = () =>{
         if(data.email !== '' && data.password !== ''){
             setMsg('')
+            navigate('/gerenciamento-admin')
         }else{
             console.log(data);
             setMsg('Preencha todos os campos!')

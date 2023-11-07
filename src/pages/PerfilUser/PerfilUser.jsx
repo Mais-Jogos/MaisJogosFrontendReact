@@ -185,7 +185,7 @@ const PerfilUser = (props) => {
                         <p>{translate("Lista de desejos")}</p>
                     </Link>
                     <Link className="perfilUser__action" to="/review" aria-tts="review">
-                        <img src="/imgs/icons/review_icon.svg" alt="icone de Livro que redireciona para a página descrita" />
+                        <img src="/imgs/icons/review_iconw.svg" alt="icone de Livro que redireciona para a página descrita" />
                         <p>{translate("Review de jogos")}</p>
                     </Link>
                     <Link className="perfilUser__action" to="/avatares" aria-tts="avatares">

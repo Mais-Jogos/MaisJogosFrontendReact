@@ -11,7 +11,7 @@ const Quiz = ({coins, setCoins}) => {
     const [userAnswer, setUserAnswer] = useState(null)
 
     useEffect(()=>{
-        Axios.get('/src/games/Quiz/questions.json')
+        Axios.get('./json/questions.json')
         .then((response) =>{
             console.log(response.data);
             setAllQuestions(response.data);

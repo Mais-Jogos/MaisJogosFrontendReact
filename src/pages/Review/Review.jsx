@@ -8,9 +8,17 @@ import Vlibras from '../../components/Vlibras/Vlibras';
 import Axios from 'axios'
 import GoBack from "../../components/GoBack/GoBack";
 import TextToSpeech from "../../components/Acessibilidade/TextToSpeech";
+import HeaderWithFilter from "../../components/HeaderWithFiilter/HeaderWithFilter";
 
 export default _ => {
     const [games, setGames] = useState([]);
+    const [menuOption, setMenuOption] = useState(false);
+    const [sort, setSort] = useState("");
+
+    function changeSort(data) {
+        let finalData = data == "des" ? false : true;
+        setSort(finalData);
+    }
 
     // Precisei desse estado pq é preciso esperar a chamada da api para o jquery conseguir indentificar os cards na tela
     const [leitor, setLeitor] = useState(false);
@@ -38,7 +46,7 @@ export default _ => {
 
             <main className="review__main">
                 <GoBack />
-                <ReviewComp name="Review de jogos" />
+                <HeaderWithFilter name="Review de jogos" imgIcon="/imgs/icons/review_icon.svg" sortData={changeSort}/>
 
                 <section className="review__Section">
                     {
