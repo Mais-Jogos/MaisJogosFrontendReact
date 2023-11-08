@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import ModalSearch from '../ModalSearch/ModalSearch';
 import { translate } from '../../translate/translate.js';
+import { useEffect } from 'react';
 
 const Menu = ({changeTheme, theme, cart, coins, userRedux }) => {
   const [openMenu, setOpenMenu] = useState(false);
@@ -14,8 +15,7 @@ const Menu = ({changeTheme, theme, cart, coins, userRedux }) => {
   const [modalSearch, setModalSearch] = useState(false);
   const defaultDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
   const dispatch = useDispatch();
-  const user = true;
-  const admin = true;
+  const type = window.localStorage.getItem("type");
 
   if ((defaultDark && theme === 'light') || (!defaultDark && theme === 'dark')) {
     dispatch(changeTheme());
@@ -33,7 +33,7 @@ const Menu = ({changeTheme, theme, cart, coins, userRedux }) => {
             <Link to="/acessibilidade" aria-label="acessibilidade">{translate("Acessibilidade")}</Link>
             <Link to="/sobre" aria-label="sobre">{translate("Sobre")}</Link>
             <Link to="/faq" aria-label="suporte"> {translate("Suporte")}</Link>
-            {user && <Link to="/joguinhos" aria-label="joguinhos">{translate("Joguinhos")}</Link>}
+            {type === "user" && <Link to="/joguinhos" aria-label="joguinhos">{translate("Joguinhos")}</Link>}
             <Link className='menu__search' aria-label="busca">
               <input 
                 type="text" 
@@ -50,24 +50,34 @@ const Menu = ({changeTheme, theme, cart, coins, userRedux }) => {
               <i className="fa-solid fa-magnifying-glass"></i>
               {modalSearch && search !== '' && <ModalSearch search={search}/>}
             </Link>
-            <Link to="/entrar" aria-label="entrar">{translate("Entrar")}</Link>
-            <Link to="/carrinho" aria-label="carrinho">
+            {type !== "user" || type !== "admin" || type !== "dev" && 
+            <Link to="/entrar" aria-label="entrar">
+              {translate("Entrar")}
+            </Link>}
+
+            {type === "user" && <Link to="/carrinho" aria-label="carrinho">
               {cart.cart.length} 
               <img src={'/imgs/icons/cart.png'} />
-            </Link>
-            <Link to="/avatares" aria-label="avatares">
+            </Link>}
+            {type === "user" && <Link to="/avatares" aria-label="avatares">
               {coins.coins}
               <img src={'/imgs/icons/Kapicoin_icon.png'} />
-            </Link>
+            </Link>}
             <Link onClick={changeTheme} aria-label="tema">
               {theme === 'dark' ? 
               <i className="fa-solid fa-moon"></i>
               :
               <i className="fa-solid fa-sun"></i>}
             </Link>
-            <Link to="/perfil-user" aria-label="perfil">
+            {type === "user" && <Link to="/perfil-user" aria-label="perfil usuário">
               <img src={`/imgs/animais/${userRedux.avatar.id}-face.png`} className='perfil-menu' style={{backgroundColor:userRedux.colorCard}}/>
-            </Link>
+            </Link>}
+            {type === "admin" && <Link to="/gerenciamento-admin" aria-label="perfil admin">
+              <img src={`/imgs/animais/2-face.png`} className='perfil-menu' style={{backgroundColor:'var(purple)'}}/>
+            </Link>}
+            {type === "dev" && <Link to="/perfil-dev" aria-label="perfil desenvolvedor">
+              <img src={`/imgs/animais/1-face.png`} className='perfil-menu' style={{backgroundColor:'var(purple)'}}/>
+            </Link>}
         </div>
     </div>
   )

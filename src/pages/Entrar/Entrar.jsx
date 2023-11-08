@@ -45,6 +45,7 @@ const Entrar = () => {
               .then((response) => console.log(response))
               .catch((error) => console.log(error))
             setMsg('')
+            window.localStorage.setItem("type", "user")
             navigate("/perfil-user")
           } else {
             setMsg('Senhas diferentes')
@@ -62,6 +63,7 @@ const Entrar = () => {
               .then((response) => console.log(response))
               .catch((error) => console.log(error))
             setMsg('')
+            window.localStorage.setItem("type", "dev")
             navigate("/perfil-dev")
           } else {
             setMsg('Senhas diferentes')

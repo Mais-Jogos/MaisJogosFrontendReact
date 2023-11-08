@@ -13,11 +13,44 @@ import TextToSpeech from "../../components/Acessibilidade/TextToSpeech";
 
 const Carrinho = ({ cart }) => {
   const [total, setTotal] = useState(0)
+  const [selectedGames, setSelectedGames] = useState(cart.cart)
   const navigate = useNavigate()
   useEffect(() => {
-    setTotal(cart?.cart.map(game => game?.rating).reduce((prev, curr) => prev + curr, 0))
-    console.log(cart?.cart);
+    setSelectedGames(cart.cart.map((game) => {
+      if(selectedGames === cart.cart){
+        return {
+          ...game,
+          selected: true,
+        }
+      }else{
+        const oldGame = selectedGames.filter(g => g.id === game.id)
+        if(oldGame.selected === false){
+          return oldGame
+        }
+      }
+    }))
+    setTotal(selectedGames.map(game => game?.rating).reduce((prev, curr) => prev + curr, 0))
+
   }, [cart.cart])
+
+  const onChangeSelected = (game, selected) =>{
+    const newGames = selectedGames.map(mapGames => {
+      if(mapGames === game){
+        return{
+          ...mapGames,
+          selected: selected,
+        }
+      }
+      return mapGames;
+    })
+    setSelectedGames(newGames)
+    console.log(newGames);
+  }
+  const deleteGames = (game) =>{
+    const deleteGame = selectedGames.filter(mapGames => mapGames === game)
+    setSelectedGames(deleteGame)
+    console.log(deleteGame);
+  }
   return (
     <div id='container-page'>
       <Menu />
@@ -32,7 +65,7 @@ const Carrinho = ({ cart }) => {
         </div>
         <div className="cart__games">
           {cart?.cart.map((game, index) => (
-            <CardCart games={cart.cart} game={index} key={game?.id} />
+            <CardCart game={game} key={game?.id}/>
           ))}
           {cart?.cart.length === 0 && <p style={{ height: '150px' }}></p>}
         </div>
