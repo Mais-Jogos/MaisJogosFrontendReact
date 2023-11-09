@@ -1,0 +1,107 @@
+[
+    {
+        "correct_answer": "Super Mario Bros.",
+        "incorrect_answers": ["The Legend of Zelda", "Metroid", "Donkey Kong"],
+        "question": "Qual jogo é considerado o precursor dos jogos de plataforma side-scrolling?"
+    },
+    {
+        "correct_answer": "Pikachu",
+        "incorrect_answers": ["Charizard", "Bulbasaur", "Squirtle"],
+        "question": "Qual é o Pokémon inicial elétrico da região de Kanto?"
+    },
+    {
+        "correct_answer": "Minecraft",
+        "incorrect_answers": ["Terraria", "Roblox", "Fortnite"],
+        "question": "Qual jogo sandbox permite aos jogadores construir e explorar mundos feitos de blocos?"
+    },
+    {
+        "correct_answer": "Counter-Strike: Global Offensive",
+        "incorrect_answers": ["Valorant", "Rainbow Six Siege", "Overwatch"],
+        "question": "Qual jogo de tiro em primeira pessoa é conhecido por seu modo competitivo e esports ativos?"
+    },
+    {
+        "correct_answer": "The Witcher 3: Wild Hunt",
+        "incorrect_answers": ["Dragon Age: Inquisition", "Skyrim", "Dark Souls III"],
+        "question": "Qual jogo de RPG de mundo aberto apresenta o personagem Geralt de Rivia como protagonista?"
+    },
+    {
+        "correct_answer": "League of Legends",
+        "incorrect_answers": ["Dota 2", "Heroes of the Storm", "Smite"],
+        "question": "Qual é o nome do popular jogo de batalha de arena online conhecido por suas partidas de equipes?"
+    },
+    {
+        "correct_answer": "Final Fantasy VII",
+        "incorrect_answers": ["Chrono Trigger", "Persona 5", "The Legend of Dragoon"],
+        "question": "Qual jogo de RPG japonês é conhecido por seu protagonista Cloud Strife e o vilão Sephiroth?"
+    },
+    {
+        "correct_answer": "Grand Theft Auto V",
+        "incorrect_answers": ["Red Dead Redemption 2", "Saints Row IV", "Watch Dogs 2"],
+        "question": "Qual é o quinto jogo da popular série de mundo aberto que se passa na fictícia Los Santos?"
+    },
+    {
+        "correct_answer": "Mortal Kombat",
+        "incorrect_answers": ["Street Fighter", "Tekken", "Super Smash Bros."],
+        "question": "Qual é o nome da famosa série de jogos de luta conhecida por seus fatalities?"
+    },
+    {
+        "correct_answer": "Half-Life 2",
+        "incorrect_answers": ["Doom (2016)", "Bioshock Infinite", "Portal 2"],
+        "question": "Qual jogo de tiro em primeira pessoa foi lançado em 2004 e apresenta o protagonista Gordon Freeman?"
+    },
+    {
+        "correct_answer": "The Legend of Zelda: Ocarina of Time",
+        "incorrect_answers": ["Super Mario 64", "Final Fantasy IX", "GoldenEye 007"],
+        "question": "Qual é o nome do jogo de aventura em mundo aberto onde Link viaja no tempo para salvar Hyrule?"
+    },
+    {
+        "correct_answer": "Pokémon Red and Blue",
+        "incorrect_answers": ["Pokémon Gold and Silver", "Pokémon Ruby and Sapphire", "Pokémon Black and White"],
+        "question": "Quais são os dois jogos originais de Pokémon lançados para o Game Boy?"
+    },
+    {
+        "correct_answer": "Resident Evil 4",
+        "incorrect_answers": ["Silent Hill 2", "Dead Space", "The Evil Within"],
+        "question": "Qual jogo de survival horror é conhecido por sua jogabilidade em terceira pessoa e Leon S. Kennedy como protagonista?"
+    },
+    {
+        "correct_answer": "Super Smash Bros. Melee",
+        "incorrect_answers": ["Super Smash Bros. Brawl", "Super Smash Bros. for Wii U", "Super Smash Bros. Ultimate"],
+        "question": "Qual é o segundo jogo da série Super Smash Bros. lançado para o GameCube?"
+    },
+    {
+        "correct_answer": "Halo: Combat Evolved",
+        "incorrect_answers": ["Call of Duty 4: Modern Warfare", "Destiny", "Titanfall"],
+        "question": "Qual jogo de tiro em primeira pessoa foi lançado em 2001 e introduziu o Master Chief?"
+    },
+    {
+        "correct_answer": "World of Warcraft",
+        "incorrect_answers": ["Final Fantasy XIV", "Guild Wars 2", "The Elder Scrolls Online"],
+        "question": "Qual é o nome do popular MMORPG desenvolvido pela Blizzard Entertainment?"
+    },
+    {
+        "correct_answer": "Undertale",
+        "incorrect_answers": ["Hollow Knight", "Celeste", "Stardew Valley"],
+        "question": "Qual é o nome do RPG indie em que os jogadores podem escolher lutar ou mostrar misericórdia aos inimigos?"
+    },
+    {
+        "correct_answer": "Fallout 4",
+        "incorrect_answers": ["Skyrim", "The Witcher 3: Wild Hunt", "Mass Effect 2"],
+        "question": "Qual é o nome do jogo pós-apocalíptico da Bethesda onde os jogadores exploram a região de Commonwealth?"
+    },
+    {
+        "correct_answer": "Overwatch",
+        "incorrect_answers": ["Paladins", "Team Fortress 2", "Apex Legends"],
+        "question": "Qual é o nome do jogo de tiro em primeira pessoa desenvolvido pela Blizzard Entertainment com uma variedade de heróis jogáveis?"
+    },
+    {
+        "correct_answer": "Portal",
+        "incorrect_answers": ["Bioshock", "The Talos Principle", "The Witness"],
+        "question": "Qual é o nome do jogo de quebra-cabeça em primeira pessoa onde os jogadores usam uma arma de portal para resolver desafios?"
+    },
+    {
+        "correct_answer": "Red Dead Redemption",
+        "incorrect_answers": ["GTA: San Andreas", "L.A. Noire", "Bully"],
+        "question": "Qual é o nome do jogo de ação e aventura ambientado no Velho Oeste, desenvolvido pela Rockstar Games?"
+    }
+]

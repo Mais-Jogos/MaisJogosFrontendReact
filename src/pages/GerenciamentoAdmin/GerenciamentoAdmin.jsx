@@ -29,6 +29,7 @@ const GerenciamentoAdmin = () => {
                     <li onClick={() => setPage("users")}>{translate("Users")}</li>
                     <li onClick={() => setPage("pagamentos")}>{translate("Pagamentos")}</li>
                     <li onClick={() => navigate("/relatorios-admin")}>{translate("Relatórios")}</li>
+                    <li onClick={() => navigate("/avatares")}>{translate("Avatares")}</li>
                 </ul>
             </aside>
             <section>

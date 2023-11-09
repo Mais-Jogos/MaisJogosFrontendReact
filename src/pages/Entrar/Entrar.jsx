@@ -13,6 +13,7 @@ import { translate } from '../../translate/translate'
 import TextToSpeech from "../../components/Acessibilidade/TextToSpeech";
 import { useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
+import Modal from '../../components/Modal/Modal'
 
 
 
@@ -21,6 +22,7 @@ const Entrar = () => {
   const [login, setLogin] = useState(true)
   const [data, setData] = useState({})
   const [msg, setMsg] = useState('')
+  const [modal, setModal] = useState(null)
   const navigate = useNavigate()
   const cadastrar = () => {
     if (login) {
@@ -42,11 +44,23 @@ const Entrar = () => {
               ...data,
               ROLE: userType === 'Gamer' ? 'CLIENTE' : 'DEV',
             })
-              .then((response) => console.log(response))
-              .catch((error) => console.log(error))
-            setMsg('')
-            window.localStorage.setItem("type", "user")
-            navigate("/perfil-user")
+            .then((response) => {
+              console.log(response)
+              setMsg('')
+              window.localStorage.setItem("type", "user")
+              window.localStorage.setItem("id", response.data.id)
+              setModal(<Modal message={"Você foi cadastrado!"} type={true}/>)
+              setTimeout(() =>{
+                navigate("/perfil-user")
+              }, 3000)
+            })
+            .catch((error) => { 
+                console.log(error)
+                setModal(<Modal message={"Você não foi cadastrado!"} type={false}/>)
+                setTimeout(() =>{
+                  setModal(null)
+                }, 3000)
+            })
           } else {
             setMsg('Senhas diferentes')
           }
@@ -60,11 +74,23 @@ const Entrar = () => {
               ...data,
               ROLE: userType === 'Gamer' ? 'CLIENTE' : 'DEV',
             })
-              .then((response) => console.log(response))
-              .catch((error) => console.log(error))
-            setMsg('')
-            window.localStorage.setItem("type", "dev")
-            navigate("/perfil-dev")
+              .then((response) => {
+                console.log(response)
+                setMsg('')
+                window.localStorage.setItem("type", "dev")
+                window.localStorage.setItem("id", response.data.id)
+                setModal(<Modal message={"Você foi cadastrado!"} type={true}/>)
+                setTimeout(() =>{
+                  navigate("/perfil-dev")
+                }, 3000)
+              })
+              .catch((error) =>{ 
+                console.log(error)
+                setModal(<Modal message={"Você não foi cadastrado!"} type={false}/>)
+                setTimeout(() =>{
+                  setModal(null)
+                }, 3000)
+              })
           } else {
             setMsg('Senhas diferentes')
           }
@@ -130,6 +156,7 @@ const Entrar = () => {
       <Menu />
       <Vlibras />
       <Acessibilidade />
+      {modal}
 
       {/* Leitor de tela */}
       <div className="textToSpeech__container" onClick={_ => switchStateIcon()} accessKey="q">

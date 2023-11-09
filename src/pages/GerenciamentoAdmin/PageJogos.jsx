@@ -193,63 +193,65 @@ const PageJogos = () => {
           </AnimatePresence>
         </div>
       </div>
-      {games?.filter(jogo => {
-        var plataformasSelecionadas;
-        var categoriasSelecionadas;
-        var notasSelecionadas;
-        var filtroBuscar;
-        if (filter.platform !== "Todos") {
-          plataformasSelecionadas = jogo.platforms.some(platforma => filter.platform.includes(platforma.platform.name));
-        } else {
-          plataformasSelecionadas = jogo;
-        }
-        if (filter.category !== "Todos") {
-          categoriasSelecionadas = jogo.genres.some(categoria => filter.category.includes(categoria.name));
-        } else {
-          categoriasSelecionadas = jogo;
-        }
-        if (filter.rating !== 0) {
-          notasSelecionadas = jogo.rating >= filter.rating;
-        } else {
-          notasSelecionadas = jogo;
-        }
-        if (search !== "") {
-          filtroBuscar = jogo?.name.toLowerCase().includes(search.toLowerCase()) ||
-            jogo?.genres?.some(genero => genero.name.toLowerCase().includes(search.toLowerCase())) ||
-            jogo?.platform?.some(genero => genero.name.toLowerCase().includes(search.toLowerCase()))
-          console.log("Search", search);
-          console.log("filtro", filtroBuscar);
-        } else {
-          filtroBuscar = jogo;
-        }
+      <div className="admin-games">
+        {games?.filter(jogo => {
+          var plataformasSelecionadas;
+          var categoriasSelecionadas;
+          var notasSelecionadas;
+          var filtroBuscar;
+          if (filter.platform !== "Todos") {
+            plataformasSelecionadas = jogo.platforms.some(platforma => filter.platform.includes(platforma.platform.name));
+          } else {
+            plataformasSelecionadas = jogo;
+          }
+          if (filter.category !== "Todos") {
+            categoriasSelecionadas = jogo.genres.some(categoria => filter.category.includes(categoria.name));
+          } else {
+            categoriasSelecionadas = jogo;
+          }
+          if (filter.rating !== 0) {
+            notasSelecionadas = jogo.rating >= filter.rating;
+          } else {
+            notasSelecionadas = jogo;
+          }
+          if (search !== "") {
+            filtroBuscar = jogo?.name.toLowerCase().includes(search.toLowerCase()) ||
+              jogo?.genres?.some(genero => genero.name.toLowerCase().includes(search.toLowerCase())) ||
+              jogo?.platform?.some(genero => genero.name.toLowerCase().includes(search.toLowerCase()))
+            console.log("Search", search);
+            console.log("filtro", filtroBuscar);
+          } else {
+            filtroBuscar = jogo;
+          }
 
-        return plataformasSelecionadas && categoriasSelecionadas && notasSelecionadas && filtroBuscar;
-      })?.map((game, index) => {
-        return (
-          <div className="admin__jogo">
-            <div className="admin__jogo-title">
-              <h2>{game?.name}</h2>
-              <div className="admin__jogo-btns">
-                <button className="admin__jogo-view" onClick={() => navigate(`/jogos/${game?.name?.toLowerCase().replace(/ /g,"-")}`)}>
-                  <i class="fa-solid fa-eye"></i>
-                </button>
+          return plataformasSelecionadas && categoriasSelecionadas && notasSelecionadas && filtroBuscar;
+        })?.map((game, index) => {
+          return (
+            <div className="admin__jogo">
+              <div className="admin__jogo-title">
+                <h2>{game?.name}</h2>
+                <div className="admin__jogo-btns">
+                  <button className="admin__jogo-view" onClick={() => navigate(`/jogos/${game?.name?.toLowerCase().replace(/ /g,"-")}`)}>
+                    <i class="fa-solid fa-eye"></i>
+                  </button>
+                </div>
               </div>
-            </div>
-            <h3>R${game?.rating}</h3>
-            <div className='admin__jogo-detalhes'>
-              <div className="admin__jogo-genres">
-                {game?.genres.map((genres) =>
-                  <p key={genres?.id}>{genres?.name}</p>
-                )}
+              <h3>R${game?.rating}</h3>
+              <div className='admin__jogo-detalhes'>
+                <div className="admin__jogo-genres">
+                  {game?.genres.map((genres) =>
+                    <p key={genres?.id}>{genres?.name}</p>
+                  )}
+                </div>
+                <div className="admin__jogo-platforms">
+                  {game?.parent_platforms.map(plataform => (
+                    <i className={choosePlataform(plataform.platform?.name)}></i>
+                  ))}
+                </div>
               </div>
-              <div className="admin__jogo-platforms">
-                {game?.parent_platforms.map(plataform => (
-                  <i className={choosePlataform(plataform.platform?.name)}></i>
-                ))}
-              </div>
-            </div>
-          </div>)
-      })}
+            </div>)
+        })}
+      </div>
     </>
   )
 }

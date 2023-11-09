@@ -1,8 +1,8 @@
 import "./style.css"
-import React, { useReducer, useRef, useState } from "react";
+import React, { useEffect, useReducer, useRef, useState } from "react";
 import Menu from '../../components/Menu/Menu'
 import Acessibilidade from '../../components/Acessibilidade/Acessibilidade'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Vlibras from '../../components/Vlibras/Vlibras'
 import { motion } from "framer-motion";
 import { useDispatch } from "react-redux";
@@ -10,6 +10,7 @@ import { connect } from "react-redux";
 import GoBack from "../../components/GoBack/GoBack";
 import { translate } from "../../translate/translate";
 import TextToSpeech from "../../components/Acessibilidade/TextToSpeech";
+import Axios from "axios";
 
 
 export function reducerUserData(state, action) {
@@ -32,6 +33,7 @@ export function reducerUserData(state, action) {
 
 const PerfilUser = (props) => {
     const {userRedux, coins} = props;
+    const navigate = useNavigate()
     const newDispatch = useDispatch();
     const [userData, dispatch] = useReducer(reducerUserData, {
         username: "",
@@ -40,7 +42,7 @@ const PerfilUser = (props) => {
         senha: "",
         colorCard: userRedux.colorCard
     });
-
+    const [data, setData] = useState({})
     const [editButton, setEditButton] = useState(false);
 
     const [glowStyles, setGlowStyles] = useState({
@@ -74,6 +76,19 @@ const PerfilUser = (props) => {
             transform: 'scale3d(1.07, 1.07, 1.07)',
         });
     }
+    useEffect(() =>{
+        const type = window.localStorage.getItem("type")
+        const id = window.localStorage.getItem("id")
+        if (type !== "user") {
+            navigate("/entrar")
+        }
+        Axios.get(`http://localhost:8080/auth/${id}`)
+        .then((response) => {
+            console.log(response.data);
+            setData(response.data)
+        })
+        .catch((error) => console.log(error))
+    }, [])
 
     return (
         <div id='container-page'>
@@ -126,9 +141,10 @@ const PerfilUser = (props) => {
                         <div className="perfilUser__userData__input">
                             <label htmlFor="username">Username</label>
                             <input type="text" id="username" 
-                            value={userData.username} 
-                            onChange={e => dispatch({ type: 'change_username', username: e.target.value })} 
+                            value={data?.nome} 
+                            onChange={e => setData({ ...data, nome: e.target.value })} 
                             aria-label="username"
+                            readOnly={!editButton}
                             ></input>
 
                             {editButton ? <img src="/imgs/icons/edit_icon.png" alt="icons da moeda da loja" className="perfilUser__userData__input__editImg" /> : false}
@@ -137,7 +153,7 @@ const PerfilUser = (props) => {
                         <div className="perfilUser__userData__input">
                             <label htmlFor="nascimento">{translate("Nascimento")}</label>
                             <input type="date" id="nascimento" 
-                            value={userData.dataNascimento} readOnly aria-label="data de nascimento"
+                            value={data?.dataNasc} readOnly aria-label="data de nascimento"
                             >
                             </input>
                         </div>
@@ -145,9 +161,10 @@ const PerfilUser = (props) => {
                         <div className="perfilUser__userData__input">
                             <label htmlFor="email">{translate("Email")}</label>
                             <input type="email" id="email" 
-                            value={userData.email} 
-                            onChange={e => dispatch({ type: 'change_email', email: e.target.value })}
+                            value={data?.login} 
+                            onChange={e => setData({ ...data, login: e.target.value })}
                             aria-label="email"
+                            readOnly={!editButton}
                             ></input>
 
                             {editButton ? <img src="/imgs/icons/edit_icon.png" alt="icons da moeda da loja" className="perfilUser__userData__input__editImg" /> : false}
@@ -156,9 +173,10 @@ const PerfilUser = (props) => {
                         <div className="perfilUser__userData__input">
                             <label htmlFor="senha">{translate("Senha")}</label>
                             <input type="password" id="senha" 
-                            value={userData.senha} 
-                            onChange={e => dispatch({ type: 'change_senha', senha: e.target.value })}
+                            value={data?.password} 
+                            onChange={e => setData({ ...data, password: e.target.value })}
                             aria-label="senha"
+                            readOnly={!editButton}
                             ></input>
 
                             {editButton ? <img src="/imgs/icons/edit_icon.png" alt="icons da moeda da loja" className="perfilUser__userData__input__editImg" /> : false}

@@ -28,9 +28,10 @@
 }
 .gerenciamento-admin section{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
     gap: 20px;
+    align-items: flex-start;
 }
 .gerenciamento-admin section h1{
     margin: 20px 0px 0px 0px;
@@ -203,6 +204,13 @@
 }
 .jogos-admin__buscar .jogos-admin__input-search i:not(.fa-magnifying-glass){
     cursor: pointer;
+}
+.admin-devs, .admin-games, .admin-users{
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    width: 100%;
+    align-items: flex-start;
 }
 
 @media screen and (max-width:950px) {
