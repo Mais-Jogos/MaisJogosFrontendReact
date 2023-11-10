@@ -4,6 +4,7 @@ import Menu from "../../components/Menu/Menu";
 import Vlibras from "../../components/Vlibras/Vlibras";
 import GoBack from "../../components/GoBack/GoBack";
 import TextToSpeech from "../../components/Acessibilidade/TextToSpeech";
+import "./style.css"
 
 const CadastroSkin = () => {
   return (
@@ -17,6 +18,13 @@ const CadastroSkin = () => {
             <div className="cadastro__skin-title" onClick={() => navigate("/cadastro-skin")}>
                 <h1>Cadastrar mais Skins</h1>
                 <i class="fa-solid fa-plus"></i>
+            </div>
+            <div className="cadastro__skin-form">
+                <label htmlFor="nome-skin">Nome da Skin</label>
+                <input type="text" id='nome-skin'/>
+                <label htmlFor="img-skin">Upload da Skin:</label>
+                <input type="image" src="" alt="img-skin" id='img-skin'/>
+                <label htmlFor="valor-skin">Valor da Skin:</label>
             </div>
         </main>
     </div>
