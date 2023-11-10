@@ -11,11 +11,13 @@
   },
   "dependencies": {
     "@djpfs/react-vlibras": "^2.0.2",
+    "@hotjar/browser": "^1.0.9",
     "axios": "^1.4.0",
     "framer-motion": "^10.16.4",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-hotjar": "^6.1.0",
     "react-paginate": "^8.2.0",
     "react-redux": "^8.1.2",
     "react-router-dom": "^6.15.0",

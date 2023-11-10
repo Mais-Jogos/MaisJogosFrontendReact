@@ -8,9 +8,11 @@ import { translate } from "../../translate/translate";
 import { connect } from "react-redux";
 import GoBack from "../../components/GoBack/GoBack";
 import TextToSpeech from "../../components/Acessibilidade/TextToSpeech";
+import { useNavigate } from "react-router-dom";
 
 
 const Avatares = ({userRedux}) => {
+    const navigate = useNavigate()
     
     const avatares = [
         {
@@ -61,6 +63,10 @@ const Avatares = ({userRedux}) => {
                 <div className="avatares__letraPixel">
                     <h1 className="titulo"> <img id="avatares_capivaraICON" src="\imgs\icons\capivara_icon.svg"/>{translate("Meus Avatares")}</h1>
                 </div>
+                <div className="avatares__admin-cad" onClick={() => navigate("/cadastro-skin")}>
+                    <p>Cadastrar mais Skins</p>
+                    <i class="fa-solid fa-plus"></i>
+                </div>
 
                 <section className="avatares__grid">
                     
@@ -81,7 +87,10 @@ const Avatares = ({userRedux}) => {
                     }
 
                 </section>
-
+                <div className="avatares__admin-exc">
+                    <p>Excluir Skins</p>
+                    <i class="fa-regular fa-trash-can"></i>
+                </div>
             </main>
 
         </div>

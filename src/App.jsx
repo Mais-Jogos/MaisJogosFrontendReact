@@ -31,10 +31,16 @@ import PubDev from "./pages/PubDev/PubDev";
 import Alert from "./components/Alert/Alert";
 import Footer from "./components/Footer/Footer";
 import { AnimatePresence } from "framer-motion";
-import Vlibras from "./components/Vlibras/Vlibras";
-import Acessibilidade from "./components/Acessibilidade/Acessibilidade";
+import CadastroSkin from "./pages/CadastroSkin/CadastroSkin";
+import Hotjar from '@hotjar/browser';
+
+
 
 function App({theme}) {
+  /* const siteId = 3730857;
+  const hotjarVersion = 6;
+
+  Hotjar.init(siteId, hotjarVersion); */
   return (
     <div data-theme={theme} id="app">
       <BrowserRouter>
@@ -64,6 +70,7 @@ function App({theme}) {
           <Route path='/cadastro-review/:name' element={<CadastroReview/>}/>
           <Route path='/sobre' element={<Sobre/>}/>
           <Route path='/dev' element={<PubDev/>}/>
+          <Route path='/cadastro-skin' element={<CadastroSkin/>}/>
         </Routes>
       </BrowserRouter>
       <Footer/>
