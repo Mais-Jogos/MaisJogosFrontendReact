@@ -1,0 +1,19 @@
+.cadastro__skin .cadastro__skin-title{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 90%;
+    gap: 10px;
+    margin: 0 auto;
+    cursor: pointer;
+}
+.cadastro__skin .cadastro__skin-title h1{
+    color: var(--color-primary);
+    font-family: var(--font-pixel);
+}
+.cadastro__skin .cadastro__skin-title i{
+    padding: 10px;
+    color: var(--purple-y);
+    border: 1px solid var(--purple-y);
+    border-radius: 50%;
+}

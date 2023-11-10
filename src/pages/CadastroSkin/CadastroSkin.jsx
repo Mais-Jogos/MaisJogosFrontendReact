@@ -1,4 +1,9 @@
 import React from 'react'
+import Acessibilidade from "../../components/Acessibilidade/Acessibilidade";
+import Menu from "../../components/Menu/Menu";
+import Vlibras from "../../components/Vlibras/Vlibras";
+import GoBack from "../../components/GoBack/GoBack";
+import TextToSpeech from "../../components/Acessibilidade/TextToSpeech";
 
 const CadastroSkin = () => {
   return (
@@ -8,8 +13,9 @@ const CadastroSkin = () => {
         <Acessibilidade />
         <TextToSpeech />
         <main className="cadastro__skin">
-            <div className="avatares__admin-cad" onClick={() => navigate("/cadastro-skin")}>
-                <p>Cadastrar mais Skins</p>
+            <GoBack/>
+            <div className="cadastro__skin-title" onClick={() => navigate("/cadastro-skin")}>
+                <h1>Cadastrar mais Skins</h1>
                 <i class="fa-solid fa-plus"></i>
             </div>
         </main>

@@ -32,7 +32,6 @@ import Alert from "./components/Alert/Alert";
 import Footer from "./components/Footer/Footer";
 import { AnimatePresence } from "framer-motion";
 import CadastroSkin from "./pages/CadastroSkin/CadastroSkin";
-import ReactHotjar from "react-hotjar"
 import Hotjar from '@hotjar/browser';
 
 
@@ -46,7 +45,6 @@ function App({theme}) {
     <div data-theme={theme} id="app">
       <BrowserRouter>
         <Routes>
-          <ReactHotjar id={3730857} snippetVersion={6}/>
           <Route exact path='/' element={<Home/>}/>
           <Route path='/carrinho' element={<Carrinho/>}/>
           <Route exact path='/Joguinhos' element={<Joguinhos/>}/>
