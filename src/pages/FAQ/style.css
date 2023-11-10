@@ -22,7 +22,7 @@
   margin: 4%;
 }
 
-h1{
+.container-tittle h1{
   font-family: var(--font-pixel);
   color: var(--color-primary);
   margin: 2%;

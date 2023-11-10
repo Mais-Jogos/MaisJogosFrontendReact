@@ -11,6 +11,11 @@
     color: var(--color-primary);
     text-align: center;
     padding: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 0px;
 }
 
 .avatares__grid{
@@ -22,4 +27,42 @@
     margin: 0 20%;
     gap: 35px;
     margin-bottom: 35px;
+}
+.avatares__admin-cad{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 90%;
+    gap: 10px;
+    margin: 0 auto;
+    cursor: pointer;
+}
+.avatares__admin-cad p{
+    color: var(--color-primary);
+    font-family: var(--font-normal);
+}
+.avatares__admin-cad i{
+    padding: 10px;
+    color: var(--purple-y);
+    border: 1px solid var(--purple-y);
+    border-radius: 50%;
+}
+.avatares__admin-exc{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 90%;
+    gap: 10px;
+    margin: 0 auto;
+    cursor: pointer;
+}
+.avatares__admin-exc p{
+    color: var(--color-primary);
+    font-family: var(--font-normal);
+}
+.avatares__admin-exc i{
+    padding: 10px;
+    color: var(--purple-y);
+    border: 1px solid var(--purple-y);
+    border-radius: 50%;
 }

@@ -31,14 +31,22 @@ import PubDev from "./pages/PubDev/PubDev";
 import Alert from "./components/Alert/Alert";
 import Footer from "./components/Footer/Footer";
 import { AnimatePresence } from "framer-motion";
-import Vlibras from "./components/Vlibras/Vlibras";
-import Acessibilidade from "./components/Acessibilidade/Acessibilidade";
+import CadastroSkin from "./pages/CadastroSkin/CadastroSkin";
+import ReactHotjar from "react-hotjar"
+import Hotjar from '@hotjar/browser';
+
+
 
 function App({theme}) {
+  const siteId = 3730857;
+  const hotjarVersion = 6;
+
+  Hotjar.init(siteId, hotjarVersion);
   return (
     <div data-theme={theme} id="app">
       <BrowserRouter>
         <Routes>
+          <ReactHotjar id={3730857} snippetVersion={6}/>
           <Route exact path='/' element={<Home/>}/>
           <Route path='/carrinho' element={<Carrinho/>}/>
           <Route exact path='/Joguinhos' element={<Joguinhos/>}/>
@@ -64,6 +72,7 @@ function App({theme}) {
           <Route path='/cadastro-review/:name' element={<CadastroReview/>}/>
           <Route path='/sobre' element={<Sobre/>}/>
           <Route path='/dev' element={<PubDev/>}/>
+          <Route path='/cadastro-skin' element={<CadastroSkin/>}/>
         </Routes>
       </BrowserRouter>
       <Footer/>
