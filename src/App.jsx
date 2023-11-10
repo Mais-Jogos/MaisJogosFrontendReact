@@ -1,4 +1,5 @@
 /* eslint-disable react-refresh/only-export-components */
+import React, {useEffect} from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux'; 
@@ -32,17 +33,32 @@ import Alert from "./components/Alert/Alert";
 import Footer from "./components/Footer/Footer";
 import { AnimatePresence } from "framer-motion";
 import CadastroSkin from "./pages/CadastroSkin/CadastroSkin";
-import Hotjar from '@hotjar/browser';
-
-
+import { Helmet } from 'react-helmet';
 
 function App({theme}) {
-  /* const siteId = 3730857;
-  const hotjarVersion = 6;
+  const location = window.location.pathname;
 
-  Hotjar.init(siteId, hotjarVersion); */
+  useEffect(() => {
+    if (window.hj) {
+      window.hj('stateChange', window.location.pathname + window.location.search);
+    }
+  }, [location]);
   return (
     <div data-theme={theme} id="app">
+      <Helmet>
+        <script>
+          {`
+            (function(h,o,t,j,a,r){
+              h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+              h._hjSettings={hjid:3730857,hjsv:6};
+              a=o.getElementsByTagName('head')[0];
+              r=o.createElement('script');r.async=1;
+              r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+              a.appendChild(r);
+            })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+          `}
+        </script>
+      </Helmet>
       <BrowserRouter>
         <Routes>
           <Route exact path='/' element={<Home/>}/>

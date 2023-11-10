@@ -23,10 +23,11 @@ const CadastroSkin = () => {
                 <label htmlFor="nome-skin">Nome da Skin</label>
                 <input type="text" id='nome-skin'/>
                 <label htmlFor="img-skin">Upload da Skin:</label>
-                <input type="image" id='img-skin'/>
+                <input type="file" id='img-skin'/>
                 <label htmlFor="valor-skin">Valor da Skin:</label>
-                <div >
-                  <input type="number" name="" id="" />
+                <div className='cadastro__skin-valor-skin'>
+                  <img src={'/imgs/icons/Kapicoin_icon.png'} />
+                  <input type="number" name="" id="valor-skin" min="0.00" max="10000.00" step="0.01"/>
                 </div>
             </div>
         </main>
