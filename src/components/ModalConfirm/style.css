@@ -1,0 +1,95 @@
+.background-modal__confirm {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.438);
+  position: fixed;
+  width: 100vw;
+  top: 0;
+  left: 0;
+}
+.modal__confirm-border{
+    border:2px solid var(--black);
+    border-radius:5px;
+    background-color: var(--grey-dark);
+    padding:7px;
+    box-shadow: 2px 2px 0px 0px rgba(56, 56, 56, 0.75) inset,
+    0px 0px 12px rgb(255 255 255 / 26%);
+    transition: 0.5s all;
+    z-index: 1000;
+    position: absolute;
+    animation: showModal cubic-bezier(0.65, 0, 0.09, 0.96) 1.5s;
+}
+.modal__confirm{
+    background-color: var(--color-secondary);
+    border:2px solid var(--black);
+    border-radius:5px;
+    padding:20px;
+    height: 95%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.modal__confirm i{
+    font-size: 4rem;
+    color: var(--purple);
+    animation: showModal cubic-bezier(0.65, 0, 0.09, 0.96) 2s;
+}
+.modal__confirm h3{
+    font-family: var(--font-pixel);
+    color: var(--color-primary);
+    max-width: 30vw;
+    width: fit-content;
+    text-align: center;
+}
+.modal__confirm-btns{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.modal__confirm-btns .true-btn{
+  font-family: var(--font-pixel);
+  text-align: center;
+  color: var(--white);
+  background-color: var(--purple);
+  box-shadow: 2px 2px 0px #932eff inset,
+  -2px -2px 0px #44008d inset;
+  border: none;
+  border-radius: 10px;
+  padding: 7px 30px;
+  cursor: pointer;
+  transition: 0.7s all;
+}
+.modal__confirm-btns .true-btn:hover{
+  background-color: var(--dark-purple);
+}
+.modal__confirm-btns .false-btn{
+  color: var(--color-secondary);
+  background-color: var(--color-primary);
+  box-shadow: 2px 2px 0px #d8d8d8 inset,
+  -2px -2px 0px #686868 inset;
+  border: none;
+  border-radius: 10px;
+  padding: 7px 30px;
+  text-align: center;
+  transition: 0.7s all;
+  font-family: var(--font-pixel);
+  cursor: pointer;
+}
+.modal__confirm-btns .false-btn:hover{
+  background-color: #d8d8d8;
+}
+
+@keyframes showModal{
+    0% {
+        transform: scale(0);
+    }
+    80%{
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}    

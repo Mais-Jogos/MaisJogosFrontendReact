@@ -12,6 +12,7 @@ import HeaderWithFilter from "../../components/HeaderWithFiilter/HeaderWithFilte
 
 export default _ => {
     const [games, setGames] = useState([]);
+    const [reviews, setReviews] = useState([]);
     const [menuOption, setMenuOption] = useState(false);
     const [sort, setSort] = useState("");
 
@@ -30,6 +31,11 @@ export default _ => {
                 setGames(response.data.results);
                 setLeitor(true);
 
+            }).catch((error) => { console.log(error); });
+        Axios.get(`http://localhost:8080/review`)
+            .then((response) => {
+                console.log(response.data);
+                setReviews(response.data);
             }).catch((error) => { console.log(error); });
     }, [])
 
@@ -50,8 +56,8 @@ export default _ => {
 
                 <section className="review__Section">
                     {
-                        games?.slice(0, 3).map((jogo) => (
-                            <ReviewCompINF minhaIMG={jogo?.background_image} nome={jogo?.name} descricao="Minha descrição" data="Data de postagem 29/04/23" corpo="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam deserunt maiores voluptatum placeat veritatis maxime, optio vero corporis sit est consequuntur temporibus ipsum perferendis accusamus delectus illo quasi dignissimos. Odio." />
+                        reviews?.slice(0, 3).map((review) => (
+                            <ReviewCompINF minhaIMG={games.filter(jogo => jogo?.name === review.jogo)[0]?.background_image} nome={review?.jogo} descricao={review?.tituloReview} data={`Data de postagem ${review?.dataReview}`} corpo={review?.descricaoReview} nota={review?.notaReview}/>
                         ))
                     }
                 </section>

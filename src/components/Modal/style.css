@@ -7,6 +7,7 @@
   position: fixed;
   width: 100vw;
   top: 0;
+  left: 0;
 }
 .modal-border{
     border:2px solid var(--black);
@@ -33,6 +34,9 @@
 .modal h3{
     font-family: var(--font-pixel);
     color: var(--color-primary);
+    max-width: 30vw;
+    width: fit-content;
+    text-align: center;
 }
 .checkmark__circle {
   stroke-dasharray: 166;

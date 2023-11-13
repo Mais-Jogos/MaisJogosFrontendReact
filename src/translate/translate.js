@@ -733,6 +733,10 @@ export function translate(value){
             "pt": "Posição no ranking",
             "en": "Ranking position"
         },
+        "TituloReview":{
+            "pt": "Titulo Review",
+            "en": "Title Review"
+        },
     }
     return vocabulary[value][language] ? vocabulary[value][language] : value;
 }

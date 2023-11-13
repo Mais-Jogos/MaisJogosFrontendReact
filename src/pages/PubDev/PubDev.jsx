@@ -7,12 +7,15 @@ import Menu from "../../components/Menu/Menu";
 import Vlibras from '../../components/Vlibras/Vlibras';
 import { translate } from "../../translate/translate";
 import TextToSpeech from "../../components/Acessibilidade/TextToSpeech";
+import { useParams } from "react-router-dom";
 
 export default _ => {
 
   const [games, setGames] = useState([]);
   const [numberGames, setNumberGames] = useState(0);
   const [windowGames, setWindowGames] = useState(3);
+  const [dev, setDev] = useState(0)
+  const { nome } = useParams()
 
   // Precisei desse estado pq é preciso esperar a chamada da api para o jquery conseguir indentificar os cards na tela
   const [leitor, setLeitor] = useState(false);
@@ -24,8 +27,14 @@ export default _ => {
         setGames(response.data.results);
         setLeitor(true);
       }).catch((error) => { console.log(error); });
+    Axios.get('http://localhost:8080/auth/desenvolvedor')
+    .then((response) => {
+      setDev(response.data.filter((dev) => dev.nome.toLowerCase().replace(/ /g, "-") === nome)[0])
+      console.log(response.data);
+    }).catch((error) => { console.log(error); });
   }, [])
-
+  console.log("dev", dev);
+  console.log("nome", nome);
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth < 1050) {
@@ -64,7 +73,7 @@ export default _ => {
               <div className="pubProfile_descricao2">
 
                 <div>
-                  <h1 className="pubProfile_Titulo2">Nome dev</h1>
+                  <h1 className="pubProfile_Titulo2">{dev?.nome}</h1>
                 </div>
 
                 <div className="pubProfile__block1">
@@ -77,7 +86,7 @@ export default _ => {
 
             <div>
               <h1 className="pubProfile_Titulo">{translate("Sobre dev")}</h1>
-              <div className="pubProfile_bg">{translate("DescricaoDevPub")}</div>
+              <div className="pubProfile_bg">{dev?.sobre}</div>
             </div>
 
           </div>

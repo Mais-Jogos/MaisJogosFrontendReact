@@ -35,6 +35,8 @@
 }
 .gerenciamento-admin section h1{
     margin: 20px 0px 0px 0px;
+    font-family: var(--font-pixel);
+    color: var(--color-primary);
 }
 .admin__jogo{
     width: 45%;

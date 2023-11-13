@@ -63,7 +63,7 @@
     color: var(--grey);
     translate: -15px;
 }
-h1{
+#menu h1{
     color: var(--purple);
 }
 #openMenu{

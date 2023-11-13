@@ -7,10 +7,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 10px;
 }
 .cadastro-review .cadastro-review__title__name i{
     font-size: 4rem;
     color: var(--purple-y);
+}
+.cadastro-review .cadastro-review__title__name h1{
+    color: var(--color-primary);
+    font-family: var(--font-pixel);
 }
 .cadastro-review__form{
     color: var(--color-primary);
@@ -33,9 +38,14 @@
 .cadastro-review__form h2{
     margin: 15px auto;
 }
-.cadastro-review__form textarea{
+.cadastro-review__form textarea, input{
     width: calc(100% - 30px);
     resize: none;
+    border: 1px solid var(--purple-y);
+    color: var(--color-primary);
+    padding: 10px 15px;
+    border-radius: 10px;
+    background-color: transparent;
 }
 .cadastro-review__form label{
     width: 100%;

@@ -11,8 +11,11 @@ import TextToSpeech from "../../components/Acessibilidade/TextToSpeech";
 const CadastroReview = () => {
   const [game, setGame] = useState(); 
   const [review, setReview] = useState({
-    rating:5,
-    descripition:"",
+    notaReview:5,
+    descricaoReview:"",
+    dataReview:null,
+    tituloReview:"",
+    jogo:"",
   })
   const {name} = useParams();
   const navigate = useNavigate();
@@ -23,7 +26,37 @@ const CadastroReview = () => {
     .then((response) =>{
       setGame(response.data.results.filter(jogo => jogo.name.toLowerCase().replace(/ /g, "-") === name)[0])
     }).catch((error) => { console.log(error); }); 
+    Axios.get(`http://localhost:8080/review`)
+    .then((response) => {
+        console.log(response.data);
+        setReview(response.data.filter(review => review.jogo.toLowerCase().replace(/ /g, "-") === name)[0]);
+        console.log(review);
+    }).catch((error) => { console.log(error); });
   }, []); 
+
+  function cadastrarReview(){
+    if(review.id){
+      Axios.put(`http://localhost:8080/review/${review.id}`, review)
+      .then((response) => {
+        console.log(response);
+        navigate("/review")
+      })
+      .catch((error) => console.log("Erro: ", error))
+    }
+    var data = new Date(),
+      dia  = data.getDate().toString().padStart(2, '0'),
+      mes  = (data.getMonth()+1).toString().padStart(2, '0'),
+      ano  = data.getFullYear();
+    const dataReview =  dia+"/"+mes+"/"+ano;
+    const newReview = {...review, dataReview:dataReview, jogo:game?.name}
+    Axios.post('http://localhost:8080/review', newReview)
+    .then((response) => {
+      console.log(response);
+      navigate("/review")
+    })
+    .catch((error) => console.log("Erro: ", error))
+    console.log(newReview);
+  }
   return (
     <div id='container-page'>
       <Menu/>
@@ -43,13 +76,15 @@ const CadastroReview = () => {
             {translate("Avaliação")}
             <div>
             {[1,2,3,4,5].map((num, index)=>(
-              <i class={`fa-${num <= review?.rating ? 'solid':'regular'} fa-star`} key={index} onClick={() => setReview({...review, rating: num})}></i>
+              <i class={`fa-${num <= review?.notaReview ? 'solid':'regular'} fa-star`} key={index} onClick={() => setReview({...review, notaReview: num})}></i>
             ))}
-            <p>{review?.rating}/5</p>
+            <p>{review?.notaReview}/5</p>
             </div>
           </div>
+          <label htmlFor="titulo">{translate("TituloReview")}:</label>
+          <input type="text" defaultValue={review?.tituloReview} name="titulo" id="titulo" aria-label="titulo review" onChange={(e) =>setReview({...review, tituloReview:e.target.value})}/>
           <label htmlFor="review">{translate("Review")}:</label>
-          <textarea name="review" id="review" cols="30" rows="10" aria-label="review"></textarea>
+          <textarea defaultValue={review?.descricaoReview} name="review" id="review" cols="30" rows="10" aria-label="review" onChange={(e) =>setReview({...review, descricaoReview:e.target.value})}></textarea>
           <div className="cadastro-review__btns">
             <button className='cadastro-review__btns-voltar' onClick={()=> navigate("/meus-jogos")}>
               <i class="fa-solid fa-arrow-rotate-left" ></i>{translate("Voltar")}
@@ -58,7 +93,7 @@ const CadastroReview = () => {
               <button className='cadastro-review__btns-excluir'>
                 <i class="fa-regular fa-trash-can"></i>{translate("Excluir")}
               </button>
-              <button className='cadastro-review__btns-salvar'>
+              <button className='cadastro-review__btns-salvar' onClick={cadastrarReview}>
                 <i class="fa-regular fa-floppy-disk"></i>{translate("Salvar")}
               </button>
             </div>

@@ -28,7 +28,7 @@
     justify-content: center;
     flex-direction: column;
     width: 50vw;
-    margin: 0 auto;
+    margin: 20px auto;
     gap: 5px;
 }
 .cadastro__skin-form input{
@@ -56,4 +56,42 @@
 }
 .cadastro__skin-valor-skin input{
     margin-bottom: 0px;
+}
+.cadastro__skin-btns{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    width: 100%;
+}
+.cadastro__skin-btns button{
+    font-family: var(--font-normal);
+    text-align: center;
+    color: var(--white);
+    background-color: var(--purple);
+    box-shadow: 2px 2px 0px #932eff inset,
+    -2px -2px 0px #44008d inset;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: 0.7s all;
+}
+.cadastro__skin-btns button:hover{
+    background-color: var(--dark-purple);
+}
+.cadastro__skin-btns a{
+    color: var(--color-secondary);
+    background-color: var(--color-primary);
+    box-shadow: 2px 2px 0px #d8d8d8 inset,
+    -2px -2px 0px #686868 inset;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 15px;
+    text-align: center;
+    transition: 0.7s all;
+    font-family: var(--font-normal);
+}
+.cadastro__skin-btns a:hover{
+    background-color: #d8d8d8;
 }
