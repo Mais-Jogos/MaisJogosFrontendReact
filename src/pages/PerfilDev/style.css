@@ -19,6 +19,7 @@
     font-family: var(--font-pixel);
     font-size: 3rem;
     color: var(--color-primary);
+    margin-left: 50px;
 }
 
 
@@ -199,12 +200,6 @@ div.perfilDev__userData__descr >.perfilDev__userData__input>textarea#descricao{
 
 
 
-@media screen and (max-width:1045px) {
-    .perfilDev__titlePage h1{
-        font-size: 3rem;
-        padding-left: 50px;
-    }
-}
 @media screen and (max-width:750px) {
     .perfilDev__titlePage h1{
         font-size: 2rem;

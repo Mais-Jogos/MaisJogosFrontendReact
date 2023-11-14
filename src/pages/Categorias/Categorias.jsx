@@ -274,7 +274,7 @@ const Categorias = () => {
                 }
                 return plataformasSelecionadas && categoriasSelecionadas && notasSelecionadas;
               }).map((game) => (
-                <Card game={game} id={game?.id}/>
+                <Card game={game} key={game?.id}/>
               ))}
             </div>
           </div>

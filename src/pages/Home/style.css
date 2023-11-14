@@ -25,6 +25,12 @@
     padding: 20px;
     border-radius: 5px;
 }
+.section__categories .home__categorias{
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+}
 .section__categories .home__categorias label{
     text-transform: capitalize;
     margin: 0;
@@ -33,6 +39,7 @@
 }
 .section__categories .home__categorias input{
     accent-color: var(--purple-y);
+    width: fit-content;
 }
 .section__categories h2{
     margin: 5px;

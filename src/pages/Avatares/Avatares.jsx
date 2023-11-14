@@ -72,7 +72,7 @@ const Avatares = ({userRedux}) => {
                     
                     {
                         userRedux.avatares?.map((avatar) =>(
-                            <CardAvatar avatar={avatar}/>
+                            <CardAvatar avatar={avatar} key={avatar?.id}/>
                         ))
                     }
 
@@ -82,7 +82,7 @@ const Avatares = ({userRedux}) => {
 
                     {
                         avatares?.map((avatar) =>(
-                            <CardAvatar avatar={avatar}/>
+                            <CardAvatar avatar={avatar} key={avatar?.id}/>
                         ))
                     }
 

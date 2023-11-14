@@ -23,7 +23,7 @@ const ListadeDesejos = () => {
             <h2><i className="fa-solid fa-heart"></i> {translate("Lista de desejos")}</h2>
             <div className="section__games__desire">
                 {games?.map((game, index)=>(
-                    <Card games={games} game={index} key={game?.id}/>
+                    <Card game={game} key={game?.id}/>
                 ))}
             </div>
         </div>
