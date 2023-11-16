@@ -5,9 +5,11 @@ const Step2 = ({jogo, onChangeGame}) => {
     const platforms = ["Windows", "MacOs", "Linux", "Android", "IOS"]
     const [plataformasSelecionadas, setPlataformasSelecionadas] = useState({})
     function deletePropriedade(platform){
-        let obj = {...plataformasSelecionadas};
+        var obj = {...plataformasSelecionadas};
         delete obj[platform];
         setPlataformasSelecionadas(obj);
+        console.log(obj)
+        onChangeGame("requisitos", obj)
     }
     function onChangePlatform(platform, espec, type, value){
         const obj = {
@@ -19,48 +21,55 @@ const Step2 = ({jogo, onChangeGame}) => {
                 }
         }}
         setPlataformasSelecionadas(obj)
+        onChangeGame("requisitos", obj)
+        console.log(jogo)
     }
   return (
-    <div>
-        {platforms.map((platform) => (<>
-        <label htmlFor={platform}>{platform}</label>
-        <input type="checkbox" name="platform" id={platform} 
-        onClick={() => {
-            setPlataformasSelecionadas(
-                !Object.keys(plataformasSelecionadas).some(p => p === platform) ? 
-                {
-                    ...plataformasSelecionadas, 
-                    [platform]: {
-                        Minimo:{
-                            SO: null,
-                            Processador: null,
-                            PlacaVideo: null,
-                            Memoria: null,
-                            MemoriaTam: null,
-                            Armazenamento: null,
-                            ArmazenamentoTam: null,
-                        },
-                        Recomendado:{
-                            SO: null,
-                            Processador: null,
-                            PlacaVideo: null,
-                            Memoria: null,
-                            MemoriaTam: null,
-                            Armazenamento: null,
-                            ArmazenamentoTam: null,
-                        }
-                    }
-                } : 
-                () => deletePropriedade(platform)
-            );
-            onChangeGame("requisitos", plataformasSelecionadas)
-        }}/>
-        </>))}
+    <section className='cadastroJogo__content'>
+        <div className="cadastroJogo__content__plataforms">
+            <h2>Plataforma</h2>
+            {platforms.map((platform) => (
+            <div className='cadastroJogo__content__plataforms__checkboxs'>
+                <label htmlFor={platform} className='cadastroJogo__content__label'>          
+                    <input type="checkbox" name="platform" id={platform} className='cadastroJogo__content__steps--inputTTS'
+                    onClick={() => {
+                        setPlataformasSelecionadas(
+                            !Object.keys(plataformasSelecionadas).some(p => p === platform) ? 
+                            {
+                                ...plataformasSelecionadas, 
+                                [platform]: {
+                                    Minimo:{
+                                        SO: null,
+                                        Processador: null,
+                                        PlacaVideo: null,
+                                        Memoria: null,
+                                        MemoriaTam: "MB",
+                                        Armazenamento: null,
+                                        ArmazenamentoTam: "MB",
+                                    },
+                                    Recomendado:{
+                                        SO: null,
+                                        Processador: null,
+                                        PlacaVideo: null,
+                                        Memoria: null,
+                                        MemoriaTam: "MB",
+                                        Armazenamento: null,
+                                        ArmazenamentoTam: "MB",
+                                    }
+                                }
+                            } : 
+                            () => deletePropriedade(platform)
+                        );
+                    }}/>
+                    {platform}  
+                </label>
+            </div>))}
+        </div>
 
-        {Object.keys(plataformasSelecionadas).map((platform) => (
+        {Object?.keys(plataformasSelecionadas)?.map((platform) => (
             <Platform platform={platform} onChangePlatform={onChangePlatform} plataformasSelecionadas={plataformasSelecionadas}/>
         ))}
-    </div>
+    </section>
   )
 }
 
