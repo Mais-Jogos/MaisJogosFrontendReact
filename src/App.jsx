@@ -34,6 +34,7 @@ import Footer from "./components/Footer/Footer";
 import { AnimatePresence } from "framer-motion";
 import CadastroSkin from "./pages/CadastroSkin/CadastroSkin";
 import { Helmet } from 'react-helmet';
+import CadastroJogo2 from "./pages/CadastroJogo/CadastroJogo2";
 
 function App({theme}) {
   const location = window.location.pathname;
@@ -87,6 +88,7 @@ function App({theme}) {
           <Route path='/sobre' element={<Sobre/>}/>
           <Route path='/dev/:nome' element={<PubDev/>}/>
           <Route path='/cadastro-skin' element={<CadastroSkin/>}/>
+          <Route path="cadastro-jogo2" element={<CadastroJogo2/>}/>
         </Routes>
       </BrowserRouter>
       <Footer/>
