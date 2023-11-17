@@ -3,7 +3,7 @@ import { useState } from 'react'
 
 const Step1 = ({jogo, onChangeGame}) => {
     const generos = ["Ação", "Arcade", "Aventura", "Casual", "Corrida", "Esportes", "Estratégia", "Luta", "Puzzle", "Rpg", "Shooter", "Terror"]
-    const [generosSelecionados, setGenerosSelecionados] = useState([])
+    const [generosSelecionados, setGenerosSelecionados] = useState(jogo?.genero)
   return (
     <section className='cadastroJogo__content'>
         <label htmlFor="titulo" className='cadastroJogo__content__label'>Titulo</label>
@@ -14,12 +14,12 @@ const Step1 = ({jogo, onChangeGame}) => {
         <div className="cadastroJogo__content__Bodybuttons">
             {generos.map((genero) => (<>
                 <button 
-                    className={generosSelecionados.some(g => g === genero) ? 'cadastroJogo__content__buttons cadastroJogo__content__buttons--select':'cadastroJogo__content__buttons'}
+                    className={generosSelecionados?.some(g => g === genero) ? 'cadastroJogo__content__buttons cadastroJogo__content__buttons--select':'cadastroJogo__content__buttons'}
                     onClick={() => {
                         setGenerosSelecionados(
-                            !generosSelecionados.some(g => g === genero) ? 
+                            !generosSelecionados?.some(g => g === genero) ? 
                             [...generosSelecionados, genero] : 
-                            generosSelecionados.filter(g => g !== genero)
+                            generosSelecionados?.filter(g => g !== genero)
                         );
                         onChangeGame("genero", generosSelecionados)
                     }}

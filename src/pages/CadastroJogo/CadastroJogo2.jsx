@@ -11,12 +11,13 @@ const CadastroJogo2 = () => {
   const [jogo, setJogo] = useState({
     titulo: null,
     descricao: null,
-    genero: null,
-    plataforma: null,
-    requisitos: {},
+    genero: [],
+    plataformas: [],
+    requisitos: [],
     jogo: null,
     classificacao: null,
-    midia: null,
+    fotos: null,
+    videos: null,
   });
   const onChangeGame = (type, value) => {
     setJogo({ ...jogo, [type]: value });

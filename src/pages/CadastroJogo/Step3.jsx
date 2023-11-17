@@ -1,10 +1,7 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 const Step3 = ({jogo, onChangeGame}) => {
-    const [midia, setMidia] = useState({
-        fotos: null,
-        videos: null
-    })
+
   return (
     <section className='cadastroJogo__content'>
         <label htmlFor="jogo" className='cadastroJogo__content__label'>Jogo</label>
@@ -14,11 +11,11 @@ const Step3 = ({jogo, onChangeGame}) => {
         <h3 className='cadastroJogo__content__h3'>Midia</h3>
         <label htmlFor="jogo" className='cadastroJogo__content__label'>Fotos</label>
         <div className='cadastroJogo__content__uploadContent__fileUpload'>
-          <input type="file" id='fotos' defaultValue={jogo?.midia?.fotos} onChange={(e) => {onChangeGame("midia", midia); setMidia({...midia, fotos: e.target.files})}} className='cadastroJogo__content__uploadContent__fileUpload--changeText'/>
+          <input type="file" id='fotos' defaultValue={jogo?.fotos} onChange={(e) => onChangeGame("fotos", e.target.files)} className='cadastroJogo__content__uploadContent__fileUpload--changeText'/>
         </div>
         <label htmlFor="jogo" className='cadastroJogo__content__label'>Videos</label>
         <div className='cadastroJogo__content__uploadContent__fileUpload'>
-          <input type="file" id='videos' defaultValue={jogo?.midia?.videos} onChange={(e) => {onChangeGame("midia", midia); setMidia({...midia, videos: e.target.files})}} className='cadastroJogo__content__uploadContent__fileUpload--changeText'/>
+          <input type="file" id='videos' defaultValue={jogo?.videos} onChange={(e) => onChangeGame("videos", e.target.files)} className='cadastroJogo__content__uploadContent__fileUpload--changeText'/>
         </div>
         <label htmlFor="classificacao" className='cadastroJogo__content__label'>Classificação Indicativa</label>
         <select name="classificacao" id="classificacao" className='cadastroJogo__content__select' onChange={(e) => onChangeGame("classificacao", e.target.value)}>
