@@ -11,10 +11,10 @@
 }
 
 
-
+/* 
 .perfilUser__titlePage{
     width: 100%;
-}
+} */
 .perfilUser__titlePage h1{
     font-family: var(--font-pixel);
     font-size: 3rem;

@@ -12,9 +12,9 @@
 
 
 
-.perfilDev__titlePage{
+/* .perfilDev__titlePage{
     width: 100%;
-}
+} */
 .perfilDev__titlePage h1{
     font-family: var(--font-pixel);
     font-size: 3rem;
