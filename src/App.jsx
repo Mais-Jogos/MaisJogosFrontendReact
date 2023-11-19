@@ -60,6 +60,19 @@ function App({theme}) {
           `}
         </script>
       </Helmet>
+      <Helmet>
+        <script>
+          {`
+            window._mfq = window._mfq || [];
+            (function() {
+              var mf = document.createElement("script");
+              mf.type = "text/javascript"; mf.defer = true;
+              mf.src = "//cdn.mouseflow.com/projects/e633905f-9012-43fc-a3e7-a532937ebfd1.js";
+              document.getElementsByTagName("head")[0].appendChild(mf);
+            })();
+          `}
+        </script>
+      </Helmet>
       <BrowserRouter>
         <Routes>
           <Route exact path='/' element={<Home/>}/>
@@ -76,7 +89,7 @@ function App({theme}) {
           <Route path='/categorias/:category' element={<Categorias/>}/>
           <Route path='*' element={<NotFound/>}/>
           <Route path='/review' element={<Review/>}/>
-          <Route path='/cadastro-jogo' element={<CadastroJogo/>}/>
+          <Route path='/cadastro-jogo2' element={<CadastroJogo/>}/>
           <Route path='/login-admin' element={<LoginAdmin/>}/>
           <Route path='/relatorios-dev' element={<RelatoriosDev/>}/>
           <Route path='/relatorios-admin' element={<RelatoriosAdmin/>}/>
@@ -88,7 +101,7 @@ function App({theme}) {
           <Route path='/sobre' element={<Sobre/>}/>
           <Route path='/dev/:nome' element={<PubDev/>}/>
           <Route path='/cadastro-skin' element={<CadastroSkin/>}/>
-          <Route path="cadastro-jogo2" element={<CadastroJogo2/>}/>
+          <Route path="cadastro-jogo" element={<CadastroJogo2/>}/>
         </Routes>
       </BrowserRouter>
       <Footer/>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Platform from './Platform';
 
-const Step2 = ({jogo, onChangeGame}) => {
+const Step2 = ({jogo, onChangeGame, erro}) => {
     const platforms = ["Windows", "MacOs", "Linux", "Android", "IOS"]
     const [plataformasSelecionadas, setPlataformasSelecionadas] = useState(jogo?.requisitos)
     function deletePropriedade(platform) {
@@ -10,10 +10,6 @@ const Step2 = ({jogo, onChangeGame}) => {
         onChangeGame("requisitos", obj);
     }
     function onChangePlatform(platform, espec, type, value){
-        console.log("Platform", platform);
-        console.log("espec", espec);
-        console.log("type", type);
-        console.log("value", value);
         const obj = plataformasSelecionadas.map((plat) => {
             if(plat.Plataforma === platform){
                 return {
@@ -28,7 +24,7 @@ const Step2 = ({jogo, onChangeGame}) => {
         })
         setPlataformasSelecionadas(obj)
         onChangeGame("requisitos", obj)
-        console.log(obj)
+        console.log(jogo)
     }
   return (
     <section className='cadastroJogo__content'>
@@ -37,7 +33,8 @@ const Step2 = ({jogo, onChangeGame}) => {
             {platforms.map((platform) => (
             <div className='cadastroJogo__content__plataforms__checkboxs'>
                 <label htmlFor={platform} className='cadastroJogo__content__label'>          
-                    <input type="checkbox" name="platform" id={platform} className='cadastroJogo__content__steps--inputTTS'
+                    <input type="checkbox" name="platform" id={platform} className={`cadastroJogo__content__steps--inputTTS ${erro && 'cadastroJogo__content__body--erroMessage'}`}
+                    defaultChecked={jogo?.plataformas.some(plat => plat === platform)}
                     onClick={() => {
                         const newPlatform = !plataformasSelecionadas?.some(p => p.Plataforma === platform) ? 
                         [

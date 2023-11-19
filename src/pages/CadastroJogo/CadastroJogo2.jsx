@@ -5,7 +5,8 @@ import Step1 from "./Step1";
 import Step2 from "./Step2";
 import Step3 from "./Step3";
 import { translate } from "../../translate/translate";
-import "./style2.css"
+import "./style2.css";
+import Axios from 'axios'
 
 const CadastroJogo2 = () => {
   const [jogo, setJogo] = useState({
@@ -22,12 +23,71 @@ const CadastroJogo2 = () => {
   const onChangeGame = (type, value) => {
     setJogo({ ...jogo, [type]: value });
   };
+  const [erro, setErro] = useState(false);
   const [step, setStep] = useState(0);
   const steps = [
     <Step1 jogo={jogo} onChangeGame={onChangeGame} />,
     <Step2 jogo={jogo} onChangeGame={onChangeGame} />,
     <Step3 jogo={jogo} onChangeGame={onChangeGame} />,
   ];
+
+  function criarJogo(){
+    const newJogo = {
+      titulo: jogo?.titulo,
+      descricao: jogo?.descricao,
+      genero: jogo?.genero[0],
+      plataforma: jogo?.requisitos[0].Plataforma,
+      SO: jogo?.requisitos[0].Minimo["SO"],
+      processador: jogo?.requisitos[0].Minimo["Processador"],
+      placaDeVideo: jogo?.requisitos[0].Minimo["PlacaVideo"],
+      quantMemoria: jogo?.requisitos[0].Minimo["Memoria"],
+      tipoMemoria: jogo?.requisitos[0].Minimo["MemoriaTam"],
+      quantArmazenamento: jogo?.requisitos[0].Minimo["Armazenamento"],
+      tipoArmazenamento: jogo?.requisitos[0].Minimo["ArmazenamentoTam"],
+      jogo: jogo?.jogo,
+    }
+    console.log("Jogo", newJogo);
+    Axios.post("http://localhost:8080/jogos", newJogo)
+    .then((response) => {console.log(response);})
+    .catch((error) => console.log(error))
+  }
+  const nextStep = () => {
+    if (
+      (step === 0 &&
+      (jogo.titulo === null || jogo.descricao === null || jogo.genero.length === 0)) || 
+      (step === 1 && 
+        (jogo.plataformas.length === 0 ||
+          jogo.requisitos.every(plat => 
+            Object.values(plat.Minimo).some(val => val === null) ||
+            Object.values(plat.Recomendado).some(val => val === null)
+        ))
+      ) ||
+      (step === 2 &&
+        (jogo.jogo === null ||
+          jogo.fotos === null ||
+          jogo.videos === null ||
+          jogo.classificacao === null))
+    ) {
+      setErro(true);
+      setTimeout(() => {
+        setErro(false);
+      }, 3000);
+    } else {
+      setErro(false);
+      if(step === 2){
+        criarJogo()
+        console.log(jogo);
+      }else{
+        setStep(step + 1);
+      }
+    }
+  };
+  const previousStep = () =>{
+    if(step === 2){
+      setJogo({...jogo, requisitos: [], plataformas: []})
+    }
+    setStep(step - 1);
+  }
   return (
     <div id="container-page">
       <Menu />
@@ -89,11 +149,31 @@ const CadastroJogo2 = () => {
           </div>
         </section>
       </main>
+      {erro && (
+        <div className="cadastroJogo--erroMessage-border">
+          <p className="cadastroJogo--errorMessage">
+            <i className="fa-solid fa-xmark"></i>
+            Preencha todas as informações
+          </p>
+        </div>
+      )}
       {steps[step]}
       <section className="cadastroJogo__step">
-        {step !== 0 && <button onClick={() => setStep(step - 1)} className="cadastroJogo__step__button cadastroJogo__step__buttonBack">Voltar</button>}
-        {step !== 2 && <button onClick={() => setStep(step + 1)} className="cadastroJogo__step__button cadastroJogo__step__buttonNext">Próximo</button>}
-        <button onClick={() => console.log("Jogo", jogo)}>Mostrar</button>
+        {step !== 0 && (
+          <button
+            onClick={previousStep}
+            className="cadastroJogo__step__button cadastroJogo__step__buttonBack"
+          >
+            Voltar
+          </button>
+        )}
+        <button
+            onClick={nextStep}
+            className="cadastroJogo__step__button cadastroJogo__step__buttonNext"
+          >
+            {step !== 2 && "Próximo"}
+            {step === 2 && "Cadastrar"}
+          </button>
       </section>
     </div>
   );
