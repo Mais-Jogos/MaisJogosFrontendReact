@@ -9,6 +9,7 @@ import Axios from 'axios'
 import GoBack from "../../components/GoBack/GoBack";
 import TextToSpeech from "../../components/Acessibilidade/TextToSpeech";
 import HeaderWithFilter from "../../components/HeaderWithFiilter/HeaderWithFilter";
+import api from "../../api/api";
 
 export default _ => {
     const [games, setGames] = useState([]);
@@ -32,11 +33,12 @@ export default _ => {
                 setLeitor(true);
 
             }).catch((error) => { console.log(error); });
-        Axios.get(`http://localhost:8080/review`)
-            .then((response) => {
-                console.log(response.data);
-                setReviews(response.data);
-            }).catch((error) => { console.log(error); });
+        (async () => {
+            const { data } = await api.get('/review');
+              
+            setReviews(data);
+        })();
+              
     }, [])
 
 

@@ -91,6 +91,9 @@
     flex-wrap: wrap-reverse;
     justify-content: center;
 }
+.cadastro-review__form .cadastro-review__btns .cadastro-review__btns-salvar i{
+    color: var(--white);
+}
 .cadastro-review__form .cadastro-review__btns .cadastro-review__btns-salvar{
     font-family: var(--font-pixel);
     text-align: center;
@@ -110,6 +113,9 @@
 }
 .cadastro-review__form .cadastro-review__btns .cadastro-review__btns-salvar:hover{
     background-color: var(--dark-purple);
+}
+.cadastro-review__form .cadastro-review__btns .cadastro-review__btns-excluir i, .cadastro-review__btns-voltar i{
+    color: var(--purple);
 }
 .cadastro-review__form .cadastro-review__btns .cadastro-review__btns-excluir, .cadastro-review__btns-voltar{
     font-family: var(--font-pixel);

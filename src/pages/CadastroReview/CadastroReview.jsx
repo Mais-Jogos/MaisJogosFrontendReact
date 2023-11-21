@@ -7,6 +7,8 @@ import Axios from 'axios'
 import Vlibras from '../../components/Vlibras/Vlibras'
 import { translate } from '../../translate/translate'
 import TextToSpeech from "../../components/Acessibilidade/TextToSpeech";
+import authenticated from '../../api/authenticated';
+import api from '../../api/api';
 
 const CadastroReview = () => {
   const [game, setGame] = useState(); 
@@ -19,6 +21,10 @@ const CadastroReview = () => {
   })
   const {name} = useParams();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    authenticated(navigate);
+  }, [navigate]);
 
   useEffect(() => {  
     const apiKey = 'bb8e5d1e0b2e44d9ac172e791e20ff23'
