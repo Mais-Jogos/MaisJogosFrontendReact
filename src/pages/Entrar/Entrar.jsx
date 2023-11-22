@@ -40,7 +40,7 @@ const Entrar = () => {
         if (data?.password !== '' && data?.email !== '' && data?.nome !== '' && data?.sobrenome !== '' && data?.dataNasc !== '' && data?.confirmarSenha !== '') {
           console.log(data);
           if (data?.password === data?.confirmarSenha) {
-            Axios.post('http://localhost:8080/auth/cadastro', {
+            Axios.post('http://localhost:8080/api/usuario/salvar', {
               ...data,
               ROLE: userType === 'Gamer' ? 'CLIENTE' : 'DEV',
             })
