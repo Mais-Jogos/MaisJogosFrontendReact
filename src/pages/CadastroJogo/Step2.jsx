@@ -9,21 +9,8 @@ const Step2 = ({jogo, onChangeGame, erro}) => {
         setPlataformasSelecionadas(obj);
         onChangeGame("requisitos", obj);
     }
-    function onChangePlatform(platform, espec, type, value){
-        const obj = plataformasSelecionadas.map((plat) => {
-            if(plat.Plataforma === platform){
-                return {
-                    ...plat,
-                    [espec]:{
-                        ...plat[espec],
-                        [type]: value
-                    }
-                }
-            }
-            return plat
-        })
-        setPlataformasSelecionadas(obj)
-        onChangeGame("requisitos", obj)
+    function onChangePlatform(type, value){
+        onChangeGame(type, value)
         console.log(jogo)
     }
   return (
@@ -63,7 +50,7 @@ const Step2 = ({jogo, onChangeGame, erro}) => {
                          ] : 
                         () => deletePropriedade(platform)
                         setPlataformasSelecionadas(newPlatform);
-                        onChangeGame("plataformas", newPlatform?.map((plat) => plat.Plataforma))
+                        onChangeGame("plataforma", newPlatform?.Plataforma)
                     }}/>
                     {platform}  
                 </label>
@@ -71,7 +58,7 @@ const Step2 = ({jogo, onChangeGame, erro}) => {
         </div>
 
         {plataformasSelecionadas?.map((platform) => (
-            <Platform platform={platform} onChangePlatform={onChangePlatform}/>
+            <Platform jogo={jogo} onChangePlatform={onChangePlatform}/>
         ))}
     </section>
   )

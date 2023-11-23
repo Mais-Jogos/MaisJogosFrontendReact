@@ -43,10 +43,15 @@ export default (props) => {
   useEffect(() => {
     const type = window.localStorage.getItem("type")
     const id = window.localStorage.getItem("id")
+    const token = window.localStorage.getItem("token")
     if (type !== "dev") {
         navigate("/entrar")
     }
-    Axios.get("http://localhost:8080/auth/dev/" + id)
+    Axios.get(`http://localhost:8080/api/usuario/listarCliente/${id}`,{
+      headers:{
+        Authorization: `Bearer ${token}`
+      }
+    })
     .then((response) => {
         setData(response.data);
         console.log(response.data);

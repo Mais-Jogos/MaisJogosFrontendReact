@@ -9,16 +9,24 @@ import "./style2.css";
 import Axios from 'axios'
 
 const CadastroJogo2 = () => {
+  const id = window.localStorage.getItem("id")
   const [jogo, setJogo] = useState({
     titulo: null,
     descricao: null,
     genero: [],
-    plataformas: [],
-    requisitos: [],
+    plataforma: null,
+    SO: null,
+    processador: null,
+    placaDeVideo: null,
+    quantMemoria: null,
+    tipoMemoria: null,
+    quantArmazenamento: null,
+    tipoArmazenamento: null,
     jogo: null,
     classificacao: null,
     fotos: null,
     videos: null,
+    idDev: id,
   });
   const onChangeGame = (type, value) => {
     setJogo({ ...jogo, [type]: value });
@@ -36,15 +44,15 @@ const CadastroJogo2 = () => {
       titulo: jogo?.titulo,
       descricao: jogo?.descricao,
       genero: jogo?.genero[0],
-      plataforma: jogo?.requisitos[0].Plataforma,
-      SO: jogo?.requisitos[0].Minimo["SO"],
-      processador: jogo?.requisitos[0].Minimo["Processador"],
-      placaDeVideo: jogo?.requisitos[0].Minimo["PlacaVideo"],
-      quantMemoria: jogo?.requisitos[0].Minimo["Memoria"],
-      tipoMemoria: jogo?.requisitos[0].Minimo["MemoriaTam"],
-      quantArmazenamento: jogo?.requisitos[0].Minimo["Armazenamento"],
-      tipoArmazenamento: jogo?.requisitos[0].Minimo["ArmazenamentoTam"],
-      jogo: jogo?.jogo,
+      plataforma: jogo?.plataforma,
+      SO: jogo["SO"],
+      processador: jogo["Processador"],
+      placaDeVideo: jogo["PlacaVideo"],
+      quantMemoria: jogo["Memoria"],
+      tipoMemoria: jogo["MemoriaTam"],
+      quantArmazenamento: jogo["Armazenamento"],
+      tipoArmazenamento: jogo["ArmazenamentoTam"],
+      jogoWin: jogo?.jogo,
     }
     console.log("Jogo", newJogo);
     Axios.post("http://localhost:8080/jogos", newJogo)
@@ -56,11 +64,9 @@ const CadastroJogo2 = () => {
       (step === 0 &&
       (jogo.titulo === null || jogo.descricao === null || jogo.genero.length === 0)) || 
       (step === 1 && 
-        (jogo.plataformas.length === 0 ||
-          jogo.requisitos.every(plat => 
-            Object.values(plat.Minimo).some(val => val === null) ||
-            Object.values(plat.Recomendado).some(val => val === null)
-        ))
+        (jogo.plataforma === null || jogo.SO === null || 
+          jogo.processador === null || jogo.placaDeVideo === null || jogo.quantMemoria === null ||
+          jogo.tipoMemoria === null || jogo.quantArmazenamento === null || jogo.tipoArmazenamento === null)
       ) ||
       (step === 2 &&
         (jogo.jogo === null ||

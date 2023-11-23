@@ -5,7 +5,7 @@ const LoginGamer = ({ data, setData }) => {
   useEffect(() => {
     setData({
       password: '',
-      email: '',
+      login: '',
     })
   }, [])
 
@@ -44,7 +44,7 @@ const LoginGamer = ({ data, setData }) => {
 
   return (
     <>
-      <input type="email" placeholder='E-mail' onChange={(e) => setData({ ...data, email: e.target.value })} aria-label="email" />
+      <input type="email" placeholder='E-mail' onChange={(e) => setData({ ...data, login: e.target.value })} aria-label="email" />
       <input type="password" placeholder='Senha' onChange={(e) => setData({ ...data, password: e.target.value })} aria-label="senha" />
     </>
   )

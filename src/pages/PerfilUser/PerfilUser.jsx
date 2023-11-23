@@ -78,11 +78,16 @@ const PerfilUser = (props) => {
     }
     useEffect(() =>{
         const type = window.localStorage.getItem("type")
+        const token = window.localStorage.getItem("token")
         const id = window.localStorage.getItem("id")
         if (type !== "user") {
             navigate("/entrar")
         }
-        Axios.get(`http://localhost:8080/auth/${id}`)
+        Axios.get(`http://localhost:8080/api/usuario/listarCliente/${id}`, {
+            headers:{
+                Authorization: `Bearer ${token}`
+            }
+        })
         .then((response) => {
             console.log(response.data);
             setData(response.data)
@@ -122,7 +127,7 @@ const PerfilUser = (props) => {
                                 </div>
                                 <div className="perfilUser-card__cardFooter">
                                     <img className="perfilUser-card__imgEdit" src="/imgs/icons/Kapicoin_icon.png" />
-                                    <p> {coins.coins} </p>
+                                    <p> {data?.moeda} </p>
                                     <input
                                         type="color"
                                         id="colorCard"

@@ -11,20 +11,20 @@ import authenticated from '../../api/authenticated';
 import api from '../../api/api';
 
 const CadastroReview = () => {
+  const id = window.localStorage.getItem("id")
+  const token = window.localStorage.getItem("token")
   const [game, setGame] = useState(); 
   const [review, setReview] = useState({
     notaReview:5,
     descricaoReview:"",
     dataReview:null,
     tituloReview:"",
-    jogo:"",
+    idUser: id,
+    idJogo: 1,
   })
   const {name} = useParams();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    authenticated(navigate);
-  }, [navigate]);
 
   useEffect(() => {  
     const apiKey = 'bb8e5d1e0b2e44d9ac172e791e20ff23'
@@ -32,17 +32,30 @@ const CadastroReview = () => {
     .then((response) =>{
       setGame(response.data.results.filter(jogo => jogo.name.toLowerCase().replace(/ /g, "-") === name)[0])
     }).catch((error) => { console.log(error); }); 
-    Axios.get(`http://localhost:8080/review`)
+    Axios.get(`http://localhost:8080/api/review/listarTodos`,{
+      headers:{
+        Authorization: `Bearer ${token}`
+      }
+    })
     .then((response) => {
         console.log(response.data);
-        setReview(response.data.filter(review => review.jogo.toLowerCase().replace(/ /g, "-") === name)[0]);
+        if(response.data.filter(review => review.jogo.toLowerCase().replace(/ /g, "-") === name).length > 0){
+          setReview(response.data.filter(review => review.jogo.toLowerCase().replace(/ /g, "-") === name)[0]);
+
+        }else{
+          setReview({...review, jogo: game?.name})
+        }
         console.log(review);
     }).catch((error) => { console.log(error); });
   }, []); 
 
   function cadastrarReview(){
     if(review.id){
-      Axios.put(`http://localhost:8080/review/${review.id}`, review)
+      Axios.put(`http://localhost:8080/api/review/${review.id}`, review,{
+        headers:{
+          Authorization: `Bearer ${token}`
+        }
+      })
       .then((response) => {
         console.log(response);
         navigate("/review")
@@ -55,7 +68,11 @@ const CadastroReview = () => {
       ano  = data.getFullYear();
     const dataReview =  dia+"/"+mes+"/"+ano;
     const newReview = {...review, dataReview:dataReview, jogo:game?.name}
-    Axios.post('http://localhost:8080/review', newReview)
+    Axios.post('http://localhost:8080/api/review/salvar', newReview,{
+      headers:{
+        Authorization: `Bearer ${token}`
+      }
+    })
     .then((response) => {
       console.log(response);
       navigate("/review")

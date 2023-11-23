@@ -26,10 +26,21 @@ const Entrar = () => {
   const navigate = useNavigate()
   const cadastrar = () => {
     if (login) {
-      if (data.email !== '' && data.password !== '') {
-        Axios.post('http://localhost:8080/auth/login', { data })
-          .then((response) => console.log(response))
-          .catch((error) => console.log(error))
+      if (data.login !== '' && data.password !== '') {
+        Axios.post('http://localhost:8080/login', { ...data })
+          .then((response) => {
+            console.log(response)
+            window.localStorage.setItem("token", response.data)
+            if(userType === "Gamer"){
+              navigate("/perfil-user")
+            }else if(userType === "Dev"){
+              navigate("/perfil-dev")
+            }
+          })
+          .catch((error) => {
+            console.log(error)
+            console.log("data err", error.config.data);
+          })
         setMsg('')
       } else {
         console.log(data);
@@ -41,8 +52,9 @@ const Entrar = () => {
           console.log(data);
           if (data?.password === data?.confirmarSenha) {
             Axios.post('http://localhost:8080/api/usuario/salvar', {
-              ...data,
-              ROLE: userType === 'Gamer' ? 'CLIENTE' : 'DEV',
+                ...data,
+                moeda: 10,
+                idAvatar: 1,
             })
             .then((response) => {
               console.log(response)
@@ -51,11 +63,13 @@ const Entrar = () => {
               window.localStorage.setItem("id", response.data.id)
               setModal(<Modal message={"Você foi cadastrado!"} type={true}/>)
               setTimeout(() =>{
-                navigate("/perfil-user")
+                setLogin(true)
+                setModal(null)
               }, 3000)
             })
             .catch((error) => { 
                 console.log(error)
+                console.log("Data", error.config.data);
                 setModal(<Modal message={"Você não foi cadastrado!"} type={false}/>)
                 setTimeout(() =>{
                   setModal(null)
@@ -70,9 +84,9 @@ const Entrar = () => {
       } else {
         if (data?.password !== '' && data?.login !== '' && data?.nome !== '' && data?.dataNasc !== '' && data?.confirmarSenha !== '') {
           if (data?.password === data?.confirmarSenha) {
-            Axios.post('http://localhost:8080/auth/cadastro/dev', {
+            Axios.post('http://localhost:8080/api/usuario/salvar', {
               ...data,
-              ROLE: userType === 'Gamer' ? 'CLIENTE' : 'DEV',
+              valorVendas: 0.0,
             })
               .then((response) => {
                 console.log(response)
@@ -81,7 +95,8 @@ const Entrar = () => {
                 window.localStorage.setItem("id", response.data.id)
                 setModal(<Modal message={"Você foi cadastrado!"} type={true}/>)
                 setTimeout(() =>{
-                  navigate("/perfil-dev")
+                  setLogin(true)
+                  setModal(null)
                 }, 3000)
               })
               .catch((error) =>{ 

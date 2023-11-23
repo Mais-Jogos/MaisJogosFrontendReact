@@ -25,19 +25,29 @@ export default _ => {
     // Precisei desse estado pq é preciso esperar a chamada da api para o jquery conseguir indentificar os cards na tela
     const [leitor, setLeitor] = useState(false);
     
+    const token = window.localStorage.getItem("token")
     useEffect(() => {
         const apiKey = 'bb8e5d1e0b2e44d9ac172e791e20ff23'
+
         Axios.get(`https://api.rawg.io/api/games?key=${apiKey}`)
             .then((response) => {
                 setGames(response.data.results);
                 setLeitor(true);
 
             }).catch((error) => { console.log(error); });
-        (async () => {
-            const { data } = await api.get('/review');
-              
-            setReviews(data);
-        })();
+            Axios.get(`http://localhost:8080/api/review/listarTodos`,{
+                headers:{
+                  Authorization: `Bearer ${token}`
+                }
+            })
+            .then((response) => {
+                setReviews(response.data);
+                console.log(response.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+
               
     }, [])
 
@@ -58,8 +68,8 @@ export default _ => {
 
                 <section className="review__Section">
                     {
-                        reviews?.slice(0, 3).map((review) => (
-                            <ReviewCompINF minhaIMG={games.filter(jogo => jogo?.name === review.jogo)[0]?.background_image} nome={review?.jogo} descricao={review?.tituloReview} data={`Data de postagem ${review?.dataReview}`} corpo={review?.descricaoReview} nota={review?.notaReview}/>
+                        reviews?.map((review) => (
+                            <ReviewCompINF minhaIMG={games.filter(jogo => jogo?.id === review?.idJogo)[0]?.background_image} nome={games.filter(jogo => jogo?.id === review?.idJogo)[0]?.name} descricao={review?.tituloReview} data={`Data de postagem ${review?.dataReview}`} corpo={review?.descricaoReview} nota={review?.notaReview}/>
                         ))
                     }
                 </section>
