@@ -21,45 +21,17 @@ const Step2 = ({jogo, onChangeGame, erro}) => {
             <div className='cadastroJogo__content__plataforms__checkboxs'>
                 <label htmlFor={platform} className='cadastroJogo__content__label'>          
                     <input type="checkbox" name="platform" id={platform} className={`cadastroJogo__content__steps--inputTTS ${erro && 'cadastroJogo__content__body--erroMessage'}`}
-                    defaultChecked={jogo?.plataformas.some(plat => plat === platform)}
+                    defaultChecked={jogo?.plataforma === platform}
                     onClick={() => {
-                        const newPlatform = !plataformasSelecionadas?.some(p => p.Plataforma === platform) ? 
-                        [
-                            ...plataformasSelecionadas, 
-                            {
-                                Plataforma: platform,
-                                Minimo:{
-                                    SO: null,
-                                    Processador: null,
-                                    PlacaVideo: null,
-                                    Memoria: null,
-                                    MemoriaTam: "MB",
-                                    Armazenamento: null,
-                                    ArmazenamentoTam: "MB",
-                                },
-                                Recomendado:{
-                                    SO: null,
-                                    Processador: null,
-                                    PlacaVideo: null,
-                                    Memoria: null,
-                                    MemoriaTam: "MB",
-                                    Armazenamento: null,
-                                    ArmazenamentoTam: "MB",
-                                }
-                            }
-                         ] : 
-                        () => deletePropriedade(platform)
-                        setPlataformasSelecionadas(newPlatform);
-                        onChangeGame("plataforma", newPlatform?.Plataforma)
+                        onChangeGame("plataforma", platform)
+                        console.log(jogo);
                     }}/>
                     {platform}  
                 </label>
             </div>))}
         </div>
 
-        {plataformasSelecionadas?.map((platform) => (
-            <Platform jogo={jogo} onChangePlatform={onChangePlatform}/>
-        ))}
+        <Platform jogo={jogo} onChangePlatform={onChangePlatform}/>
     </section>
   )
 }
