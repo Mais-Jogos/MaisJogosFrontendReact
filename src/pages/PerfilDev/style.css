@@ -197,6 +197,21 @@ div.perfilDev__userData__descr >.perfilDev__userData__input>textarea#descricao{
     display: block;
     margin: 20px auto;
 }
+.btn-logout{
+    display: block;
+    border-radius: 10px;
+    background-color: var(--purple);
+    color: var(--color-primary);
+    padding: 10px 30px;
+    font-size: 1rem;
+    box-shadow: 2px 2px 0px #932eff inset, -2px -2px 0px #44008d inset;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: 0.7s all;
+}
+.btn-logout:hover{
+    background-color: var(--dark-purple);
+}
 
 
 

@@ -10,6 +10,7 @@ import Axios from 'axios'
 
 const CadastroJogo2 = () => {
   const id = window.localStorage.getItem("id")
+  const token = window.localStorage.getItem("token")
   const [jogo, setJogo] = useState({
     titulo: null,
     descricao: null,
@@ -27,6 +28,7 @@ const CadastroJogo2 = () => {
     fotos: null,
     videos: null,
     idDev: id,
+    licenca: null,
   });
   const onChangeGame = (type, value) => {
     setJogo({ ...jogo, [type]: value });
@@ -40,23 +42,49 @@ const CadastroJogo2 = () => {
   ];
 
   function criarJogo(){
-    const newJogo = {
+    const jogoInfo = {
       titulo: jogo?.titulo,
       descricao: jogo?.descricao,
       genero: jogo?.genero[0],
       plataforma: jogo?.plataforma,
       SO: jogo["SO"],
-      processador: jogo["Processador"],
-      placaDeVideo: jogo["PlacaVideo"],
-      quantMemoria: jogo["Memoria"],
-      tipoMemoria: jogo["MemoriaTam"],
-      quantArmazenamento: jogo["Armazenamento"],
-      tipoArmazenamento: jogo["ArmazenamentoTam"],
-      jogoWin: jogo?.jogo,
+      processador: jogo?.processador,
+      placaDeVideo: jogo?.placaDeVideo,
+      quantMemoria: jogo?.quantMemoria,
+      tipoMemoria: jogo?.tipoMemoria,
+      quantArmazenamento: jogo?.quantArmazenamento,
+      tipoArmazenamento: jogo?.tipoArmazenamento,
     }
-    console.log("Jogo", newJogo);
-    Axios.post("http://localhost:8080/jogos", newJogo)
-    .then((response) => {console.log(response);})
+    const jogoFiles = {
+      jogoWin: jogo?.jogo,
+      jogoAndroid: jogo?.jogo,
+      bannerUm: jogo?.fotos[0],
+      bannerDois: jogo?.fotos[2],
+      bannerTres: jogo?.fotos[3],
+      bannerQuatro: jogo?.fotos[4],
+      bannerCinco: jogo?.fotos[5],
+      licenca: jogo?.licenca
+    }
+    console.log("NewJogo", jogoInfo);
+    console.log("Jogo", jogo);
+    console.log("foto1", jogo?.fotos[0]);
+    Axios.post("http://localhost:8080/api/jogo/salvar", jogoInfo, {
+      headers:{
+        Authorization: `Bearer ${token}`
+      }
+    })
+    .then((response) => {
+      console.log(response);
+      Axios.patch(`http://localhost:8080/api/jogo/atualizaFile/${response.data.id}`, jogoFiles, {
+        headers:{
+          Authorization: `Bearer ${token}`
+        }
+      })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => console.log(error))
+    })
     .catch((error) => console.log(error))
   }
   const nextStep = () => {
@@ -72,6 +100,7 @@ const CadastroJogo2 = () => {
         (jogo.jogo === null ||
           jogo.fotos === null ||
           jogo.videos === null ||
+          jogo.licenca === null ||
           jogo.classificacao === null))
     ) {
       setErro(true);
@@ -173,13 +202,18 @@ const CadastroJogo2 = () => {
             Voltar
           </button>
         )}
-        <button
+        {step !== 2 &&<button
             onClick={nextStep}
             className="cadastroJogo__step__button cadastroJogo__step__buttonNext"
           >
-            {step !== 2 && "Próximo"}
-            {step === 2 && "Cadastrar"}
-          </button>
+            Próximo
+          </button>}
+        {step === 2 && <button
+            onClick={criarJogo}
+            className="cadastroJogo__step__button cadastroJogo__step__buttonNext"
+          >
+            Cadastrar
+          </button>}
       </section>
     </div>
   );

@@ -9,13 +9,17 @@ const Step3 = ({jogo, onChangeGame, erro}) => {
           <input type="file" id='jogo' defaultValue={jogo?.jogo} onChange={(e) => onChangeGame("jogo", e.target.files)} className={`cadastroJogo__content__uploadContent__fileUpload--changeText`}/>
         </div>
         <h3 className='cadastroJogo__content__h3'>Midia</h3>
-        <label htmlFor="jogo" className='cadastroJogo__content__label'>Fotos</label>
+        <label htmlFor="fotos" className='cadastroJogo__content__label'>Fotos</label>
         <div className='cadastroJogo__content__uploadContent__fileUpload'>
-          <input type="file" id='fotos' defaultValue={jogo?.fotos} onChange={(e) => onChangeGame("fotos", e.target.files)} className={`cadastroJogo__content__uploadContent__fileUpload--changeText`}/>
+          <input type="file" id='fotos' multiple defaultValue={jogo?.fotos} onChange={(e) => onChangeGame("fotos", e.target.files)} className={`cadastroJogo__content__uploadContent__fileUpload--changeText`}/>
         </div>
-        <label htmlFor="jogo" className='cadastroJogo__content__label'>Videos</label>
+        <label htmlFor="videos" className='cadastroJogo__content__label'>Videos</label>
         <div className='cadastroJogo__content__uploadContent__fileUpload'>
           <input type="file" id='videos' defaultValue={jogo?.videos} onChange={(e) => onChangeGame("videos", e.target.files)} className={`cadastroJogo__content__uploadContent__fileUpload--changeText`}/>
+        </div>
+        <label htmlFor="licenca" className='cadastroJogo__content__label'>Licença</label>
+        <div className='cadastroJogo__content__uploadContent__fileUpload'>
+          <input type="file" id='licenca' defaultValue={jogo?.licenca} onChange={(e) => onChangeGame("licenca", e.target.files)} className={`cadastroJogo__content__uploadContent__fileUpload--changeText`}/>
         </div>
         <label htmlFor="classificacao" className='cadastroJogo__content__label'>Classificação Indicativa</label>
         <select name="classificacao" id="classificacao" className='cadastroJogo__content__select' onChange={(e) => onChangeGame("classificacao", e.target.value)}>

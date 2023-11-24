@@ -228,19 +228,19 @@ button.cadastroJogo__content__buttons--select{
     justify-content: center;
     gap: 10px;
 }
-.cadastroJogo__content__plataforms div > label > input[type="checkbox"] {
+.cadastroJogo__content__plataforms div > label > input[type="radio"] {
     appearance: none;
     background-color: #0e0e0e;
     color: currentColor;
     height: auto;
     border: 0.15em solid currentColor;
-    border-radius: 5px;
+    border-radius: 50%;
     display: grid;
     place-content: center;
     cursor: pointer;
     transform: scale(0.8);
 }
-.cadastroJogo__content__plataforms div > label > input[type="checkbox"]::before {
+.cadastroJogo__content__plataforms div > label > input[type="radio"]::before {
     content: "";
     width: 0.65em;
     height: 0.65em;
@@ -250,7 +250,7 @@ button.cadastroJogo__content__buttons--select{
     transform-origin: bottom left;
     clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
 }
-.cadastroJogo__content__plataforms div > label > input[type="checkbox"]:checked::before {
+.cadastroJogo__content__plataforms div > label > input[type="radio"]:checked::before {
     transform: scale(2) translateX(-2px) translateY(2px);
 }
 .cadastroJogo__content__requirements{

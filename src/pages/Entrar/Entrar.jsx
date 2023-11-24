@@ -31,15 +31,22 @@ const Entrar = () => {
           .then((response) => {
             console.log(response)
             window.localStorage.setItem("token", response.data)
-            if(userType === "Gamer"){
-              navigate("/perfil-user")
-            }else if(userType === "Dev"){
-              navigate("/perfil-dev")
-            }
+            setModal(<Modal message={"Você foi logado!"} type={true}/>)
+            setTimeout(() => {
+              if(userType === "Gamer"){
+                navigate("/perfil-user")
+              }else if(userType === "Dev"){
+                navigate("/perfil-dev")
+              }
+            }, 3000)
           })
           .catch((error) => {
             console.log(error)
             console.log("data err", error.config.data);
+            setModal(<Modal message={"Você não foi logado!"} type={false}/>)
+            setTimeout(() =>{
+              setModal(null)
+            }, 3000)
           })
         setMsg('')
       } else {

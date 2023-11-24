@@ -9,6 +9,7 @@ import TextToSpeech from "../../components/Acessibilidade/TextToSpeech";
 import { translate } from "../../translate/translate";
 import { useEffect } from "react";
 import Axios from "axios";
+import Modal from "../../components/Modal/Modal";
 
 function reducerUserData(state, action) {
   switch (action.type) {
@@ -35,7 +36,7 @@ export default (props) => {
     senha: "",
     descricao: "",
   });
-
+  const [modal, setModal] = useState(null)
   const [editButton, setEditButton] = useState(false);
   const id = window.localStorage.getItem("Id");
   const [data, setData] = useState({});
@@ -60,6 +61,15 @@ export default (props) => {
         console.log(error);
     });
   }, []);
+  const logout = () =>{
+    setModal(<Modal message={"Você foi deslogado!"} type={true}/>)
+    window.localStorage.removeItem("token")
+    window.localStorage.removeItem("id")
+    window.localStorage.removeItem("type")
+    setTimeout(() =>{
+      navigate("/entrar")
+    }, 3000)
+  }
 
   return (
     <div id="container-page">
@@ -67,6 +77,7 @@ export default (props) => {
       <Vlibras />
       <Acessibilidade />
       <TextToSpeech />
+      {modal}
       <main className="perfilDev__main">
         <section className="perfilDev__titlePage">
           <h1>{translate("Meu perfil")}</h1>
@@ -262,6 +273,7 @@ export default (props) => {
             <p>{translate("Cadastrar Jogo")}</p>
           </Link>
         </section>
+        <button className="btn-logout" onClick={logout}>Logout</button>
       </main>
     </div>
   );
