@@ -43,6 +43,10 @@ const Entrar = () => {
           .catch((error) => {
             console.log(error)
             console.log("data err", error.config.data);
+            setModal(<Modal message={"Você não foi logado!"} type={false}/>)
+            setTimeout(() =>{
+              setModal(null)
+            }, 3000)
           })
         setMsg('')
       } else {

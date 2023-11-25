@@ -20,7 +20,7 @@ const Step2 = ({jogo, onChangeGame, erro}) => {
             {platforms.map((platform) => (
             <div className='cadastroJogo__content__plataforms__checkboxs'>
                 <label htmlFor={platform} className='cadastroJogo__content__label'>          
-                    <input type="checkbox" name="platform" id={platform} className={`cadastroJogo__content__steps--inputTTS ${erro && 'cadastroJogo__content__body--erroMessage'}`}
+                    <input type="radio" name="platform" id={platform} className={`cadastroJogo__content__steps--inputTTS ${erro && 'cadastroJogo__content__body--erroMessage'}`}
                     defaultChecked={jogo?.plataforma === platform}
                     onClick={() => {
                         onChangeGame("plataforma", platform)

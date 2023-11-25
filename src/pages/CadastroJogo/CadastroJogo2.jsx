@@ -4,12 +4,16 @@ import Acessibilidade from "../../components/Acessibilidade/Acessibilidade";
 import Step1 from "./Step1";
 import Step2 from "./Step2";
 import Step3 from "./Step3";
+import Modal from "../../components/Modal/Modal"
 import { translate } from "../../translate/translate";
 import "./style2.css";
 import Axios from 'axios'
+import { useNavigate } from "react-router-dom";
 
 const CadastroJogo2 = () => {
   const id = window.localStorage.getItem("id")
+  const token = window.localStorage.getItem("token")
+  const navigate = useNavigate()
   const [jogo, setJogo] = useState({
     titulo: null,
     descricao: null,
@@ -27,12 +31,14 @@ const CadastroJogo2 = () => {
     fotos: null,
     videos: null,
     idDev: id,
+    licenca: null,
   });
   const onChangeGame = (type, value) => {
     setJogo({ ...jogo, [type]: value });
   };
   const [erro, setErro] = useState(false);
   const [step, setStep] = useState(0);
+  const [modal, setModal] = useState(null)
   const steps = [
     <Step1 jogo={jogo} onChangeGame={onChangeGame} />,
     <Step2 jogo={jogo} onChangeGame={onChangeGame} />,
@@ -40,24 +46,76 @@ const CadastroJogo2 = () => {
   ];
 
   function criarJogo(){
-    const newJogo = {
+    const jogoInfo = {
       titulo: jogo?.titulo,
       descricao: jogo?.descricao,
       genero: jogo?.genero[0],
       plataforma: jogo?.plataforma,
       SO: jogo["SO"],
-      processador: jogo["Processador"],
-      placaDeVideo: jogo["PlacaVideo"],
-      quantMemoria: jogo["Memoria"],
-      tipoMemoria: jogo["MemoriaTam"],
-      quantArmazenamento: jogo["Armazenamento"],
-      tipoArmazenamento: jogo["ArmazenamentoTam"],
-      jogoWin: jogo?.jogo,
+      processador: jogo?.processador,
+      placaDeVideo: jogo?.placaDeVideo,
+      quantMemoria: jogo?.quantMemoria,
+      tipoMemoria: jogo?.tipoMemoria,
+      quantArmazenamento: jogo?.quantArmazenamento,
+      tipoArmazenamento: jogo?.tipoArmazenamento,
     }
-    console.log("Jogo", newJogo);
-    Axios.post("http://localhost:8080/jogos", newJogo)
-    .then((response) => {console.log(response);})
-    .catch((error) => console.log(error))
+    const jogoFiles = {
+      jogoWin: jogo?.jogo,
+      jogoAndroid: jogo?.jogo,
+      bannerUm: jogo?.fotos[0],
+      bannerDois: jogo?.fotos[1],
+      bannerTres: jogo?.fotos[2],
+      bannerQuatro: jogo?.fotos[3],
+      bannerCinco: jogo?.fotos[4],
+      licenca: jogo?.licenca
+    }
+
+    const formData = new FormData();
+
+    formData.append('jogoWin', jogoFiles?.jogoWin);
+    formData.append('jogoAndroid', jogoFiles?.jogoAndroid);
+    formData.append('bannerUm', jogoFiles?.bannerUm);
+    formData.append('bannerDois', jogoFiles?.bannerDois);
+    formData.append('bannerTres', jogoFiles?.bannerTres);
+    formData.append('bannerQuatro', jogoFiles?.bannerQuatro);
+    formData.append('bannerCinco', jogoFiles?.bannerCinco);
+    formData.append('licenca', jogoFiles?.licenca);
+
+    Axios.post("http://localhost:8080/api/jogo/salvar", jogoInfo, {
+      headers:{
+        Authorization: `Bearer ${token}`,
+      }
+    })
+    .then((response) => {
+      console.log("Response jogos info", response);
+      Axios.patch(`http://localhost:8080/api/jogo/atualizaFile/${response.data.id}`, formData, {
+        headers:{
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'multipart/form-data',
+        }
+      })
+      .then((response) => {
+        console.log("Response jogos files", response);
+        setModal(<Modal message={"Seu jogo foi cadastrado!"} type={true}/>)
+        setTimeout(() =>{
+          navigate("/meus-jogos")
+        }, 3000)
+      })
+      .catch((error) => {
+        console.log(error);
+        setModal(<Modal message={"Seu jogo não foi cadastrado!"} type={true}/>)
+        setTimeout(() =>{
+          setModal(null)
+        }, 3000)
+      })
+    })
+    .catch((error) => {
+      console.log(error);
+      setModal(<Modal message={"Seu jogo não foi cadastrado!"} type={true}/>)
+        setTimeout(() =>{
+          setModal(null)
+        }, 3000)
+    })
   }
   const nextStep = () => {
     if (
@@ -72,6 +130,7 @@ const CadastroJogo2 = () => {
         (jogo.jogo === null ||
           jogo.fotos === null ||
           jogo.videos === null ||
+          jogo.licenca === null ||
           jogo.classificacao === null))
     ) {
       setErro(true);
@@ -173,13 +232,18 @@ const CadastroJogo2 = () => {
             Voltar
           </button>
         )}
-        <button
+        {step !== 2 &&<button
             onClick={nextStep}
             className="cadastroJogo__step__button cadastroJogo__step__buttonNext"
           >
-            {step !== 2 && "Próximo"}
-            {step === 2 && "Cadastrar"}
-          </button>
+            Próximo
+          </button>}
+        {step === 2 && <button
+            onClick={criarJogo}
+            className="cadastroJogo__step__button cadastroJogo__step__buttonNext"
+          >
+            Cadastrar
+          </button>}
       </section>
     </div>
   );

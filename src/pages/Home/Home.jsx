@@ -10,14 +10,17 @@ import Vlibras from '../../components/Vlibras/Vlibras'
 import { translate } from '../../translate/translate'
 import { AnimatePresence, motion } from 'framer-motion'
 import TextToSpeech from "../../components/Acessibilidade/TextToSpeech";
+import CardHome from '../../components/CardHome/CardHome'
 
 const Home = () => {
   const navigate = useNavigate()
   const [image, setImage] = useState(1);
   const [games, setGames] = useState([]);
+  const [jogos, setJogos] = useState([])
   const [game, setGame] = useState(0)
   const [numberGames, setNumberGames] = useState(6)
   const [direction, setDirection] = useState('left');
+  const token = window.localStorage.getItem("token")
   
   // Precisei desse estado pq é preciso esperar a chamada da api para o jquery conseguir indentificar os cards na tela
   const [leitor, setLeitor] = useState(false);
@@ -41,6 +44,16 @@ const Home = () => {
         setGames(response.data.results);
         setLeitor(true);
       }).catch((error) => { console.log(error); });
+    Axios.get('http://localhost:8080/api/jogo/listarTodos',{
+      headers:{
+        Authorization: `Bearer ${token}`
+      }
+    })
+    .then((response) => {
+      console.log(response.data);
+      setJogos(response.data)
+      console.log("jogos", mapjogos);
+    }).catch((error) => console.log(error))
 
     filteredGames = games?.filter(jogo => {
       var plataformasSelecionadas;
@@ -295,6 +308,9 @@ const Home = () => {
               </div>
             </div>
             <div className="section__games">
+              {jogos?.map(jogo =>(
+                <CardHome game={jogo} key={jogo?.id}/>
+              ))}
               {games?.filter(jogo => {
                 var plataformasSelecionadas;
                 var categoriasSelecionadas;
