@@ -13,14 +13,14 @@ const CardHome = ({game, dispatch, cart}) => {
       dispatch(selectGame(game));
     }
   };
-
+  console.log(game);
   return (
   <>
     <div className="border__card">
     <div className="card">
-      <Link to={`/jogos/${game?.titulo}`} key={game?.id}  aria-label={game?.titulo}>
+      <Link to={`/jogos/${game?.titulo.toLowerCase().replace(/ /g,"-")}`} key={game?.id}  aria-label={game?.titulo}>
         <div className="card__image">
-          <img src={`http://localhost:8080${game?.bannerUm}`} alt={game?.titulo} />
+          <img src={`data:image/png;base64, ${game?.bannerUm}`} alt={game?.titulo} />
         </div>
       </Link>
       <Link to={`/jogos/${game?.titulo}`} key={game?.id} aria-label={game?.titulo}> 

@@ -52,7 +52,6 @@ const Home = () => {
     .then((response) => {
       console.log(response.data);
       setJogos(response.data)
-      console.log("jogos", mapjogos);
     }).catch((error) => console.log(error))
 
     filteredGames = games?.filter(jogo => {

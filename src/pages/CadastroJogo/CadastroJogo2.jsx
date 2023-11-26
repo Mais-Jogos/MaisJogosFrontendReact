@@ -47,6 +47,7 @@ const CadastroJogo2 = () => {
 
   function criarJogo(){
     const jogoInfo = {
+      idDev: jogo?.idDev,
       titulo: jogo?.titulo,
       descricao: jogo?.descricao,
       genero: jogo?.genero[0],

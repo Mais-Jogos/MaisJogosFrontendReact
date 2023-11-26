@@ -15,8 +15,11 @@ import TextToSpeech from "../../components/Acessibilidade/TextToSpeech";
 
 const Jogo = ({ dispatch, listadesejos, cart }) => {
   const [game, setGame] = useState();
+  const [jogo, setJogo] = useState()
   const [image, setImage] = useState(0);
   const { name } = useParams();
+  const token = window.localStorage.getItem("token")
+  const imgs = ["bannerUm", 'bannerDois', 'bannerTres', 'bannerQuatro', 'bannerCinco']
 
   // Precisei desse estado pq é preciso esperar a chamada da api para o jquery conseguir indentificar os cards na tela
   const [leitor, setLeitor] = useState(false);
@@ -28,6 +31,15 @@ const Jogo = ({ dispatch, listadesejos, cart }) => {
         setGame(response.data.results.filter(jogo => jogo.name.toLowerCase().replace(/ /g, "-") === name)[0])
         setLeitor(true);
       }).catch((error) => { console.log(error); });
+      Axios.get('http://localhost:8080/api/jogo/listarTodos',{
+        headers:{
+          Authorization: `Bearer ${token}`
+        }
+      })
+      .then((response) => {
+        console.log(response.data);
+        setJogo(response.data.filter(jogo => jogo.titulo.toLowerCase().replace(/ /g, "-") === name)[0])
+      }).catch((error) => console.log(error))
   }, []);
   var carrinho = cart.cart.every(c => c?.id !== game?.id)
   var listaDeDesejos = listadesejos.listadesejos.every(l => l?.id !== game?.id)
@@ -61,18 +73,18 @@ const Jogo = ({ dispatch, listadesejos, cart }) => {
       <div>
         <div className="game__page">
           <div className="game__page__image">
-            <p onClick={() => setImage(image === 0 ? game?.short_screenshots.length - 1 : image - 1)}>
+            <p onClick={() => setImage(image === 0 ? imgs.length - 1 : image - 1)}>
               <i className="fa-solid fa-chevron-left"></i>
             </p>
-            <img src={game?.short_screenshots[image].image} alt="" />
-            <p onClick={() => setImage(image === game?.short_screenshots.length - 1 ? 0 : image + 1)}>
+            <img src={`data:image/png;base64, ${jogo?.[imgs[image]]}`} alt="" />
+            <p onClick={() => setImage(image === imgs.length - 1 ? 0 : image + 1)}>
               <i className="fa-solid fa-chevron-right"></i>
             </p>
           </div>
           <div className="game__page__images">
-            {game?.short_screenshots.map((image, index) =>
+            {imgs.map((image, index) =>
               <img
-                src={image.image}
+                src={`data:image/png;base64, ${jogo?.[image]}`}
                 key={image.id}
                 onClick={() => setImage(index)}
               />
@@ -81,18 +93,16 @@ const Jogo = ({ dispatch, listadesejos, cart }) => {
           <div className="gameinfo__game__page">
             <div className="text__game__page">
               <div className="title__game__page">
-                <h2>{game?.name}</h2>
+                <h2>{jogo?.titulo}</h2>
                 <div className="classif__game__page">
-                  <p className="rating__game__page">{game?.rating}/{game?.rating_top}</p>
-                  <p className="classification__game__page">L</p>
+                  <p className="rating__game__page">{game?.rating}/5</p>
+                  <p className="classification__game__page">Livre</p>
                 </div>
               </div>
               <div className="game__page__genres">
-                {game?.genres.map((genres) =>
-                  <span key={genres?.id}>{genres?.name}</span>
-                )}
+                  <span>{jogo?.genero}</span>
               </div>
-              <p className='description__game__page'>{translate("Descrição")}: Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus commodi quod nihil, et consequuntur aut rem unde laborum quasi nesciunt. Quaerat, dignissimos voluptate. Perferendis, ex commodi eius in blanditiis tenetur?</p>
+              <p className='description__game__page'>{translate("Descrição")}: {jogo?.descricao}</p>
               <div className="comments__game__page">
                 <h2>{translate("Avaliações")}</h2>
                 <div className="comment__game__page">
