@@ -8,6 +8,7 @@
   width: 100vw;
   top: 0;
   left: 0;
+  z-index: 3000;
 }
 .modal-border{
     border:2px solid var(--black);

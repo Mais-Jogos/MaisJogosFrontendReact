@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Menu from "../../components/Menu/Menu";
 import Acessibilidade from "../../components/Acessibilidade/Acessibilidade";
 import Step1 from "./Step1";
@@ -6,33 +6,26 @@ import Step2 from "./Step2";
 import Step3 from "./Step3";
 import Modal from "../../components/Modal/Modal"
 import { translate } from "../../translate/translate";
-import "./style2.css";
+import "./style.css";
 import Axios from 'axios'
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
-const CadastroJogo2 = () => {
+const EditarJogo = () => {
   const id = window.localStorage.getItem("id")
   const token = window.localStorage.getItem("token")
   const navigate = useNavigate()
-  const [jogo, setJogo] = useState({
-    titulo: null,
-    descricao: null,
-    genero: [],
-    plataforma: null,
-    SO: null,
-    processador: null,
-    placaDeVideo: null,
-    quantMemoria: null,
-    tipoMemoria: null,
-    quantArmazenamento: null,
-    tipoArmazenamento: null,
-    jogo: null,
-    classificacao: null,
-    fotos: null,
-    videos: null,
-    idDev: id,
-    licenca: null,
-  });
+  const {idJogo} = useParams();
+  const [jogo, setJogo] = useState({});
+  useEffect(() =>{
+    Axios.get(`http://localhost:8080/api/jogo/listarJogo/${idJogo}`, {
+      headers:{
+        Authorization: `Bearer ${token}`
+      }
+    }).then((response) => {
+      setJogo(response.data);
+      console.log(response.data);
+    }).catch((error) => console.log(error))
+  }, [])
   const onChangeGame = (type, value) => {
     setJogo({ ...jogo, [type]: value });
   };
@@ -40,8 +33,8 @@ const CadastroJogo2 = () => {
   const [step, setStep] = useState(0);
   const [modal, setModal] = useState(null)
   const steps = [
-    <Step1 jogo={jogo} onChangeGame={onChangeGame} />,
-    <Step2 jogo={jogo} onChangeGame={onChangeGame} />,
+    <Step1 jogo={jogo} onChangeGame={onChangeGame} erro={erro}/>,
+    <Step2 jogo={jogo} onChangeGame={onChangeGame} erro={erro}/>,
     <Step3 jogo={jogo} onChangeGame={onChangeGame} />,
   ];
 
@@ -50,9 +43,9 @@ const CadastroJogo2 = () => {
       idDev: jogo?.idDev,
       titulo: jogo?.titulo,
       descricao: jogo?.descricao,
-      genero: jogo?.genero[0],
+      genero: jogo?.genero,
       plataforma: jogo?.plataforma,
-      SO: jogo["SO"],
+      SO: jogo?.SO,
       processador: jogo?.processador,
       placaDeVideo: jogo?.placaDeVideo,
       quantMemoria: jogo?.quantMemoria,
@@ -61,13 +54,13 @@ const CadastroJogo2 = () => {
       tipoArmazenamento: jogo?.tipoArmazenamento,
     }
     const jogoFiles = {
-      jogoWin: jogo?.jogo,
-      jogoAndroid: jogo?.jogo,
-      bannerUm: jogo?.fotos[0],
-      bannerDois: jogo?.fotos[1],
-      bannerTres: jogo?.fotos[2],
-      bannerQuatro: jogo?.fotos[3],
-      bannerCinco: jogo?.fotos[4],
+      jogoWin: jogo?.jogoWin,
+      jogoAndroid: jogo?.jogoAndroid,
+      bannerUm: jogo?.bannerUm,
+      bannerDois: jogo?.bannerDois,
+      bannerTres: jogo?.bannerTres,
+      bannerQuatro: jogo?.bannerQuatro,
+      bannerCinco: jogo?.bannerCinco,
       licenca: jogo?.licenca
     }
 
@@ -82,14 +75,20 @@ const CadastroJogo2 = () => {
     formData.append('bannerCinco', jogoFiles?.bannerCinco);
     formData.append('licenca', jogoFiles?.licenca);
 
-    Axios.post("http://localhost:8080/api/jogo/salvar", jogoInfo, {
+    Axios.put(`http://localhost:8080/api/jogo/alterarJogo/${jogo?.id}`, jogoInfo, {
       headers:{
         Authorization: `Bearer ${token}`,
       }
     })
     .then((response) => {
       console.log("Response jogos info", response);
-      Axios.patch(`http://localhost:8080/api/jogo/atualizaFile/${response.data.id}`, formData, {
+      console.log("Response jogos files form", formData);
+      console.log("Response jogos files", jogoFiles);
+      setModal(<Modal message={"Seu jogo foi alterado!"} type={true}/>)
+      setTimeout(() =>{
+        navigate("/jogos-dev")
+      }, 3000)
+      /* Axios.patch(`http://localhost:8080/api/jogo/atualizaFile/${response.data.id}`, formData, {
         headers:{
           Authorization: `Bearer ${token}`,
           'Content-Type': 'multipart/form-data',
@@ -97,22 +96,18 @@ const CadastroJogo2 = () => {
       })
       .then((response) => {
         console.log("Response jogos files", response);
-        setModal(<Modal message={"Seu jogo foi cadastrado!"} type={true}/>)
-        setTimeout(() =>{
-          navigate("/meus-jogos")
-        }, 3000)
       })
       .catch((error) => {
         console.log(error);
-        setModal(<Modal message={"Seu jogo não foi cadastrado!"} type={true}/>)
+        setModal(<Modal message={"Seu jogo não foi alterado!"} type={false}/>)
         setTimeout(() =>{
           setModal(null)
         }, 3000)
-      })
+      }) */
     })
     .catch((error) => {
       console.log(error);
-      setModal(<Modal message={"Seu jogo não foi cadastrado!"} type={true}/>)
+      setModal(<Modal message={"Seu jogo não foi alterado!"} type={false}/>)
         setTimeout(() =>{
           setModal(null)
         }, 3000)
@@ -158,6 +153,7 @@ const CadastroJogo2 = () => {
     <div id="container-page">
       <Menu />
       <Acessibilidade />
+      {modal}
       <main className="cadastroJogo__main">
         <div className="cadastroJogo__title">
           <i className="fa-solid fa-caret-left"></i>
@@ -250,4 +246,4 @@ const CadastroJogo2 = () => {
   );
 };
 
-export default CadastroJogo2;
+export default EditarJogo;

@@ -232,7 +232,8 @@ button.cadastroJogo__content__buttons--select{
     appearance: none;
     background-color: #0e0e0e;
     color: currentColor;
-    height: auto;
+    height: 30px;
+    width: 30px;
     border: 0.15em solid currentColor;
     border-radius: 50%;
     display: grid;
@@ -284,15 +285,6 @@ button.cadastroJogo__content__buttons--select{
     flex-direction: column;
     margin: 0;
     position: relative;
-}
-.cadastroJogo__content__requirements__selected:last-child::before{
-    content: '';
-    width: 1px;
-    height: 120%;
-    position: absolute;
-    top: -20px;
-    left: -30px;
-    background-color: var(--purple);
 }
 .cadastroJogo__content__requirements__selected .cadastroJogo__content__requirements__inputs label {
     display: block;
@@ -420,6 +412,25 @@ h3.cadastroJogo__content__h3{
 }
 #cadastroJogo__content__title, #cadastroJogo__content__textarea{
     font-family: var(--font-normal);
+}
+.content_imgs-edit{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.content_img-edit{
+    display: flex;
+    gap: 10px;
+}
+.content_img-edit img{
+    width: 40px;
+    padding: 10px;
+    border: 1px var(--purple-y) solid;
+    border-radius: 5px;
+    filter: brightness(0.5);
+}
+.content_img-edit input{
+    filter: brightness(0.5);
 }
 /* .cadastroJogo__content__uploadContent__fileUpload--changeText::-webkit-file-upload-button {
     visibility: hidden;

@@ -1,0 +1,152 @@
+.signin__title__admin{
+    color: var(--color-primary);
+    font-family: var(--font-pixel);
+    margin: 50px auto;
+    text-align: center;
+    animation: SelectPlayer 2s infinite;
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 10px;
+}
+.signin__title__admin h2{
+    margin: 0px;
+}
+.page__cad__admin{
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 40px;
+    padding: 30px;
+    padding-top: 0px;
+    margin-bottom: 12vh;
+    flex-wrap: wrap-reverse;
+}
+.page__cad__aside__admin{
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+}
+.page__cad__aside__admin button{
+    font-family: var(--font-normal);
+    text-align: center;
+    color: var(--white);
+    background-color: var(--purple);
+    box-shadow: 2px 2px 0px #932eff inset,
+    -2px -2px 0px #44008d inset;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: 0.7s all;
+}
+.page__cad__aside__admin button:hover{
+    background-color: var(--dark-purple);
+}
+.signin__img__admin{
+    width: 300px;
+    height: 300px;
+    background-color: var(--grey-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    border: 5px solid var(--purple-y);
+    outline: 2px solid var(--black);
+    cursor: pointer;
+}
+.signin__img__admin img{
+    width: 280px;
+    height: 280px;
+    object-fit: cover;
+    transition: 0.5s all;
+}
+.form__signin__admin{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+.form__signin__admin input, textarea{
+    border: 1px solid var(--purple-y);
+    color: var(--color-primary);
+    padding: 10px 15px;
+    border-radius: 10px;
+    background-color: transparent;
+}
+.form__signin__admin h2{
+    font-family: var(--font-pixel);
+    text-align: center;
+    color: var(--color-primary);
+    margin: 0;
+}
+.form__signin__admin p{
+    font-family: var(--font-normal);
+    text-align: center;
+    color: var(--grey-dark);
+    font-size: 0.9rem;
+    margin: 0;
+}
+.form__signin__admin p a{
+    font-family: var(--font-normal);
+    text-align: center;
+    color: var(--purple);
+    transition: 0.7s all;
+    cursor: pointer;
+}
+.form__signin__admin p a:hover{
+    text-decoration: underline;
+}
+.form__signin__admin button{
+    font-family: var(--font-normal);
+    text-align: center;
+    color: var(--white);
+    background-color: var(--purple);
+    box-shadow: 2px 2px 0px #932eff inset,
+    -2px -2px 0px #44008d inset;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: 0.7s all;
+}
+.form__signin__admin button:hover{
+    background-color: var(--dark-purple);
+}
+
+@keyframes SelectPlayer{
+    from{
+        opacity: 0.2;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+/** Responsividade **/
+@media screen and (max-width:750px) {
+    .signin__img__admin{
+        width: 230px;
+        height: 230px;
+    }
+    .signin__img__admin img{
+        width: 200px;
+        height: 200px;
+    }
+    .page__cad__admin{
+        align-items: center;
+    }
+
+}
+@media screen and (max-width:350px) {
+    .signin__img__admin{
+        width: 90vw;
+        height: fit-content;
+    }
+    .signin__img__admin img{
+        width: 85vw;
+        height: fit-content;
+    }
+
+}

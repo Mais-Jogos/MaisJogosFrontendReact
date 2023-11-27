@@ -34,7 +34,9 @@ import Footer from "./components/Footer/Footer";
 import { AnimatePresence } from "framer-motion";
 import CadastroSkin from "./pages/CadastroSkin/CadastroSkin";
 import { Helmet } from 'react-helmet';
-import CadastroJogo2 from "./pages/CadastroJogo/CadastroJogo2";
+import MeusJogosDev from "./pages/MeusJogosDev/MeusJogosDev";
+import EditarJogo from "./pages/EditarJogo/EditarJogo";
+import CadastroAdmin from "./pages/CadastroAdmin/CadastroAdmin";
 
 function App({theme}) {
   const location = window.location.pathname;
@@ -90,7 +92,6 @@ function App({theme}) {
               <Route path='/categorias/:category' element={<Categorias/>}/>
               <Route path='*' element={<NotFound/>}/>
               <Route path='/review' element={<Review/>}/>
-              <Route path='/cadastro-jogo2' element={<CadastroJogo/>}/>
               <Route path='/login-admin' element={<LoginAdmin/>}/>
               <Route path='/relatorios-dev' element={<RelatoriosDev/>}/>
               <Route path='/relatorios-admin' element={<RelatoriosAdmin/>}/>
@@ -102,7 +103,10 @@ function App({theme}) {
               <Route path='/sobre' element={<Sobre/>}/>
               <Route path='/dev/:nome' element={<PubDev/>}/>
               <Route path='/cadastro-skin' element={<CadastroSkin/>}/>
-              <Route path="/cadastro-jogo" element={<CadastroJogo2/>}/>
+              <Route path="/cadastro-jogo" element={<CadastroJogo/>}/>
+              <Route path="/cadastro-admin" element={<CadastroAdmin/>}/>
+              <Route path="/editar-jogo/:idJogo" element={<EditarJogo/>}/>
+              <Route path="/jogos-dev" element={<MeusJogosDev/>}/>
             </Routes>
         </BrowserRouter>
         <Footer/>

@@ -49,13 +49,15 @@
     padding: 10px;
     border-radius: 5px;
     color:var(--color-primary);
+    width: 100%;
 }
 
 .pubProfile_topo{
     display: flex;
     justify-content: center;
-    gap: 30px;
+    gap: 20px;
     flex-wrap: wrap;
+    width: 100%;
 }
 
 .pubProfile_descricao1{
@@ -73,7 +75,16 @@
     width: 250px;
     height: 250px;
 }
-
+.pubProfile_descricao1 img{
+    width: 250px;
+}
+.pubProfile_sobre{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    text-align: start;
+    align-items: flex-start;
+}
 .pubProfile_descricao2{
     display: flex;
     width: 40vw;
@@ -100,6 +111,7 @@
 @media screen and (max-width:850px){
     .pubProfile_descricao2{
         align-items: center;
+        width: 100%;
     }
     .pubProfile__block1{
         justify-content: center;
@@ -111,6 +123,9 @@
     }
     .pubProfile_topo{
         gap:10px;
+    }
+    .accessibility__grid{
+        width: 95%;
     }
 }
 @media screen and (max-width:400px) {

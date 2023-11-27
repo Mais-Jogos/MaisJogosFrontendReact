@@ -198,7 +198,7 @@ const Entrar = () => {
           <p>{translate("Gamer")}</p>
         </div>
         <div className="signin__dev" onClick={() => setUserType('Dev')}>
-          <img src="/imgs/animais/1.png" alt="Desenvolvedor" />
+          <img src="/imgs/devBoy.png" alt="Desenvolvedor" />
           <p>{translate("Desenvolvedor")}</p>
         </div>
       </div>
@@ -206,7 +206,7 @@ const Entrar = () => {
         <div className="page__cad__user">
           <div className="signin__img">
             {userType === 'Gamer' ? <img src="/imgs/girlgamer.png" alt="Gamer" /> :
-              <img src="/imgs/animais/1.png" alt="Desenvolvedor" />}
+              <img src="/imgs/devBoy.png" alt="Desenvolvedor" />}
           </div>
           <button onClick={() => { setUserType(''); setData({}); setMsg('') }}>{translate("Trocar jogador")}</button>
         </div>

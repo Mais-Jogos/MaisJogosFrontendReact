@@ -228,12 +228,12 @@ export default (props) => {
         <section className="perfilDev__actions">
           <Link
             className="perfilDev__action"
-            to="/meus-jogos"
-            aria-label="meus Jogos"
+            to="/jogos-dev"
+            aria-label="Jogos dev"
           >
             <img
               src="/imgs/icons/mais_icon.png"
-              alt="Ícone de Mais que redireciona para a página de Meus jogos do desesenvolvedor"
+              alt="Ícone de Mais que redireciona para a página de jogos do desesenvolvedor"
             />
             <p>{translate("Meus jogos")}</p>
           </Link>

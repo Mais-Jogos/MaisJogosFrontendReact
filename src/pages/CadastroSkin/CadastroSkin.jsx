@@ -9,13 +9,40 @@ import "./style.css"
 import Axios from 'axios';
 
 const CadastroSkin = () => {
+  const token = window.localStorage.getItem("token")
   const [avatar, setAvatar] = useState({
     nome:"",
     arquivo:null,
+    valor: 0,
   })
   function criarAvatar(){
-    Axios.post("http://localhost:8080/release-avatares", avatar)
-    .then((response) => {console.log(response);})
+    const newAvatar = {
+      nome: avatar?.nome,
+      valor: parseFloat(avatar?.valor)
+    }
+    Axios.post("http://localhost:8080/api/avatar/salvar", newAvatar ,{
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
+    .then((response) => {
+      console.log(response);
+      const formData = new FormData()
+      formData.append("file", avatar?.arquivo)
+
+      Axios.patch(`http://localhost:8080/api/avatar/atualizaFile/${response.data?.id}`, formData ,{
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'multipart/form-data',
+        }
+      })
+      .then((response) => {
+        console.log(response);
+
+      })
+      .catch((error) => console.log(error))
+
+    })
     .catch((error) => console.log(error))
   }
 
@@ -39,7 +66,7 @@ const CadastroSkin = () => {
                 <label htmlFor="valor-skin">Valor da Skin:</label>
                 <div className='cadastro__skin-valor-skin'>
                   <img src={'/imgs/icons/Kapicoin_icon.png'} />
-                  <input type="number" name="" id="valor-skin" min="0.00" max="10000.00" step="0.01"/>
+                  <input type="number" name="" id="valor-skin" min="0.00" max="10000.00" step="0.01" onChange={(e) => setAvatar({...avatar, valor:e.target.value})}/>
                 </div>
                 <div className="cadastro__skin-btns">
                   <Link to={"/avatares"}>Voltar</Link>

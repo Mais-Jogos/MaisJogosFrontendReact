@@ -8,6 +8,7 @@ import Vlibras from '../../components/Vlibras/Vlibras';
 import { translate } from "../../translate/translate";
 import TextToSpeech from "../../components/Acessibilidade/TextToSpeech";
 import { useParams } from "react-router-dom";
+import CardHome from "../../components/CardHome/CardHome";
 
 export default _ => {
 
@@ -16,18 +17,26 @@ export default _ => {
   const [windowGames, setWindowGames] = useState(3);
   const [dev, setDev] = useState(0)
   const { nome } = useParams()
+  const token = window.localStorage.getItem("token")
 
   // Precisei desse estado pq é preciso esperar a chamada da api para o jquery conseguir indentificar os cards na tela
   const [leitor, setLeitor] = useState(false);
 
   useEffect(() => {
-    const apiKey = 'bb8e5d1e0b2e44d9ac172e791e20ff23'
-    Axios.get(`https://api.rawg.io/api/games?key=${apiKey}`)
-      .then((response) => {
-        setGames(response.data.results);
-        setLeitor(true);
-      }).catch((error) => { console.log(error); });
-    Axios.get('http://localhost:8080/auth/desenvolvedor')
+    Axios.get("http://localhost:8080/api/jogo/listarTodos", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    .then((response) => {
+      setGames(response.data);
+      setLeitor(true);
+    }).catch((error) => { console.log(error); });
+    Axios.get('http://localhost:8080/api/usuario/listarTodos', {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
     .then((response) => {
       setDev(response.data.filter((dev) => dev.nome.toLowerCase().replace(/ /g, "-") === nome)[0])
       console.log(response.data);
@@ -64,10 +73,10 @@ export default _ => {
         </header>
 
         <section className="accessibility__grid">
-          <div>
+
             <div className="pubProfile_topo">
               <div className="pubProfile_descricao1">
-                <img src="\imgs\animais\1.png" />
+                <img src="\imgs\devBoy.png" />
               </div>
 
               <div className="pubProfile_descricao2">
@@ -76,20 +85,20 @@ export default _ => {
                   <h1 className="pubProfile_Titulo2">{dev?.nome}</h1>
                 </div>
 
-                <div className="pubProfile__block1">
+                {/* <div className="pubProfile__block1">
                   <div className="pubProfile__rankingCoin"> <img src="\imgs\bgimg\ranking.png" /> </div>
                   <div> <h1 className="pubProfile_Titulo2"> {translate("Posição no ranking")} </h1> </div>
+                </div> */}
+                <div className="pubProfile_sobre">
+                  <h4 className="pubProfile_Titulo">{translate("Sobre dev")}</h4>
+                  <div className="pubProfile_bg">{dev?.sobre}</div>
                 </div>
 
               </div>
             </div>
 
-            <div>
-              <h1 className="pubProfile_Titulo">{translate("Sobre dev")}</h1>
-              <div className="pubProfile_bg">{dev?.sobre}</div>
-            </div>
 
-          </div>
+
           <div>
             <div>
               <h1 className="pubProfile_Titulo">{translate("Jogos desenvolvidos")}</h1>
@@ -102,8 +111,8 @@ export default _ => {
             <p onClick={() => { setNumberGames(numberGames === 0 ? games.length - 1 : numberGames - 1) }}>
               <i className="fa-solid fa-chevron-left"></i>
             </p>
-            {games?.slice(numberGames, numberGames + windowGames).map((game) => (
-              <Card game={game} key={game?.id} />
+            {games?.filter(game => game?.idDev === dev?.id).slice(numberGames, numberGames + windowGames).map((game) => (
+              <CardHome game={game} key={game?.id} />
             ))}
             <p onClick={() => { setNumberGames(numberGames === games.length - 1 ? 0 : numberGames + 1) }}>
               <i className="fa-solid fa-chevron-right"></i>

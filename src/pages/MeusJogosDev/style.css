@@ -1,0 +1,191 @@
+.meusjogos__main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    align-content: center;
+}
+
+.meusjogos__menu{
+    width: 99.67%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction:column;
+}
+.meusjogos__menu__titles{
+    width: 1000px;
+    height: 100px;
+    color: var(--color-primary);
+    font-family: var(--font-pixel);
+}
+.meusjogos__menu__title{
+    width: 300px;
+    display: inline-block;
+    border: 4px solid #6302cb;
+    padding: 6px;
+    text-align: center;
+    transition: .9s;
+}
+.meusjogos__menu__title--selected{
+    border: 10px solid var(--purple-y);
+    padding: 0px;
+}
+.meusjogos__menu__title:not(.meusjogos__menu__title--selected):hover{
+    background-color: var(--purple-y);
+    color: var(--color-primary);
+    cursor: pointer;
+}
+.meusjogos__menu__bottomBackground{
+    width: 89%;
+    height: 10px;
+    background-color: var(--purple-y);
+}
+
+
+
+.meusjogos__jogos{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: var(--color-primary);
+}
+.meusjogos__jogos__card{
+    width: 1000px;
+    height: 260px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 4px solid var(--purple-y);
+    border-radius: 0px 20px 20px;
+    margin: 100px 0px;
+}
+.meusjogos__jogos__card__info{
+    width: 50%;
+    height: 100%;
+    position: relative;
+}
+.meusjogos__jogos__card__info__title{
+    width: 100%;
+    position: absolute;
+    top: -76px;
+    left: -4px;
+    background-color: var(--purple);
+    border: 4px solid var(--purple-y);
+    border-radius: 0px 76px 0px 0px;
+}
+.meusjogos__jogos__card__info__title p{
+    font-size: 1.3rem;
+    font-family: var(--font-pixel);
+    color: #f5f5f5;
+    margin-left: 13px;
+}
+.meusjogos__jogos__card__info__image, .meusjogos__jogos__card__info__image img{
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+.meusjogos__jogos__card__actions{
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+    font-family: var(--font-pixel);
+}
+.meusjogos__jogos__card__actions__dateInfo{
+    font-size: 1rem;
+    margin: 30px;
+}
+.meusjogos__jogos__card__actions__dateInfo p:last-child {
+    font-size: .7rem;
+}
+.meusjogos__jogos__card__actions__action{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+}
+.meusjogos__jogos__card__actions__action img{
+    width: 50px;
+    height: 50px;
+    filter: var(--filter-image)
+}
+.meusjogos__jogos__card__actions__action a > p{
+    font-size: .8rem;
+    color: var(--color-primary);
+}
+.meusjogos__jogos__links{
+    display: flex;
+    gap: 10px;
+    cursor: pointer;
+}
+.meusjogos__jogos__links i{
+    font-size: 3rem;
+}
+
+
+@media screen and (max-width:1160px) {
+    .meusjogos__jogos__card, .meusjogos__menu__titles{
+        width: 900px;
+    }
+}
+@media screen and (max-width:910px) {
+    .meusjogos__menu__titles{
+        width: 400px;
+        height: 100%;
+    }
+    .meusjogos__jogos__card{
+        width: 400px;
+        height: 100%;
+        flex-direction: column;
+        border-radius: 0px 0px 20px 20px;
+    }
+    .meusjogos__jogos__card__info{
+        width: 100%;
+    }
+    .meusjogos__jogos__card__info__title{
+        width: 102%;
+    }
+    .meusjogos__jogos__card__actions__action{
+        flex-direction: column;
+        gap: 20px;
+    }
+}
+@media screen and (max-width:450px) {
+    .meusjogos__menu{
+        width: 70%;
+    }
+    .meusjogos__menu__titles{
+        width: 300px;
+        font-size: .8rem;
+    }
+    .meusjogos__menu__title{
+        padding: 1px;
+        width: 280px;
+        border: 2px solid var(--purple-y);
+    }
+    .meusjogos__menu__bottomBackground{
+        width: 100%;
+    }
+    .meusjogos__menu__title--selected{
+        border: 2px solid var(--purple-y);
+    }
+    .meusjogos__jogos__card{
+        max-width: 300px;
+    }
+    .meusjogos__jogos__card__info{
+        width: 100%;
+    }
+    .meusjogos__jogos__card__info__title{
+        height: 63%;
+    }
+    .meusjogos__jogos__card__info__title p{
+        font-size: 1.4rem;
+    }
+    .meusjogos__jogos__card__actions, .meusjogos__jogos__card__actions__dateInfo, .meusjogos__jogos__card__actions__dateInfo:first-child p{
+        font-size: .75rem;
+    }
+}

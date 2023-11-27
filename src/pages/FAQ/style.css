@@ -124,10 +124,10 @@ a{
       padding: 7px 15px;
       align-items: center;
   }
-  h1{
+  .container-tittle h1{
     font-size: 1rem;
   }
-  a{
+  .borda a{
     font-size: 0.8rem;
   }
 }

@@ -51,7 +51,7 @@ const Menu = ({changeTheme, theme, cart, coins, userRedux }) => {
               <i className="fa-solid fa-magnifying-glass"></i>
               {modalSearch && search !== '' && <ModalSearch search={search}/>}
             </Link>
-            {!type && 
+            {(!type || !token) && 
             <Link to="/entrar" aria-label="entrar">
               {translate("Entrar")}
             </Link>}

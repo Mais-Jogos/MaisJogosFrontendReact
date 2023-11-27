@@ -116,18 +116,6 @@
     color: #f5f5f5;
 }
 
-  
-
-.cadastroJogo__content{
-    width: 100%;
-    height: 100%;
-    min-height: 650px;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    align-content: center;
-    flex-direction: column;
-}
 .cadastroJogo__content{
     width: 50vw;
     height: 100%;
@@ -171,16 +159,21 @@ label.cadastroJogo__content__label + input,label.cadastroJogo__content__label + 
     color: var(--color-primary);
 } 
 label.cadastroJogo__content__label + input{
-    width: 100%;
+    width: calc(100% - 30px);
     height: 20px;
 }
+label.cadastroJogo__content__label + textarea{
+    width: calc(100% - 30px);
+    resize: none;
+}
+
 .cadastroJogo__content__Bodybuttons{
     width: 100%;
     height: 100%;
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center; 
 }
 button.cadastroJogo__content__buttons{
@@ -232,34 +225,33 @@ button.cadastroJogo__content__buttons--select{
 .cadastroJogo__content__plataforms div > label {
     display: flex;
     align-items: center;
-    gap: 5px;
+    justify-content: center;
+    gap: 10px;
 }
-.cadastroJogo__content__plataforms div > label > input[type="checkbox"] {
+.cadastroJogo__content__plataforms div > label > input[type="radio"] {
     appearance: none;
     background-color: #0e0e0e;
     color: currentColor;
-    margin: 5px -2px;
-    width: 1.40em;
-    height: 1.40em;
+    height: auto;
     border: 0.15em solid currentColor;
-    border-radius: 5px;
-    transform: translateY(-0.075em);
+    border-radius: 50%;
     display: grid;
     place-content: center;
     cursor: pointer;
+    transform: scale(0.8);
 }
-.cadastroJogo__content__plataforms div > label > input[type="checkbox"]::before {
+.cadastroJogo__content__plataforms div > label > input[type="radio"]::before {
     content: "";
     width: 0.65em;
     height: 0.65em;
-    transform: scale(0);
+    transform: scale(0) translateX(-20px) translateY(20px);
     transition: 120ms transform ease-in-out;
     box-shadow: inset 1em 1em #f5f5f5;
     transform-origin: bottom left;
     clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
 }
-.cadastroJogo__content__plataforms div > label > input[type="checkbox"]:checked::before {
-    transform: scale(1);
+.cadastroJogo__content__plataforms div > label > input[type="radio"]:checked::before {
+    transform: scale(2) translateX(-2px) translateY(2px);
 }
 .cadastroJogo__content__requirements{
     width: 100%;
@@ -268,23 +260,30 @@ button.cadastroJogo__content__buttons--select{
     font-family: var(--font-normal);
     margin-bottom: 70px;
 }
+.cadastroJogo__content__requirements-select{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: calc(100% + 20px);
+}
+.cadastroJogo__content__select{
+    height: 30px;
+    border: 2px solid var(--purple-y);
+    border-radius: 5px;
+    background-color: var(--color-secondary);
+    padding: 5px 10px;
+    color: var(--color-primary);
+    margin: 5px;
+}
 .cadastroJogo__content__requirements h2{
     font-family: var(--font-pixel);
 }
 .cadastroJogo__content__requirements__selected{
-    width: 345px;
-    display: inline-block;
-    margin: 20px 50px 20px 0px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
     position: relative;
-}
-.cadastroJogo__content__requirements__selected:last-child::before{
-    content: '';
-    width: 1px;
-    height: 120%;
-    position: absolute;
-    top: -20px;
-    left: -30px;
-    background-color: var(--purple);
 }
 .cadastroJogo__content__requirements__selected .cadastroJogo__content__requirements__inputs label {
     display: block;
@@ -355,20 +354,32 @@ button.cadastroJogo__content__buttons--select{
 .cadastroJogo__content__uploads h2{
     font-family: var(--font-pixel);
 }
-.cadastroJogo__content__uploadContent__fileUpload{
-    width: 100%;
-    max-width: 990px;
-    height: 100%;
+.cadastroJogo__content__requirements__forms{
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 70px;
 }
 label.labelUploadJogo{
     display: inline-block;
     width: 72px;
 }
-.cadastroJogo__content__uploadContent__fileUpload > div> div{
+p.cadastroJogo__content__h3{
+    font-size: 1.2rem;
+    font-family: var(--font-normal);
+    color: var(--color-primary);
+}
+h2.cadastroJogo__content__h3{
+    font-size: 1.5rem;
+    font-family: var(--font-pixel);
+    color: var(--color-primary);
+}
+h3.cadastroJogo__content__h3{
+    font-size: 1.5rem;
+    font-family: var(--font-normal);
+    color: var(--color-primary);
+}
+.cadastroJogo__content__uploadContent__fileUpload{
     display: inline-block;
     padding: 20px 30px;
     background-color: var(--color-secondary);
@@ -377,14 +388,15 @@ label.labelUploadJogo{
     filter: brightness(2);
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
 }
-.cadastroJogo__content__uploadContent__fileUpload > div> div > input[type="file"]{
+.cadastroJogo__content__uploadContent__fileUpload > input[type="file"]{
     font-size: 1.1rem;
     font-weight: bold;
     color: var(--color-primary);
     filter: brightness(0.5);
 }
-.cadastroJogo__content__uploadContent__fileUpload #classificacao{
-    width: 150px;
+
+#classificacao{
+    width: 100px;
     height: 30px;
     border: 2px solid var(--purple-y);
     border-radius: 5px;
@@ -393,6 +405,7 @@ label.labelUploadJogo{
     color: var(--color-primary);
     margin: 5px;
 }
+
 .cadastroJogo__content__uploadContent--flexRight{
     justify-content: flex-start;
 }
@@ -434,43 +447,13 @@ label.labelUploadJogo{
 .cadastroJogo__termos div > label{
     vertical-align: 2px;
 }
-.cadastroJogo--erroMessage-border{
-    border:2px solid var(--black);
-    border-radius:5px;
-    background-color: var(--grey-dark);
-    padding:20px;
-    box-shadow: 2px 2px 0px 0px rgba(56, 56, 56, 0.75) inset,
-    0px 0px 12px rgb(255 255 255 / 26%);
-    transition: 0.5s all;
-    z-index: 1000;
-    position: fixed;
-    bottom: 40%;
-    left: 35%;
-    animation: showModal cubic-bezier(0.65, 0, 0.09, 0.96) 1.5s;
-}
 .cadastroJogo--errorMessage{
     font-family: var(--font-pixel);
     color: var(--red);
     font-weight: bold;
     -webkit-animation: shake-horizontal 0.8s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
     animation: shake-horizontal 0.8s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
-    padding: 20px;
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    justify-content: center;
 }
-@keyframes showModal{
-    0% {
-        transform: scale(0);
-    }
-    80%{
-        transform: scale(1.2);
-    }
-    100% {
-        transform: scale(1);
-    }
-}    
 .cadastroJogo--errorMessage i{
     margin-left: 5px;
 }
@@ -637,6 +620,9 @@ label.labelUploadJogo{
     }
 }
 @media screen and (max-width:950px) {
+    .cadastroJogo__content{
+        width: 80vw;
+    }
     .cadastroJogo__menu{
         width: 80%;
     }
@@ -645,10 +631,6 @@ label.labelUploadJogo{
     }
     label.cadastroJogo__content__label + input, label.cadastroJogo__content__label + textarea{
         padding: 9px;
-    }
-    label.cadastroJogo__content__label + textarea{
-        min-height: 200px;
-        max-height: 500px;
     }
     .cadastroJogo__content__requirements__selected{
         margin: 10px;
@@ -691,9 +673,6 @@ label.labelUploadJogo{
     .cadastroJogo__content__uploadContent__fileUpload label{
         font-size: .7rem;
     }
-    .cadastroJogo__content__uploadContent h3{
-        font-size: 1rem;
-    }
     .cadastroJogo__content__step2{
         width: 100%;
     }
@@ -724,16 +703,6 @@ label.labelUploadJogo{
     }
     .cadastroJogo__content__body{
         width: 370px;
-    }
-    label.cadastroJogo__content__label + input, label.cadastroJogo__content__label + textarea{
-        width: 300px;
-    }
-    label.cadastroJogo__content__label + textarea#cadastroJogo__content__textarea{
-        width: 300px;
-        min-width: 300px;
-        max-width: 300px;
-        min-height: 200px;
-        max-height: 300px;
     }
     button.cadastroJogo__content__buttons{
         font-size: .8rem;
@@ -780,10 +749,6 @@ label.labelUploadJogo{
     }
     .cadastroJogo__content__Bodybuttons{
         flex-direction: column;
-    }
-    label.cadastroJogo__content__label + textarea#cadastroJogo__content__textarea{
-        width: 100%;
-        resize: none;
     }
     .cadastroJogo__menu{
         gap:10px;
