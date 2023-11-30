@@ -21,7 +21,7 @@ export default props => {
             }
         })
         .then((response) => {
-            console.log(response.data);
+            console.log("Jogos", response.data);
             setGames(response.data.filter(game => game?.idDev.toString() === id));
             setLeitor(true);
         }).catch((error) => { console.log(error); });
@@ -31,7 +31,7 @@ export default props => {
             }
         })
         .then((response) => {
-            console.log(response.data);
+            console.log("Dev", response.data);
             setDev(response.data);
         })
         .catch((error) => console.log(error));

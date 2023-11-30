@@ -5,7 +5,7 @@ import Axios from "axios";
 import { useParams, Link } from "react-router-dom";
 import Menu from "../../components/Menu/Menu";
 import { selectGame } from "../../redux/actions";
-import { favoriteGame } from "../../redux/actions";
+import { favoriteGame, deletefavoriteGame } from "../../redux/actions";
 import { connect } from "react-redux";
 import "./style.css";
 import Acessibilidade from "../../components/Acessibilidade/Acessibilidade";
@@ -14,12 +14,15 @@ import { translate } from "../../translate/translate";
 import TextToSpeech from "../../components/Acessibilidade/TextToSpeech";
 
 const Jogo = ({ dispatch, listadesejos, cart }) => {
-  const [game, setGame] = useState();
-  const [jogo, setJogo] = useState();
+  const [game, setGame] = useState({});
+  const [jogo, setJogo] = useState({});
   const [image, setImage] = useState(0);
+  const [favorito, setFavorito] = useState(false);
+  const [favoritos, setFavoritos] = useState([]);
   const [dev, setDev] = useState();
   const { name } = useParams();
   const token = window.localStorage.getItem("token");
+  const id = window.localStorage.getItem("id");
   const imgs = [
     "bannerUm",
     "bannerDois",
@@ -49,9 +52,8 @@ const Jogo = ({ dispatch, listadesejos, cart }) => {
       headers: {
         Authorization: `Bearer ${token}`,
       },
-    })
-      .then((response) => {
-        console.log(response.data);
+    }).then((response) => {
+        console.log("Jogos", response.data);
         const game = response.data.filter(
           (jogo) => jogo.titulo.toLowerCase().replace(/ /g, "-") === name
         )[0];
@@ -61,34 +63,72 @@ const Jogo = ({ dispatch, listadesejos, cart }) => {
           headers:{
             Authorization: `Bearer ${token}`
           }
-        })
-          .then((response) => {
-            console.log(response.data);
+        }).then((response) => {
+            console.log("Dev", response.data);
             setDev(response.data);
-          })
-          .catch((error) => console.log(error));
+        }).catch((error) => console.log(error));
+      }).catch((error) => console.log(error));
 
-      })
-      .catch((error) => console.log(error));
+      Axios.get('http://localhost:8080/api/favorito/listarTodos', {
+        headers:{
+          Authorization: `Bearer ${token}`
+        }
+      }).then((response) => {
+        console.log("Favoritos", response.data);
+        setFavoritos(response.data)
+        setFavorito(response.data.some(
+          (favoritos) => (favoritos?.idJogo === game?.id && favoritos?.idUser === id)
+        ))
+        console.log(response.data.some(
+          (favoritos) => (favoritos?.idJogo === game?.id && favoritos?.idUser === id)
+        ));
+      }).catch((error) => console.log(error));
   }, []);
   var carrinho = cart.cart.every((c) => c?.id !== game?.id);
-  var listaDeDesejos = listadesejos.listadesejos.every(
-    (l) => l?.id !== game?.id
-  );
   const handleClickAdd = (game) => {
-    if (carrinho) {
+    if (carrinho && token) {
       dispatch(selectGame(game));
     }
   };
   const handleClickFavorite = (game) => {
-    if (listaDeDesejos) {
+    if (favorito && token) {
+      Axios.post('http://localhost:8080/api/favorito/salvar', {
+        idUser: id,
+        idJogo: jogo?.id,
+      }, {
+        headers:{
+          Authorization: `Bearer ${token}`
+      }}).then((response) =>{
+        console.log(response.data);
+      })
       dispatch(favoriteGame(game));
+    }else if(!favorito && token){
+      const favoritoSelecionado = favoritos?.filter(
+        (favoritos) => favoritos?.idJogo == jogo?.id && favoritos?.idUser == id
+      )[0]
+        console.log(favoritoSelecionado);
+      Axios.delete(`http://localhost:8080/api/favorito/deletarUser/${favoritoSelecionado?.id}`, {
+      headers:{
+        Authorization: `Bearer ${token}`
+      }}).then((response) =>{
+        console.log(response.data);
+      })
+      setFavorito(favoritos.some(
+        (favoritos) => (favoritos?.idJogo === game?.id && favoritos?.idUser === id && favoritos?.id != favoritoSelecionado?.id)
+      ))
+      dispatch(deletefavoriteGame(game))
     }
   };
   const choosePlataform = (plataform) => {
     if (plataform !== undefined) {
       if (plataform?.toLowerCase() === "pc") {
         return "fa-solid fa-laptop";
+      }else if(plataform?.toLowerCase() === "celular"){
+        return "fa-solid fa-mobile";
+      }else if(plataform?.toLowerCase() === "macos"){
+        return "fa-brands fa-apple";
+      }else if(plataform?.toLowerCase() === "ios"){
+        return "fa-solid fa-app-store-ios";
       } else {
         return `fa-brands fa-${plataform?.toLowerCase()}`;
       }
@@ -139,7 +179,7 @@ const Jogo = ({ dispatch, listadesejos, cart }) => {
                 </div>
               </div>
               <div className="game__page__genres">
-                {game?.genero.map(gen => <span>{gen}</span>)}
+                {jogo?.genero?.map(gen => <span>{gen}</span>)}
               </div>
               <p className="description__game__page">
                 {translate("Descrição")}: {jogo?.descricao}
@@ -186,8 +226,8 @@ const Jogo = ({ dispatch, listadesejos, cart }) => {
                 >
                   <img src="/imgs/icons/heart_icon.png" alt="" />
                   <p>
-                    {!listaDeDesejos && translate("Adicionado a lista de desejos")}
-                    {listaDeDesejos && translate("Adicionar a lista de desejos")}
+                    {!favorito && translate("Adicionado a lista de desejos")}
+                    {favorito && translate("Adicionar a lista de desejos")}
                   </p>
                 </div>
               </div>
@@ -201,7 +241,7 @@ const Jogo = ({ dispatch, listadesejos, cart }) => {
                 </p>
                 <p>
                   {translate("Gênero")}:{" "}
-                    {jogo?.genero.map(gen => <Link
+                    {jogo?.genero?.map(gen => <Link
                       to={`/categorias/category=${gen}`}
                       aria-label={gen}
                     >
@@ -217,20 +257,17 @@ const Jogo = ({ dispatch, listadesejos, cart }) => {
               </div>
               <div className="system__game__page">
                 <div className="title__system">
-                  <h3>{translate("Requisitos do sistema")}</h3>
                   <div className="platforms">
-                    {game?.parent_platforms.map((plataform) => (
                       <Link
-                        to={`/categorias/platform=${plataform.platform?.name}`}
-                        key={plataform.platform?.id}
-                        aria-label={plataform.platform?.name}
+                        to={`/categorias/platform=${jogo?.plataforma}`}
+                        aria-label={jogo?.plataforma}
                       >
                         <i
-                          className={choosePlataform(plataform.platform?.name)}
+                          className={choosePlataform(jogo?.plataforma)}
                         ></i>
                       </Link>
-                    ))}
                   </div>
+                  <h3>{translate("Requisitos do sistema")}</h3>
                 </div>
                 <p>
                   <b>{translate("Mínimos")}</b>
