@@ -9,14 +9,14 @@ import TextToSpeech from "../../components/Acessibilidade/TextToSpeech";
 
 
 const Visitas = () => {
-    const [check, setCheck] = useState();
+    const [check, setCheck] = useState([]);
     useEffect(() =>{
         Axios.get('http://localhost:8080/api/check/listarTodos')
         .then((response) => {
           console.log("Check", response.data);
           setCheck(response.data)
         }).catch((error) => console.log(error))  
-    }, [])
+    }, [check])
 
   return (
     <div id='container-page' className='home'>
@@ -26,11 +26,9 @@ const Visitas = () => {
     <main className='main-visitantes'>
         <section>
             <h1>Visitantes +Jogos</h1>
-            <ul>
-                {check?.map(c => (
-                    <li>{c?.id} - {c?.entrada}</li>
-                ))}
-            </ul>
+            <div className="visitors">
+            <p className="num-home">{check?.length}</p>
+          </div>
         </section>
         <aside>
             <img src="/imgs/fliperama.gif" alt="fliperama" className='fliperama'/>

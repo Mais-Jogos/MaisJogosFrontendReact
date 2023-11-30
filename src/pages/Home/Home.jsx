@@ -16,7 +16,7 @@ const Home = () => {
   const navigate = useNavigate()
   const [image, setImage] = useState(1);
   const [games, setGames] = useState([]);
-  const [check, setCheck] = useState();
+  const [check, setCheck] = useState([]);
   const [jogos, setJogos] = useState([])
   const [game, setGame] = useState(0)
   const [numberGames, setNumberGames] = useState(6)
@@ -38,7 +38,7 @@ const Home = () => {
     platform: 'Todos',
     rating: 0,
   })
-  useEffect(() => {
+/*   useEffect(() => {
     const incrementaGame = () => {
       setGame(game === jogos.length - 1 ? 0 : game + 1);
     };
@@ -46,10 +46,14 @@ const Home = () => {
     const intervalId = setInterval(incrementaGame, 5000);
 
     return () => clearInterval(intervalId);
-  }, []);
+  }, []); */
 
   useEffect(() => {
-    Axios.get('http://localhost:8080/api/jogo/listarTodos')
+    Axios.get('http://localhost:8080/api/jogo/listarTodos', {
+      headers:{
+        Authorization: `Bearer ${token}`
+      }
+  })
     .then((response) => {
       console.log(response.data);
       setJogos(response.data)
@@ -66,12 +70,12 @@ const Home = () => {
     var categoriasSelecionadas;
     var notasSelecionadas;
     if (filter.platform !== "Todos") {
-      plataformasSelecionadas = jogo.platforms.some(platforma => filter.platform.includes(platforma.platform.name));
+      plataformasSelecionadas = filter.platform.some(platforma => platforma === jogo.plataforma);
     } else {
       plataformasSelecionadas = jogo;
     }
     if (filter.category !== "Todos") {
-      categoriasSelecionadas = jogo.genres.some(categoria => filter.category.includes(categoria.name));
+      categoriasSelecionadas = jogo.genero.some(categoria => filter.category.includes(categoria));
     } else {
       categoriasSelecionadas = jogo;
     }
@@ -167,7 +171,7 @@ const Home = () => {
             }
           </div>
           <div className="visitors">
-            <p className="num-home">{check?.[0]?.id}</p>
+            <p className="num-home">{check?.length}</p>
             <p>Pessoas visitaram nossa loja fisica</p>
           </div>
         </div>
@@ -314,33 +318,14 @@ const Home = () => {
               </div>
             </div>
             <div className="section__games">
-              {jogos?.filter(jogo => {
-                var plataformasSelecionadas;
-                var categoriasSelecionadas;
-                var notasSelecionadas;
-                if (filter.platform !== "Todos") {
-                  plataformasSelecionadas = filter.platform.some(platforma => platforma === jogo?.plataforma);
-                } else {
-                  plataformasSelecionadas = jogo;
-                }
-                if (filter.category !== "Todos") {
-                  categoriasSelecionadas = jogo.generos.some(categoria => filter.category.includes(categoria));
-                } else {
-                  categoriasSelecionadas = jogo;
-                }
-                /* if (filter.rating !== 0) {
-                  notasSelecionadas = jogo?.rating >= filter.rating;
-                } else {
-                  notasSelecionadas = jogo;
-                } */
-                return plataformasSelecionadas && categoriasSelecionadas;
-              })
-                ?.slice(0, numberGames).map((game) => (
+              {filterJogos?.slice(0, numberGames).map((game) => (
                   <CardHome game={game} key={game?.id} />
                 ))}
               {filterJogos.length === 0 &&
                 <div className='home__nenhum-jogo'>
-                  {translate("Nenhum jogo foi encontrado")}...
+                  
+                  Nenhum jogo foi encontrado
+                  ...
                   <img src="imgs/control-home.gif" alt="Control" className='control-notfound'/>
                 </div>
               }

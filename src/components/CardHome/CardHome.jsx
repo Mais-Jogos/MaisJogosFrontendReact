@@ -22,7 +22,7 @@ const CardHome = ({game, dispatch, cart}) => {
           <img src={`data:image/png;base64, ${game?.bannerUm}`} alt={game?.titulo} />
         </div>
       </Link>
-      <Link to={`/jogos/${game?.titulo}`} key={game?.id} aria-label={game?.titulo}> 
+      <Link to={`/jogos/${game?.titulo.toLowerCase().replace(/ /g,"-")}`} key={game?.id} aria-label={game?.titulo}> 
         <h2>{game?.titulo}</h2>
       </Link>
       <div className="card__genres">

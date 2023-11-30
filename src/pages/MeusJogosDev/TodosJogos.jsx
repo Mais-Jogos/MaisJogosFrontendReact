@@ -15,7 +15,11 @@ export default props => {
     const id = window.localStorage.getItem("id");
 
     useEffect(() =>{
-        Axios.get("http://localhost:8080/api/jogo/listarTodos")
+        Axios.get("http://localhost:8080/api/jogo/listarTodos", {
+            headers:{
+              Authorization: `Bearer ${token}`
+            }
+        })
         .then((response) => {
             console.log(response.data);
             setGames(response.data.filter(game => game?.idDev.toString() === id));
