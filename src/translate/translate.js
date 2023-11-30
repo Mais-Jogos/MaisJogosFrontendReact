@@ -737,6 +737,110 @@ export function translate(value){
             "pt": "Titulo Review",
             "en": "Title Review"
         },
+        "Cadastrar mais Skins":{
+            "pt": "Cadastrar mais Skins",
+            "en": "Register more Skins"
+        },
+        "Excluir Skins":{
+            "pt": "Excluir Skins",
+            "en": "Delete Skins"
+        },
+        "Visitantes":{
+            "pt": "Visitantes",
+            "en": "Visitors"
+        },
+        "Dados":{
+            "pt": "Dados",
+            "en": "Data"
+        },
+        "Requisitos":{
+            "pt": "Requisitos",
+            "en": "Requirements"
+        },
+        "Preencha todas as informações":{
+            "pt": "Preencha todas as informações",
+            "en": "Fill in all the information"
+        },
+        "Próximo":{
+            "pt": "Próximo",
+            "en": "Next"
+        },
+        "Cadastrar":{
+            "pt": "Cadastrar",
+            "en": "Register"
+        },
+        "Titulo":{
+            "pt": "Titulo",
+            "en": "Title"
+        },
+        "Gêneros":{
+            "pt": "Gêneros",
+            "en": "Genres"
+        },
+        "Ação":{
+            "pt": "Ação",
+            "en": "Action"
+        },
+        "Arcade":{
+            "pt": "Arcade",
+            "en": "Arcadian"
+        },
+        "Aventura":{
+            "pt": "Aventura",
+            "en": "Adventure"
+        },
+        "Casual":{
+            "pt": "Casual",
+            "en": "Casual"
+        },
+        "Corrida":{
+            "pt": "Corrida",
+            "en": "Race"
+        },
+        "Esportes":{
+            "pt": "Esportes",
+            "en": "Sports"
+        },
+        "Estratégia":{
+            "pt": "Estratégia",
+            "en": "Strategy"
+        },
+        "Luta":{
+            "pt": "Luta",
+            "en": "Fight"
+        },
+        "Puzzle":{
+            "pt": "Puzzle",
+            "en": "Puzzle"
+        },
+        "Rpg":{
+            "pt": "Rpg",
+            "en": "Rpg"
+        },
+        "Shooter":{
+            "pt": "Shooter",
+            "en": "Shooter"
+        },
+        "Terror":{
+            "pt": "Terror",
+            "en": "Horror"
+        },
+        "Concluir":{
+            "pt": "Concluir",
+            "en": "Conclude"
+        },
+        "Nome da Skin":{
+            "pt": "Nome da Skin",
+            "en": "Skin Name"
+        },
+        "Upload da Skin":{
+            "pt": "Upload da Skin",
+            "en": "Skin Upload"
+        },
+        "Valor da Skin":{
+            "pt": "Valor da Skin",
+            "en": "Skin Value"
+        },
     }
     return vocabulary[value][language] ? vocabulary[value][language] : value;
 }

@@ -13,7 +13,6 @@ const CardHome = ({game, dispatch, cart}) => {
       dispatch(selectGame(game));
     }
   };
-  console.log(game);
   return (
   <>
     <div className="border__card">
@@ -27,9 +26,11 @@ const CardHome = ({game, dispatch, cart}) => {
         <h2>{game?.titulo}</h2>
       </Link>
       <div className="card__genres">
-        <Link to={`/categorias/category=${game?.genero}`} aria-label={game?.genero}>
-          <p key={game?.genero}>{game?.genero}</p>
-        </Link>
+        {game?.genero.map(gen => 
+          <Link to={`/categorias/category=${gen}`} aria-label={gen}>
+            <p key={gen}>{gen}</p>
+          </Link>
+        )}
       </div>
       <div className="border__price">
         <div className="price">

@@ -34,7 +34,7 @@ const Menu = ({changeTheme, theme, cart, coins, userRedux }) => {
             <Link to="/acessibilidade" aria-label="acessibilidade">{translate("Acessibilidade")}</Link>
             <Link to="/sobre" aria-label="sobre">{translate("Sobre")}</Link>
             <Link to="/faq" aria-label="suporte"> {translate("Suporte")}</Link>
-            {token && type === "user" && <Link to="/joguinhos" aria-label="joguinhos">{translate("Joguinhos")}</Link>}
+            {<Link to="/joguinhos" aria-label="joguinhos">{translate("Joguinhos")}</Link>}
             <Link className='menu__search' aria-label="busca">
               <input 
                 type="text" 

@@ -15,8 +15,9 @@ import TextToSpeech from "../../components/Acessibilidade/TextToSpeech";
 const Joguinhos = ({dispatch}) => {
   const [jogo, setJogo] = useState('')
   const [coins, setCoins] = useState(0)
+  const token = window.localStorage.getItem("token")
   function saveGame(){
-    if(coins > 0){
+    if(coins > 0 && token){
       dispatch(addCoins(coins))
     }
     setJogo('');

@@ -50,6 +50,7 @@ const JogodaVelha = ({coins, setCoins}) => {
     const [values, setValues] = useState(getInitialState);
     const [player, setPlayer] = useState(1);
     const [winner, setWinner] = useState(null);
+    const token = window.localStorage.getItem("token");
 
         function otherPlayer() {
             if (winner || player !== -1) {

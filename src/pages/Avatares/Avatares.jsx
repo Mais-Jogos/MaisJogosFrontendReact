@@ -64,7 +64,7 @@ const Avatares = ({userRedux}) => {
                     <h1 className="titulo"> <img id="avatares_capivaraICON" src="\imgs\icons\capivara_icon.svg"/>{translate("Meus Avatares")}</h1>
                 </div>
                 <div className="avatares__admin-cad" onClick={() => navigate("/cadastro-skin")}>
-                    <p>Cadastrar mais Skins</p>
+                    <p>{translate("Cadastrar mais Skins")}</p>
                     <i class="fa-solid fa-plus"></i>
                 </div>
 
@@ -88,7 +88,7 @@ const Avatares = ({userRedux}) => {
 
                 </section>
                 <div className="avatares__admin-exc">
-                    <p>Excluir Skins</p>
+                    <p>{translate("Excluir Skins")}</p>
                     <i class="fa-regular fa-trash-can"></i>
                 </div>
             </main>

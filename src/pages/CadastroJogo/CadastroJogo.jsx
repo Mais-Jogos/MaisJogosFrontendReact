@@ -9,6 +9,7 @@ import { translate } from "../../translate/translate";
 import "./style.css";
 import Axios from 'axios'
 import { useNavigate } from "react-router-dom";
+import Vlibras from "../../components/Vlibras/Vlibras";
 
 const CadastroJogo = () => {
   const id = window.localStorage.getItem("id")
@@ -50,7 +51,7 @@ const CadastroJogo = () => {
       idDev: jogo?.idDev,
       titulo: jogo?.titulo,
       descricao: jogo?.descricao,
-      genero: jogo?.genero[0],
+      genero: jogo?.genero,
       plataforma: jogo?.plataforma,
       SO: jogo["SO"],
       processador: jogo?.processador,
@@ -158,6 +159,7 @@ const CadastroJogo = () => {
     <div id="container-page">
       <Menu />
       <Acessibilidade />
+      <Vlibras/>
       {modal}
       <main className="cadastroJogo__main">
         <div className="cadastroJogo__title">

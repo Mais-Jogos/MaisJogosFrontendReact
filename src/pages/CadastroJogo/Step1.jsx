@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
+import { translate } from '../../translate/translate'
 
 const Step1 = ({jogo, onChangeGame, erro}) => {
     const generos = ["Ação", "Arcade", "Aventura", "Casual", "Corrida", "Esportes", "Estratégia", "Luta", "Puzzle", "Rpg", "Shooter", "Terror"]
@@ -13,7 +14,7 @@ const Step1 = ({jogo, onChangeGame, erro}) => {
         <textarea name="descrição" id="descrição" cols="30" rows="10" defaultValue={jogo?.descricao} className={`${erro && 'cadastroJogo__content__body--erroMessage'}`} onChange={(e) => onChangeGame("descricao", e.target.value)}></textarea>
         <label htmlFor="gêneros" className='cadastroJogo__content__label'>Gêneros</label>
         <div className="cadastroJogo__content__Bodybuttons">
-            {generos.map((genero) => (<>
+            {generos?.map((genero) => (<>
                 <button 
                     className={generosSelecionados?.some(g => g === genero) ? 'cadastroJogo__content__buttons cadastroJogo__content__buttons--select':'cadastroJogo__content__buttons'}
                     onClick={() => {

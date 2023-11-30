@@ -15,9 +15,13 @@ const Step1 = ({jogo, onChangeGame, erro}) => {
         <div className="cadastroJogo__content__Bodybuttons">
             {generos.map((genero) => (<>
                 <button 
-                    className={jogo?.genero === genero ? 'cadastroJogo__content__buttons cadastroJogo__content__buttons--select':'cadastroJogo__content__buttons'}
+                    className={generosSelecionados?.some(g => g === genero) ? 'cadastroJogo__content__buttons cadastroJogo__content__buttons--select':'cadastroJogo__content__buttons'}
                     onClick={() => {
-                        onChangeGame("genero", genero)
+                        const newGeneros = !generosSelecionados?.some(g => g === genero) ? 
+                        [...generosSelecionados, genero] : 
+                        generosSelecionados?.filter(g => g !== genero)
+                        setGenerosSelecionados(newGeneros);
+                        onChangeGame("genero", newGeneros)
                     }}
                 >
                     {genero}

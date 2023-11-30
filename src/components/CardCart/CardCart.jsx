@@ -24,16 +24,14 @@ const CardCart = ({game, dispatch}) => {
     <div className="border__card__cart">
         <div className="card__cart">
             <div className="card__cart__image">
-                <img src={game?.background_image} alt={game?.name} />
+                <img src={`data:image/png;base64,${game?.bannerUm}`} alt={game?.titulo} />
             </div>
             <div className="info__card__cart">
-                <Link to={`/jogos/${game}`} key={game?.id} aria-label={game?.name}>
-                    <h2>{game?.name}</h2>
+                <Link to={`/jogos/${game.toLowerCase().replace(/ /g, "-")}`} key={game?.id} aria-label={game?.titulo}>
+                    <h2>{game?.titulo}</h2>
                 </Link>
                 <div className="card__cart__platforms">
-                    {game?.parent_platforms.map(plataform =>(
-                        <i className={choosePlataform(plataform.platform?.name)}></i>
-                    ))}
+                    <i className={choosePlataform(game?.plataforma)}></i>
                     <p className="classification__cart">L</p>
                 </div>
                 <div className="price">
@@ -41,7 +39,7 @@ const CardCart = ({game, dispatch}) => {
                 </div>
                 <div className="actions">
                     <i className="fa-solid fa-trash" onClick={() => handleClickAdd(game)}></i>
-                    <input type="checkbox" name="cart" id={game?.name} aria-label="Remover jogo" defaultChecked={true}/>
+                    <input type="checkbox" name="cart" id={game?.titulo} aria-label="Remover jogo" defaultChecked={true}/>
                 </div>
             </div>
         </div>

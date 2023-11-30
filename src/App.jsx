@@ -37,6 +37,8 @@ import { Helmet } from 'react-helmet';
 import MeusJogosDev from "./pages/MeusJogosDev/MeusJogosDev";
 import EditarJogo from "./pages/EditarJogo/EditarJogo";
 import CadastroAdmin from "./pages/CadastroAdmin/CadastroAdmin";
+import Home2 from "./pages/Home/Home2";
+import Visitas from "./pages/Visitas/Visitas";
 
 function App({theme}) {
   const location = window.location.pathname;
@@ -78,7 +80,9 @@ function App({theme}) {
         </Helmet>
         <BrowserRouter>
             <Routes>
-              <Route exact path='/' element={<Home/>}/>
+              <Route exact path='/' element={<Home2/>}/>
+              <Route path='/home' element={<Home/>}/>
+              <Route path='/visitantes' element={<Visitas/>}/>
               <Route path='/carrinho' element={<Carrinho/>}/>
               <Route exact path='/Joguinhos' element={<Joguinhos/>}/>
               <Route path='/jogos/:name' element={<Jogo/>}/>

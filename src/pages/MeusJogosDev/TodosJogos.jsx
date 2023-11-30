@@ -15,13 +15,10 @@ export default props => {
     const id = window.localStorage.getItem("id");
 
     useEffect(() =>{
-        Axios.get("http://localhost:8080/api/jogo/listarTodos", {
-        headers: {
-            Authorization: `Bearer ${token}`,
-        },
-        })
+        Axios.get("http://localhost:8080/api/jogo/listarTodos")
         .then((response) => {
-            setGames(response.data);
+            console.log(response.data);
+            setGames(response.data.filter(game => game?.idDev.toString() === id));
             setLeitor(true);
         }).catch((error) => { console.log(error); });
         Axios.get(`http://localhost:8080/api/usuario/listarCliente/${id}`, {
@@ -59,8 +56,8 @@ export default props => {
         }
     }, [leitor])
     
-    {props.sortData ? games.sort( (a,b) => a.slug[0] > b.slug[0] ? 1 : -1 ) : "" }
-    {!props.sortData ? games.sort( (a,b) => b.slug[0] > a.slug[0] ? 1 : -1 ) : "" }
+    /* {props.sortData && games ? games.sort( (a,b) => a.slug[0] > b.slug[0] ? 1 : -1 ) : "" }
+    {!props.sortData && games ? games.sort( (a,b) => b?.slug[0] > a.slug[0] ? 1 : -1 ) : "" } */
 
     function modalDeletar(id, nome){
         setModal(<ModalConfirm type={false} message={`Deseja deletar "${nome}"?`} simClick={() => deletarDev(id)} nãoClick={() => setModal(null)}/>)

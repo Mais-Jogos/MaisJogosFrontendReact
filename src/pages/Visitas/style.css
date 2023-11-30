@@ -1,0 +1,14 @@
+.main-visitantes{
+    margin-top: 50px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 50px;
+    flex-wrap: wrap;
+    color: var(--color-primary);
+    font-family: var(--font-normal);
+}
+.main-visitantes aside .fliperama{
+    height: 300px;
+    filter: hue-rotate(45deg) brightness(1.2);
+}

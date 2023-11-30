@@ -12,7 +12,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import TextToSpeech from "../../components/Acessibilidade/TextToSpeech";
 import CardHome from '../../components/CardHome/CardHome'
 
-const Home = () => {
+const Home2 = () => {
   const navigate = useNavigate()
   const [image, setImage] = useState(1);
   const [games, setGames] = useState([]);
@@ -21,13 +21,12 @@ const Home = () => {
   const [game, setGame] = useState(0)
   const [numberGames, setNumberGames] = useState(6)
   const [direction, setDirection] = useState('left');
-  const generos = ["Ação", "Arcade", "Aventura", "Casual", "Corrida", "Esportes", "Estratégia", "Luta", "Puzzle", "Rpg", "Shooter", "Terror"]
-  const plataformas = ["Windows", "MacOs", "Linux", "Android", "IOS"]
   const token = window.localStorage.getItem("token")
   
   // Precisei desse estado pq é preciso esperar a chamada da api para o jquery conseguir indentificar os cards na tela
   const [leitor, setLeitor] = useState(false);
 
+  var filteredGames;
   const [openFilter, setOpenFilter] = useState({
     category: false,
     platform: false,
@@ -38,21 +37,23 @@ const Home = () => {
     platform: 'Todos',
     rating: 0,
   })
-  useEffect(() => {
-    const incrementaGame = () => {
-      setGame(game === jogos.length - 1 ? 0 : game + 1);
-    };
-
-    const intervalId = setInterval(incrementaGame, 5000);
-
-    return () => clearInterval(intervalId);
-  }, []);
 
   useEffect(() => {
-    Axios.get('http://localhost:8080/api/jogo/listarTodos')
+    const apiKey = 'bb8e5d1e0b2e44d9ac172e791e20ff23'
+    Axios.get(`https://api.rawg.io/api/games?key=${apiKey}`)
+      .then((response) => {
+        setGames(response.data.results);
+        setLeitor(true);
+      }).catch((error) => { console.log(error); });
+    Axios.get('http://localhost:8080/api/jogo/listarTodos',{
+      headers:{
+        Authorization: `Bearer ${token}`
+      }
+    })
     .then((response) => {
       console.log(response.data);
       setJogos(response.data)
+      console.log("jogos", mapjogos);
     }).catch((error) => console.log(error))
     Axios.get('http://localhost:8080/api/check/listarTodos')
     .then((response) => {
@@ -60,28 +61,29 @@ const Home = () => {
       setCheck(response.data)
     }).catch((error) => console.log(error))
 
+    filteredGames = games?.filter(jogo => {
+      var plataformasSelecionadas;
+      var categoriasSelecionadas;
+      var notasSelecionadas;
+      if (filter.platform !== "Todos") {
+        plataformasSelecionadas = jogo.platforms.some(platforma => filter.platform.includes(platforma.platform.name));
+      } else {
+        plataformasSelecionadas = jogo;
+      }
+      if (filter.category !== "Todos") {
+        categoriasSelecionadas = jogo.genres.some(categoria => filter.category.includes(categoria.name));
+      } else {
+        categoriasSelecionadas = jogo;
+      }
+      if (filter.rating !== 0) {
+        notasSelecionadas = jogo.rating >= filter.rating;
+      } else {
+        notasSelecionadas = jogo;
+      }
+      return plataformasSelecionadas && categoriasSelecionadas && notasSelecionadas;
+    })
+    console.log(filteredGames);
   }, [filter])
-  const filterJogos = jogos?.filter(jogo => {
-    var plataformasSelecionadas;
-    var categoriasSelecionadas;
-    var notasSelecionadas;
-    if (filter.platform !== "Todos") {
-      plataformasSelecionadas = jogo.platforms.some(platforma => filter.platform.includes(platforma.platform.name));
-    } else {
-      plataformasSelecionadas = jogo;
-    }
-    if (filter.category !== "Todos") {
-      categoriasSelecionadas = jogo.genres.some(categoria => filter.category.includes(categoria.name));
-    } else {
-      categoriasSelecionadas = jogo;
-    }
-    /* if (filter.rating !== 0) {
-      notasSelecionadas = jogo.rating >= filter.rating;
-    } else {
-      notasSelecionadas = jogo;
-    } */
-    return plataformasSelecionadas && categoriasSelecionadas;
-  })
   const slideVariants = {
     enter: {
       x: direction === 'left' ? -1000 : 1000,
@@ -103,7 +105,9 @@ const Home = () => {
     },
   };
 
-
+  const generos = [].concat(...games.map((game) => game.genres))
+  const plataformas = [].concat(...games.map((game) => game.parent_platforms))
+  const plataformas2 = [].concat(...plataformas.map((game) => game.platform))
   const changeFilter = (e, filterName, value) => {
     if (filterName !== 'rating') {
       if (filter[filterName] !== 'Todos') {
@@ -138,7 +142,7 @@ const Home = () => {
         <div className="section__categories">
           <h2>{translate("Categorias")}</h2>
           {
-            generos?.map(category => (
+            [...new Set(generos?.map((game) => game.name))].map(category => (
               <div className='home__categorias'>
                 <input type="checkbox" name="Categorias" id={category} onClick={(e) => changeFilter(e, 'category', category)} aria-label={category} />
                 <label key={category} htmlFor={category} >{category}</label>
@@ -147,7 +151,7 @@ const Home = () => {
           }
           <h2>{translate("Plataformas")}</h2>
           {
-            plataformas?.map(platform => (
+            [...new Set(plataformas2?.map((game) => game.name))].map(platform => (
               <div className='home__categorias'>
                 <input type="checkbox" name="Plataformas" id={platform} onClick={(e) => changeFilter(e, 'platform', platform)} aria-label={platform} />
                 <label key={platform} htmlFor={platform} >{platform}</label>
@@ -166,10 +170,7 @@ const Home = () => {
               ))
             }
           </div>
-          <div className="visitors">
-            <p className="num-home">{check?.[0]?.id}</p>
-            <p>Pessoas visitaram nossa loja fisica</p>
-          </div>
+          <button className="visitantes" onClick={() => navigate("/visitantes")}>{translate("Visitantes")}</button>
         </div>
         <div className="container__home__right">
           <div className="section__title">
@@ -177,12 +178,12 @@ const Home = () => {
               {translate('Loja nacional de jogos indie')}
             </h1>
           </div>
-          <div className="section__banner" style={{display: jogos.length === 0 ? 'none' : "flex"}}>
-            <p onClick={() => { setGame(game === 0 ? jogos.length - 1 : game - 1); setDirection('right') }}>
+          <div className="section__banner">
+            <p onClick={() => { setGame(game === 0 ? games.length - 1 : game - 1); setDirection('right') }}>
               <i className="fa-solid fa-chevron-left"></i>
             </p>
             <AnimatePresence>
-              <motion.img src={`data:image/png;base64, ${jogos[game]?.bannerUm}`}
+              <motion.img src={games[game]?.background_image}
                 alt=""
                 key={game}
                 variants={slideVariants}
@@ -194,7 +195,7 @@ const Home = () => {
                 animate="visible"
                 exit="exit" />
             </AnimatePresence>
-            <p onClick={() => { setGame(game === jogos.length - 1 ? 0 : game + 1); setDirection('left') }}>
+            <p onClick={() => { setGame(game === games.length - 1 ? 0 : game + 1); setDirection('left') }}>
               <i className="fa-solid fa-chevron-right"></i>
             </p>
           </div>
@@ -225,7 +226,7 @@ const Home = () => {
                       transition={{ duration: 0.5 }}
                     >
                       {
-                        generos?.map(category => (
+                        [...new Set(generos?.map((game) => game.name))].map(category => (
                           <div className='home__categorias' key={category}>
                             <input type="checkbox" name="Categorias" id={category} onClick={(e) => changeFilter(e, 'category', category)} />
                             <label key={category} htmlFor={category} >{category}</label>
@@ -260,7 +261,7 @@ const Home = () => {
                       transition={{ duration: 0.5 }}
                     >
                       {
-                        plataformas?.map(platform => (
+                        [...new Set(plataformas2?.map((game) => game.name))].map(platform => (
                           <div className='home__categorias' key={platform}>
                             <input type="checkbox" name="Plataformas" id={platform} onClick={(e) => changeFilter(e, 'platform', platform)} />
                             <label key={platform} htmlFor={platform} >{platform}</label>
@@ -314,38 +315,40 @@ const Home = () => {
               </div>
             </div>
             <div className="section__games">
-              {jogos?.filter(jogo => {
+              {jogos?.map(jogo =>(
+                <CardHome game={jogo} key={jogo?.id}/>
+              ))}
+              {games?.filter(jogo => {
                 var plataformasSelecionadas;
                 var categoriasSelecionadas;
                 var notasSelecionadas;
                 if (filter.platform !== "Todos") {
-                  plataformasSelecionadas = filter.platform.some(platforma => platforma === jogo?.plataforma);
+                  plataformasSelecionadas = jogo.platforms.some(platforma => filter.platform.includes(platforma.platform.name));
                 } else {
                   plataformasSelecionadas = jogo;
                 }
                 if (filter.category !== "Todos") {
-                  categoriasSelecionadas = jogo.generos.some(categoria => filter.category.includes(categoria));
+                  categoriasSelecionadas = jogo.genres.some(categoria => filter.category.includes(categoria.name));
                 } else {
                   categoriasSelecionadas = jogo;
                 }
-                /* if (filter.rating !== 0) {
-                  notasSelecionadas = jogo?.rating >= filter.rating;
+                if (filter.rating !== 0) {
+                  notasSelecionadas = jogo.rating >= filter.rating;
                 } else {
                   notasSelecionadas = jogo;
-                } */
-                return plataformasSelecionadas && categoriasSelecionadas;
+                }
+                return plataformasSelecionadas && categoriasSelecionadas && notasSelecionadas;
               })
                 ?.slice(0, numberGames).map((game) => (
-                  <CardHome game={game} key={game?.id} />
+                  <Card game={game} key={game?.id} />
                 ))}
-              {filterJogos.length === 0 &&
+              {filteredGames == [] &&
                 <div className='home__nenhum-jogo'>
                   {translate("Nenhum jogo foi encontrado")}...
-                  <img src="imgs/control-home.gif" alt="Control" className='control-notfound'/>
                 </div>
               }
             </div>
-            <p onClick={() => setNumberGames(numberGames === 6 ? jogos.length : 6)}>{numberGames === 6 ? translate('Ver mais') : translate('Ver menos')}</p>
+            <p onClick={() => setNumberGames(numberGames === 6 ? games.length : 6)}>{numberGames === 6 ? translate('Ver mais') : translate('Ver menos')}</p>
           </div>
           <div id="publish__games">
             <h2>{translate('Publique seus jogos')}</h2>
@@ -383,4 +386,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default Home2

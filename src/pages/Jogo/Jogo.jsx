@@ -139,7 +139,7 @@ const Jogo = ({ dispatch, listadesejos, cart }) => {
                 </div>
               </div>
               <div className="game__page__genres">
-                <span>{jogo?.genero}</span>
+                {game?.genero.map(gen => <span>{gen}</span>)}
               </div>
               <p className="description__game__page">
                 {translate("Descrição")}: {jogo?.descricao}
@@ -201,14 +201,14 @@ const Jogo = ({ dispatch, listadesejos, cart }) => {
                 </p>
                 <p>
                   {translate("Gênero")}:{" "}
-                    <Link
-                      to={`/categorias/category=${jogo?.genero}`}
-                      aria-label={jogo?.genero}
+                    {jogo?.genero.map(gen => <Link
+                      to={`/categorias/category=${gen}`}
+                      aria-label={gen}
                     >
                       <p>
-                        {jogo?.genero}
+                        {gen}
                       </p>
-                    </Link>
+                    </Link>)}
                 </p>
                 <p>
                   {translate("Data de lançamento")}:{" "}
@@ -236,7 +236,7 @@ const Jogo = ({ dispatch, listadesejos, cart }) => {
                   <b>{translate("Mínimos")}</b>
                   <br />
                   <ul>
-                    <li>SO: {jogo?.["SO"]}</li>
+                    <li>SO: {jogo?.plataforma}</li>
                     <li>Processador: {jogo?.processador}</li>
                     <li>Placa de vídeo: {jogo?.placaDeVideo}</li>
                     <li>Memória: {jogo?.quantMemoria} {jogo?.tipoMemoria}</li>

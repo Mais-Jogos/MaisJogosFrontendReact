@@ -35,7 +35,7 @@
     text-transform: capitalize;
     margin: 0;
     cursor: pointer;
-    padding: 5px 10px;
+    padding: 2px 10px;
 }
 .section__categories .home__categorias input{
     accent-color: var(--purple-y);
@@ -43,6 +43,43 @@
 }
 .section__categories h2{
     margin: 5px;
+}
+.visitantes{
+    margin-top: 20px;
+    font-family: var(--font-pixel);
+    text-align: center;
+    color: var(--white);
+    background-color: var(--purple);
+    box-shadow: 2px 2px 0px #932eff inset,
+    -2px -2px 0px #44008d inset;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 40px;
+    cursor: pointer;
+    transition: 0.7s all;
+}
+.visitantes:hover{
+    background-color: var(--dark-purple);
+}
+.visitors{
+    margin-top: 20px;
+    padding: 15px 10px;
+    border: 1px solid var(--purple-y);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 5px;
+}
+.visitors .num-home{
+    font-size: 3rem;
+    font-family: var(--font-pixel);
+    margin: 0;
+}
+.visitors p{
+    margin: 0;
 }
 .section__categories .home__categorias label:hover{
     background-color: var(--light-hover-background);
@@ -133,6 +170,15 @@
 .home__nenhum-jogo{
     font-family: var(--font-normal);
     color: var(--color-primary);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.home__nenhum-jogo .control-notfound{
+    background: var(--color-secondary); /* Cor do fundo que você deseja remover */
+    padding: 10px; 
+    width: 150px;
 }
 
 #publish__games, #newsletter__games{
