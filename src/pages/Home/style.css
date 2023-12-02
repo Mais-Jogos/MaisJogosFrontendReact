@@ -81,8 +81,14 @@
 .visitors p{
     margin: 0;
 }
+
 .section__categories .home__categorias label:hover{
     background-color: var(--light-hover-background);
+}
+.home__categorias{
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
 }
 .container__home__right{
     width: 85%;

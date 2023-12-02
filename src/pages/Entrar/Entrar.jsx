@@ -28,7 +28,7 @@ const Entrar = () => {
   const cadastrar = () => {
     if (login) {
       if (data.login !== '' && data.password !== '') {
-        Axios.post(`${BASE}/login`, { ...data })
+        Axios.post(`https://backendmaisjogos-production.up.railway.app/login`, { ...data })
           .then((response) => {
             console.log(response)
             window.localStorage.setItem("token", response.data)

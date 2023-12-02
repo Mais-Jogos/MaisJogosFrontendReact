@@ -4,7 +4,7 @@ import Menu from "../../components/Menu/Menu";
 import Vlibras from "../../components/Vlibras/Vlibras";
 import GoBack from "../../components/GoBack/GoBack";
 import TextToSpeech from "../../components/Acessibilidade/TextToSpeech";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import "./style.css"
 import Axios from 'axios';
 import { translate } from '../../translate/translate';
@@ -16,6 +16,7 @@ const CadastroSkin = () => {
     arquivo:null,
     valor: 0,
   })
+  const navigate = useNavigate()
   function criarAvatar(){
     const newAvatar = {
       nome: avatar?.nome,
@@ -29,7 +30,7 @@ const CadastroSkin = () => {
     .then((response) => {
       console.log(response);
       const formData = new FormData()
-      formData.append("arquivo", avatar?.arquivo[0])
+      formData.append("arquivo", avatar?.arquivo)
 
       Axios.patch(`https://backendmaisjogos-production.up.railway.app/api/avatar/atualizaFile/${response.data?.id}`, formData ,{
         headers: {

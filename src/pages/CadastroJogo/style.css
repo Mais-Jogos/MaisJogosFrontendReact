@@ -184,6 +184,19 @@ label.cadastroJogo__content__label + textarea{
     width: calc(100% - 30px);
     resize: none;
 }
+label.label__valorJogo{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+}
+label.label__valorJogo i{
+    color: var(--purple-y);
+    border: 2px solid var(--purple-y);
+    padding: 5px 9px;
+    font-size: 0.8rem;
+    border-radius: 50%;
+}
 
 .cadastroJogo__content__Bodybuttons{
     width: 100%;

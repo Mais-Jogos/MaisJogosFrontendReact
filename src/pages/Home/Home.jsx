@@ -53,11 +53,12 @@ const Home = () => {
       headers:{
         Authorization: `Bearer ${token}`
       }
-  })
+    })
     .then((response) => {
       console.log(response.data);
       setJogos(response.data)
     }).catch((error) => console.log(error))
+    
     Axios.get('https://backendmaisjogos-production.up.railway.app/api/check/listarTodos')
     .then((response) => {
       console.log("Check", response.data);

@@ -1,0 +1,16 @@
+.background-loading {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.438);
+    position: fixed;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+.gif-loading img{
+    width: 250px;
+    filter: hue-rotate(85deg) saturate(1.5);
+}

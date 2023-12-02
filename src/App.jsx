@@ -80,8 +80,8 @@ function App({theme}) {
         </Helmet>
         <BrowserRouter>
             <Routes>
-              <Route exact path='/' element={<Home2/>}/>
-              <Route path='/home' element={<Home/>}/>
+              <Route path='/home' element={<Home2/>}/>
+              <Route exact path='/' element={<Home/>}/>
               <Route path='/visitantes' element={<Visitas/>}/>
               <Route path='/carrinho' element={<Carrinho/>}/>
               <Route exact path='/Joguinhos' element={<Joguinhos/>}/>

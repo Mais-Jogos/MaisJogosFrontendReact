@@ -26,6 +26,9 @@
 .gerenciamento-admin aside ul li:hover{
     background-color: var(--light-hover-background);
 }
+.gerenciamento-admin aside ul .li-selected{
+    background-color: var(--light-hover-background);
+}
 .gerenciamento-admin section{
     display: flex;
     flex-direction: column;
@@ -162,6 +165,11 @@
     overflow-y: auto;
     position: absolute;
     top: 270px;
+}
+.jogos-admin__categorias{
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
 }
 .jogos-admin__options-categorias .jogos-admin__categorias label, 
 .jogos-admin__options-classificacao .jogos-admin__classificacao label, 

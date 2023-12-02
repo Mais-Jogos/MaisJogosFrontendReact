@@ -14,6 +14,8 @@
     0 0 15px rgb(68, 0, 255) inset;
     font-family: var(--font-pixel);
     border-radius: 10px;
+    z-index: 1001;
+    position: relative;
 }
 #full-menu a > .logo{
     height: 65px;
@@ -90,7 +92,7 @@
         align-items: center;
         width: 100%;
         height: 100%;
-        position: absolute;
+        position: fixed;
         background-color: var(--color-secondary);
         flex-direction: column;
         top: 0;

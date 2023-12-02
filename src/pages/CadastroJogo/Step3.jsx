@@ -31,6 +31,12 @@ const Step3 = ({jogo, onChangeGame, erro}) => {
             <option value="16">16</option>
             <option value="18">18</option>
         </select>
+        <label htmlFor="valorJogo" className={`cadastroJogo__content__label label__valorJogo`} title='Nós roubamos sua grana'>
+          Valor do Jogo
+          <i class="fa-solid fa-info" title='Para mantermos a plataforma nós da +Jogos recebemos uma taxa de 10% do valor do jogo após a compra'></i>
+        </label>
+        <input type="number" id='valorJogo' defaultValue={jogo?.valorJogo} onChange={(e) => onChangeGame("valorJogo", e.target.value)}
+        className={`${erro && 'cadastroJogo__content__body--erroMessage'}`}/>
     </section>
   )
 }

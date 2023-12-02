@@ -33,6 +33,7 @@ const CadastroJogo = () => {
     videos: null,
     idDev: id,
     licenca: null,
+    valorJogo:0,
   });
   const onChangeGame = (type, value) => {
     setJogo({ ...jogo, [type]: value });
@@ -47,9 +48,11 @@ const CadastroJogo = () => {
   ];
 
   function criarJogo(){
+    console.log("Jogo", jogo);
     const jogoInfo = {
       idDev: jogo?.idDev,
       titulo: jogo?.titulo,
+      valorJogo: parseFloat(jogo?.valorJogo),
       descricao: jogo?.descricao,
       genero: jogo?.genero,
       plataforma: jogo?.plataforma,
@@ -63,7 +66,6 @@ const CadastroJogo = () => {
     }
     const jogoFiles = {
       jogoWin: jogo?.jogo,
-      jogoAndroid: jogo?.jogo,
       bannerUm: jogo?.fotos[0],
       bannerDois: jogo?.fotos[1],
       bannerTres: jogo?.fotos[2],

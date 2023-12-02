@@ -24,10 +24,10 @@ const GerenciamentoAdmin = () => {
         <main className='gerenciamento-admin'>
             <aside>
                 <ul>
-                    <li onClick={() => setPage("jogos")}>{translate("Jogos")}</li>
-                    <li onClick={() => setPage("devs")}>{translate("Devs")}</li>
-                    <li onClick={() => setPage("users")}>{translate("Users")}</li>
-                    <li onClick={() => setPage("pagamentos")}>{translate("Pagamentos")}</li>
+                    <li className={page === "jogos" && "li-selected"} onClick={() => setPage("jogos")}>{translate("Jogos")}</li>
+                    <li className={page === "devs" && "li-selected"} onClick={() => setPage("devs")}>{translate("Devs")}</li>
+                    <li className={page === "users" && "li-selected"} onClick={() => setPage("users")}>{translate("Users")}</li>
+                    <li className={page === "pagamentos" && "li-selected"} onClick={() => setPage("pagamentos")}>{translate("Pagamentos")}</li>
                     <li onClick={() => navigate("/relatorios-admin")}>{translate("Relatórios")}</li>
                     <li onClick={() => navigate("/avatares")}>{translate("Avatares")}</li>
                 </ul>
