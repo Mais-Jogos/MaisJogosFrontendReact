@@ -10,6 +10,8 @@ import GoBack from "../../components/GoBack/GoBack";
 import { translate } from "../../translate/translate";
 import { useRef } from "react";
 import { useEffect } from "react";
+import Axios from 'axios'
+import Modal from '../../components/Modal/Modal';
 
 function reducerTypeOfPix(state, action) {
     switch (action.type) {
@@ -45,15 +47,22 @@ export default props => {
     });
 
     const [enviar, setEnviar] = useState(0);
+    const [aviso, setAviso] = useState(false);
     const [nomePix, setNomePix] = useState("");
     const [selectTypePix, setselectTypePix] = useState(true);
     const [savedPix, setSavedPix] = useState(0);
+    const [modal, setModal] = useState(null)
+    const [listaPixSalvaAPI, setListaPixSalvaAPI] = useState([])
 
     const initialized = useRef(false);
     const initializedP = useRef(false);
     const initializedCPF = useRef(false);
     let htmlRootValue = document.querySelector("#root").attributes[1].nodeValue === "false" ? false : true
     const [clickIcon, setClickIcon] = useState(htmlRootValue);
+
+    let id = window.localStorage.getItem("id")
+    let token = window.localStorage.getItem("token")
+
 
     function switchStateIcon() {
         if (clickIcon) {
@@ -65,6 +74,81 @@ export default props => {
         }
     }
 
+    function enviaAPI() {
+        let cadastrarPixChave = '';
+        let cadastrarPixValor = '';
+        let cadastrarPixTipo = '';
+
+        if (enviar == 1 && selectTypePix) {
+            for (const [chave, valor] of Object.entries(typeOfPix)) {
+
+                if (valor.status) {
+                    cadastrarPixChave = valor.value
+                    cadastrarPixValor = nomePix
+                    cadastrarPixTipo = chave
+                }
+            }
+
+            if (cadastrarPixChave == '' || cadastrarPixTipo == '' || cadastrarPixValor == 0 || cadastrarPixValor < 0) {
+                setModal(<Modal message={"Preencha as informações!"} type={false} />)
+
+                setTimeout(() => {
+                    setModal(null)
+                }, 3000)
+
+                setEnviar(e => e - 1)
+                return
+            }
+
+            const cadastrarPixFinal = {
+                pix: cadastrarPixChave,
+                tipoPix: cadastrarPixTipo,
+                valorPag: cadastrarPixValor,
+                idDev: id
+            };
+
+            console.log(cadastrarPixFinal);
+
+            Axios.post(`https://backendmaisjogos-production.up.railway.app/api/pixDev/salvar`, { ...cadastrarPixFinal }, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            })
+
+            .then((response) => {
+                console.log(response);
+                setAviso(true)
+            })
+
+            .catch((error) => {
+                console.log(error)
+
+                setModal(<Modal message={"Erro ao cadastrar!"} type={false} />)
+
+                setTimeout(() => {
+                    setModal(null)
+                }, 3000)
+            })
+        }
+
+        if(!selectTypePix){
+            setAviso(true)
+        }
+    }
+
+    useEffect(_ => {
+        Axios.get(`https://backendmaisjogos-production.up.railway.app/api/pixDev/listarPix/${id}`, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
+            .then((response) => {
+                setListaPixSalvaAPI([...listaPixSalvaAPI,response.data])
+
+            })
+            .catch((error) => console.log(error))
+    }, [])
+
     useEffect(_ => {
         if (!initializedP.current) {
             initializedP.current = true
@@ -74,7 +158,7 @@ export default props => {
                     var code = e.keyCode || e.which;
                     if (code == '9' && document.querySelector("#root").attributes[1].nodeValue == "true") {
                         responsiveVoice.cancel();
-                        setTimeout(responsiveVoice.speak('Link para ' + $(':focus').attr('aria-label'), "Portuguese Female"),1000);
+                        setTimeout(responsiveVoice.speak('Link para ' + $(':focus').attr('aria-label'), "Portuguese Female"), 1000);
                     }
 
                     e.preventDefault();
@@ -84,7 +168,7 @@ export default props => {
                 $('button').keyup(function (e) {
                     var code = e.keyCode || e.which;
                     if (code == '9' && document.querySelector("#root").attributes[1].nodeValue == "true") {
-                        setTimeout(responsiveVoice.speak("Botão de " + $(':focus').text(), "Portuguese Female"),1000);
+                        setTimeout(responsiveVoice.speak("Botão de " + $(':focus').text(), "Portuguese Female"), 1000);
                     }
 
                     e.preventDefault();
@@ -95,7 +179,7 @@ export default props => {
                     var code = e.keyCode || e.which;
                     if (code == '9' && document.querySelector("#root").attributes[1].nodeValue == "true") {
                         responsiveVoice.cancel();
-                        setTimeout(responsiveVoice.speak('Input ' + $(':focus').attr('aria-label'), "Portuguese Female"),1000);
+                        setTimeout(responsiveVoice.speak('Input ' + $(':focus').attr('aria-label'), "Portuguese Female"), 1000);
                     }
 
                     e.preventDefault();
@@ -106,7 +190,7 @@ export default props => {
                     var code = e.keyCode || e.which;
                     if (code == '9' && document.querySelector("#root").attributes[1].nodeValue == "true") {
                         responsiveVoice.cancel();
-                        setTimeout(responsiveVoice.speak('Input ' + $(':focus').attr('aria-label'), "Portuguese Female"),1000);
+                        setTimeout(responsiveVoice.speak('Input ' + $(':focus').attr('aria-label'), "Portuguese Female"), 1000);
                     }
 
                     e.preventDefault();
@@ -117,7 +201,7 @@ export default props => {
                     var code = e.keyCode || e.which;
                     if (code == '9' && document.querySelector("#root").attributes[1].nodeValue == "true") {
                         responsiveVoice.cancel();
-                        setTimeout(responsiveVoice.speak('Input ' + $(':focus').attr('aria-label'), "Portuguese Female"),1000);
+                        setTimeout(responsiveVoice.speak('Input ' + $(':focus').attr('aria-label'), "Portuguese Female"), 1000);
                     }
 
                     e.preventDefault();
@@ -133,7 +217,7 @@ export default props => {
                 $('.pagamentoDev__pixContainer__selectTypeOfPix__button').keyup(function (e) {
                     var code = e.keyCode || e.which;
                     if (code == '9' && document.querySelector("#root").attributes[1].nodeValue == "true") {
-                        setTimeout(responsiveVoice.speak("Botão de " + $(':focus').text(), "Portuguese Female"),1000);
+                        setTimeout(responsiveVoice.speak("Botão de " + $(':focus').text(), "Portuguese Female"), 1000);
                     }
 
                     e.preventDefault();
@@ -143,7 +227,7 @@ export default props => {
                 $('.pagamentoDev__pixContainer__content__methods__container').keyup(function (e) {
                     var code = e.keyCode || e.which;
                     if (code == '9' && document.querySelector("#root").attributes[1].nodeValue == "true") {
-                        setTimeout(responsiveVoice.speak("Botão de " + $(':focus').text(), "Portuguese Female"),1000);
+                        setTimeout(responsiveVoice.speak("Botão de " + $(':focus').text(), "Portuguese Female"), 1000);
                     }
 
                     e.preventDefault();
@@ -153,7 +237,7 @@ export default props => {
                 $('.pagamentoDev__pixContainer__content__methods__container--select').keyup(function (e) {
                     var code = e.keyCode || e.which;
                     if (code == '9' && document.querySelector("#root").attributes[1].nodeValue == "true") {
-                        setTimeout(responsiveVoice.speak("Botão de " + $(':focus').text(), "Portuguese Female"),1000);
+                        setTimeout(responsiveVoice.speak("Botão de " + $(':focus').text(), "Portuguese Female"), 1000);
                     }
 
                     e.preventDefault();
@@ -163,7 +247,7 @@ export default props => {
                 $('.pagamentoDev__pixContainer__content__methods__buttonPixSalvo').keyup(function (e) {
                     var code = e.keyCode || e.which;
                     if (code == '9' && document.querySelector("#root").attributes[1].nodeValue == "true") {
-                        setTimeout(responsiveVoice.speak("Botão de " + $(':focus').text(), "Portuguese Female"),1000);
+                        setTimeout(responsiveVoice.speak("Botão de " + $(':focus').text(), "Portuguese Female"), 1000);
                     }
 
                     e.preventDefault();
@@ -173,7 +257,7 @@ export default props => {
                 $('.pagamentoDev__pixContainer__content__methods__buttonPixSalvo--select').keyup(function (e) {
                     var code = e.keyCode || e.which;
                     if (code == '9' && document.querySelector("#root").attributes[1].nodeValue == "true") {
-                        setTimeout(responsiveVoice.speak("Botão de " + $(':focus').text(), "Portuguese Female"),1000);
+                        setTimeout(responsiveVoice.speak("Botão de " + $(':focus').text(), "Portuguese Female"), 1000);
                     }
 
                     e.preventDefault();
@@ -188,7 +272,7 @@ export default props => {
                     var code = e.keyCode || e.which;
                     if (code == '9' && document.querySelector("#root").attributes[1].nodeValue == "true") {
                         responsiveVoice.cancel();
-                        setTimeout(responsiveVoice.speak('Input ' + $(':focus').attr('aria-label'), "Portuguese Female"),1000);
+                        setTimeout(responsiveVoice.speak('Input ' + $(':focus').attr('aria-label'), "Portuguese Female"), 1000);
                     }
 
                     e.preventDefault();
@@ -199,7 +283,7 @@ export default props => {
                     var code = e.keyCode || e.which;
                     if (code == '9' && document.querySelector("#root").attributes[1].nodeValue == "true") {
                         responsiveVoice.cancel();
-                        setTimeout(responsiveVoice.speak('Input ' + $(':focus').attr('aria-label'), "Portuguese Female"),1000);
+                        setTimeout(responsiveVoice.speak('Input ' + $(':focus').attr('aria-label'), "Portuguese Female"), 1000);
                     }
 
                     e.preventDefault();
@@ -216,7 +300,7 @@ export default props => {
                     var code = e.keyCode || e.which;
                     if (code == '9' && document.querySelector("#root").attributes[1].nodeValue == "true") {
                         responsiveVoice.cancel();
-                        setTimeout(responsiveVoice.speak('Input ' + $(':focus').attr('aria-label'), "Portuguese Female"),1000);
+                        setTimeout(responsiveVoice.speak('Input ' + $(':focus').attr('aria-label'), "Portuguese Female"), 1000);
                     }
 
                     e.preventDefault();
@@ -226,7 +310,7 @@ export default props => {
                 $('.pagamentoDev__pixContainer__content__methods__buttonPixSalvo').keyup(function (e) {
                     var code = e.keyCode || e.which;
                     if (code == '9' && document.querySelector("#root").attributes[1].nodeValue == "true") {
-                        setTimeout(responsiveVoice.speak("Botão de " + $(':focus').text(), "Portuguese Female"),1000);
+                        setTimeout(responsiveVoice.speak("Botão de " + $(':focus').text(), "Portuguese Female"), 1000);
                     }
 
                     e.preventDefault();
@@ -236,7 +320,7 @@ export default props => {
                 $('.pagamentoDev__pixContainer__content__methods__container').keyup(function (e) {
                     var code = e.keyCode || e.which;
                     if (code == '9' && document.querySelector("#root").attributes[1].nodeValue == "true") {
-                        setTimeout(responsiveVoice.speak("Botão de " + $(':focus').text(), "Portuguese Female"),1000);
+                        setTimeout(responsiveVoice.speak("Botão de " + $(':focus').text(), "Portuguese Female"), 1000);
                     }
 
                     e.preventDefault();
@@ -246,7 +330,7 @@ export default props => {
                 $('.pagamentoDev__pixContainer__content__methods__container--select').keyup(function (e) {
                     var code = e.keyCode || e.which;
                     if (code == '9' && document.querySelector("#root").attributes[1].nodeValue == "true") {
-                        setTimeout(responsiveVoice.speak("Botão de " + $(':focus').text(), "Portuguese Female"),1000);
+                        setTimeout(responsiveVoice.speak("Botão de " + $(':focus').text(), "Portuguese Female"), 1000);
                     }
 
                     e.preventDefault();
@@ -257,7 +341,7 @@ export default props => {
                     var code = e.keyCode || e.which;
                     if (code == '9' && document.querySelector("#root").attributes[1].nodeValue == "true") {
                         responsiveVoice.cancel();
-                        setTimeout(responsiveVoice.speak('Input ' + $(':focus').attr('aria-label'), "Portuguese Female"),1000);
+                        setTimeout(responsiveVoice.speak('Input ' + $(':focus').attr('aria-label'), "Portuguese Female"), 1000);
                     }
 
                     e.preventDefault();
@@ -275,7 +359,7 @@ export default props => {
                     var code = e.keyCode || e.which;
                     if (code == '9' && document.querySelector("#root").attributes[1].nodeValue == "true") {
                         responsiveVoice.cancel();
-                        setTimeout(responsiveVoice.speak('Input ' + $(':focus').attr('aria-label'), "Portuguese Female"),1000);
+                        setTimeout(responsiveVoice.speak('Input ' + $(':focus').attr('aria-label'), "Portuguese Female"), 1000);
                     }
 
                     e.preventDefault();
@@ -286,7 +370,7 @@ export default props => {
                     var code = e.keyCode || e.which;
                     if (code == '9' && document.querySelector("#root").attributes[1].nodeValue == "true") {
                         responsiveVoice.cancel();
-                        setTimeout(responsiveVoice.speak('Input ' + $(':focus').attr('aria-label'), "Portuguese Female"),1000);
+                        setTimeout(responsiveVoice.speak('Input ' + $(':focus').attr('aria-label'), "Portuguese Female"), 1000);
                     }
 
                     e.preventDefault();
@@ -302,6 +386,8 @@ export default props => {
             <Menu />
             <Vlibras />
             <Acessibilidade />
+            {modal}
+
             <div className="textToSpeech__container" onClick={_ => switchStateIcon()} accessKey="q">
                 <img src={!clickIcon ? "/imgs/icons/textToSpeech_icon-open.svg" : "/imgs/icons/textToSpeech_icon-remove.svg"}></img>
                 <div className="textToSpeech__hover"><p>Leitor de tela</p></div>
@@ -360,8 +446,8 @@ export default props => {
                                             <input type="text" name="cpf" id="cpf" value={typeOfPix.cpf.value} onChange={e => { dispatch({ type: 'cpf_text', cpf: e.target.value }) }} aria-label="cpf" className="input__content__register--input" />
                                             <br></br>
                                             <div>
-                                                <label htmlFor="nome">Nome completo</label>
-                                                <input type="text" name="nome" id="nome" className="typeOfPix__nameInput" value={nomePix} onChange={e => { setNomePix(e.target.value) }} aria-label="nome completo" />
+                                                <label htmlFor="nome">Valor pix</label>
+                                                <input type="number" name="nome" id="nome" className="typeOfPix__nameInput" value={nomePix} onChange={e => { setNomePix(e.target.value) }} aria-label="Valor pix" />
                                             </div>
                                         </>
                                     ) : ""}
@@ -372,8 +458,8 @@ export default props => {
                                             <input type="tel" name="telefone" id="telefone" value={typeOfPix.telefone.value} onChange={e => { dispatch({ type: 'telefone_text', telefone: e.target.value }) }} aria-label="telefone" className="input__content__register--input" />
 
                                             <div>
-                                                <label htmlFor="nome">Nome completo</label>
-                                                <input type="text" name="nome" id="nome" className="typeOfPix__nameInput" value={nomePix} onChange={e => { setNomePix(e.target.value) }} aria-label="nome completo" />
+                                                <label htmlFor="nome">Valor pix</label>
+                                                <input type="number" name="nome" id="nome" className="typeOfPix__nameInput" value={nomePix} onChange={e => { setNomePix(e.target.value) }} aria-label="Valor pix" />
                                             </div>
                                         </>
                                     ) : ""}
@@ -384,8 +470,8 @@ export default props => {
                                             <input type="email" name="email" id="email" value={typeOfPix.email.value} onChange={e => { dispatch({ type: 'email_text', email: e.target.value }) }} aria-label="email" className="input__content__register--input" />
 
                                             <div>
-                                                <label htmlFor="nome">Nome completo</label>
-                                                <input type="text" name="nome" id="nome" className="typeOfPix__nameInput" value={nomePix} onChange={e => { setNomePix(e.target.value) }} aria-label="nome completo" />
+                                                <label htmlFor="nome">Valor pix</label>
+                                                <input type="number" name="nome" id="nome" className="typeOfPix__nameInput" value={nomePix} onChange={e => { setNomePix(e.target.value) }} aria-label="Valor pix" />
                                             </div>
                                         </>
                                     ) : ""}
@@ -396,8 +482,8 @@ export default props => {
                                             <input type="text" name="aleatorio" id="aleatorio" value={typeOfPix.aleatorio.value} onChange={e => { dispatch({ type: 'aleatorio_text', aleatorio: e.target.value }) }} aria-label="aleatorio" className="input__content__register--input" />
 
                                             <div>
-                                                <label htmlFor="nome">Nome completo</label>
-                                                <input type="text" name="nome" id="nome" className="typeOfPix__nameInput" value={nomePix} onChange={e => { setNomePix(e.target.value) }} aria-label="nome completo" />
+                                                <label htmlFor="nome">Valor pix</label>
+                                                <input type="number" name="nome" id="nome" className="typeOfPix__nameInput" value={nomePix} onChange={e => { setNomePix(e.target.value) }} aria-label="Valor pix" />
                                             </div>
                                         </>
                                     ) : ""}
@@ -415,17 +501,17 @@ export default props => {
                                 <h2>Selecione o pix</h2>
 
                                 <div className={enviar == 1 ? "" : "pagamentoDev__pixContainer__content__methods"}>
-                                    {enviar == 0 ? (<button className={savedPix == 1 ? "pagamentoDev__pixContainer__content__methods__buttonPixSalvo--select" : "pagamentoDev__pixContainer__content__methods__buttonPixSalvo"} onClick={_ => setSavedPix(1)} aria-label="pix salvo">Ana Maria</button>) : ""}
 
-                                    {savedPix == 1 && enviar == 1 ? (<InputsPagamentoDevPixSalvo typeOfPix="cpf" cpf="321.456.781-10" nomePix="Ana Maria" />) : ""}
+                                    {
+                                        listaPixSalvaAPI?.map((e, i) => (
+                                            <>
+                                                {enviar == 0 ? (<button className={savedPix == i ? "pagamentoDev__pixContainer__content__methods__buttonPixSalvo--select" : "pagamentoDev__pixContainer__content__methods__buttonPixSalvo"} onClick={_ => setSavedPix(i)} aria-label="pix salvo">{e.pix}</button>) : ""}
 
-                                    {enviar == 0 ? (<button className={savedPix == 2 ? "pagamentoDev__pixContainer__content__methods__buttonPixSalvo--select" : "pagamentoDev__pixContainer__content__methods__buttonPixSalvo"} onClick={_ => setSavedPix(2)} aria-label="pix salvo">Jorge Raimundo</button>) : ""}
+                                                {savedPix == i && enviar == 1 ? (<InputsPagamentoDevPixSalvo typeOfPix={e.tipoPix} value={e.pix} nomePix={e.valorPag} />) : ""}
+                                            </>
+                                        ))
+                                    }
 
-                                    {savedPix == 2 && enviar == 1 ? (<InputsPagamentoDevPixSalvo typeOfPix="telefone" telefone="11982122112" nomePix="Jorge Raimundo" />) : ""}
-
-                                    {enviar == 0 ? (<button className={savedPix == 3 ? "pagamentoDev__pixContainer__content__methods__buttonPixSalvo--select" : "pagamentoDev__pixContainer__content__methods__buttonPixSalvo"} onClick={_ => setSavedPix(3)} aria-label="pix salvo">Wesley Araujo</button>) : ""}
-
-                                    {savedPix == 3 && enviar == 1 ? (<InputsPagamentoDevPixSalvo typeOfPix="email" email="araujo@gmail.com" nomePix="Wesley Araujo" />) : ""}
                                 </div>
                             </>)}
 
@@ -433,7 +519,7 @@ export default props => {
                             {!selectTypePix || enviar != 0 ? initialized.current = true : ""}
                             {!typeOfPix.cpf.status ? initializedCPF.current = true : ""}
                             <button onClick={_ => { enviar == 0 ? "" : setEnviar(e => e - 1) }} aria-label="cancelar">{translate("Cancelar")}</button>
-                            <button onClick={_ => setEnviar(e => e + 1)} aria-label="enviar">{enviar == 0 ? "Confirmar" : "Enviar"}</button>
+                            <button onClick={_ => { setEnviar(e => e + 1); enviaAPI() }} aria-label="enviar">{enviar == 0 ? "Confirmar" : "Enviar"}</button>
                         </div>
                     </div>
                 </section>
@@ -447,7 +533,7 @@ export default props => {
                     </div>
                 </section>
 
-                <div className="finish__modalBackground" style={enviar == 2 ? { display: "flex" } : { display: "none" }}>
+                <div className="finish__modalBackground" style={enviar == 2 && aviso ? { display: "flex" } : { display: "none" }}>
                     <div className="finish__modalConfirm">
                         <div className="finish__modalConfirm__container">
                             <div>
