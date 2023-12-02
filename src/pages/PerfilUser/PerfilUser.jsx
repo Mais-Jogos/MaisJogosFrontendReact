@@ -83,7 +83,7 @@ const PerfilUser = (props) => {
         if (type !== "user") {
             navigate("/entrar")
         }
-        Axios.get(`http://localhost:8080/api/usuario/listarCliente/${id}`, {
+        Axios.get(`https://backendmaisjogos-production.up.railway.app/api/usuario/listarCliente/${id}`, {
             headers:{
                 Authorization: `Bearer ${token}`
             }

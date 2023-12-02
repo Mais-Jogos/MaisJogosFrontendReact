@@ -35,7 +35,7 @@ export default _ => {
                 setLeitor(true);
 
             }).catch((error) => { console.log(error); });
-            Axios.get(`http://localhost:8080/api/review/listarTodos`,{
+            Axios.get(`https://backendmaisjogos-production.up.railway.app/api/review/listarTodos`,{
                 headers:{
                   Authorization: `Bearer ${token}`
                 }

@@ -11,7 +11,7 @@ import TextToSpeech from "../../components/Acessibilidade/TextToSpeech";
 const Visitas = () => {
     const [check, setCheck] = useState([]);
     useEffect(() =>{
-        Axios.get('http://localhost:8080/api/check/listarTodos')
+        Axios.get('https://backendmaisjogos-production.up.railway.app/api/check/listarTodos')
         .then((response) => {
           console.log("Check", response.data);
           setCheck(response.data)

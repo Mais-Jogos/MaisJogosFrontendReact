@@ -83,14 +83,14 @@ const CadastroJogo = () => {
     formData.append('bannerCinco', jogoFiles?.bannerCinco);
     formData.append('licenca', jogoFiles?.licenca);
 
-    Axios.post("http://localhost:8080/api/jogo/salvar", jogoInfo, {
+    Axios.post("https://backendmaisjogos-production.up.railway.app/api/jogo/salvar", jogoInfo, {
       headers:{
         Authorization: `Bearer ${token}`,
       }
     })
     .then((response) => {
       console.log("Response jogos info", response);
-      Axios.patch(`http://localhost:8080/api/jogo/atualizaFile/${response.data.id}`, formData, {
+      Axios.patch(`https://backendmaisjogos-production.up.railway.app/api/jogo/atualizaFile/${response.data.id}`, formData, {
         headers:{
           Authorization: `Bearer ${token}`,
           'Content-Type': 'multipart/form-data',

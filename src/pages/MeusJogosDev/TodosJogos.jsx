@@ -15,7 +15,7 @@ export default props => {
     const id = window.localStorage.getItem("id");
 
     useEffect(() =>{
-        Axios.get("http://localhost:8080/api/jogo/listarTodos", {
+        Axios.get("https://backendmaisjogos-production.up.railway.app/api/jogo/listarTodos", {
             headers:{
               Authorization: `Bearer ${token}`
             }
@@ -25,7 +25,7 @@ export default props => {
             setGames(response.data.filter(game => game?.idDev.toString() === id));
             setLeitor(true);
         }).catch((error) => { console.log(error); });
-        Axios.get(`http://localhost:8080/api/usuario/listarCliente/${id}`, {
+        Axios.get(`https://backendmaisjogos-production.up.railway.app/api/usuario/listarCliente/${id}`, {
             headers:{
               Authorization: `Bearer ${token}`
             }
@@ -67,7 +67,7 @@ export default props => {
         setModal(<ModalConfirm type={false} message={`Deseja deletar "${nome}"?`} simClick={() => deletarDev(id)} nãoClick={() => setModal(null)}/>)
     }
     function deletarDev(id){
-        Axios.delete(`http://localhost:8080/api/jogo/deletarJogo/${id}`,{
+        Axios.delete(`https://backendmaisjogos-production.up.railway.app/api/jogo/deletarJogo/${id}`,{
             headers:{
                 Authorization: `Bearer ${token}`
             }

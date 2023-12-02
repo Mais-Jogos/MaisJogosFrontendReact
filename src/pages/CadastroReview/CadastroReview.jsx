@@ -32,7 +32,7 @@ const CadastroReview = () => {
     .then((response) =>{
       setGame(response.data.results.filter(jogo => jogo.name.toLowerCase().replace(/ /g, "-") === name)[0])
     }).catch((error) => { console.log(error); }); 
-    Axios.get(`http://localhost:8080/api/review/listarTodos`,{
+    Axios.get(`https://backendmaisjogos-production.up.railway.app/api/review/listarTodos`,{
       headers:{
         Authorization: `Bearer ${token}`
       }
@@ -51,7 +51,7 @@ const CadastroReview = () => {
 
   function cadastrarReview(){
     if(review.id){
-      Axios.put(`http://localhost:8080/api/review/${review.id}`, review,{
+      Axios.put(`https://backendmaisjogos-production.up.railway.app/api/review/${review.id}`, review,{
         headers:{
           Authorization: `Bearer ${token}`
         }
@@ -68,7 +68,7 @@ const CadastroReview = () => {
       ano  = data.getFullYear();
     const dataReview =  dia+"/"+mes+"/"+ano;
     const newReview = {...review, dataReview:dataReview, jogo:game?.name}
-    Axios.post('http://localhost:8080/api/review/salvar', newReview,{
+    Axios.post('https://backendmaisjogos-production.up.railway.app/api/review/salvar', newReview,{
       headers:{
         Authorization: `Bearer ${token}`
       }

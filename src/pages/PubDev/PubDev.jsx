@@ -23,7 +23,7 @@ export default _ => {
   const [leitor, setLeitor] = useState(false);
 
   useEffect(() => {
-    Axios.get("http://localhost:8080/api/jogo/listarTodos", {
+    Axios.get("https://backendmaisjogos-production.up.railway.app/api/jogo/listarTodos", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -32,7 +32,7 @@ export default _ => {
       setGames(response.data);
       setLeitor(true);
     }).catch((error) => { console.log(error); });
-    Axios.get('http://localhost:8080/api/usuario/listarTodos', {
+    Axios.get('https://backendmaisjogos-production.up.railway.app/api/usuario/listarTodos', {
       headers: {
         Authorization: `Bearer ${token}`
       }

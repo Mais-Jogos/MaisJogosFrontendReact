@@ -45,7 +45,7 @@ const Home2 = () => {
         setGames(response.data.results);
         setLeitor(true);
       }).catch((error) => { console.log(error); });
-    Axios.get('http://localhost:8080/api/jogo/listarTodos',{
+    Axios.get('https://backendmaisjogos-production.up.railway.app/api/jogo/listarTodos',{
       headers:{
         Authorization: `Bearer ${token}`
       }
@@ -55,7 +55,7 @@ const Home2 = () => {
       setJogos(response.data)
       console.log("jogos", mapjogos);
     }).catch((error) => console.log(error))
-    Axios.get('http://localhost:8080/api/check/listarTodos')
+    Axios.get('https://backendmaisjogos-production.up.railway.app/api/check/listarTodos')
     .then((response) => {
       console.log("Check", response.data);
       setCheck(response.data)

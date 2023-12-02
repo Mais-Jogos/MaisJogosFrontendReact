@@ -29,7 +29,7 @@ const ListadeDesejos = ({listadesejos, dispatch}) => {
     dispatch(deletefavoriteGame(game))
     const favoritoSelecionado = favoritos?.filter((favoritos) => favoritos?.idJogo == game?.id)[0]
     console.log(favoritoSelecionado);
-    Axios.delete(`http://localhost:8080/api/favorito/deletarUser/${favoritoSelecionado?.id}`, {
+    Axios.delete(`https://backendmaisjogos-production.up.railway.app/api/favorito/deletarUser/${favoritoSelecionado?.id}`, {
     headers:{
       Authorization: `Bearer ${token}`
     }}).then((response) =>{
@@ -41,7 +41,7 @@ const ListadeDesejos = ({listadesejos, dispatch}) => {
   }
 
   useEffect(() =>{
-    Axios.get('http://localhost:8080/api/favorito/listarTodos', {
+    Axios.get('https://backendmaisjogos-production.up.railway.app/api/favorito/listarTodos', {
       headers:{
         Authorization: `Bearer ${token}`
       }
@@ -52,7 +52,7 @@ const ListadeDesejos = ({listadesejos, dispatch}) => {
       )
       setFavs(favs)
       console.log("Favs", favs);
-      Axios.get('http://localhost:8080/api/jogo/listarTodos')
+      Axios.get('https://backendmaisjogos-production.up.railway.app/api/jogo/listarTodos')
       .then((res) =>{
         setFavoritos(res.data?.filter(jogo =>
           favs?.some(fav => fav?.idJogo == jogo?.id)

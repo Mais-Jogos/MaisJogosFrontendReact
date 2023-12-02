@@ -21,7 +21,7 @@ const CadastroSkin = () => {
       nome: avatar?.nome,
       valor: parseFloat(avatar?.valor)
     }
-    Axios.post("http://localhost:8080/api/avatar/salvar", newAvatar ,{
+    Axios.post("https://backendmaisjogos-production.up.railway.app/api/avatar/salvar", newAvatar ,{
       headers: {
         Authorization: `Bearer ${token}`
       }
@@ -31,7 +31,7 @@ const CadastroSkin = () => {
       const formData = new FormData()
       formData.append("arquivo", avatar?.arquivo[0])
 
-      Axios.patch(`http://localhost:8080/api/avatar/atualizaFile/${response.data?.id}`, formData ,{
+      Axios.patch(`https://backendmaisjogos-production.up.railway.app/api/avatar/atualizaFile/${response.data?.id}`, formData ,{
         headers: {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'multipart/form-data',

@@ -23,11 +23,12 @@ const Entrar = () => {
   const [data, setData] = useState({})
   const [msg, setMsg] = useState('')
   const [modal, setModal] = useState(null)
+
   const navigate = useNavigate()
   const cadastrar = () => {
     if (login) {
       if (data.login !== '' && data.password !== '') {
-        Axios.post('http://localhost:8080/login', { ...data })
+        Axios.post(`${BASE}/login`, { ...data })
           .then((response) => {
             console.log(response)
             window.localStorage.setItem("token", response.data)
@@ -58,7 +59,7 @@ const Entrar = () => {
         if (data?.password !== '' && data?.email !== '' && data?.nome !== '' && data?.sobrenome !== '' && data?.dataNasc !== '' && data?.confirmarSenha !== '') {
           console.log(data);
           if (data?.password === data?.confirmarSenha) {
-            Axios.post('http://localhost:8080/api/usuario/salvar', {
+            Axios.post('https://backendmaisjogos-production.up.railway.app/api/usuario/salvar', {
                 ...data,
                 moeda: 10,
                 idAvatar: 1,
@@ -91,7 +92,7 @@ const Entrar = () => {
       } else {
         if (data?.password !== '' && data?.login !== '' && data?.nome !== '' && data?.dataNasc !== '' && data?.confirmarSenha !== '') {
           if (data?.password === data?.confirmarSenha) {
-            Axios.post('http://localhost:8080/api/usuario/salvar', {
+            Axios.post('https://backendmaisjogos-production.up.railway.app/api/usuario/salvar', {
               ...data,
               valorVendas: 0.0,
             })

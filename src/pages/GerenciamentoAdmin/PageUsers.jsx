@@ -7,7 +7,7 @@ const PageUsers = () => {
   const [users, setUsers] = useState([]);
   const [modal, setModal] = useState(null);
   useEffect(() => {
-    Axios.get("http://localhost:8080/auth/cliente")
+    Axios.get("https://backendmaisjogos-production.up.railway.app/auth/cliente")
     .then((response) => {
       setUsers(response.data);
       console.log(response.data);
@@ -17,7 +17,7 @@ const PageUsers = () => {
     setModal(<ModalConfirm type={false} message={`Deseja deletar "${nome}"?`} simClick={() => deletarUser(id)} nãoClick={() => setModal(null)}/>)
   }
   function deletarUser(id){
-    Axios.delete(`http://localhost:8080/auth/cliente/${id}`)
+    Axios.delete(`https://backendmaisjogos-production.up.railway.app/auth/cliente/${id}`)
     .then((response) => {
       console.log(response.data)
     })

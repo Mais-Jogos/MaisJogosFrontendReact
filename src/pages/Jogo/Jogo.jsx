@@ -48,7 +48,7 @@ const Jogo = ({ dispatch, listadesejos, cart }) => {
       .catch((error) => {
         console.log(error);
       });
-    Axios.get("http://localhost:8080/api/jogo/listarTodos", {
+    Axios.get("https://backendmaisjogos-production.up.railway.app/api/jogo/listarTodos", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -59,7 +59,7 @@ const Jogo = ({ dispatch, listadesejos, cart }) => {
         )[0];
         setJogo(game);
 
-        Axios.get(`http://localhost:8080/api/usuario/listarCliente/${game?.idDev}`, {
+        Axios.get(`https://backendmaisjogos-production.up.railway.app/api/usuario/listarCliente/${game?.idDev}`, {
           headers:{
             Authorization: `Bearer ${token}`
           }
@@ -69,7 +69,7 @@ const Jogo = ({ dispatch, listadesejos, cart }) => {
         }).catch((error) => console.log(error));
       }).catch((error) => console.log(error));
 
-      Axios.get('http://localhost:8080/api/favorito/listarTodos', {
+      Axios.get('https://backendmaisjogos-production.up.railway.app/api/favorito/listarTodos', {
         headers:{
           Authorization: `Bearer ${token}`
         }
@@ -92,7 +92,7 @@ const Jogo = ({ dispatch, listadesejos, cart }) => {
   };
   const handleClickFavorite = (game) => {
     if (favorito && token) {
-      Axios.post('http://localhost:8080/api/favorito/salvar', {
+      Axios.post('https://backendmaisjogos-production.up.railway.app/api/favorito/salvar', {
         idUser: id,
         idJogo: jogo?.id,
       }, {
@@ -107,7 +107,7 @@ const Jogo = ({ dispatch, listadesejos, cart }) => {
         (favoritos) => favoritos?.idJogo == jogo?.id && favoritos?.idUser == id
       )[0]
         console.log(favoritoSelecionado);
-      Axios.delete(`http://localhost:8080/api/favorito/deletarUser/${favoritoSelecionado?.id}`, {
+      Axios.delete(`https://backendmaisjogos-production.up.railway.app/api/favorito/deletarUser/${favoritoSelecionado?.id}`, {
       headers:{
         Authorization: `Bearer ${token}`
       }}).then((response) =>{

@@ -17,7 +17,7 @@ const EditarJogo = () => {
   const {idJogo} = useParams();
   const [jogo, setJogo] = useState({});
   useEffect(() =>{
-    Axios.get(`http://localhost:8080/api/jogo/listarJogo/${idJogo}`, {
+    Axios.get(`https://backendmaisjogos-production.up.railway.app/api/jogo/listarJogo/${idJogo}`, {
       headers:{
         Authorization: `Bearer ${token}`
       }
@@ -75,7 +75,7 @@ const EditarJogo = () => {
     formData.append('bannerCinco', jogoFiles?.bannerCinco);
     formData.append('licenca', jogoFiles?.licenca);
 
-    Axios.put(`http://localhost:8080/api/jogo/alterarJogo/${jogo?.id}`, jogoInfo, {
+    Axios.put(`https://backendmaisjogos-production.up.railway.app/api/jogo/alterarJogo/${jogo?.id}`, jogoInfo, {
       headers:{
         Authorization: `Bearer ${token}`,
       }
@@ -88,7 +88,7 @@ const EditarJogo = () => {
       setTimeout(() =>{
         navigate("/jogos-dev")
       }, 3000)
-      /* Axios.patch(`http://localhost:8080/api/jogo/atualizaFile/${response.data.id}`, formData, {
+      /* Axios.patch(`https://backendmaisjogos-production.up.railway.app/api/jogo/atualizaFile/${response.data.id}`, formData, {
         headers:{
           Authorization: `Bearer ${token}`,
           'Content-Type': 'multipart/form-data',

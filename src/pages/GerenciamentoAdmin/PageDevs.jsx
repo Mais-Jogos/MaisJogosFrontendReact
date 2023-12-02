@@ -6,8 +6,13 @@ import Modal from "../../components/Modal/Modal"
 const PageDevs = () => {
   const [devs, setDevs] = useState([]);
   const [modal, setModal] = useState(null)
+  const token = window.localStorage.getItem("token")
   useEffect(() => {
-    Axios.get("http://localhost:8080/auth/desenvolvedor")
+    Axios.get("https://backendmaisjogos-production.up.railway.app/api/usuario", {
+      headers:{
+        Authorization: `Bearer ${token}`
+      }
+    })
     .then((response) => {
       setDevs(response.data);
     });
@@ -16,7 +21,7 @@ const PageDevs = () => {
     setModal(<ModalConfirm type={false} message={`Deseja deletar "${nome}"?`} simClick={() => deletarDev(id)} nãoClick={() => setModal(null)}/>)
   }
   function deletarDev(id){
-    Axios.delete(`http://localhost:8080/auth/dev/${id}`)
+    Axios.delete(`https://backendmaisjogos-production.up.railway.app/api/usuario/deletarUser/${id}`)
     .then((response) => {
       console.log(response.data)
       setModal(<Modal type={true} message={"Dev deletado com sucesso!"}/>)
