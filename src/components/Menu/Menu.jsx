@@ -71,7 +71,7 @@ const Menu = ({changeTheme, theme, cart, coins, userRedux }) => {
               <i className="fa-solid fa-sun"></i>}
             </Link>
             {token && type === "user" && <Link to="/perfil-user" aria-label="perfil usuário">
-              <img src={`${userRedux.avatar?.id !== 1 ? 'data:image/png;base64,' : ""}${userRedux.avatar.arquivo}`} className='perfil-menu' style={{backgroundColor:userRedux.colorCard}}/>
+              <img src={`${userRedux.avatar?.nome !== "Rochinha" ? 'data:image/png;base64,' : ""}${userRedux.avatar.arquivo}`} className='perfil-menu' style={{backgroundColor:userRedux.colorCard}}/>
             </Link>}
             {token && type === "admin" && <Link to="/gerenciamento-admin" aria-label="perfil admin">
               <img src={`/imgs/animais/2-face.png`} className='perfil-menu' style={{backgroundColor:'var(purple)'}}/>
