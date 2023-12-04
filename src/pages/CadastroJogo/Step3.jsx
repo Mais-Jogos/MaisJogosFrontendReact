@@ -18,7 +18,7 @@ const Step3 = ({jogo, onChangeGame, erro}) => {
           <input type="file" id='licenca' defaultValue={jogo?.licenca} onChange={(e) => onChangeGame("licenca", e.target.files[0])} className={`cadastroJogo__content__uploadContent__fileUpload--changeText`}/>
         </div>
         <label htmlFor="classificacao" className='cadastroJogo__content__label'>Classificação Indicativa</label>
-        <select name="classificacao" id="classificacao" className='cadastroJogo__content__select' onChange={(e) => onChangeGame("classificacao", e.target.value)}>
+        <select name="classificacao" id="classificacao" className='cadastroJogo__content__select' onChange={(e) => onChangeGame("classficacaoIndicativa", e.target.value)}>
             <option selected disabled value="Selecione">Selecione</option>
             <option value="Livre">Livre</option>
             <option value="10">10</option>

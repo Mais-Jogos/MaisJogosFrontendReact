@@ -208,7 +208,7 @@ const Jogo = ({ dispatch, listadesejos, cart }) => {
                     {reviewuser?.reduce((accumulator, currentValue) => 
                     accumulator + currentValue?.notaReview, 0)/reviewuser.length
                     }/5</p>
-                  <p className="classification__game__page">Livre</p>
+                  <p className={`classification__game__page class-${game?.classficacaoIndicativa}`}>{game?.classficacaoIndicativa}</p>
                 </div>
               </div>
               <div className="game__page__genres">
@@ -302,11 +302,11 @@ const Jogo = ({ dispatch, listadesejos, cart }) => {
                         ></i>
                       </Link>
                       <Link
-                        to={`/categorias/platform=${jogo?.["SO"]}`}
-                        aria-label={jogo?.["SO"]}
+                        to={`/categorias/platform=${jogo?.["so"]}`}
+                        aria-label={jogo?.["so"]}
                       >
                         <i
-                          className={choosePlataform(jogo?.["SO"])}
+                          className={choosePlataform(jogo?.["so"])}
                         ></i>
                       </Link>
                   </div>
@@ -316,7 +316,7 @@ const Jogo = ({ dispatch, listadesejos, cart }) => {
                   <b>{translate("Mínimos")}</b>
                   <br />
                   <ul>
-                    <li>SO: {jogo?.SO}</li>
+                    <li>SO: {jogo?.so}</li>
                     <li>Processador: {jogo?.processador}</li>
                     <li>Placa de vídeo: {jogo?.placaDeVideo}</li>
                     <li>Memória: {jogo?.quantMemoria} {jogo?.tipoMemoria}</li>

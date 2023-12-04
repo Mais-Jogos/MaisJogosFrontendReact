@@ -3,7 +3,7 @@ import React from 'react'
 const Platform = ({ jogo, onChangePlatform }) => {
     return (
         <div className='cadastroJogo__content__requirements'>
-            <h2 className='cadastroJogo__content__h3'>Requisitos {jogo.plataforma} - {jogo?.["SO"]}</h2>
+            <h2 className='cadastroJogo__content__h3'>Requisitos {jogo.plataforma} - {jogo?.so}</h2>
             <div className='cadastroJogo__content__requirements__forms'>
                     <div className='cadastroJogo__content__requirements__selected'>
                         <div className="cadastroJogo__content__requirements__inputs">

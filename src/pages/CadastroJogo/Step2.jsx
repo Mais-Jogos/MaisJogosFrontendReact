@@ -37,9 +37,9 @@ const Step2 = ({jogo, onChangeGame, erro}) => {
             <div className='cadastroJogo__content__plataforms__checkboxs'>
                 <label htmlFor={platform} className='cadastroJogo__content__label'>          
                     <input type="radio" name="SO" id={platform} className={`cadastroJogo__content__steps--inputTTS ${erro && 'cadastroJogo__content__body--erroMessage'}`}
-                    defaultChecked={jogo?.["SO"] === platform}
+                    defaultChecked={jogo?.["so"] === platform}
                     onClick={() => {
-                        onChangeGame("SO", platform)
+                        onChangeGame("so", platform)
                     }}/>
                     {platform}  
                 </label>

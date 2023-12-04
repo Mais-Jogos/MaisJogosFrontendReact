@@ -94,11 +94,33 @@
 }
 .title__game__page .classification__game__page{
     font-family: var(--font-pixel);
-    color:green;
     padding: 5px 20px;
-    border: 2px solid green;
     border-radius: 15px;
     margin: 0;
+}
+.title__game__page .class-Livre{
+    color:green;
+    border: 2px solid green;
+}
+.title__game__page .class-10{
+    color:cyan;
+    border: 2px solid cyan;
+}
+.title__game__page .class-12{
+    color:orange;
+    border: 2px solid orange;
+}
+.title__game__page .class-14{
+    color:red;
+    border: 2px solid red;
+}
+.title__game__page .class-16{
+    color:green;
+    border: 2px solid green;
+}
+.title__game__page .class-19{
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
 }
 .game__page .text__game__page .description__game__page{
     color: var(--color-primary);

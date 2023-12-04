@@ -58,7 +58,7 @@ const EditarJogo = () => {
         descricao: jogo?.descricao,
         genero: jogo?.genero,
         plataforma: jogo?.plataforma,
-        SO: jogo?.SO,
+        so: jogo?.so,
         processador: jogo?.processador,
         placaDeVideo: jogo?.placaDeVideo,
         quantMemoria: jogo?.quantMemoria,
@@ -326,9 +326,9 @@ const EditarJogo = () => {
                   className={`cadastroJogo__content__steps--inputTTS ${
                     erro && "cadastroJogo__content__body--erroMessage"
                   }`}
-                  defaultChecked={jogo?.["SO"] == platform}
+                  defaultChecked={jogo?.["so"] == platform}
                   onClick={() => {
-                    onChangeGame("SO", platform);
+                    onChangeGame("so", platform);
                   }}
                 />
                 {platform}

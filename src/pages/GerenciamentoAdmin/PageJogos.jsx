@@ -328,7 +328,7 @@ const PageJogos = () => {
                         className={choosePlataform(game?.plataforma)}
                       ></i>
                       <i
-                        className={choosePlataform(game?.SO)}
+                        className={choosePlataform(game?.so)}
                       ></i>
                   </div>
                 </div>

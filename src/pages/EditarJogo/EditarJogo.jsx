@@ -47,7 +47,7 @@ const EditarJogo = () => {
       descricao: jogo?.descricao,
       genero: jogo?.genero,
       plataforma: jogo?.plataforma,
-      SO: jogo?.SO,
+      so: jogo?.so,
       processador: jogo?.processador,
       placaDeVideo: jogo?.placaDeVideo,
       quantMemoria: jogo?.quantMemoria,
@@ -138,7 +138,7 @@ const EditarJogo = () => {
       (step === 0 &&
       (jogo.titulo === null || jogo.descricao === null || jogo.genero.length === 0)) || 
       (step === 1 && 
-        (jogo.plataforma === null || jogo.SO === null || 
+        (jogo.plataforma === null || jogo.so === null || 
           jogo.processador === null || jogo.placaDeVideo === null || jogo.quantMemoria === null ||
           jogo.tipoMemoria === null || jogo.quantArmazenamento === null || jogo.tipoArmazenamento === null)
       ) ||

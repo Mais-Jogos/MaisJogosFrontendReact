@@ -21,7 +21,7 @@ const CadastroJogo = () => {
     descricao: null,
     genero: [],
     plataforma: null,
-    SO: null,
+    so: null,
     processador: null,
     placaDeVideo: null,
     quantMemoria: null,
@@ -35,6 +35,7 @@ const CadastroJogo = () => {
     idDev: id,
     licenca: null,
     valorJogo:0.0,
+    classficacaoIndicativa: null
   });
   const onChangeGame = (type, value) => {
     setJogo({ ...jogo, [type]: value });
@@ -57,7 +58,8 @@ const CadastroJogo = () => {
       descricao: jogo?.descricao,
       genero: jogo?.genero,
       plataforma: jogo?.plataforma,
-      SO: jogo.SO,
+      classficacaoIndicativa: jogo?.classficacaoIndicativa,
+      so: jogo.so,
       processador: jogo?.processador,
       placaDeVideo: jogo?.placaDeVideo,
       quantMemoria: jogo?.quantMemoria,
@@ -127,7 +129,7 @@ const CadastroJogo = () => {
       (step === 0 &&
       (jogo.titulo === null || jogo.descricao === null || jogo.genero.length === 0)) || 
       (step === 1 && 
-        (jogo.plataforma === null || jogo.SO === null || 
+        (jogo.plataforma === null || jogo.so === null || 
           jogo.processador === null || jogo.placaDeVideo === null || jogo.quantMemoria === null ||
           jogo.tipoMemoria === null || jogo.quantArmazenamento === null || jogo.tipoArmazenamento === null)
       ) ||
@@ -136,7 +138,7 @@ const CadastroJogo = () => {
           jogo.fotos === null ||
           jogo.videos === null ||
           jogo.licenca === null ||
-          jogo.classificacao === null))
+          jogo.classficacaoIndicativa === null))
     ) {
       setErro(true);
       setTimeout(() => {
