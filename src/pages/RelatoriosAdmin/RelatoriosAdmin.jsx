@@ -135,11 +135,7 @@ const RelatoriosAdmin = () => {
         setDevs(response.data.filter(user => !user.idAvatar));
         console.log("Usuarios", response.data);
     })
-    Axios.get(`https://backendmaisjogos-production.up.railway.app/api/jogo/listarTodos`,{
-      headers:{
-        Authorization: `Bearer ${token}`
-      }
-    })
+    Axios.get(`https://backendmaisjogos-production.up.railway.app/api/jogo/listarTodos`)
     .then((response) => {
         setJogos(response.data);
         console.log("Jogos", response.data);

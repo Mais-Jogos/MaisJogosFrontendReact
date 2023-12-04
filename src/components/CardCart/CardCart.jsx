@@ -38,7 +38,7 @@ const CardCart = ({game, dispatch}) => {
                 </Link>
                 <div className="card__cart__platforms">
                     <i className={choosePlataform(game?.plataforma)}></i>
-                    <p className="classification__cart">L</p>
+                    <p className={`classification__cart class-${game?.classficacaoIndicativa}`}>{game?.classficacaoIndicativa}</p>
                 </div>
                 <div className="price">
                     <h2>R${game?.valorJogo}</h2>

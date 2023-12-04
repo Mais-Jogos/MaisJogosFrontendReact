@@ -155,11 +155,7 @@ const RelatoriosDev = () => {
         setPagamentos(response.data);
         console.log("Pix", response.data);
     })
-    Axios.get(`https://backendmaisjogos-production.up.railway.app/api/jogo/listarTodos`,{
-      headers:{
-        Authorization: `Bearer ${token}`
-      }
-    })
+    Axios.get(`https://backendmaisjogos-production.up.railway.app/api/jogo/listarTodos`)
     .then((response) => {
         setJogos(response.data.filter(jogo => jogo?.idDev == id));
         console.log("Jogos", response.data);

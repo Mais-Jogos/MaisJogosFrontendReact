@@ -17,11 +17,7 @@ export default props => {
     const id = window.localStorage.getItem("id");
 
     useEffect(() =>{
-        Axios.get("https://backendmaisjogos-production.up.railway.app/api/jogo/listarTodos", {
-            headers:{
-              Authorization: `Bearer ${token}`
-            }
-        })
+        Axios.get("https://backendmaisjogos-production.up.railway.app/api/jogo/listarTodos")
         .then((response) => {
             console.log("Jogos", response.data);
             setGames(response.data.filter(game => game?.idDev == id));
@@ -106,7 +102,7 @@ export default props => {
                         <div className="meusjogos__jogos__card__actions">
                             <div className="meusjogos__jogos__card__actions__dateInfo">
                                 <p>Data do cadastro</p>
-                                <p>19 de Out 2023</p>
+                                <p>{new Date(jogo?.dataCriacao).toLocaleDateString()}</p>
                             </div>
                             <div className="meusjogos__jogos__card__actions__action">
                                 <Link aria-label="editar" className="meusjogos__jogos__links"

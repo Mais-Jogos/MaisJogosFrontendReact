@@ -23,11 +23,7 @@ export default _ => {
   const [leitor, setLeitor] = useState(false);
 
   useEffect(() => {
-    Axios.get("https://backendmaisjogos-production.up.railway.app/api/jogo/listarTodos", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
+    Axios.get("https://backendmaisjogos-production.up.railway.app/api/jogo/listarTodos")
     .then((response) => {
       setGames(response.data);
       setLeitor(true);
@@ -96,8 +92,6 @@ export default _ => {
 
               </div>
             </div>
-
-
 
           <div>
             <div>

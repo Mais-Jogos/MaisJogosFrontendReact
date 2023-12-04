@@ -7,36 +7,29 @@ const ModalSearch = (props) => {
     const { search } = props;
     const [games, setGames] = useState()
     useEffect(()=>{
-        const apiKey = 'bb8e5d1e0b2e44d9ac172e791e20ff23'
-        Axios.get(`https://api.rawg.io/api/games?key=${apiKey}`)
-        .then((response) =>{
-          setGames(response.data.results);
-        }).catch((error) => { console.log(error); }); 
+        Axios.get(`https://backendmaisjogos-production.up.railway.app/api/jogo/listarTodos`).then((response) => {
+            setGames(response.data);
+        }).catch((error) => { console.log(error); });
     }, [])
-    const generos = games ? []?.concat(...games?.map((game) => game?.genres)) : []
-    const plataformas = games ? []?.concat(...games?.map((game) => game?.parent_platforms)) : []
-    const plataformas2 = games ? []?.concat(...plataformas?.map((game) => game?.platform)) : []
+    const generos = ["Ação", "Arcade", "Aventura", "Casual", "Corrida", "Esportes", "Estratégia", "Luta", "Puzzle", "Rpg", "Shooter", "Terror"]
+    const plataformas = ["Windows", "MacOs", "Linux", "Android", "IOS"]
   return (
     <div className="modal__search">
         <ul>
             <h3 aria-label="Buscar jogos">Jogos</h3>
-            {games?.map((game, index) => game?.name.toLowerCase().includes(search.toLowerCase()) && (
-            <Link key={index} to={`/jogos/${game?.name?.toLowerCase().replace(/ /g,"-")}`}  aria-label={game?.name}>{game?.name}</Link>
+            {games?.map((game, index) => game?.titulo.toLowerCase().includes(search.toLowerCase()) && (
+            <Link key={index} to={`/jogos/${game?.titulo?.toLowerCase().replace(/ /g,"-")}`}  aria-label={game?.titulo}>{game?.titulo}</Link>
             ))}
         </ul>
         <ul>
             <h3 aria-label="Buscar gêneros">Gêneros</h3>
-            {generos && 
-            [...new Set(generos.map((game) => game.name))]
-            .map(genero =>  genero.toLowerCase().includes(search.toLowerCase()) && (
+            {generos?.map(genero =>  genero.toLowerCase().includes(search.toLowerCase()) && (
                 <Link key={genero} to={`/categorias/category=${genero}`}  aria-label={genero}>{genero}</Link>
             ))}
         </ul>
         <ul>
             <h3 aria-label="Buscar plataformas">Plataformas</h3>
-            {plataformas2 && 
-            [...new Set(plataformas2?.map((game) => game.name))]
-            .map(plataforma => plataforma.toLowerCase().includes(search.toLowerCase()) && (
+            {plataformas?.map(plataforma => plataforma.toLowerCase().includes(search.toLowerCase()) && (
             <Link key={plataforma} to={`/categorias/category=${plataforma}`}  aria-label={plataforma}>{plataforma}</Link>
             ))}
         </ul>

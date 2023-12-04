@@ -36,11 +36,7 @@ const Categorias = () => {
   })
 
   useEffect(() => {
-    Axios.get('https://backendmaisjogos-production.up.railway.app/api/jogo/listarTodos', {
-      headers:{
-        Authorization: `Bearer ${token}`
-      }
-    })
+    Axios.get('https://backendmaisjogos-production.up.railway.app/api/jogo/listarTodos')
     .then((response) => {
       console.log(response.data);
       setGames(response.data)

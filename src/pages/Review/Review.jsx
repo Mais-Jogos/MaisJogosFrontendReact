@@ -32,11 +32,7 @@ export default _ => {
     useEffect(() => {
         const apiKey = 'bb8e5d1e0b2e44d9ac172e791e20ff23'
 
-            Axios.get(`https://backendmaisjogos-production.up.railway.app/api/jogo/listarTodos`,{
-                headers:{
-                    Authorization: `Bearer ${token}`
-                }
-            }).then((response) => {
+            Axios.get(`https://backendmaisjogos-production.up.railway.app/api/jogo/listarTodos`).then((response) => {
                 setGames(response.data);
                 setLeitor(true);
 

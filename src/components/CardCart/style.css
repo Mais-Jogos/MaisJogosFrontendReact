@@ -54,11 +54,33 @@
 }
 .card__cart .card__cart__platforms .classification__cart{
     font-family: var(--font-pixel);
-    color:green;
     padding: 5px 20px;
-    border: 2px solid green;
     border-radius: 15px;
     margin: 0;
+}
+.card__cart .card__cart__platforms .class-Livre{
+    color:green;
+    border: 2px solid green;
+}
+.card__cart .card__cart__platforms .class-10{
+    color:cyan;
+    border: 2px solid cyan;
+}
+.card__cart .card__cart__platforms .class-12{
+    color:orange;
+    border: 2px solid orange;
+}
+.card__cart .card__cart__platforms .class-14{
+    color:red;
+    border: 2px solid red;
+}
+.card__cart .card__cart__platforms .class-16{
+    color:green;
+    border: 2px solid green;
+}
+.card__cart .card__cart__platforms .class-18{
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
 }
 .card__cart .price{
     border-radius:5px;

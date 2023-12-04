@@ -15,7 +15,6 @@ import TextToSpeech from "../../components/Acessibilidade/TextToSpeech";
 import Loading from "../../components/Loading/Loading"
 
 const Jogo = ({ dispatch, listadesejos, cart }) => {
-  const [game, setGame] = useState({});
   const [jogo, setJogo] = useState({});
   const [image, setImage] = useState(0);
   const [favorito, setFavorito] = useState(false);
@@ -40,31 +39,14 @@ const Jogo = ({ dispatch, listadesejos, cart }) => {
   const [leitor, setLeitor] = useState(false);
 
   useEffect(() => {
-    const apiKey = "bb8e5d1e0b2e44d9ac172e791e20ff23";
-    Axios.get(`https://api.rawg.io/api/games?key=${apiKey}`)
-      .then((response) => {
-        setGame(
-          response.data.results.filter(
-            (jogo) => jogo.name.toLowerCase().replace(/ /g, "-") === name
-          )[0]
-        );
-        setLeitor(true);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    Axios.get("https://backendmaisjogos-production.up.railway.app/api/jogo/listarTodos", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    }).then((response) => {
+    Axios.get("https://backendmaisjogos-production.up.railway.app/api/jogo/listarTodos").then((response) => {
         console.log("Jogos", response.data);
         const game = response.data.filter(
           (jogo) => jogo.titulo.toLowerCase().replace(/ /g, "-") === name
         )[0];
         setJogo(game);
 
-        Axios.get(`https://backendmaisjogos-production.up.railway.app/api/usuario/listarCliente/${game?.idDev}`, {
+        Axios.get(`https://backendmaisjogos-production.up.railway.app/api/usuario/listarCliente/${jogo?.idDev}`, {
           headers:{
             Authorization: `Bearer ${token}`
           }
@@ -95,10 +77,10 @@ const Jogo = ({ dispatch, listadesejos, cart }) => {
         console.log("Favoritos", response.data);
         setFavoritos(response.data)
         setFavorito(response.data.some(
-          (favoritos) => (favoritos?.idJogo === game?.id && favoritos?.idUser === id)
+          (favoritos) => (favoritos?.idJogo === jogo?.id && favoritos?.idUser === id)
         ))
         console.log(response.data.some(
-          (favoritos) => (favoritos?.idJogo === game?.id && favoritos?.idUser === id)
+          (favoritos) => (favoritos?.idJogo === jogo?.id && favoritos?.idUser === id)
         ));
       }).catch((error) => console.log(error));
 
@@ -112,7 +94,7 @@ const Jogo = ({ dispatch, listadesejos, cart }) => {
           console.log("Usuarios", response.data);
       })
   }, []);
-  var carrinho = cart.cart.every((c) => c?.id != game?.id);
+  var carrinho = cart.cart.every((c) => c?.id != jogo?.id);
   const handleClickAdd = (game) => {
     if (!carrinho && token) {
       dispatch(selectGame(game));
@@ -142,7 +124,7 @@ const Jogo = ({ dispatch, listadesejos, cart }) => {
         console.log(response.data);
       })
       setFavorito(favoritos.some(
-        (favoritos) => (favoritos?.idJogo === game?.id && favoritos?.idUser === id && favoritos?.id != favoritoSelecionado?.id)
+        (favoritos) => (favoritos?.idJogo === jogo?.id && favoritos?.idUser === id && favoritos?.id != favoritoSelecionado?.id)
       ))
       dispatch(deletefavoriteGame(game))
     }
@@ -208,7 +190,7 @@ const Jogo = ({ dispatch, listadesejos, cart }) => {
                     {reviewuser?.reduce((accumulator, currentValue) => 
                     accumulator + currentValue?.notaReview, 0)/reviewuser.length
                     }/5</p>
-                  <p className={`classification__game__page class-${game?.classficacaoIndicativa}`}>{game?.classficacaoIndicativa}</p>
+                  <p className={`classification__game__page class-${jogo?.classficacaoIndicativa}`}>{jogo?.classficacaoIndicativa}</p>
                 </div>
               </div>
               <div className="game__page__genres">
@@ -244,20 +226,20 @@ const Jogo = ({ dispatch, listadesejos, cart }) => {
               <div className="addcart__game__page">
                 <h2>R${jogo?.valorJogo}</h2>
                 <button
-                  onClick={() => handleClickAdd(game)}
+                  onClick={() => handleClickAdd(jogo)}
                   style={{ display: carrinho ? "flex" : "none" }}
                 >
                   {translate("Adicionado ao carrinho")}
                 </button>
                 <button
-                  onClick={() => handleClickAdd(game)}
+                  onClick={() => handleClickAdd(jogo)}
                   style={{ display: !carrinho ? "flex" : "none" }}
                 >
                   {translate("Adicionar ao carrinho")}
                 </button>
                 <div
                   className="favorite__game__page"
-                  onClick={() => handleClickFavorite(game)}
+                  onClick={() => handleClickFavorite(jogo)}
                 >
                   <img src="/imgs/icons/heart_icon.png" alt="" />
                   <p>
@@ -287,7 +269,7 @@ const Jogo = ({ dispatch, listadesejos, cart }) => {
                 </p>
                 <p>
                   {translate("Data de lançamento")}:{" "}
-                  {new Date(game?.released).toLocaleDateString()}
+                  {new Date(jogo?.dataCriacao).toLocaleDateString()}
                 </p>
               </div>
               <div className="system__game__page">
