@@ -30,7 +30,6 @@ export default _ => {
     
     const token = window.localStorage.getItem("token")
     useEffect(() => {
-        const apiKey = 'bb8e5d1e0b2e44d9ac172e791e20ff23'
 
             Axios.get(`https://backendmaisjogos-production.up.railway.app/api/jogo/listarTodos`).then((response) => {
                 setGames(response.data);
@@ -73,7 +72,7 @@ export default _ => {
                 <section className="review__Section">
                     {
                         reviews?.filter(review => review?.idUser == id)?.map((review) => (
-                            <ReviewCompINF game={games.filter(jogo => jogo?.id === review?.idJogo)[0]} review={review}/>
+                            <ReviewCompINF game={games.filter(jogo => jogo?.id == review?.idJogo)[0]} review={review}/>
                         ))
                     }
                 </section>

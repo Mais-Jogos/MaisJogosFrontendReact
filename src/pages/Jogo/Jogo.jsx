@@ -54,20 +54,21 @@ const Jogo = ({ dispatch, listadesejos, cart }) => {
             console.log("Dev", response.data);
             setDev(response.data);
         }).catch((error) => console.log(error));
-        Axios.get(`https://backendmaisjogos-production.up.railway.app/api/review/listarTodos`,{
-          headers:{
-            Authorization: `Bearer ${token}`
-          }
-        })
-        .then((res) => {
-          setReviews(res.data);
-          console.log("Reviews", res.data);
-        })
-        setLoading(null)
+
+          setLoading(null)
       }).catch((error) =>{
         console.log(error)
         setLoading(null)
       });
+      Axios.get(`https://backendmaisjogos-production.up.railway.app/api/review/listarTodos`,{
+        headers:{
+          Authorization: `Bearer ${token}`
+        }
+      })
+      .then((res) => {
+        setReviews(res.data);
+        console.log("Reviews", res.data);
+      })
 
       Axios.get('https://backendmaisjogos-production.up.railway.app/api/favorito/listarTodos', {
         headers:{
@@ -203,7 +204,7 @@ const Jogo = ({ dispatch, listadesejos, cart }) => {
                 <h2>{translate("Avaliações")}</h2>
                 {reviews?.filter((review) => review?.idJogo == jogo?.id)
                 ?.map(review =>{
-                  const user = usuarios.filter(user => user?.id === review?.idUser)[0]
+                  const user = usuarios.filter(user => user?.id == review?.idUser)[0]
                   return(
                   <div className="comment__game__page">
                     <div className="usercomment__game__page">
