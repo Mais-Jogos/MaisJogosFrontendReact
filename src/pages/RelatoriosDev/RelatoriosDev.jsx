@@ -7,71 +7,71 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Responsi
 import TextToSpeech from "../../components/Acessibilidade/TextToSpeech";
 import "./style.css"
 import Axios from "axios"
-
+import Loading from "../../components/Loading/Loading"
 
 const RelatoriosDev = () => {
   const [filterGraf, setFilterGraf] = useState('Geral')
   const diasDoMes = Array.from({length: 30}, (_, index) => index + 1);
   const data = [
     {Month: "Jan", Vendas: [
-        {Jogo: "Minecraft", Dia: 29, Valor: 20.00},
+        {Jogo: "Dandy Ace", Dia: 29, Valor: 29.99},
     ]},
     {Month: "Fev", Vendas: [
-        {Jogo: "FIFA 22", Dia: 15, Valor: 50.00},
-        {Jogo: "Cyberpunk 2077", Dia: 25, Valor: 40.00},
+        {Jogo: "Kaze and the Wild Masks", Dia: 15, Valor: 35.99},
+        {Jogo: "Asleep - Ato 1", Dia: 25, Valor: 50.00},
     ]},
     {Month: "Mar", Vendas: [
-        {Jogo: "Minecraft", Dia: 1, Valor: 20.00},
-        {Jogo: "Minecraft", Dia: 14, Valor: 20.00},
-        {Jogo: "FIFA 22", Dia: 7, Valor: 50.00},
-        {Jogo: "Among Us", Dia: 21, Valor: 12.50},
-        {Jogo: "The Witcher 3", Dia: 30, Valor: 30.00},
+        {Jogo: "Dandy Ace", Dia: 1, Valor: 29.99},
+        {Jogo: "Dandy Ace", Dia: 14, Valor: 29.99},
+        {Jogo: "Kaze and the Wild Masks", Dia: 7, Valor: 35.99},
+        {Jogo: "Kaze and the Wild Masks", Dia: 21, Valor: 35.99},
+        {Jogo: "Raider Kid and the Ruby Chest", Dia: 30, Valor: 5.00},
     ]},
     {Month: "Abr", Vendas: [
-        {Jogo: "Minecraft", Dia: 1, Valor: 20.00},
-        {Jogo: "Among Us", Dia: 4, Valor: 12.50},
-        {Jogo: "FIFA 22", Dia: 15, Valor: 50.00},
-        {Jogo: "Cyberpunk 2077", Dia: 25, Valor: 40.00},
+        {Jogo: "Dandy Ace", Dia: 1, Valor: 29.99},
+        {Jogo: "Kaze and the Wild Masks", Dia: 4, Valor: 35.99},
+        {Jogo: "Kaze and the Wild Masks", Dia: 15, Valor: 35.99},
+        {Jogo: "Asleep - Ato 1", Dia: 25, Valor: 50.00},
     ]},
     {Month: "Mai", Vendas: [
-        {Jogo: "FIFA 22", Dia: 9, Valor: 50.00},
-        {Jogo: "The Witcher 3", Dia: 31, Valor: 30.00},
+        {Jogo: "Kaze and the Wild Masks", Dia: 9, Valor: 35.99},
+        {Jogo: "Raider Kid and the Ruby Chest", Dia: 31, Valor: 5.00},
     ]},
     {Month: "Jun", Vendas: [
-        {Jogo: "Cyberpunk 2077", Dia: 19, Valor: 40.00},
+        {Jogo: "Asleep - Ato 1", Dia: 19, Valor: 50.00},
     ]},
     {Month: "Jul", Vendas: [
-        {Jogo: "Minecraft", Dia: 1, Valor: 20.00},
-        {Jogo: "Minecraft", Dia: 4, Valor: 20.00},
-        {Jogo: "FIFA 22", Dia: 4, Valor: 50.00},
-        {Jogo: "Among Us", Dia: 11, Valor: 12.50},
-        {Jogo: "Among Us", Dia: 21, Valor: 12.50},
+        {Jogo: "Dandy Ace", Dia: 1, Valor: 29.99},
+        {Jogo: "Dandy Ace", Dia: 4, Valor: 29.99},
+        {Jogo: "Kaze and the Wild Masks", Dia: 4, Valor: 35.99},
+        {Jogo: "Kaze and the Wild Masks", Dia: 11, Valor: 35.99},
+        {Jogo: "Kaze and the Wild Masks", Dia: 21, Valor: 35.99},
     ]},
     {Month: "Ago", Vendas: [
-        {Jogo: "Among Us", Dia: 4, Valor: 12.50},
+        {Jogo: "Kaze and the Wild Masks", Dia: 4, Valor: 35.99},
     ]},
     {Month: "Set", Vendas: [
-        {Jogo: "FIFA 22", Dia: 7, Valor: 50.00},
-        {Jogo: "FIFA 22", Dia: 8, Valor: 50.00},
-        {Jogo: "FIFA 22", Dia: 18, Valor: 50.00},
-        {Jogo: "The Witcher 3", Dia: 30, Valor: 30.00},
+        {Jogo: "Kaze and the Wild Masks", Dia: 7, Valor: 35.99},
+        {Jogo: "Kaze and the Wild Masks", Dia: 8, Valor: 35.99},
+        {Jogo: "Kaze and the Wild Masks", Dia: 18, Valor: 35.99},
+        {Jogo: "Raider Kid and the Ruby Chest", Dia: 30, Valor: 5.00},
     ]},
     {Month: "Out", Vendas: [
-        {Jogo: "Among Us", Dia: 9, Valor: 12.50},
-        {Jogo: "FIFA 22", Dia: 11, Valor: 50.00},
-        {Jogo: "Cyberpunk 2077", Dia: 28, Valor: 40.00},
+        {Jogo: "Kaze and the Wild Masks", Dia: 9, Valor: 35.99},
+        {Jogo: "Kaze and the Wild Masks", Dia: 11, Valor: 35.99},
+        {Jogo: "Asleep - Ato 1", Dia: 28, Valor: 50.00},
     ]},
     {Month: "Nov", Vendas: [
-        {Jogo: "Minecraft", Dia: 5, Valor: 20.00},
-        {Jogo: "Minecraft", Dia: 12, Valor: 20.00},
+        {Jogo: "Dandy Ace", Dia: 5, Valor: 29.99},
+        {Jogo: "Dandy Ace", Dia: 12, Valor: 29.99},
       ]},
       {Month: "Dez", Vendas: [
-        {Jogo: "Minecraft", Dia: 1, Valor: 20.00},
-        {Jogo: "Among Us", Dia: 4, Valor: 12.50},
-        {Jogo: "FIFA 22", Dia: 15, Valor: 50.00},
-        {Jogo: "Cyberpunk 2077", Dia: 25, Valor: 40.00},
-        {Jogo: "Cyberpunk 2077", Dia: 27, Valor: 40.00},
-        {Jogo: "The Witcher 3", Dia: 27, Valor: 30.00},
+        {Jogo: "Dandy Ace", Dia: 1, Valor: 29.99},
+        {Jogo: "Kaze and the Wild Masks", Dia: 4, Valor: 35.99},
+        {Jogo: "Kaze and the Wild Masks", Dia: 15, Valor: 35.99},
+        {Jogo: "Asleep - Ato 1", Dia: 25, Valor: 50.00},
+        {Jogo: "Asleep - Ato 1", Dia: 27, Valor: 50.00},
+        {Jogo: "Raider Kid and the Ruby Chest", Dia: 27, Valor: 5.00},
     ]},
   ];
 
@@ -118,6 +118,7 @@ const RelatoriosDev = () => {
   const [jogo, setJogos] = useState([])
   const [reviews, setReviews] = useState([])
   const [favoritos, setFavoritos] = useState([])
+  const [loading, setLoading] = useState(<Loading/>)
 
   useEffect(() =>{
     Axios.get(`https://backendmaisjogos-production.up.railway.app/api/usuario/listarCliente/${id}`,{
@@ -169,6 +170,7 @@ const RelatoriosDev = () => {
         setFavoritos(response.data);
         console.log("Favoritos", response.data);
     })
+    setLoading(null)
   }, [])
 
   return (
@@ -177,6 +179,7 @@ const RelatoriosDev = () => {
         <Vlibras/>
         <Acessibilidade/>
         <TextToSpeech />
+        {loading}
         
         <div id="relatorios-dev">
             <h1>
@@ -215,7 +218,7 @@ const RelatoriosDev = () => {
               </div>
               <div className="relatorios-dev__geral">
                 <p>{translate("Quantidade de jogos cadastrados")}<b>{jogo?.length}</b></p>
-                <p>{translate("Quantidade de jogos comprados")} <b>2</b></p>
+                <p>{translate("Quantidade de jogos comprados")} <b>{jogo?.length}</b></p>
               </div>
               <div className="relatorios-dev__quantidade-jogos">
                 <div className="quant-jogos">

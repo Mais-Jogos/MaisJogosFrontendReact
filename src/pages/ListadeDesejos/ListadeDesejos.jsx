@@ -14,12 +14,13 @@ import TextToSpeech from "../../components/Acessibilidade/TextToSpeech";
 import { useEffect } from 'react';
 import Axios from "axios";
 import { useState } from 'react';
-
+import Loading from "../../components/Loading/Loading"
 
 const ListadeDesejos = ({listadesejos, dispatch}) => {
   const navigate = useNavigate()
   const [favs, setFavs] = useState()
   const [favoritos, setFavoritos] = useState([])
+  const [loading, setLoading] = useState(<Loading/>)
   const token = window.localStorage.getItem("token")
   const id = window.localStorage.getItem("id")
   const addGameCart = (game) =>{
@@ -57,9 +58,16 @@ const ListadeDesejos = ({listadesejos, dispatch}) => {
         setFavoritos(res.data?.filter(jogo =>
           favs?.some(fav => fav?.idJogo == jogo?.id)
         ))
+        setLoading(null)
+      }).catch((error) =>{
+        console.log(error)
+        setLoading(null)
       })
 
-    }).catch((error) => console.log(error));
+    }).catch((error) => {
+      console.log(error)
+      setLoading(null)
+    });
   }, [])
 
   return (
@@ -68,6 +76,7 @@ const ListadeDesejos = ({listadesejos, dispatch}) => {
       <Vlibras/>
       <Acessibilidade />
       <TextToSpeech />
+      {loading}
       
       <main className='listaDeDesejos__main'>
         <GoBack/>

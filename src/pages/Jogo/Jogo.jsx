@@ -46,7 +46,7 @@ const Jogo = ({ dispatch, listadesejos, cart }) => {
         )[0];
         setJogo(game);
 
-        Axios.get(`https://backendmaisjogos-production.up.railway.app/api/usuario/listarCliente/${jogo?.idDev}`, {
+        Axios.get(`https://backendmaisjogos-production.up.railway.app/api/usuario/listarCliente/${game?.idDev}`, {
           headers:{
             Authorization: `Bearer ${token}`
           }
@@ -227,13 +227,13 @@ const Jogo = ({ dispatch, listadesejos, cart }) => {
                 <h2>R${jogo?.valorJogo}</h2>
                 <button
                   onClick={() => handleClickAdd(jogo)}
-                  style={{ display: carrinho ? "flex" : "none" }}
+                  style={{ display: !carrinho ? "flex" : "none" }}
                 >
                   {translate("Adicionado ao carrinho")}
                 </button>
                 <button
                   onClick={() => handleClickAdd(jogo)}
-                  style={{ display: !carrinho ? "flex" : "none" }}
+                  style={{ display: carrinho ? "flex" : "none" }}
                 >
                   {translate("Adicionar ao carrinho")}
                 </button>
@@ -295,8 +295,6 @@ const Jogo = ({ dispatch, listadesejos, cart }) => {
                   <h3>{translate("Requisitos do sistema")}</h3>
                 </div>
                 <p>
-                  <b>{translate("Mínimos")}</b>
-                  <br />
                   <ul>
                     <li>SO: {jogo?.so}</li>
                     <li>Processador: {jogo?.processador}</li>

@@ -10,11 +10,13 @@ import GoBack from "../../components/GoBack/GoBack";
 import TextToSpeech from "../../components/Acessibilidade/TextToSpeech";
 import { useNavigate } from "react-router-dom";
 import Axios from "axios";
+import Loading from "../../components/Loading/Loading";
 
 const Avatares = ({userRedux}) => {
     const navigate = useNavigate()
     const token = window.localStorage.getItem("token")
     const [skins, setSkins] = useState([])
+    const [loading, setLoading] = useState(<Loading/>)
     const cores = ["orange", "fuchsia", "cyan", "blue", "red"]
     useEffect(() =>{
         Axios.get("https://backendmaisjogos-production.up.railway.app/api/avatar/listarTodos", {
@@ -24,6 +26,11 @@ const Avatares = ({userRedux}) => {
         }).then((response) =>{
             console.log(response.data);
             setSkins(response.data)
+            setLoading(null)
+        })
+        .catch((error) =>{
+            console.log(error);
+            setLoading(null)
         })
     }, [])
     return (
@@ -32,6 +39,7 @@ const Avatares = ({userRedux}) => {
             <Vlibras/>
             <Acessibilidade />
             <TextToSpeech />
+            {loading}
 
             <main className="avatares__main">
                 <GoBack/>

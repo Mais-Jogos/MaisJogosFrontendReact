@@ -99,4 +99,7 @@ a:-webkit-any-link {
     #full-menu, .settings, .imprimir-admin, .active, .textToSpeech__container{
         display: none !important;
     }
+    .relatorios-dev__geral p, .relatorios-admin__geral p{
+        font-size: 1rem;
+    }
 }

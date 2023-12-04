@@ -34,7 +34,7 @@ const CardHome = ({game, dispatch, cart}) => {
       </div>
       <div className="border__price">
         <div className="price">
-          <h2>R${game?.valorJogo}</h2>
+          <h2>R${game?.valorJogo.toFixed(2)}</h2>
           <i className="fa-solid fa-cart-shopping" onClick={() => handleClickAdd(game)}></i>
         </div>
       </div>

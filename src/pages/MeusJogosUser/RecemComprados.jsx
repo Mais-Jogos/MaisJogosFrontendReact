@@ -18,7 +18,10 @@ export default props => {
             setGames(response.data);
             setLeitor(true);
             setLoading(null)
-        }).catch((error) => { console.log(error); setLoading(null)});
+        }).catch((error) => { 
+            console.log(error); 
+            setLoading(null)
+        });
     }, [])
 
 

@@ -12,6 +12,7 @@ import { translate } from "../../translate/translate";
 import TextToSpeech from "../../components/Acessibilidade/TextToSpeech";
 import Axios from "axios";
 import Modal from "../../components/Modal/Modal";
+import Loading from "../../components/Loading/Loading";
 
 export function reducerUserData(state, action) {
     switch (action.type) {
@@ -45,7 +46,7 @@ const PerfilUser = (props) => {
     const [modal, setModal] = useState(null)
     const [data, setData] = useState({})
     const [editButton, setEditButton] = useState(false);
-
+    const [loading, setLoading] = useState(<Loading/>)
     const [glowStyles, setGlowStyles] = useState({
         backgroundImage: 'none'
     });
@@ -92,8 +93,12 @@ const PerfilUser = (props) => {
         .then((response) => {
             console.log(response.data);
             setData(response.data)
+            setLoading(null)
         })
-        .catch((error) => console.log(error))
+        .catch((error) => {
+            console.log(error)
+            setLoading(null)
+        })
     }, [])
 
     const logout = () =>{
@@ -136,6 +141,7 @@ const PerfilUser = (props) => {
             <Acessibilidade />
             <TextToSpeech />
             {modal}
+            {loading}
 
             <main className="perfilUser__main">
                 <section className="perfilUser__titlePage">

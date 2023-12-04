@@ -10,6 +10,7 @@ import { translate } from "../../translate/translate";
 import { useEffect } from "react";
 import Axios from "axios";
 import Modal from "../../components/Modal/Modal";
+import Loading from "../../components/Loading/Loading";
 
 function reducerUserData(state, action) {
   switch (action.type) {
@@ -39,6 +40,7 @@ export default (props) => {
   const [modal, setModal] = useState(null)
   const [editButton, setEditButton] = useState(false);
   const [data, setData] = useState({});
+  const [loading, setLoading] = useState(<Loading/>)
   const navigate = useNavigate()
   const type = window.localStorage.getItem("type")
   const id = window.localStorage.getItem("id")
@@ -53,11 +55,13 @@ export default (props) => {
       }
     })
     .then((response) => {
-        setData(response.data);
-        console.log(response.data);
+      setData(response.data);
+      console.log(response.data);
+      setLoading(null)
     })
     .catch((error) => {
-        console.log(error);
+      console.log(error);
+      setLoading(null)
     });
   }, []);
   const logout = () =>{
@@ -100,6 +104,7 @@ export default (props) => {
       <Acessibilidade />
       <TextToSpeech />
       {modal}
+      {loading}
       <main className="perfilDev__main">
         <section className="perfilDev__titlePage">
           <h1>{translate("Meu perfil")}</h1>
@@ -108,15 +113,6 @@ export default (props) => {
         <section className="perfilDev__userData">
           <div className="perfilDev__userData__avatar">
             <div className="perfilDev__userData__avatar__image">
-              {editButton ? (
-                <img
-                  src="/imgs/icons/edit_icon.png"
-                  alt="Ícone de edição dos inputs"
-                  className="perfilDev__userData__avatar__image__editImg"
-                />
-              ) : (
-                false
-              )}
             </div>
           </div>
 

@@ -6,16 +6,22 @@ import Acessibilidade from '../../components/Acessibilidade/Acessibilidade'
 import Vlibras from '../../components/Vlibras/Vlibras'
 import { translate } from '../../translate/translate'
 import TextToSpeech from "../../components/Acessibilidade/TextToSpeech";
+import Loading from '../../components/Loading/Loading'
 
 
 const Visitas = () => {
     const [check, setCheck] = useState([]);
+    const [loading, setLoading] = useState(<Loading/>)
     useEffect(() =>{
         Axios.get('https://backendmaisjogos-production.up.railway.app/api/check/listarTodos')
         .then((response) => {
           console.log("Check", response.data);
           setCheck(response.data)
-        }).catch((error) => console.log(error))  
+          setLoading(null)
+        }).catch((error) => {
+          console.log(error)
+          setLoading(null)
+        })  
     }, [check])
 
   return (
@@ -23,6 +29,7 @@ const Visitas = () => {
     <Menu />
     <Vlibras />
     <Acessibilidade />
+    {loading}
     <main className='main-visitantes'>
         <section>
             <h1>Visitantes +Jogos</h1>

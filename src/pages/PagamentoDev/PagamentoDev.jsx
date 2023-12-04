@@ -12,6 +12,7 @@ import { useRef } from "react";
 import { useEffect } from "react";
 import Axios from 'axios'
 import Modal from '../../components/Modal/Modal';
+import Loading from "../../components/Loading/Loading";
 
 function reducerTypeOfPix(state, action) {
     switch (action.type) {
@@ -53,6 +54,7 @@ export default props => {
     const [savedPix, setSavedPix] = useState(0);
     const [modal, setModal] = useState(null)
     const [listaPixSalvaAPI, setListaPixSalvaAPI] = useState([])
+    const [loading, setLoading] = useState(<Loading/>)
 
     const initialized = useRef(false);
     const initializedP = useRef(false);
@@ -144,9 +146,12 @@ export default props => {
         })
             .then((response) => {
                 setListaPixSalvaAPI([...listaPixSalvaAPI,response.data])
-
+                setLoading(null)
             })
-            .catch((error) => console.log(error))
+            .catch((error) => {
+                console.log(error)
+                setLoading(null)
+            })
     }, [])
 
     useEffect(_ => {
@@ -387,6 +392,7 @@ export default props => {
             <Vlibras />
             <Acessibilidade />
             {modal}
+            {loading}
 
             <div className="textToSpeech__container" onClick={_ => switchStateIcon()} accessKey="q">
                 <img src={!clickIcon ? "/imgs/icons/textToSpeech_icon-open.svg" : "/imgs/icons/textToSpeech_icon-remove.svg"}></img>

@@ -18,7 +18,10 @@ export default props => {
             setGames(response.data);
             setLeitor(true);
             setLoading(null)
-        }).catch((error) => { console.log(error); setLoading(null)});
+        }).catch((error) => { 
+            console.log(error); 
+            setLoading(null)
+        });
     }, [])
 
     // Precisei trazer da lógica do leitor para a tela, pq o Jquery não consegue ler os inputs que não foram carregados ainda :(

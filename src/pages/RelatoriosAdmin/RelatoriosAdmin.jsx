@@ -8,70 +8,71 @@ import "./style.css"
 import TextToSpeech from "../../components/Acessibilidade/TextToSpeech";
 import { useEffect } from 'react'
 import Axios from "axios"
+import Loading from '../../components/Loading/Loading'
 
 const RelatoriosAdmin = () => {
   const [filterGraf, setFilterGraf] = useState('Geral')
   const diasDoMes = Array.from({length: 30}, (_, index) => index + 1);
   const data = [
     {Month: "Jan", Vendas: [
-        {Dev:"Player123", Jogo: "Minecraft", Dia: 29, Valor: 20.00},
+        {Dev:"Second Player", Jogo: "Dandy Ace", Dia: 29, Valor: 29.99},
     ]},
     {Month: "Fev", Vendas: [
-        {Dev:"DevMaster", Jogo: "FIFA 22", Dia: 15, Valor: 50.00},
-        {Dev:"SuperManDev", Jogo: "Cyberpunk 2077", Dia: 25, Valor: 40.00},
+        {Dev:"AryDev", Jogo: "Kaze and the Wild Masks", Dia: 15, Valor: 35.99},
+        {Dev:"Bomb Games", Jogo: "Asleep - Ato 1", Dia: 25, Valor: 50.00},
     ]},
     {Month: "Mar", Vendas: [
-        {Dev:"Player123", Jogo: "Minecraft", Dia: 1, Valor: 20.00},
-        {Dev:"Player123", Jogo: "Minecraft", Dia: 14, Valor: 20.00},
-        {Dev:"DevMaster", Jogo: "FIFA 22", Dia: 7, Valor: 50.00},
-        {Dev:"Player123", Jogo: "Among Us", Dia: 21, Valor: 12.50},
-        {Dev:"RainGames", Jogo: "The Witcher 3", Dia: 30, Valor: 30.00},
+        {Dev:"Second Player", Jogo: "Dandy Ace", Dia: 1, Valor: 29.99},
+        {Dev:"Second Player", Jogo: "Dandy Ace", Dia: 14, Valor: 29.99},
+        {Dev:"AryDev", Jogo: "Kaze and the Wild Masks", Dia: 7, Valor: 35.99},
+        {Dev:"Second Player", Jogo: "Kaze and the Wild Masks", Dia: 21, Valor: 35.99},
+        {Dev:"AryDev", Jogo: "Raider Kid and the Ruby Chest", Dia: 30, Valor: 5.00},
     ]},
     {Month: "Abr", Vendas: [
-        {Dev:"Player123", Jogo: "Minecraft", Dia: 1, Valor: 20.00},
-        {Dev:"Player123", Jogo: "Among Us", Dia: 4, Valor: 12.50},
-        {Dev:"DevMaster", Jogo: "FIFA 22", Dia: 15, Valor: 50.00},
-        {Dev:"SuperManDev", Jogo: "Cyberpunk 2077", Dia: 25, Valor: 40.00},
+        {Dev:"Second Player", Jogo: "Dandy Ace", Dia: 1, Valor: 29.99},
+        {Dev:"Second Player", Jogo: "Kaze and the Wild Masks", Dia: 4, Valor: 35.99},
+        {Dev:"AryDev", Jogo: "Kaze and the Wild Masks", Dia: 15, Valor: 35.99},
+        {Dev:"Bomb Games", Jogo: "Asleep - Ato 1", Dia: 25, Valor: 50.00},
     ]},
     {Month: "Mai", Vendas: [
-        {Dev:"DevMaster", Jogo: "FIFA 22", Dia: 9, Valor: 50.00},
-        {Dev:"RainGames", Jogo: "The Witcher 3", Dia: 31, Valor: 30.00},
+        {Dev:"AryDev", Jogo: "Kaze and the Wild Masks", Dia: 9, Valor: 35.99},
+        {Dev:"AryDev", Jogo: "Raider Kid and the Ruby Chest", Dia: 31, Valor: 5.00},
     ]},
     {Month: "Jun", Vendas: [
-        {Dev:"SuperManDev", Jogo: "Cyberpunk 2077", Dia: 19, Valor: 40.00},
+        {Dev:"Bomb Games", Jogo: "Asleep - Ato 1", Dia: 19, Valor: 50.00},
     ]},
     {Month: "Jul", Vendas: [
-        {Dev:"Player123", Jogo: "Minecraft", Dia: 1, Valor: 20.00},
-        {Dev:"Player123", Jogo: "Minecraft", Dia: 4, Valor: 20.00},
-        {Dev:"DevMaster", Jogo: "FIFA 22", Dia: 4, Valor: 50.00},
-        {Dev:"Player123", Jogo: "Among Us", Dia: 11, Valor: 12.50},
-        {Dev:"Player123", Jogo: "Among Us", Dia: 21, Valor: 12.50},
+        {Dev:"Second Player", Jogo: "Dandy Ace", Dia: 1, Valor: 29.99},
+        {Dev:"Second Player", Jogo: "Dandy Ace", Dia: 4, Valor: 29.99},
+        {Dev:"AryDev", Jogo: "Kaze and the Wild Masks", Dia: 4, Valor: 35.99},
+        {Dev:"Second Player", Jogo: "Kaze and the Wild Masks", Dia: 11, Valor: 35.99},
+        {Dev:"Second Player", Jogo: "Kaze and the Wild Masks", Dia: 21, Valor: 35.99},
     ]},
     {Month: "Ago", Vendas: [
-        {Dev:"Player123", Jogo: "Among Us", Dia: 4, Valor: 12.50},
+        {Dev:"Second Player", Jogo: "Kaze and the Wild Masks", Dia: 4, Valor: 35.99},
     ]},
     {Month: "Set", Vendas: [
-        {Dev:"DevMaster", Jogo: "FIFA 22", Dia: 7, Valor: 50.00},
-        {Dev:"DevMaster", Jogo: "FIFA 22", Dia: 8, Valor: 50.00},
-        {Dev:"DevMaster", Jogo: "FIFA 22", Dia: 18, Valor: 50.00},
-        {Dev:"RainGames", Jogo: "The Witcher 3", Dia: 30, Valor: 30.00},
+        {Dev:"AryDev", Jogo: "Kaze and the Wild Masks", Dia: 7, Valor: 35.99},
+        {Dev:"AryDev", Jogo: "Kaze and the Wild Masks", Dia: 8, Valor: 35.99},
+        {Dev:"AryDev", Jogo: "Kaze and the Wild Masks", Dia: 18, Valor: 35.99},
+        {Dev:"AryDev", Jogo: "Raider Kid and the Ruby Chest", Dia: 30, Valor: 5.00},
     ]},
     {Month: "Out", Vendas: [
-        {Dev:"Player123", Jogo: "Among Us", Dia: 9, Valor: 12.50},
-        {Dev:"DevMaster", Jogo: "FIFA 22", Dia: 11, Valor: 50.00},
-        {Dev:"SuperManDev", Jogo: "Cyberpunk 2077", Dia: 28, Valor: 40.00},
+        {Dev:"Second Player", Jogo: "Kaze and the Wild Masks", Dia: 9, Valor: 35.99},
+        {Dev:"AryDev", Jogo: "Kaze and the Wild Masks", Dia: 11, Valor: 35.99},
+        {Dev:"Bomb Games", Jogo: "Asleep - Ato 1", Dia: 28, Valor: 50.00},
     ]},
     {Month: "Nov", Vendas: [
-        {Dev:"Player123", Jogo: "Minecraft", Dia: 5, Valor: 20.00},
-        {Dev:"Player123", Jogo: "Minecraft", Dia: 12, Valor: 20.00},
+        {Dev:"Second Player", Jogo: "Dandy Ace", Dia: 5, Valor: 29.99},
+        {Dev:"Second Player", Jogo: "Dandy Ace", Dia: 12, Valor: 29.99},
       ]},
       {Month: "Dez", Vendas: [
-        {Dev:"Player123", Jogo: "Minecraft", Dia: 1, Valor: 20.00},
-        {Dev:"Player123", Jogo: "Among Us", Dia: 4, Valor: 12.50},
-        {Dev:"DevMaster", Jogo: "FIFA 22", Dia: 15, Valor: 50.00},
-        {Dev:"SuperManDev", Jogo: "Cyberpunk 2077", Dia: 25, Valor: 40.00},
-        {Dev:"SuperManDev", Jogo: "Cyberpunk 2077", Dia: 27, Valor: 40.00},
-        {Dev:"RainGames", Jogo: "The Witcher 3", Dia: 27, Valor: 30.00},
+        {Dev:"Second Player", Jogo: "Dandy Ace", Dia: 1, Valor: 29.99},
+        {Dev:"Second Player", Jogo: "Kaze and the Wild Masks", Dia: 4, Valor: 35.99},
+        {Dev:"AryDev", Jogo: "Kaze and the Wild Masks", Dia: 15, Valor: 35.99},
+        {Dev:"Bomb Games", Jogo: "Asleep - Ato 1", Dia: 25, Valor: 50.00},
+        {Dev:"Bomb Games", Jogo: "Asleep - Ato 1", Dia: 27, Valor: 50.00},
+        {Dev:"AryDev", Jogo: "Raider Kid and the Ruby Chest", Dia: 27, Valor: 5.00},
     ]},
   ];
 
@@ -122,6 +123,7 @@ const RelatoriosAdmin = () => {
   const [dev, setDevs] = useState([])
   const [jogo, setJogos] = useState([])
   const [admins, setAdmins] = useState([])
+  const [loading, setLoading] = useState(<Loading/>)
   const token = window.localStorage.getItem("token")
   
   useEffect(() =>{
@@ -158,6 +160,7 @@ const RelatoriosAdmin = () => {
         setCheck(response.data);
         console.log("Check", response.data);
     })
+    setLoading(null)
   }, [])
   
   return (
@@ -166,6 +169,7 @@ const RelatoriosAdmin = () => {
         <Vlibras/>
         <Acessibilidade/>
         <TextToSpeech />
+        {loading}
 
         <div id="relatorios-admin">
             <h1>

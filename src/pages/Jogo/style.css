@@ -103,20 +103,20 @@
     border: 2px solid green;
 }
 .title__game__page .class-10{
-    color:cyan;
-    border: 2px solid cyan;
+    color:dodgerblue;
+    border: 2px solid dodgerblue;
 }
 .title__game__page .class-12{
+    color:yellow;
+    border: 2px solid yellow;
+}
+.title__game__page .class-14{
     color:orange;
     border: 2px solid orange;
 }
-.title__game__page .class-14{
+.title__game__page .class-16{
     color:red;
     border: 2px solid red;
-}
-.title__game__page .class-16{
-    color:green;
-    border: 2px solid green;
 }
 .title__game__page .class-18{
     color: var(--color-primary);

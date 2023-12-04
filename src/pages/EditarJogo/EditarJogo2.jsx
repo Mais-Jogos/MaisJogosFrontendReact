@@ -11,6 +11,7 @@ import Axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import Platform from "./Platform";
 import TextToSpeech from "../../components/Acessibilidade/TextToSpeech";
+import Loading from "../../components/Loading/Loading";
 
 const EditarJogo = () => {
   const id = window.localStorage.getItem("id");
@@ -20,6 +21,7 @@ const EditarJogo = () => {
   const [jogo, setJogo] = useState({});
   const [newGame, setNewGame] = useState({})
   const [leitor, setLeitor] = useState(false);
+  const [loading, setLoading] = useState(<Loading/>)
   useEffect(() => {
     Axios.get(
       `https://backendmaisjogos-production.up.railway.app/api/jogo/listarJogo/${idJogo}`,
@@ -33,8 +35,12 @@ const EditarJogo = () => {
         setJogo(response.data);
         console.log(response.data);
         setLeitor(true);
+        setLoading(null)
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        console.log(error)
+        setLoading(null)
+      });
   }, []);
   const onChangeGame = (type, value) => {
     //setJogo({ ...jogo, [type]: value });
@@ -167,6 +173,8 @@ const EditarJogo = () => {
       <Acessibilidade />
       {leitor && <TextToSpeech />}
       {modal}
+      {loading}
+      
       <main className="cadastroJogo__main">
         <div className="cadastroJogo__title">
           <i className="fa-solid fa-caret-left"></i>

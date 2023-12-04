@@ -9,6 +9,7 @@ import { translate } from "../../translate/translate";
 import TextToSpeech from "../../components/Acessibilidade/TextToSpeech";
 import { useParams } from "react-router-dom";
 import CardHome from "../../components/CardHome/CardHome";
+import Loading from "../../components/Loading/Loading";
 
 export default _ => {
 
@@ -16,6 +17,7 @@ export default _ => {
   const [numberGames, setNumberGames] = useState(0);
   const [windowGames, setWindowGames] = useState(3);
   const [dev, setDev] = useState(0)
+  const [loading, setLoading] = useState(<Loading/>)
   const { nome } = useParams()
   const token = window.localStorage.getItem("token")
 
@@ -36,7 +38,11 @@ export default _ => {
     .then((response) => {
       setDev(response.data.filter((dev) => dev.nome.toLowerCase().replace(/ /g, "-") === nome)[0])
       console.log(response.data);
-    }).catch((error) => { console.log(error); });
+      setLoading(null)
+    }).catch((error) => { 
+      console.log(error); 
+      setLoading(null)
+    });
   }, [])
   console.log("dev", dev);
   console.log("nome", nome);
@@ -60,7 +66,7 @@ export default _ => {
       <Vlibras />
       <Acessibilidade />
       {leitor ? (<TextToSpeech />) : ""}
-
+      {loading}
 
 
       <main className="accessibility__main">

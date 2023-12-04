@@ -42,7 +42,10 @@ const Categorias = () => {
       setGames(response.data)
       setLoading(null)
       setLeitor(true);
-    }).catch((error) => console.log(error))
+    }).catch((error) => {
+      console.log(error)
+      setLoading(null)
+    })
 
     const filterCategories = category.split('=');
     setFilter({ ...filter, [filterCategories[0]]: [filterCategories[1]] });
@@ -97,7 +100,7 @@ const Categorias = () => {
       <Vlibras />
       <Acessibilidade />
       {leitor ? (<TextToSpeech />) : ""}
-
+      {loading}
 
       <div id="container">
         <div className="section__categories-categorias">
