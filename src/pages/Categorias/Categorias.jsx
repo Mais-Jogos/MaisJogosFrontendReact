@@ -9,11 +9,17 @@ import Vlibras from '../../components/Vlibras/Vlibras'
 import { motion, AnimatePresence } from 'framer-motion'
 import { translate } from '../../translate/translate'
 import TextToSpeech from "../../components/Acessibilidade/TextToSpeech";
+import Loading from '../../components/Loading/Loading'
+import CardHome from '../../components/CardHome/CardHome'
 
 const Categorias = () => {
   const { category } = useParams();
   const [games, setGames] = useState([]);
   const [game, setGame] = useState(0)
+  const [loading, setLoading] = useState(<Loading/>)
+  const generos = ["Ação", "Arcade", "Aventura", "Casual", "Corrida", "Esportes", "Estratégia", "Luta", "Puzzle", "Rpg", "Shooter", "Terror"]
+  const plataformas = ["Windows", "MacOs", "Linux", "Android", "IOS"]
+  const token = window.localStorage.getItem("token")
 
   // Precisei desse estado pq é preciso esperar a chamada da api para o jquery conseguir indentificar os cards na tela
   const [leitor, setLeitor] = useState(false);
@@ -30,21 +36,23 @@ const Categorias = () => {
   })
 
   useEffect(() => {
-    const apiKey = 'bb8e5d1e0b2e44d9ac172e791e20ff23'
-    Axios.get(`https://api.rawg.io/api/games?key=${apiKey}`)
-      .then((response) => {
-        setGames(response.data.results);
-        setLeitor(true);
-      }).catch((error) => { console.log(error); });
+    Axios.get('https://backendmaisjogos-production.up.railway.app/api/jogo/listarTodos', {
+      headers:{
+        Authorization: `Bearer ${token}`
+      }
+    })
+    .then((response) => {
+      console.log(response.data);
+      setGames(response.data)
+      setLoading(null)
+      setLeitor(true);
+    }).catch((error) => console.log(error))
 
     const filterCategories = category.split('=');
     setFilter({ ...filter, [filterCategories[0]]: [filterCategories[1]] });
   }, [])
   console.log("filter", filter);
 
-  const generos = [].concat(...games.map((game) => game.genres))
-  const plataformas = [].concat(...games.map((game) => game.parent_platforms))
-  const plataformas2 = [].concat(...plataformas.map((game) => game.platform))
   const changeFilter = (e, filterName, value) => {
     if (filterName !== 'rating') {
       if (filter[filterName] !== 'Todos') {
@@ -66,31 +74,27 @@ const Categorias = () => {
     }
   }
 
-  useEffect(() => {
-    const jogosFiltrados = games?.filter(jogo => {
-      var plataformasSelecionadas;
-      var categoriasSelecionadas;
-      var notasSelecionadas;
-      if (filter.platform !== "Todos") {
-        plataformasSelecionadas = jogo.platforms.some(platforma => filter.platform.includes(platforma.platform.name));
-      } else {
-        plataformasSelecionadas = jogo;
-      }
-      if (filter.category !== "Todos") {
-        categoriasSelecionadas = jogo.genres.some(categoria => filter.category.includes(categoria.name));
-      } else {
-        categoriasSelecionadas = jogo;
-      }
-      if (filter.rating !== "Todos") {
-        notasSelecionadas = jogo.rating >= filter.rating;
-      } else {
-        notasSelecionadas = jogo;
-      }
-      return plataformasSelecionadas && categoriasSelecionadas && notasSelecionadas;
-
-    })
-    console.log("Jogos",jogosFiltrados);
-  }, [filter])
+  const filterJogos = games?.filter(jogo => {
+    var plataformasSelecionadas;
+    var categoriasSelecionadas;
+    var notasSelecionadas;
+    if (filter.platform !== "Todos") {
+      plataformasSelecionadas = filter.platform.some(platforma => platforma === jogo.plataforma);
+    } else {
+      plataformasSelecionadas = jogo;
+    }
+    if (filter.category !== "Todos") {
+      categoriasSelecionadas = jogo.genero.some(categoria => filter.category.includes(categoria));
+    } else {
+      categoriasSelecionadas = jogo;
+    }
+    /* if (filter.rating !== 0) {
+      notasSelecionadas = jogo.rating >= filter.rating;
+    } else {
+      notasSelecionadas = jogo;
+    } */
+    return plataformasSelecionadas && categoriasSelecionadas;
+  })
   return (
     <div id='container-page' className='categorias'>
       <Menu />
@@ -103,7 +107,7 @@ const Categorias = () => {
         <div className="section__categories-categorias">
           <h2>{translate("Categorias")}</h2>
           {
-            [...new Set(generos?.map((game) => game.name))].map(category => (
+            generos?.map(category => (
               <div className='categorias__categorias'>
                 <input type="checkbox" name="Categorias" id={category} defaultChecked={filter.category !== 'Todos' && filter.category.some((filterCategory) => filterCategory === category)} onClick={(e) => changeFilter(e, 'category', category)}  aria-label={category} />
                 <label key={category} htmlFor={category} >{category}</label>
@@ -112,7 +116,7 @@ const Categorias = () => {
           }
           <h2>{translate("Plataformas")}</h2>
           {
-            [...new Set(plataformas2?.map((game) => game.name))].map(platform => (
+            plataformas?.map(platform => (
               <div className='categorias__categorias'>
                 <input type="checkbox" name="Plataformas" id={platform} defaultChecked={filter.platform !== 'Todos' && filter?.platform?.some((filterPlatform) => filterPlatform === platform)} onClick={(e) => changeFilter(e, 'platform', platform)} aria-label={platform}  />
                 <label key={platform} htmlFor={platform} >{platform}</label>
@@ -163,7 +167,7 @@ const Categorias = () => {
                     transition={{ duration: 0.5 }}
                   >
                     {
-                      [...new Set(generos?.map((game) => game.name))].map(category => (
+                      generos?.map(category => (
                         <div className='categorias__categorias'>
                           <input type="checkbox" name="Categorias" id={category} onClick={(e) => changeFilter(e, 'category', category)} />
                           <label key={category} htmlFor={category} >{category}</label>
@@ -198,7 +202,7 @@ const Categorias = () => {
                     transition={{ duration: 0.5 }}
                   >
                     {
-                      [...new Set(plataformas2?.map((game) => game.name))].map(platform => (
+                      plataformas?.map(platform => (
                         <div className='categorias__categorias'>
                           <input type="checkbox" name="Plataformas" id={platform} onClick={(e) => changeFilter(e, 'platform', platform)} />
                           <label key={platform} htmlFor={platform} >{platform}</label>
@@ -258,23 +262,23 @@ const Categorias = () => {
                 var categoriasSelecionadas;
                 var notasSelecionadas;
                 if (filter.platform !== "Todos") {
-                  plataformasSelecionadas = jogo.platforms.some(platforma => filter.platform.includes(platforma.platform.name));
+                  plataformasSelecionadas = filter.platform.some(platforma => platforma === jogo.plataforma);
                 } else {
                   plataformasSelecionadas = jogo;
                 }
                 if (filter.category !== "Todos") {
-                  categoriasSelecionadas = jogo.genres.some(categoria => filter.category.includes(categoria.name));
+                  categoriasSelecionadas = jogo.genero.some(categoria => filter.category.includes(categoria));
                 } else {
                   categoriasSelecionadas = jogo;
                 }
-                if (filter.rating !== 0) {
+                /* if (filter.rating !== 0) {
                   notasSelecionadas = jogo.rating >= filter.rating;
                 } else {
                   notasSelecionadas = jogo;
-                }
-                return plataformasSelecionadas && categoriasSelecionadas && notasSelecionadas;
+                } */
+                return plataformasSelecionadas && categoriasSelecionadas;
               }).map((game) => (
-                <Card game={game} key={game?.id}/>
+                <CardHome game={game} key={game?.id}/>
               ))}
             </div>
           </div>

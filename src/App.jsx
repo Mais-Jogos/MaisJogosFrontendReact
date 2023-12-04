@@ -35,7 +35,7 @@ import { AnimatePresence } from "framer-motion";
 import CadastroSkin from "./pages/CadastroSkin/CadastroSkin";
 import { Helmet } from 'react-helmet';
 import MeusJogosDev from "./pages/MeusJogosDev/MeusJogosDev";
-import EditarJogo from "./pages/EditarJogo/EditarJogo";
+import EditarJogo from "./pages/EditarJogo/EditarJogo2";
 import CadastroAdmin from "./pages/CadastroAdmin/CadastroAdmin";
 import Home2 from "./pages/Home/Home2";
 import Visitas from "./pages/Visitas/Visitas";
@@ -103,7 +103,7 @@ function App({theme}) {
               <Route path='/faq' element={<FAQ/>}/>
               <Route path='/pagamento-dev' element={<PagamentoDev/>}/>
               <Route path='/gerenciamento-admin' element={<GerenciamentoAdmin/>}/>
-              <Route path='/cadastro-review/:name' element={<CadastroReview/>}/>
+              <Route path='/cadastro-review/:idJogo' element={<CadastroReview/>}/>
               <Route path='/sobre' element={<Sobre/>}/>
               <Route path='/dev/:nome' element={<PubDev/>}/>
               <Route path='/cadastro-skin' element={<CadastroSkin/>}/>

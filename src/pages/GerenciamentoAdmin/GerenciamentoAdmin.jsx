@@ -9,6 +9,7 @@ import Acessibilidade from '../../components/Acessibilidade/Acessibilidade'
 import { useNavigate } from 'react-router-dom'
 import { translate } from '../../translate/translate'
 import TextToSpeech from "../../components/Acessibilidade/TextToSpeech";
+import PageAvatares from './PageAvatares'
 
 const GerenciamentoAdmin = () => {
     const [page, setPage] = useState("jogos")
@@ -27,9 +28,9 @@ const GerenciamentoAdmin = () => {
                     <li className={page === "jogos" && "li-selected"} onClick={() => setPage("jogos")}>{translate("Jogos")}</li>
                     <li className={page === "devs" && "li-selected"} onClick={() => setPage("devs")}>{translate("Devs")}</li>
                     <li className={page === "users" && "li-selected"} onClick={() => setPage("users")}>{translate("Users")}</li>
+                    <li className={page === "avatares" && "li-selected"} onClick={() => setPage("avatares")}>{translate("Avatares")}</li>
                     <li className={page === "pagamentos" && "li-selected"} onClick={() => setPage("pagamentos")}>{translate("Pagamentos")}</li>
                     <li onClick={() => navigate("/relatorios-admin")}>{translate("Relatórios")}</li>
-                    <li onClick={() => navigate("/avatares")}>{translate("Avatares")}</li>
                 </ul>
             </aside>
             <section>
@@ -38,6 +39,7 @@ const GerenciamentoAdmin = () => {
                     page === "jogos" ? <PageJogos/> :
                     page === "devs" ? <PageDevs/> :
                     page === "users" ? <PageUsers/> :
+                    page === "avatares" ? <PageAvatares/> :
                     page === "pagamentos" ? <PagePagamentos/> : null
                 }
             </section>

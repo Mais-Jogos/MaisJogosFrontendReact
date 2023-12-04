@@ -7,10 +7,6 @@ const Platform = ({ jogo, onChangePlatform }) => {
             <div className='cadastroJogo__content__requirements__forms'>
                     <div className='cadastroJogo__content__requirements__selected'>
                         <div className="cadastroJogo__content__requirements__inputs">
-                            <label htmlFor="MinSO" className='cadastroJogo__content__label'>SO</label>
-                            <input type="text" id='MinSO' defaultValue={jogo["SO"]} onChange={(e) => onChangePlatform("SO", e.target.value)} />
-                        </div>
-                        <div className="cadastroJogo__content__requirements__inputs">
                             <label htmlFor="MinProcessador" className='cadastroJogo__content__label'>Processador</label>
                             <input type="text" id='MinProcessador' defaultValue={jogo["processador"]} onChange={(e) => onChangePlatform("processador", e.target.value)} />
                         </div>

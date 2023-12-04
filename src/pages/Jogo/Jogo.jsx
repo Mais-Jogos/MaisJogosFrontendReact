@@ -12,6 +12,7 @@ import Acessibilidade from "../../components/Acessibilidade/Acessibilidade";
 import Vlibras from "../../components/Vlibras/Vlibras";
 import { translate } from "../../translate/translate";
 import TextToSpeech from "../../components/Acessibilidade/TextToSpeech";
+import Loading from "../../components/Loading/Loading"
 
 const Jogo = ({ dispatch, listadesejos, cart }) => {
   const [game, setGame] = useState({});
@@ -19,6 +20,10 @@ const Jogo = ({ dispatch, listadesejos, cart }) => {
   const [image, setImage] = useState(0);
   const [favorito, setFavorito] = useState(false);
   const [favoritos, setFavoritos] = useState([]);
+  const [loading, setLoading] = useState(<Loading/>)
+  const [reviews, setReviews] = useState([])
+  const [usuarios, setUsuarios] = useState([])
+  const [rating, setRating] = useState(0)
   const [dev, setDev] = useState();
   const { name } = useParams();
   const token = window.localStorage.getItem("token");
@@ -67,7 +72,20 @@ const Jogo = ({ dispatch, listadesejos, cart }) => {
             console.log("Dev", response.data);
             setDev(response.data);
         }).catch((error) => console.log(error));
-      }).catch((error) => console.log(error));
+        Axios.get(`https://backendmaisjogos-production.up.railway.app/api/review/listarTodos`,{
+          headers:{
+            Authorization: `Bearer ${token}`
+          }
+        })
+        .then((res) => {
+          setReviews(res.data);
+          console.log("Reviews", res.data);
+        })
+        setLoading(null)
+      }).catch((error) =>{
+        console.log(error)
+        setLoading(null)
+      });
 
       Axios.get('https://backendmaisjogos-production.up.railway.app/api/favorito/listarTodos', {
         headers:{
@@ -83,15 +101,25 @@ const Jogo = ({ dispatch, listadesejos, cart }) => {
           (favoritos) => (favoritos?.idJogo === game?.id && favoritos?.idUser === id)
         ));
       }).catch((error) => console.log(error));
+
+      Axios.get(`https://backendmaisjogos-production.up.railway.app/api/usuario/listarTodos`,{
+        headers:{
+          Authorization: `Bearer ${token}`
+        }
+      })
+      .then((response) => {
+          setUsuarios(response.data);
+          console.log("Usuarios", response.data);
+      })
   }, []);
-  var carrinho = cart.cart.every((c) => c?.id !== game?.id);
+  var carrinho = cart.cart.every((c) => c?.id != game?.id);
   const handleClickAdd = (game) => {
-    if (carrinho && token) {
+    if (!carrinho && token) {
       dispatch(selectGame(game));
     }
   };
   const handleClickFavorite = (game) => {
-    if (favorito && token) {
+    if (!favorito && token) {
       Axios.post('https://backendmaisjogos-production.up.railway.app/api/favorito/salvar', {
         idUser: id,
         idJogo: jogo?.id,
@@ -102,7 +130,7 @@ const Jogo = ({ dispatch, listadesejos, cart }) => {
         console.log(response.data);
       })
       dispatch(favoriteGame(game));
-    }else if(!favorito && token){
+    }else if(favorito && token){
       const favoritoSelecionado = favoritos?.filter(
         (favoritos) => favoritos?.idJogo == jogo?.id && favoritos?.idUser == id
       )[0]
@@ -119,9 +147,11 @@ const Jogo = ({ dispatch, listadesejos, cart }) => {
       dispatch(deletefavoriteGame(game))
     }
   };
+  const reviewuser = reviews?.filter((review) => 
+                    review?.idJogo == jogo?.id)
   const choosePlataform = (plataform) => {
     if (plataform !== undefined) {
-      if (plataform?.toLowerCase() === "pc") {
+      if (plataform?.toLowerCase() === "computador") {
         return "fa-solid fa-laptop";
       }else if(plataform?.toLowerCase() === "celular"){
         return "fa-solid fa-mobile";
@@ -140,7 +170,7 @@ const Jogo = ({ dispatch, listadesejos, cart }) => {
       <Acessibilidade />
       <Vlibras />
       {leitor ? <TextToSpeech /> : ""}
-
+      {loading}
       <div>
         <div className="game__page">
           <div className="game__page__image">
@@ -174,7 +204,10 @@ const Jogo = ({ dispatch, listadesejos, cart }) => {
               <div className="title__game__page">
                 <h2>{jogo?.titulo}</h2>
                 <div className="classif__game__page">
-                  <p className="rating__game__page">{game?.rating}/5</p>
+                  <p className="rating__game__page">
+                    {reviewuser?.reduce((accumulator, currentValue) => 
+                    accumulator + currentValue?.notaReview, 0)/reviewuser.length
+                    }/5</p>
                   <p className="classification__game__page">Livre</p>
                 </div>
               </div>
@@ -186,37 +219,39 @@ const Jogo = ({ dispatch, listadesejos, cart }) => {
               </p>
               <div className="comments__game__page">
                 <h2>{translate("Avaliações")}</h2>
-                <div className="comment__game__page">
-                  <div className="usercomment__game__page">
-                    <div className="avatar__user"></div>
-                    <div className="info__user">
-                      <p className="username">
-                        User user<p className="usernick">@User</p>
-                      </p>
-                      <p className="time__comment">Há um mês</p>
+                {reviews?.filter((review) => review?.idJogo == jogo?.id)
+                ?.map(review =>{
+                  const user = usuarios.filter(user => user?.id === review?.idUser)[0]
+                  return(
+                  <div className="comment__game__page">
+                    <div className="usercomment__game__page">
+                      <div className="avatar__user"></div>
+                      <div className="info__user">
+                        <p className="username">
+                        {user?.nome} {user?.sobrenome}<p className="usernick">@{user?.nome}</p>
+                        </p>
+                        <p className="time__comment">{review?.dataReview}</p>
+                      </div>
                     </div>
-                  </div>
-                  <div className="text__comment">
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                    Reiciendis, nobis ut quasi non, nemo quas ad beatae at
-                    eligendi rerum accusantium amet molestias ea voluptatum,
-                    consequuntur ullam praesentium dolores explicabo.
-                  </div>
-                </div>
+                    <div className="text__comment">
+                      {review?.descricaoReview}
+                    </div>
+                  </div>)
+                })}
               </div>
             </div>
             <div className="info__game__page">
               <div className="addcart__game__page">
-                <h2>R$0{game?.rating}</h2>
+                <h2>R${jogo?.valorJogo}</h2>
                 <button
                   onClick={() => handleClickAdd(game)}
-                  style={{ display: !carrinho ? "flex" : "none" }}
+                  style={{ display: carrinho ? "flex" : "none" }}
                 >
                   {translate("Adicionado ao carrinho")}
                 </button>
                 <button
                   onClick={() => handleClickAdd(game)}
-                  style={{ display: carrinho ? "flex" : "none" }}
+                  style={{ display: !carrinho ? "flex" : "none" }}
                 >
                   {translate("Adicionar ao carrinho")}
                 </button>
@@ -226,8 +261,8 @@ const Jogo = ({ dispatch, listadesejos, cart }) => {
                 >
                   <img src="/imgs/icons/heart_icon.png" alt="" />
                   <p>
-                    {!favorito && translate("Adicionado a lista de desejos")}
-                    {favorito && translate("Adicionar a lista de desejos")}
+                    {favorito && translate("Adicionado a lista de desejos")}
+                    {!favorito && translate("Adicionar a lista de desejos")}
                   </p>
                 </div>
               </div>
@@ -266,6 +301,14 @@ const Jogo = ({ dispatch, listadesejos, cart }) => {
                           className={choosePlataform(jogo?.plataforma)}
                         ></i>
                       </Link>
+                      <Link
+                        to={`/categorias/platform=${jogo?.["SO"]}`}
+                        aria-label={jogo?.["SO"]}
+                      >
+                        <i
+                          className={choosePlataform(jogo?.["SO"])}
+                        ></i>
+                      </Link>
                   </div>
                   <h3>{translate("Requisitos do sistema")}</h3>
                 </div>
@@ -273,7 +316,7 @@ const Jogo = ({ dispatch, listadesejos, cart }) => {
                   <b>{translate("Mínimos")}</b>
                   <br />
                   <ul>
-                    <li>SO: {jogo?.plataforma}</li>
+                    <li>SO: {jogo?.SO}</li>
                     <li>Processador: {jogo?.processador}</li>
                     <li>Placa de vídeo: {jogo?.placaDeVideo}</li>
                     <li>Memória: {jogo?.quantMemoria} {jogo?.tipoMemoria}</li>

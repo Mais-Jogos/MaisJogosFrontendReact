@@ -10,12 +10,15 @@ import GoBack from "../../components/GoBack/GoBack";
 import TextToSpeech from "../../components/Acessibilidade/TextToSpeech";
 import HeaderWithFilter from "../../components/HeaderWithFiilter/HeaderWithFilter";
 import api from "../../api/api";
+import Loading from "../../components/Loading/Loading";
 
 export default _ => {
     const [games, setGames] = useState([]);
     const [reviews, setReviews] = useState([]);
     const [menuOption, setMenuOption] = useState(false);
+    const [loading, setLoading] = useState(<Loading/>)
     const [sort, setSort] = useState("");
+    const id = window.localStorage.getItem("id")
 
     function changeSort(data) {
         let finalData = data == "des" ? false : true;
@@ -29,9 +32,12 @@ export default _ => {
     useEffect(() => {
         const apiKey = 'bb8e5d1e0b2e44d9ac172e791e20ff23'
 
-        Axios.get(`https://api.rawg.io/api/games?key=${apiKey}`)
-            .then((response) => {
-                setGames(response.data.results);
+            Axios.get(`https://backendmaisjogos-production.up.railway.app/api/jogo/listarTodos`,{
+                headers:{
+                    Authorization: `Bearer ${token}`
+                }
+            }).then((response) => {
+                setGames(response.data);
                 setLeitor(true);
 
             }).catch((error) => { console.log(error); });
@@ -42,10 +48,12 @@ export default _ => {
             })
             .then((response) => {
                 setReviews(response.data);
-                console.log(response.data);
+                console.log("Reviews",response.data);
+                setLoading(null)
             })
             .catch((error) => {
                 console.log(error);
+                setLoading(null)
             });
 
               
@@ -59,7 +67,7 @@ export default _ => {
             <Vlibras />
             <Acessibilidade />
             {leitor ? (<TextToSpeech />) : ""}
-
+            {loading}
 
 
             <main className="review__main">
@@ -68,8 +76,8 @@ export default _ => {
 
                 <section className="review__Section">
                     {
-                        reviews?.map((review) => (
-                            <ReviewCompINF minhaIMG={games.filter(jogo => jogo?.id === review?.idJogo)[0]?.background_image} nome={games.filter(jogo => jogo?.id === review?.idJogo)[0]?.name} descricao={review?.tituloReview} data={`Data de postagem ${review?.dataReview}`} corpo={review?.descricaoReview} nota={review?.notaReview}/>
+                        reviews?.filter(review => review?.idUser == id)?.map((review) => (
+                            <ReviewCompINF game={games.filter(jogo => jogo?.id === review?.idJogo)[0]} review={review}/>
                         ))
                     }
                 </section>

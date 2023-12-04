@@ -11,7 +11,7 @@ import GoBack from "../../components/GoBack/GoBack";
 import { translate } from "../../translate/translate";
 import TextToSpeech from "../../components/Acessibilidade/TextToSpeech";
 import Axios from "axios";
-
+import Modal from "../../components/Modal/Modal";
 
 export function reducerUserData(state, action) {
     switch (action.type) {
@@ -42,6 +42,7 @@ const PerfilUser = (props) => {
         senha: "",
         colorCard: userRedux.colorCard
     });
+    const [modal, setModal] = useState(null)
     const [data, setData] = useState({})
     const [editButton, setEditButton] = useState(false);
 
@@ -95,12 +96,21 @@ const PerfilUser = (props) => {
         .catch((error) => console.log(error))
     }, [])
 
+    const logout = () =>{
+        setModal(<Modal message={"Você foi deslogado!"} type={true}/>)
+        window.localStorage.removeItem("token")
+        setTimeout(() =>{
+          navigate("/entrar")
+        }, 3000)
+    }
+
     return (
         <div id='container-page'>
             <Menu />
             <Vlibras />
             <Acessibilidade />
             <TextToSpeech />
+            {modal}
 
             <main className="perfilUser__main">
                 <section className="perfilUser__titlePage">
@@ -123,7 +133,7 @@ const PerfilUser = (props) => {
                         <div className="perfilUser-card__border" style={glowStyles}>
                             <div className="perfilUser-card__cardBG" >
                                 <div className="perfilUser-card__imgBG" style={{ backgroundColor: userData.colorCard }}>
-                                    <img id="perfilUser-card__parrot" src={userRedux.avatar.img} />
+                                    <img id="perfilUser-card__parrot" src={`data:image/png;base64, ${userRedux.avatar.arquivo}`} />
                                 </div>
                                 <div className="perfilUser-card__cardFooter">
                                     <img className="perfilUser-card__imgEdit" src="/imgs/icons/Kapicoin_icon.png" />
@@ -216,6 +226,7 @@ const PerfilUser = (props) => {
                         <p>{translate("Avatares")}</p>
                     </Link>
                 </section>
+                <button className="btn-logout" onClick={logout}>Logout</button>
             </main>
         </div>
     )

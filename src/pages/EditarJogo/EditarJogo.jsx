@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Menu from "../../components/Menu/Menu";
 import Acessibilidade from "../../components/Acessibilidade/Acessibilidade";
+import Vlibras from "../../components/Vlibras/Vlibras"
 import Step1 from "./Step1";
 import Step2 from "./Step2";
 import Step3 from "./Step3";
@@ -42,6 +43,7 @@ const EditarJogo = () => {
     const jogoInfo = {
       idDev: jogo?.idDev,
       titulo: jogo?.titulo,
+      valorJogo: parseFloat(jogo?.valorJogo),
       descricao: jogo?.descricao,
       genero: jogo?.genero,
       plataforma: jogo?.plataforma,
@@ -55,7 +57,27 @@ const EditarJogo = () => {
     }
     const jogoFiles = {
       jogoWin: jogo?.jogoWin,
-      jogoAndroid: jogo?.jogoAndroid,
+      bannerUm: jogo?.bannerUm,
+      bannerDois: jogo?.bannerDois,
+      bannerTres: jogo?.bannerTres,
+      bannerQuatro: jogo?.bannerQuatro,
+      bannerCinco: jogo?.bannerCinco,
+      licenca: jogo?.licenca
+    }
+    const todoJogo = {
+      idDev: parseInt(jogo?.idDev),
+      titulo: jogo?.titulo,
+      valorJogo: parseFloat(jogo?.valorJogo),
+      descricao: jogo?.descricao,
+      genero: jogo?.genero,
+      plataforma: jogo?.plataforma,
+      processador: jogo?.processador,
+      placaDeVideo: jogo?.placaDeVideo,
+      quantMemoria: jogo?.quantMemoria,
+      tipoMemoria: jogo?.tipoMemoria,
+      quantArmazenamento: jogo?.quantArmazenamento,
+      tipoArmazenamento: jogo?.tipoArmazenamento,
+      jogoWin: jogo?.jogoWin,
       bannerUm: jogo?.bannerUm,
       bannerDois: jogo?.bannerDois,
       bannerTres: jogo?.bannerTres,
@@ -67,7 +89,6 @@ const EditarJogo = () => {
     const formData = new FormData();
 
     formData.append('jogoWin', jogoFiles?.jogoWin);
-    formData.append('jogoAndroid', jogoFiles?.jogoAndroid);
     formData.append('bannerUm', jogoFiles?.bannerUm);
     formData.append('bannerDois', jogoFiles?.bannerDois);
     formData.append('bannerTres', jogoFiles?.bannerTres);
@@ -75,15 +96,14 @@ const EditarJogo = () => {
     formData.append('bannerCinco', jogoFiles?.bannerCinco);
     formData.append('licenca', jogoFiles?.licenca);
 
-    Axios.put(`https://backendmaisjogos-production.up.railway.app/api/jogo/alterarJogo/${jogo?.id}`, jogoInfo, {
+    Axios.put(`https://backendmaisjogos-production.up.railway.app/api/jogo/alterarJogo/${jogo?.id}`, todoJogo, {
       headers:{
         Authorization: `Bearer ${token}`,
       }
     })
     .then((response) => {
       console.log("Response jogos info", response);
-      console.log("Response jogos files form", formData);
-      console.log("Response jogos files", jogoFiles);
+      console.log("Response jogos files", todoJogo);
       setModal(<Modal message={"Seu jogo foi alterado!"} type={true}/>)
       setTimeout(() =>{
         navigate("/jogos-dev")
@@ -152,6 +172,7 @@ const EditarJogo = () => {
   return (
     <div id="container-page">
       <Menu />
+      <Vlibras/>
       <Acessibilidade />
       {modal}
       <main className="cadastroJogo__main">

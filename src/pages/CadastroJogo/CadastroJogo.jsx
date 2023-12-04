@@ -10,6 +10,7 @@ import "./style.css";
 import Axios from 'axios'
 import { useNavigate } from "react-router-dom";
 import Vlibras from "../../components/Vlibras/Vlibras";
+import TextToSpeech from "../../components/Acessibilidade/TextToSpeech";
 
 const CadastroJogo = () => {
   const id = window.localStorage.getItem("id")
@@ -33,7 +34,7 @@ const CadastroJogo = () => {
     videos: null,
     idDev: id,
     licenca: null,
-    valorJogo:0,
+    valorJogo:0.0,
   });
   const onChangeGame = (type, value) => {
     setJogo({ ...jogo, [type]: value });
@@ -56,7 +57,7 @@ const CadastroJogo = () => {
       descricao: jogo?.descricao,
       genero: jogo?.genero,
       plataforma: jogo?.plataforma,
-      SO: jogo["SO"],
+      SO: jogo.SO,
       processador: jogo?.processador,
       placaDeVideo: jogo?.placaDeVideo,
       quantMemoria: jogo?.quantMemoria,
@@ -84,7 +85,7 @@ const CadastroJogo = () => {
     formData.append('bannerQuatro', jogoFiles?.bannerQuatro);
     formData.append('bannerCinco', jogoFiles?.bannerCinco);
     formData.append('licenca', jogoFiles?.licenca);
-
+    console.log(jogoInfo);
     Axios.post("https://backendmaisjogos-production.up.railway.app/api/jogo/salvar", jogoInfo, {
       headers:{
         Authorization: `Bearer ${token}`,
@@ -162,6 +163,7 @@ const CadastroJogo = () => {
       <Menu />
       <Acessibilidade />
       <Vlibras/>
+      <TextToSpeech/>
       {modal}
       <main className="cadastroJogo__main">
         <div className="cadastroJogo__title">

@@ -9,29 +9,28 @@ import { translate } from '../../translate/translate'
 import TextToSpeech from "../../components/Acessibilidade/TextToSpeech";
 import authenticated from '../../api/authenticated';
 import api from '../../api/api';
+import Loading from '../../components/Loading/Loading'
+import Modal from '../../components/Modal/Modal'
 
 const CadastroReview = () => {
   const id = window.localStorage.getItem("id")
   const token = window.localStorage.getItem("token")
   const [game, setGame] = useState(); 
+  const [modal, setModal] = useState(null)
+  const [loading, setLoading] = useState(<Loading/>)
+  const { idJogo } = useParams();
+  const navigate = useNavigate();
   const [review, setReview] = useState({
     notaReview:5,
     descricaoReview:"",
     dataReview:null,
     tituloReview:"",
     idUser: id,
-    idJogo: 1,
+    idJogo: 8,
   })
-  const {name} = useParams();
-  const navigate = useNavigate();
 
 
   useEffect(() => {  
-    const apiKey = 'bb8e5d1e0b2e44d9ac172e791e20ff23'
-    Axios.get(`https://api.rawg.io/api/games?key=${apiKey}`)
-    .then((response) =>{
-      setGame(response.data.results.filter(jogo => jogo.name.toLowerCase().replace(/ /g, "-") === name)[0])
-    }).catch((error) => { console.log(error); }); 
     Axios.get(`https://backendmaisjogos-production.up.railway.app/api/review/listarTodos`,{
       headers:{
         Authorization: `Bearer ${token}`
@@ -39,35 +38,54 @@ const CadastroReview = () => {
     })
     .then((response) => {
         console.log(response.data);
-        if(response.data.filter(review => review.jogo.toLowerCase().replace(/ /g, "-") === name).length > 0){
-          setReview(response.data.filter(review => review.jogo.toLowerCase().replace(/ /g, "-") === name)[0]);
-
-        }else{
-          setReview({...review, jogo: game?.name})
+        const newReview = response.data.filter(review => (review.idJogo == idJogo && review?.idUser == id))[0]
+        if(newReview){
+          setReview(newReview);
         }
-        console.log(review);
     }).catch((error) => { console.log(error); });
+    Axios.get(`https://backendmaisjogos-production.up.railway.app/api/jogo/listarJogo/${idJogo}`,{
+      headers:{
+        Authorization: `Bearer ${token}`
+      }
+    }).then((response) =>{
+      console.log("Game", response.data);
+        setGame(response.data)
+        setLoading(null)
+    }).catch((error) => { 
+      console.log(error); 
+      setLoading(null)
+    }); 
+
   }, []); 
 
   function cadastrarReview(){
     if(review.id){
-      Axios.put(`https://backendmaisjogos-production.up.railway.app/api/review/${review.id}`, review,{
+      Axios.put(`https://backendmaisjogos-production.up.railway.app/api/review/alterarReview/${review.id}`, review,{
         headers:{
           Authorization: `Bearer ${token}`
         }
       })
       .then((response) => {
         console.log(response);
-        navigate("/review")
+        setModal(<Modal message={"Sua review foi alterada com sucesso!"} type={true}/>)
+        setTimeout(() =>{
+          navigate("/review")
+        }, 3000)
       })
-      .catch((error) => console.log("Erro: ", error))
+      .catch((error) => {
+        setModal(<Modal message={"Sua review não foi alterada!"} type={true}/>)
+        setTimeout(() =>{
+          setModal(null)
+        }, 3000)
+        console.log("Erro: ", error)
+      })
     }
     var data = new Date(),
       dia  = data.getDate().toString().padStart(2, '0'),
       mes  = (data.getMonth()+1).toString().padStart(2, '0'),
       ano  = data.getFullYear();
     const dataReview =  dia+"/"+mes+"/"+ano;
-    const newReview = {...review, dataReview:dataReview, jogo:game?.name}
+    const newReview = {...review, dataReview:dataReview}
     Axios.post('https://backendmaisjogos-production.up.railway.app/api/review/salvar', newReview,{
       headers:{
         Authorization: `Bearer ${token}`
@@ -75,10 +93,39 @@ const CadastroReview = () => {
     })
     .then((response) => {
       console.log(response);
-      navigate("/review")
+      setModal(<Modal message={"Sua review foi cadastrada com sucesso!"} type={true}/>)
+      setTimeout(() =>{
+        navigate("/review")
+      }, 3000)
     })
-    .catch((error) => console.log("Erro: ", error))
+    .catch((error) => {
+      setModal(<Modal message={"Sua review não foi cadastrada!"} type={true}/>)
+      setTimeout(() =>{
+        setModal(null)
+      }, 3000)
+      console.log("Erro: ", error)
+    })
     console.log(newReview);
+  }
+
+  function deletarReview(){
+    Axios.delete(`https://backendmaisjogos-production.up.railway.app/api/review/deletarReview/${review?.id}`, {
+      headers:{
+        Authorization: `Bearer ${token}`
+      }
+    }).then((response) => {
+      console.log(response);
+      setModal(<Modal message={"Sua review foi deletada com sucesso!"} type={true}/>)
+      setTimeout(() =>{
+        navigate("/review")
+      }, 3000)
+    }).catch((error) => {
+      setModal(<Modal message={"Sua review não foi deletada!"} type={true}/>)
+      setTimeout(() =>{
+        setModal(null)
+      }, 3000)
+      console.log("Erro: ", error)
+    })
   }
   return (
     <div id='container-page'>
@@ -86,6 +133,8 @@ const CadastroReview = () => {
       <Vlibras/>
       <Acessibilidade/>
       <TextToSpeech />
+      {modal}
+      {loading}
 
       <div className="cadastro-review">
         <div className="cadastro-review__title__name">
@@ -93,8 +142,8 @@ const CadastroReview = () => {
           <h1>{translate("Cadastrar Review")}</h1>
         </div>
         <div className="cadastro-review__form">
-          <img src={game?.background_image} alt="" />
-          <h2>{game?.name}</h2>
+          <img src={`data:image/png;base64, ${game?.bannerUm}`} alt="" />
+          <h2>{game?.titulo}</h2>
           <div className="cadastro-review__avaliacao">
             {translate("Avaliação")}
             <div>
@@ -113,7 +162,7 @@ const CadastroReview = () => {
               <i class="fa-solid fa-arrow-rotate-left" ></i>{translate("Voltar")}
             </button>
             <div className="cadastro-review__btns-actions">
-              <button className='cadastro-review__btns-excluir'>
+              <button className='cadastro-review__btns-excluir' onClick={deletarReview}>
                 <i class="fa-regular fa-trash-can"></i>{translate("Excluir")}
               </button>
               <button className='cadastro-review__btns-salvar' onClick={cadastrarReview}>

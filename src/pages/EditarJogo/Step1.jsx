@@ -1,9 +1,12 @@
-import React from 'react'
-import { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 const Step1 = ({jogo, onChangeGame, erro}) => {
     const generos = ["Ação", "Arcade", "Aventura", "Casual", "Corrida", "Esportes", "Estratégia", "Luta", "Puzzle", "Rpg", "Shooter", "Terror"]
-    const [generosSelecionados, setGenerosSelecionados] = useState(jogo?.genero)
+    useEffect(() =>{
+        if(!jogo?.genero?.some(genero => generos.some(g => g == genero))){
+            onChangeGame("genero", [])
+        }
+    }, [])
   return (
     <section className='cadastroJogo__content'>
         <label htmlFor="titulo" className={`cadastroJogo__content__label`}>Titulo</label>
@@ -15,13 +18,14 @@ const Step1 = ({jogo, onChangeGame, erro}) => {
         <div className="cadastroJogo__content__Bodybuttons">
             {generos.map((genero) => (<>
                 <button 
-                    className={generosSelecionados?.some(g => g === genero) ? 'cadastroJogo__content__buttons cadastroJogo__content__buttons--select':'cadastroJogo__content__buttons'}
+                    className={jogo?.genero?.some(g => g === genero) ? 'cadastroJogo__content__buttons cadastroJogo__content__buttons--select':'cadastroJogo__content__buttons'}
                     onClick={() => {
-                        const newGeneros = !generosSelecionados?.some(g => g === genero) ? 
-                        [...generosSelecionados, genero] : 
-                        generosSelecionados?.filter(g => g !== genero)
-                        setGenerosSelecionados(newGeneros);
-                        onChangeGame("genero", newGeneros)
+                        const newGeneros = !jogo?.genero?.some(g => g === genero) ? 
+                        [...jogo?.genero, genero] : 
+                        jogo?.genero?.filter(g => g !== genero)
+                        const generoFiltrado = newGeneros.filter(genero => generos.includes(genero));
+                        console.log(jogo?.genero);
+                        onChangeGame("genero", generoFiltrado)
                     }}
                 >
                     {genero}

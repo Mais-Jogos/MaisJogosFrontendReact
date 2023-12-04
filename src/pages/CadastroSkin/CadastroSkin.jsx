@@ -8,9 +8,11 @@ import { Link, useNavigate } from 'react-router-dom';
 import "./style.css"
 import Axios from 'axios';
 import { translate } from '../../translate/translate';
+import Modal from '../../components/Modal/Modal';
 
 const CadastroSkin = () => {
   const token = window.localStorage.getItem("token")
+  const [modal, setModal] = useState(null)
   const [avatar, setAvatar] = useState({
     nome:"",
     arquivo:null,
@@ -30,7 +32,8 @@ const CadastroSkin = () => {
     .then((response) => {
       console.log(response);
       const formData = new FormData()
-      formData.append("arquivo", avatar?.arquivo)
+      formData.append("file", avatar?.arquivo[0])
+      console.log("File", avatar?.arquivo[0]);
 
       Axios.patch(`https://backendmaisjogos-production.up.railway.app/api/avatar/atualizaFile/${response.data?.id}`, formData ,{
         headers: {
@@ -40,12 +43,27 @@ const CadastroSkin = () => {
       })
       .then((response) => {
         console.log(response);
-
+        setModal(<Modal message={"Seu avatar foi cadastrado com sucesso!"} type={true}/>)
+        setTimeout(() =>{
+          setModal(null)
+        }, 3000)
       })
-      .catch((error) => console.log(error))
+      .catch((error) => {
+        console.log(error);
+        setModal(<Modal message={"Seu avatar não foi cadastrado!"} type={true}/>)
+        setTimeout(() =>{
+          setModal(null)
+        }, 3000)
+      })
 
     })
-    .catch((error) => console.log(error))
+    .catch((error) => {
+      console.log(error)
+      setModal(<Modal message={"Seu avatar não foi cadastrado!"} type={true}/>)
+      setTimeout(() =>{
+        setModal(null)
+      }, 3000)
+    })
   }
 
   return (
@@ -54,6 +72,7 @@ const CadastroSkin = () => {
         <Vlibras/>
         <Acessibilidade />
         <TextToSpeech />
+        {modal}
         <main className="cadastro__skin">
             <GoBack/>
             <div className="cadastro__skin-title" onClick={() => navigate("/cadastro-skin")}>
@@ -64,7 +83,7 @@ const CadastroSkin = () => {
                 <label htmlFor="nome-skin">{translate("Nome da Skin")}</label>
                 <input type="text" id='nome-skin' onChange={(e) => setAvatar({...avatar, nome:e.target.value})}/>
                 <label htmlFor="img-skin">{translate("Upload da Skin")}:</label>
-                <input type="file" id='img-skin' onChange={(e) => setAvatar({...avatar, arquivo:e.target.value})}/>
+                <input type="file" id='img-skin' onChange={(e) => setAvatar({...avatar, arquivo:e.target.files})}/>
                 <label htmlFor="valor-skin">{translate("Valor da Skin")}:</label>
                 <div className='cadastro__skin-valor-skin'>
                   <img src={'/imgs/icons/Kapicoin_icon.png'} />

@@ -32,7 +32,10 @@ const PageJogos = () => {
       console.log(response.data);
       setGames(response.data)
       setLoading(null)
-    }).catch((error) => console.log(error))
+    }).catch((error) =>{
+      console.log(error);
+      setLoading(null)
+    })
   }, []);
 
   const generos = [ "Ação", "Arcade", "Aventura", "Casual", "Corrida", "Esportes", "Estratégia", "Luta", "Puzzle", "Rpg", "Shooter", "Terror",];
@@ -65,8 +68,14 @@ const PageJogos = () => {
   };
   const choosePlataform = (plataform) => {
     if (plataform !== undefined) {
-      if (plataform?.toLowerCase() === "pc") {
+      if (plataform?.toLowerCase() === "computador") {
         return "fa-solid fa-laptop";
+      }else if(plataform?.toLowerCase() === "celular"){
+        return "fa-solid fa-mobile";
+      }else if(plataform?.toLowerCase() === "macos"){
+        return "fa-brands fa-apple";
+      }else if(plataform?.toLowerCase() === "ios"){
+        return "fa-solid fa-app-store-ios";
       } else {
         return `fa-brands fa-${plataform?.toLowerCase()}`;
       }
@@ -275,13 +284,11 @@ const PageJogos = () => {
             }
             if (search !== "") {
               filtroBuscar =
-                jogo?.name.toLowerCase().includes(search.toLowerCase()) ||
-                jogo?.genres?.some((genero) =>
-                  genero.name.toLowerCase().includes(search.toLowerCase())
+                jogo?.titulo.toLowerCase().includes(search.toLowerCase()) ||
+                jogo?.genero?.some((genero) =>
+                  genero.toLowerCase().includes(search.toLowerCase())
                 ) ||
-                jogo?.platform?.some((genero) =>
-                  genero.name.toLowerCase().includes(search.toLowerCase())
-                );
+                jogo?.plataforma?.includes(search.toLowerCase());
             } else {
               filtroBuscar = jogo;
             }
@@ -293,13 +300,13 @@ const PageJogos = () => {
             return (
               <div className="admin__jogo">
                 <div className="admin__jogo-title">
-                  <h2>{game?.name}</h2>
+                  <h2>{game?.titulo}</h2>
                   <div className="admin__jogo-btns">
                     <button
                       className="admin__jogo-view"
                       onClick={() =>
                         navigate(
-                          `/jogos/${game?.name
+                          `/jogos/${game?.titulo
                             ?.toLowerCase()
                             .replace(/ /g, "-")}`
                         )
@@ -309,19 +316,20 @@ const PageJogos = () => {
                     </button>
                   </div>
                 </div>
-                <h3>R${game?.rating}</h3>
+                <h3>R${game?.valorJogo}</h3>
                 <div className="admin__jogo-detalhes">
                   <div className="admin__jogo-genres">
-                    {game?.genres.map((genres) => (
-                      <p key={genres?.id}>{genres?.name}</p>
+                    {game?.genero?.map((genero) => (
+                      <p key={genero}>{genero}</p>
                     ))}
                   </div>
                   <div className="admin__jogo-platforms">
-                    {game?.parent_platforms.map((plataform) => (
                       <i
-                        className={choosePlataform(plataform.platform?.name)}
+                        className={choosePlataform(game?.plataforma)}
                       ></i>
-                    ))}
+                      <i
+                        className={choosePlataform(game?.SO)}
+                      ></i>
                   </div>
                 </div>
               </div>

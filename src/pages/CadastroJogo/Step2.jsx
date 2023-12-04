@@ -7,12 +7,7 @@ const Step2 = ({jogo, onChangeGame, erro}) => {
     const SO = ["Windows", "MacOs", "Linux", "Android", "IOS"]
     const platforms = ["Computador", "Celular"]
     const [mapSO, setMapSO] = useState(SO)
-    const [plataformasSelecionadas, setPlataformasSelecionadas] = useState(jogo?.requisitos)
-    function deletePropriedade(platform) {
-        const obj = plataformasSelecionadas.filter((plat) => plat.Plataforma !== platform)
-        setPlataformasSelecionadas(obj);
-        onChangeGame("requisitos", obj);
-    }
+
     function onChangePlatform(type, value){
         onChangeGame(type, value)
     }

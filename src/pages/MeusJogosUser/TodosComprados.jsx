@@ -3,18 +3,26 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Axios from "axios";
 import { useRef } from "react";
+import Loading from "../../components/Loading/Loading";
 
 export default props => {
     const [ games, setGames] = useState([]);
+    const token = window.localStorage.getItem("token")
     const [leitor, setLeitor] = useState(false);
+    const [loading, setLoading] = useState(<Loading/>)
 
     useEffect(() => {
-        const apiKey = 'bb8e5d1e0b2e44d9ac172e791e20ff23'
-        Axios.get(`https://api.rawg.io/api/games?key=${apiKey}`)
-            .then((response) => {
-                setGames(response.data.results);
-                setLeitor(true);
-            }).catch((error) => { console.log(error); });
+        Axios.get("https://backendmaisjogos-production.up.railway.app/api/jogo/listarTodos", {
+            headers:{
+              Authorization: `Bearer ${token}`
+            }
+        })
+        .then((response) => {
+            console.log("Jogos", response.data);
+            setGames(response.data);
+            setLeitor(true);
+            setLoading(null)
+        }).catch((error) => { console.log(error); setLoading(null)});
     }, [])
 
     // Precisei trazer da lógica do leitor para a tela, pq o Jquery não consegue ler os inputs que não foram carregados ainda :(
@@ -39,20 +47,21 @@ export default props => {
         }
     }, [leitor])
     
-    {props.sortData ? games.sort( (a,b) => a.slug[0] > b.slug[0] ? 1 : -1 ) : "" }
-    {!props.sortData ? games.sort( (a,b) => b.slug[0] > a.slug[0] ? 1 : -1 ) : "" }
+    {props.sortData ? games.sort( (a,b) => a.id[0] > b.id[0] ? 1 : -1 ) : "" }
+    {!props.sortData ? games.sort( (a,b) => b.id[0] > a.id[0] ? 1 : -1 ) : "" }
 
     return (
         <>
+            {loading}
             {   
-                games?.slice(0, 7).map((jogo) => (
+                games?.map((jogo) => (
                     <div className="meusjogos__jogos__card">
                         <div className="meusjogos__jogos__card__info">
                             <div className="meusjogos__jogos__card__info__title">
-                                <p>{jogo?.name}</p>
+                                <p>{jogo?.titulo}</p>
                             </div>
                             <div className="meusjogos__jogos__card__info__image">
-                                <img src={jogo?.background_image} alt="imagem do jogo comprado" />
+                                <img src={`data:imga/png;base64, ${jogo?.bannerUm}`} alt="imagem do jogo comprado" />
                             </div>
                         </div>
 
@@ -66,7 +75,7 @@ export default props => {
                                     <img src="/imgs/icons/download_icon.svg" alt="icone de download" />
                                     <p>Download</p>
                                 </Link>
-                                <Link to={`/cadastro-review/${jogo?.name?.toLowerCase().replace(/ /g, "-")}`} aria-label={"cadastro review " + jogo?.name?.toLowerCase().replace(/ /g, "-")} className="meusjogos__jogos__links">
+                                <Link to={`/cadastro-review/${jogo?.id}`} aria-label={"cadastro review " + jogo?.titulo?.toLowerCase().replace(/ /g, "-")} className="meusjogos__jogos__links">
                                     <img src="/imgs/icons/review_iconw.svg" alt="icone de livro para fazer um review do jogo" />
                                     <p>Cadastro review</p>
                                 </Link>

@@ -41,7 +41,10 @@
     font-family: var(--font-pixel);
     color: var(--color-primary);
 }
+
 .admin__jogo{
+    flex-direction: column;
+    display: flex;
     width: 45%;
     min-width: 300px;
     padding: 10px;
@@ -50,49 +53,82 @@
     border-radius: 10px;
     border:1px solid var(--grey);
 }
-.admin__jogo h2{
+.admin__jogo h2, .admin__avatar h2{
     margin: 0;
 }
-.admin__jogo-detalhes{
+.admin__avatar{
+    display: flex;
+    width: 45%;
+    min-width: 300px;
+    padding: 10px;
+    color: var(--color-primary);
+    font-family: var(--font-normal);
+    border-radius: 10px;
+    border:1px solid var(--grey);
+    justify-content: space-between;
+    align-items: center;
+    gap:20px;
+}
+.admin__avatar .admin__avatar-img{
+    height: 90px;
+    border-radius: 10px;
+    border: 1px solid var(--purple-y);
+    padding: 5px 10px;
+}
+.admin__avatar .admin__avatar-texts{
+    width: 100%;
+}
+.admin__jogo-detalhes, .admin__avatar-detalhes{
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
 }
-.admin__jogo-detalhes .admin__jogo-platforms{
+.admin__jogo-detalhes, .admin__avatar-detalhes, .admin__jogo-platforms{
     display: flex;
     align-items: center;
     gap: 5px;
 }
-.admin__jogo .admin__jogo-genres{
+.admin__jogo-genres{
     display: flex;
     gap: 10px;
 }
-.admin__jogo .admin__jogo-genres p{
+.admin__jogo-genres p{
     padding: 5px;
     border-radius: 5px;
     border:1px solid var(--grey);
     font-size: 0.7rem;
 }
-.admin__jogo-title{
+.admin__jogo-title, .admin__avatar-title{
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
     margin-top: 20px;
 }
-.admin__jogo-title h2{
+.admin__avatar-title{
+    margin: 0;
+}
+.admin__jogo-title h2, .admin__avatar-title h2{
     max-width: 70%;
 }
-.admin__jogo h3{
+.admin__jogo h3, .admin__avatar h3{
     color: var(--grey);
     font-size: 1.4rem;
     margin: 5px 0px;
 }
-.admin__jogo-title .admin__jogo-btns{
+.admin__avatar h3{
+    display: flex;
+    align-items: center;
+    gap:5px;
+}
+.admin__avatar h3 img{
+    height: 30px;
+}
+.admin__jogo, .admin__avatar-title, .admin__avatar-btns{
     display: flex;
     gap: 5px;
 }
-.admin__jogo-title button{
+.admin__jogo-title button, .admin__avatar-title button{
     font-family: var(--font-normal);
     text-align: center;
     color: var(--white);
@@ -105,10 +141,10 @@
     cursor: pointer;
     transition: 0.7s all;
 }
-.admin__jogo-title button:hover{
+.admin__jogo-title button:hover, .admin__avatar-title button:hover{
     background-color: var(--dark-purple);
 }
-.admin__jogo-title .admin__jogo-edit{
+.admin__jogo-edit{
     display: flex;
     gap: 5px;
     align-items: center;
@@ -215,7 +251,7 @@
 .jogos-admin__buscar .jogos-admin__input-search i:not(.fa-magnifying-glass){
     cursor: pointer;
 }
-.admin-devs, .admin-games, .admin-users{
+.admin-devs, .admin-games, .admin-users, .admin-avatares{
     display: flex;
     gap: 20px;
     flex-wrap: wrap;
@@ -235,14 +271,14 @@
     .gerenciamento-admin aside{
         width: auto;
     }
-    .admin__jogo .admin__jogo-genres{
+    .admin__jogo, .admin__avatar .admin__jogo, .admin__avatar-genres{
         flex-wrap: wrap;
         column-gap: 10px;
     }
 
 }
 @media screen and (max-width: 350px){
-    .admin__jogo{
+    .admin__jogo, .admin__avatar{
         min-width: 200px;
         width: 100%;
     }

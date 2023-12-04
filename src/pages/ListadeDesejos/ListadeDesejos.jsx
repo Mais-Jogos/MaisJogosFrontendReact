@@ -52,7 +52,11 @@ const ListadeDesejos = ({listadesejos, dispatch}) => {
       )
       setFavs(favs)
       console.log("Favs", favs);
-      Axios.get('https://backendmaisjogos-production.up.railway.app/api/jogo/listarTodos')
+      Axios.get('https://backendmaisjogos-production.up.railway.app/api/jogo/listarTodos', {
+        headers:{
+          Authorization: `Bearer ${token}`
+        }
+      })
       .then((res) =>{
         setFavoritos(res.data?.filter(jogo =>
           favs?.some(fav => fav?.idJogo == jogo?.id)

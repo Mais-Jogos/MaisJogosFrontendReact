@@ -11,6 +11,7 @@ import { translate } from '../../translate/translate'
 import { AnimatePresence, motion } from 'framer-motion'
 import TextToSpeech from "../../components/Acessibilidade/TextToSpeech";
 import CardHome from '../../components/CardHome/CardHome'
+import Loading from '../../components/Loading/Loading'
 
 const Home = () => {
   const navigate = useNavigate()
@@ -20,6 +21,7 @@ const Home = () => {
   const [jogos, setJogos] = useState([])
   const [game, setGame] = useState(0)
   const [numberGames, setNumberGames] = useState(6)
+  const [loading, setLoading] = useState(<Loading/>)
   const [direction, setDirection] = useState('left');
   const generos = ["Ação", "Arcade", "Aventura", "Casual", "Corrida", "Esportes", "Estratégia", "Luta", "Puzzle", "Rpg", "Shooter", "Terror"]
   const plataformas = ["Windows", "MacOs", "Linux", "Android", "IOS"]
@@ -38,15 +40,6 @@ const Home = () => {
     platform: 'Todos',
     rating: 0,
   })
-/*   useEffect(() => {
-    const incrementaGame = () => {
-      setGame(game === jogos.length - 1 ? 0 : game + 1);
-    };
-
-    const intervalId = setInterval(incrementaGame, 5000);
-
-    return () => clearInterval(intervalId);
-  }, []); */
 
   useEffect(() => {
     Axios.get('https://backendmaisjogos-production.up.railway.app/api/jogo/listarTodos', {
@@ -57,7 +50,12 @@ const Home = () => {
     .then((response) => {
       console.log(response.data);
       setJogos(response.data)
-    }).catch((error) => console.log(error))
+      setLoading(null)
+      setLeitor(true);
+    }).catch((error) => {
+      console.log(error)
+      setLoading(null)
+    })
     
     Axios.get('https://backendmaisjogos-production.up.railway.app/api/check/listarTodos')
     .then((response) => {
@@ -138,6 +136,7 @@ const Home = () => {
       <Vlibras />
       <Acessibilidade />
       {leitor ? (<TextToSpeech />) : ""}
+      {loading}
 
       <div id="container">
         <div className="section__categories">

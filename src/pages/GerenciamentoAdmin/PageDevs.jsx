@@ -4,11 +4,13 @@ import ModalConfirm from "../../components/ModalConfirm/ModalConfirm";
 import Modal from "../../components/Modal/Modal"
 import { useNavigate } from "react-router-dom";
 import Loading from "../../components/Loading/Loading";
+import { translate } from "../../translate/translate";
 
 const PageDevs = () => {
   const [devs, setDevs] = useState([]);
   const [modal, setModal] = useState(null)
   const [loading, setLoading] = useState(<Loading/>)
+  const [search, setSearch] = useState("");
   const token = window.localStorage.getItem("token")
   const navigate = useNavigate()
   useEffect(() => {
@@ -20,7 +22,10 @@ const PageDevs = () => {
     .then((response) => {
       setDevs(response.data.filter(user => !user.idAvatar));
       setLoading(null)
-    });
+    }).catch((error) =>{
+      console.log(error);
+      setLoading(null)
+    })
   }, []);
   function modalDeletar(id, nome){
     setModal(<ModalConfirm type={false} message={`Deseja deletar "${nome}"?`} simClick={() => deletarDev(id)} nãoClick={() => setModal(null)}/>)
@@ -49,8 +54,26 @@ const PageDevs = () => {
     <>
     {modal}
     {loading}
+        <div className="jogos-admin__buscar">
+          <p>{translate("Buscar")}:</p>
+          <div className="jogos-admin__input-search">
+            <input
+              type="text"
+              placeholder={translate("Buscar jogo")}
+              onChange={(e) => setSearch(e.target.value)}
+              value={search}
+            />
+            {search !== "" && (
+              <i
+                className="fa-solid fa-circle-xmark"
+                onClick={() => setSearch("")}
+              ></i>
+            )}
+            <i className="fa-solid fa-magnifying-glass"></i>
+          </div>
+        </div>
       <div className="admin-devs">
-        {devs?.map((dev, index) => {
+        {devs.filter(dev => search === "" || dev?.nome.toLowerCase().includes(search?.toLowerCase()))?.map((dev, index) => {
           return (
             <div className="admin__jogo">
               <div className="admin__jogo-title">

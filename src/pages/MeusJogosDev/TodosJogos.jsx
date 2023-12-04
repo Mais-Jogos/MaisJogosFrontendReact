@@ -5,12 +5,14 @@ import Axios from "axios";
 import { useRef } from "react";
 import ModalConfirm from "../../components/ModalConfirm/ModalConfirm";
 import Modal from "../../components/Modal/Modal";
+import Loading from "../../components/Loading/Loading";
 
 export default props => {
     const [games, setGames] = useState([]);
     const [modal, setModal] = useState(null);
     const [dev, setDev] = useState()
     const [leitor, setLeitor] = useState(false);
+    const [loading, setLoading] = useState(<Loading/>)
     const token = window.localStorage.getItem("token");
     const id = window.localStorage.getItem("id");
 
@@ -22,9 +24,13 @@ export default props => {
         })
         .then((response) => {
             console.log("Jogos", response.data);
-            setGames(response.data.filter(game => game?.idDev.toString() === id));
+            setGames(response.data.filter(game => game?.idDev == id));
             setLeitor(true);
-        }).catch((error) => { console.log(error); });
+            setLoading(null)
+        }).catch((error) => { 
+            console.log(error);
+            setLoading(null)
+        });
         Axios.get(`https://backendmaisjogos-production.up.railway.app/api/usuario/listarCliente/${id}`, {
             headers:{
               Authorization: `Bearer ${token}`
@@ -84,6 +90,7 @@ export default props => {
 
     return (
         <>
+        {loading}
             {   
                 games?.filter(game => game?.idDev === dev?.id).map((jogo) => (
                     <div className="meusjogos__jogos__card">

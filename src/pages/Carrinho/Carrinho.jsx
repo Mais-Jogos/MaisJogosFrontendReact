@@ -16,41 +16,10 @@ const Carrinho = ({ cart }) => {
   const [selectedGames, setSelectedGames] = useState(cart.cart)
   const navigate = useNavigate()
   useEffect(() => {
-    setSelectedGames(cart.cart.map((game) => {
-      if(selectedGames === cart.cart){
-        return {
-          ...game,
-          selected: true,
-        }
-      }else{
-        const oldGame = selectedGames.filter(g => g.id === game.id)
-        if(oldGame.selected === false){
-          return oldGame
-        }
-      }
-    }))
-    setTotal(selectedGames.map(game => game?.rating).reduce((prev, curr) => prev + curr, 0))
-
+    setTotal(cart.cart.map(game => game?.valorJogo).reduce((prev, curr) => prev + curr, 0))
+    console.log(cart);
   }, [cart.cart])
 
-  const onChangeSelected = (game, selected) =>{
-    const newGames = selectedGames.map(mapGames => {
-      if(mapGames === game){
-        return{
-          ...mapGames,
-          selected: selected,
-        }
-      }
-      return mapGames;
-    })
-    setSelectedGames(newGames)
-    console.log(newGames);
-  }
-  const deleteGames = (game) =>{
-    const deleteGame = selectedGames.filter(mapGames => mapGames === game)
-    setSelectedGames(deleteGame)
-    console.log(deleteGame);
-  }
   return (
     <div id='container-page'>
       <Menu />

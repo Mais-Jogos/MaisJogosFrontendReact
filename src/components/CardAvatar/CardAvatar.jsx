@@ -4,12 +4,12 @@ import { connect } from "react-redux";
 import { addAvatar, changeAvatar, buyWithCoins } from "../../redux/actions";
 import "./style.css";
 
-const CardAvatar = ({ avatar, userRedux, coins, dispatch }) => {
+const CardAvatar = ({ avatar, cor, userRedux, coins, dispatch }) => {
     const [hover, setHover] = useState(false);
     const handleClickAdd = (avatar) =>{
       dispatch(addAvatar(avatar))
       setTimeout(()=>{
-        dispatch(buyWithCoins(avatar.coins))
+        dispatch(buyWithCoins(avatar.valor))
       }, 4000)
     }   
     const handleClickChangeAvatar = (avatar) =>{
@@ -27,15 +27,15 @@ const CardAvatar = ({ avatar, userRedux, coins, dispatch }) => {
           className="avatares__imgBG"
           style={{
             backgroundImage: `url(/imgs/cardbg/bgCard.png)`,
-            backgroundColor: avatar?.color,
+            backgroundColor: cor,
             backgroundSize: "100%",
             boxShadow:
-              hover && `inset 0px 0px 20px ${avatar?.color}, 0px 0px 10px ${avatar?.color}`,
+              hover && `inset 0px 0px 20px ${cor}, 0px 0px 10px ${avatar?.color}`,
             backgroundRepeat: "no-repeat",
             backgroundPosition: "center",
           }}
         >
-          <img id="avatares__parrot" src={avatar?.img} />
+          <img id="avatares__parrot" src={`data:image/png;base64, ${avatar?.arquivo}`} />
         </div>
 
         <div className="avatares__letraPixel">
@@ -49,8 +49,8 @@ const CardAvatar = ({ avatar, userRedux, coins, dispatch }) => {
               className="lojaskin__imgEdit"
               src="/imgs/icons/Kapicoin_icon.png"
             />
-            <p> {avatar?.coins} </p>
-            {avatar?.coins <= coins?.coins && <div className="lojaskin__SVG" >
+            <p> {avatar?.valor} </p>
+            {avatar?.valor <= coins?.coins && <div className="lojaskin__SVG" >
               <i class="fa-solid fa-cart-shopping" onClick={() => handleClickAdd(avatar)}></i>
             </div>}
           </div>

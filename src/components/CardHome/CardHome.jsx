@@ -7,7 +7,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 const CardHome = ({game, dispatch, cart}) => {
-  var carrinho = cart.cart.every(c => c?.id !== game?.id)
+  var carrinho = cart.cart.every(c => c?.id != game?.id)
   const handleClickAdd = (game) => {
     if(carrinho){
       dispatch(selectGame(game));
@@ -34,7 +34,7 @@ const CardHome = ({game, dispatch, cart}) => {
       </div>
       <div className="border__price">
         <div className="price">
-          <h2>R${"100"}</h2>
+          <h2>R${game?.valorJogo}</h2>
           <i className="fa-solid fa-cart-shopping" onClick={() => handleClickAdd(game)}></i>
         </div>
       </div>

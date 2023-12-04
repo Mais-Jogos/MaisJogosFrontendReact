@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import './style.css'
 import Acessibilidade from "../../components/Acessibilidade/Acessibilidade";
 import Menu from "../../components/Menu/Menu";
@@ -9,11 +9,23 @@ import { connect } from "react-redux";
 import GoBack from "../../components/GoBack/GoBack";
 import TextToSpeech from "../../components/Acessibilidade/TextToSpeech";
 import { useNavigate } from "react-router-dom";
-
+import Axios from "axios";
 
 const Avatares = ({userRedux}) => {
     const navigate = useNavigate()
-    
+    const token = window.localStorage.getItem("token")
+    const [skins, setSkins] = useState([])
+    const cores = ["orange", "fuchsia", "cyan", "blue", "red"]
+    useEffect(() =>{
+        Axios.get("https://backendmaisjogos-production.up.railway.app/api/avatar/listarTodos", {
+            headers:{
+                Authorization: `Bearer ${token}`
+            }
+        }).then((response) =>{
+            console.log(response.data);
+            setSkins(response.data)
+        })
+    }, [])
     const avatares = [
         {
             nome: "Silveira",
@@ -40,14 +52,14 @@ const Avatares = ({userRedux}) => {
             nome: "Veronica",
             img:"/imgs/animais/4.png",
             color:"blue",
-            coins:50,
+            valor:50,
             id:4,
         },
         {
             nome: "Rochinha",
             img:"/imgs/animais/5.png",
             color:"red",
-            coins:500,
+            valor:500,
             id:5,
         },
     ]
@@ -63,10 +75,6 @@ const Avatares = ({userRedux}) => {
                 <div className="avatares__letraPixel">
                     <h1 className="titulo"> <img id="avatares_capivaraICON" src="\imgs\icons\capivara_icon.svg"/>{translate("Meus Avatares")}</h1>
                 </div>
-                <div className="avatares__admin-cad" onClick={() => navigate("/cadastro-skin")}>
-                    <p>{translate("Cadastrar mais Skins")}</p>
-                    <i class="fa-solid fa-plus"></i>
-                </div>
 
                 <section className="avatares__grid">
                     
@@ -81,16 +89,12 @@ const Avatares = ({userRedux}) => {
                     </div>
 
                     {
-                        avatares?.map((avatar) =>(
-                            <CardAvatar avatar={avatar} key={avatar?.id}/>
+                        skins?.map((avatar, index) =>(
+                            <CardAvatar avatar={avatar} key={avatar?.id} cor={cores[index]}/>
                         ))
                     }
 
                 </section>
-                <div className="avatares__admin-exc">
-                    <p>{translate("Excluir Skins")}</p>
-                    <i class="fa-regular fa-trash-can"></i>
-                </div>
             </main>
 
         </div>
