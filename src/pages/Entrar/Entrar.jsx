@@ -16,7 +16,6 @@ import { useNavigate } from 'react-router-dom'
 import Modal from '../../components/Modal/Modal'
 
 
-
 const Entrar = () => {
   const [userType, setUserType] = useState('')
   const [login, setLogin] = useState(true)
@@ -39,6 +38,7 @@ const Entrar = () => {
               }else if(userType === "Dev"){
                 navigate("/perfil-dev")
               }
+              setModal(null)
             },3000)
           })
           .catch((error) => {

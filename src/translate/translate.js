@@ -841,6 +841,34 @@ export function translate(value){
             "pt": "Valor da Skin",
             "en": "Skin Value"
         },
+        "Quantidade de Reviews":{
+            "pt": "Quantidade de Reviews",
+            "en": "Number of Reviews"
+        },
+        "Quantidade de Favoritos":{
+            "pt": "Quantidade de Favoritos",
+            "en": "Number of Favorites"
+        },
+        "Jogos cadastrados":{
+            "pt": "Jogos cadastrados",
+            "en": "Registered games"
+        },
+        "Preço":{
+            "pt": "Preço",
+            "en": "Price"
+        },
+        "Jogos mais caros":{
+            "pt": "Jogos mais caros",
+            "en": "Most expensive games"
+        },
+        "Quantidade de visitantes":{
+            "pt": "Quantidade de visitantes",
+            "en": "Number of visitors"
+        },
+        "Devs com Jogos mais vendidos":{
+            "pt": "Devs com Jogos mais vendidos",
+            "en": "Devs with best-selling games"
+        },
     }
     return vocabulary[value][language] ? vocabulary[value][language] : value;
 }

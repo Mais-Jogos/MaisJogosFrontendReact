@@ -26,43 +26,6 @@ const Avatares = ({userRedux}) => {
             setSkins(response.data)
         })
     }, [])
-    const avatares = [
-        {
-            nome: "Silveira",
-            img:"/imgs/animais/1.png",
-            color:"orange",
-            coins:10,
-            id:1,
-        },
-        {
-            nome: "Sr. Rocha",
-            img:"/imgs/animais/2.png",
-            color:"fuchsia",
-            coins:20,
-            id:2,
-        },
-        {
-            nome: "Julia",
-            img:"/imgs/animais/3.png",
-            color:"cyan",
-            coins:5,
-            id:3,
-        },
-        {
-            nome: "Veronica",
-            img:"/imgs/animais/4.png",
-            color:"blue",
-            valor:50,
-            id:4,
-        },
-        {
-            nome: "Rochinha",
-            img:"/imgs/animais/5.png",
-            color:"red",
-            valor:500,
-            id:5,
-        },
-    ]
     return (
         <div id='container-page'>
             <Menu />
@@ -79,8 +42,8 @@ const Avatares = ({userRedux}) => {
                 <section className="avatares__grid">
                     
                     {
-                        userRedux.avatares?.map((avatar) =>(
-                            <CardAvatar avatar={avatar} key={avatar?.id}/>
+                        userRedux.avatares?.map((avatar, index) =>(
+                            <CardAvatar avatar={avatar} key={avatar?.id} cor={cores[index]}/>
                         ))
                     }
 

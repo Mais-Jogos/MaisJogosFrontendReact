@@ -43,11 +43,7 @@
     background: center / contain no-repeat url("/imgs/animais/3.png") var(--color-secondary);
     position: relative;
 }
-.perfilUser__userData__avatar__image__editImg{
-    /* position: absolute;
-    bottom: 0px;
-    right: 0px; */
-}
+
 .perfilUser__userData__avatar__capCoins{
     width: 130px;
     height: 30px;
@@ -79,7 +75,7 @@
     height: 360px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end;
     align-content: center;
     flex-wrap: wrap;
     gap: 50px;
@@ -90,7 +86,7 @@
     font-size: 1.2rem;
     position: relative;
 }
-.perfilUser__userData__input:nth-child(5){
+.perfilUser__userData__input:nth-child(4){
     background-color: var(--purple);
     color:var(--color-secondary);
     border-radius: 10px;
@@ -239,6 +235,7 @@
 .perfilUser-card__cardFooter input{
     width: 30px;
     height: 30px;
+    padding: 0;
 }
 .perfilUser-card__letraPixel{
     color: var(--color-primary);

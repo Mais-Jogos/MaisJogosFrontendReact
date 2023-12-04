@@ -142,6 +142,7 @@
 .relatorios-admin__mais-vendidos{
     color: var(--color-primary);
     grid-area: mais-vendidos;
+    height: 100%;
 }
 .relatorios-admin__mais-vendidos > p{
     font-family: var(--font-pixel);
@@ -152,6 +153,7 @@
     border: 1px solid var(--grey);
     font-family: var(--font-normal);
     background-color: var(--light-background);
+    height: 84%;
 }
 .relatorios-admin__mais-vendidos .header__mais-vendidos, .mais-vendidos{
     display: flex;
@@ -181,6 +183,8 @@
 .relatorios-admin__mais-vendidos .mais-vendidos p:first-child{
     color: var(--green);
     width: 20%;
+    font-weight: 900;
+    font-size: 1.5rem;
 }
 
 .relatorios-admin__melhores-devs{

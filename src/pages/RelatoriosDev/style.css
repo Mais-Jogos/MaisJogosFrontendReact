@@ -134,6 +134,7 @@
 
 .relatorios-dev__mais-vendidos{
     color: var(--color-primary);
+    height: 100%;
 }
 .relatorios-dev__mais-vendidos > p{
     font-family: var(--font-pixel);
@@ -144,6 +145,7 @@
     border: 1px solid var(--grey);
     font-family: var(--font-normal);
     background-color: var(--light-background);
+    height: 80%;
 }
 .relatorios-dev__mais-vendidos .header__mais-vendidos, .mais-vendidos{
     display: flex;

@@ -13,10 +13,6 @@ const Step3 = ({jogo, onChangeGame, erro}) => {
         <div className='cadastroJogo__content__uploadContent__fileUpload'>
           <input type="file" id='fotos' multiple defaultValue={jogo?.fotos} onChange={(e) => onChangeGame("fotos", e.target.files)} className={`cadastroJogo__content__uploadContent__fileUpload--changeText`}/>
         </div>
-        <label htmlFor="videos" className='cadastroJogo__content__label'>Videos</label>
-        <div className='cadastroJogo__content__uploadContent__fileUpload'>
-          <input type="file" id='videos' defaultValue={jogo?.videos} onChange={(e) => onChangeGame("videos", e.target.files[0])} className={`cadastroJogo__content__uploadContent__fileUpload--changeText`}/>
-        </div>
         <label htmlFor="licenca" className='cadastroJogo__content__label'>Licença</label>
         <div className='cadastroJogo__content__uploadContent__fileUpload'>
           <input type="file" id='licenca' defaultValue={jogo?.licenca} onChange={(e) => onChangeGame("licenca", e.target.files[0])} className={`cadastroJogo__content__uploadContent__fileUpload--changeText`}/>

@@ -458,17 +458,6 @@ const EditarJogo = () => {
             </div>
           ))}
         </div>
-        <label htmlFor="videos" className="cadastroJogo__content__label">
-          Videos
-        </label>
-        <div className="cadastroJogo__content__uploadContent__fileUpload">
-          <input
-            type="file"
-            id="videos"
-            onChange={(e) => onChangeGame("videos", e.target.files[0])}
-            className={`cadastroJogo__content__uploadContent__fileUpload--changeText`}
-          />
-        </div>
         <label htmlFor="licenca" className="cadastroJogo__content__label">
           Licença
         </label>

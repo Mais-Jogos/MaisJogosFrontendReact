@@ -1,21 +1,20 @@
 import { CHANGE_COLORCARD, CHANGE_AVATAR, ADD_AVATAR, HIDE_ALERT } from './actions'; 
+import Axios from "axios"
  
 const initialState = { 
   colorCard: '#000',
   avatar:{
     nome: "Rochinha",
-    img:"/imgs/animais/5.png",
-    color:"red",
-    coins:500,
-    id:5,
+    arquivo:"/imgs/animais/5.png",
+    valor: 0,
+    id:1,
   },
   avatares:[
     {
       nome: "Rochinha",
-      img:"/imgs/animais/5.png",
-      color:"red",
-      coins:500,
-      id:5,
+      arquivo:"/imgs/animais/5.png",
+      valor: 0,
+      id:1,
     },
   ],
   message:null,

@@ -6,6 +6,8 @@ import {translate} from '../../translate/translate'
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts'
 import "./style.css"
 import TextToSpeech from "../../components/Acessibilidade/TextToSpeech";
+import { useEffect } from 'react'
+import Axios from "axios"
 
 const RelatoriosAdmin = () => {
   const [filterGraf, setFilterGraf] = useState('Geral')
@@ -115,6 +117,52 @@ const RelatoriosAdmin = () => {
     const newJogo = jogoIgual[0];
     return {Dev:newJogo?.Dev, Jogo: newJogo?.Jogo, Valor: newJogo?.Valor * jogoIgual?.length, Vendidos:jogoIgual?.length} ;
   })
+  const [check, setCheck] = useState([])
+  const [users, setUsers] = useState([])
+  const [dev, setDevs] = useState([])
+  const [jogo, setJogos] = useState([])
+  const [admins, setAdmins] = useState([])
+  const token = window.localStorage.getItem("token")
+  
+  useEffect(() =>{
+    Axios.get(`https://backendmaisjogos-production.up.railway.app/api/usuario/listarTodos`,{
+      headers:{
+        Authorization: `Bearer ${token}`
+      }
+    })
+    .then((response) => {
+        setUsers(response.data.filter(user => user.idAvatar));
+        setDevs(response.data.filter(user => !user.idAvatar));
+        console.log("Usuarios", response.data);
+    })
+    Axios.get(`https://backendmaisjogos-production.up.railway.app/api/jogo/listarTodos`,{
+      headers:{
+        Authorization: `Bearer ${token}`
+      }
+    })
+    .then((response) => {
+        setJogos(response.data);
+        console.log("Jogos", response.data);
+    })
+    Axios.get(`https://backendmaisjogos-production.up.railway.app/api/adm/listarTodos`,{
+      headers:{
+        Authorization: `Bearer ${token}`
+      }
+    })
+    .then((response) => {
+        setAdmins(response.data);
+        console.log("Admins", response.data);
+    })
+    Axios.get(`https://backendmaisjogos-production.up.railway.app/api/check/listarTodos`,{
+      headers:{
+        Authorization: `Bearer ${token}`
+      }
+    })
+    .then((response) => {
+        setCheck(response.data);
+        console.log("Check", response.data);
+    })
+  }, [])
   
   return (
     <div id='container-page' className='home'>
@@ -159,26 +207,25 @@ const RelatoriosAdmin = () => {
                   </LineChart>
               </div>
               <div className="relatorios-admin__geral">
-                <p>{translate("Valor Total de vendas")} <b>R${valorTotal.toFixed(2)}</b></p>
-                <p>{translate("Valor Total de lucros")}<b>R${(valorTotal - (valorTotal*0.9)).toFixed(2)}</b></p>
+                <p>{translate("Valor Total de vendas")} <b>R${jogo.reduce((ac, cv) => ac + cv.valorJogo, 0).toFixed(2)}</b></p>
+                <p>{translate("Valor Total de lucros")}<b>R${(jogo.reduce((ac, cv) => ac + cv.valorJogo, 0) - (jogo.reduce((ac, cv) => ac + cv.valorJogo, 0)*0.9)).toFixed(2)}</b></p>
               </div>
               <div className="relatorios-admin__mais-vendidos">
-                <p>{translate("Jogos mais vendidos")}</p>
+                <p>{translate("Jogos mais caros")}</p>
                 <div className="tabela__mais-vendidos">
                   <div className="header__mais-vendidos">
                     <p>{translate("Status")}</p>
-                    <p>{translate("Quantidade de jogos vendidos")}</p>
+                    <p>{translate("Preço")}</p>
                     <p>{translate("Nome do Jogo")}</p>
                   </div>
                   <div className="body__mais-vendidos">
-                    {[...new Set(jogos)].sort(function(a , b)
-                    {return jogos.filter(mapJogo => mapJogo === a).length > jogos.filter(mapJogo => mapJogo === b).length ? -1 
-                      : jogos.filter(mapJogo => mapJogo === a).length < jogos.filter(mapJogo => mapJogo === b).length ? 1 : 0})
-                    .map(jogo => (
+                    {jogo.sort(function(a , b)
+                    {return a.valorJogo > b.valorJogo ? -1 
+                      : a.valorJogo < b.valorJogo ? 1 : 0}).map(jogo => (
                       <div className="mais-vendidos">
                         <p>&#129041;</p>
-                        <p className="quant__mais-vendidos"><b>{jogos.filter(mapJogo => mapJogo === jogo).length}</b></p>
-                        <p>{jogo}</p>
+                        <p className="quant__mais-vendidos"><b>{jogo?.valorJogo?.toFixed(2)}</b></p>
+                        <p>{jogo?.titulo}</p>
                       </div>
                     ))}
                   </div>
@@ -187,23 +234,23 @@ const RelatoriosAdmin = () => {
               <div className="relatorios-admin__quantidade-jogos">
                 <div className="quant-jogos">
                   <p>{translate("Quantidade de clientes cadastrados")}</p>
-                  <div>{clientes}</div>
+                  <div>{users?.length}</div>
                 </div>
                 <div className="quant-jogos">
-                  <p>{translate("Quantidade de jogos vendidos")}</p>
-                  <div>{jogosVendidos}</div>
+                  <p>{translate("Quantidade de visitantes")}</p>
+                  <div>{check?.length}</div>
                 </div>
                 <div className="quant-jogos">
                   <p>{translate("Quantidade de Devs cadastrados")}</p>
-                  <div>{[...new Set(devs)].length}</div>
+                  <div>{dev?.length}</div>
                 </div>
                 <div className="quant-jogos">
                   <p>{translate("Quantidade de jogos cadastrados")}</p>
-                  <div>{[...new Set(jogos)].length}</div>
+                  <div>{jogo?.length}</div>
                 </div>
               </div>
             <div className="relatorios-admin__melhores-devs">
-                <p>{translate("Jogos mais vendidos")}</p>
+                <p>{translate("Devs com Jogos mais vendidos")}</p>
                 <div className="tabela__melhores-devs">
                   <div className="header__melhores-devs">
                     <p>{translate("Status")}</p>
@@ -213,17 +260,16 @@ const RelatoriosAdmin = () => {
                     <p>{translate("Valor Total de vendas")}</p>
                   </div>
                   <div className="body__melhores-devs">
-                    {melhoresDevs.sort(function(a , b)
-                    {return a.Valor > b.Valor ? -1 
-                      : a.Valor < b.Valor ? 1 : 0})
-                    .filter(jogo => jogo.Jogo !== undefined)
+                    {jogo.sort(function(a , b)
+                    {return a.valorJogo > b.valorJogo ? -1 
+                      : a.valorJogo < b.valorJogo ? 1 : 0})
                     .map(jogo => (
                       <div className="melhores-devs">
                         <p>&#129041;</p>
-                        <p className="quant__melhores-devs"><b>{jogo.Vendidos}</b></p>
-                        <p>{jogo.Jogo}</p>
-                        <p>{jogo.Dev}</p>
-                        <p>R${jogo.Valor.toFixed(2)}</p>
+                        <p className="quant__melhores-devs"><b>{"1"}</b></p>
+                        <p>{jogo?.titulo}</p>
+                        <p>{dev.filter(dev => dev?.id == jogo?.idDev)[0]?.nome}</p>
+                        <p>R${jogo?.valorJogo.toFixed(2)}</p>
                       </div>
                     ))}
                   </div>

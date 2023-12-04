@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Menu from '../../components/Menu/Menu'
 import Vlibras from '../../components/Vlibras/Vlibras'
 import Acessibilidade from '../../components/Acessibilidade/Acessibilidade'
@@ -6,6 +6,8 @@ import {translate} from '../../translate/translate'
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts'
 import TextToSpeech from "../../components/Acessibilidade/TextToSpeech";
 import "./style.css"
+import Axios from "axios"
+
 
 const RelatoriosDev = () => {
   const [filterGraf, setFilterGraf] = useState('Geral')
@@ -109,6 +111,70 @@ const RelatoriosDev = () => {
   const mapJogos = [].concat(...jogos)
   const assinantesGeral = 10
 
+  const token = window.localStorage.getItem("token")
+  const id = window.localStorage.getItem("id")
+  const [dev, setDev] = useState({})
+  const [pagamentos, setPagamentos] = useState([])
+  const [jogo, setJogos] = useState([])
+  const [reviews, setReviews] = useState([])
+  const [favoritos, setFavoritos] = useState([])
+
+  useEffect(() =>{
+    Axios.get(`https://backendmaisjogos-production.up.railway.app/api/usuario/listarCliente/${id}`,{
+      headers:{
+        Authorization: `Bearer ${token}`
+      }
+    })
+    .then((response) => {
+      setDev(response.data);
+    })
+    Axios.get(`https://backendmaisjogos-production.up.railway.app/api/favorito/listarTodos`,{
+      headers:{
+        Authorization: `Bearer ${token}`
+      }
+    })
+    .then((response) => {
+        setFavoritos(response.data);
+        console.log("Favoritos", response.data);
+    })
+    Axios.get(`https://backendmaisjogos-production.up.railway.app/api/review/listarTodos`,{
+      headers:{
+        Authorization: `Bearer ${token}`
+      }
+    })
+    .then((response) => {
+        setReviews(response.data);
+        console.log("Reviews", response.data);
+    })
+    Axios.get(`https://backendmaisjogos-production.up.railway.app/api/pixDev/listarTodos`,{
+      headers:{
+        Authorization: `Bearer ${token}`
+      }
+    })
+    .then((response) => {
+        setPagamentos(response.data);
+        console.log("Pix", response.data);
+    })
+    Axios.get(`https://backendmaisjogos-production.up.railway.app/api/jogo/listarTodos`,{
+      headers:{
+        Authorization: `Bearer ${token}`
+      }
+    })
+    .then((response) => {
+        setJogos(response.data.filter(jogo => jogo?.idDev == id));
+        console.log("Jogos", response.data);
+    })
+    Axios.get(`https://backendmaisjogos-production.up.railway.app/api/favorito/listarTodos`,{
+      headers:{
+        Authorization: `Bearer ${token}`
+      }
+    })
+    .then((response) => {
+        setFavoritos(response.data);
+        console.log("Favoritos", response.data);
+    })
+  }, [])
+
   return (
     <div id='container-page' className='home'>
         <Menu/>
@@ -152,42 +218,41 @@ const RelatoriosDev = () => {
                   </LineChart>
               </div>
               <div className="relatorios-dev__geral">
-                <p>{translate("Quantidade de jogos comprados")} <b>{jogosVendidos}</b></p>
-                <p>{translate("Valor Total")} <b>R${valorTotal.toFixed(2)}</b></p>
+                <p>{translate("Quantidade de jogos cadastrados")}<b>{jogo?.length}</b></p>
+                <p>{translate("Quantidade de jogos comprados")} <b>2</b></p>
               </div>
               <div className="relatorios-dev__quantidade-jogos">
                 <div className="quant-jogos">
-                  <p>{translate("Quantidade de jogos vendidos")}</p>
-                  <div>{jogosVendidos}</div>
+                  <p>{translate("Quantidade de Reviews")}</p>
+                  <div>{reviews?.filter(review => jogo?.some(j => review?.idJogo == j?.id)).length}</div>
                 </div>
                 <div className="quant-jogos">
-                  <p>{translate("Quantidade de jogos cadastrados")}</p>
-                  <div>{[...new Set(mapJogos)].length}</div>
+                  <p>{translate("Quantidade de Favoritos")}</p>
+                  <div>{favoritos?.filter(fav => jogo?.some(j => fav?.idJogo == j?.id)).length}</div>
                 </div>
                 <div className="relatorios-dev__vendas">
-                  <p>{translate("SubTotal Vendas")} <b>R${valorTotal.toFixed(2)}</b></p>
-                  <span>{translate("Desconto de")} -R${(valorTotal*0.1).toFixed(2)}</span>
+                  <p>{translate("SubTotal Vendas")} <b>R${jogo.reduce((ac, cv) => ac + cv.valorJogo, 0).toFixed(2)}</b></p>
+                  <span>{translate("Desconto de")} -R${(jogo.reduce((ac, cv) => ac + cv.valorJogo, 0) - (jogo.reduce((ac, cv) => ac + cv.valorJogo, 0)*0.9)).toFixed(2)}</span>
                   <hr />
-                  <p>{translate("Valor Total de lucros")}<b>R${(valorTotal - (valorTotal*0.1)).toFixed(2)}</b></p>
+                  <p>{translate("Valor Total de lucros")}<b>R${(jogo.reduce((ac, cv) => ac + cv.valorJogo, 0) - (jogo.reduce((ac, cv) => ac + cv.valorJogo, 0)*0.1)).toFixed(2)}</b></p>
                 </div>
               </div>
               <div className="relatorios-dev__mais-vendidos">
-                <p>{translate("Jogos mais vendidos")}</p>
+                <p>{translate("Jogos cadastrados")}</p>
                 <div className="tabela__mais-vendidos">
                   <div className="header__mais-vendidos">
                     <p>{translate("Status")}</p>
-                    <p>{translate("Quantidade de jogos vendidos")}</p>
+                    <p>{translate("Preço")}</p>
                     <p>{translate("Nome do Jogo")}</p>
                   </div>
                   <div className="body__mais-vendidos">
-                    {[...new Set(mapJogos)].sort(function(a , b)
-                    {return mapJogos.filter(mapJogo => mapJogo === a).length > mapJogos.filter(mapJogo => mapJogo === b).length ? -1 
-                      : mapJogos.filter(mapJogo => mapJogo === a).length < mapJogos.filter(mapJogo => mapJogo === b).length ? 1 : 0})
-                    .map(jogo => (
+                  {jogo.sort(function(a , b)
+                    {return a.valorJogo > b.valorJogo ? -1 
+                      : a.valorJogo < b.valorJogo ? 1 : 0}).map(jogo => (
                       <div className="mais-vendidos">
                         <p>&#129041;</p>
-                        <p className="quant__mais-vendidos"><b>{mapJogos.filter(mapJogo => mapJogo === jogo).length}</b></p>
-                        <p>{jogo}</p>
+                        <p className="quant__mais-vendidos"><b>{jogo?.valorJogo?.toFixed(2)}</b></p>
+                        <p>{jogo?.titulo}</p>
                       </div>
                     ))}
                   </div>

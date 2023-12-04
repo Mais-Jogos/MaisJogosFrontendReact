@@ -77,10 +77,10 @@ const PerfilUser = (props) => {
             transform: 'scale3d(1.07, 1.07, 1.07)',
         });
     }
+    const type = window.localStorage.getItem("type")
+    const token = window.localStorage.getItem("token")
+    const id = window.localStorage.getItem("id")
     useEffect(() =>{
-        const type = window.localStorage.getItem("type")
-        const token = window.localStorage.getItem("token")
-        const id = window.localStorage.getItem("id")
         if (type !== "user") {
             navigate("/entrar")
         }
@@ -102,6 +102,31 @@ const PerfilUser = (props) => {
         setTimeout(() =>{
           navigate("/entrar")
         }, 3000)
+    }
+    const editarUser = () =>{
+        if(editButton){
+            Axios.put(`https://backendmaisjogos-production.up.railway.app/api/usuario/alterarusuario/${id}`, data,  {
+                headers:{
+                    Authorization: `Bearer ${token}`
+                }
+            })
+            .then((response) => {
+                console.log("Alterado", response);
+                setModal(<Modal message={"Alterado com sucesso!"} type={true}/>)
+                setTimeout(() =>{
+                    setModal(null)
+                }, 3000)
+                setEditButton(false)
+            })
+            .catch((error) => {
+                console.log(error)
+                setModal(<Modal message={"Não foi possivel alterar!"} type={false}/>)
+                setTimeout(() =>{
+                    setModal(null)
+                }, 3000)
+            })
+        }
+        setEditButton(true);
     }
 
     return (
@@ -133,7 +158,7 @@ const PerfilUser = (props) => {
                         <div className="perfilUser-card__border" style={glowStyles}>
                             <div className="perfilUser-card__cardBG" >
                                 <div className="perfilUser-card__imgBG" style={{ backgroundColor: userData.colorCard }}>
-                                    <img id="perfilUser-card__parrot" src={`data:image/png;base64, ${userRedux.avatar.arquivo}`} />
+                                    <img id="perfilUser-card__parrot" src={`${userRedux.avatar?.id !== 1 ? 'data:image/png;base64,' : ""}${userRedux.avatar?.arquivo}`} />
                                 </div>
                                 <div className="perfilUser-card__cardFooter">
                                     <img className="perfilUser-card__imgEdit" src="/imgs/icons/Kapicoin_icon.png" />
@@ -186,20 +211,8 @@ const PerfilUser = (props) => {
                         </div>
 
                         <div className="perfilUser__userData__input">
-                            <label htmlFor="senha">{translate("Senha")}</label>
-                            <input type="password" id="senha" 
-                            value={data?.password} 
-                            onChange={e => setData({ ...data, password: e.target.value })}
-                            aria-label="senha"
-                            readOnly={!editButton}
-                            ></input>
-
-                            {editButton ? <img src="/imgs/icons/edit_icon.png" alt="icons da moeda da loja" className="perfilUser__userData__input__editImg" /> : false}
-                        </div>
-
-                        <div className="perfilUser__userData__input">
                             <input type="button" id="editar" value={editButton ? "Salvar" : "Editar"} onClick={_ => {
-                                editButton ? setEditButton(false) : setEditButton(true)
+                               editarUser()
                             }}
                             aria-label="editar"
                             >
