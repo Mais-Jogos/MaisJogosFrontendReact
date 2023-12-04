@@ -65,7 +65,7 @@ const Home = () => {
     var categoriasSelecionadas;
     var notasSelecionadas;
     if (filter.platform !== "Todos") {
-      plataformasSelecionadas = filter.platform.some(platforma => platforma === jogo.plataforma);
+      plataformasSelecionadas = filter.platform.some(platforma => platforma === jogo?.so);
     } else {
       plataformasSelecionadas = jogo;
     }

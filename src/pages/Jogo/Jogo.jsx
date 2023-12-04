@@ -96,7 +96,7 @@ const Jogo = ({ dispatch, listadesejos, cart }) => {
   }, []);
   var carrinho = cart.cart.every((c) => c?.id != jogo?.id);
   const handleClickAdd = (game) => {
-    if (!carrinho && token) {
+    if (carrinho && token) {
       dispatch(selectGame(game));
     }
   };

@@ -92,7 +92,7 @@ const ListadeDesejos = ({listadesejos, dispatch}) => {
               <div className='listaDeDesejos__card__info'>
                 <div className='listaDeDesejos__card__info__title'>
                   <h2>{jogo?.titulo}</h2>
-                  <p>R$100,00</p>
+                  <p>R${jogo?.valorJogo.toFixed(2)}</p>
                 </div>
 
                 <div className='listaDeDesejos__card__info__actions'>

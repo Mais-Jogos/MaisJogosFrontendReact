@@ -67,7 +67,7 @@ export default props => {
                         <div className="meusjogos__jogos__card__actions">
                             <div className="meusjogos__jogos__card__actions__dateInfo">
                                 <p>Data da compra</p>
-                                <p>{new Date.toLocaleDateString()}</p>
+                                <p>{new Date().toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric' })}</p>
                             </div>
                             <div className="meusjogos__jogos__card__actions__action">
                                 <Link aria-label="download" className="meusjogos__jogos__links">

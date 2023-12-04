@@ -128,7 +128,7 @@ const RelatoriosDev = () => {
     })
     .then((response) => {
       setDev(response.data);
-    })
+    }).catch((error) => console.log(error))
     Axios.get(`https://backendmaisjogos-production.up.railway.app/api/favorito/listarTodos`,{
       headers:{
         Authorization: `Bearer ${token}`
@@ -137,7 +137,7 @@ const RelatoriosDev = () => {
     .then((response) => {
         setFavoritos(response.data);
         console.log("Favoritos", response.data);
-    })
+    }).catch((error) => console.log(error))
     Axios.get(`https://backendmaisjogos-production.up.railway.app/api/review/listarTodos`,{
       headers:{
         Authorization: `Bearer ${token}`
@@ -146,7 +146,7 @@ const RelatoriosDev = () => {
     .then((response) => {
         setReviews(response.data);
         console.log("Reviews", response.data);
-    })
+    }).catch((error) => console.log(error))
     Axios.get(`https://backendmaisjogos-production.up.railway.app/api/pixDev/listarTodos`,{
       headers:{
         Authorization: `Bearer ${token}`
@@ -155,11 +155,15 @@ const RelatoriosDev = () => {
     .then((response) => {
         setPagamentos(response.data);
         console.log("Pix", response.data);
-    })
+    }).catch((error) => console.log(error))
     Axios.get(`https://backendmaisjogos-production.up.railway.app/api/jogo/listarTodos`)
     .then((response) => {
         setJogos(response.data.filter(jogo => jogo?.idDev == id));
         console.log("Jogos", response.data);
+        setLoading(null)
+      }).catch((error) => {
+        console.log(error)
+        setLoading(null)
     })
     Axios.get(`https://backendmaisjogos-production.up.railway.app/api/favorito/listarTodos`,{
       headers:{
@@ -169,8 +173,8 @@ const RelatoriosDev = () => {
     .then((response) => {
         setFavoritos(response.data);
         console.log("Favoritos", response.data);
-    })
-    setLoading(null)
+    }).catch((error) => console.log(error))
+
   }, [])
 
   return (

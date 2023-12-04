@@ -136,11 +136,15 @@ const RelatoriosAdmin = () => {
         setUsers(response.data.filter(user => user.idAvatar));
         setDevs(response.data.filter(user => !user.idAvatar));
         console.log("Usuarios", response.data);
-    })
+    }).catch((error) => console.log(error))
     Axios.get(`https://backendmaisjogos-production.up.railway.app/api/jogo/listarTodos`)
     .then((response) => {
         setJogos(response.data);
         console.log("Jogos", response.data);
+        setLoading(null)
+    }).catch((error) => {
+      console.log(error)
+      setLoading(null)
     })
     Axios.get(`https://backendmaisjogos-production.up.railway.app/api/adm/listarTodos`,{
       headers:{
@@ -150,7 +154,7 @@ const RelatoriosAdmin = () => {
     .then((response) => {
         setAdmins(response.data);
         console.log("Admins", response.data);
-    })
+    }).catch((error) => console.log(error))
     Axios.get(`https://backendmaisjogos-production.up.railway.app/api/check/listarTodos`,{
       headers:{
         Authorization: `Bearer ${token}`
@@ -159,8 +163,9 @@ const RelatoriosAdmin = () => {
     .then((response) => {
         setCheck(response.data);
         console.log("Check", response.data);
+    }).catch((error) => {
+      console.log(error)
     })
-    setLoading(null)
   }, [])
   
   return (

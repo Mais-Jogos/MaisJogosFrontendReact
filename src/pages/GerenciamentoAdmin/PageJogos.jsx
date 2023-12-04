@@ -266,7 +266,7 @@ const PageJogos = () => {
           
             if (filter.platform !== "Todos") {
               plataformasSelecionadas = filter.platform.some(
-                (platforma) => platforma === jogo.plataforma
+                (platforma) => platforma === jogo?.so
               );
             } else {
               plataformasSelecionadas = jogo;
