@@ -35,7 +35,7 @@ const CardAvatar = ({ avatar, cor, userRedux, coins, dispatch }) => {
             backgroundPosition: "center",
           }}
         >
-          <img id="avatares__parrot" src={`${avatar?.id !== 0 ? 'data:image/png;base64,' : ""}${avatar?.arquivo}`} />
+          <img id="avatares__parrot" src={`${avatar?.nome !== "Rochinha" ? 'data:image/png;base64,' : ""}${avatar?.arquivo}`} />
         </div>
 
         <div className="avatares__letraPixel">

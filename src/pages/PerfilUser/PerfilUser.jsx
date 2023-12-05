@@ -164,7 +164,7 @@ const PerfilUser = (props) => {
                         <div className="perfilUser-card__border" style={glowStyles}>
                             <div className="perfilUser-card__cardBG" >
                                 <div className="perfilUser-card__imgBG" style={{ backgroundColor: userData.colorCard }}>
-                                    <img id="perfilUser-card__parrot" src={`${userRedux.avatar?.id !== 0 ? 'data:image/png;base64,' : ""}${userRedux.avatar?.arquivo}`} />
+                                    <img id="perfilUser-card__parrot" src={`${userRedux.avatar?.nome !== "Rochinha" ? 'data:image/png;base64,' : ""}${userRedux.avatar?.arquivo}`} />
                                 </div>
                                 <div className="perfilUser-card__cardFooter">
                                     <img className="perfilUser-card__imgEdit" src="/imgs/icons/Kapicoin_icon.png" />
