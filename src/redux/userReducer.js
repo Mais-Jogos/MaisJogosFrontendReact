@@ -7,7 +7,7 @@ const initialState = {
     nome: "Rochinha",
     arquivo:"/imgs/animais/5.png",
     valor: 0,
-    id:1,
+    id:0,
   },
   avatares:[
     {
