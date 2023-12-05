@@ -139,7 +139,7 @@ export default props => {
     }
 
     useEffect(_ => {
-        Axios.get(`https://backendmaisjogos-production.up.railway.app/api/pixDev/listarPix/${id}`, {
+        Axios.get(`https://backendmaisjogos-production.up.railway.app/api/pixDev/listaPixDev/${id}`, {
             headers: {
                 Authorization: `Bearer ${token}`
             }
